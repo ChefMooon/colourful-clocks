@@ -28,17 +28,19 @@ Wood Types, Glass Colours, Clock Hands, and Pendulums to create the perfect deco
 A must-have for any adventurer with a keen sense of style, this handheld clock doubles as the power source for 
 Grandfather Clocks. Can be placed in any Bornholm Dial.
 
+**Types:** Iron, Copper, Gold, Diamond, Netherite
+
 ![Iron Pocket Watch Recipe](https://i.imgur.com/PHnvMoE.png)
 
 ****
 
-## Bornholm Granfather Clock
+## Bornholm Grandfather Clock
 Clocks come in 3 parts: Base, Trunk, and Dial.
 A clock will only function if all 3 pieces are placed together. The Hour hand will be at the top (12) at noon and midnight. 
 This version is styled after Danish Bornholm clocks.
 
 **Details**   
-- Each Pendelum has a different swing speed, Iron the fastest, Netherite the slowest.
+- Each Pendulum has a different swing speed, Iron the fastest, Netherite the slowest.
 - Glass types are changed using Stained Glass Panes. Wood can also be used on doors to remove the glass.
 
 ### Customization Options
