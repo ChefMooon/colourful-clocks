@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:mangrove_wood"
+    },
+    "B": {
+      "item": "minecraft:orange_stained_glass_pane"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "B A",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:bornholm_middle_mangrove_orange_stained_glass"
+  }
+}

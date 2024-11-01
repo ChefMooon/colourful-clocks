@@ -1,0 +1,6 @@
+{
+  "parent": "colourfulclocks:item/template_pocket_watch_open_12",
+  "textures": {
+    "all": "colourfulclocks:item/netherite_pocket_watch"
+  }
+}

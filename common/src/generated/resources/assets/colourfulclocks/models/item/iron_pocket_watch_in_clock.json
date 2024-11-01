@@ -1,0 +1,6 @@
+{
+  "parent": "colourfulclocks:block/template_pocket_watch_in_clock",
+  "textures": {
+    "all": "colourfulclocks:item/iron_pocket_watch"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:warped_hyphae"
+    },
+    "B": {
+      "item": "minecraft:cyan_stained_glass_pane"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "B A",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:bornholm_middle_warped_cyan_stained_glass"
+  }
+}

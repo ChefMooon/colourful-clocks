@@ -1,0 +1,17 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"0": "#all",
+		"particle": "#all"
+	},
+	"elements": [
+		{
+			"from": [7.5, 8, 12.2],
+			"to": [8.5, 11.5, 12.2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 12.2]},
+			"faces": {
+				"south": {"uv": [7, 8, 8, 11.5], "texture": "#0"}
+			}
+		}
+	]
+}

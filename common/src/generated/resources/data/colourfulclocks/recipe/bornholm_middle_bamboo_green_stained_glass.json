@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:bamboo_block"
+    },
+    "B": {
+      "item": "minecraft:green_stained_glass_pane"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "B A",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:bornholm_middle_bamboo_green_stained_glass"
+  }
+}

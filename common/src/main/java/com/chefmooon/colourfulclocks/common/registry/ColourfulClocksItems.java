@@ -1,0 +1,49 @@
+package com.chefmooon.colourfulclocks.common.registry;
+
+
+import com.chefmooon.colourfulclocks.common.util.TextUtil;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+
+public class ColourfulClocksItems {
+
+    public static Item.Properties basicItem() {
+        return new Item.Properties();
+    }
+
+    public static Item.Properties noStack() {
+        return basicItem().stacksTo(1);
+    }
+
+    public static final ResourceLocation IRON_POCKET_WATCH = item("iron_pocket_watch");
+    public static final ResourceLocation COPPER_POCKET_WATCH = item("copper_pocket_watch");
+    public static final ResourceLocation GOLD_POCKET_WATCH = item("gold_pocket_watch");
+    public static final ResourceLocation DIAMOND_POCKET_WATCH = item("diamond_pocket_watch");
+    public static final ResourceLocation NETHERITE_POCKET_WATCH = item("netherite_pocket_watch");
+
+    public static final ResourceLocation IRON_POCKET_WATCH_IN_CLOCK = item("iron_pocket_watch_in_clock");
+    public static final ResourceLocation COPPER_POCKET_WATCH_IN_CLOCK = item("copper_pocket_watch_in_clock");
+    public static final ResourceLocation GOLD_POCKET_WATCH_IN_CLOCK = item("gold_pocket_watch_in_clock");
+    public static final ResourceLocation DIAMOND_POCKET_WATCH_IN_CLOCK = item("diamond_pocket_watch_in_clock");
+    public static final ResourceLocation NETHERITE_POCKET_WATCH_IN_CLOCK = item("netherite_pocket_watch_in_clock");
+
+    public static final ResourceLocation IRON_PENDULUM = item("iron_pendulum");
+    public static final ResourceLocation COPPER_PENDULUM = item("copper_pendulum");
+    public static final ResourceLocation EXPOSED_COPPER_PENDULUM = item("exposed_copper_pendulum");
+    public static final ResourceLocation WEATHERED_COPPER_PENDULUM = item("weathered_copper_pendulum");
+    public static final ResourceLocation OXIDIZED_COPPER_PENDULUM = item("oxidized_copper_pendulum");
+    public static final ResourceLocation GOLD_PENDULUM = item("gold_pendulum");
+    public static final ResourceLocation DIAMOND_PENDULUM = item("diamond_pendulum");
+    public static final ResourceLocation NETHERITE_PENDULUM = item("netherite_pendulum");
+
+    public static final ResourceLocation BORNHOLM_BASE = item("bornholm_base");
+    public static final ResourceLocation BORNHOLM_MIDDLE = item("bornholm_middle");
+    public static final ResourceLocation BORNHOLM_TOP = item("bornholm_top");
+
+    private static ResourceLocation item(String string) {
+        return TextUtil.res(string);
+    }
+
+    public static void register() {
+    }
+}

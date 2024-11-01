@@ -1,0 +1,8 @@
+{
+  "parent": "colourfulclocks:block/template_bornholm_middle_open",
+  "textures": {
+    "door": "colourfulclocks:block/gray_stained_glass_bornholm_door",
+    "inside": "minecraft:block/stripped_bamboo_block",
+    "side": "minecraft:block/bamboo_block"
+  }
+}
