@@ -1,0 +1,6 @@
+{
+  "parent": "colourfulclocks:block/template_bornholm_base",
+  "textures": {
+    "layer0": "minecraft:block/stripped_bamboo_block"
+  }
+}

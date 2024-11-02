@@ -1,0 +1,9 @@
+{
+  "parent": "colourfulclocks:block/template_bornholm_top",
+  "textures": {
+    "clock_dial": "colourfulclocks:block/quartz_bornholm_clockface",
+    "clock_dial_cover": "colourfulclocks:block/brown_stained_glass_bornholm_dial",
+    "clock_dial_marks": "minecraft:block/coal_block",
+    "side": "minecraft:block/stripped_spruce_log"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "colourfulclocks:block/bornholm_base_stripped_birch",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "colourfulclocks:block/bornholm_base_stripped_birch"
+    },
+    "facing=south": {
+      "model": "colourfulclocks:block/bornholm_base_stripped_birch",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "colourfulclocks:block/bornholm_base_stripped_birch",
+      "y": 270
+    }
+  }
+}

@@ -123,8 +123,7 @@ public class ModelGenerator extends FabricModelProvider {
         ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.forEach(((entry, blockSupplier) -> {
             ResourceLocation blockLocation = ModelLocationUtils.getModelLocation(blockSupplier.get());
             ResourceLocation woodTypeLocation = ModelLocationUtils.getModelLocation(entry.getKey().getBlock());
-            ResourceLocation strippedBlockLocation = ResourceLocation.withDefaultNamespace(woodTypeLocation.getPath()
-                    .substring(0,woodTypeLocation.getPath().indexOf('/') + 1) + "stripped_" + woodTypeLocation.getPath().substring(woodTypeLocation.getPath().indexOf('/') + 1));
+            ResourceLocation strippedBlockLocation = ModelLocationUtils.getModelLocation(entry.getKey().getStrippedBlock());
 
             ResourceLocation doorTypeLocation;
             if (entry.getValue() == BornholmDoorTypes.BASE) {

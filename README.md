@@ -28,7 +28,10 @@ Wood Types, Glass Colours, Clock Hands, and Pendulums to create the perfect deco
 A must-have for any adventurer with a keen sense of style, this handheld clock doubles as the power source for 
 Grandfather Clocks. Can be placed in any Bornholm Dial.
 
-**Types:** Iron, Copper, Gold, Diamond, Netherite
+**Types:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite
+
+**Note:** Exposed, Weathered, and Oxidized Copper Pocket Watches cannot be crafted. They oxidize when in hand and can be 
+waxed to preserve the condition.
 
 ![Iron Pocket Watch Recipe](https://i.imgur.com/PHnvMoE.png)
 
@@ -49,6 +52,9 @@ This version is styled after Danish Bornholm clocks.
 **Glass Door Types:** Clear, White, Orange, Magenta, Light Blue, Yellow, Lime, Pink, Gray, Light Gray, Cyan, Purple, Blue, Brown, Green, Red, Black   
 **Clock Hands:** Iron, Copper, Gold, Diamond, Netherite   
 **Pendulums:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite
+
+**Note:** Exposed, Weathered, and Oxidized Copper Pendulums cannot be crafted. They oxidize when hanging in active clocks and can 
+be waxed to preserve the condition.
 
 ![Pendulum Showcase](https://i.imgur.com/hCGRSE5.png)
 
