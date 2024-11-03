@@ -41,6 +41,20 @@ public class ColourfulClocksItemsImpl {
             () -> new PocketWatchItemImpl(PocketWatchTypes.IRON, noStack()));
     public static final Supplier<Item> COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.COPPER_POCKET_WATCH,
             () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> EXPOSED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.EXPOSED_COPPER_POCKET_WATCH,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> WEATHERED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.WEATHERED_COPPER_POCKET_WATCH,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> OXIDIZED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.OXIDIZED_COPPER_POCKET_WATCH,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> WAXED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.WAXED_COPPER_POCKET_WATCH,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> WAXED_EXPOSED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.WAXED_EXPOSED_COPPER_POCKET_WATCH,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> WAXED_WEATHERED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.WAXED_WEATHERED_COPPER_POCKET_WATCH,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> WAXED_OXIDIZED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_POCKET_WATCH,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
     public static final Supplier<Item> GOLD_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.GOLD_POCKET_WATCH,
             () -> new PocketWatchItemImpl(PocketWatchTypes.GOLD, noStack()));
     public static final Supplier<Item> DIAMOND_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.DIAMOND_POCKET_WATCH,
@@ -51,6 +65,20 @@ public class ColourfulClocksItemsImpl {
     public static final Supplier<Item> IRON_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.IRON_POCKET_WATCH_IN_CLOCK,
             () -> new PocketWatchItemImpl(PocketWatchTypes.IRON, noStack()));
     public static final Supplier<Item> COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.COPPER_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> EXPOSED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.EXPOSED_COPPER_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> WEATHERED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.WEATHERED_COPPER_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> OXIDIZED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.OXIDIZED_COPPER_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> WAXED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.WAXED_COPPER_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> WAXED_EXPOSED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.WAXED_EXPOSED_COPPER_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> WAXED_WEATHERED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.WAXED_WEATHERED_COPPER_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
+    public static final Supplier<Item> WAXED_OXIDIZED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_POCKET_WATCH_IN_CLOCK,
             () -> new PocketWatchItemImpl(PocketWatchTypes.COPPER, noStack()));
     public static final Supplier<Item> GOLD_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.GOLD_POCKET_WATCH_IN_CLOCK,
             () -> new PocketWatchItemImpl(PocketWatchTypes.GOLD, noStack()));
@@ -64,6 +92,10 @@ public class ColourfulClocksItemsImpl {
     public static final Supplier<Item> EXPOSED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.EXPOSED_COPPER_PENDULUM, () -> new Item(basicItem()));
     public static final Supplier<Item> WEATHERED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WEATHERED_COPPER_PENDULUM, () -> new Item(basicItem()));
     public static final Supplier<Item> OXIDIZED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.OXIDIZED_COPPER_PENDULUM, () -> new Item(basicItem()));
+    public static final Supplier<Item> WAXED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_COPPER_PENDULUM, () -> new Item(basicItem()));
+    public static final Supplier<Item> WAXED_EXPOSED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_EXPOSED_COPPER_PENDULUM, () -> new Item(basicItem()));
+    public static final Supplier<Item> WAXED_WEATHERED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_WEATHERED_COPPER_PENDULUM, () -> new Item(basicItem()));
+    public static final Supplier<Item> WAXED_OXIDIZED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_PENDULUM, () -> new Item(basicItem()));
     public static final Supplier<Item> GOLD_PENDULUM = registerItemWithTab(ColourfulClocksItems.GOLD_PENDULUM, () -> new Item(basicItem()));
     public static final Supplier<Item> DIAMOND_PENDULUM = registerItemWithTab(ColourfulClocksItems.DIAMOND_PENDULUM, () -> new Item(basicItem()));
     public static final Supplier<Item> NETHERITE_PENDULUM = registerItemWithTab(ColourfulClocksItems.NETHERITE_PENDULUM, () -> new Item(basicItem()));

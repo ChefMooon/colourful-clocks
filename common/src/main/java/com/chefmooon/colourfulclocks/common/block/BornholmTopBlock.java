@@ -5,19 +5,25 @@ import com.chefmooon.colourfulclocks.common.block.state.properties.BornholmTopGl
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.core.WoodTypes;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
 import com.chefmooon.colourfulclocks.common.util.BornholmTypeUtil;
+import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -131,10 +137,9 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
             if (!mainHandItem.isEmpty()) {
                 if (mainHandItem.is(ColourfulClocksTags.CLOCK_HAND) && !mainHandItem.is(block.getClockHandsItem().getItem())) {
                     block.setClockHandsItem(player.getAbilities().instabuild ? mainHandItem.copy() : mainHandItem);
-                    level.playSound(player, pos, SoundEvents.COPPER_PLACE, SoundSource.BLOCKS, 1.0F, 0.6F);
+                    level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.6F);
                     return ItemInteractionResult.SUCCESS;
-                }
-                if (mainHandItem.is(ColourfulClocksTags.CLOCK_TOP_GLASS)) {
+                } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_TOP_GLASS)) {
                     BornholmTopGlassTypes newBornholmTopGlassTypes = BornholmTypeUtil.getBornholmTopGlassTypeFromItem(mainHandItem.getItem());
                     Block newBlock = getGlassType(woodType, newBornholmTopGlassTypes).get();
                     ItemStack clockHandsTemp = block.removeItem(0, 1); // temporary
@@ -142,8 +147,27 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                     if (level.getBlockEntity(pos) instanceof BornholmTopBlockEntity newBlockEntity) { // temporary
                         newBlockEntity.setItem(0, clockHandsTemp);
                     }
-                    level.playSound(player, pos, SoundEvents.GLASS_PLACE, SoundSource.BLOCKS, 1.0F, 0.8F);
+                    level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_GLASS.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
                     return ItemInteractionResult.SUCCESS;
+                } else if (mainHandItem.is(Items.HONEYCOMB)) {
+                    ItemStack waxedClockHands = new ItemStack(getWaxedClockHands(block.getClockHandsItem()).get());
+                    if (!waxedClockHands.isEmpty()) {
+                        block.setClockHandsItem(waxedClockHands);
+                        level.blockEntityChanged(pos);
+                        level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
+                        if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
+                        return ItemInteractionResult.SUCCESS;
+                    }
+                } else if (mainHandItem.is(ItemTags.AXES)) {
+                    Pair<Supplier<Item>, Supplier<SoundEvent>> clockHandInfo = getScrapedClockHands(block.getClockHandsItem());
+                    ItemStack scrapedClockHands = new ItemStack(clockHandInfo.getFirst().get());
+                    if (!scrapedClockHands.isEmpty()) {
+                        block.setClockHandsItem(scrapedClockHands);
+                        level.blockEntityChanged(pos);
+                        level.playSound(player, pos, clockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                        if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                        return ItemInteractionResult.SUCCESS;
+                    }
                 }
             } else {
                 if (player.isShiftKeyDown() && !block.getClockHandsItem().isEmpty()) {
@@ -152,7 +176,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                     } else if (!player.getInventory().add(block.removeItem(0, 1))) {
                         Containers.dropContents(level, pos, block.getDroppableInventory());
                     }
-                    level.playSound(player, pos, SoundEvents.COPPER_PLACE, SoundSource.BLOCKS, 1.0F, 0.8F);
+                    level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
                     return ItemInteractionResult.SUCCESS;
                 }
             }
@@ -189,4 +213,13 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
         throw new AssertionError();
     }
 
+    @ExpectPlatform
+    public static Supplier<Item> getWaxedClockHands(ItemStack itemStack) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static Pair<Supplier<Item>, Supplier<SoundEvent>> getScrapedClockHands(ItemStack itemStack) {
+        throw new AssertionError();
+    }
 }

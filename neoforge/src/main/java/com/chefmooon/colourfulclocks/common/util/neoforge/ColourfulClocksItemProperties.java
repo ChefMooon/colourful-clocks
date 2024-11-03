@@ -21,6 +21,13 @@ public class ColourfulClocksItemProperties {
     public static void addCustomItemProperties() {
         registerPocketWatch(ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get());
         registerPocketWatch(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get());
+        registerPocketWatch(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get());
+        registerPocketWatch(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get());
+        registerPocketWatch(ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH.get());
+        registerPocketWatch(ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get());
+        registerPocketWatch(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_POCKET_WATCH.get());
+        registerPocketWatch(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_POCKET_WATCH.get());
+        registerPocketWatch(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_POCKET_WATCH.get());
         registerPocketWatch(ColourfulClocksItemsImpl.GOLD_POCKET_WATCH.get());
         registerPocketWatch(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get());
         registerPocketWatch(ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get());

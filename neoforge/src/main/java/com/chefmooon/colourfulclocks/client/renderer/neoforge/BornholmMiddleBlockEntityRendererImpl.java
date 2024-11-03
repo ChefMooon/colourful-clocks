@@ -36,7 +36,7 @@ public class BornholmMiddleBlockEntityRendererImpl extends BornholmMiddleBlockEn
 
         if (!pendulum.isEmpty()) {
             BakedModel model = minecraft.getItemRenderer().getModel(pendulum, level, null, 0);
-            renderPendelum(poseStack, partialTick, state, swingSpeedModifier);
+            renderPendulum(poseStack, partialTick, state, swingSpeedModifier);
             minecraft.getItemRenderer().render(pendulum, ItemDisplayContext.FIXED, false, poseStack, bufferSource, packedLight, packedOverlay, model);
             poseStack.popPose();
         }

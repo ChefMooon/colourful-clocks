@@ -2,6 +2,13 @@
   "values": [
     "colourfulclocks:iron_pocket_watch",
     "colourfulclocks:copper_pocket_watch",
+    "colourfulclocks:exposed_copper_pocket_watch",
+    "colourfulclocks:weathered_copper_pocket_watch",
+    "colourfulclocks:oxidized_copper_pocket_watch",
+    "colourfulclocks:waxed_copper_pocket_watch",
+    "colourfulclocks:waxed_exposed_copper_pocket_watch",
+    "colourfulclocks:waxed_weathered_copper_pocket_watch",
+    "colourfulclocks:waxed_oxidized_copper_pocket_watch",
     "colourfulclocks:gold_pocket_watch",
     "colourfulclocks:diamond_pocket_watch",
     "colourfulclocks:netherite_pocket_watch"

@@ -17,5 +17,6 @@ public class ColourfulClocksNeoForge {
         ColourfulClocksBlockEntitiesImpl.register(modEventBus);
         ColourfulClocksCreativeTabsImpl.register(modEventBus);
         ColourfulClocksDataComponentTypesImpl.register(modEventBus);
+        ColourfulClocksSoundsImpl.register(modEventBus);
     }
 }

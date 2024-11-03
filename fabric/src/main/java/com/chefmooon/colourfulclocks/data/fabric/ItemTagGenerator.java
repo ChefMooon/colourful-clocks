@@ -67,6 +67,10 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
                         ColourfulClocksItemsImpl.EXPOSED_COPPER_PENDULUM.get(),
                         ColourfulClocksItemsImpl.WEATHERED_COPPER_PENDULUM.get(),
                         ColourfulClocksItemsImpl.OXIDIZED_COPPER_PENDULUM.get(),
+                        ColourfulClocksItemsImpl.WAXED_COPPER_PENDULUM.get(),
+                        ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_PENDULUM.get(),
+                        ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_PENDULUM.get(),
+                        ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_PENDULUM.get(),
                         ColourfulClocksItemsImpl.GOLD_PENDULUM.get(),
                         ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get(),
                         ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get()
@@ -76,6 +80,13 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
                 .add(
                         ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get(),
                         ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_POCKET_WATCH.get(),
                         ColourfulClocksItemsImpl.GOLD_POCKET_WATCH.get(),
                         ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get(),
                         ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get()

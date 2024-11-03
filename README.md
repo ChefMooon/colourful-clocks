@@ -47,10 +47,12 @@ This version is styled after Danish Bornholm clocks.
 - Glass types are changed using Stained Glass Panes. Wood can also be used on doors to remove the glass.
 
 ### Customization Options
-**Wood Types:** Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Mangrove, Cherry, Bamboo, Crimson, Warped   
+**Wood Types:** Oak, Spruce, Birch, Jungle, Acacia, Dark Oak, Mangrove, Cherry, Bamboo, Crimson, Warped,
+Stripped Oak, Stripped Spruce, Stripped Birch, Stripped Jungle, Stripped Acacia, Stripped Dark Oak, Stripped Mangrove,
+Stripped Cherry, Stripped Bamboo, Stripped Crimson, Stripped Warped   
 **Dial Glass:** Clear, White, Orange, Magenta, Light Blue, Yellow, Lime, Pink, Gray, Light Gray, Cyan, Purple, Blue, Brown, Green, Red, Black   
 **Glass Door Types:** Clear, White, Orange, Magenta, Light Blue, Yellow, Lime, Pink, Gray, Light Gray, Cyan, Purple, Blue, Brown, Green, Red, Black   
-**Clock Hands:** Iron, Copper, Gold, Diamond, Netherite   
+**Clock Hands:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite   
 **Pendulums:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite
 
 **Note:** Exposed, Weathered, and Oxidized Copper Pendulums cannot be crafted. They oxidize when hanging in active clocks and can 
@@ -68,10 +70,3 @@ be waxed to preserve the condition.
 ![Bornholm Dial Recipe](https://i.imgur.com/Wqv8oFw.png)
 
 ****
-
-### To Implement
-
-- Dong sound at 12, change pitch based on pendulum
-- Time Effects (Area of efffect determined by clock hands)
-  - Increase Crop Growth
-  - Increase Animal Ageing

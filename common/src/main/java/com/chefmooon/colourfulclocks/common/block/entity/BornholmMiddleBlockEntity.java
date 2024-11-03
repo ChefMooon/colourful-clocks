@@ -1,6 +1,8 @@
 package com.chefmooon.colourfulclocks.common.block.entity;
 
+import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -8,8 +10,11 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.CropBlock;
@@ -18,6 +23,8 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.function.Supplier;
+
 public class BornholmMiddleBlockEntity extends BlockEntity implements Container {
     private ItemStack pendelumItem = ItemStack.EMPTY;
     private ItemStack doorItem = ItemStack.EMPTY; // TODO - remove this? door change implementation no longer requires this, use elsewhere?
@@ -25,6 +32,9 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     private int baseFrequency = 6000;
     private int baseFrequencyMax = 6000;  // 6000 ticks = effect chance every 5 minutes
     protected static int baseEffectRange = 1;
+
+    private static final int WEATHERED_THRESHOLD = 6000; // 5 min to weather
+    private int weatheringProgress = 0;
 
     public BornholmMiddleBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -117,6 +127,7 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.loadAdditional(tag, provider);
 
+        weatheringProgress = tag.getInt("weatheringProgress");
         if (tag.contains("pendelum_item")) {
             CompoundTag pendelumItemTag = tag.getCompound("pendelum_item");
             pendelumItem = ItemStack.parse(provider, pendelumItemTag).orElse(ItemStack.EMPTY);
@@ -129,6 +140,7 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        tag.putInt("weatheringProgress", weatheringProgress);
         if (!pendelumItem.isEmpty()) {
             tag.put("pendelum_item", pendelumItem.save(provider, new CompoundTag()));
         }
@@ -149,10 +161,52 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
         return this.saveWithoutMetadata(provider);
     }
 
-    public static void temporalTimeTick(Level level, BlockPos blockPos, BlockState blockState, BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
+    public static void weatherTick(Level level, BlockPos blockPos, BlockState blockState, BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
         // todo - finish effects and enable them
         //tryTemporalTimeEffect(level, blockPos, blockState, bornholmMiddleBlockEntity);
 
+        if (blockState.getValue(BornholmMiddleBlock.ACTIVATED)) {
+            weather(level, blockPos, bornholmMiddleBlockEntity);
+            if (!bornholmMiddleBlockEntity.getPendelumItem().isEmpty()) sound(level, blockPos, bornholmMiddleBlockEntity);
+        }
+    }
+
+    private static void weather(Level level, BlockPos blockPos, BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
+        ItemStack itemStack = bornholmMiddleBlockEntity.getPendelumItem();
+        if (!itemStack.isEmpty()) {
+            if (isCopperPendulum(itemStack)) {
+                bornholmMiddleBlockEntity.weatheringProgress++;
+                if (bornholmMiddleBlockEntity.weatheringProgress >= WEATHERED_THRESHOLD) {
+                    advanceWeathering(level, blockPos, itemStack, bornholmMiddleBlockEntity);
+                    bornholmMiddleBlockEntity.weatheringProgress = 0;
+                }
+            }
+        } else {
+            bornholmMiddleBlockEntity.weatheringProgress = 0;
+        }
+    }
+
+    private static void advanceWeathering(Level level, BlockPos blockPos, ItemStack itemStack, BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
+        ItemStack weatheredItemStack = new ItemStack(getNextWeatheredCopperItem(itemStack).get());
+        if (!weatheredItemStack.isEmpty()) {
+            bornholmMiddleBlockEntity.setPendelumItem(weatheredItemStack);
+            level.blockEntityChanged(blockPos);
+            bornholmMiddleBlockEntity.setChanged();
+        }
+    }
+
+    private static void sound(Level level, BlockPos blockPos, BornholmMiddleBlockEntity bornholmTopBlockEntity) {
+        if (level == null || level.isClientSide()) return;
+
+        ItemStack pendulum = bornholmTopBlockEntity.getPendelumItem();
+
+        float pitch = getClockHandPitchModifier(pendulum);
+
+        long timeOfDay = level.getGameTime() % 24000;
+
+        if (timeOfDay == 6000 || timeOfDay == 18000) {
+            level.playSound(null, blockPos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHIME.get(), SoundSource.BLOCKS, 1.0F, pitch);
+        }
     }
 
     public static void tryTemporalTimeEffect(Level level, BlockPos blockPos, BlockState blockState, BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
@@ -194,6 +248,21 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
 
     @ExpectPlatform
     public static int getRangeFromClockHandsItem(ItemStack itemStack) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static boolean isCopperPendulum(ItemStack itemStack) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static Supplier<Item> getNextWeatheredCopperItem(ItemStack itemStack) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static float getClockHandPitchModifier(ItemStack itemStack) {
         throw new AssertionError();
     }
 }

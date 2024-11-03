@@ -1,0 +1,6 @@
+{
+  "parent": "colourfulclocks:item/template_pocket_watch_open_11",
+  "textures": {
+    "all": "colourfulclocks:item/weathered_copper_pocket_watch"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "block.bornholm.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "block.bornholm.door_open": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.door_open",
+    "sounds": [
+      {
+        "name": "block.bamboo_wood_door.open",
+        "type": "event"
+      }
+    ]
+  },
+  "block.bornholm.remove_pendulum": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.remove_pendulum",
+    "sounds": [
+      {
+        "name": "block.lantern.place",
+        "type": "event"
+      }
+    ]
+  },
+  "block.bornholm.insert_pendulum": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.insert_pendulum",
+    "sounds": [
+      {
+        "name": "block.lantern.place",
+        "type": "event"
+      }
+    ]
+  },
+  "block.bornholm.change_wood": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.change_wood",
+    "sounds": [
+      {
+        "name": "block.wood.place",
+        "type": "event"
+      }
+    ]
+  },
+  "block.bornholm.change_glass": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.change_glass",
+    "sounds": [
+      {
+        "name": "block.glass.place",
+        "type": "event"
+      }
+    ]
+  },
+  "block.bornholm.wax_off": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.wax_off",
+    "sounds": [
+      {
+        "name": "item.axe.wax_off",
+        "type": "event"
+      }
+    ]
+  },
+  "block.bornholm.wax_on": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.wax_on",
+    "sounds": [
+      {
+        "name": "item.honeycomb.wax_on",
+        "type": "event"
+      }
+    ]
+  },
+  "block.bornholm.axe_scrapes": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.axe_scrapes",
+    "sounds": [
+      {
+        "name": "item.axe.scrape",
+        "type": "event"
+      }
+    ]
+  },
+  "block.bornholm.remove_pocket_watch": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.remove_pocket_watch",
+    "sounds": [
+      {
+        "name": "block.copper.place",
+        "type": "event"
+      }
+    ]
+  },
+  "block.bornholm.insert_pocket_watch": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.insert_pocket_watch",
+    "sounds": [
+      {
+        "name": "block.copper.place",
+        "type": "event"
+      }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "colourfulclocks:item/template_pendulum",
+  "textures": {
+    "all": "colourfulclocks:item/oxidized_copper_pendulum"
+  }
+}
