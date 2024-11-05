@@ -1,7 +1,4 @@
-### Added
-- All Copper Variants added and obtainable
-  - Copper Pendulums and Pocket Watches can oxidize in "Active" Clocks
-
 ### Fixed
-- Sounds and Subtitles
-- Pendulum Swing speed more consistent
+- Fixed a server crash
+- Bug: Bornholm Trunk variants cause excess load time and servers to not load. Must implement as blockstates
+only base and glass variants are implemented for now

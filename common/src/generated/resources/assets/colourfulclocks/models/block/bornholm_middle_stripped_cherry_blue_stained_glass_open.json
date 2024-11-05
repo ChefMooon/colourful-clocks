@@ -1,8 +1,0 @@
-{
-  "parent": "colourfulclocks:block/template_bornholm_middle_open",
-  "textures": {
-    "door": "colourfulclocks:block/blue_stained_glass_bornholm_door",
-    "inside": "minecraft:block/stripped_cherry_log",
-    "side": "minecraft:block/stripped_cherry_log"
-  }
-}

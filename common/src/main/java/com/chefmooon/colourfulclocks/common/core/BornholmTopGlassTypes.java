@@ -9,8 +9,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
-import static net.minecraft.data.models.model.ModelLocationUtils.getModelLocation;
-
 public enum BornholmTopGlassTypes implements StringRepresentable {
     BASE(0, "base", "", Items.GLASS_PANE, Blocks.GLASS, TextUtil.res("block/glass_bornholm_dial")),
     GLASS_WHITE(1, "white_stained_glass", "White Stained Glass", Items.WHITE_STAINED_GLASS_PANE, Blocks.WHITE_STAINED_GLASS, TextUtil.res("block/white_stained_glass_bornholm_dial")),

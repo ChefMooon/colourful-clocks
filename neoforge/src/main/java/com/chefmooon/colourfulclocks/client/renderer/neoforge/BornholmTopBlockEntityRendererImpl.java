@@ -55,29 +55,29 @@ public class BornholmTopBlockEntityRendererImpl extends BornholmTopBlockEntityRe
 
     protected static ModelResourceLocation getHandModelResourceLocation(ItemStack itemStack) {
         if (itemStack.is(ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get())) {
-            return PocketWatchTypes.IRON.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.IRON.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get())) {
-            return PocketWatchTypes.COPPER.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.COPPER.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get())) {
-            return PocketWatchTypes.EXPOSED_COPPER.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.EXPOSED_COPPER.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get())) {
-            return PocketWatchTypes.WEATHERED_COPPER.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.WEATHERED_COPPER.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH.get())) {
-            return PocketWatchTypes.OXIDIZED_COPPER.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.OXIDIZED_COPPER.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get())) {
-            return PocketWatchTypes.WAXED_COPPER.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.WAXED_COPPER.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_POCKET_WATCH.get())) {
-            return PocketWatchTypes.WAXED_EXPOSED_COPPER.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.WAXED_EXPOSED_COPPER.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_POCKET_WATCH.get())) {
-            return PocketWatchTypes.WAXED_WEATHERED_COPPER.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.WAXED_WEATHERED_COPPER.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_POCKET_WATCH.get())) {
-            return PocketWatchTypes.WAXED_OXIDIZED_COPPER.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.WAXED_OXIDIZED_COPPER.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.GOLD_POCKET_WATCH.get())) {
-            return PocketWatchTypes.GOLD.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.GOLD.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get())) {
-            return PocketWatchTypes.DIAMOND.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.DIAMOND.getInClockLocation());
         } else {
-            return PocketWatchTypes.NETHERITE.getInClockLocation();
+            return ModelResourceLocation.inventory(PocketWatchTypes.NETHERITE.getInClockLocation());
         }
     }
 }
