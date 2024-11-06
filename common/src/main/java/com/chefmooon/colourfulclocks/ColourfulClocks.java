@@ -13,7 +13,5 @@ public class ColourfulClocks {
     
     public static void init() {
         ColourfulClocksSounds.init();
-//        ColourfulClocksBlocks.register();
-//        ColourfulClocksItems.register();
     }
 }

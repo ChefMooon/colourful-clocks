@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.NotNull;
 
 public enum BornholmTopGlassTypes implements StringRepresentable {
-    BASE(0, "base", "", Items.GLASS_PANE, Blocks.GLASS, TextUtil.res("block/glass_bornholm_dial")),
+    GLASS(0, "glass", "", Items.GLASS_PANE, Blocks.GLASS, TextUtil.res("block/glass_bornholm_dial")),
     GLASS_WHITE(1, "white_stained_glass", "White Stained Glass", Items.WHITE_STAINED_GLASS_PANE, Blocks.WHITE_STAINED_GLASS, TextUtil.res("block/white_stained_glass_bornholm_dial")),
     GLASS_ORANGE(3, "orange_stained_glass", "Orange Stained Glass", Items.ORANGE_STAINED_GLASS_PANE, Blocks.ORANGE_STAINED_GLASS, TextUtil.res("block/orange_stained_glass_bornholm_dial")),
     GLASS_MAGENTA(4, "magenta_stained_glass", "Magenta Stained Glass", Items.MAGENTA_STAINED_GLASS_PANE, Blocks.MAGENTA_STAINED_GLASS, TextUtil.res("block/magenta_stained_glass_bornholm_dial")),
@@ -61,17 +61,17 @@ public enum BornholmTopGlassTypes implements StringRepresentable {
     public Block getBlock() {
         return block;
     }
-
     public ResourceLocation getBornholmGlassTexture() {
         return bornholmGlassTexture;
     }
-
+    public String getTooltip() {
+        return en_us;
+    }
     public String getBaseTranslation() {
         return (en_us.isEmpty()) ? "" : " " + en_us;
     }
-
     @Override
     public @NotNull String getSerializedName() {
-        return "_" + name;
+        return (name.isEmpty()) ? "" : "_" + name;
     }
 }

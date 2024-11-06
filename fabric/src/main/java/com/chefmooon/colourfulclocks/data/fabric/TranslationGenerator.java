@@ -20,6 +20,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
         String MOD_ID = ColourfulClocks.MOD_ID;
         String FORMATTED_MOD_ID = "Colourful Clocks";
         String SUBTITLE = MOD_ID + ".subtitles.";
+        String TOOLTIP = MOD_ID + ".tooltip.";
 
         translationBuilder.add("itemGroup." + MOD_ID, FORMATTED_MOD_ID);
 
@@ -70,6 +71,8 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(SUBTITLE + "block.bornholm.axe_scrapes", "Axe Scrapes");
         translationBuilder.add(SUBTITLE + "block.bornholm.remove_pocket_watch", "Pocket Watch Removed");
         translationBuilder.add(SUBTITLE + "block.bornholm.insert_pocket_watch", "Pocket Watch Inserted");
+
+        translationBuilder.add(TOOLTIP + "weathering", "Weathering");
     }
 
     private static void generateBornholmBaseTranslations(TranslationBuilder translationBuilder) {
@@ -81,14 +84,14 @@ public class TranslationGenerator extends FabricLanguageProvider {
 
     private static void generateBornholmMiddleTranslations(TranslationBuilder translationBuilder) {
         ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.forEach((entry, supplier) -> {
-            String translation = "Bornholm Trunk" + entry.getKey().getBaseTranslation() + entry.getValue().getBaseTranslation();
+            String translation = "Bornholm Trunk" + entry.getBaseTranslation();
             translationBuilder.add(supplier.get(), translation);
         });
     }
 
     private static void generateBonrholmTopTranslations(TranslationBuilder translationBuilder) {
         ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.forEach(((entry, supplier) -> {
-            String translation = "Bornholm Dial" + entry.getKey().getBaseTranslation() + entry.getValue().getBaseTranslation();
+            String translation = "Bornholm Dial" + entry.getBaseTranslation();
             translationBuilder.add(supplier.get(), translation);
         }));
     }

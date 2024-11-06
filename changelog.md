@@ -1,4 +1,12 @@
 ### Fixed
-- Fixed a server crash
-- Bug: Bornholm Trunk variants cause excess load time and servers to not load. Must implement as blockstates
-only base and glass variants are implemented for now
+- Improved performance, heavily reduced memory usage
+- Improved Block Item Interaction
+  - Door open/close works better 
+    - Fixed missing close sound
+  - Pocket Watches and Pendulums cannot be inserted if there is already one inside
+  - Glass panes are now consumed when used to change Dial glass and Trunk Glass
+  - Wood is now consumed when used to change Trunk Door Type
+- Copper Pocket Watch and Pendulum Weathering data now saved to item instead of tracked within blocks
+- Chime sound occurs at the proper time on servers
+  - Chime no longer continuously plays if time is stopped at noon and midnight
+- Pocket Watch gui display updated

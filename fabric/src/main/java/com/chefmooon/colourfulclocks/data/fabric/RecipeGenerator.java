@@ -1,6 +1,9 @@
 package com.chefmooon.colourfulclocks.data.fabric;
 
-import com.chefmooon.colourfulclocks.common.core.*;
+import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.core.PendulumTypes;
+import com.chefmooon.colourfulclocks.common.core.PocketWatchTypes;
+import com.chefmooon.colourfulclocks.common.core.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -13,7 +16,6 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 
-import java.util.AbstractMap;
 import java.util.concurrent.CompletableFuture;
 
 public class RecipeGenerator extends FabricRecipeProvider {
@@ -77,45 +79,87 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .unlockedBy(RecipeProvider.getHasName(woodTypes.getCraftingIngredient()), RecipeProvider.has(woodTypes.getCraftingIngredient()))
                     .save(recipeOutput, RecipeProvider.getSimpleRecipeName(baseResult));
 
-            for (BornholmDoorTypes bornholmDoorTypes : BornholmDoorTypes.values()) {
-                ItemLike middleResult = ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.get(new AbstractMap.SimpleEntry<>(woodTypes, bornholmDoorTypes)).get();
-                if (bornholmDoorTypes == BornholmDoorTypes.BASE) {
-                    ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, middleResult)
-                            .pattern("AAA")
-                            .pattern("A A")
-                            .pattern("AAA")
-                            .define('A', woodTypes.getCraftingIngredient())
-                            .unlockedBy(RecipeProvider.getHasName(woodTypes.getCraftingIngredient()), RecipeProvider.has(woodTypes.getCraftingIngredient()))
-                            .save(recipeOutput, RecipeProvider.getSimpleRecipeName(middleResult));
-                } else {
-                    ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, middleResult)
-                            .pattern("AAA")
-                            .pattern("B A")
-                            .pattern("AAA")
-                            .define('A', woodTypes.getCraftingIngredient())
-                            .define('B', bornholmDoorTypes.getItem())
-                            .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
-                                    woodTypes.getCraftingIngredient(),
-                                    bornholmDoorTypes.getItem())))
-                            .save(recipeOutput, RecipeProvider.getSimpleRecipeName(middleResult));
-                }
-            }
+            ItemLike middleResult = ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.get(woodTypes).get();
+            ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, middleResult)
+                    .pattern("AAA")
+                    .pattern("A A")
+                    .pattern("AAA")
+                    .define('A', woodTypes.getCraftingIngredient())
+                    .unlockedBy(RecipeProvider.getHasName(woodTypes.getCraftingIngredient()), RecipeProvider.has(woodTypes.getCraftingIngredient()))
+                    .save(recipeOutput, RecipeProvider.getSimpleRecipeName(middleResult));
 
-            for (BornholmTopGlassTypes bornholmTopGlassTypes : BornholmTopGlassTypes.values()) {
-                ItemLike topResult = ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.get(new AbstractMap.SimpleEntry<>(woodTypes, bornholmTopGlassTypes)).get();
-                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, topResult)
-                        .pattern("AAA")
-                        .pattern("BCA")
-                        .pattern("AAA")
-                        .define('A', woodTypes.getCraftingIngredient())
-                        .define('B', bornholmTopGlassTypes.getItem())
-                        .define('C', Items.QUARTZ)
-                        .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
-                                woodTypes.getCraftingIngredient(),
-                                bornholmTopGlassTypes.getItem(),
-                                Items.QUARTZ)))
-                        .save(recipeOutput, RecipeProvider.getSimpleRecipeName(topResult));
-            }
+            ItemLike topResult = ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.get(woodTypes).get();
+            ShapedRecipeBuilder.shaped(RecipeCategory.MISC, topResult)
+                    .pattern("AAA")
+                    .pattern("BCA")
+                    .pattern("AAA")
+                    .define('A', woodTypes.getCraftingIngredient())
+                    .define('B', BornholmTopGlassTypes.GLASS.getItem())
+                    .define('C', Items.QUARTZ)
+                    .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
+                            woodTypes.getCraftingIngredient(),
+                            BornholmTopGlassTypes.GLASS.getItem(),
+                            Items.QUARTZ)))
+                    .save(recipeOutput, RecipeProvider.getSimpleRecipeName(topResult));
+
+            // todo - figure out how to make recipes for all glass variants TRUNK and DIAL
+
+//            for (BornholmDoorTypes bornholmDoorTypes : BornholmDoorTypes.values()) {
+//                ItemLike middleResult = ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.get(new AbstractMap.SimpleEntry<>(woodTypes, bornholmDoorTypes.BASE)).get();
+//                if (bornholmDoorTypes == BornholmDoorTypes.BASE) {
+//                    ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, middleResult)
+//                            .pattern("AAA")
+//                            .pattern("A A")
+//                            .pattern("AAA")
+//                            .define('A', woodTypes.getCraftingIngredient())
+//                            .unlockedBy(RecipeProvider.getHasName(woodTypes.getCraftingIngredient()), RecipeProvider.has(woodTypes.getCraftingIngredient()))
+//                            .save(recipeOutput, RecipeProvider.getSimpleRecipeName(middleResult));
+//                } else {
+//                    ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, middleResult)
+//                            .pattern("AAA")
+//                            .pattern("B A")
+//                            .pattern("AAA")
+//                            .define('A', woodTypes.getCraftingIngredient())
+//                            .define('B', bornholmDoorTypes.getItem())
+//                            .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
+//                                    woodTypes.getCraftingIngredient(),
+//                                    bornholmDoorTypes.getItem())))
+//                            .save(recipeOutput, RecipeProvider.getSimpleRecipeName(middleResult));
+//                }
+//            }
+
+//            for (BornholmDoorTypes bornholmDoorTypes : BornholmDoorTypes.values()) {
+//                if (woodTypes == WoodTypes.OAK && bornholmDoorTypes == BornholmDoorTypes.GLASS) {
+//                    Block block = ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.get(woodTypes).get();
+//                    ItemStack stack = new ItemStack(block.defaultBlockState().setValue(BornholmMiddleBlock.DOOR_TYPE, BornholmDoorTypes.GLASS).getBlock().asItem());
+//                    ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, stack.getItem())
+//                            .pattern("AAA")
+//                            .pattern("B A")
+//                            .pattern("AAA")
+//                            .define('A', woodTypes.getCraftingIngredient())
+//                            .define('B', bornholmDoorTypes.getItem())
+//                            .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
+//                                    woodTypes.getCraftingIngredient(),
+//                                    bornholmDoorTypes.getItem())))
+//                            .save(recipeOutput, RecipeProvider.getSimpleRecipeName(stack.getItem()) + "_test");
+//                }
+//            }
+
+//            for (BornholmTopGlassTypes bornholmTopGlassTypes : BornholmTopGlassTypes.values()) {
+//                ItemLike topResult = ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.get(new AbstractMap.SimpleEntry<>(woodTypes, bornholmTopGlassTypes)).get();
+//                ShapedRecipeBuilder.shaped(RecipeCategory.MISC, topResult)
+//                        .pattern("AAA")
+//                        .pattern("BCA")
+//                        .pattern("AAA")
+//                        .define('A', woodTypes.getCraftingIngredient())
+//                        .define('B', bornholmTopGlassTypes.getItem())
+//                        .define('C', Items.QUARTZ)
+//                        .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
+//                                woodTypes.getCraftingIngredient(),
+//                                bornholmTopGlassTypes.getItem(),
+//                                Items.QUARTZ)))
+//                        .save(recipeOutput, RecipeProvider.getSimpleRecipeName(topResult));
+//            }
         }
     }
 }

@@ -30,8 +30,10 @@ Grandfather Clocks. Can be placed in any Bornholm Dial.
 
 **Types:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite
 
-**Note:** Exposed, Weathered, and Oxidized Copper Pocket Watches cannot be crafted. They oxidize when in hand and can be 
-waxed to preserve the condition.
+![Pocket Watch Showcase](https://i.imgur.com/WQ9DdvN.png)
+
+**Note:** Exposed, Weathered, and Oxidized Copper Pocket Watches cannot be crafted. They oxidize when placed in 
+complete clocks and can be waxed to preserve the condition.
 
 ![Iron Pocket Watch Recipe](https://i.imgur.com/PHnvMoE.png)
 
@@ -55,10 +57,13 @@ Stripped Cherry, Stripped Bamboo, Stripped Crimson, Stripped Warped
 **Clock Hands:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite   
 **Pendulums:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite
 
-**Note:** Exposed, Weathered, and Oxidized Copper Pendulums cannot be crafted. They oxidize when hanging in active clocks and can 
-be waxed to preserve the condition.
-
 ![Pendulum Showcase](https://i.imgur.com/hCGRSE5.png)
+
+**Notes:** 
+- Exposed, Weathered, and Oxidized Copper Pendulums cannot be crafted. They oxidize when hanging in complete clocks and can 
+be waxed to preserve the condition.
+- Glass variants for Trunks and Dials cannot be crafted, the block must be placed and a Glass Pane inserted(Right-Click).
+A tool with Silk Touch can be used to retain the Glass Variant when broken.
 
 ****
 
@@ -70,3 +75,8 @@ be waxed to preserve the condition.
 ![Bornholm Dial Recipe](https://i.imgur.com/Wqv8oFw.png)
 
 ****
+
+### Technical TODO
+
+- Allow glass variants to be crafted
+- Show the glass variant in item form when data is present

@@ -17,6 +17,15 @@
       }
     ]
   },
+  "block.bornholm.door_close": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.door_close",
+    "sounds": [
+      {
+        "name": "block.bamboo_wood_door.close",
+        "type": "event"
+      }
+    ]
+  },
   "block.bornholm.remove_pendulum": {
     "subtitle": "colourfulclocks.subtitles.block.bornholm.remove_pendulum",
     "sounds": [

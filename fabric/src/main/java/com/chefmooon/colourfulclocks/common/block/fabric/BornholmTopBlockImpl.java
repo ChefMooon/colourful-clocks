@@ -6,7 +6,6 @@ import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.core.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlockEntitiesImpl;
-import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
@@ -14,19 +13,17 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.AbstractMap;
 import java.util.function.Supplier;
 
 public class BornholmTopBlockImpl extends BornholmTopBlock {
-    public BornholmTopBlockImpl(WoodTypes woodTypes, BornholmTopGlassTypes bornholmTopGlassTypes, Properties properties) {
-        super(woodTypes, bornholmTopGlassTypes, properties);
+    public BornholmTopBlockImpl(WoodTypes woodTypes, Properties properties) {
+        super(woodTypes, properties);
     }
 
     @Override
@@ -38,10 +35,6 @@ public class BornholmTopBlockImpl extends BornholmTopBlock {
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity) {
         return createTickerHelper(blockEntity, ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS.get(), BornholmTopBlockEntityImpl::weatherTick);
-    }
-
-    public static Supplier<Block> getGlassType(WoodTypes woodTypes, BornholmTopGlassTypes bornholmTopGlassTypes) {
-        return ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.get(new AbstractMap.SimpleEntry<>(woodTypes, bornholmTopGlassTypes));
     }
 
     public static Supplier<Item> getWaxedClockHands(ItemStack itemStack) {

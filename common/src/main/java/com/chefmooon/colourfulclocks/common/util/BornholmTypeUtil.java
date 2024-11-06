@@ -21,6 +21,6 @@ public class BornholmTypeUtil {
                 return bornholmTopGlassTypes;
             }
         }
-        return BornholmTopGlassTypes.BASE;
+        return BornholmTopGlassTypes.GLASS;
     }
 }

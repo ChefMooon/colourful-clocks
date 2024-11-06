@@ -6,7 +6,6 @@ import com.chefmooon.colourfulclocks.common.core.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.core.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlockEntitiesImpl;
-import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlocksImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.core.BlockPos;
@@ -16,19 +15,17 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.AbstractMap;
 import java.util.function.Supplier;
 
 public class BornholmMiddleBlockImpl extends BornholmMiddleBlock {
-    public BornholmMiddleBlockImpl(WoodTypes woodTypes, BornholmDoorTypes bornholmDoorTypes, Properties properties) {
-        super(woodTypes, bornholmDoorTypes, properties);
+    public BornholmMiddleBlockImpl(WoodTypes woodTypes, Properties properties) {
+        super(woodTypes, properties);
     }
 
     @Override
@@ -49,10 +46,6 @@ public class BornholmMiddleBlockImpl extends BornholmMiddleBlock {
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity) {
         return createTickerHelper(blockEntity, ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS.get(), BornholmMiddleBlockEntityImpl::weatherTick);
-    }
-
-    public static Supplier<Block> getDoorType(WoodTypes woodTypes, BornholmDoorTypes bornholmDoorTypes) {
-        return ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.get(new AbstractMap.SimpleEntry<>(woodTypes, bornholmDoorTypes));
     }
 
     public static Supplier<Item> getWaxedCopperPendulum(ItemStack itemStack) {

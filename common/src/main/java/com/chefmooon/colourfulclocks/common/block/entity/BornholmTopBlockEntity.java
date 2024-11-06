@@ -1,15 +1,15 @@
 package com.chefmooon.colourfulclocks.common.block.entity;
 
-import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -25,8 +25,7 @@ import java.util.function.Supplier;
 public class BornholmTopBlockEntity extends BlockEntity implements Container {
     private ItemStack clockHandsItem = ItemStack.EMPTY;
 
-    private static final int WEATHERED_THRESHOLD = 6000; // 5 min to weather
-    private int weatheringProgress = 0;
+    public static final int WEATHERED_THRESHOLD = 6000; // 5 min to weather
     public BornholmTopBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
     }
@@ -93,7 +92,6 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.loadAdditional(tag, provider);
 
-        weatheringProgress = tag.getInt("weatheringProgress");
         if (tag.contains("clock_hands")) {
             CompoundTag clockHandsItemTag = tag.getCompound("clock_hands");
             clockHandsItem = ItemStack.parse(provider, clockHandsItemTag).orElse(ItemStack.EMPTY);
@@ -102,7 +100,6 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
-        tag.putInt("weatheringProgress", weatheringProgress);
         if (!clockHandsItem.isEmpty()) {
             tag.put("clock_hands", clockHandsItem.save(provider, new CompoundTag()));
         }
@@ -122,22 +119,24 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
 
     public static void weatherTick(Level level, BlockPos blockPos, BlockState blockState, BornholmTopBlockEntity bornholmTopBlockEntity) {
         if (blockState.getValue(BornholmTopBlock.ACTIVATED)) {
-            weather(level, blockPos, bornholmTopBlockEntity);
+            weatherItem(level, blockPos, bornholmTopBlockEntity);
+
         }
     }
 
-    private static void weather(Level level, BlockPos blockPos, BornholmTopBlockEntity bornholmTopBlockEntity) {
+    private static void weatherItem(Level level, BlockPos blockPos, BornholmTopBlockEntity bornholmTopBlockEntity) {
         ItemStack itemStack = bornholmTopBlockEntity.getClockHandsItem();
         if (!itemStack.isEmpty()) {
             if (isCopperClockHands(itemStack)) {
-                bornholmTopBlockEntity.weatheringProgress++;
-                if (bornholmTopBlockEntity.weatheringProgress >= WEATHERED_THRESHOLD) {
-                    advanceWeathering(level, blockPos, itemStack, bornholmTopBlockEntity);
-                    bornholmTopBlockEntity.weatheringProgress = 0;
+                if (itemStack.get(BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING)) != null) {
+                    Integer weathering = itemStack.get((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING));
+                    if (weathering >= WEATHERED_THRESHOLD) {
+                        advanceWeathering(level, blockPos, itemStack, bornholmTopBlockEntity);
+                    } else {
+                        itemStack.set((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING), weathering + 1);
+                    }
                 }
             }
-        } else {
-            bornholmTopBlockEntity.weatheringProgress = 0;
         }
     }
 

@@ -1,5 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block;
 
+import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmMiddleBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.DoorTypeProperty;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
@@ -51,18 +52,11 @@ import java.util.function.Supplier;
 
 public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
     public static final MapCodec<BornholmMiddleBlock> CODEC = simpleCodec(BornholmMiddleBlock::new);
-//    public static final MapCodec<BornholmMiddleBlock> CODEC = RecordCodecBuilder.mapCodec((instance) -> {
-//        return instance.group(BlockState.CODEC.fieldOf("door_type").forGetter((bornholmMiddleBlock) -> {
-//            return bornholmMiddleBlock.baseState;
-//        }), propertiesCodec()).apply(instance, BornholmMiddleBlock::new);
-//    }); // must read more about codecs
     public static final DoorTypeProperty DOOR_TYPE = ColourfulClocksBlockStateProperties.BORNHOLM_DOOR_TYPE;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BooleanProperty.create("open");
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
-    public BornholmDoorTypes bornholmDoorTypes; // maybe protected/private
-    protected final BlockState baseState;
     public WoodTypes woodType;
 
     public int FLAMMABILITY = 30;
@@ -94,14 +88,12 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     }
 
     public BornholmMiddleBlock(Properties properties) {
-        this(WoodTypes.OAK, BornholmDoorTypes.BASE, properties);
+        this(WoodTypes.OAK, properties);
     }
 
-    public BornholmMiddleBlock(WoodTypes woodTypes, BornholmDoorTypes bornholmDoorTypes, Properties properties) {
+    public BornholmMiddleBlock(WoodTypes woodTypes, Properties properties) {
         super(properties);
         this.woodType = woodTypes;
-        this.bornholmDoorTypes = bornholmDoorTypes;
-        this.baseState = this.defaultBlockState();
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(OPEN, Boolean.FALSE)
@@ -164,35 +156,42 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     @Override
     public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemInteractionResult result = ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        // TODO - improve this, ensure it can be used with both hands
 
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof BornholmMiddleBlockEntity block) {
             ItemStack mainHandItem = player.getMainHandItem();
+            ItemStack offHandItem = player.getOffhandItem();
+            if (mainHandItem.isEmpty() && !offHandItem.isEmpty()) {
+                mainHandItem = offHandItem;
+            }
+
             if (!mainHandItem.isEmpty()) {
-                if (mainHandItem.is(woodType.getItem()) && state.getValue(DOOR_TYPE) != BornholmDoorTypes.BASE) {
-                    Block newBlock = getDoorType(woodType, BornholmDoorTypes.BASE).get();
-                    ItemStack pendelumTemp = block.removeItem(0, 1); // temporary
-                    level.setBlockAndUpdate(pos, newBlock.defaultBlockState().setValue(FACING, state.getValue(FACING)).setValue(OPEN, state.getValue(OPEN)).setValue(DOOR_TYPE, BornholmDoorTypes.BASE).setValue(WATERLOGGED, state.getValue(WATERLOGGED)));
-                    if (level.getBlockEntity(pos) instanceof BornholmMiddleBlockEntity newBlockEntity) { // temporary
-                        newBlockEntity.setItem(0, pendelumTemp);
-                    }
-                    level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_WOOD.get(), SoundSource.BLOCKS, 1.0F, 0.8F); // todo - create custom sound with subtitle
+                if (mainHandItem.is(woodType.getItem())) {
+                    if (state.getValue(DOOR_TYPE) == BornholmDoorTypes.BASE) return toggleDoor(level, state, pos, player);
+                    level.setBlockAndUpdate(pos, state.setValue(DOOR_TYPE, BornholmDoorTypes.BASE));
+                    level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_WOOD.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
+                    if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
 
                     return ItemInteractionResult.SUCCESS;
-                } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_DOOR) && !mainHandItem.is(state.getValue(DOOR_TYPE).getItem())) {
+                } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_DOOR)) {
+                    if (mainHandItem.is(state.getValue(DOOR_TYPE).getItem())) return toggleDoor(level, state, pos, player);
                     BornholmDoorTypes newBornholmDoorTypes = BornholmTypeUtil.getTypeFromItem(mainHandItem.getItem());
-                    Block newBlock = getDoorType(woodType, newBornholmDoorTypes).get();
-                    ItemStack pendelumTemp = block.removeItem(0, 1); // temporary
-                    level.setBlockAndUpdate(pos, newBlock.defaultBlockState().setValue(FACING, state.getValue(FACING)).setValue(OPEN, state.getValue(OPEN)).setValue(DOOR_TYPE, newBornholmDoorTypes).setValue(WATERLOGGED, state.getValue(WATERLOGGED)));
-                    if (level.getBlockEntity(pos) instanceof BornholmMiddleBlockEntity newBlockEntity) { // temporary
-                        newBlockEntity.setItem(0, pendelumTemp);
-                    }
-                    level.blockEntityChanged(pos);
+                    level.setBlockAndUpdate(pos, state.setValue(DOOR_TYPE, newBornholmDoorTypes));
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_GLASS.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
+                    if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
 
                     return ItemInteractionResult.SUCCESS;
-                } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_PENDULUM) && !mainHandItem.is(block.getPendelumItem().getItem())) {
+                } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_PENDULUM)) {
+                    if (!block.getPendelumItem().isEmpty()) {
+                        if (mainHandItem.is(block.getPendelumItem().getItem())) {
+                            return toggleDoor(level, state, pos, player);
+                        } else if (!player.getAbilities().instabuild) {
+                            if (!player.getInventory().add(block.removeItem(0, 1))) {
+                                Containers.dropContents(level, pos, block.getDroppableInventory());
+                            }
+                        }
+                    }
+
                     block.setPendelumItem(player.getAbilities().instabuild ? mainHandItem.copy() : mainHandItem);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_PENDULUM.get(), SoundSource.BLOCKS, 0.8F, 0.5F);
@@ -205,7 +204,10 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
                         if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
+
                         return ItemInteractionResult.SUCCESS;
+                    } else {
+                        return toggleDoor(level, state, pos, player);
                     }
                 } else if (mainHandItem.is(ItemTags.AXES)) {
                     Pair<Supplier<Item>, Supplier<SoundEvent>> pendulumInfo = getScrapedCopperPendulum(block.getPendelumItem());
@@ -215,9 +217,12 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, pendulumInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
                         if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+
                         return ItemInteractionResult.SUCCESS;
+                    } else {
+                        return toggleDoor(level, state, pos, player);
                     }
-                } else if (mainHandItem.is(block.getPendelumItem().getItem())) {
+                } else {
                     return toggleDoor(level, state, pos, player);
                 }
             } else {
@@ -231,20 +236,12 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                         }
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_PENDULUM.get(), SoundSource.BLOCKS, 0.8F, 0.7F);
+
                         return ItemInteractionResult.SUCCESS;
                     }
                 } else {
                      return toggleDoor(level, state, pos, player);
                 }
-
-//                if (level.isClientSide()) {
-//                    TemporalTimepieces.LOGGER.info("Open: " + level.getBlockState(pos).getValue(OPEN)); // I know ... this makes me sick too
-//                    TemporalTimepieces.LOGGER.info("Pendelum: " + block.getPendelumItem().toString());
-//                    TemporalTimepieces.LOGGER.info("Door Material: " + block.getDoorItem().toString());
-//                    TemporalTimepieces.LOGGER.info("Door Type: " + state.getValue(DOOR_TYPE));
-//                    TemporalTimepieces.LOGGER.info("Facing: " + state.getValue(FACING));
-//                    TemporalTimepieces.LOGGER.info("Activated: " + state.getValue(ACTIVATED));
-//                }
             }
         }
         return result;
@@ -283,11 +280,6 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return null;
-    }
-
-    @ExpectPlatform
-    public static Supplier<Block> getDoorType(WoodTypes woodTypes, BornholmDoorTypes bornholmDoorTypes) {
-        throw new AssertionError();
     }
 
     @ExpectPlatform

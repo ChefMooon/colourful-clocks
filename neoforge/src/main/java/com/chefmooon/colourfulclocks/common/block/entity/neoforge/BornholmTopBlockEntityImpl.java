@@ -1,7 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block.entity.neoforge;
 
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
-import com.chefmooon.colourfulclocks.common.core.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import net.minecraft.core.BlockPos;
