@@ -10,7 +10,7 @@
     <a href="https://legacy.curseforge.com/minecraft/mc-mods/ubes-delight/files">
         <img src="https://cf.way2muchnoise.eu/versions/903894.svg" alt="Supported Versions">
     </a>
-    <a href="https://github.com/ChefMooon/ubes-delight/blob/master/LICENSE">
+    <a href="https://github.com/ChefMooon/colourful-clocks/blob/master/LICENSE">
         <img src="https://img.shields.io/github/license/ChefMooon/ubes-delight?style=flat&color=900c3f" alt="License">
     </a>
 </h1>
