@@ -183,7 +183,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
 
                     return ItemInteractionResult.SUCCESS;
-                } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_PENDULUM)) {
+                } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_PENDULUM) && state.getValue(OPEN)) {
                     if (!block.getPendelumItem().isEmpty()) {
                         if (mainHandItem.is(block.getPendelumItem().getItem())) {
                             return toggleDoor(level, state, pos, player);
@@ -228,7 +228,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     return toggleDoor(level, state, pos, player);
                 }
             } else {
-                if (player.isShiftKeyDown()) {
+                if (player.isShiftKeyDown() && state.getValue(OPEN)) {
                     ItemStack pendulum = block.getPendelumItem();
                     if (!pendulum.isEmpty()) {
                         if (player.isCreative()) {
