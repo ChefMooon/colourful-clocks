@@ -24,7 +24,7 @@ public class BornholmMiddleBlockImpl extends BornholmMiddleBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS.get().create(pos, state);
+        return ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS.create(pos, state);
     }
 
     public static Supplier<Item> getWaxedCopperPendulum(ItemStack itemStack) {

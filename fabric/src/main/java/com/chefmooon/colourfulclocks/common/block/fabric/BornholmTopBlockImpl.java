@@ -29,12 +29,12 @@ public class BornholmTopBlockImpl extends BornholmTopBlock {
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
 //        return null;
-        return ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS.get().create(pos, state);
+        return ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS.create(pos, state);
     }
 
     @Nullable
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity) {
-        return createTickerHelper(blockEntity, ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS.get(), BornholmTopBlockEntityImpl::weatherTick);
+        return createTickerHelper(blockEntity, ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS, BornholmTopBlockEntityImpl::weatherTick);
     }
 
     public static Supplier<Item> getWaxedClockHands(ItemStack itemStack) {

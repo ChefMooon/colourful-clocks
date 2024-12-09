@@ -13,7 +13,7 @@ import java.util.function.Supplier;
 
 public class BornholmMiddleBlockEntityImpl extends BornholmMiddleBlockEntity {
     public BornholmMiddleBlockEntityImpl(BlockPos pos, BlockState blockState) {
-        super(ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS.get(), pos, blockState);
+        super(ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS, pos, blockState);
     }
 
     public static boolean isCopperPendulum(ItemStack itemStack) {

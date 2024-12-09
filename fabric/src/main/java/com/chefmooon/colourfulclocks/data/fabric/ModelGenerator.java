@@ -85,6 +85,9 @@ public class ModelGenerator extends FabricModelProvider {
         ColourfulClocksTemplates.POCKET_WATCH_CLOCK.create((ModelLocationUtils.getModelLocation(item, "_in_clock")),
                 TextureMapping.singleSlot(TextureSlot.ALL, ModelLocationUtils.getModelLocation(item)), itemModelGenerators.output);
 
+        ColourfulClocksTemplates.POCKET_WATCH_CLOSED.create(ModelLocationUtils.getModelLocation(item, "_closed"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+
         ColourfulClocksTemplates.POCKET_WATCH_00.create(ModelLocationUtils.getModelLocation(item, "_00"),
                 TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
 
@@ -124,6 +127,9 @@ public class ModelGenerator extends FabricModelProvider {
 
     private static void generateWaxedPocketWatchItem(Item item, ItemModelGenerators itemModelGenerators) {
         ColourfulClocksTemplates.POCKET_WATCH_CLOCK.create((ModelLocationUtils.getModelLocation(item, "_in_clock")),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+
+        ColourfulClocksTemplates.POCKET_WATCH_CLOSED.create(ModelLocationUtils.getModelLocation(item, "_closed"),
                 TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
 
         ColourfulClocksTemplates.POCKET_WATCH_00.create(ModelLocationUtils.getModelLocation(item, "_00"),

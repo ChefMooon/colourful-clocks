@@ -195,6 +195,12 @@
       "predicate": {
         "time": 0.968750
       }
+    },
+    {
+      "model": "colourfulclocks:item/iron_pocket_watch_closed",
+      "predicate": {
+        "colourfulclocks:closed": 1.0
+      }
     }
   ]
 }

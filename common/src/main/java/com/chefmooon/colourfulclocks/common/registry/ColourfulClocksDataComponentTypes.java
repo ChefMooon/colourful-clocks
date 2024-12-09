@@ -6,6 +6,7 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.resources.ResourceLocation;
 
 public class ColourfulClocksDataComponentTypes {
+    public static final ResourceLocation POCKET_WATCH_CLOSED = dataComponent("pocket_watch_closed");
     public static final ResourceLocation POCKET_WATCH_WEATHERING = dataComponent("pocket_watch_weathering");
     public static final ResourceLocation PENDULUM_WEATHERING = dataComponent("pendulum_weathering");
 

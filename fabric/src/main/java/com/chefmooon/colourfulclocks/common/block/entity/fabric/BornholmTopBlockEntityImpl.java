@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 public class BornholmTopBlockEntityImpl extends BornholmTopBlockEntity {
     public BornholmTopBlockEntityImpl(BlockPos pos, BlockState blockState) {
-        super(ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS.get(), pos, blockState);
+        super(ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS, pos, blockState);
     }
 
     public static boolean isCopperClockHands(ItemStack itemStack) {

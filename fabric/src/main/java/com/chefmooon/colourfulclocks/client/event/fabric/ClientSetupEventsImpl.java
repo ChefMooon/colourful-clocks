@@ -14,8 +14,8 @@ import java.util.function.Supplier;
 public class ClientSetupEventsImpl {
 
     public static void onRegisterRenderers() {
-        BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS.get(), BornholmMiddleBlockEntityRendererImpl::new);
-        BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS.get(), BornholmTopBlockEntityRendererImpl::new);
+        BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS, BornholmMiddleBlockEntityRendererImpl::new);
+        BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS, BornholmTopBlockEntityRendererImpl::new);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
                 ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)

@@ -14,6 +14,10 @@ import java.util.function.UnaryOperator;
 
 public class ColourfulClocksDataComponentTypesImpl {
 
+    public static final DataComponentType<Boolean> POCKET_WATCH_CLOSED = register(
+            ColourfulClocksDataComponentTypes.POCKET_WATCH_CLOSED.getPath(), (builder) -> builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL)
+    );
+
     public static final DataComponentType<Integer> POCKET_WATCH_WEATHERING = register(
             ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING.getPath(), (builder) -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT)
     );
@@ -21,7 +25,6 @@ public class ColourfulClocksDataComponentTypesImpl {
     public static final DataComponentType<Integer> PENDULUM_WEATHERING = register(
             ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING.getPath(), (builder) -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT)
     );
-
 
     public static final DataComponentType<BornholmTopGlassRecord> BORNHOLM_TOP_GLASS_DATA = register(
             ColourfulClocksDataComponentTypes.BORNHOLM_TOP_GLASS_DATA.getPath(), bornholmTopGlassRecordBuilder -> bornholmTopGlassRecordBuilder.persistent(BornholmTopGlassRecord.CODEC).networkSynchronized(BornholmTopGlassRecord.STREAM_CODEC)

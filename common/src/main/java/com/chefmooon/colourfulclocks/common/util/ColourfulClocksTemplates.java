@@ -25,7 +25,7 @@ public class ColourfulClocksTemplates {
 
     public static final ModelTemplate PENDULUM_BLOCK = createItem("template_pendulum", TextureSlot.ALL);
 
-
+    public static final ModelTemplate POCKET_WATCH_CLOSED = createItem("template_pocket_watch_closed", TextureSlot.ALL);
     public static final ModelTemplate POCKET_WATCH_00 = createItem("template_pocket_watch_00", TextureSlot.ALL);
 
     public static final ModelTemplate POCKET_WATCH_OPEN_00 = createItem("template_pocket_watch_open_00", TextureSlot.ALL);
