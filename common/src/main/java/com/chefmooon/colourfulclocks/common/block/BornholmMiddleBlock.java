@@ -27,6 +27,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -48,6 +49,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
 public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
@@ -280,6 +282,18 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return null;
+    }
+
+    @Override
+    protected void onExplosionHit(BlockState blockState, Level level, BlockPos blockPos, Explosion explosion, BiConsumer<ItemStack, BlockPos> biConsumer) {
+        if (explosion.canTriggerBlocks()) {
+            if (blockState.getValue(OPEN)) {
+                level.setBlock(blockPos, blockState.setValue(OPEN, Boolean.FALSE), 3);
+            } else {
+                level.setBlock(blockPos, blockState.setValue(OPEN, Boolean.TRUE), 3);
+            }
+        }
+        super.onExplosionHit(blockState, level, blockPos, explosion, biConsumer);
     }
 
     @ExpectPlatform
