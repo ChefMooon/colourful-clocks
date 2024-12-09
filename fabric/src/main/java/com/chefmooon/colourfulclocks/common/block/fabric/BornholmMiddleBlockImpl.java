@@ -1,6 +1,7 @@
 package com.chefmooon.colourfulclocks.common.block.fabric;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
+import com.chefmooon.colourfulclocks.common.block.entity.fabric.BornholmMiddleBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.core.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.core.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
@@ -11,7 +12,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
@@ -25,6 +29,11 @@ public class BornholmMiddleBlockImpl extends BornholmMiddleBlock {
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS.create(pos, state);
+    }
+
+    @Nullable
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntity) {
+        return createTickerHelper(blockEntity, ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS, BornholmMiddleBlockEntityImpl::weatherTick);
     }
 
     public static Supplier<Item> getWaxedCopperPendulum(ItemStack itemStack) {

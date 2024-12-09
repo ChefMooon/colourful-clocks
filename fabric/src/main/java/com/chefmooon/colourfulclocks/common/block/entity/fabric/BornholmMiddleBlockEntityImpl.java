@@ -33,26 +33,4 @@ public class BornholmMiddleBlockEntityImpl extends BornholmMiddleBlockEntity {
             return ItemStack.EMPTY::getItem;
         }
     }
-
-    public static float getClockHandPitchModifier(ItemStack itemStack) {
-        if (itemStack.is(ColourfulClocksItemsImpl.IRON_PENDULUM.get())) {
-            return PendulumTypes.IRON.getPitchModifier();
-        } else if (itemStack.is(ColourfulClocksItemsImpl.COPPER_PENDULUM.get()) || itemStack.is(ColourfulClocksItemsImpl.WAXED_COPPER_PENDULUM.get())) {
-            return PendulumTypes.COPPER.getPitchModifier();
-        } else if (itemStack.is(ColourfulClocksItemsImpl.EXPOSED_COPPER_PENDULUM.get()) || itemStack.is(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_PENDULUM.get())) {
-            return PendulumTypes.EXPOSED_COPPER.getPitchModifier();
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WEATHERED_COPPER_PENDULUM.get()) || itemStack.is(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_PENDULUM.get())) {
-            return PendulumTypes.WEATHERED_COPPER.getPitchModifier();
-        } else if (itemStack.is(ColourfulClocksItemsImpl.OXIDIZED_COPPER_PENDULUM.get()) || itemStack.is(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_PENDULUM.get())) {
-            return PendulumTypes.OXIDIZED_COPPER.getPitchModifier();
-        } else if (itemStack.is(ColourfulClocksItemsImpl.GOLD_PENDULUM.get())) {
-            return PendulumTypes.GOLD.getPitchModifier();
-        } else if (itemStack.is(ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get())) {
-            return PendulumTypes.DIAMOND.getPitchModifier();
-        } else if (itemStack.is(ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get())) {
-            return PendulumTypes.NETHERITE.getPitchModifier();
-        } else {
-            return 1.0F;
-        }
-    }
 }

@@ -2,7 +2,9 @@ package com.chefmooon.colourfulclocks.common.util;
 
 import com.chefmooon.colourfulclocks.common.core.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.core.PendulumTypes;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 
 public class BornholmTypeUtil {
 
@@ -22,5 +24,14 @@ public class BornholmTypeUtil {
             }
         }
         return BornholmTopGlassTypes.GLASS;
+    }
+
+    public static PendulumTypes getPendulumTypeFromItem(Item item) {
+        for (PendulumTypes pendulumTypes : PendulumTypes.values()) {
+            if (pendulumTypes.getItem() == item) {
+                return pendulumTypes;
+            }
+        }
+        return PendulumTypes.IRON;
     }
 }

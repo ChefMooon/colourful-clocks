@@ -9,7 +9,15 @@ import java.util.function.Supplier;
 
 public class ColourfulClocksSounds {
 
-    public static final Supplier<SoundEvent> BLOCK_BORNHOLM_CHIME = registerSound("block.bornholm.chime");
+    public static final Supplier<SoundEvent> ITEM_IRON_PENDULUM_CHIME = registerSound("item.iron_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_COPPER_PENDULUM_CHIME = registerSound("item.copper_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_EXPOSED_COPPER_PENDULUM_CHIME = registerSound("item.exposed_copper_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_WEATHERED_COPPER_PENDULUM_CHIME = registerSound("item.weathered_copper_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_OXIDIZED_COPPER_PENDULUM_CHIME = registerSound("item.oxidized_copper_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_GOLD_PENDULUM_CHIME = registerSound("item.gold_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_DIAMOND_PENDULUM_CHIME = registerSound("item.diamond_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_NETHERITE_PENDULUM_CHIME = registerSound("item.netherite_pendulum.chime");
+
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_DOOR_OPEN = registerSound("block.bornholm.door_open");
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_DOOR_CLOSE = registerSound("block.bornholm.door_close");
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_REMOVE_PENDULUM = registerSound("block.bornholm.remove_pendulum");

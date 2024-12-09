@@ -1,5 +1,68 @@
 {
-  "block.bornholm.chime": {
+  "item.iron_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.copper_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.exposed_copper_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.weathered_copper_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.oxidized_copper_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.gold_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.diamond_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.netherite_pendulum.chime": {
     "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
     "sounds": [
       {

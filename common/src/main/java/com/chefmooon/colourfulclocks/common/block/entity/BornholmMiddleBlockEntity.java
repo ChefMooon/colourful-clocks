@@ -1,9 +1,9 @@
 package com.chefmooon.colourfulclocks.common.block.entity;
 
-import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
+import com.chefmooon.colourfulclocks.common.core.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
-import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
+import com.chefmooon.colourfulclocks.common.util.BornholmTypeUtil;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -12,15 +12,12 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -193,14 +190,12 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     private static void sound(Level level, BlockPos blockPos, BornholmMiddleBlockEntity bornholmTopBlockEntity) {
         if (level == null || level.isClientSide()) return;
 
-        ItemStack pendulum = bornholmTopBlockEntity.getPendelumItem();
-
-        float pitch = getClockHandPitchModifier(pendulum);
+        PendulumTypes pendulumType = BornholmTypeUtil.getPendulumTypeFromItem(bornholmTopBlockEntity.getPendelumItem().getItem());
 
         long timeOfDay = level.getDayTime() % 24000;
 
         if ((timeOfDay == 6000 || timeOfDay == 18000) && !hasChimed) {
-            level.playSound(null, blockPos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHIME.get(), SoundSource.BLOCKS, 1.0F, pitch);
+            level.playSound(null, blockPos, pendulumType.getChimeSound(), SoundSource.BLOCKS, 1.0F, pendulumType.getPitchModifier());
             hasChimed = true;
         } else if (timeOfDay == 6001 || timeOfDay == 18001) {
             hasChimed = false;
@@ -214,11 +209,6 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
 
     @ExpectPlatform
     public static Supplier<Item> getNextWeatheredCopperItem(ItemStack itemStack) {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static float getClockHandPitchModifier(ItemStack itemStack) {
         throw new AssertionError();
     }
 }
