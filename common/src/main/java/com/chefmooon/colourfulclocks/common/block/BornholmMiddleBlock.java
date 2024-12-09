@@ -257,7 +257,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
             level.setBlockAndUpdate(pos, state.setValue(OPEN, Boolean.TRUE));
             level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_DOOR_OPEN.get(), SoundSource.BLOCKS, 0.5F, 0.9F);
         }
-        return ItemInteractionResult.CONSUME;
+        return ItemInteractionResult.SUCCESS;
     }
 
     @Override
