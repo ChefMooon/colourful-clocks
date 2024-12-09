@@ -287,11 +287,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     @Override
     protected void onExplosionHit(BlockState blockState, Level level, BlockPos blockPos, Explosion explosion, BiConsumer<ItemStack, BlockPos> biConsumer) {
         if (explosion.canTriggerBlocks()) {
-            if (blockState.getValue(OPEN)) {
-                level.setBlock(blockPos, blockState.setValue(OPEN, Boolean.FALSE), 3);
-            } else {
-                level.setBlock(blockPos, blockState.setValue(OPEN, Boolean.TRUE), 3);
-            }
+            level.setBlock(blockPos, blockState.setValue(OPEN, blockState.getValue(OPEN) ? Boolean.FALSE : Boolean.TRUE), 3);
         }
         super.onExplosionHit(blockState, level, blockPos, explosion, biConsumer);
     }
