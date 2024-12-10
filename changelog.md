@@ -2,6 +2,12 @@
 - Now available for Fabric!
 - New Pocket Watch and Pendulum Types
   - Emerald, Amethyst, Quartz, Lapis Lazuli, Redstone
+- Integration Added
+  - WTHIT - Type will show if not base
+    - Bornholm Dial -> Glass Type
+    - Bornholm Trunk -> Door Type
+  - REI, JEI
+    - Information on how to obtain copper items
 
 ### Updated
 - Pocket Watches can now be closed and opened

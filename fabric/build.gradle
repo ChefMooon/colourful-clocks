@@ -39,6 +39,9 @@ dependencies {
     // Remove the next line if you don't want to depend on the API
     //modApi "dev.architectury:architectury-fabric:${rootProject.architectury_version}"
 
+    // ModMenu
+    modLocalRuntime("com.terraformersmc:modmenu:${mod_menu_version}")
+
     // Recipe Viewers
     // EMI
     modCompileOnly("dev.emi:emi-fabric:$emi_version:api") {

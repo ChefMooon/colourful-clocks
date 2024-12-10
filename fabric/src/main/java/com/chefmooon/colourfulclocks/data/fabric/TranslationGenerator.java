@@ -21,8 +21,9 @@ public class TranslationGenerator extends FabricLanguageProvider {
         String FORMATTED_MOD_ID = "Colourful Clocks";
         String SUBTITLE = MOD_ID + ".subtitles.";
         String TOOLTIP = MOD_ID + ".tooltip.";
+        String REI = MOD_ID + ".rei.";
         String WAILA = MOD_ID + ".tooltip.waila.";
-        String WAILA_CONFIG = "config.waila.plugin_" + MOD_ID + ".";
+        String WAILA_CONFIG = "config.waila.plugin_" + MOD_ID;
 
         translationBuilder.add("itemGroup." + MOD_ID, FORMATTED_MOD_ID);
 
@@ -89,12 +90,14 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(TOOLTIP + "weathering", "Weathering");
 
         translationBuilder.add(WAILA_CONFIG, FORMATTED_MOD_ID);
-        translationBuilder.add(WAILA_CONFIG + "bornholm_trunk_door_type", "Bornholm Trunk Door Type");
-        translationBuilder.add(WAILA_CONFIG + "bornholm_dial_glass_type", "Bornholm Dial Glass Type");
+        translationBuilder.add(WAILA_CONFIG + ".bornholm_trunk_door_type", "Bornholm Trunk Door Type");
+        translationBuilder.add(WAILA_CONFIG + ".bornholm_dial_glass_type", "Bornholm Dial Glass Type");
 
         // todo - decide what looks better
 //        translationBuilder.add(WAILA + "bornholm_trunk_door_type", "Door Type");
 //        translationBuilder.add(WAILA + "bornholm_dial_glass_type", "Glass Type");
+
+        translationBuilder.add(REI + "info.copper_info", "This cannot be crafted. It can oxidize when placed in complete clocks and can be waxed to preserve the condition. An Axe can be used to remove wax.");
     }
 
     private static void generateBornholmBaseTranslations(TranslationBuilder translationBuilder) {

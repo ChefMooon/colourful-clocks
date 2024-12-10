@@ -24,6 +24,12 @@
     ],
     "fabric-datagen": [
       "com.chefmooon.colourfulclocks.data.fabric.DataGeneration"
+    ],
+    "rei_client": [
+      "com.chefmooon.colourfulclocks.integration.rei.fabric.ClientREIPluginImpl"
+    ],
+    "jei_mod_plugin": [
+      "com.chefmooon.colourfulclocks.integration.jei.fabric.JEIPluginImpl"
     ]
   },
   "mixins": [
