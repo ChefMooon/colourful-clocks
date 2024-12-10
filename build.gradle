@@ -24,6 +24,18 @@ subprojects {
         maven { url "https://maven.parchmentmc.org" } // Parchment mappings
 
         maven { url 'https://maven.neoforged.net/releases' } // NeoForge
+
+        maven { url "https://maven.blamejared.com/" } // JEI
+        maven { url "https://maven.shedaniel.me" } // REI
+        maven { url "https://maven.terraformersmc.com/" } // EMI
+
+        maven { // WTHIT
+            url "https://maven2.bai.lol"
+            content {
+                includeGroup "lol.bai"
+                includeGroup "mcp.mobius.waila"
+            }
+        }
     }
 
     dependencies {

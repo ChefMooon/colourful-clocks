@@ -21,6 +21,28 @@ dependencies {
     // Remove the next line if you don't want to depend on the API
     //modApi "dev.architectury:architectury-neoforge:${rootProject.architectury_version}"
 
+    // EMI
+    modCompileOnly("dev.emi:emi-neoforge:$emi_version:api") { transitive = false }
+    // JEI
+    modCompileOnly("mezz.jei:jei-$minecraft_version-common-api:$jei_version") { transitive = false }
+    modCompileOnly("mezz.jei:jei-$minecraft_version-neoforge-api:$jei_version") { transitive = false }
+    // REI
+    modCompileOnly("me.shedaniel:RoughlyEnoughItems-api-neoforge:$rei_version") { transitive = false }
+    modCompileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:$rei_version")
+
+    switch (recipe_viewer.toLowerCase(Locale.ROOT)) {
+        case "jei": modLocalRuntime("mezz.jei:jei-${minecraft_version}-neoforge:${jei_version}"); break
+        case "rei": modLocalRuntime("me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}"); break
+        case "emi": modLocalRuntime("dev.emi:emi-neoforge:${emi_version}"); break
+        case "disabled": break
+        default: println("Unknown recipe viewer specified: ${recipe_viewer}. Must be JEI, REI, EMI, or disabled.")
+    }
+
+    // WTHIT
+    modCompileOnly("mcp.mobius.waila:wthit-api:neo-${wthitVersion}")
+    modLocalRuntime("mcp.mobius.waila:wthit:neo-${wthitVersion}")
+    modLocalRuntime("lol.bai:badpackets:neo-${badpacketsVersion}")
+
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }
 }

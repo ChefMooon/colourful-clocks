@@ -12,10 +12,10 @@
     "colourfulclocks:gold_pendulum",
     "colourfulclocks:diamond_pendulum",
     "colourfulclocks:netherite_pendulum",
-    "colourfulclocks:emerald_pendulum",
-    "colourfulclocks:amethyst_pendulum",
     "colourfulclocks:quartz_pendulum",
+    "colourfulclocks:amethyst_pendulum",
     "colourfulclocks:lapis_lazuli_pendulum",
-    "colourfulclocks:redstone_pendulum"
+    "colourfulclocks:redstone_pendulum",
+    "colourfulclocks:emerald_pendulum"
   ]
 }

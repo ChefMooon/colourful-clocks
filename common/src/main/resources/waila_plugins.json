@@ -1,0 +1,10 @@
+{
+  "colourfulclocks:plugin": {
+    "entrypoints" : {
+      "common": "com.chefmooon.colourfulclocks.integration.wthit.ColourfulClocksCommonWailaPlugin",
+      "client": "com.chefmooon.colourfulclocks.integration.wthit.ColourfulClocksClientWailaPlugin"
+    },
+    "side": "*",
+    "required": []
+  }
+}

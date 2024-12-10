@@ -1,5 +1,5 @@
 architectury {
-    common(rootProject.enabled_platforms.split(","))
+    common(enabled_platforms.split(","))
 }
 
 loom {
@@ -9,10 +9,22 @@ loom {
 dependencies {
     // We depend on fabric loader here to use the fabric @Environment annotations and get the mixin dependencies
     // Do NOT use other classes from fabric loader
-    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
-    modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
+    modImplementation "net.fabricmc:fabric-loader:${fabric_loader_version}"
+    modApi "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
     // Remove the next line if you don't want to depend on the API
     //modApi "dev.architectury:architectury:${rootProject.architectury_version}"
+
+    // REI
+    modCompileOnly("me.shedaniel:RoughlyEnoughItems-api:$rei_version")
+    modCompileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-fabric:$rei_version")
+
+    // EMI
+    modCompileOnly("dev.emi:emi-xplat-intermediary:${emi_version}:api") {
+        transitive = false
+        exclude(group: "net.fabricmc.fabric-api")
+    }
+
+    modCompileOnly("mcp.mobius.waila:wthit-api:fabric-${wthitVersion}")
 }
 
 sourceSets.main {
@@ -25,7 +37,7 @@ sourceSets.main {
 publishing {
     publications {
         mavenCommon(MavenPublication) {
-            artifactId = rootProject.archives_base_name
+            artifactId = archives_base_name
             from components.java
         }
     }
