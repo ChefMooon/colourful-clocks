@@ -2,10 +2,7 @@ package com.chefmooon.colourfulclocks.common.registry.fabric;
 
 import com.chefmooon.colourfulclocks.common.core.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.core.WoodTypes;
-import com.chefmooon.colourfulclocks.common.item.BornholmTopBlockItem;
-import com.chefmooon.colourfulclocks.common.item.PocketWatchItem;
-import com.chefmooon.colourfulclocks.common.item.WeatheringPendulumItem;
-import com.chefmooon.colourfulclocks.common.item.WeatheringPocketWatchItem;
+import com.chefmooon.colourfulclocks.common.item.*;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Registry;
@@ -135,7 +132,7 @@ public class ColourfulClocksItemsImpl {
 
             // Middle
             Supplier<Item> middleItem = registerItemWithTab(ColourfulClocksItems.BORNHOLM_MIDDLE.withSuffix(woodTypes.getSerializedName()),
-                    new BlockItem(ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.get(woodTypes).get(), basicItem()));
+                    new BornholmMiddleBlockItem(ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.get(woodTypes).get(), basicItem()));
             BORNHOLM_MIDDLE_VARIANTS.put(woodTypes, middleItem);
 
             // Top

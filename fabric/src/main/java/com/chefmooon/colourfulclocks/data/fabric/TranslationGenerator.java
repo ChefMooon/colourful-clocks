@@ -21,6 +21,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
         String FORMATTED_MOD_ID = "Colourful Clocks";
         String SUBTITLE = MOD_ID + ".subtitles.";
         String TOOLTIP = MOD_ID + ".tooltip.";
+        String ADVANCEMENT = MOD_ID + ".advancement.";
         String REI = MOD_ID + ".rei.";
         String WAILA = MOD_ID + ".tooltip.waila.";
         String WAILA_CONFIG = "config.waila.plugin_" + MOD_ID;
@@ -98,6 +99,9 @@ public class TranslationGenerator extends FabricLanguageProvider {
 //        translationBuilder.add(WAILA + "bornholm_dial_glass_type", "Glass Type");
 
         translationBuilder.add(REI + "info.copper_info", "This cannot be crafted. It can oxidize when placed in complete clocks and can be waxed to preserve the condition. An Axe can be used to remove wax.");
+
+        translationBuilder.add(ADVANCEMENT + "root", FORMATTED_MOD_ID);
+        translationBuilder.add(ADVANCEMENT + "root.desc", "Stylish Clocks!");
     }
 
     private static void generateBornholmBaseTranslations(TranslationBuilder translationBuilder) {

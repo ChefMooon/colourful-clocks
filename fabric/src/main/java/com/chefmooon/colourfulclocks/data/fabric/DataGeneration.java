@@ -8,13 +8,12 @@ public class DataGeneration implements DataGeneratorEntrypoint {
     public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
         FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
-
-
         pack.addProvider(BlockTagGenerator::new);
         pack.addProvider(ItemTagGenerator::new);
         pack.addProvider(TranslationGenerator::new);
         pack.addProvider(ModelGenerator::new);
         pack.addProvider(RecipeGenerator::new);
         pack.addProvider(LootTableGenerator::new);
+//        pack.addProvider(AdvancementGenerator::new); // todo - enable after advancements are complete
     }
 }

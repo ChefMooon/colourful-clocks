@@ -31,13 +31,10 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
 
         ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.forEach((entry, supplier) -> {
             this.add(supplier.get(), createBornholmMiddleEntityDrop(supplier.get()));
-//            dropSelf(supplier.get());
         });
 
         ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.forEach((entry, supplier) -> {
             this.add(supplier.get(), createBornholmTopEntityDrop(supplier.get()));
-//            createBornholmTopEntityDrop(supplier.get());
-//            dropSelf(supplier.get());
         });
     }
 

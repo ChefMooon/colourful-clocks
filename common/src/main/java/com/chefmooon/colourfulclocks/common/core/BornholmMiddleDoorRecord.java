@@ -6,6 +6,8 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 
+import java.util.Objects;
+
 public record BornholmMiddleDoorRecord(String type) {
 
     public static final Codec<BornholmMiddleDoorRecord> CODEC = RecordCodecBuilder.create(
@@ -25,5 +27,12 @@ public record BornholmMiddleDoorRecord(String type) {
 
     public String type() {
         return this.type;
+    }
+
+    public BornholmDoorTypes getDoorType() {
+        for (BornholmDoorTypes bornholmDoorTypes : BornholmDoorTypes.values()) {
+            if (Objects.equals(this.type, bornholmDoorTypes.getSerializedName())) return bornholmDoorTypes;
+        }
+        return BornholmDoorTypes.BASE;
     }
 }
