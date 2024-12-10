@@ -1,0 +1,6 @@
+{
+  "parent": "colourfulclocks:item/template_pocket_watch_open_09",
+  "textures": {
+    "all": "colourfulclocks:item/lapis_lazuli_pocket_watch"
+  }
+}

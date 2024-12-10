@@ -71,6 +71,51 @@
       }
     ]
   },
+  "item.emerald_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.amethyst_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.quartz_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.lapis_lazuli_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.redstone_pendulum.chime": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
   "block.bornholm.door_open": {
     "subtitle": "colourfulclocks.subtitles.block.bornholm.door_open",
     "sounds": [

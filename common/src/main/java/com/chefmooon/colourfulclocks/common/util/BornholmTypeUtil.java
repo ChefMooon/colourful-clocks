@@ -1,8 +1,10 @@
 package com.chefmooon.colourfulclocks.common.util;
 
+import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.core.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.core.PendulumTypes;
+import com.chefmooon.colourfulclocks.common.core.PocketWatchTypes;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
@@ -33,5 +35,15 @@ public class BornholmTypeUtil {
             }
         }
         return PendulumTypes.IRON;
+    }
+
+    // todo - does not work, fix or remove
+    public static PocketWatchTypes getPocketWatchTypeFromItem(Item item) {
+        for (PocketWatchTypes pocketWatchTypes : PocketWatchTypes.values()) {
+            if (pocketWatchTypes.getItem() == item) {
+                return pocketWatchTypes;
+            }
+        }
+        return PocketWatchTypes.EMERALD;
     }
 }

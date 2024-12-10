@@ -30,6 +30,12 @@ public class ColourfulClocksItemPropertiesImpl {
         registerPocketWatch(ColourfulClocksItemsImpl.GOLD_POCKET_WATCH.get());
         registerPocketWatch(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get());
         registerPocketWatch(ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get());
+
+        registerPocketWatch(ColourfulClocksItemsImpl.EMERALD_POCKET_WATCH.get());
+        registerPocketWatch(ColourfulClocksItemsImpl.AMETHYST_POCKET_WATCH.get());
+        registerPocketWatch(ColourfulClocksItemsImpl.QUARTZ_POCKET_WATCH.get());
+        registerPocketWatch(ColourfulClocksItemsImpl.LAPIS_LAZULI_POCKET_WATCH.get());
+        registerPocketWatch(ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get());
     }
 
     private static void registerPocketWatch(Item item) {

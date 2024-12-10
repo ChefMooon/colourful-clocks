@@ -60,6 +60,17 @@ public class ColourfulClocksItemsImpl {
     public static final Supplier<Item> NETHERITE_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.NETHERITE_POCKET_WATCH,
             () -> new PocketWatchItem(PocketWatchTypes.NETHERITE, noStack().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
 
+    public static final Supplier<Item> QUARTZ_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.QUARTZ_POCKET_WATCH,
+            () -> new PocketWatchItem(PocketWatchTypes.QUARTZ, noStack().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+    public static final Supplier<Item> AMETHYST_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.AMETHYST_POCKET_WATCH,
+            () -> new PocketWatchItem(PocketWatchTypes.AMETHYST, noStack().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+    public static final Supplier<Item> LAPIS_LAZULI_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.LAPIS_LAZULI_POCKET_WATCH,
+            () -> new PocketWatchItem(PocketWatchTypes.LAPIS_LAZULI, noStack().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+    public static final Supplier<Item> REDSTONE_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.REDSTONE_POCKET_WATCH,
+            () -> new PocketWatchItem(PocketWatchTypes.REDSTONE, noStack().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+    public static final Supplier<Item> EMERALD_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.EMERALD_POCKET_WATCH,
+            () -> new PocketWatchItem(PocketWatchTypes.EMERALD, noStack().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+
     public static final Supplier<Item> IRON_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.IRON_POCKET_WATCH_IN_CLOCK,
             () -> new PocketWatchItem(PocketWatchTypes.IRON, noStack()));
     public static final Supplier<Item> COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.COPPER_POCKET_WATCH_IN_CLOCK,
@@ -85,6 +96,17 @@ public class ColourfulClocksItemsImpl {
     public static final Supplier<Item> NETHERITE_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.NETHERITE_POCKET_WATCH_IN_CLOCK,
             () -> new PocketWatchItem(PocketWatchTypes.NETHERITE, noStack()));
 
+    public static final Supplier<Item> QUARTZ_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.QUARTZ_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItem(PocketWatchTypes.QUARTZ, noStack()));
+    public static final Supplier<Item> AMETHYST_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.AMETHYST_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItem(PocketWatchTypes.AMETHYST, noStack()));
+    public static final Supplier<Item> LAPIS_LAZULI_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.LAPIS_LAZULI_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItem(PocketWatchTypes.LAPIS_LAZULI, noStack()));
+    public static final Supplier<Item> REDSTONE_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.REDSTONE_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItem(PocketWatchTypes.REDSTONE, noStack()));
+    public static final Supplier<Item> EMERALD_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.EMERALD_POCKET_WATCH_IN_CLOCK,
+            () -> new PocketWatchItem(PocketWatchTypes.EMERALD, noStack()));
+
     public static final Supplier<Item> IRON_PENDULUM = registerItemWithTab(ColourfulClocksItems.IRON_PENDULUM, () -> new Item(basicItem()));
     public static final Supplier<Item> COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.COPPER_PENDULUM, () -> new WeatheringPendulumItem(basicItem()
             .component(ColourfulClocksDataComponentTypesImpl.PENDULUM_WEATHERING, 0)));
@@ -100,6 +122,12 @@ public class ColourfulClocksItemsImpl {
     public static final Supplier<Item> GOLD_PENDULUM = registerItemWithTab(ColourfulClocksItems.GOLD_PENDULUM, () -> new Item(basicItem()));
     public static final Supplier<Item> DIAMOND_PENDULUM = registerItemWithTab(ColourfulClocksItems.DIAMOND_PENDULUM, () -> new Item(basicItem()));
     public static final Supplier<Item> NETHERITE_PENDULUM = registerItemWithTab(ColourfulClocksItems.NETHERITE_PENDULUM, () -> new Item(basicItem()));
+
+    public static final Supplier<Item> QUARTZ_PENDULUM = registerItemWithTab(ColourfulClocksItems.QUARTZ_PENDULUM, () -> new Item(basicItem()));
+    public static final Supplier<Item> AMETHYST_PENDULUM = registerItemWithTab(ColourfulClocksItems.AMETHYST_PENDULUM, () -> new Item(basicItem()));
+    public static final Supplier<Item> LAPIS_LAZULI_PENDULUM = registerItemWithTab(ColourfulClocksItems.LAPIS_LAZULI_PENDULUM, () -> new Item(basicItem()));
+    public static final Supplier<Item> REDSTONE_PENDULUM = registerItemWithTab(ColourfulClocksItems.REDSTONE_PENDULUM, () -> new Item(basicItem()));
+    public static final Supplier<Item> EMERALD_PENDULUM = registerItemWithTab(ColourfulClocksItems.EMERALD_PENDULUM, () -> new Item(basicItem()));
 
     private static void registerBornholmItems() {
         for (WoodTypes woodTypes : WoodTypes.values()) {

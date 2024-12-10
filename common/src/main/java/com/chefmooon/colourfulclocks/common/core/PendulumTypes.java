@@ -21,8 +21,13 @@ public enum PendulumTypes {
     WAXED_OXIDIZED_COPPER(8, BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_PENDULUM), "oxidized_copper", 2.0F, ColourfulClocksSounds.ITEM_OXIDIZED_COPPER_PENDULUM_CHIME.get(), 0.6F, ItemStack.EMPTY.getItem()),
     GOLD(5, BuiltInRegistries.ITEM.get(ColourfulClocksItems.GOLD_PENDULUM), "gold", 1.5F, ColourfulClocksSounds.ITEM_GOLD_PENDULUM_CHIME.get(), 0.5F, Items.GOLD_INGOT),
     DIAMOND(6, BuiltInRegistries.ITEM.get(ColourfulClocksItems.DIAMOND_PENDULUM), "diamond", 1.0F, ColourfulClocksSounds.ITEM_DIAMOND_PENDULUM_CHIME.get(), 0.4F, Items.DIAMOND),
-    NETHERITE(7, BuiltInRegistries.ITEM.get(ColourfulClocksItems.NETHERITE_PENDULUM), "netherite", 0.5F, ColourfulClocksSounds.ITEM_NETHERITE_PENDULUM_CHIME.get(), 0.3F, Items.NETHERITE_INGOT)
+    NETHERITE(7, BuiltInRegistries.ITEM.get(ColourfulClocksItems.NETHERITE_PENDULUM), "netherite", 0.5F, ColourfulClocksSounds.ITEM_NETHERITE_PENDULUM_CHIME.get(), 0.3F, Items.NETHERITE_INGOT),
 
+    EMERALD(8, BuiltInRegistries.ITEM.get(ColourfulClocksItems.EMERALD_PENDULUM), "emerald", 1.5F, ColourfulClocksSounds.ITEM_EMERALD_PENDULUM_CHIME.get(), 0.8F, Items.EMERALD),
+    AMETHYST(9, BuiltInRegistries.ITEM.get(ColourfulClocksItems.AMETHYST_PENDULUM), "amethyst", 1.5F, ColourfulClocksSounds.ITEM_AMETHYST_PENDULUM_CHIME.get(), 0.8F, Items.AMETHYST_SHARD),
+    QUARTZ(10, BuiltInRegistries.ITEM.get(ColourfulClocksItems.QUARTZ_PENDULUM), "quartz", 1.5F, ColourfulClocksSounds.ITEM_QUARTZ_PENDULUM_CHIME.get(), 0.8F, Items.QUARTZ),
+    LAPIS_LAZULI(11, BuiltInRegistries.ITEM.get(ColourfulClocksItems.LAPIS_LAZULI_PENDULUM), "lapis_lazuli", 1.5F, ColourfulClocksSounds.ITEM_LAPIS_LAZULI_PENDULUM_CHIME.get(), 0.8F, Items.LAPIS_LAZULI),
+    REDSTONE(12, BuiltInRegistries.ITEM.get(ColourfulClocksItems.REDSTONE_PENDULUM), "redstone", 1.5F, ColourfulClocksSounds.ITEM_REDSTONE_PENDULUM_CHIME.get(), 0.8F, Items.REDSTONE)
     ;
 
 

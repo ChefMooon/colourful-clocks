@@ -18,6 +18,12 @@ public class ColourfulClocksSounds {
     public static final Supplier<SoundEvent> ITEM_DIAMOND_PENDULUM_CHIME = registerSound("item.diamond_pendulum.chime");
     public static final Supplier<SoundEvent> ITEM_NETHERITE_PENDULUM_CHIME = registerSound("item.netherite_pendulum.chime");
 
+    public static final Supplier<SoundEvent> ITEM_EMERALD_PENDULUM_CHIME = registerSound("item.emerald_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_AMETHYST_PENDULUM_CHIME = registerSound("item.amethyst_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_QUARTZ_PENDULUM_CHIME = registerSound("item.quartz_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_LAPIS_LAZULI_PENDULUM_CHIME = registerSound("item.lapis_lazuli_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_REDSTONE_PENDULUM_CHIME = registerSound("item.redstone_pendulum.chime");
+
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_DOOR_OPEN = registerSound("block.bornholm.door_open");
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_DOOR_CLOSE = registerSound("block.bornholm.door_close");
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_REMOVE_PENDULUM = registerSound("block.bornholm.remove_pendulum");

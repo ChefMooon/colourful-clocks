@@ -17,7 +17,7 @@ public class ColourfulClocksCreativeTabsImpl {
     public static void register() {
         Registry.register(BuiltInRegistries.CREATIVE_MODE_TAB, ITEM_GROUP, FabricItemGroup.builder()
                 .title(Component.translatable("itemGroup." + ColourfulClocks.MOD_ID))
-                .icon(() -> new ItemStack(ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get()))
+                .icon(() -> new ItemStack(ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get()))
                 .build());
     }
 }

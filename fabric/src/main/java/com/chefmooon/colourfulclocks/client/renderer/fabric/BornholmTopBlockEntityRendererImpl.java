@@ -5,6 +5,7 @@ import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.fabric.BornholmTopBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.core.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
+import com.chefmooon.colourfulclocks.common.util.BornholmTypeUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -31,6 +32,7 @@ public class BornholmTopBlockEntityRendererImpl<T extends BornholmTopBlockEntity
         if (!(state.getBlock() instanceof BornholmTopBlock)) return;
 
         ItemStack clockHands = blockEntity.getClockHandsItem();
+//        PocketWatchTypes pocketWatchType = BornholmTypeUtil.getPocketWatchTypeFromItem(blockEntity.getClockHandsItem().getItem()); // todo - fix this
 
         if (!clockHands.isEmpty()) {
 //            BakedModel model = minecraft.getItemRenderer().getModel(clockHands, world, null, 0); // see neoforge class for notes, to be updated...
@@ -66,6 +68,16 @@ public class BornholmTopBlockEntityRendererImpl<T extends BornholmTopBlockEntity
             return ModelResourceLocation.inventory(PocketWatchTypes.GOLD.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get())) {
             return ModelResourceLocation.inventory(PocketWatchTypes.DIAMOND.getInClockLocation());
+        } else if (itemStack.is(ColourfulClocksItemsImpl.EMERALD_POCKET_WATCH.get())) {
+            return ModelResourceLocation.inventory(PocketWatchTypes.EMERALD.getInClockLocation());
+        } else if (itemStack.is(ColourfulClocksItemsImpl.AMETHYST_POCKET_WATCH.get())) {
+            return ModelResourceLocation.inventory(PocketWatchTypes.AMETHYST.getInClockLocation());
+        } else if (itemStack.is(ColourfulClocksItemsImpl.QUARTZ_POCKET_WATCH.get())) {
+            return ModelResourceLocation.inventory(PocketWatchTypes.QUARTZ.getInClockLocation());
+        } else if (itemStack.is(ColourfulClocksItemsImpl.LAPIS_LAZULI_POCKET_WATCH.get())) {
+            return ModelResourceLocation.inventory(PocketWatchTypes.LAPIS_LAZULI.getInClockLocation());
+        } else if (itemStack.is(ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get())) {
+            return ModelResourceLocation.inventory(PocketWatchTypes.REDSTONE.getInClockLocation());
         } else {
             return ModelResourceLocation.inventory(PocketWatchTypes.NETHERITE.getInClockLocation());
         }

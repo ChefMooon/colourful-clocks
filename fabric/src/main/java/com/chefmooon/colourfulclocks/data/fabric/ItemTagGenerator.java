@@ -73,8 +73,13 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
                         ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_PENDULUM.get(),
                         ColourfulClocksItemsImpl.GOLD_PENDULUM.get(),
                         ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get(),
-                        ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get()
-                );
+                        ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get(),
+                        ColourfulClocksItemsImpl.QUARTZ_PENDULUM.get(),
+                        ColourfulClocksItemsImpl.AMETHYST_PENDULUM.get(),
+                        ColourfulClocksItemsImpl.LAPIS_LAZULI_PENDULUM.get(),
+                        ColourfulClocksItemsImpl.REDSTONE_PENDULUM.get(),
+                        ColourfulClocksItemsImpl.EMERALD_PENDULUM.get()
+                        );
 
         getOrCreateTagBuilder(ColourfulClocksTags.CLOCK_HAND)
                 .add(
@@ -89,7 +94,12 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
                         ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_POCKET_WATCH.get(),
                         ColourfulClocksItemsImpl.GOLD_POCKET_WATCH.get(),
                         ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get(),
-                        ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get()
-                );
+                        ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.QUARTZ_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.AMETHYST_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.LAPIS_LAZULI_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get(),
+                        ColourfulClocksItemsImpl.EMERALD_POCKET_WATCH.get()
+                        );
     }
 }

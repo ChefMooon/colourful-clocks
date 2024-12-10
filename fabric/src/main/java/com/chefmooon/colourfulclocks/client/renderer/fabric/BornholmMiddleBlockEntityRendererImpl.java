@@ -5,6 +5,7 @@ import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.fabric.BornholmMiddleBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.core.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
+import com.chefmooon.colourfulclocks.common.util.BornholmTypeUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -32,11 +33,12 @@ public class BornholmMiddleBlockEntityRendererImpl<T extends BornholmMiddleBlock
 
         ItemStack pendulum = blockEntity.getPendelumItem();
 
-        float swingSpeedModifier = getSwingSpeedFromPendulumItem(pendulum);
+//        float swingSpeedModifier = getSwingSpeedFromPendulumItem(pendulum);
+        PendulumTypes pendulumType = BornholmTypeUtil.getPendulumTypeFromItem(blockEntity.getPendelumItem().getItem());
 
         if (!pendulum.isEmpty()) {
             BakedModel model = minecraft.getItemRenderer().getModel(pendulum, level, null, 0);
-            renderPendulum(poseStack, partialTick, state, swingSpeedModifier);
+            renderPendulum(poseStack, partialTick, state, pendulumType.getSwingSpeedModifier());
             minecraft.getItemRenderer().render(pendulum, ItemDisplayContext.FIXED, false, poseStack, bufferSource, packedLight, packedOverlay, model);
             poseStack.popPose();
         }

@@ -50,6 +50,12 @@ public class ModelGenerator extends FabricModelProvider {
         generatePocketWatchItem(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get(), itemModelGenerators);
         generatePocketWatchItem(ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get(), itemModelGenerators);
 
+        generatePocketWatchItem(ColourfulClocksItemsImpl.QUARTZ_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.AMETHYST_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.LAPIS_LAZULI_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.EMERALD_POCKET_WATCH.get(), itemModelGenerators);
+
         generateWaxedPocketWatchItem(ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get(), itemModelGenerators);
         generateWaxedPocketWatchItem(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_POCKET_WATCH.get(), itemModelGenerators);
         generateWaxedPocketWatchItem(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_POCKET_WATCH.get(), itemModelGenerators);
@@ -63,6 +69,12 @@ public class ModelGenerator extends FabricModelProvider {
         generatePendulumItem(ColourfulClocksItemsImpl.GOLD_PENDULUM.get(), itemModelGenerators);
         generatePendulumItem(ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get(), itemModelGenerators);
         generatePendulumItem(ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get(), itemModelGenerators);
+
+        generatePendulumItem(ColourfulClocksItemsImpl.QUARTZ_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.AMETHYST_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.LAPIS_LAZULI_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.REDSTONE_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.EMERALD_PENDULUM.get(), itemModelGenerators);
 
         generateWaxedPendulumItem(ColourfulClocksItemsImpl.WAXED_COPPER_PENDULUM.get(), itemModelGenerators);
         generateWaxedPendulumItem(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_PENDULUM.get(), itemModelGenerators);

@@ -1,11 +1,13 @@
 package com.chefmooon.colourfulclocks.client.renderer.neoforge;
 
+import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.client.renderer.BornholmTopBlockEntityRenderer;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmTopBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.core.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.item.PocketWatchItem;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
+import com.chefmooon.colourfulclocks.common.util.BornholmTypeUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -42,6 +44,7 @@ public class BornholmTopBlockEntityRendererImpl extends BornholmTopBlockEntityRe
 //                PocketWatchTypes type = pocketWatchItem.getType();
 //                BakedModel model = minecraft.getModelManager().getModel(type.getInClockLocation());
                 // todo - figure out a dynamic way to find this instead of this way? (hate it)
+//                PocketWatchTypes pocketWatchType = BornholmTypeUtil.getPocketWatchTypeFromItem(blockEntity.getClockHandsItem().getItem());
                 BakedModel model = minecraft.getModelManager().getModel(getHandModelResourceLocation(clockHands));
 
                 renderClockHands(poseStack, partialTick, state);
@@ -53,6 +56,7 @@ public class BornholmTopBlockEntityRendererImpl extends BornholmTopBlockEntityRe
 
     }
 
+    // todo - improve this
     protected static ModelResourceLocation getHandModelResourceLocation(ItemStack itemStack) {
         if (itemStack.is(ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get())) {
             return ModelResourceLocation.inventory(PocketWatchTypes.IRON.getInClockLocation());
@@ -76,6 +80,16 @@ public class BornholmTopBlockEntityRendererImpl extends BornholmTopBlockEntityRe
             return ModelResourceLocation.inventory(PocketWatchTypes.GOLD.getInClockLocation());
         } else if (itemStack.is(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get())) {
             return ModelResourceLocation.inventory(PocketWatchTypes.DIAMOND.getInClockLocation());
+        } else if (itemStack.is(ColourfulClocksItemsImpl.EMERALD_POCKET_WATCH.get())) {
+            return ModelResourceLocation.inventory(PocketWatchTypes.EMERALD.getInClockLocation());
+        } else if (itemStack.is(ColourfulClocksItemsImpl.AMETHYST_POCKET_WATCH.get())) {
+            return ModelResourceLocation.inventory(PocketWatchTypes.AMETHYST.getInClockLocation());
+        } else if (itemStack.is(ColourfulClocksItemsImpl.QUARTZ_POCKET_WATCH.get())) {
+            return ModelResourceLocation.inventory(PocketWatchTypes.QUARTZ.getInClockLocation());
+        } else if (itemStack.is(ColourfulClocksItemsImpl.LAPIS_LAZULI_POCKET_WATCH.get())) {
+            return ModelResourceLocation.inventory(PocketWatchTypes.LAPIS_LAZULI.getInClockLocation());
+        } else if (itemStack.is(ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get())) {
+            return ModelResourceLocation.inventory(PocketWatchTypes.REDSTONE.getInClockLocation());
         } else {
             return ModelResourceLocation.inventory(PocketWatchTypes.NETHERITE.getInClockLocation());
         }

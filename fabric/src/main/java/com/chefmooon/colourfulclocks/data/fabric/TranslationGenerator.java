@@ -37,6 +37,12 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get(), "Diamond Pocket Watch");
         translationBuilder.add(ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get(), "Netherite Pocket Watch");
 
+        translationBuilder.add(ColourfulClocksItemsImpl.QUARTZ_POCKET_WATCH.get(), "Quartz Pocket Watch");
+        translationBuilder.add(ColourfulClocksItemsImpl.AMETHYST_POCKET_WATCH.get(), "Amethyst Pocket Watch");
+        translationBuilder.add(ColourfulClocksItemsImpl.LAPIS_LAZULI_POCKET_WATCH.get(), "Lapis Lazuli Pocket Watch");
+        translationBuilder.add(ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get(), "Redstone Pocket Watch");
+        translationBuilder.add(ColourfulClocksItemsImpl.EMERALD_POCKET_WATCH.get(), "Emerald Pocket Watch");
+
         translationBuilder.add(ColourfulClocksItemsImpl.IRON_PENDULUM.get(), "Iron Pendulum");
         translationBuilder.add(ColourfulClocksItemsImpl.COPPER_PENDULUM.get(), "Copper Pendulum");
         translationBuilder.add(ColourfulClocksItemsImpl.EXPOSED_COPPER_PENDULUM.get(), "Exposed Copper Pendulum");
@@ -49,6 +55,12 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(ColourfulClocksItemsImpl.GOLD_PENDULUM.get(), "Gold Pendulum");
         translationBuilder.add(ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get(), "Diamond Pendulum");
         translationBuilder.add(ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get(), "Netherite Pendulum");
+
+        translationBuilder.add(ColourfulClocksItemsImpl.QUARTZ_PENDULUM.get(), "Quartz Pendulum");
+        translationBuilder.add(ColourfulClocksItemsImpl.AMETHYST_PENDULUM.get(), "Amethyst Pendulum");
+        translationBuilder.add(ColourfulClocksItemsImpl.LAPIS_LAZULI_PENDULUM.get(), "Lapis Lazuli Pendulum");
+        translationBuilder.add(ColourfulClocksItemsImpl.REDSTONE_PENDULUM.get(), "Redstone Pendulum");
+        translationBuilder.add(ColourfulClocksItemsImpl.EMERALD_PENDULUM.get(), "Emerald Pendulum");
 
         generateBornholmBaseTranslations(translationBuilder);
         generateBornholmMiddleTranslations(translationBuilder);

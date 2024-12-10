@@ -15,7 +15,7 @@ public class ColourfulClocksCreativeTabsImpl {
     public static final Supplier<CreativeModeTab> TAB_COLOURFUL_CLOCKS = CREATIVE_MODE_TAB.register(ColourfulClocks.MOD_ID,
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup." + ColourfulClocks.MOD_ID))
-                    .icon(() -> new ItemStack(ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get()))
+                    .icon(() -> new ItemStack(ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get()))
                     .displayItems((parameters, output) -> ColourfulClocksItemsImpl.CREATIVE_TAB_ITEMS.forEach((item) -> output.accept(item.get())))
                     .build());
 
