@@ -1,19 +1,29 @@
 {
   "variants": {
+    "facing=down": {
+      "model": "colourfulclocks:block/bornholm_base_stripped_oak"
+    },
     "facing=east": {
       "model": "colourfulclocks:block/bornholm_base_stripped_oak",
-      "y": 90
+      "x": 90,
+      "y": 270
     },
     "facing=north": {
-      "model": "colourfulclocks:block/bornholm_base_stripped_oak"
+      "model": "colourfulclocks:block/bornholm_base_stripped_oak",
+      "x": 270
     },
     "facing=south": {
       "model": "colourfulclocks:block/bornholm_base_stripped_oak",
-      "y": 180
+      "x": 90
+    },
+    "facing=up": {
+      "model": "colourfulclocks:block/bornholm_base_stripped_oak",
+      "x": 180
     },
     "facing=west": {
       "model": "colourfulclocks:block/bornholm_base_stripped_oak",
-      "y": 270
+      "x": 90,
+      "y": 90
     }
   }
 }

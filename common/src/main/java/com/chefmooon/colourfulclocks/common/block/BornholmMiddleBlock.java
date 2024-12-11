@@ -127,7 +127,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
 
     public boolean isActivated(BlockState blockStateAbove, BlockState blockStateBelow) {
         boolean bl = blockStateAbove.getBlock() instanceof BornholmTopBlock;
-        boolean bl2 = blockStateBelow.getBlock() instanceof BornholmBaseBlock;
+        boolean bl2 = blockStateBelow.getBlock() instanceof BornholmBaseBlock && blockStateBelow.getValue(BornholmBaseBlock.FACING) == Direction.DOWN;
 
         return bl && bl2;
     }

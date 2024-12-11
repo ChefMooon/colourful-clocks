@@ -11,6 +11,7 @@ import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTextureSlots;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.minecraft.core.Direction;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.blockstates.MultiVariantGenerator;
@@ -24,6 +25,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.AbstractMap;
 import java.util.HashMap;
@@ -198,7 +200,14 @@ public class ModelGenerator extends FabricModelProvider {
 
             blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(blockSupplier.get(),
                             Variant.variant().with(VariantProperties.MODEL, BORNHOLM_BASE))
-                    .with(BlockModelGenerators.createHorizontalFacingDispatch()));
+                            .with(PropertyDispatch.property(BlockStateProperties.FACING)
+                                    .select(Direction.DOWN, Variant.variant())
+                                    .select(Direction.UP, Variant.variant().with(VariantProperties.X_ROT, VariantProperties.Rotation.R180))
+                                    .select(Direction.NORTH, Variant.variant().with(VariantProperties.X_ROT, VariantProperties.Rotation.R270))
+                                    .select(Direction.SOUTH, Variant.variant().with(VariantProperties.X_ROT, VariantProperties.Rotation.R90))
+                                    .select(Direction.WEST, Variant.variant().with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                                    .select(Direction.EAST, Variant.variant().with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)))
+                   );
         }));
     }
 
