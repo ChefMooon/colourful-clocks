@@ -38,10 +38,14 @@ dependencies {
         default: println("Unknown recipe viewer specified: ${recipe_viewer}. Must be JEI, REI, EMI, or disabled.")
     }
 
-    // WTHIT
-    modCompileOnly("mcp.mobius.waila:wthit-api:neo-${wthitVersion}")
-    modLocalRuntime("mcp.mobius.waila:wthit:neo-${wthitVersion}")
-    modLocalRuntime("lol.bai:badpackets:neo-${badpacketsVersion}")
+    // Block Info
+    switch (block_info.toLowerCase(Locale.ROOT)) {
+        case "wthit": modLocalRuntime "mcp.mobius.waila:wthit:neo-${wthitVersion}"
+                      modLocalRuntime "mcp.mobius.waila:wthit:neo-${wthitVersion}"; break
+        case "jade": modLocalRuntime "curse.maven:jade-324717:${jade_neoforge_version}"; break
+        case "disabled": break
+        default: println("Unknown block info specified: ${block_info}. Must be WTHIT, Jade, or disabled.")
+    }
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionNeoForge")) { transitive = false }

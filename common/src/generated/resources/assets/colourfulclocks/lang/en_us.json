@@ -81,6 +81,8 @@
   "colourfulclocks.subtitles.block.bornholm.wax_off": "Wax Off",
   "colourfulclocks.subtitles.block.bornholm.wax_on": "Wax On",
   "colourfulclocks.tooltip.weathering": "Weathering",
+  "config.jade.plugin_colourfulclocks.bornholm_dial_glass_type": "Bornholm Dial Glass Type",
+  "config.jade.plugin_colourfulclocks.bornholm_trunk_door_type": "Bornholm Dial Glass Type",
   "config.waila.plugin_colourfulclocks": "Colourful Clocks",
   "config.waila.plugin_colourfulclocks.bornholm_dial_glass_type": "Bornholm Dial Glass Type",
   "config.waila.plugin_colourfulclocks.bornholm_trunk_door_type": "Bornholm Trunk Door Type",

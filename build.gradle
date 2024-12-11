@@ -36,6 +36,13 @@ subprojects {
                 includeGroup "mcp.mobius.waila"
             }
         }
+
+        maven { // Jade
+            url "https://www.cursemaven.com"
+            content {
+                includeGroup "curse.maven"
+            }
+        }
     }
 
     dependencies {

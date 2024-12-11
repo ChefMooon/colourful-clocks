@@ -30,6 +30,9 @@
     ],
     "jei_mod_plugin": [
       "com.chefmooon.colourfulclocks.integration.jei.fabric.JEIPluginImpl"
+    ],
+    "jade": [
+      "com.chefmooon.colourfulclocks.integration.jade.JadePlugin"
     ]
   },
   "mixins": [
