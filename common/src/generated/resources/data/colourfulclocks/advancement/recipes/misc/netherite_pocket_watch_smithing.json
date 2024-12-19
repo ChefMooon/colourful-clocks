@@ -1,15 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_any_ingredient": {
+    "has_diamond_pocket_watch": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:netherite_ingot",
-              "minecraft:redstone",
-              "minecraft:quartz"
-            ]
+            "items": "colourfulclocks:diamond_pocket_watch"
           }
         ]
       },
@@ -17,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:netherite_pocket_watch"
+        "recipe": "minecraft:netherite_pocket_watch_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -25,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_any_ingredient"
+      "has_diamond_pocket_watch"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:netherite_pocket_watch"
+      "minecraft:netherite_pocket_watch_smithing"
     ]
   }
 }

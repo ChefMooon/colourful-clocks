@@ -9,11 +9,9 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
-import net.minecraft.data.recipes.RecipeCategory;
-import net.minecraft.data.recipes.RecipeOutput;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
 import java.util.concurrent.CompletableFuture;
@@ -29,7 +27,14 @@ public class RecipeGenerator extends FabricRecipeProvider {
         buildPocketWatchRecipe(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get(), PocketWatchTypes.COPPER, recipeOutput);
         buildPocketWatchRecipe(ColourfulClocksItemsImpl.GOLD_POCKET_WATCH.get(), PocketWatchTypes.GOLD, recipeOutput);
         buildPocketWatchRecipe(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get(), PocketWatchTypes.DIAMOND, recipeOutput);
-        buildPocketWatchRecipe(ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get(), PocketWatchTypes.NETHERITE, recipeOutput);
+
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        Ingredient.of(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get()),
+                        Ingredient.of(Items.NETHERITE_INGOT),
+                        RecipeCategory.MISC,
+                        ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get())
+                .unlocks(RecipeProvider.getHasName(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get()), RecipeProvider.has(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get()))
+                .save(recipeOutput, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get()) + "_smithing");
 
         buildPocketWatchRecipe(ColourfulClocksItemsImpl.QUARTZ_POCKET_WATCH.get(), PocketWatchTypes.QUARTZ, recipeOutput);
         buildPocketWatchRecipe(ColourfulClocksItemsImpl.AMETHYST_POCKET_WATCH.get(), PocketWatchTypes.AMETHYST, recipeOutput);
@@ -41,7 +46,14 @@ public class RecipeGenerator extends FabricRecipeProvider {
         buildPendulumRecipe(ColourfulClocksItemsImpl.COPPER_PENDULUM.get(), PendulumTypes.COPPER, recipeOutput);
         buildPendulumRecipe(ColourfulClocksItemsImpl.GOLD_PENDULUM.get(), PendulumTypes.GOLD, recipeOutput);
         buildPendulumRecipe(ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get(), PendulumTypes.DIAMOND, recipeOutput);
-        buildPendulumRecipe(ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get(), PendulumTypes.NETHERITE, recipeOutput);
+
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                Ingredient.of(ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get()),
+                Ingredient.of(Items.NETHERITE_INGOT),
+                RecipeCategory.MISC,
+                ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get())
+                .unlocks(RecipeProvider.getHasName(ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get()), RecipeProvider.has(ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get()))
+                .save(recipeOutput, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get()) + "_smithing");
 
         buildPendulumRecipe(ColourfulClocksItemsImpl.QUARTZ_PENDULUM.get(), PendulumTypes.QUARTZ, recipeOutput);
         buildPendulumRecipe(ColourfulClocksItemsImpl.AMETHYST_PENDULUM.get(), PendulumTypes.AMETHYST, recipeOutput);

@@ -1,14 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_any_ingredient": {
+    "has_diamond_pendulum": {
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:netherite_ingot",
-              "minecraft:chain"
-            ]
+            "items": "colourfulclocks:diamond_pendulum"
           }
         ]
       },
@@ -16,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:netherite_pendulum"
+        "recipe": "minecraft:netherite_pendulum_smithing"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -24,12 +21,12 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_any_ingredient"
+      "has_diamond_pendulum"
     ]
   ],
   "rewards": {
     "recipes": [
-      "minecraft:netherite_pendulum"
+      "minecraft:netherite_pendulum_smithing"
     ]
   }
 }
