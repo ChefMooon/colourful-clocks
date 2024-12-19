@@ -1,5 +1,5 @@
 **Note:** This update will allow the Bornholm Base to be placed in any direction. 
-Due to this all placed bases will be facing North after the update. Apologies!
+Due to this all placed bases will be horizontal after the update. Apologies!
 
 Now available for **Fabric**!
 
