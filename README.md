@@ -69,7 +69,7 @@ A tool with Silk Touch can be used to retain the Glass Variant when broken.
 
 ### Recipe's
 
-![Iron Pendulum Recipe](https://i.imgur.com/kJrePnS.png)
+![Iron Pendulum Recipe](https://i.imgur.com/mjZ2EtA.png)
 ![Bornholm Base Recipe](https://i.imgur.com/e6mEccF.png)
 ![Bornholm Trunk Recipe](https://i.imgur.com/Oa4E5Iw.png)
 ![Bornholm Dial Recipe](https://i.imgur.com/Wqv8oFw.png)
