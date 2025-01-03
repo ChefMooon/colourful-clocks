@@ -28,9 +28,9 @@ Wood Types, Glass Colours, Clock Hands, and Pendulums to create the perfect deco
 A must-have for any adventurer with a keen sense of style, this handheld clock doubles as the power source for 
 Grandfather Clocks. Can be placed in any Bornholm Dial.
 
-**Types:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite
+**Types:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite, Quartz, Amethyst, Lapis Lazuli, Redstone, Emerald
 
-![Pocket Watch Showcase](https://i.imgur.com/WQ9DdvN.png)
+![Pocket Watch Showcase](https://i.imgur.com/5QPXpoC.png)
 
 **Note:** Exposed, Weathered, and Oxidized Copper Pocket Watches cannot be crafted. They oxidize when placed in 
 complete clocks and can be waxed to preserve the condition.
@@ -54,10 +54,10 @@ Stripped Oak, Stripped Spruce, Stripped Birch, Stripped Jungle, Stripped Acacia,
 Stripped Cherry, Stripped Bamboo, Stripped Crimson, Stripped Warped   
 **Dial Glass:** Clear, White, Orange, Magenta, Light Blue, Yellow, Lime, Pink, Gray, Light Gray, Cyan, Purple, Blue, Brown, Green, Red, Black   
 **Glass Door Types:** Clear, White, Orange, Magenta, Light Blue, Yellow, Lime, Pink, Gray, Light Gray, Cyan, Purple, Blue, Brown, Green, Red, Black   
-**Clock Hands:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite   
-**Pendulums:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite
+**Clock Hands:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite, Quartz, Amethyst, Lapis Lazuli, Redstone, Emerald   
+**Pendulums:** Iron, Copper, Exposed Copper, Weathered Copper, Oxidized Copper, Gold, Diamond, Netherite, Quartz, Amethyst, Lapis Lazuli, Redstone, Emerald
 
-![Pendulum Showcase](https://i.imgur.com/hCGRSE5.png)
+![Pendulum Showcase](https://i.imgur.com/gUJwaqQ.png)
 
 **Notes:** 
 - Exposed, Weathered, and Oxidized Copper Pendulums cannot be crafted. They oxidize when hanging in complete clocks and can 
