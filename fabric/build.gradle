@@ -143,39 +143,39 @@ if (env.MODRINTH_TOKEN) {
     }
 }
 
-unifiedPublishing {
-    project {
-        displayName = vName
-        version = project.version
-        changelog = changelogText
-        releaseType = mod_version_type
-        gameVersions = minecraft_supported_versions.split(",").toList()
-        gameLoaders = ["fabric","quilt"]
-
-        mainPublication tasks.remapJar
-
-        relations {
-            depends {
-                curseforge = "fabric-api"
-                modrinth = "fabric-api"
-            }
-            includes {} // Mark as an included dependency
-        }
-
-        var cfToken = System.getenv("CURSEFORGE_TOKEN")
-        if (cfToken != null) {
-            curseforge {
-                token = cfToken
-                id = curseforge_project_id
-            }
-        }
-
-        var mrToken  = System.getenv("MODRINTH_TOKEN")
-        if (mrToken != null) {
-            modrinth {
-                token = mrToken
-                id = modrinth_project_id
-            }
-        }
-    }
-}
+//unifiedPublishing {
+//    project {
+//        displayName = vName
+//        version = project.version
+//        changelog = changelogText
+//        releaseType = mod_version_type
+//        gameVersions = minecraft_supported_versions.split(",").toList()
+//        gameLoaders = ["fabric","quilt"]
+//
+//        mainPublication tasks.remapJar
+//
+//        relations {
+//            depends {
+//                curseforge = "fabric-api"
+//                modrinth = "fabric-api"
+//            }
+//            includes {} // Mark as an included dependency
+//        }
+//
+//        var cfToken = System.getenv("CURSEFORGE_TOKEN")
+//        if (cfToken != null) {
+//            curseforge {
+//                token = cfToken
+//                id = curseforge_project_id
+//            }
+//        }
+//
+//        var mrToken  = System.getenv("MODRINTH_TOKEN")
+//        if (mrToken != null) {
+//            modrinth {
+//                token = mrToken
+//                id = modrinth_project_id
+//            }
+//        }
+//    }
+//}
