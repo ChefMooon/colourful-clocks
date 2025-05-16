@@ -28,4 +28,7 @@ public class ColourfulClocksDataComponentTypes {
     private static ResourceLocation dataComponent(String string) {
         return TextUtil.res(string);
     }
+
+    public static void init() {
+    }
 }

@@ -46,6 +46,5 @@ public class ColourfulClocksSounds {
     }
 
     public static void init() {
-
     }
 }

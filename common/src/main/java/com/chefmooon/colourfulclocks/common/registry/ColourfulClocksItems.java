@@ -80,6 +80,6 @@ public class ColourfulClocksItems {
         return TextUtil.res(string);
     }
 
-    public static void register() {
+    public static void init() {
     }
 }

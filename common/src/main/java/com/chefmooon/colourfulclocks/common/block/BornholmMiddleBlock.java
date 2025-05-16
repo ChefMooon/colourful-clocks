@@ -67,13 +67,6 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
             Block.box(3, 15, 3, 13, 16, 13)
     );
 
-//    private static final VoxelShape[] DOOR_SHAPES = new VoxelShape[] {
-//            Block.box(5, 2, 12, 11, 14, 13),
-//            Block.box(3, 2, 5, 4, 14, 11),
-//            Block.box(5, 2, 3, 11, 14, 4),
-//            Block.box(12, 2, 5, 13, 14, 11)
-//    };
-
     private static final VoxelShape[] DOOR_SHAPES = new VoxelShape[] {
             Block.box(5, 2, 3, 11, 14, 4),
             Block.box(12, 2, 5, 13, 14, 11),

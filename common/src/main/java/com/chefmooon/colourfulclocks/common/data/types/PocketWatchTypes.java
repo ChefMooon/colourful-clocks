@@ -3,7 +3,6 @@ package com.chefmooon.colourfulclocks.common.data.types;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.mojang.serialization.Codec;
-import dev.architectury.injectables.annotations.ExpectPlatform;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.registries.BuiltInRegistries;

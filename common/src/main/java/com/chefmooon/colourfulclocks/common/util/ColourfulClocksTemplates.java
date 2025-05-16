@@ -45,7 +45,6 @@ public class ColourfulClocksTemplates {
     public static final ModelTemplate POCKET_WATCH_OPEN_14 = createItem("template_pocket_watch_open_14", TextureSlot.ALL);
     public static final ModelTemplate POCKET_WATCH_OPEN_15 = createItem("template_pocket_watch_open_15", TextureSlot.ALL);
 
-
     private static ModelTemplate createItem(String itemModelLocation, TextureSlot... requiredSlots) {
         return new ModelTemplate(Optional.of(TextUtil.res("item/" + itemModelLocation)), Optional.empty(), requiredSlots);
     }

@@ -1,25 +1,14 @@
 package com.chefmooon.colourfulclocks.client.renderer;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
-import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
-import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
 import org.joml.Quaternionf;
 
-import java.util.Map;
-
 public class BornholmTopBlockEntityRenderer {
-
-    protected static Map<PocketWatchTypes, ModelResourceLocation> CLOCK_HANDS = Map.of(
-//            PocketWatchTypes.IRON, ModelResourceLocation.inventory(TextUtil.res("movement_basic"))
-            PocketWatchTypes.IRON, ModelResourceLocation.inventory(ColourfulClocksItems.IRON_POCKET_WATCH_IN_CLOCK)
-    );
-
     public static void renderClockHands(PoseStack poseStack, float partialTick, BlockState state) {
         poseStack.pushPose();
 

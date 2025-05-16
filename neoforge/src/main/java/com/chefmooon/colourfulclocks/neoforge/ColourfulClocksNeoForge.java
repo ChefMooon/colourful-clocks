@@ -9,7 +9,6 @@ import net.neoforged.fml.common.Mod;
 @Mod(ColourfulClocks.MOD_ID)
 public class ColourfulClocksNeoForge {
     public ColourfulClocksNeoForge(IEventBus modEventBus, ModContainer modContainer) {
-
         ColourfulClocks.init();
 
         ColourfulClocksBlocksImpl.register(modEventBus);

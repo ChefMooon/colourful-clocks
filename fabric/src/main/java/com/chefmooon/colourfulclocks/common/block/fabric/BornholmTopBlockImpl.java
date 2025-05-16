@@ -27,7 +27,6 @@ public class BornholmTopBlockImpl extends BornholmTopBlock {
 
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-//        return null;
         return ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS.create(pos, state);
     }
 

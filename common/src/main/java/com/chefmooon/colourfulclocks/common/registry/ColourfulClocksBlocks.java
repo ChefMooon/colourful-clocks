@@ -12,6 +12,6 @@ public class ColourfulClocksBlocks {
         return TextUtil.res(string);
     }
 
-    public static void register() {
+    public static void init() {
     }
 }

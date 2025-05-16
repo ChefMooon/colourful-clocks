@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks;
 
-import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
+import com.chefmooon.colourfulclocks.common.registry.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -10,6 +10,10 @@ public class ColourfulClocks {
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     
     public static void init() {
+        ColourfulClocksBlocks.init();
+        ColourfulClocksItems.init();
+        ColourfulClocksBlockEntities.init();
+        ColourfulClocksDataComponentTypes.init();
         ColourfulClocksSounds.init();
     }
 }

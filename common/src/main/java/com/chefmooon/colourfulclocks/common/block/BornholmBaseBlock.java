@@ -28,7 +28,6 @@ public class BornholmBaseBlock extends Block implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
-    public WoodTypes woodType;  // todo - decide if used
     public int FLAMMABILITY = 30;
     public int FIRE_SPREAD = 60;
 
@@ -43,7 +42,7 @@ public class BornholmBaseBlock extends Block implements SimpleWaterloggedBlock {
         super(properties);
         SHAPES = buildShapes();
         this.registerDefaultState(this.getStateDefinition().any()
-                .setValue(FACING, Direction.DOWN) // todo - can blocks placed NORTH be avoided?
+                .setValue(FACING, Direction.DOWN)
                 .setValue(ACTIVATED, Boolean.TRUE)
                 .setValue(WATERLOGGED, Boolean.FALSE));
     }

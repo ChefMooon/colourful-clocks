@@ -7,8 +7,6 @@ import net.fabricmc.api.ClientModInitializer;
 public class ColourfulClocksClientImpl implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-
-
         ClientSetupEventsImpl.onRegisterRenderers();
         ColourfulClocksItemPropertiesImpl.addCustomItemProperties();
     }

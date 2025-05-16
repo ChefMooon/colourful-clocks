@@ -12,6 +12,7 @@ import net.minecraft.network.codec.StreamCodec;
 import org.jetbrains.annotations.Nullable;
 
 public record BornholmTopGlassComponent(BornholmTopGlassTypes topGlassType, PocketWatchTypes pocketWatchType) {
+
     public static final Codec<BornholmTopGlassComponent> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
                     BornholmTopGlassTypes.CODEC.fieldOf("glass").forGetter(BornholmTopGlassComponent::getGlassType),
