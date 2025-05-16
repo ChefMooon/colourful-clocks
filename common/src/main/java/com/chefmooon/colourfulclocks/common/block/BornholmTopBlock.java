@@ -3,6 +3,7 @@ package com.chefmooon.colourfulclocks.common.block;
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.BornholmTopGlassTypeProperty;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
+import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
@@ -90,7 +91,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection())
-                .setValue(GLASS_TYPE, context.getItemInHand().get(ColourfulClocksDataComponentTypes.getBornholmTopGlassData()).getGlassType())
+                .setValue(GLASS_TYPE, context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getBornholmTopGlassData(), BornholmTopGlassComponent.getDefaultValue()).getGlassType())
                 .setValue(ACTIVATED, isActivated(context.getLevel().getBlockState(context.getClickedPos().below())))
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
     }

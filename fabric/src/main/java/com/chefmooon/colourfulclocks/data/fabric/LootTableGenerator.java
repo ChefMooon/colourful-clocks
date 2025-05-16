@@ -41,6 +41,6 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
     }
 
     public LootTable.Builder createBornholmTopEntityDrop(Block block) {
-        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder)LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.getBornholmTopGlassData())).otherwise(LootItem.lootTableItem(block))));
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder)LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.BORNHOLM_TOP_GLASS_DATA)).otherwise(LootItem.lootTableItem(block))));
     }
 }

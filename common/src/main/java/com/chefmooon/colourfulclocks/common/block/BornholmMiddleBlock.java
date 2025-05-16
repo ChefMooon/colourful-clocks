@@ -3,6 +3,7 @@ package com.chefmooon.colourfulclocks.common.block;
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmMiddleBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.block.state.properties.DoorTypeProperty;
+import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
@@ -98,7 +99,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection())
-                .setValue(DOOR_TYPE, context.getItemInHand().get(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData()).getDoorType())
+                .setValue(DOOR_TYPE, context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), BornholmMiddleDoorComponent.getDefaultValue()).getDoorType())
                 .setValue(ACTIVATED, isActivated(context.getLevel().getBlockState(context.getClickedPos().above()), context.getLevel().getBlockState(context.getClickedPos().below())))
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
     }
