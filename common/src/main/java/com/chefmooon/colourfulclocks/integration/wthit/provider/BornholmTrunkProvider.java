@@ -1,8 +1,7 @@
 package com.chefmooon.colourfulclocks.integration.wthit.provider;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
-import com.chefmooon.colourfulclocks.common.core.BornholmDoorTypes;
-import com.chefmooon.colourfulclocks.common.util.TextUtil;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.integration.wthit.ColourfulClocksCommonWailaPlugin;
 import mcp.mobius.waila.api.*;
 import net.minecraft.network.chat.Component;

@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block.state.properties;
 
-import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.google.common.collect.Lists;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
 

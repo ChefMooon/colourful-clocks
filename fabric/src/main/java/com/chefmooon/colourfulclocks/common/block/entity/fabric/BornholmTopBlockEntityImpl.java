@@ -1,6 +1,7 @@
 package com.chefmooon.colourfulclocks.common.block.entity.fabric;
 
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
+import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import net.minecraft.core.BlockPos;
@@ -31,5 +32,9 @@ public class BornholmTopBlockEntityImpl extends BornholmTopBlockEntity {
         } else {
             return ItemStack.EMPTY::getItem;
         }
+    }
+
+    public static Item getItemStack(WoodTypes woodTypes) {
+        return ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.get(woodTypes).get();
     }
 }

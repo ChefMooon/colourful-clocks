@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.integration.jade.provider;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
-import com.chefmooon.colourfulclocks.common.core.BornholmDoorTypes;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

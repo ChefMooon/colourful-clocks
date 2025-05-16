@@ -2,8 +2,8 @@ package com.chefmooon.colourfulclocks.data.fabric;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
-import com.chefmooon.colourfulclocks.common.core.BornholmDoorTypes;
-import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTemplates;
@@ -305,7 +305,8 @@ public class ModelGenerator extends FabricModelProvider {
                     )
             );
 
-            blockModelGenerators.delegateItemModel(blockSupplier.get(), blockLocation);
+            blockModelGenerators.skipAutoItemBlock(blockSupplier.get());
+//            blockModelGenerators.delegateItemModel(blockSupplier.get(), blockLocation);
         }));
     }
 
@@ -350,7 +351,8 @@ public class ModelGenerator extends FabricModelProvider {
                     )
             );
 
-            blockModelGenerators.delegateItemModel(blockSupplier.get(), MODELS.get(BornholmTopGlassTypes.GLASS));
+            blockModelGenerators.skipAutoItemBlock(blockSupplier.get());
+//            blockModelGenerators.delegateItemModel(blockSupplier.get(), MODELS.get(BornholmTopGlassTypes.GLASS));
         }));
     }
 

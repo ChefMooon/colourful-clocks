@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bornholm_middle_stripped_cherry",
+  "key": {
+    "A": {
+      "item": "minecraft:stripped_cherry_wood"
+    },
+    "B": {
+      "item": "minecraft:cyan_stained_glass_pane"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "A B",
+    "AAA"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:bornholm_trunk_data": {
+        "glass": "_cyan_stained_glass",
+        "pendulum": "empty"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:bornholm_middle_stripped_cherry"
+  }
+}

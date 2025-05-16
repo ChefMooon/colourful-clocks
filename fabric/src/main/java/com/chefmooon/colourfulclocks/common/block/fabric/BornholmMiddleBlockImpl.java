@@ -2,8 +2,7 @@ package com.chefmooon.colourfulclocks.common.block.fabric;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.fabric.BornholmMiddleBlockEntityImpl;
-import com.chefmooon.colourfulclocks.common.core.BornholmDoorTypes;
-import com.chefmooon.colourfulclocks.common.core.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;

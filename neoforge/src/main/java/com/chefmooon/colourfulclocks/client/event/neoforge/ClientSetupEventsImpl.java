@@ -4,7 +4,7 @@ import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmMiddleBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmTopBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlockEntitiesImpl;
-import com.chefmooon.colourfulclocks.common.util.neoforge.ColourfulClocksItemProperties;
+import com.chefmooon.colourfulclocks.common.util.neoforge.ColourfulClocksItemPropertiesImpl;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -23,7 +23,7 @@ public class ClientSetupEventsImpl {
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            ColourfulClocksItemProperties.addCustomItemProperties();
+            ColourfulClocksItemPropertiesImpl.addCustomItemProperties();
         });
     }
 }

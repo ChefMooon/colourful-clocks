@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.common.registry.fabric;
 
-import com.chefmooon.colourfulclocks.common.core.BornholmMiddleDoorRecord;
-import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassRecord;
+import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
+import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.mojang.serialization.Codec;
@@ -26,16 +26,24 @@ public class ColourfulClocksDataComponentTypesImpl {
             ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING.getPath(), (builder) -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT)
     );
 
-    public static final DataComponentType<BornholmTopGlassRecord> BORNHOLM_TOP_GLASS_DATA = register(
-            ColourfulClocksDataComponentTypes.BORNHOLM_TOP_GLASS_DATA.getPath(), bornholmTopGlassRecordBuilder -> bornholmTopGlassRecordBuilder.persistent(BornholmTopGlassRecord.CODEC).networkSynchronized(BornholmTopGlassRecord.STREAM_CODEC)
+    public static final DataComponentType<BornholmTopGlassComponent> BORNHOLM_TOP_GLASS_DATA = register(
+            ColourfulClocksDataComponentTypes.BORNHOLM_TOP_GLASS_DATA.getPath(), bornholmTopGlassComponentBuilder -> bornholmTopGlassComponentBuilder.persistent(BornholmTopGlassComponent.CODEC).networkSynchronized(BornholmTopGlassComponent.STREAM_CODEC)
     );
 
-    public static final DataComponentType<BornholmMiddleDoorRecord> BORNHOLM_MIDDLE_GLASS_DATA = register(
-            ColourfulClocksDataComponentTypes.BORNHOLM_MIDDLE_GLASS_DATA.getPath(), bornholmTopGlassRecordBuilder -> bornholmTopGlassRecordBuilder.persistent(BornholmMiddleDoorRecord.CODEC).networkSynchronized(BornholmMiddleDoorRecord.STREAM_CODEC)
+    public static final DataComponentType<BornholmMiddleDoorComponent> BORNHOLM_MIDDLE_GLASS_DATA = register(
+            ColourfulClocksDataComponentTypes.BORNHOLM_MIDDLE_GLASS_DATA.getPath(), bornholmMiddleDoorComponentBuilder -> bornholmMiddleDoorComponentBuilder.persistent(BornholmMiddleDoorComponent.CODEC).networkSynchronized(BornholmMiddleDoorComponent.STREAM_CODEC)
     );
 
     private static <T> DataComponentType<T> register(String name, UnaryOperator<DataComponentType.Builder<T>> builder) {
         return (DataComponentType) Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, TextUtil.res(name), ((DataComponentType.Builder)builder.apply(DataComponentType.builder())).build());
+    }
+
+    public static DataComponentType<BornholmMiddleDoorComponent> getBornholmMiddleGlassData() {
+        return BORNHOLM_MIDDLE_GLASS_DATA;
+    }
+
+    public static DataComponentType<BornholmTopGlassComponent> getBornholmTopGlassData() {
+        return BORNHOLM_TOP_GLASS_DATA;
     }
 
     public static void register() {

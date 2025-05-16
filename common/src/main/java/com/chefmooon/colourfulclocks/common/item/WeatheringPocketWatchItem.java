@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.common.item;
 
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
-import com.chefmooon.colourfulclocks.common.core.PocketWatchTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.core.component.DataComponentType;

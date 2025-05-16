@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.common.block.entity.neoforge;
 
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmMiddleBlockEntity;
-import com.chefmooon.colourfulclocks.common.core.PendulumTypes;
+import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import net.minecraft.core.BlockPos;
@@ -32,5 +32,9 @@ public class BornholmMiddleBlockEntityImpl extends BornholmMiddleBlockEntity {
         } else {
             return ItemStack.EMPTY::getItem;
         }
+    }
+
+    public static Item getItemStack(WoodTypes woodTypes) {
+        return ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.get(woodTypes).get();
     }
 }

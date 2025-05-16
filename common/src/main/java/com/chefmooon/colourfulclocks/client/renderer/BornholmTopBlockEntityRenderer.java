@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.client.renderer;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
-import com.chefmooon.colourfulclocks.common.core.PocketWatchTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;

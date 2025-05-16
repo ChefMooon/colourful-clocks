@@ -1,8 +1,7 @@
 package com.chefmooon.colourfulclocks.integration.wthit.provider;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
-import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.util.TextUtil;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.integration.wthit.ColourfulClocksCommonWailaPlugin;
 import mcp.mobius.waila.api.IBlockAccessor;
 import mcp.mobius.waila.api.IBlockComponentProvider;

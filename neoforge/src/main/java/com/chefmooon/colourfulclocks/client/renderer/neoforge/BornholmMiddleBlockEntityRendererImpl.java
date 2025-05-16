@@ -3,9 +3,9 @@ package com.chefmooon.colourfulclocks.client.renderer.neoforge;
 import com.chefmooon.colourfulclocks.client.renderer.BornholmMiddleBlockEntityRenderer;
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmMiddleBlockEntityImpl;
-import com.chefmooon.colourfulclocks.common.core.PendulumTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
-import com.chefmooon.colourfulclocks.common.util.BornholmTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -34,7 +34,7 @@ public class BornholmMiddleBlockEntityRendererImpl extends BornholmMiddleBlockEn
         ItemStack pendulum = blockEntity.getPendelumItem();
 
 //        float swingSpeedModifier = getSwingSpeedFromPendulumItem(pendulum);
-        PendulumTypes pendulumType = BornholmTypeUtil.getPendulumTypeFromItem(blockEntity.getPendelumItem().getItem());
+        PendulumTypes pendulumType = ColourfulClocksTypeUtil.getPendulumTypeFromItem(blockEntity.getPendelumItem().getItem());
 
         if (!pendulum.isEmpty()) {
             BakedModel model = minecraft.getItemRenderer().getModel(pendulum, level, null, 0);

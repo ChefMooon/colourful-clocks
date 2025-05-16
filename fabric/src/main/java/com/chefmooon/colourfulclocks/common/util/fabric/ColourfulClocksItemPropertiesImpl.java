@@ -3,6 +3,7 @@ package com.chefmooon.colourfulclocks.common.util.fabric;
 import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksDataComponentTypesImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
+import com.chefmooon.colourfulclocks.common.util.ColourfulClocksItemProperties;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
@@ -36,6 +37,27 @@ public class ColourfulClocksItemPropertiesImpl {
         registerPocketWatch(ColourfulClocksItemsImpl.QUARTZ_POCKET_WATCH.get());
         registerPocketWatch(ColourfulClocksItemsImpl.LAPIS_LAZULI_POCKET_WATCH.get());
         registerPocketWatch(ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get());
+
+        ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.forEach((entry, supplier) ->
+                registerBornholmMiddle(supplier.get()));
+        ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.forEach((entry, supplier) ->
+                registerBornholmTop(supplier.get()));
+    }
+
+    private static void registerBornholmMiddle(Item item) {
+        ItemProperties.register(item, ColourfulClocksItemProperties.GLASS_TYPE,
+                (itemStack, clientLevel, livingEntity, i) -> {
+            // Convert the id to a float and return
+            return itemStack.get(ColourfulClocksDataComponentTypesImpl.BORNHOLM_MIDDLE_GLASS_DATA).getDoorType().getId() / 100.0f;
+        });
+    }
+
+    private static void registerBornholmTop(Item item) {
+        ItemProperties.register(item, ColourfulClocksItemProperties.GLASS_TYPE,
+                (itemStack, clientLevel, livingEntity, i) -> {
+            // Convert the id to a float and return
+            return itemStack.get(ColourfulClocksDataComponentTypesImpl.BORNHOLM_TOP_GLASS_DATA).getGlassType().getId() / 100.0f;
+        });
     }
 
     private static void registerPocketWatch(Item item) {

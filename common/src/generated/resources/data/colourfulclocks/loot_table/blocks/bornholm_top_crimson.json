@@ -29,14 +29,10 @@
               "functions": [
                 {
                   "function": "minecraft:copy_components",
+                  "include": [
+                    "colourfulclocks:bornholm_dial_data"
+                  ],
                   "source": "block_entity"
-                },
-                {
-                  "block": "colourfulclocks:bornholm_top_crimson",
-                  "function": "minecraft:copy_state",
-                  "properties": [
-                    "glass_type"
-                  ]
                 }
               ],
               "name": "colourfulclocks:bornholm_top_crimson"

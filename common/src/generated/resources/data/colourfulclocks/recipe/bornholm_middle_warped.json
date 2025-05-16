@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "bornholm_middle_warped",
   "key": {
     "A": {
       "item": "minecraft:warped_hyphae"

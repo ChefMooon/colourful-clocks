@@ -1,0 +1,31 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bornholm_top_bamboo",
+  "key": {
+    "A": {
+      "item": "minecraft:bamboo_block"
+    },
+    "B": {
+      "item": "minecraft:light_blue_stained_glass_pane"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "BCA",
+    "AAA"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:bornholm_dial_data": {
+        "glass": "_light_blue_stained_glass",
+        "pocket_watch": "empty"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:bornholm_top_bamboo"
+  }
+}

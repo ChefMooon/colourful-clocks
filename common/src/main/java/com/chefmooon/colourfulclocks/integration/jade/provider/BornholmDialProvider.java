@@ -1,9 +1,7 @@
 package com.chefmooon.colourfulclocks.integration.jade.provider;
 
-import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
-import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
-import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

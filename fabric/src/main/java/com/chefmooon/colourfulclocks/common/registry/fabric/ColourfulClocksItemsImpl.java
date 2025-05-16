@@ -1,7 +1,9 @@
 package com.chefmooon.colourfulclocks.common.registry.fabric;
 
-import com.chefmooon.colourfulclocks.common.core.PocketWatchTypes;
-import com.chefmooon.colourfulclocks.common.core.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
+import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
+import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
+import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.item.*;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -132,12 +134,14 @@ public class ColourfulClocksItemsImpl {
 
             // Middle
             Supplier<Item> middleItem = registerItemWithTab(ColourfulClocksItems.BORNHOLM_MIDDLE.withSuffix(woodTypes.getSerializedName()),
-                    new BornholmMiddleBlockItem(ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.get(woodTypes).get(), basicItem()));
+                    new BornholmMiddleBlockItem(ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.get(woodTypes).get(), basicItem()
+                            .component(ColourfulClocksDataComponentTypesImpl.BORNHOLM_MIDDLE_GLASS_DATA, BornholmMiddleDoorComponent.getDefaultValue())));
             BORNHOLM_MIDDLE_VARIANTS.put(woodTypes, middleItem);
 
             // Top
             Supplier<Item> topItem = registerItemWithTab(ColourfulClocksItems.BORNHOLM_TOP.withSuffix(woodTypes.getSerializedName()),
-                    new BornholmTopBlockItem(ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.get(woodTypes).get(), basicItem()));
+                    new BornholmTopBlockItem(ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.get(woodTypes).get(), basicItem()
+                            .component(ColourfulClocksDataComponentTypesImpl.BORNHOLM_TOP_GLASS_DATA, BornholmTopGlassComponent.getDefaultValue())));
             BORNHOLM_TOP_VARIANTS.put(woodTypes, topItem);
         }
     }

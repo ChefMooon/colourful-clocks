@@ -1,13 +1,11 @@
 package com.chefmooon.colourfulclocks.client.renderer.neoforge;
 
-import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.client.renderer.BornholmTopBlockEntityRenderer;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmTopBlockEntityImpl;
-import com.chefmooon.colourfulclocks.common.core.PocketWatchTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.item.PocketWatchItem;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
-import com.chefmooon.colourfulclocks.common.util.BornholmTypeUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;

@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.common.block.state.properties;
 
-import com.chefmooon.colourfulclocks.common.core.BornholmDoorTypes;
-import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 
 import java.util.Arrays;

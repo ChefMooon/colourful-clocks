@@ -1,13 +1,17 @@
 package com.chefmooon.colourfulclocks.common.block.entity;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
-import com.chefmooon.colourfulclocks.common.core.PendulumTypes;
+import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
+import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
-import com.chefmooon.colourfulclocks.common.util.BornholmTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -28,12 +32,14 @@ import java.util.function.Supplier;
 public class BornholmMiddleBlockEntity extends BlockEntity implements Container {
     private ItemStack pendelumItem = ItemStack.EMPTY;
     private ItemStack doorItem = ItemStack.EMPTY; // TODO - remove this? door change implementation no longer requires this, use elsewhere?
+    private BornholmMiddleDoorComponent trunkData;
     private static boolean hasChimed = false;
 
     public static final int WEATHERED_THRESHOLD = 6000; // 5 min to weather
 
     public BornholmMiddleBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
+        this.trunkData = BornholmMiddleDoorComponent.getDefaultValue();
     }
 
     @Override
@@ -123,6 +129,7 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.loadAdditional(tag, provider);
 
+        this.trunkData = BornholmMiddleDoorComponent.load(tag);
         if (tag.contains("pendelum_item")) {
             CompoundTag pendelumItemTag = tag.getCompound("pendelum_item");
             pendelumItem = ItemStack.parse(provider, pendelumItemTag).orElse(ItemStack.EMPTY);
@@ -135,6 +142,7 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        this.trunkData.save(tag);
         if (!pendelumItem.isEmpty()) {
             tag.put("pendelum_item", pendelumItem.save(provider, new CompoundTag()));
         }
@@ -190,16 +198,53 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     private static void sound(Level level, BlockPos blockPos, BornholmMiddleBlockEntity bornholmTopBlockEntity) {
         if (level == null || level.isClientSide()) return;
 
-        PendulumTypes pendulumType = BornholmTypeUtil.getPendulumTypeFromItem(bornholmTopBlockEntity.getPendelumItem().getItem());
+        PendulumTypes pendulumType = ColourfulClocksTypeUtil.getPendulumTypeFromItem(bornholmTopBlockEntity.getPendelumItem().getItem());
 
         long timeOfDay = level.getDayTime() % 24000;
 
         if ((timeOfDay == 6000 || timeOfDay == 18000) && !hasChimed) {
-            level.playSound(null, blockPos, pendulumType.getChimeSound(), SoundSource.BLOCKS, 1.0F, pendulumType.getPitchModifier());
+            level.playSound(null, blockPos, pendulumType.getChimeSound().get(), SoundSource.BLOCKS, 1.0F, pendulumType.getPitchModifier());
             hasChimed = true;
         } else if (timeOfDay == 6001 || timeOfDay == 18001) {
             hasChimed = false;
         }
+    }
+
+    public void setPendulumType(ItemStack pendulumItem) {
+        setPendelumItem(pendulumItem);
+        setTrunkData(this.trunkData.getDoorType(), ColourfulClocksTypeUtil.getPendulumTypeFromItem(pendulumItem.getItem()));
+    }
+
+    public void setDoorType(BornholmDoorTypes doorType) {
+        setTrunkData(doorType, this.trunkData.getPendulumType());
+    }
+
+    public void setTrunkData(BornholmDoorTypes doorType, PendulumTypes pendulumType) {
+        this.trunkData = new BornholmMiddleDoorComponent(doorType, pendulumType);
+        setChanged();
+    }
+
+    public ItemStack getBlockAsItem(WoodTypes woodType) {
+        ItemStack itemStack = getItemStack(woodType).getDefaultInstance();
+        itemStack.applyComponents(this.collectComponents());
+        return itemStack;
+    }
+
+    @Override
+    protected void collectImplicitComponents(DataComponentMap.Builder components) {
+        super.collectImplicitComponents(components);
+        components.set(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), this.trunkData);
+    }
+
+    @Override
+    protected void applyImplicitComponents(BlockEntity.DataComponentInput componentInput) {
+        super.applyImplicitComponents(componentInput);
+        this.trunkData = componentInput.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), this.trunkData);
+    }
+
+    @ExpectPlatform
+    public static Item getItemStack(WoodTypes woodTypes) {
+        throw new AssertionError();
     }
 
     @ExpectPlatform

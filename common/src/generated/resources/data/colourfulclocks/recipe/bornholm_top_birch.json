@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "bornholm_top_birch",
   "key": {
     "A": {
       "item": "minecraft:birch_wood"

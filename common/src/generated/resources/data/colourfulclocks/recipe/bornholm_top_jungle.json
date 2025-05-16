@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "bornholm_top_jungle",
   "key": {
     "A": {
       "item": "minecraft:jungle_wood"

@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "bornholm_middle_stripped_mangrove",
   "key": {
     "A": {
       "item": "minecraft:stripped_mangrove_wood"

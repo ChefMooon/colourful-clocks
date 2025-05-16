@@ -3,11 +3,12 @@ package com.chefmooon.colourfulclocks.common.block;
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.BornholmTopGlassTypeProperty;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
-import com.chefmooon.colourfulclocks.common.core.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.core.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
-import com.chefmooon.colourfulclocks.common.util.BornholmTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
 import dev.architectury.injectables.annotations.ExpectPlatform;
@@ -28,6 +29,7 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.RenderShape;
@@ -88,6 +90,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection())
+                .setValue(GLASS_TYPE, context.getItemInHand().get(ColourfulClocksDataComponentTypes.getBornholmTopGlassData()).getGlassType())
                 .setValue(ACTIVATED, isActivated(context.getLevel().getBlockState(context.getClickedPos().below())))
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
     }
@@ -139,12 +142,13 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                             Containers.dropContents(level, pos, block.getDroppableInventory());
                         }
                     }
-                    block.setClockHandsItem(player.getAbilities().instabuild ? mainHandItem.copy() : mainHandItem);
+                    block.setPocketWatchType(player.getAbilities().instabuild ? mainHandItem.copy().getItem() : mainHandItem.getItem());
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.6F);
                     return ItemInteractionResult.SUCCESS;
                 } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_TOP_GLASS)) {
                     if (mainHandItem.is(state.getValue(GLASS_TYPE).getItem())) return ItemInteractionResult.CONSUME;
-                    BornholmTopGlassTypes newBornholmTopGlassTypes = BornholmTypeUtil.getBornholmTopGlassTypeFromItem(mainHandItem.getItem());
+                    BornholmTopGlassTypes newBornholmTopGlassTypes = ColourfulClocksTypeUtil.getBornholmTopGlassTypeFromItem(mainHandItem.getItem());
+                    block.setGlassType(newBornholmTopGlassTypes);
                     level.setBlockAndUpdate(pos, state.setValue(GLASS_TYPE, newBornholmTopGlassTypes));
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_GLASS.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
                     if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
@@ -153,7 +157,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                 } else if (mainHandItem.is(Items.HONEYCOMB)) {
                     ItemStack waxedClockHands = new ItemStack(getWaxedClockHands(block.getClockHandsItem()).get());
                     if (!waxedClockHands.isEmpty()) {
-                        block.setClockHandsItem(waxedClockHands);
+                        block.setPocketWatchType(waxedClockHands.getItem());
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
                         if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
@@ -164,7 +168,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                     Pair<Supplier<Item>, Supplier<SoundEvent>> clockHandInfo = getScrapedClockHands(block.getClockHandsItem());
                     ItemStack scrapedClockHands = new ItemStack(clockHandInfo.getFirst().get());
                     if (!scrapedClockHands.isEmpty()) {
-                        block.setClockHandsItem(scrapedClockHands);
+                        block.setPocketWatchType(scrapedClockHands.getItem());
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, clockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
                         if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
@@ -210,6 +214,16 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return null;
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof BornholmTopBlockEntity bornholmTopBlockEntity) {
+            return bornholmTopBlockEntity.getBlockAsItem(this.woodType);
+        } else {
+            return super.getCloneItemStack(level, pos, state);
+        }
     }
 
     @ExpectPlatform

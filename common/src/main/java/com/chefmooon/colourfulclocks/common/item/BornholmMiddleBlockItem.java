@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.common.item;
 
-import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
-import net.minecraft.core.component.DataComponents;
+import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -10,7 +10,6 @@ import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.block.Block;
 
 import java.util.List;
-import java.util.Objects;
 
 public class BornholmMiddleBlockItem extends BlockItem {
     public BornholmMiddleBlockItem(Block block, Properties properties) {
@@ -19,11 +18,16 @@ public class BornholmMiddleBlockItem extends BlockItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        if (stack.get(DataComponents.BLOCK_STATE) != null) {
-            String type = Objects.requireNonNull(stack.get(DataComponents.BLOCK_STATE).get(BornholmMiddleBlock.DOOR_TYPE)).getTooltip();
+        if (stack.has(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData())) {
+            String type = stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), BornholmMiddleDoorComponent.getDefaultValue()).getDoorType().getTooltip();
             if (!type.isEmpty()) {
                 tooltipComponents.add(Component.literal(type));  // todo - this should be translatable
             }
+            // TODO : figure out how to add pendulum from data on place
+//            String pendulum = stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), BornholmMiddleDoorComponent.getDefaultValue()).getPendulumType().getName();
+//            if (!pendulum.isEmpty()) {
+//                tooltipComponents.add(Component.translatable("Pendulum: " + pendulum));
+//            }
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);

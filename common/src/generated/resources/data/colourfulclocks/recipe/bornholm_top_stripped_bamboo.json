@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "bornholm_top_stripped_bamboo",
   "key": {
     "A": {
       "item": "minecraft:stripped_bamboo_block"

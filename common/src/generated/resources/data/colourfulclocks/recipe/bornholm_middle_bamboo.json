@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "bornholm_middle_bamboo",
   "key": {
     "A": {
       "item": "minecraft:bamboo_block"

@@ -1,11 +1,17 @@
 package com.chefmooon.colourfulclocks.common.block.entity;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
+import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
+import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
+import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.component.DataComponentMap;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
@@ -24,10 +30,12 @@ import java.util.function.Supplier;
 
 public class BornholmTopBlockEntity extends BlockEntity implements Container {
     private ItemStack clockHandsItem = ItemStack.EMPTY;
+    private BornholmTopGlassComponent dialData;
 
     public static final int WEATHERED_THRESHOLD = 6000; // 5 min to weather
     public BornholmTopBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
+        this.dialData = BornholmTopGlassComponent.getDefaultValue();
     }
 
     @Override
@@ -92,6 +100,7 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.loadAdditional(tag, provider);
 
+        this.dialData = BornholmTopGlassComponent.load(tag);
         if (tag.contains("clock_hands")) {
             CompoundTag clockHandsItemTag = tag.getCompound("clock_hands");
             clockHandsItem = ItemStack.parse(provider, clockHandsItemTag).orElse(ItemStack.EMPTY);
@@ -100,6 +109,7 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
+        this.dialData.save(tag);
         if (!clockHandsItem.isEmpty()) {
             tag.put("clock_hands", clockHandsItem.save(provider, new CompoundTag()));
         }
@@ -120,7 +130,6 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     public static void weatherTick(Level level, BlockPos blockPos, BlockState blockState, BornholmTopBlockEntity bornholmTopBlockEntity) {
         if (blockState.getValue(BornholmTopBlock.ACTIVATED)) {
             weatherItem(level, blockPos, bornholmTopBlockEntity);
-
         }
     }
 
@@ -143,10 +152,48 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     private static void advanceWeathering(Level level, BlockPos blockPos, ItemStack itemStack, BornholmTopBlockEntity bornholmTopBlockEntity) {
         ItemStack weatheredItemStack = new ItemStack(getNextWeatheredCopperItem(itemStack).get());
         if (!weatheredItemStack.isEmpty()) {
-            bornholmTopBlockEntity.setClockHandsItem(weatheredItemStack);
+            bornholmTopBlockEntity.setPocketWatchType(weatheredItemStack.getItem());
             level.blockEntityChanged(blockPos);
             bornholmTopBlockEntity.setChanged();
         }
+    }
+
+
+    public void setPocketWatchType(Item item) {
+        setClockHandsItem(new ItemStack(item)); // TODO : cannot render dial from dataComponent, remove this after that is figured out
+        setDialData(this.dialData.getGlassType(), ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(item));
+    }
+
+    public void setGlassType(BornholmTopGlassTypes glassType) {
+        setDialData(glassType, this.dialData.getPocketWatchType());
+    }
+
+    public void setDialData(BornholmTopGlassTypes glassType, PocketWatchTypes pocketWatchType) {
+        this.dialData = new BornholmTopGlassComponent(glassType, pocketWatchType);
+        setChanged();
+    }
+
+    public ItemStack getBlockAsItem(WoodTypes woodType) {
+        ItemStack itemStack = getItemStack(woodType).getDefaultInstance();
+        itemStack.applyComponents(this.collectComponents());
+        return itemStack;
+    }
+
+    @Override
+    protected void collectImplicitComponents(DataComponentMap.Builder components) {
+        super.collectImplicitComponents(components);
+        components.set(ColourfulClocksDataComponentTypes.getBornholmTopGlassData(), this.dialData);
+    }
+
+    @Override
+    protected void applyImplicitComponents(BlockEntity.DataComponentInput componentInput) {
+        super.applyImplicitComponents(componentInput);
+        this.dialData = componentInput.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmTopGlassData(), this.dialData);
+    }
+
+    @ExpectPlatform
+    public static Item getItemStack(WoodTypes woodTypes) {
+        throw new AssertionError();
     }
 
     @ExpectPlatform

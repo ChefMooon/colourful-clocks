@@ -1,6 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "category": "misc",
+  "group": "bornholm_top_acacia",
   "key": {
     "A": {
       "item": "minecraft:acacia_wood"

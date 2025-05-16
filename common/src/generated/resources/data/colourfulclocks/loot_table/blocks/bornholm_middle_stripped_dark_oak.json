@@ -29,14 +29,10 @@
               "functions": [
                 {
                   "function": "minecraft:copy_components",
+                  "include": [
+                    "colourfulclocks:bornholm_trunk_data"
+                  ],
                   "source": "block_entity"
-                },
-                {
-                  "block": "colourfulclocks:bornholm_middle_stripped_dark_oak",
-                  "function": "minecraft:copy_state",
-                  "properties": [
-                    "door_type"
-                  ]
                 }
               ],
               "name": "colourfulclocks:bornholm_middle_stripped_dark_oak"

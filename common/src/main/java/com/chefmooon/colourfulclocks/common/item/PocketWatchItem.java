@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks.common.item;
 
-import com.chefmooon.colourfulclocks.common.core.PocketWatchTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
