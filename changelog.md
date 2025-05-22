@@ -16,3 +16,4 @@ actively watching the issues page to resolve any bugs as soon as possible.
 
 ### Changed
 - Trunk and Dial tooltips for glass type now use translatable vanilla item name translations
+- WTHIT Trunk and Dial tooltips for glass type now use translatable vanilla item name translations

@@ -3,7 +3,10 @@ package com.chefmooon.colourfulclocks.integration.wthit.provider;
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.integration.wthit.ColourfulClocksCommonWailaPlugin;
-import mcp.mobius.waila.api.*;
+import mcp.mobius.waila.api.IBlockAccessor;
+import mcp.mobius.waila.api.IBlockComponentProvider;
+import mcp.mobius.waila.api.IPluginConfig;
+import mcp.mobius.waila.api.ITooltip;
 import net.minecraft.network.chat.Component;
 
 public class BornholmTrunkProvider implements IBlockComponentProvider {
@@ -21,7 +24,7 @@ public class BornholmTrunkProvider implements IBlockComponentProvider {
     }
 
     private static void addDoorTypeTooltip(ITooltip tooltip, BornholmDoorTypes doorType) {
-        tooltip.addLine(Component.literal(doorType.getTooltip()));
+        tooltip.addLine(Component.translatable(doorType.getItem().getDescriptionId()));
     }
 }
 
