@@ -1,5 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block.entity;
 
+import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
@@ -57,8 +58,15 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
         setItem(0, stack.split(1));
     }
 
+    public ItemStack removeClockHandsItem() {
+        ItemStack stored = clockHandsItem;
+        setClockHandsItem(ItemStack.EMPTY);
+        setDialData(this.dialData.getGlassType(), PocketWatchTypes.EMPTY);
+        return stored;
+    }
+
     public ItemStack getClockHandsItem() {
-        return clockHandsItem;
+        return this.clockHandsItem;
     }
 
     public NonNullList<ItemStack> getDroppableInventory() {
@@ -81,7 +89,9 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
 
     @Override
     public void setItem(int slot, ItemStack stack) {
-        clockHandsItem = stack.split(1);
+        if (slot == 0) {
+            clockHandsItem = stack;
+        }
         setChanged();
     }
 
@@ -101,7 +111,10 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
         super.loadAdditional(tag, provider);
 
         this.dialData = BornholmTopGlassComponent.load(tag);
-        if (tag.contains("clock_hands")) {
+        if (dialData.getPocketWatchType() != PocketWatchTypes.EMPTY) {
+            setClockHandsItem(new ItemStack(ColourfulClocksTypeUtil.getPocketWatchItemFromType(dialData.getPocketWatchType())));
+        }
+        if (tag.contains("clock_hands")) { // legacy data check
             CompoundTag clockHandsItemTag = tag.getCompound("clock_hands");
             clockHandsItem = ItemStack.parse(provider, clockHandsItemTag).orElse(ItemStack.EMPTY);
         }
@@ -110,9 +123,6 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         this.dialData.save(tag);
-        if (!clockHandsItem.isEmpty()) {
-            tag.put("clock_hands", clockHandsItem.save(provider, new CompoundTag()));
-        }
 
         super.saveAdditional(tag, provider);
     }
@@ -152,16 +162,16 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     private static void advanceWeathering(Level level, BlockPos blockPos, ItemStack itemStack, BornholmTopBlockEntity bornholmTopBlockEntity) {
         ItemStack weatheredItemStack = new ItemStack(getNextWeatheredCopperItem(itemStack).get());
         if (!weatheredItemStack.isEmpty()) {
-            bornholmTopBlockEntity.setPocketWatchType(weatheredItemStack.getItem());
+            bornholmTopBlockEntity.setPocketWatchType(weatheredItemStack);
             level.blockEntityChanged(blockPos);
             bornholmTopBlockEntity.setChanged();
         }
     }
 
 
-    public void setPocketWatchType(Item item) {
-        setClockHandsItem(new ItemStack(item)); // TODO : cannot render dial from dataComponent, remove this after that is figured out
-        setDialData(this.dialData.getGlassType(), ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(item));
+    public void setPocketWatchType(ItemStack itemStack) {
+        setDialData(this.dialData.getGlassType(), ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(itemStack.getItem()));
+        setClockHandsItem(itemStack); // TODO : cannot render dial from dataComponent, remove this after that is figured out
     }
 
     public void setGlassType(BornholmTopGlassTypes glassType) {
@@ -171,6 +181,10 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     public void setDialData(BornholmTopGlassTypes glassType, PocketWatchTypes pocketWatchType) {
         this.dialData = new BornholmTopGlassComponent(glassType, pocketWatchType);
         setChanged();
+    }
+
+    public BornholmTopGlassComponent getDialData() {
+        return this.dialData;
     }
 
     public ItemStack getBlockAsItem(WoodTypes woodType) {

@@ -1,7 +1,9 @@
 package com.chefmooon.colourfulclocks.common.item;
 
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
+import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
+import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
@@ -16,16 +18,14 @@ public class BornholmMiddleBlockItem extends BlockItem {
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if (stack.has(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData())) {
-//            String type = stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), BornholmMiddleDoorComponent.getDefaultValue()).getDoorType().getTooltip();
             Item glassItem = stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), BornholmMiddleDoorComponent.getDefaultValue()).getDoorType().getItem();
             if (glassItem != Items.AIR) {
                 tooltipComponents.add(Component.translatable(glassItem.getDescriptionId()));
             }
-            // TODO : figure out how to add pendulum from data on place
-//            String pendulum = stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), BornholmMiddleDoorComponent.getDefaultValue()).getPendulumType().getName();
-//            if (!pendulum.isEmpty()) {
-//                tooltipComponents.add(Component.translatable("Pendulum: " + pendulum));
-//            }
+            Item pendulumItem = ColourfulClocksTypeUtil.getPendulumItemFromType(stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), BornholmMiddleDoorComponent.getDefaultValue()).getPendulumType());
+            if (pendulumItem != PendulumTypes.EMPTY.getItem()) {
+                tooltipComponents.add(Component.translatable(pendulumItem.getDescriptionId()));
+            }
         }
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);

@@ -4,7 +4,6 @@ import com.chefmooon.colourfulclocks.client.renderer.BornholmMiddleBlockEntityRe
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmMiddleBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
-import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
@@ -31,32 +30,13 @@ public class BornholmMiddleBlockEntityRendererImpl extends BornholmMiddleBlockEn
         BlockState state = level.getBlockState(blockEntity.getBlockPos());
         if (!(state.getBlock() instanceof BornholmMiddleBlock)) return;
 
-        ItemStack pendulum = blockEntity.getPendelumItem();
-
-//        float swingSpeedModifier = getSwingSpeedFromPendulumItem(pendulum);
-        PendulumTypes pendulumType = ColourfulClocksTypeUtil.getPendulumTypeFromItem(blockEntity.getPendelumItem().getItem());
-
-        if (!pendulum.isEmpty()) {
+        PendulumTypes pendulumType = blockEntity.getTrunkData().getPendulumType();
+        if (pendulumType != PendulumTypes.EMPTY) {
+            ItemStack pendulum = new ItemStack(ColourfulClocksTypeUtil.getPendulumItemFromType(pendulumType));
             BakedModel model = minecraft.getItemRenderer().getModel(pendulum, level, null, 0);
             renderPendulum(poseStack, partialTick, state, pendulumType.getSwingSpeedModifier());
             minecraft.getItemRenderer().render(pendulum, ItemDisplayContext.FIXED, false, poseStack, bufferSource, packedLight, packedOverlay, model);
             poseStack.popPose();
-        }
-    }
-
-    public static float getSwingSpeedFromPendulumItem(ItemStack itemStack) {
-        if (itemStack.is(ColourfulClocksItemsImpl.IRON_PENDULUM.get())) {
-            return PendulumTypes.IRON.getSwingSpeedModifier();
-        } else if (itemStack.is(ColourfulClocksItemsImpl.COPPER_PENDULUM.get())) {
-            return PendulumTypes.COPPER.getSwingSpeedModifier();
-        } else if (itemStack.is(ColourfulClocksItemsImpl.GOLD_PENDULUM.get())) {
-            return PendulumTypes.GOLD.getSwingSpeedModifier();
-        } else if (itemStack.is(ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get())) {
-            return PendulumTypes.DIAMOND.getSwingSpeedModifier();
-        } else if (itemStack.is(ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get())) {
-            return PendulumTypes.NETHERITE.getSwingSpeedModifier();
-        } else {
-            return 1.0F;
         }
     }
 }

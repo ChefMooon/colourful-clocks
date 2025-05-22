@@ -6,6 +6,7 @@ import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmTopBlo
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.item.PocketWatchItem;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
+import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -31,27 +32,14 @@ public class BornholmTopBlockEntityRendererImpl extends BornholmTopBlockEntityRe
         BlockState state = world.getBlockState(blockEntity.getBlockPos());
         if (!(state.getBlock() instanceof BornholmTopBlock)) return;
 
-        ItemStack clockHands = blockEntity.getClockHandsItem();
-
-        if (clockHands.getItem() instanceof PocketWatchItem pocketWatchItem) {
-            if (!clockHands.isEmpty()) {
-                // todo - figure out a way to get a different model from an item movement item is used but hand model is rendered
-//            BakedModel model = minecraft.getItemRenderer().getModel(clockHands, world, null, 0); // Original, grabs the same item model
-//            BakedModel model = minecraft.getModelManager().getModel(ModelResourceLocation.inventory(ModelLocationUtils.getModelLocation(clockHands.getItem()).withSuffix("_in_clock"))); // an Advanced attempt need to remove the "item/"
-
-//                PocketWatchTypes type = pocketWatchItem.getType();
-//                BakedModel model = minecraft.getModelManager().getModel(type.getInClockLocation());
-                // todo - figure out a dynamic way to find this instead of this way? (hate it)
-//                PocketWatchTypes pocketWatchType = BornholmTypeUtil.getPocketWatchTypeFromItem(blockEntity.getClockHandsItem().getItem());
-                BakedModel model = minecraft.getModelManager().getModel(getHandModelResourceLocation(clockHands));
-
-                renderClockHands(poseStack, partialTick, state);
-
-                minecraft.getItemRenderer().render(clockHands, ItemDisplayContext.FIXED, false, poseStack, bufferSource, packedLight, packedOverlay, model);
-                poseStack.popPose();
-            }
+        PocketWatchTypes pocketWatchType = blockEntity.getDialData().getPocketWatchType();
+        if (pocketWatchType != PocketWatchTypes.EMPTY) {
+            ItemStack pocketWatch = new ItemStack(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType));
+            BakedModel model = minecraft.getModelManager().getModel(getHandModelResourceLocation(pocketWatch));
+            renderClockHands(poseStack, partialTick, state);
+            minecraft.getItemRenderer().render(pocketWatch, ItemDisplayContext.FIXED, false, poseStack, bufferSource, packedLight, packedOverlay, model);
+            poseStack.popPose();
         }
-
     }
 
     // todo - improve this

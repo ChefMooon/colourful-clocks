@@ -5,6 +5,7 @@ import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulCloc
 import com.chefmooon.colourfulclocks.common.block.state.properties.DoorTypeProperty;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
@@ -15,6 +16,8 @@ import com.mojang.serialization.MapCodec;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
@@ -22,11 +25,14 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.*;
 import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.Block;
@@ -40,6 +46,9 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -47,6 +56,7 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
@@ -196,7 +206,6 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                 } else if (mainHandItem.is(Items.HONEYCOMB)) {
                     ItemStack waxedPendulum = new ItemStack(getWaxedCopperPendulum(block.getPendelumItem()).get());
                     if (!waxedPendulum.isEmpty()) {
-                        block.setPendelumItem(waxedPendulum);
                         block.setPendulumType(waxedPendulum);
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
@@ -227,8 +236,8 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     ItemStack pendulum = block.getPendelumItem();
                     if (!pendulum.isEmpty()) {
                         if (player.isCreative()) {
-                            block.removeItem(0, 1);
-                        } else if (!player.getInventory().add(block.removeItem(0, 1))) {
+                            block.removePendulumItem();
+                        } else if (!player.getInventory().add(block.removePendulumItem())) {
                             Containers.dropContents(level, pos, block.getDroppableInventory());
                         }
                         level.blockEntityChanged(pos);
@@ -256,17 +265,42 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     }
 
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+        List<ItemStack> drops = super.getDrops(state, params);
+
+        LootParams context = params.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+        ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
+        ServerLevel serverLevel = context.getLevel();
+        boolean hasSilkTouch = tool != null && tool.isEnchanted() && EnchantmentHelper.getItemEnchantmentLevel(serverLevel.registryAccess().registry(Registries.ENCHANTMENT).get().getHolderOrThrow(Enchantments.SILK_TOUCH), tool) > 0;
+
+        if (!hasSilkTouch) {
+            BlockEntity blockEntity = context.getParamOrNull(LootContextParams.BLOCK_ENTITY);
             if (blockEntity instanceof BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
-                ItemStack item = bornholmMiddleBlockEntity.getPendelumItem();
-                if (!item.isEmpty()) {
-                    Containers.dropContents(level, pos, bornholmMiddleBlockEntity.getDroppableInventory());
+                ItemStack pendulumItem = bornholmMiddleBlockEntity.getPendelumItem();
+                if (!pendulumItem.isEmpty()) {
+                    drops.add(pendulumItem);
                 }
             }
         }
-        super.onRemove(state, level, pos, newState, isMoving);
+
+        return drops;
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+        if (!level.isClientSide) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
+                BornholmMiddleDoorComponent trunkData = stack.get(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData());
+                if (trunkData != null) {
+                    bornholmMiddleBlockEntity.setTrunkData(trunkData.getDoorType(), trunkData.getPendulumType());
+                    if (trunkData.getPendulumType() != PendulumTypes.EMPTY) {
+                        bornholmMiddleBlockEntity.setPendulumType(new ItemStack(ColourfulClocksTypeUtil.getPendulumItemFromType(trunkData.getPendulumType())));
+                    }
+                }
+            }
+        }
     }
 
     @Override

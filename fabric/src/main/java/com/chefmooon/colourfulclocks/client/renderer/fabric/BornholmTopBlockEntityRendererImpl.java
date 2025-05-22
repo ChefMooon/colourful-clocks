@@ -5,6 +5,7 @@ import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.fabric.BornholmTopBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
+import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -30,26 +31,12 @@ public class BornholmTopBlockEntityRendererImpl<T extends BornholmTopBlockEntity
         BlockState state = world.getBlockState(blockEntity.getBlockPos());
         if (!(state.getBlock() instanceof BornholmTopBlock)) return;
 
-        ItemStack clockHands = blockEntity.getClockHandsItem();
-
-        // TODO : Should be able to render from the data instead of the item
-//        if (blockEntity.getDialData().getPocketWatchType().getId() != 0) {
-//            ItemStack pocketWatchItem = new ItemStack(ColourfulClocksTypeUtil.getPocketWatchItemFromType(blockEntity.getDialData().getPocketWatchType()));
-//            BakedModel model = minecraft.getModelManager().getModel(getHandModelResourceLocation(pocketWatchItem));
-//
-//            renderClockHands(poseStack, partialTick, state);
-//
-//            minecraft.getItemRenderer().render(clockHands, ItemDisplayContext.FIXED, false, poseStack, bufferSource, packedLight, packedOverlay, model);
-//            poseStack.popPose();
-//        }
-
-        if (!clockHands.isEmpty()) {
-//            BakedModel model = minecraft.getItemRenderer().getModel(clockHands, world, null, 0); // see neoforge class for notes, to be updated...
-            BakedModel model = minecraft.getModelManager().getModel(getHandModelResourceLocation(clockHands));
-
+        PocketWatchTypes pocketWatchType = blockEntity.getDialData().getPocketWatchType();
+        if (pocketWatchType != PocketWatchTypes.EMPTY) {
+            ItemStack pocketWatch = new ItemStack(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType));
+            BakedModel model = minecraft.getModelManager().getModel(getHandModelResourceLocation(pocketWatch));
             renderClockHands(poseStack, partialTick, state);
-
-            minecraft.getItemRenderer().render(clockHands, ItemDisplayContext.FIXED, false, poseStack, bufferSource, packedLight, packedOverlay, model);
+            minecraft.getItemRenderer().render(pocketWatch, ItemDisplayContext.FIXED, false, poseStack, bufferSource, packedLight, packedOverlay, model);
             poseStack.popPose();
         }
     }

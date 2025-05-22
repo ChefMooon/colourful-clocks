@@ -1,5 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block.entity;
 
+import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
@@ -64,7 +65,14 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
 
     public void setPendelumItem(ItemStack stack) {
         setItem(0, stack.split(1));
-        setChanged();
+    }
+
+    public ItemStack removePendulumItem() {
+        ItemStack stack = pendelumItem;
+        removeItem(0, 1);
+        setTrunkData(this.trunkData.getDoorType(), PendulumTypes.EMPTY);
+        setPendulumType(ItemStack.EMPTY);
+        return stack;
     }
 
     public ItemStack getPendelumItem() {
@@ -130,6 +138,9 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
         super.loadAdditional(tag, provider);
 
         this.trunkData = BornholmMiddleDoorComponent.load(tag);
+        if (trunkData.pendulumType() != PendulumTypes.EMPTY) {
+            setPendelumItem(new ItemStack(ColourfulClocksTypeUtil.getPendulumItemFromType(trunkData.pendulumType())));
+        }
         if (tag.contains("pendelum_item")) {
             CompoundTag pendelumItemTag = tag.getCompound("pendelum_item");
             pendelumItem = ItemStack.parse(provider, pendelumItemTag).orElse(ItemStack.EMPTY);
@@ -143,12 +154,12 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         this.trunkData.save(tag);
-        if (!pendelumItem.isEmpty()) {
-            tag.put("pendelum_item", pendelumItem.save(provider, new CompoundTag()));
-        }
-        if (!doorItem.isEmpty()) {
-            tag.put("door_item", doorItem.save(provider, new CompoundTag()));
-        }
+//        if (!pendelumItem.isEmpty()) {
+//            tag.put("pendelum_item", pendelumItem.save(provider, new CompoundTag()));
+//        }
+//        if (!doorItem.isEmpty()) {
+//            tag.put("door_item", doorItem.save(provider, new CompoundTag()));
+//        }
 
         super.saveAdditional(tag, provider);
     }
@@ -211,8 +222,8 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     }
 
     public void setPendulumType(ItemStack pendulumItem) {
-        setPendelumItem(pendulumItem);
         setTrunkData(this.trunkData.getDoorType(), ColourfulClocksTypeUtil.getPendulumTypeFromItem(pendulumItem.getItem()));
+        setPendelumItem(pendulumItem);
     }
 
     public void setDoorType(BornholmDoorTypes doorType) {
@@ -222,6 +233,10 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     public void setTrunkData(BornholmDoorTypes doorType, PendulumTypes pendulumType) {
         this.trunkData = new BornholmMiddleDoorComponent(doorType, pendulumType);
         setChanged();
+    }
+
+    public BornholmMiddleDoorComponent getTrunkData() {
+        return this.trunkData;
     }
 
     public ItemStack getBlockAsItem(WoodTypes woodType) {

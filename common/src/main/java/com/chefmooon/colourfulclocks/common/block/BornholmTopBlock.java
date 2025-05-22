@@ -1,10 +1,12 @@
 package com.chefmooon.colourfulclocks.common.block;
 
+import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.BornholmTopGlassTypeProperty;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
@@ -15,6 +17,8 @@ import com.mojang.serialization.MapCodec;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
@@ -22,11 +26,14 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -43,12 +50,16 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.function.Supplier;
 
 public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
@@ -90,8 +101,9 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
+        BornholmTopGlassComponent bornholmTopGlassComponent = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getBornholmTopGlassData(), BornholmTopGlassComponent.getDefaultValue());
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection())
-                .setValue(GLASS_TYPE, context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getBornholmTopGlassData(), BornholmTopGlassComponent.getDefaultValue()).getGlassType())
+                .setValue(GLASS_TYPE, bornholmTopGlassComponent.getGlassType())
                 .setValue(ACTIVATED, isActivated(context.getLevel().getBlockState(context.getClickedPos().below())))
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
     }
@@ -143,8 +155,9 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                             Containers.dropContents(level, pos, block.getDroppableInventory());
                         }
                     }
-                    block.setPocketWatchType(player.getAbilities().instabuild ? mainHandItem.copy().getItem() : mainHandItem.getItem());
+                    block.setPocketWatchType(player.getAbilities().instabuild ? mainHandItem.copy() : mainHandItem);
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.6F);
+                    level.updateNeighborsAt(pos, this);
                     return ItemInteractionResult.SUCCESS;
                 } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_TOP_GLASS)) {
                     if (mainHandItem.is(state.getValue(GLASS_TYPE).getItem())) return ItemInteractionResult.CONSUME;
@@ -158,7 +171,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                 } else if (mainHandItem.is(Items.HONEYCOMB)) {
                     ItemStack waxedClockHands = new ItemStack(getWaxedClockHands(block.getClockHandsItem()).get());
                     if (!waxedClockHands.isEmpty()) {
-                        block.setPocketWatchType(waxedClockHands.getItem());
+                        block.setPocketWatchType(waxedClockHands);
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
                         if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
@@ -169,7 +182,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                     Pair<Supplier<Item>, Supplier<SoundEvent>> clockHandInfo = getScrapedClockHands(block.getClockHandsItem());
                     ItemStack scrapedClockHands = new ItemStack(clockHandInfo.getFirst().get());
                     if (!scrapedClockHands.isEmpty()) {
-                        block.setPocketWatchType(scrapedClockHands.getItem());
+                        block.setPocketWatchType(scrapedClockHands);
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, clockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
                         if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
@@ -180,11 +193,12 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
             } else {
                 if (player.isShiftKeyDown() && !block.getClockHandsItem().isEmpty()) {
                     if (player.isCreative()) {
-                        block.removeItem(0, 1);
-                    } else if (!player.getInventory().add(block.removeItem(0, 1))) {
+                        block.removeClockHandsItem();
+                    } else if (!player.getInventory().add(block.removeClockHandsItem())) {
                         Containers.dropContents(level, pos, block.getDroppableInventory());
                     }
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
+                    level.updateNeighborsAt(pos, this);
 
                     return ItemInteractionResult.SUCCESS;
                 }
@@ -194,17 +208,42 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     }
 
     @Override
-    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
-        if (state.getBlock() != newState.getBlock()) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+        List<ItemStack> drops = super.getDrops(state, params);
+
+        LootParams context = params.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+        ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
+        ServerLevel serverLevel = context.getLevel();
+        boolean hasSilkTouch = tool != null && tool.isEnchanted() && EnchantmentHelper.getItemEnchantmentLevel(serverLevel.registryAccess().registry(Registries.ENCHANTMENT).get().getHolderOrThrow(Enchantments.SILK_TOUCH), tool) > 0;
+
+        if (!hasSilkTouch) {
+            BlockEntity blockEntity = context.getParamOrNull(LootContextParams.BLOCK_ENTITY);
             if (blockEntity instanceof BornholmTopBlockEntity bornholmTopBlockEntity) {
-                ItemStack item = bornholmTopBlockEntity.getClockHandsItem();
-                if (!item.isEmpty()) {
-                    Containers.dropContents(level, pos, bornholmTopBlockEntity.getDroppableInventory());
+                ItemStack pocketWatchItem = bornholmTopBlockEntity.getClockHandsItem();
+                if (!pocketWatchItem.isEmpty()) {
+                    drops.add(pocketWatchItem);
                 }
             }
         }
-        super.onRemove(state, level, pos, newState, isMoving);
+
+        return drops;
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+        if (!level.isClientSide) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof BornholmTopBlockEntity bornholmTopBlockEntity) {
+                BornholmTopGlassComponent dialData = stack.get(ColourfulClocksDataComponentTypes.getBornholmTopGlassData());
+                if (dialData != null) {
+                    bornholmTopBlockEntity.setDialData(dialData.getGlassType(), dialData.getPocketWatchType());
+                    if (dialData.getPocketWatchType() != PocketWatchTypes.EMPTY) {
+                        bornholmTopBlockEntity.setClockHandsItem(new ItemStack(ColourfulClocksTypeUtil.getPocketWatchItemFromType(dialData.getPocketWatchType())));
+                    }
+                }
+            }
+        }
     }
 
     @Override
