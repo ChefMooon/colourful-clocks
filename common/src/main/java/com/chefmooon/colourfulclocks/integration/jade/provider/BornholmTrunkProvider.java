@@ -18,7 +18,7 @@ public enum BornholmTrunkProvider implements IBlockComponentProvider, IServerDat
     @Override
     public void appendTooltip(ITooltip iTooltip, BlockAccessor blockAccessor, IPluginConfig iPluginConfig) {
         if (blockAccessor.getServerData().contains("bornholm_trunk_door_type")) {
-            iTooltip.add((Component.literal(blockAccessor.getServerData().getString("bornholm_trunk_door_type"))));
+            iTooltip.add((Component.translatable(blockAccessor.getServerData().getString("bornholm_trunk_door_type"))));
         }
     }
 
@@ -26,7 +26,7 @@ public enum BornholmTrunkProvider implements IBlockComponentProvider, IServerDat
     public void appendServerData(CompoundTag compoundTag, BlockAccessor blockAccessor) {
         if (blockAccessor.getBlock() instanceof BornholmMiddleBlock) {
             BornholmDoorTypes doorType = blockAccessor.getBlockState().getValue(BornholmMiddleBlock.DOOR_TYPE);
-            if (doorType != BornholmDoorTypes.BASE) compoundTag.putString("bornholm_trunk_door_type", doorType.getTooltip());
+            if (doorType != BornholmDoorTypes.BASE) compoundTag.putString("bornholm_trunk_door_type", doorType.getBlock().getDescriptionId());
         }
     }
 

@@ -17,7 +17,7 @@ public enum BornholmDialProvider implements IBlockComponentProvider, IServerData
     @Override
     public void appendTooltip(ITooltip iTooltip, BlockAccessor blockAccessor, IPluginConfig iPluginConfig) {
         if (blockAccessor.getServerData().contains("bornholm_dial_glass_type")) {
-            iTooltip.add(Component.literal(blockAccessor.getServerData().getString("bornholm_dial_glass_type")));
+            iTooltip.add(Component.translatable(blockAccessor.getServerData().getString("bornholm_dial_glass_type")));
         }
     }
 
@@ -25,7 +25,7 @@ public enum BornholmDialProvider implements IBlockComponentProvider, IServerData
     public void appendServerData(CompoundTag compoundTag, BlockAccessor blockAccessor) {
         if (blockAccessor.getBlock() instanceof BornholmTopBlock) {
             BornholmTopGlassTypes glassType = blockAccessor.getBlockState().getValue(BornholmTopBlock.GLASS_TYPE);
-            if (glassType != BornholmTopGlassTypes.GLASS) compoundTag.putString("bornholm_dial_glass_type", glassType.getTooltip());
+            if (glassType != BornholmTopGlassTypes.GLASS) compoundTag.putString("bornholm_dial_glass_type", glassType.getBlock().getDescriptionId());
         }
     }
 
