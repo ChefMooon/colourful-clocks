@@ -15,5 +15,9 @@ actively watching the issues page to resolve any bugs as soon as possible.
   - Dial: glass, dial
 
 ### Changed
+- Adjusted Copper Pendulum swing speeds(Also Waxed)
+  - Exposed Copper: Full Speed -> 3/4 Speed
+  - Weathered Copper: Full Speed -> 1/2 Speed
+  - Oxidized Copper: Full Speed -> 1/4 Speed
 - Trunk and Dial tooltips for glass type now use translatable vanilla item name translations
 - Jade/WTHIT Trunk and Dial tooltips for glass type now use translatable vanilla item name translations
