@@ -24,6 +24,6 @@ public class BornholmDialProvider implements IBlockComponentProvider {
     }
 
     private static void addGlassTypeTooltip(ITooltip tooltip, BornholmTopGlassTypes glassType) {
-        tooltip.addLine(Component.translatable(glassType.getItem().getDescriptionId()));
+        tooltip.addLine(Component.translatable(glassType.getBlock().getDescriptionId()));
     }
 }

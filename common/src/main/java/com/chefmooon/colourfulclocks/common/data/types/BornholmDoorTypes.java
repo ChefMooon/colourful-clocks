@@ -18,7 +18,7 @@ import static net.minecraft.data.models.model.ModelLocationUtils.getModelLocatio
 
 public enum BornholmDoorTypes implements StringRepresentable {
 
-    BASE(0, "base", "", ItemStack.EMPTY.getItem(), Blocks.GLASS, getModelLocation(Blocks.GLASS)),
+    BASE(0, "base", "", ItemStack.EMPTY.getItem(), Blocks.AIR, getModelLocation(Blocks.GLASS)),
     GLASS(1, "glass", "Glass", Items.GLASS_PANE, Blocks.GLASS, TextUtil.res("block/glass_bornholm_door")),
     GLASS_WHITE(2, "white_stained_glass", "White Stained Glass", Items.WHITE_STAINED_GLASS_PANE, Blocks.WHITE_STAINED_GLASS, TextUtil.res("block/white_stained_glass_bornholm_door")),
     GLASS_ORANGE(3, "orange_stained_glass", "Orange Stained Glass", Items.ORANGE_STAINED_GLASS_PANE, Blocks.ORANGE_STAINED_GLASS, TextUtil.res("block/orange_stained_glass_bornholm_door")),

@@ -20,9 +20,9 @@ public class BornholmTopBlockItem extends BlockItem {
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if (stack.has(ColourfulClocksDataComponentTypes.getBornholmTopGlassData())) {
-            Item glassItem = stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmTopGlassData(), BornholmTopGlassComponent.getDefaultValue()).getGlassType().getItem();
-            if (glassItem != BornholmTopGlassTypes.GLASS.getItem()) {
-                tooltipComponents.add(Component.translatable(glassItem.getDescriptionId()));
+            Block glassType = stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmTopGlassData(), BornholmTopGlassComponent.getDefaultValue()).getGlassType().getBlock();
+            if (glassType != BornholmTopGlassTypes.GLASS.getBlock()) {
+                tooltipComponents.add(Component.translatable(glassType.getDescriptionId()));
             }
             Item pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmTopGlassData(), BornholmTopGlassComponent.getDefaultValue()).getPocketWatchType());
             if (pocketWatchItem != PocketWatchTypes.EMPTY.getItem()) {

@@ -24,7 +24,7 @@ public class BornholmTrunkProvider implements IBlockComponentProvider {
     }
 
     private static void addDoorTypeTooltip(ITooltip tooltip, BornholmDoorTypes doorType) {
-        tooltip.addLine(Component.translatable(doorType.getItem().getDescriptionId()));
+        tooltip.addLine(Component.translatable(doorType.getBlock().getDescriptionId()));
     }
 }
 
