@@ -116,6 +116,16 @@
       }
     ]
   },
+  "block.bornholm.tick": {
+    "subtitle": "colourfulclocks.subtitles.block.bornholm.tick",
+    "sounds": [
+      "colourfulclocks:dial_tick_0",
+      "colourfulclocks:dial_tick_1",
+      "colourfulclocks:dial_tick_2",
+      "colourfulclocks:dial_tick_3",
+      "colourfulclocks:dial_tick_4"
+    ]
+  },
   "block.bornholm.door_open": {
     "subtitle": "colourfulclocks.subtitles.block.bornholm.door_open",
     "sounds": [

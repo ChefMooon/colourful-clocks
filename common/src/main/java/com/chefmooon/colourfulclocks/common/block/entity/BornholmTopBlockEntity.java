@@ -7,6 +7,7 @@ import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
@@ -17,6 +18,8 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -141,6 +144,9 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
         if (blockState.getValue(BornholmTopBlock.ACTIVATED)) {
             weatherItem(level, blockPos, bornholmTopBlockEntity);
         }
+        if (blockState.getValue(BornholmTopBlock.TICKING)) {
+            tickSound(level, blockPos);
+        }
     }
 
     private static void weatherItem(Level level, BlockPos blockPos, BornholmTopBlockEntity bornholmTopBlockEntity) {
@@ -165,6 +171,14 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
             bornholmTopBlockEntity.setPocketWatchType(weatheredItemStack);
             level.blockEntityChanged(blockPos);
             bornholmTopBlockEntity.setChanged();
+        }
+    }
+
+    private static void tickSound(Level level, BlockPos blockPos) {
+        if (level == null || level.isClientSide()) return;
+
+        if (level.getGameTime() % 100 == 0) {
+            level.playSound(null, blockPos, ColourfulClocksSounds.BLOCK_BORNHOLM_TICK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         }
     }
 

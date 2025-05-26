@@ -3,6 +3,11 @@ Before updating, please **back-up** your world. Greatly appreciate any bug repor
 actively watching the issues page to resolve any bugs as soon as possible.
 
 ### Added
+- Bornholm Dials can now make a ticking sound
+  - Right-click with redstone enable ticking (consumes redstone)
+  - Right-click with a pickaxe to disable ticking (uses durability)
+  - Can be disabled with a redstone signal
+  - Clock must be assembled properly with trunk and base below
 - Recipes for glass variants of the Bornholm Trunk and Dial
 - Item models now show glass type
 - Pick Block now collects Trunk and Dial Glass Data

@@ -24,6 +24,7 @@ public class ColourfulClocksSounds {
     public static final Supplier<SoundEvent> ITEM_LAPIS_LAZULI_PENDULUM_CHIME = registerSound("item.lapis_lazuli_pendulum.chime");
     public static final Supplier<SoundEvent> ITEM_REDSTONE_PENDULUM_CHIME = registerSound("item.redstone_pendulum.chime");
 
+    public static final Supplier<SoundEvent> BLOCK_BORNHOLM_TICK = registerSound("block.bornholm.tick");
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_DOOR_OPEN = registerSound("block.bornholm.door_open");
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_DOOR_CLOSE = registerSound("block.bornholm.door_close");
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_REMOVE_PENDULUM = registerSound("block.bornholm.remove_pendulum");

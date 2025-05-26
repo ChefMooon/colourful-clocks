@@ -1,6 +1,5 @@
 package com.chefmooon.colourfulclocks.common.block;
 
-import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.BornholmTopGlassTypeProperty;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
@@ -20,6 +19,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.Containers;
@@ -66,6 +66,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     public static final MapCodec<BornholmTopBlock> CODEC = simpleCodec(BornholmTopBlock::new);
     public static final BornholmTopGlassTypeProperty GLASS_TYPE = ColourfulClocksBlockStateProperties.BORNHOLM_TOP_GLASS_TYPE;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static final BooleanProperty TICKING = ColourfulClocksBlockStateProperties.TICKING;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
     public WoodTypes woodType;
@@ -95,17 +96,20 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                 .setValue(FACING, Direction.NORTH)
                 .setValue(GLASS_TYPE, BornholmTopGlassTypes.GLASS)
                 .setValue(ACTIVATED, Boolean.TRUE)
-                .setValue(WATERLOGGED, Boolean.FALSE));
+                .setValue(WATERLOGGED, Boolean.FALSE)
+                .setValue(TICKING, Boolean.FALSE));
     }
 
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         BornholmTopGlassComponent bornholmTopGlassComponent = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getBornholmTopGlassData(), BornholmTopGlassComponent.getDefaultValue());
+        boolean activated = isActivated(context.getLevel().getBlockState(context.getClickedPos().below()));
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection())
                 .setValue(GLASS_TYPE, bornholmTopGlassComponent.getGlassType())
-                .setValue(ACTIVATED, isActivated(context.getLevel().getBlockState(context.getClickedPos().below())))
-                .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
+                .setValue(ACTIVATED, activated)
+                .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER)
+                .setValue(TICKING, activated && bornholmTopGlassComponent.getPocketWatchType() != PocketWatchTypes.EMPTY ? Boolean.TRUE : Boolean.FALSE);
     }
 
     @Override
@@ -129,7 +133,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     @Override
     protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(FACING, GLASS_TYPE, ACTIVATED, WATERLOGGED);
+        builder.add(FACING, GLASS_TYPE, ACTIVATED, WATERLOGGED, TICKING);
     }
 
     @Override
@@ -189,6 +193,18 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
 
                         return ItemInteractionResult.SUCCESS;
                     }
+                } else if (mainHandItem.is(Items.REDSTONE)) {
+                    level.setBlock(pos, state.setValue(TICKING, Boolean.TRUE), 3);
+                    level.playSound(null, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F); // TODO decide sound
+                    if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
+
+                    return ItemInteractionResult.SUCCESS;
+                } else if (state.getValue(TICKING) && mainHandItem.is(ItemTags.PICKAXES)) {
+                    level.setBlock(pos, state.setValue(TICKING, Boolean.FALSE), 3);
+                    level.playSound(null, pos, SoundEvents.CHAIN_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F); // TODO decide sound
+                    if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+
+                    return ItemInteractionResult.SUCCESS;
                 }
             } else {
                 if (player.isShiftKeyDown() && !block.getClockHandsItem().isEmpty()) {
@@ -263,6 +279,25 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
             return bornholmTopBlockEntity.getBlockAsItem(this.woodType);
         } else {
             return super.getCloneItemStack(level, pos, state);
+        }
+    }
+
+    @Override
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        if (!oldState.is(state.getBlock())) {
+            this.checkPoweredState(level, pos, state);
+        }
+    }
+
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
+        this.checkPoweredState(level, pos, state);
+    }
+
+    private void checkPoweredState(Level level, BlockPos pos, BlockState state) {
+        boolean bl = !level.hasNeighborSignal(pos);
+        if (state.getValue(ACTIVATED) && bl != state.getValue(TICKING)) {
+            level.setBlock(pos, state.setValue(TICKING, bl), 2);
         }
     }
 
