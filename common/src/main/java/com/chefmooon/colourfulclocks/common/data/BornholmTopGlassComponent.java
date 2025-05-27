@@ -16,8 +16,8 @@ public record BornholmTopGlassComponent(BornholmTopGlassTypes topGlassType, Pock
 
     public static final Codec<BornholmTopGlassComponent> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
-                    BornholmTopGlassTypes.CODEC.fieldOf("glass").forGetter(BornholmTopGlassComponent::getGlassType),
-                    PocketWatchTypes.CODEC.fieldOf("pocket_watch").forGetter(BornholmTopGlassComponent::getPocketWatchType),
+                    BornholmTopGlassTypes.CODEC.optionalFieldOf("glass", BornholmTopGlassTypes.GLASS).forGetter(BornholmTopGlassComponent::getGlassType),
+                    PocketWatchTypes.CODEC.optionalFieldOf("pocket_watch", PocketWatchTypes.EMPTY).forGetter(BornholmTopGlassComponent::getPocketWatchType),
                     Codec.BOOL.optionalFieldOf("ticking", Boolean.FALSE).forGetter(BornholmTopGlassComponent::getTicking)
             ).apply(instance, BornholmTopGlassComponent::new)
     );

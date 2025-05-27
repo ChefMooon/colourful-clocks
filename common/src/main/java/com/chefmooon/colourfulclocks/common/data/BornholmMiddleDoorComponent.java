@@ -15,8 +15,8 @@ public record BornholmMiddleDoorComponent(BornholmDoorTypes doorType, PendulumTy
 
     public static final Codec<BornholmMiddleDoorComponent> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
-                    BornholmDoorTypes.CODEC.fieldOf("glass").forGetter(BornholmMiddleDoorComponent::getDoorType),
-                    PendulumTypes.CODEC.fieldOf("pendulum").forGetter(BornholmMiddleDoorComponent::getPendulumType)
+                    BornholmDoorTypes.CODEC.optionalFieldOf("glass", BornholmDoorTypes.BASE).forGetter(BornholmMiddleDoorComponent::getDoorType),
+                    PendulumTypes.CODEC.optionalFieldOf("pendulum", PendulumTypes.EMPTY).forGetter(BornholmMiddleDoorComponent::getPendulumType)
             ).apply(instance, BornholmMiddleDoorComponent::new)
     );
     public static final StreamCodec<RegistryFriendlyByteBuf, BornholmMiddleDoorComponent> STREAM_CODEC = StreamCodec.composite(
