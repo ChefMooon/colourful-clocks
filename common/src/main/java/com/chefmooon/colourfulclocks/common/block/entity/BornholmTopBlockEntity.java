@@ -1,6 +1,5 @@
 package com.chefmooon.colourfulclocks.common.block.entity;
 
-import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
@@ -18,7 +17,6 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
@@ -144,7 +142,7 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
         if (blockState.getValue(BornholmTopBlock.ACTIVATED)) {
             weatherItem(level, blockPos, bornholmTopBlockEntity);
         }
-        if (blockState.getValue(BornholmTopBlock.TICKING)) {
+        if (!bornholmTopBlockEntity.getClockHandsItem().isEmpty() && blockState.getValue(BornholmTopBlock.TICKING)) {
             tickSound(level, blockPos);
         }
     }
