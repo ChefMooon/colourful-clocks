@@ -90,6 +90,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(SUBTITLE + "block.bornholm.insert_pocket_watch", "Pocket Watch Inserted");
 
         translationBuilder.add(TOOLTIP + "weathering", "Weathering");
+        translationBuilder.add(TOOLTIP + "ticking", "Ticking");
 
         translationBuilder.add(WAILA_CONFIG, FORMATTED_MOD_ID);
         translationBuilder.add(WAILA_CONFIG + ".bornholm_dial_glass_type", "Bornholm Dial Glass Type");

@@ -62,7 +62,7 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     public ItemStack removeClockHandsItem() {
         ItemStack stored = clockHandsItem;
         setClockHandsItem(ItemStack.EMPTY);
-        setDialData(this.dialData.getGlassType(), PocketWatchTypes.EMPTY);
+        setDialData(this.dialData.getGlassType(), PocketWatchTypes.EMPTY, this.dialData.getTicking());
         return stored;
     }
 
@@ -142,7 +142,7 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
         if (blockState.getValue(BornholmTopBlock.ACTIVATED)) {
             weatherItem(level, blockPos, bornholmTopBlockEntity);
         }
-        if (!bornholmTopBlockEntity.getClockHandsItem().isEmpty() && blockState.getValue(BornholmTopBlock.TICKING)) {
+        if (!bornholmTopBlockEntity.getClockHandsItem().isEmpty() && blockState.getValue(BornholmTopBlock.TICKING) && blockState.getValue(BornholmTopBlock.ACTIVATED)) {
             tickSound(level, blockPos);
         }
     }
@@ -180,18 +180,21 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
         }
     }
 
-
     public void setPocketWatchType(ItemStack itemStack) {
-        setDialData(this.dialData.getGlassType(), ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(itemStack.getItem()));
+        setDialData(this.dialData.getGlassType(), ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(itemStack.getItem()), this.dialData.getTicking());
         setClockHandsItem(itemStack); // TODO : cannot render dial from dataComponent, remove this after that is figured out
     }
 
     public void setGlassType(BornholmTopGlassTypes glassType) {
-        setDialData(glassType, this.dialData.getPocketWatchType());
+        setDialData(glassType, this.dialData.getPocketWatchType(), this.dialData.getTicking());
     }
 
-    public void setDialData(BornholmTopGlassTypes glassType, PocketWatchTypes pocketWatchType) {
-        this.dialData = new BornholmTopGlassComponent(glassType, pocketWatchType);
+    public void setTicking(boolean ticking) {
+        setDialData(this.dialData.getGlassType(), this.dialData.getPocketWatchType(), ticking);
+    }
+
+    public void setDialData(BornholmTopGlassTypes glassType, PocketWatchTypes pocketWatchType, boolean ticking) {
+        this.dialData = new BornholmTopGlassComponent(glassType, pocketWatchType, ticking);
         setChanged();
     }
 

@@ -19,11 +19,12 @@ public class BornholmMiddleBlockItem extends BlockItem {
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if (stack.has(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData())) {
-            Block glassType = stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), BornholmMiddleDoorComponent.getDefaultValue()).getDoorType().getBlock();
+            BornholmMiddleDoorComponent bornholmMiddleGlassData = stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), BornholmMiddleDoorComponent.getDefaultValue());
+            Block glassType = bornholmMiddleGlassData.getDoorType().getBlock();
             if (glassType != Blocks.AIR) {
                 tooltipComponents.add(Component.translatable(glassType.getDescriptionId()));
             }
-            Item pendulumItem = ColourfulClocksTypeUtil.getPendulumItemFromType(stack.getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), BornholmMiddleDoorComponent.getDefaultValue()).getPendulumType());
+            Item pendulumItem = ColourfulClocksTypeUtil.getPendulumItemFromType(bornholmMiddleGlassData.getPendulumType());
             if (pendulumItem != PendulumTypes.EMPTY.getItem()) {
                 tooltipComponents.add(Component.translatable(pendulumItem.getDescriptionId()));
             }

@@ -1,5 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block;
 
+import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.BornholmTopGlassTypeProperty;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
@@ -109,7 +110,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                 .setValue(GLASS_TYPE, bornholmTopGlassComponent.getGlassType())
                 .setValue(ACTIVATED, activated)
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER)
-                .setValue(TICKING, activated && bornholmTopGlassComponent.getPocketWatchType() != PocketWatchTypes.EMPTY ? Boolean.TRUE : Boolean.FALSE);
+                .setValue(TICKING, bornholmTopGlassComponent.getTicking());
     }
 
     @Override
@@ -194,12 +195,14 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                         return ItemInteractionResult.SUCCESS;
                     }
                 } else if (mainHandItem.is(Items.REDSTONE)) {
+                    block.setTicking(true);
                     level.setBlock(pos, state.setValue(TICKING, Boolean.TRUE), 3);
                     level.playSound(null, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F); // TODO decide sound
                     if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
 
                     return ItemInteractionResult.SUCCESS;
                 } else if (state.getValue(TICKING) && mainHandItem.is(ItemTags.PICKAXES)) {
+                    block.setTicking(false);
                     level.setBlock(pos, state.setValue(TICKING, Boolean.FALSE), 3);
                     level.playSound(null, pos, SoundEvents.CHAIN_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F); // TODO decide sound
                     if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
@@ -253,7 +256,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
             if (blockEntity instanceof BornholmTopBlockEntity bornholmTopBlockEntity) {
                 BornholmTopGlassComponent dialData = stack.get(ColourfulClocksDataComponentTypes.getBornholmTopGlassData());
                 if (dialData != null) {
-                    bornholmTopBlockEntity.setDialData(dialData.getGlassType(), dialData.getPocketWatchType());
+                    bornholmTopBlockEntity.setDialData(dialData.getGlassType(), dialData.getPocketWatchType(), dialData.getTicking());
                     if (dialData.getPocketWatchType() != PocketWatchTypes.EMPTY) {
                         bornholmTopBlockEntity.setClockHandsItem(new ItemStack(ColourfulClocksTypeUtil.getPocketWatchItemFromType(dialData.getPocketWatchType())));
                     }
