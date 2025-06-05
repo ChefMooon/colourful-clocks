@@ -110,6 +110,27 @@ public class ColourfulClocksItemsImpl {
     public static final Supplier<Item> REDSTONE_PENDULUM = registerItemWithTab(ColourfulClocksItems.REDSTONE_PENDULUM, new Item(basicItem()));
     public static final Supplier<Item> EMERALD_PENDULUM = registerItemWithTab(ColourfulClocksItems.EMERALD_PENDULUM, new Item(basicItem()));
 
+    public static final HashMap<PocketWatchTypes, Supplier<Item>> PENDULUM_VARIANTS = new HashMap<>();
+    static {
+        PENDULUM_VARIANTS.put(PocketWatchTypes.IRON, IRON_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.COPPER, COPPER_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.EXPOSED_COPPER, EXPOSED_COPPER_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.WEATHERED_COPPER, WEATHERED_COPPER_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.OXIDIZED_COPPER, OXIDIZED_COPPER_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.WAXED_COPPER, WAXED_COPPER_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.WAXED_EXPOSED_COPPER, WAXED_EXPOSED_COPPER_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.WAXED_WEATHERED_COPPER, WAXED_WEATHERED_COPPER_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.WAXED_OXIDIZED_COPPER, WAXED_OXIDIZED_COPPER_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.GOLD, GOLD_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.DIAMOND, DIAMOND_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.NETHERITE, NETHERITE_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.QUARTZ, QUARTZ_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.AMETHYST, AMETHYST_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.LAPIS_LAZULI, LAPIS_LAZULI_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.REDSTONE, REDSTONE_PENDULUM);
+        PENDULUM_VARIANTS.put(PocketWatchTypes.EMERALD, EMERALD_PENDULUM);
+    }
+
     private static void registerBornholmItems() {
         for (WoodTypes woodTypes : WoodTypes.values()) {
             // Base

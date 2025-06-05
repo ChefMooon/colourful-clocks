@@ -1,0 +1,160 @@
+package com.chefmooon.colourfulclocks.data.fabric;
+
+import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
+import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTemplates;
+import com.chefmooon.colourfulclocks.common.util.TextUtil;
+import net.minecraft.data.models.ItemModelGenerators;
+import net.minecraft.data.models.model.ModelLocationUtils;
+import net.minecraft.data.models.model.TextureMapping;
+import net.minecraft.data.models.model.TextureSlot;
+import net.minecraft.world.item.Item;
+
+public class ItemModelGenerator {
+    private static ItemModelGenerators GENERATOR;
+    public static void generateItemModels(ItemModelGenerators itemModelGenerators) {
+        GENERATOR = itemModelGenerators;
+
+        generatePocketWatchItem(ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.GOLD_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get(), itemModelGenerators);
+
+        generatePocketWatchItem(ColourfulClocksItemsImpl.QUARTZ_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.AMETHYST_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.LAPIS_LAZULI_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get(), itemModelGenerators);
+        generatePocketWatchItem(ColourfulClocksItemsImpl.EMERALD_POCKET_WATCH.get(), itemModelGenerators);
+
+        generateWaxedPocketWatchItem(ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get(), itemModelGenerators);
+        generateWaxedPocketWatchItem(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_POCKET_WATCH.get(), itemModelGenerators);
+        generateWaxedPocketWatchItem(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_POCKET_WATCH.get(), itemModelGenerators);
+        generateWaxedPocketWatchItem(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_POCKET_WATCH.get(), itemModelGenerators);
+
+        generatePendulumItem(ColourfulClocksItemsImpl.IRON_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.COPPER_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.EXPOSED_COPPER_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.WEATHERED_COPPER_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.OXIDIZED_COPPER_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.GOLD_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get(), itemModelGenerators);
+
+        generatePendulumItem(ColourfulClocksItemsImpl.QUARTZ_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.AMETHYST_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.LAPIS_LAZULI_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.REDSTONE_PENDULUM.get(), itemModelGenerators);
+        generatePendulumItem(ColourfulClocksItemsImpl.EMERALD_PENDULUM.get(), itemModelGenerators);
+
+        generateWaxedPendulumItem(ColourfulClocksItemsImpl.WAXED_COPPER_PENDULUM.get(), itemModelGenerators);
+        generateWaxedPendulumItem(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_PENDULUM.get(), itemModelGenerators);
+        generateWaxedPendulumItem(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_PENDULUM.get(), itemModelGenerators);
+        generateWaxedPendulumItem(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_PENDULUM.get(), itemModelGenerators);
+    }
+
+    private static void generatePendulumItem(Item item, ItemModelGenerators itemModelGenerators) {
+        ColourfulClocksTemplates.PENDULUM_BLOCK.create(ModelLocationUtils.getModelLocation(item),
+                TextureMapping.singleSlot(TextureSlot.ALL, ModelLocationUtils.getModelLocation(item)), itemModelGenerators.output);
+
+    }
+
+    private static void generateWaxedPendulumItem(Item item, ItemModelGenerators itemModelGenerators) {
+        ColourfulClocksTemplates.PENDULUM_BLOCK.create(ModelLocationUtils.getModelLocation(item),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+    }
+
+    private static void generatePocketWatchItem(Item item, ItemModelGenerators itemModelGenerators) {
+        ColourfulClocksTemplates.POCKET_WATCH_MINUTE_HAND.create((ModelLocationUtils.getModelLocation(item, "_minute_hand")),
+                TextureMapping.singleSlot(TextureSlot.ALL, ModelLocationUtils.getModelLocation(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_HOUR_HAND.create((ModelLocationUtils.getModelLocation(item, "_hour_hand")),
+                TextureMapping.singleSlot(TextureSlot.ALL, ModelLocationUtils.getModelLocation(item)), itemModelGenerators.output);
+
+        ColourfulClocksTemplates.POCKET_WATCH_CLOSED.create(ModelLocationUtils.getModelLocation(item, "_closed"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+
+        ColourfulClocksTemplates.POCKET_WATCH_00.create(ModelLocationUtils.getModelLocation(item, "_00"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_00.create(ModelLocationUtils.getModelLocation(item, "_open_00"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_01.create(ModelLocationUtils.getModelLocation(item, "_open_01"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_02.create(ModelLocationUtils.getModelLocation(item, "_open_02"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_03.create(ModelLocationUtils.getModelLocation(item, "_open_03"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_04.create(ModelLocationUtils.getModelLocation(item, "_open_04"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_05.create(ModelLocationUtils.getModelLocation(item, "_open_05"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_06.create(ModelLocationUtils.getModelLocation(item, "_open_06"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_07.create(ModelLocationUtils.getModelLocation(item, "_open_07"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_08.create(ModelLocationUtils.getModelLocation(item, "_open_08"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_09.create(ModelLocationUtils.getModelLocation(item, "_open_09"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_10.create(ModelLocationUtils.getModelLocation(item, "_open_10"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_11.create(ModelLocationUtils.getModelLocation(item, "_open_11"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_12.create(ModelLocationUtils.getModelLocation(item, "_open_12"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_13.create(ModelLocationUtils.getModelLocation(item, "_open_13"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_14.create(ModelLocationUtils.getModelLocation(item, "_open_14"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_15.create(ModelLocationUtils.getModelLocation(item, "_open_15"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
+    }
+
+    private static void generateWaxedPocketWatchItem(Item item, ItemModelGenerators itemModelGenerators) {
+        ColourfulClocksTemplates.POCKET_WATCH_MINUTE_HAND.create((ModelLocationUtils.getModelLocation(item, "_minute_hand")),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_HOUR_HAND.create((ModelLocationUtils.getModelLocation(item, "_hour_hand")),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+
+        ColourfulClocksTemplates.POCKET_WATCH_CLOSED.create(ModelLocationUtils.getModelLocation(item, "_closed"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+
+        ColourfulClocksTemplates.POCKET_WATCH_00.create(ModelLocationUtils.getModelLocation(item, "_00"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_00.create(ModelLocationUtils.getModelLocation(item, "_open_00"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_01.create(ModelLocationUtils.getModelLocation(item, "_open_01"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_02.create(ModelLocationUtils.getModelLocation(item, "_open_02"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_03.create(ModelLocationUtils.getModelLocation(item, "_open_03"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_04.create(ModelLocationUtils.getModelLocation(item, "_open_04"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_05.create(ModelLocationUtils.getModelLocation(item, "_open_05"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_06.create(ModelLocationUtils.getModelLocation(item, "_open_06"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_07.create(ModelLocationUtils.getModelLocation(item, "_open_07"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_08.create(ModelLocationUtils.getModelLocation(item, "_open_08"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_09.create(ModelLocationUtils.getModelLocation(item, "_open_09"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_10.create(ModelLocationUtils.getModelLocation(item, "_open_10"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_11.create(ModelLocationUtils.getModelLocation(item, "_open_11"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_12.create(ModelLocationUtils.getModelLocation(item, "_open_12"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_13.create(ModelLocationUtils.getModelLocation(item, "_open_13"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_14.create(ModelLocationUtils.getModelLocation(item, "_open_14"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_OPEN_15.create(ModelLocationUtils.getModelLocation(item, "_open_15"),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+    }
+}

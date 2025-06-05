@@ -50,26 +50,6 @@ public class ColourfulClocksTypeUtilImpl {
             new AbstractMap.SimpleEntry<>(ColourfulClocksItemsImpl.REDSTONE_PENDULUM.get(), PendulumTypes.REDSTONE)
     );
 
-    private static final Map<PendulumTypes, Item> PENDULUM_BY_TYPE = Map.ofEntries(
-            new AbstractMap.SimpleEntry<>(PendulumTypes.IRON, ColourfulClocksItemsImpl.IRON_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.COPPER, ColourfulClocksItemsImpl.COPPER_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.EXPOSED_COPPER, ColourfulClocksItemsImpl.EXPOSED_COPPER_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.WEATHERED_COPPER, ColourfulClocksItemsImpl.WEATHERED_COPPER_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.OXIDIZED_COPPER, ColourfulClocksItemsImpl.OXIDIZED_COPPER_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.WAXED_COPPER, ColourfulClocksItemsImpl.WAXED_COPPER_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.WAXED_EXPOSED_COPPER, ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.WAXED_WEATHERED_COPPER, ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.WAXED_OXIDIZED_COPPER, ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.GOLD, ColourfulClocksItemsImpl.GOLD_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.DIAMOND, ColourfulClocksItemsImpl.DIAMOND_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.NETHERITE, ColourfulClocksItemsImpl.NETHERITE_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.EMERALD, ColourfulClocksItemsImpl.EMERALD_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.AMETHYST, ColourfulClocksItemsImpl.AMETHYST_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.QUARTZ, ColourfulClocksItemsImpl.QUARTZ_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.LAPIS_LAZULI, ColourfulClocksItemsImpl.LAPIS_LAZULI_PENDULUM.get()),
-            new AbstractMap.SimpleEntry<>(PendulumTypes.REDSTONE, ColourfulClocksItemsImpl.REDSTONE_PENDULUM.get())
-    );
-
     public static Item getPocketWatchItemFromType(PocketWatchTypes pocketWatchTypes) {
         return ColourfulClocksItemsImpl.POCKET_WATCH_VARIANTS.getOrDefault(pocketWatchTypes, () -> Items.AIR).get();
     }
@@ -79,7 +59,7 @@ public class ColourfulClocksTypeUtilImpl {
     }
 
     public static Item getPendulumItemFromType(PendulumTypes pendulumType) {
-        return PENDULUM_BY_TYPE.getOrDefault(pendulumType, Items.AIR);
+        return ColourfulClocksItemsImpl.PENDULUM_VARIANTS.getOrDefault(pendulumType, () -> Items.AIR).get();
     }
 
     public static PendulumTypes getPendulumTypeFromItem(Item item) {
