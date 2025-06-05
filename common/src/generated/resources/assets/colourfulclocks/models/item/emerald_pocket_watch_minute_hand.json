@@ -1,0 +1,6 @@
+{
+  "parent": "colourfulclocks:block/template_pocket_watch_minute_hand",
+  "textures": {
+    "all": "colourfulclocks:item/emerald_pocket_watch"
+  }
+}

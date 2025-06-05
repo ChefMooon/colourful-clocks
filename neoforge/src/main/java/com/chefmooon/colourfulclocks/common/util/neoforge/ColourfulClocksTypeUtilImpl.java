@@ -30,26 +30,6 @@ public class ColourfulClocksTypeUtilImpl {
             new AbstractMap.SimpleEntry<>(ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get(), PocketWatchTypes.REDSTONE)
     );
 
-    private static final Map<PocketWatchTypes, Item> POCKET_WATCH_BY_ITEM = Map.ofEntries(
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.IRON, ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.COPPER, ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.EXPOSED_COPPER, ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.WEATHERED_COPPER, ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.OXIDIZED_COPPER, ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.WAXED_COPPER, ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.WAXED_EXPOSED_COPPER, ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.WAXED_WEATHERED_COPPER, ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.WAXED_OXIDIZED_COPPER, ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.GOLD, ColourfulClocksItemsImpl.GOLD_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.DIAMOND, ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.NETHERITE, ColourfulClocksItemsImpl.NETHERITE_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.EMERALD, ColourfulClocksItemsImpl.EMERALD_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.AMETHYST, ColourfulClocksItemsImpl.AMETHYST_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.QUARTZ, ColourfulClocksItemsImpl.QUARTZ_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.LAPIS_LAZULI, ColourfulClocksItemsImpl.LAPIS_LAZULI_POCKET_WATCH.get()),
-            new AbstractMap.SimpleEntry<>(PocketWatchTypes.REDSTONE, ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get())
-    );
-
     private static final Map<Item, PendulumTypes> PENDULUM_BY_ITEM = Map.ofEntries(
             new AbstractMap.SimpleEntry<>(ColourfulClocksItemsImpl.IRON_PENDULUM.get(), PendulumTypes.IRON),
             new AbstractMap.SimpleEntry<>(ColourfulClocksItemsImpl.COPPER_PENDULUM.get(), PendulumTypes.COPPER),
@@ -91,7 +71,7 @@ public class ColourfulClocksTypeUtilImpl {
     );
 
     public static Item getPocketWatchItemFromType(PocketWatchTypes pocketWatchTypes) {
-        return POCKET_WATCH_BY_ITEM.getOrDefault(pocketWatchTypes, Items.AIR);
+        return ColourfulClocksItemsImpl.POCKET_WATCH_VARIANTS.getOrDefault(pocketWatchTypes, () -> Items.AIR).get();
     }
 
     public static PocketWatchTypes getPocketWatchTypeFromItem(Item item) {

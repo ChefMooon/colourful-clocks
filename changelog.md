@@ -20,6 +20,10 @@ actively watching the issues page to resolve any bugs as soon as possible.
   - Dial: glass, dial
 
 ### Changed
+- Updated Bornholm Dial Block Model
+  - Hour marker sizes adjusted
+  - Center marker added
+  - Clock now has 2 hands: minute and hour
 - Adjusted Copper Pendulum swing speeds(Also Waxed)
   - Exposed Copper: Full Speed -> 3/4 Speed
   - Weathered Copper: Full Speed -> 1/2 Speed

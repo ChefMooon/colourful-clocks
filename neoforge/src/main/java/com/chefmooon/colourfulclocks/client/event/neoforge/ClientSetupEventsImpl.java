@@ -4,12 +4,19 @@ import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmMiddleBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmTopBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlockEntitiesImpl;
+import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
+import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.chefmooon.colourfulclocks.common.util.neoforge.ColourfulClocksItemPropertiesImpl;
+import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
+import net.neoforged.neoforge.client.event.ModelEvent;
+
+import java.util.function.Consumer;
 
 @EventBusSubscriber(modid = ColourfulClocks.MOD_ID, bus = EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class ClientSetupEventsImpl {
@@ -25,5 +32,19 @@ public class ClientSetupEventsImpl {
         event.enqueueWork(() -> {
             ColourfulClocksItemPropertiesImpl.addCustomItemProperties();
         });
+    }
+
+    @SubscribeEvent
+    public static void modelLoading(ModelEvent.RegisterAdditional event) {
+        onRegisterModels(event::register);
+    }
+
+    public static void onRegisterModels(Consumer<ModelResourceLocation> consumer) {
+        ColourfulClocksItemsImpl.POCKET_WATCH_VARIANTS.forEach(((pocketWatchTypes, itemSupplier) -> {
+            ModelResourceLocation minuteHandLocation = new ModelResourceLocation(TextUtil.res("item/%s_minute_hand".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            consumer.accept(minuteHandLocation);
+            ModelResourceLocation hourHandLocation = new ModelResourceLocation(TextUtil.res("item/%s_hour_hand".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            consumer.accept(hourHandLocation);
+        }));
     }
 }

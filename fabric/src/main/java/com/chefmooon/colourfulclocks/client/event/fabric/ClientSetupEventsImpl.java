@@ -4,11 +4,16 @@ import com.chefmooon.colourfulclocks.client.renderer.fabric.BornholmMiddleBlockE
 import com.chefmooon.colourfulclocks.client.renderer.fabric.BornholmTopBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
+import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
+import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class ClientSetupEventsImpl {
@@ -23,5 +28,14 @@ public class ClientSetupEventsImpl {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
                 ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
         );
+    }
+
+    public static void onRegisterModels(Consumer<ResourceLocation> consumer) {
+        ColourfulClocksItemsImpl.POCKET_WATCH_VARIANTS.forEach(((pocketWatchTypes, itemSupplier) -> {
+            ResourceLocation minuteHandLocation = TextUtil.res("item/%s_minute_hand".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath()));
+            consumer.accept(minuteHandLocation);
+            ResourceLocation hourHandLocation = TextUtil.res("item/%s_hour_hand".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath()));
+            consumer.accept(hourHandLocation);
+        }));
     }
 }

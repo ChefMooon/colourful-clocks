@@ -1,5 +1,5 @@
 {
-  "parent": "colourfulclocks:block/template_pocket_watch_in_clock",
+  "parent": "colourfulclocks:block/template_pocket_watch_minute_hand",
   "textures": {
     "all": "colourfulclocks:item/lapis_lazuli_pocket_watch"
   }

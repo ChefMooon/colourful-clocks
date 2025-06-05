@@ -175,7 +175,10 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     private static void tickSound(Level level, BlockPos blockPos) {
         if (level == null || level.isClientSide()) return;
 
-        if (level.getGameTime() % 100 == 0) {
+        float timeOfDay = (level.getDayTime() + 0) % 24000;
+        float segmentTime = timeOfDay % 750.0F;
+        float stepLength = 750.0F / 16.0F;
+        if (Math.abs(segmentTime % stepLength) < 1.0F) {
             level.playSound(null, blockPos, ColourfulClocksSounds.BLOCK_BORNHOLM_TICK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
         }
     }

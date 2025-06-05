@@ -22,6 +22,8 @@ public class ColourfulClocksTemplates {
     public static final ModelTemplate BORNHOLM_CLOCK_DIAL_HOUR = block("template_bornholm_clock_dial_hour", TextureSlot.ALL);
 
     public static final ModelTemplate POCKET_WATCH_CLOCK = block("template_pocket_watch_in_clock", TextureSlot.ALL);
+    public static final ModelTemplate POCKET_WATCH_MINUTE_HAND = block("template_pocket_watch_minute_hand", TextureSlot.ALL);
+    public static final ModelTemplate POCKET_WATCH_HOUR_HAND = block("template_pocket_watch_hour_hand", TextureSlot.ALL);
 
     public static final ModelTemplate PENDULUM_BLOCK = createItem("template_pendulum", TextureSlot.ALL);
 

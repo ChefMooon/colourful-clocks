@@ -73,41 +73,26 @@ public class ColourfulClocksItemsImpl {
     public static final Supplier<Item> EMERALD_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.EMERALD_POCKET_WATCH,
             () -> new PocketWatchItem(PocketWatchTypes.EMERALD, noStack().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
 
-    public static final Supplier<Item> IRON_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.IRON_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.IRON, noStack()));
-    public static final Supplier<Item> COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.COPPER_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.COPPER, noStack()));
-    public static final Supplier<Item> EXPOSED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.EXPOSED_COPPER_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.COPPER, noStack()));
-    public static final Supplier<Item> WEATHERED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.WEATHERED_COPPER_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.COPPER, noStack()));
-    public static final Supplier<Item> OXIDIZED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.OXIDIZED_COPPER_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.COPPER, noStack()));
-    public static final Supplier<Item> WAXED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.WAXED_COPPER_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.COPPER, noStack()));
-    public static final Supplier<Item> WAXED_EXPOSED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.WAXED_EXPOSED_COPPER_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.COPPER, noStack()));
-    public static final Supplier<Item> WAXED_WEATHERED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.WAXED_WEATHERED_COPPER_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.COPPER, noStack()));
-    public static final Supplier<Item> WAXED_OXIDIZED_COPPER_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.COPPER, noStack()));
-    public static final Supplier<Item> GOLD_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.GOLD_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.GOLD, noStack()));
-    public static final Supplier<Item> DIAMOND_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.DIAMOND_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.DIAMOND, noStack()));
-    public static final Supplier<Item> NETHERITE_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.NETHERITE_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.NETHERITE, noStack()));
-
-    public static final Supplier<Item> QUARTZ_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.QUARTZ_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.QUARTZ, noStack()));
-    public static final Supplier<Item> AMETHYST_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.AMETHYST_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.AMETHYST, noStack()));
-    public static final Supplier<Item> LAPIS_LAZULI_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.LAPIS_LAZULI_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.LAPIS_LAZULI, noStack()));
-    public static final Supplier<Item> REDSTONE_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.REDSTONE_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.REDSTONE, noStack()));
-    public static final Supplier<Item> EMERALD_POCKET_WATCH_IN_CLOCK = registerItem(ColourfulClocksItems.EMERALD_POCKET_WATCH_IN_CLOCK,
-            () -> new PocketWatchItem(PocketWatchTypes.EMERALD, noStack()));
+    public static final HashMap<PocketWatchTypes, Supplier<Item>> POCKET_WATCH_VARIANTS = new HashMap<>();
+    static {
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.IRON, IRON_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.COPPER, COPPER_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.EXPOSED_COPPER, EXPOSED_COPPER_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.WEATHERED_COPPER, WEATHERED_COPPER_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.OXIDIZED_COPPER, OXIDIZED_COPPER_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.WAXED_COPPER, WAXED_COPPER_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.WAXED_EXPOSED_COPPER, WAXED_EXPOSED_COPPER_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.WAXED_WEATHERED_COPPER, WAXED_WEATHERED_COPPER_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.WAXED_OXIDIZED_COPPER, WAXED_OXIDIZED_COPPER_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.GOLD, GOLD_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.DIAMOND, DIAMOND_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.NETHERITE, NETHERITE_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.QUARTZ, QUARTZ_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.AMETHYST, AMETHYST_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.LAPIS_LAZULI, LAPIS_LAZULI_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.REDSTONE, REDSTONE_POCKET_WATCH);
+        POCKET_WATCH_VARIANTS.put(PocketWatchTypes.EMERALD, EMERALD_POCKET_WATCH);
+    }
 
     public static final Supplier<Item> IRON_PENDULUM = registerItemWithTab(ColourfulClocksItems.IRON_PENDULUM, () -> new Item(basicItem()));
     public static final Supplier<Item> COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.COPPER_PENDULUM, () -> new WeatheringPendulumItem(basicItem()

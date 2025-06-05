@@ -1,5 +1,6 @@
 package com.chefmooon.colourfulclocks.client.renderer;
 
+import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;
@@ -9,22 +10,33 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.joml.Quaternionf;
 
 public class BornholmTopBlockEntityRenderer {
-    public static void renderClockHands(PoseStack poseStack, float partialTick, BlockState state) {
-        poseStack.pushPose();
-
-        poseStack.translate(0.5F, 0.5F, 0.5F);
-
-        poseStack.mulPose(getRotation(state.getValue(BornholmTopBlock.FACING)));
-
-        if (state.getValue(BornholmTopBlock.ACTIVATED)) poseStack.mulPose(Axis.ZN.rotationDegrees(getClockHourHandRotation(partialTick)));
+    public static void renderMinuteHand(PoseStack poseStack, float partialTick, BlockState state) {
+        poseStack.rotateAround(getRotation(state.getValue(BornholmTopBlock.FACING)), 0.5F, 0.5F, 0.5F);
+        poseStack.translate(0.5F, 0.5F, 0.76F);
+        if (state.getValue(BornholmTopBlock.ACTIVATED)) poseStack.mulPose(Axis.ZN.rotationDegrees(getMinuteHandRotation(partialTick)));
     }
 
-    public static float getClockHourHandRotation(float partialTick) {
+    public static void renderHourHand(PoseStack poseStack, float partialTick, BlockState state) {
+        poseStack.translate(0, 0, -0.006F);
+        if (state.getValue(BornholmTopBlock.ACTIVATED)) {
+            poseStack.mulPose(Axis.ZN.rotationDegrees(-getMinuteHandRotation(partialTick)));
+            poseStack.mulPose(Axis.ZN.rotationDegrees(getHourHandRotation(partialTick)));
+        }
+    }
+
+    public static float getMinuteHandRotation(float partialTick) {
         float timeOfDay = (Minecraft.getInstance().level.getDayTime() + partialTick) % 24000;
+        float segmentTime = timeOfDay % 750.0F;
+        int step = (int)(segmentTime / (750.0F / 16.0F));
+        return step * 22.5F;
+    }
 
+    public static float getHourHandRotation(float partialTick) {
+        float timeOfDay = (Minecraft.getInstance().level.getDayTime() + partialTick) % 24000;
         float twelveHourTime = (timeOfDay + 18000) % 24000;
-
-        return (twelveHourTime / 12000.0F) * 360.0F;
+        float segmentTime = twelveHourTime % 12000.0F;
+        int step = (int)(segmentTime / 750.0F);
+        return step * 22.5F;
     }
 
     public static Quaternionf getRotation(Direction direction) {

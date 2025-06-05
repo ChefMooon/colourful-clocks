@@ -21,8 +21,7 @@
   "result": {
     "components": {
       "colourfulclocks:bornholm_dial_data": {
-        "glass": "_light_gray_stained_glass",
-        "pocket_watch": "empty"
+        "glass": "_light_gray_stained_glass"
       }
     },
     "count": 1,

@@ -96,7 +96,9 @@ public class ModelGenerator extends FabricModelProvider {
     }
 
     private static void generatePocketWatchItem(Item item, ItemModelGenerators itemModelGenerators) {
-        ColourfulClocksTemplates.POCKET_WATCH_CLOCK.create((ModelLocationUtils.getModelLocation(item, "_in_clock")),
+        ColourfulClocksTemplates.POCKET_WATCH_MINUTE_HAND.create((ModelLocationUtils.getModelLocation(item, "_minute_hand")),
+                TextureMapping.singleSlot(TextureSlot.ALL, ModelLocationUtils.getModelLocation(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_HOUR_HAND.create((ModelLocationUtils.getModelLocation(item, "_hour_hand")),
                 TextureMapping.singleSlot(TextureSlot.ALL, ModelLocationUtils.getModelLocation(item)), itemModelGenerators.output);
 
         ColourfulClocksTemplates.POCKET_WATCH_CLOSED.create(ModelLocationUtils.getModelLocation(item, "_closed"),
@@ -140,7 +142,9 @@ public class ModelGenerator extends FabricModelProvider {
     }
 
     private static void generateWaxedPocketWatchItem(Item item, ItemModelGenerators itemModelGenerators) {
-        ColourfulClocksTemplates.POCKET_WATCH_CLOCK.create((ModelLocationUtils.getModelLocation(item, "_in_clock")),
+        ColourfulClocksTemplates.POCKET_WATCH_MINUTE_HAND.create((ModelLocationUtils.getModelLocation(item, "_minute_hand")),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_HOUR_HAND.create((ModelLocationUtils.getModelLocation(item, "_hour_hand")),
                 TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
 
         ColourfulClocksTemplates.POCKET_WATCH_CLOSED.create(ModelLocationUtils.getModelLocation(item, "_closed"),

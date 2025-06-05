@@ -4,18 +4,17 @@ import com.chefmooon.colourfulclocks.client.renderer.BornholmTopBlockEntityRende
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmTopBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
-import com.chefmooon.colourfulclocks.common.item.PocketWatchItem;
-import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -34,50 +33,29 @@ public class BornholmTopBlockEntityRendererImpl extends BornholmTopBlockEntityRe
 
         PocketWatchTypes pocketWatchType = blockEntity.getDialData().getPocketWatchType();
         if (pocketWatchType != PocketWatchTypes.EMPTY) {
-            ItemStack pocketWatch = new ItemStack(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType));
-            BakedModel model = minecraft.getModelManager().getModel(getHandModelResourceLocation(pocketWatch));
-            renderClockHands(poseStack, partialTick, state);
-            minecraft.getItemRenderer().render(pocketWatch, ItemDisplayContext.FIXED, false, poseStack, bufferSource, packedLight, packedOverlay, model);
-            poseStack.popPose();
-        }
-    }
+            renderMinuteHand(poseStack, partialTick, state);
 
-    // todo - improve this
-    protected static ModelResourceLocation getHandModelResourceLocation(ItemStack itemStack) {
-        if (itemStack.is(ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.IRON.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.COPPER.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.EXPOSED_COPPER.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.WEATHERED_COPPER.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.OXIDIZED_COPPER.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.WAXED_COPPER.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.WAXED_EXPOSED_COPPER.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.WAXED_WEATHERED_COPPER.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.WAXED_OXIDIZED_COPPER.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.GOLD_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.GOLD.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.DIAMOND_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.DIAMOND.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.EMERALD_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.EMERALD.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.AMETHYST_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.AMETHYST.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.QUARTZ_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.QUARTZ.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.LAPIS_LAZULI_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.LAPIS_LAZULI.getInClockLocation());
-        } else if (itemStack.is(ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get())) {
-            return ModelResourceLocation.inventory(PocketWatchTypes.REDSTONE.getInClockLocation());
-        } else {
-            return ModelResourceLocation.inventory(PocketWatchTypes.NETHERITE.getInClockLocation());
+            ModelResourceLocation minuteHandLocation = new ModelResourceLocation(TextUtil.res("item/%s_minute_hand".formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath())), "standalone");
+            BakedModel minuteHandModel = minecraft.getModelManager().getModel(minuteHandLocation);
+            minecraft.getBlockRenderer().getModelRenderer().renderModel(
+                    poseStack.last(),
+                    bufferSource.getBuffer(RenderType.cutout()),
+                    blockEntity.getBlockState(),
+                    minuteHandModel,
+                    1f, 1f, 1f,
+                    packedLight, packedOverlay);
+
+            renderHourHand(poseStack, partialTick, state);
+
+            ModelResourceLocation hourHandLocation = new ModelResourceLocation(TextUtil.res("item/%s_hour_hand".formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath())), "standalone");
+            BakedModel hourHandModel = minecraft.getModelManager().getModel(hourHandLocation);
+            minecraft.getBlockRenderer().getModelRenderer().renderModel(
+                    poseStack.last(),
+                    bufferSource.getBuffer(RenderType.cutout()),
+                    blockEntity.getBlockState(),
+                    hourHandModel,
+                    1f, 1f, 1f,
+                    packedLight, packedOverlay);
         }
     }
 }
