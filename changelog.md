@@ -3,6 +3,8 @@ Before updating, please **back-up** your world. Greatly appreciate any bug repor
 actively watching the issues page to resolve any bugs as soon as possible.
 
 ### Added
+- New Clock Type:
+  - Mantel Clock: Can customize the glass, clock hands(pocket watch), and can tick
 - Bornholm Dials can now make a ticking sound
   - Right-click with redstone enable ticking (consumes redstone)
   - Right-click with a pickaxe to disable ticking (uses durability)

@@ -71,6 +71,8 @@ public class TranslationGenerator extends FabricLanguageProvider {
         generateBornholmMiddleTranslations(translationBuilder);
         generateBonrholmTopTranslations(translationBuilder);
 
+        generateMantelClockTranslations(translationBuilder);
+
         translationBuilder.add(ColourfulClocksTags.CLOCK_PENDULUM, "Clock Pendelum");
         translationBuilder.add(ColourfulClocksTags.CLOCK_DOOR, "Clock Door");
         translationBuilder.add(ColourfulClocksTags.CLOCK_TOP_GLASS, "Clock Dial Glass");
@@ -96,8 +98,16 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(WAILA_CONFIG + ".bornholm_dial_glass_type", "Bornholm Dial Glass Type");
         translationBuilder.add(WAILA_CONFIG + ".bornholm_trunk_door_type", "Bornholm Trunk Door Type");
 
+        translationBuilder.add(WAILA_CONFIG + ".glass_type", "Glass Type");
+        translationBuilder.add(WAILA_CONFIG + ".pocket_watch_type", "Pocket Watch Type");
+        translationBuilder.add(WAILA_CONFIG + ".ticking", "Ticking");
+
         translationBuilder.add(JADE_CONFIG + ".bornholm_dial_glass_type", "Bornholm Dial Glass Type");
         translationBuilder.add(JADE_CONFIG + ".bornholm_trunk_door_type", "Bornholm Dial Glass Type");
+
+        translationBuilder.add(JADE_CONFIG + ".glass_type", "Glass Type");
+        translationBuilder.add(JADE_CONFIG + ".pocket_watch_type", "Pocket Watch Type");
+        translationBuilder.add(JADE_CONFIG + ".ticking", "Ticking");
 
         translationBuilder.add(REI + "info.copper_info", "This cannot be crafted. It can oxidize when placed in complete clocks and can be waxed to preserve the condition. An Axe can be used to remove wax.");
 
@@ -122,6 +132,13 @@ public class TranslationGenerator extends FabricLanguageProvider {
     private static void generateBonrholmTopTranslations(TranslationBuilder translationBuilder) {
         ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.forEach(((entry, supplier) -> {
             String translation = "Bornholm Dial" + entry.getBaseTranslation();
+            translationBuilder.add(supplier.get(), translation);
+        }));
+    }
+
+    private static void generateMantelClockTranslations(TranslationBuilder translationBuilder) {
+        ColourfulClocksItemsImpl.MANTEL_CLOCK_VARIANTS.forEach(((entry, supplier) -> {
+            String translation = entry.getBaseTranslationNoSpace() + " Mantel Clock";
             translationBuilder.add(supplier.get(), translation);
         }));
     }

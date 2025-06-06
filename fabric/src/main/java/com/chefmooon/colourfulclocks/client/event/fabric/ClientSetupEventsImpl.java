@@ -2,6 +2,7 @@ package com.chefmooon.colourfulclocks.client.event.fabric;
 
 import com.chefmooon.colourfulclocks.client.renderer.fabric.BornholmMiddleBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.client.renderer.fabric.BornholmTopBlockEntityRendererImpl;
+import com.chefmooon.colourfulclocks.client.renderer.fabric.MantelClockBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
@@ -21,12 +22,16 @@ public class ClientSetupEventsImpl {
     public static void onRegisterRenderers() {
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS, BornholmMiddleBlockEntityRendererImpl::new);
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS, BornholmTopBlockEntityRendererImpl::new);
+        BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.MANTEL_CLOCK_VARIANTS, MantelClockBlockEntityRendererImpl::new);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
                 ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
                 ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
+        );
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.translucent(),
+                ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
         );
     }
 
@@ -36,6 +41,11 @@ public class ClientSetupEventsImpl {
             consumer.accept(minuteHandLocation);
             ResourceLocation hourHandLocation = TextUtil.res("item/%s_hour_hand".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath()));
             consumer.accept(hourHandLocation);
+
+            ResourceLocation minuteHandSmallLocation = TextUtil.res("item/%s_minute_hand_small".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath()));
+            consumer.accept(minuteHandSmallLocation);
+            ResourceLocation hourHandSmallLocation = TextUtil.res("item/%s_hour_hand_small".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath()));
+            consumer.accept(hourHandSmallLocation);
         }));
     }
 }

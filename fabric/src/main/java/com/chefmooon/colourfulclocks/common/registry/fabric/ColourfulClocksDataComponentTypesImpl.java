@@ -2,6 +2,7 @@ package com.chefmooon.colourfulclocks.common.registry.fabric;
 
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
+import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.mojang.serialization.Codec;
@@ -34,6 +35,10 @@ public class ColourfulClocksDataComponentTypesImpl {
             ColourfulClocksDataComponentTypes.BORNHOLM_MIDDLE_GLASS_DATA.getPath(), bornholmMiddleDoorComponentBuilder -> bornholmMiddleDoorComponentBuilder.persistent(BornholmMiddleDoorComponent.CODEC).networkSynchronized(BornholmMiddleDoorComponent.STREAM_CODEC)
     );
 
+    public static final DataComponentType<GlassDialComponent> GLASS_DIAL_DATA = register(
+            ColourfulClocksDataComponentTypes.GLASS_DIAL_DATA.getPath(), glassDialComponentBuilder -> glassDialComponentBuilder.persistent(GlassDialComponent.CODEC).networkSynchronized(GlassDialComponent.STREAM_CODEC)
+    );
+
     private static <T> DataComponentType<T> register(String name, UnaryOperator<DataComponentType.Builder<T>> builder) {
         return (DataComponentType) Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, TextUtil.res(name), ((DataComponentType.Builder)builder.apply(DataComponentType.builder())).build());
     }
@@ -44,6 +49,10 @@ public class ColourfulClocksDataComponentTypesImpl {
 
     public static DataComponentType<BornholmTopGlassComponent> getBornholmTopGlassData() {
         return BORNHOLM_TOP_GLASS_DATA;
+    }
+
+    public static DataComponentType<GlassDialComponent> getGlassDialData() {
+        return GLASS_DIAL_DATA;
     }
 
     public static void register() {

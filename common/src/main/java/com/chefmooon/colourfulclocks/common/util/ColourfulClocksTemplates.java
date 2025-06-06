@@ -21,9 +21,18 @@ public class ColourfulClocksTemplates {
             ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
     public static final ModelTemplate BORNHOLM_CLOCK_DIAL_HOUR = block("template_bornholm_clock_dial_hour", TextureSlot.ALL);
 
+    public static final ModelTemplate MANTEL_CLOCK = block("template_mantel_clock",
+            TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_COVER,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
+    public static final ModelTemplate TALL_MANTEL_CLOCK = block("template_tall_mantel_clock",
+            TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_COVER,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
+
     public static final ModelTemplate POCKET_WATCH_CLOCK = block("template_pocket_watch_in_clock", TextureSlot.ALL);
     public static final ModelTemplate POCKET_WATCH_MINUTE_HAND = block("template_pocket_watch_minute_hand", TextureSlot.ALL);
     public static final ModelTemplate POCKET_WATCH_HOUR_HAND = block("template_pocket_watch_hour_hand", TextureSlot.ALL);
+    public static final ModelTemplate POCKET_WATCH_MINUTE_HAND_SMALL = block("template_pocket_watch_minute_hand_small", TextureSlot.ALL);
+    public static final ModelTemplate POCKET_WATCH_HOUR_HAND_SMALL = block("template_pocket_watch_hour_hand_small", TextureSlot.ALL);
 
     public static final ModelTemplate PENDULUM_BLOCK = createItem("template_pendulum", TextureSlot.ALL);
 

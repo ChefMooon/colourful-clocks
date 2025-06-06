@@ -3,6 +3,7 @@ package com.chefmooon.colourfulclocks.client.event.neoforge;
 import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmMiddleBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmTopBlockEntityRendererImpl;
+import com.chefmooon.colourfulclocks.client.renderer.neoforge.MantelClockBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
@@ -25,6 +26,7 @@ public class ClientSetupEventsImpl {
     public static void onRegisterRenderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS.get(), BornholmMiddleBlockEntityRendererImpl::new);
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS.get(), BornholmTopBlockEntityRendererImpl::new);
+        event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.MANTEL_CLOCK_VARIANTS.get(), MantelClockBlockEntityRendererImpl::new);
     }
 
     @SubscribeEvent
@@ -45,6 +47,10 @@ public class ClientSetupEventsImpl {
             consumer.accept(minuteHandLocation);
             ModelResourceLocation hourHandLocation = new ModelResourceLocation(TextUtil.res("item/%s_hour_hand".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
             consumer.accept(hourHandLocation);
+            ModelResourceLocation minuteHandSmallLocation = new ModelResourceLocation(TextUtil.res("item/%s_minute_hand_small".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            consumer.accept(minuteHandSmallLocation);
+            ModelResourceLocation hourHandSmallLocation = new ModelResourceLocation(TextUtil.res("item/%s_hour_hand_small".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            consumer.accept(hourHandSmallLocation);
         }));
     }
 }

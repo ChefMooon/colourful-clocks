@@ -10,11 +10,18 @@ public class ColourfulClocksCommonWailaPlugin implements IWailaCommonPlugin {
     public static class Options {
         public static final ResourceLocation BORNHOLM_TRUNK_DOOR_TYPE = TextUtil.res("bornholm_trunk_door_type");
         public static final ResourceLocation BORNHOLM_DIAL_GLASS_TYPE = TextUtil.res("bornholm_dial_glass_type");
+        public static final ResourceLocation GLASS_TYPE = TextUtil.res("glass_type");
+        public static final ResourceLocation POCKET_WATCH_TYPE = TextUtil.res("pocket_watch_type");
+        public static final ResourceLocation TICKING = TextUtil.res("ticking");
     }
 
     @Override
     public void register(ICommonRegistrar registrar) {
         registrar.localConfig(Options.BORNHOLM_TRUNK_DOOR_TYPE, true);
         registrar.localConfig(Options.BORNHOLM_DIAL_GLASS_TYPE, true);
+
+        registrar.localConfig(Options.GLASS_TYPE, true);
+        registrar.localConfig(Options.POCKET_WATCH_TYPE, true);
+        registrar.localConfig(Options.TICKING, true);
     }
 }

@@ -3,6 +3,7 @@ package com.chefmooon.colourfulclocks.common.util.neoforge;
 import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
+import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksDataComponentTypesImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksItemProperties;
@@ -22,12 +23,14 @@ import javax.annotation.Nullable;
 public class ColourfulClocksItemPropertiesImpl {
 
     public static void addCustomItemProperties() {
-        ColourfulClocksItemsImpl.POCKET_WATCH_VARIANTS.forEach(((pocketWatchTypes, itemSupplier) ->
-                registerPocketWatch(itemSupplier.get())));
         ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.forEach((entry, supplier) ->
                 registerBornholmMiddle(supplier.get()));
         ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.forEach((entry, supplier) ->
                 registerBornholmTop(supplier.get()));
+        ColourfulClocksItemsImpl.MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) ->
+                registerMantelClock(supplier.get()));
+        ColourfulClocksItemsImpl.POCKET_WATCH_VARIANTS.forEach(((pocketWatchTypes, itemSupplier) ->
+                registerPocketWatch(itemSupplier.get())));
     }
 
     private static void registerBornholmMiddle(Item item) {
@@ -43,6 +46,14 @@ public class ColourfulClocksItemPropertiesImpl {
                 (itemStack, clientLevel, livingEntity, i) -> {
                     // Convert the id to a float and return
                     return itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.BORNHOLM_TOP_GLASS_DATA, BornholmTopGlassComponent.getDefaultValue()).getGlassType().getId() / 100.0f;
+                });
+    }
+
+    private static void registerMantelClock(Item item) {
+        ItemProperties.register(item, ColourfulClocksItemProperties.GLASS_TYPE,
+                (itemStack, clientLevel, livingEntity, i) -> {
+                    // Convert the id to a float and return
+                    return itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.GLASS_DIAL_DATA, GlassDialComponent.getDefaultValue()).getGlassType().getId() / 100.0f;
                 });
     }
 

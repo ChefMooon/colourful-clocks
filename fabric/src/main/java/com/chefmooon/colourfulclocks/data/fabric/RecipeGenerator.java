@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.common.data.types.*;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.data.builder.fabric.BornholmMiddleDataShapedRecipeBuilder;
 import com.chefmooon.colourfulclocks.data.builder.fabric.BornholmTopDataShapedRecipeBuilder;
+import com.chefmooon.colourfulclocks.data.builder.fabric.GlassDialDataShapedRecipeBuilder;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -64,6 +65,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
         buildPendulumRecipe(ColourfulClocksItemsImpl.EMERALD_PENDULUM.get(), PendulumTypes.EMERALD, recipeOutput);
 
         buildBornholmRecipes(recipeOutput);
+        buildMantelClockRecipes();
     }
 
     private static void buildPocketWatchRecipe(ItemLike item, PocketWatchTypes pocketWatchTypes, RecipeOutput recipeOutput) {
@@ -143,7 +145,6 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .define('A', woodType.getCraftingIngredient())
                     .define('B', doorType.getItem())
                     .group("bornholm_middle_" + woodType.getName())
-//                    .setResultData(doorType.getName())
                     .setResultData(doorType)
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
                             woodType.getCraftingIngredient(),
@@ -169,6 +170,46 @@ public class RecipeGenerator extends FabricRecipeProvider {
                             glassType.getItem(),
                             Items.QUARTZ)))
                     .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result) + "_" + glassType.getName());
+        }
+    }
+
+    private static void buildMantelClockRecipes() {
+        for (WoodTypes woodType : WoodTypes.values()) {
+            ItemLike result = ColourfulClocksItemsImpl.MANTEL_CLOCK_VARIANTS.get(woodType).get();
+            ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
+                    .pattern(" A ")
+                    .pattern("ACA")
+                    .pattern("ABA")
+                    .define('A', woodType.getCraftingIngredient())
+                    .define('B', BornholmTopGlassTypes.GLASS.getItem())
+                    .define('C', Items.QUARTZ)
+                    .group("mantel_clock_" + woodType.getName())
+                    .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
+                            woodType.getCraftingIngredient(),
+                            BornholmTopGlassTypes.GLASS.getItem(),
+                            Items.QUARTZ)))
+                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result));
+            buildMantelClockVariantRecipes(woodType, result);
+        }
+    }
+
+    private static void buildMantelClockVariantRecipes(WoodTypes woodType, ItemLike result) {
+        for (BornholmTopGlassTypes glassTypes : BornholmTopGlassTypes.values()) {
+            if (glassTypes == BornholmTopGlassTypes.GLASS) continue;
+            GlassDialDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
+                    .pattern(" A ")
+                    .pattern("ACA")
+                    .pattern("ABA")
+                    .define('A', woodType.getCraftingIngredient())
+                    .define('B', glassTypes.getItem())
+                    .define('C', Items.QUARTZ)
+                    .group("mantel_clock_" + woodType.getName())
+                    .setResultData(glassTypes)
+                    .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
+                            woodType.getCraftingIngredient(),
+                            glassTypes.getItem(),
+                            Items.QUARTZ)))
+                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result) + "_" + glassTypes.getName());
         }
     }
 }

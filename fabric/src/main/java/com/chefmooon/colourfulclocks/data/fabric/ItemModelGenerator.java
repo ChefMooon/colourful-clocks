@@ -71,6 +71,10 @@ public class ItemModelGenerator {
                 TextureMapping.singleSlot(TextureSlot.ALL, ModelLocationUtils.getModelLocation(item)), itemModelGenerators.output);
         ColourfulClocksTemplates.POCKET_WATCH_HOUR_HAND.create((ModelLocationUtils.getModelLocation(item, "_hour_hand")),
                 TextureMapping.singleSlot(TextureSlot.ALL, ModelLocationUtils.getModelLocation(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_MINUTE_HAND_SMALL.create((ModelLocationUtils.getModelLocation(item, "_minute_hand_small")),
+                TextureMapping.singleSlot(TextureSlot.ALL, ModelLocationUtils.getModelLocation(item)), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_HOUR_HAND_SMALL.create((ModelLocationUtils.getModelLocation(item, "_hour_hand_small")),
+                TextureMapping.singleSlot(TextureSlot.ALL, ModelLocationUtils.getModelLocation(item)), itemModelGenerators.output);
 
         ColourfulClocksTemplates.POCKET_WATCH_CLOSED.create(ModelLocationUtils.getModelLocation(item, "_closed"),
                 TextureMapping.singleSlot(TextureSlot.ALL, TextureMapping.getItemTexture(item)), itemModelGenerators.output);
@@ -116,6 +120,10 @@ public class ItemModelGenerator {
         ColourfulClocksTemplates.POCKET_WATCH_MINUTE_HAND.create((ModelLocationUtils.getModelLocation(item, "_minute_hand")),
                 TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
         ColourfulClocksTemplates.POCKET_WATCH_HOUR_HAND.create((ModelLocationUtils.getModelLocation(item, "_hour_hand")),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_MINUTE_HAND_SMALL.create((ModelLocationUtils.getModelLocation(item, "_minute_hand_small")),
+                TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+        ColourfulClocksTemplates.POCKET_WATCH_HOUR_HAND_SMALL.create((ModelLocationUtils.getModelLocation(item, "_hour_hand_small")),
                 TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
 
         ColourfulClocksTemplates.POCKET_WATCH_CLOSED.create(ModelLocationUtils.getModelLocation(item, "_closed"),

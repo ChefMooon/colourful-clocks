@@ -1,6 +1,5 @@
 package com.chefmooon.colourfulclocks.common.block;
 
-import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.BornholmTopGlassTypeProperty;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
@@ -129,7 +128,6 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     public boolean isActivated(BlockState blockState) {
         return blockState.getBlock() instanceof BornholmMiddleBlock && blockState.getValue(ACTIVATED);
     }
-
 
     @Override
     protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {

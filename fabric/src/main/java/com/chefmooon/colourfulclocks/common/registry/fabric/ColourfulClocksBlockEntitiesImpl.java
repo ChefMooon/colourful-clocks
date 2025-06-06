@@ -1,5 +1,6 @@
 package com.chefmooon.colourfulclocks.common.registry.fabric;
 
+import com.chefmooon.colourfulclocks.common.block.entity.MantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.entity.fabric.BornholmMiddleBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.block.entity.fabric.BornholmTopBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
@@ -23,6 +24,11 @@ public class ColourfulClocksBlockEntitiesImpl {
             BlockEntityType.Builder.of(BornholmTopBlockEntityImpl::new,
                     ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
             ));
+
+    public static final BlockEntityType<MantelClockBlockEntity> MANTEL_CLOCK_VARIANTS = registerBlockEntity(ColourfulClocksBlockEntities.MANTEL_CLOCK,
+            BlockEntityType.Builder.of(MantelClockBlockEntity::new,
+                    ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new))
+    );
 
     public static <T extends BlockEntity> BlockEntityType<T> registerBlockEntity(ResourceLocation location, BlockEntityType.Builder<T> builder) {
         return Registry.register(BuiltInRegistries.BLOCK_ENTITY_TYPE, location, builder.build(null));

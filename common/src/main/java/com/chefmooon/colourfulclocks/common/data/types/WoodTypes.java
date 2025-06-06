@@ -58,6 +58,10 @@ public enum WoodTypes implements StringRepresentable {
         return (en_us.isEmpty()) ? "" : " " + en_us;
     }
 
+    public String getBaseTranslationNoSpace() { // temp fix?
+        return (en_us.isEmpty()) ? "" : en_us;
+    }
+
     public Item getItem() {
         return item;
     }

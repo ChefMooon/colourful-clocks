@@ -3,6 +3,7 @@ package com.chefmooon.colourfulclocks.common.registry.neoforge;
 import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
+import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.item.*;
@@ -30,6 +31,8 @@ public class ColourfulClocksItemsImpl {
     public static final HashMap<WoodTypes, Supplier<Item>> BORNHOLM_BASE_VARIANTS = new HashMap<>();
     public static final HashMap<WoodTypes, Supplier<Item>> BORNHOLM_MIDDLE_VARIANTS = new HashMap<>();
     public static final HashMap<WoodTypes, Supplier<Item>> BORNHOLM_TOP_VARIANTS = new HashMap<>();
+
+    public static final HashMap<WoodTypes, Supplier<Item>> MANTEL_CLOCK_VARIANTS = new HashMap<>();
 
     public static final Supplier<Item> IRON_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.IRON_POCKET_WATCH,
             () -> new PocketWatchItem(PocketWatchTypes.IRON, noStack().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
@@ -158,6 +161,16 @@ public class ColourfulClocksItemsImpl {
         }
     }
 
+    private static void registerMantelClockItems() {
+        for (WoodTypes woodTypes : WoodTypes.values()) {
+            // Mantel Clock
+            Supplier<Item> mantelClockItem = registerItemWithTab(ColourfulClocksItems.MANTEL_CLOCK.withSuffix(woodTypes.getSerializedName()),
+                    () -> new MantelClockBlockItem(ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.get(woodTypes).get(), basicItem()
+                            .component(ColourfulClocksDataComponentTypesImpl.GLASS_DIAL_DATA, GlassDialComponent.getDefaultValue())));
+            MANTEL_CLOCK_VARIANTS.put(woodTypes, mantelClockItem);
+        }
+    }
+
     public static Supplier<Item> registerItemWithTab(final ResourceLocation location, final Supplier<Item> supplier) {
         Supplier<Item> item = ITEMS.register(location.getPath(), supplier);
         CREATIVE_TAB_ITEMS.add(item);
@@ -170,6 +183,7 @@ public class ColourfulClocksItemsImpl {
 
     public static void register(IEventBus eventBus) {
         registerBornholmItems();
+        registerMantelClockItems();
         ITEMS.register(eventBus);
     }
 }

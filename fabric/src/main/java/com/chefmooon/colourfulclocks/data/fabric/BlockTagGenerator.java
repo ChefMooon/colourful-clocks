@@ -27,5 +27,9 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider{
             getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
                     .add(supplier.get());
         });
+        ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
+            getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
+                    .add(supplier.get());
+        });
     }
 }

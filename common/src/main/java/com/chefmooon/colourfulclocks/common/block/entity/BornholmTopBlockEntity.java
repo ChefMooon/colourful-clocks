@@ -206,7 +206,7 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     }
 
     public ItemStack getBlockAsItem(WoodTypes woodType) {
-        ItemStack itemStack = getItemStack(woodType).getDefaultInstance();
+        ItemStack itemStack = getItemStack(woodType).getDefaultInstance(); // todo : update this, see MantelClockBlockEntity.getBlockAsItem
         itemStack.applyComponents(this.collectComponents());
         return itemStack;
     }

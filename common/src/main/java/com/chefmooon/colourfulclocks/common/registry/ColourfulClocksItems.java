@@ -76,6 +76,9 @@ public class ColourfulClocksItems {
     public static final ResourceLocation BORNHOLM_MIDDLE = item("bornholm_middle");
     public static final ResourceLocation BORNHOLM_TOP = item("bornholm_top");
 
+    public static final ResourceLocation MANTEL_CLOCK = item("mantel_clock");
+    public static final ResourceLocation TALL_MANTEL_CLOCK = item("tall_mantel_clock");
+
     private static ResourceLocation item(String string) {
         return TextUtil.res(string);
     }

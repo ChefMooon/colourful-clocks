@@ -1,13 +1,14 @@
 package com.chefmooon.colourfulclocks.common.util;
 
-import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
-import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
+import com.chefmooon.colourfulclocks.common.data.types.*;
+import com.mojang.datafixers.util.Pair;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.function.Supplier;
 
 public class ColourfulClocksTypeUtil {
 
@@ -46,6 +47,26 @@ public class ColourfulClocksTypeUtil {
 
     @ExpectPlatform
     public static PendulumTypes getPendulumTypeFromItem(Item item) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static boolean isCopperClockHands(ItemStack itemStack) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static Supplier<Item> getNextWeatheredCopperItem(ItemStack itemStack) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static Supplier<Item> getWaxedClockHands(ItemStack itemStack) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static Pair<Supplier<Item>, Supplier<SoundEvent>> getScrapedClockHands(ItemStack itemStack) {
         throw new AssertionError();
     }
 }

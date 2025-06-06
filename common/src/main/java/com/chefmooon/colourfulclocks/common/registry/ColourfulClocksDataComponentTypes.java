@@ -2,6 +2,7 @@ package com.chefmooon.colourfulclocks.common.registry;
 
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
+import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.component.DataComponentType;
@@ -15,6 +16,9 @@ public class ColourfulClocksDataComponentTypes {
     public static final ResourceLocation BORNHOLM_MIDDLE_GLASS_DATA = dataComponent("bornholm_trunk_data");
     public static final ResourceLocation BORNHOLM_TOP_GLASS_DATA = dataComponent("bornholm_dial_data");
 
+    public static final ResourceLocation GLASS_DIAL_DATA = dataComponent("glass_dial_data");
+    public static final ResourceLocation GLASS_DIAL_PENDULUM_DATA = dataComponent("glass_dial_pendulum_data");
+
     @ExpectPlatform
     public static DataComponentType<BornholmMiddleDoorComponent> getBornholmMiddleGlassData() {
         throw new AssertionError();
@@ -22,6 +26,11 @@ public class ColourfulClocksDataComponentTypes {
 
     @ExpectPlatform
     public static DataComponentType<BornholmTopGlassComponent> getBornholmTopGlassData() {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static DataComponentType<GlassDialComponent> getGlassDialData() {
         throw new AssertionError();
     }
 
