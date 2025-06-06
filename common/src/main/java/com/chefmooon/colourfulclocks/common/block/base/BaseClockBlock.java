@@ -112,6 +112,25 @@ public class BaseClockBlock extends BaseEntityBlock {
         return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
     }
 
+    @Override
+    protected void onPlace(BlockState state, Level level, BlockPos pos, BlockState oldState, boolean movedByPiston) {
+        if (!oldState.is(state.getBlock())) {
+            this.checkPoweredState(level, pos, state);
+        }
+    }
+
+    @Override
+    protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
+        this.checkPoweredState(level, pos, state);
+    }
+
+    private void checkPoweredState(Level level, BlockPos pos, BlockState state) {
+        boolean bl = !level.hasNeighborSignal(pos);
+        if (state.getValue(ACTIVATED) && bl != state.getValue(TICKING)) {
+            level.setBlock(pos, state.setValue(TICKING, bl), 2);
+        }
+    }
+
     protected ItemInteractionResult setPocketWatchType(Level level, BlockPos pos, Player player, ItemStack itemStack, BaseGlassClockBlockEntity baseGlassClockBlockEntity) {
         if (itemStack.is(ColourfulClocksTags.CLOCK_HAND)) {
             PocketWatchTypes pocketWatchType = ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(itemStack.getItem());
