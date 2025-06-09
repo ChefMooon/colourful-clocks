@@ -43,6 +43,7 @@ public class BaseClockBlock extends BaseEntityBlock {
 
     public static final MapCodec<BaseClockBlock> CODEC = simpleCodec(BaseClockBlock::new);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static final BooleanProperty CAN_TICK = ColourfulClocksBlockStateProperties.CAN_TICK;
     public static final BooleanProperty TICKING = ColourfulClocksBlockStateProperties.TICKING;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
@@ -62,6 +63,7 @@ public class BaseClockBlock extends BaseEntityBlock {
                 .setValue(FACING, Direction.NORTH)
                 .setValue(ACTIVATED, Boolean.TRUE)
                 .setValue(WATERLOGGED, Boolean.FALSE)
+                .setValue(CAN_TICK, Boolean.FALSE)
                 .setValue(TICKING, Boolean.FALSE));
     }
 
@@ -71,6 +73,7 @@ public class BaseClockBlock extends BaseEntityBlock {
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection())
                 .setValue(ACTIVATED, Boolean.TRUE)
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER)
+                .setValue(CAN_TICK, Boolean.FALSE)
                 .setValue(TICKING, Boolean.FALSE);
     }
 
@@ -99,7 +102,7 @@ public class BaseClockBlock extends BaseEntityBlock {
     @Override
     protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(FACING, ACTIVATED, WATERLOGGED, TICKING);
+        builder.add(FACING, ACTIVATED, WATERLOGGED, CAN_TICK, TICKING);
     }
 
     @Override
@@ -126,7 +129,7 @@ public class BaseClockBlock extends BaseEntityBlock {
 
     private void checkPoweredState(Level level, BlockPos pos, BlockState state) {
         boolean bl = !level.hasNeighborSignal(pos);
-        if (state.getValue(ACTIVATED) && bl != state.getValue(TICKING)) {
+        if (state.getValue(CAN_TICK) && bl != state.getValue(TICKING)) {
             level.setBlock(pos, state.setValue(TICKING, bl), 2);
         }
     }
@@ -179,7 +182,8 @@ public class BaseClockBlock extends BaseEntityBlock {
         if (tryTicking) {
             if (!baseGlassClockBlockEntity.getDialData().ticking()) {
                 baseGlassClockBlockEntity.setTicking(true);
-                level.setBlock(pos, level.getBlockState(pos).setValue(TICKING, true), 3);
+                level.setBlock(pos, level.getBlockState(pos).setValue(CAN_TICK, true).setValue(TICKING, true), 3);
+                this.checkPoweredState(level, pos, level.getBlockState(pos));
                 level.blockEntityChanged(pos);
                 level.playSound(player, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 if (!player.getAbilities().instabuild) itemStack.shrink(1);
@@ -189,7 +193,7 @@ public class BaseClockBlock extends BaseEntityBlock {
         } else  {
             if (baseGlassClockBlockEntity.getDialData().getTicking()) {
                 baseGlassClockBlockEntity.setTicking(false);
-                level.setBlock(pos, level.getBlockState(pos).setValue(TICKING, false), 3);
+                level.setBlock(pos, level.getBlockState(pos).setValue(CAN_TICK, false).setValue(TICKING, false), 3);
                 level.blockEntityChanged(pos);
                 level.playSound(player, pos, SoundEvents.CHAIN_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
                 if (!player.getAbilities().instabuild) {

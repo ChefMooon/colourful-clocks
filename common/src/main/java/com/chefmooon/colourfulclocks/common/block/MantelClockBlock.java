@@ -71,7 +71,8 @@ public class MantelClockBlock extends BaseGlassClockBlock {
                 .setValue(GLASS_TYPE, glassDialComponent.getGlassType())
                 .setValue(ACTIVATED, Boolean.TRUE)
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER)
-                .setValue(TICKING, glassDialComponent.getTicking());
+                .setValue(CAN_TICK,  glassDialComponent.getTicking())
+                .setValue(TICKING, Boolean.FALSE);
     }
 
     @Override

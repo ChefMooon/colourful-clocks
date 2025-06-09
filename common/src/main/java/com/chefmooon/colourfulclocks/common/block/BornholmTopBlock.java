@@ -66,6 +66,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     public static final MapCodec<BornholmTopBlock> CODEC = simpleCodec(BornholmTopBlock::new);
     public static final BornholmTopGlassTypeProperty GLASS_TYPE = ColourfulClocksBlockStateProperties.BORNHOLM_TOP_GLASS_TYPE;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
+    public static final BooleanProperty CAN_TICK = ColourfulClocksBlockStateProperties.CAN_TICK;
     public static final BooleanProperty TICKING = ColourfulClocksBlockStateProperties.TICKING;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
@@ -97,6 +98,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                 .setValue(GLASS_TYPE, BornholmTopGlassTypes.GLASS)
                 .setValue(ACTIVATED, Boolean.TRUE)
                 .setValue(WATERLOGGED, Boolean.FALSE)
+                .setValue(CAN_TICK, Boolean.FALSE)
                 .setValue(TICKING, Boolean.FALSE));
     }
 
@@ -109,7 +111,8 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                 .setValue(GLASS_TYPE, bornholmTopGlassComponent.getGlassType())
                 .setValue(ACTIVATED, activated)
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER)
-                .setValue(TICKING, bornholmTopGlassComponent.getTicking());
+                .setValue(CAN_TICK, bornholmTopGlassComponent.getTicking())
+                .setValue(TICKING, Boolean.FALSE);
     }
 
     @Override
@@ -132,7 +135,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     @Override
     protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(FACING, GLASS_TYPE, ACTIVATED, WATERLOGGED, TICKING);
+        builder.add(FACING, GLASS_TYPE, ACTIVATED, WATERLOGGED, CAN_TICK, TICKING);
     }
 
     @Override
@@ -297,7 +300,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
 
     private void checkPoweredState(Level level, BlockPos pos, BlockState state) {
         boolean bl = !level.hasNeighborSignal(pos);
-        if (state.getValue(ACTIVATED) && bl != state.getValue(TICKING)) {
+        if (state.getValue(ACTIVATED) && state.getValue(CAN_TICK) && bl != state.getValue(TICKING)) {
             level.setBlock(pos, state.setValue(TICKING, bl), 2);
         }
     }
