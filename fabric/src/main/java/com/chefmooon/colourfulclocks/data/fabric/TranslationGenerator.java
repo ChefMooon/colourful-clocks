@@ -73,7 +73,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
 
         generateMantelClockTranslations(translationBuilder);
 
-        translationBuilder.add(ColourfulClocksTags.CLOCK_PENDULUM, "Clock Pendelum");
+        translationBuilder.add(ColourfulClocksTags.CLOCK_PENDULUM, "Clock Pendulum");
         translationBuilder.add(ColourfulClocksTags.CLOCK_DOOR, "Clock Door");
         translationBuilder.add(ColourfulClocksTags.CLOCK_TOP_GLASS, "Clock Dial Glass");
         translationBuilder.add(ColourfulClocksTags.CLOCK_HAND, "Clock Hand");
