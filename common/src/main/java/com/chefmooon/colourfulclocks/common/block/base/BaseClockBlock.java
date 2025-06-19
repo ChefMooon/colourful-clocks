@@ -131,6 +131,11 @@ public class BaseClockBlock extends BaseEntityBlock {
         boolean bl = !level.hasNeighborSignal(pos);
         if (state.getValue(CAN_TICK) && bl != state.getValue(TICKING)) {
             level.setBlock(pos, state.setValue(TICKING, bl), 2);
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof BaseGlassClockBlockEntity baseGlassClockBlockEntity) {
+                baseGlassClockBlockEntity.setTicking(bl);
+                level.blockEntityChanged(pos);
+            }
         }
     }
 
