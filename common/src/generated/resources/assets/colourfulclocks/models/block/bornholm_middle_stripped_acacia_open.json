@@ -1,7 +1,6 @@
 {
-  "parent": "colourfulclocks:block/template_bornholm_middle_open",
+  "parent": "colourfulclocks:block/template_bornholm_middle_base_open",
   "textures": {
-    "door": "minecraft:block/stripped_acacia_log",
     "inside": "minecraft:block/stripped_acacia_log",
     "side": "minecraft:block/stripped_acacia_log"
   }

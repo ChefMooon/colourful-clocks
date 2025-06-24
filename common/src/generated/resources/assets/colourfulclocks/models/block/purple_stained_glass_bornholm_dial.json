@@ -1,0 +1,6 @@
+{
+  "parent": "colourfulclocks:block/template_bornholm_top_glass",
+  "textures": {
+    "all": "colourfulclocks:block/purple_stained_glass_bornholm_dial"
+  }
+}

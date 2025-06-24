@@ -1,0 +1,6 @@
+{
+  "parent": "colourfulclocks:block/template_bornholm_door",
+  "textures": {
+    "all": "colourfulclocks:block/light_blue_stained_glass_bornholm_door"
+  }
+}

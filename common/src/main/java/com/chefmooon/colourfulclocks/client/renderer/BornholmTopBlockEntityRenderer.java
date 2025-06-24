@@ -1,6 +1,5 @@
 package com.chefmooon.colourfulclocks.client.renderer;
 
-import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Axis;

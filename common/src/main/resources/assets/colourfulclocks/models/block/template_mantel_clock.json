@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-	"render_type": "minecraft:translucent",
+	"render_type": "minecraft:cutout",
 	"parent": "colourfulclocks:block/bornholm_block",
 	"textures": {
 		"1": "#clock_dial",
@@ -10,20 +10,6 @@
 		"particle": "#side"
 	},
 	"elements": [
-		{
-			"name": "glass",
-			"from": [5, 2, 11],
-			"to": [11, 8, 11],
-			"rotation": {"angle": 0, "axis": "y", "origin": [5, 2, 11]},
-			"faces": {
-				"north": {"uv": [5, 5, 11, 11], "texture": "#3"},
-				"east": {"uv": [0, 0, 0, 6], "texture": "#3"},
-				"south": {"uv": [5, 5, 11, 11], "texture": "#3"},
-				"west": {"uv": [0, 0, 0, 6], "texture": "#3"},
-				"up": {"uv": [0, 0, 6, 0], "texture": "#3"},
-				"down": {"uv": [0, 0, 6, 0], "texture": "#3"}
-			}
-		},
 		{
 			"name": "base",
 			"from": [0, 0, 5],
@@ -168,7 +154,6 @@
 		}
 	],
 	"groups": [
-		0,
 		1,
 		2,
 		3,

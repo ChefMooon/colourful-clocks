@@ -1,7 +1,6 @@
 {
-  "parent": "colourfulclocks:block/template_bornholm_middle",
+  "parent": "colourfulclocks:block/template_bornholm_middle_base",
   "textures": {
-    "door": "minecraft:block/mangrove_log",
     "inside": "minecraft:block/stripped_mangrove_log",
     "side": "minecraft:block/mangrove_log"
   }

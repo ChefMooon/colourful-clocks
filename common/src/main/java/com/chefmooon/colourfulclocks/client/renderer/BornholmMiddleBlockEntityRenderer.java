@@ -12,15 +12,11 @@ public class BornholmMiddleBlockEntityRenderer {
     private static final double MAX_SWING_ANGLE = 4.0;
 
     public static void renderPendulum(PoseStack poseStack, float partialTick, BlockState state, float swingSpeedModifier) {
-        poseStack.pushPose();
-        poseStack.translate(0.5F, 1.0F, 0.5F);
-        poseStack.mulPose(getRotation(state.getValue(BornholmMiddleBlock.FACING)));
+        poseStack.rotateAround(getRotation(state.getValue(BornholmMiddleBlock.FACING)), 0.5F, 0.5F, 0.5F);
 
         if (state.getValue(BornholmMiddleBlock.ACTIVATED)) {
-            poseStack.mulPose(Axis.ZP.rotation((float) Math.toRadians(getPendulumRotation(partialTick, swingSpeedModifier))));
+            poseStack.rotateAround(Axis.ZP.rotation((float) Math.toRadians(getPendulumRotation(partialTick, swingSpeedModifier))), 0.5F, 0.9F, 0.5F);
         }
-
-        poseStack.translate(0.0F, -0.5F, 0.0F);
     }
 
     public static float getPendulumRotation(float partialTick, float swingSpeedModifier) {

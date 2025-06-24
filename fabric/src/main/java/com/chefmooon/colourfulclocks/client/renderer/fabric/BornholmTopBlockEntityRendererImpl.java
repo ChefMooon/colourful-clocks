@@ -1,8 +1,10 @@
 package com.chefmooon.colourfulclocks.client.renderer.fabric;
 
+import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
 import com.chefmooon.colourfulclocks.client.renderer.BornholmTopBlockEntityRenderer;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.fabric.BornholmTopBlockEntityImpl;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
@@ -33,9 +35,10 @@ public class BornholmTopBlockEntityRendererImpl<T extends BornholmTopBlockEntity
 
         PocketWatchTypes pocketWatchType = blockEntity.getDialData().getPocketWatchType();
         if (pocketWatchType != PocketWatchTypes.EMPTY) {
+            poseStack.pushPose();
             renderMinuteHand(poseStack, partialTick, state);
 
-            ResourceLocation minuteHandLocation = TextUtil.res("item/%s_minute_hand".formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
+            ResourceLocation minuteHandLocation = TextUtil.res(ColourfulClocksModels.MINUTE_HAND_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
             BakedModel minuteHandModel = minecraft.getModelManager().getModel(minuteHandLocation);
             minecraft.getBlockRenderer().getModelRenderer().renderModel(
                     poseStack.last(),
@@ -47,7 +50,7 @@ public class BornholmTopBlockEntityRendererImpl<T extends BornholmTopBlockEntity
 
             renderHourHand(poseStack, partialTick, state);
 
-            ResourceLocation hourHandLocation = TextUtil.res("item/%s_hour_hand".formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
+            ResourceLocation hourHandLocation = TextUtil.res(ColourfulClocksModels.HOUR_HAND_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
             BakedModel hourHandModel = minecraft.getModelManager().getModel(hourHandLocation);
             minecraft.getBlockRenderer().getModelRenderer().renderModel(
                     poseStack.last(),
@@ -56,6 +59,20 @@ public class BornholmTopBlockEntityRendererImpl<T extends BornholmTopBlockEntity
                     hourHandModel,
                     1f, 1f, 1f,
                     packedLight, packedOverlay);
+            poseStack.popPose();
         }
+
+        poseStack.pushPose();
+        poseStack.rotateAround(getRotation(state.getValue(BornholmTopBlock.FACING)), 0.5F, 0.5F, 0.5F);
+        BornholmTopGlassTypes glassType = blockEntity.getDialData().getGlassType();
+        BakedModel glassModel = minecraft.getModelManager().getModel(TextUtil.res(ColourfulClocksModels.BORNHOLM_DIAL_PATH.formatted(glassType.getName())));
+        minecraft.getBlockRenderer().getModelRenderer().renderModel(
+                poseStack.last(),
+                bufferSource.getBuffer(RenderType.translucent()),
+                blockEntity.getBlockState(),
+                glassModel,
+                1f, 1f, 1f,
+                packedLight, packedOverlay);
+        poseStack.popPose();
     }
 }

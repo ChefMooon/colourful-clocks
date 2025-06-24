@@ -5,6 +5,7 @@ import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTemplates;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTextureSlots;
@@ -34,6 +35,32 @@ public class BlockModelGenerator {
 
         registerBornholm(blockModelGenerators);
         registerMantelClockBlockAll(blockModelGenerators);
+
+        generateBornholmTopDialGlass();
+        generateBornholmDoorTypes();
+        generateSmallGlassDial();
+    }
+
+    private static void generateBornholmTopDialGlass() {
+        for (BornholmTopGlassTypes type : BornholmTopGlassTypes.values()) {
+            ColourfulClocksTemplates.BORNHOLM_TOP_GLASS.create(type.getBornholmGlassTexture(),
+                    TextureMapping.singleSlot(TextureSlot.ALL, type.getBornholmGlassTexture()), GENERATOR.modelOutput);
+        }
+    }
+
+    private static void generateBornholmDoorTypes() {
+        for (BornholmDoorTypes bornholmDoorTypes : BornholmDoorTypes.values()) {
+            if (bornholmDoorTypes == BornholmDoorTypes.BASE) continue; // Skip the base type as it is handled separately
+            ColourfulClocksTemplates.BORNHOLM_DOOR.create(bornholmDoorTypes.getBornholmDoorTexture(),
+                    TextureMapping.singleSlot(TextureSlot.ALL, bornholmDoorTypes.getBornholmDoorTexture()), GENERATOR.modelOutput);
+        }
+    }
+
+    private static void generateSmallGlassDial() {
+        for (BornholmTopGlassTypes type : BornholmTopGlassTypes.values()) {
+            ColourfulClocksTemplates.GLASS_DIAL_SMALL.create(TextUtil.res("block/" + type.getName() + "_dial_small"),
+                    TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res("block/" + type.getName() + "_dial_small")), GENERATOR.modelOutput);
+        }
     }
 
     private static void registerBornholm(BlockModelGenerators blockModelGenerators) {
@@ -87,14 +114,23 @@ public class BlockModelGenerator {
                 }
             }
 
+//            TextureMapping variantBaseMapping = TextureMapping.singleSlot(TextureSlot.SIDE, woodTypeLocation)
+//                    .put(TextureSlot.INSIDE, strippedBlockLocation)
+//                    .put(ColourfulClocksTextureSlots.DOOR, woodTypeLocation);
+//
+//            ResourceLocation BORNHOLM_MIDDLE_VARIANT_BASE = ColourfulClocksTemplates.BORNHOLM_MIDDLE.create(
+//                    blockLocation, variantBaseMapping, blockModelGenerators.modelOutput
+//            );
+//            ResourceLocation BORNHOLM_MIDDLE_VARIANT_BASE_OPEN = ColourfulClocksTemplates.BORNHOLM_MIDDLE_OPEN.create(
+//                    blockLocation.withSuffix( "_open"), variantBaseMapping, blockModelGenerators.modelOutput
+//            );
             TextureMapping variantBaseMapping = TextureMapping.singleSlot(TextureSlot.SIDE, woodTypeLocation)
-                    .put(TextureSlot.INSIDE, strippedBlockLocation)
-                    .put(ColourfulClocksTextureSlots.DOOR, woodTypeLocation);
+                    .put(TextureSlot.INSIDE, strippedBlockLocation);
 
-            ResourceLocation BORNHOLM_MIDDLE_VARIANT_BASE = ColourfulClocksTemplates.BORNHOLM_MIDDLE.create(
+            ResourceLocation BORNHOLM_MIDDLE_VARIANT_BASE = ColourfulClocksTemplates.BORNHOLM_MIDDLE_BASE.create(
                     blockLocation, variantBaseMapping, blockModelGenerators.modelOutput
             );
-            ResourceLocation BORNHOLM_MIDDLE_VARIANT_BASE_OPEN = ColourfulClocksTemplates.BORNHOLM_MIDDLE_OPEN.create(
+            ResourceLocation BORNHOLM_MIDDLE_VARIANT_BASE_OPEN = ColourfulClocksTemplates.BORNHOLM_MIDDLE_BASE_OPEN.create(
                     blockLocation.withSuffix( "_open"), variantBaseMapping, blockModelGenerators.modelOutput
             );
 

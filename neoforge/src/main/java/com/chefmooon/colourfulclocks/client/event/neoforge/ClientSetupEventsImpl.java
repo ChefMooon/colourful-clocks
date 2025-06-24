@@ -1,9 +1,12 @@
 package com.chefmooon.colourfulclocks.client.event.neoforge;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
+import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmMiddleBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmTopBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.MantelClockBlockEntityRendererImpl;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
@@ -43,14 +46,27 @@ public class ClientSetupEventsImpl {
 
     public static void onRegisterModels(Consumer<ModelResourceLocation> consumer) {
         ColourfulClocksItemsImpl.POCKET_WATCH_VARIANTS.forEach(((pocketWatchTypes, itemSupplier) -> {
-            ModelResourceLocation minuteHandLocation = new ModelResourceLocation(TextUtil.res("item/%s_minute_hand".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            ModelResourceLocation minuteHandLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.MINUTE_HAND_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
             consumer.accept(minuteHandLocation);
-            ModelResourceLocation hourHandLocation = new ModelResourceLocation(TextUtil.res("item/%s_hour_hand".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            ModelResourceLocation hourHandLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.HOUR_HAND_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
             consumer.accept(hourHandLocation);
-            ModelResourceLocation minuteHandSmallLocation = new ModelResourceLocation(TextUtil.res("item/%s_minute_hand_small".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            ModelResourceLocation minuteHandSmallLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.MINUTE_HAND_SMALL_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
             consumer.accept(minuteHandSmallLocation);
-            ModelResourceLocation hourHandSmallLocation = new ModelResourceLocation(TextUtil.res("item/%s_hour_hand_small".formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            ModelResourceLocation hourHandSmallLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.HOUR_HAND_SMALL_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
             consumer.accept(hourHandSmallLocation);
         }));
+        for (BornholmTopGlassTypes type : BornholmTopGlassTypes.values()) {
+            ModelResourceLocation location = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.BORNHOLM_DIAL_PATH.formatted(type.getName())), "standalone");
+            consumer.accept(location);
+        }
+        for (BornholmTopGlassTypes type : BornholmTopGlassTypes.values()) {
+            ModelResourceLocation location = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.DIAL_SMALL_PATH.formatted(type.getName())), "standalone");
+            consumer.accept(location);
+        }
+        for (BornholmDoorTypes doorTypes : BornholmDoorTypes.values()) {
+            if (doorTypes == BornholmDoorTypes.BASE) continue; // Skip empty door type
+            ModelResourceLocation location = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.BORNHOLM_DOOR_PATH.formatted(doorTypes.getName())), "standalone");
+            consumer.accept(location);
+        }
     }
 }

@@ -1,7 +1,6 @@
 {
-  "parent": "colourfulclocks:block/template_bornholm_middle_open",
+  "parent": "colourfulclocks:block/template_bornholm_middle_base_open",
   "textures": {
-    "door": "minecraft:block/warped_stem",
     "inside": "minecraft:block/stripped_warped_stem",
     "side": "minecraft:block/warped_stem"
   }

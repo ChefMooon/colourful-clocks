@@ -1,6 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-	"render_type": "minecraft:translucent",
+	"render_type": "minecraft:cutout",
 	"parent": "colourfulclocks:block/bornholm_block",
 	"textures": {
 		"0": "#side",
@@ -87,15 +87,6 @@
 			"faces": {
 				"north": {"uv": [4, 4, 12, 12], "texture": "#0"},
 				"south": {"uv": [4, 4, 12, 12], "texture": "#2"}
-			}
-		},
-		{
-			"name": "glass",
-			"from": [4, 4, 13],
-			"to": [12, 12, 13],
-			"rotation": {"angle": 0, "axis": "y", "origin": [4, 4, 13]},
-			"faces": {
-				"south": {"uv": [4, 4, 12, 12], "texture": "#4"}
 			}
 		},
 		{

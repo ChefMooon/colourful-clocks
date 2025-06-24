@@ -11,7 +11,6 @@ actively watching the issues page to resolve any bugs as soon as possible.
   - Can be disabled with a redstone signal
   - Clock must be assembled properly with trunk and base below
 - Recipes for glass variants of the Bornholm Trunk and Dial
-- Item models now show glass type
 - Pick Block now collects Trunk and Dial Glass Data
 - Glass types now use translatable item name translations
 - Silk Touch now retains glass type, pendulum, and dial
@@ -26,6 +25,7 @@ actively watching the issues page to resolve any bugs as soon as possible.
   - Hour marker sizes adjusted
   - Center marker added
   - Clock now has 2 hands: minute and hour
+- General Improvements to the Bornholm Trunk and Dial models
 - Adjusted Copper Pendulum swing speeds(Also Waxed)
   - Exposed Copper: Full Speed -> 3/4 Speed
   - Weathered Copper: Full Speed -> 1/2 Speed

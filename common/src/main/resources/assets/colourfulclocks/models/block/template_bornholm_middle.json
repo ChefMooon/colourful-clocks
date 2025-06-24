@@ -1,7 +1,6 @@
 {
 	"credit": "Made with Blockbench",
-	"ambientocclusion": false,
-	"render_type": "minecraft:translucent",
+	"render_type": "minecraft:cutout",
 	"parent": "colourfulclocks:block/bornholm_block",
 	"textures": {
 		"0": "#side",
@@ -180,16 +179,6 @@
 				"up": {"uv": [6, 0, 10, 1], "texture": "#0"},
 				"down": {"uv": [6, 2, 10, 3], "texture": "#0"}
 			}
-		},
-		{
-			"name": "door_pane",
-			"from": [6, 3, 12],
-			"to": [10, 13, 13],
-			"rotation": {"angle": 0, "axis": "y", "origin": [5, 2, 12]},
-			"faces": {
-				"north": {"uv": [6, 3, 10, 13], "texture": "#2"},
-				"south": {"uv": [6, 3, 10, 13], "texture": "#2"}
-			}
 		}
 	],
 	"groups": [
@@ -208,7 +197,7 @@
 			"name": "door",
 			"origin": [6, 12, 13],
 			"color": 0,
-			"children": [11, 12, 13, 14, 15]
+			"children": [11, 12, 13, 14]
 		}
 	]
 }

@@ -1,0 +1,6 @@
+{
+  "parent": "colourfulclocks:block/template_glass_dial_small",
+  "textures": {
+    "all": "colourfulclocks:block/cyan_stained_glass_dial_small"
+  }
+}
