@@ -22,6 +22,7 @@ actively watching the issues page to resolve any bugs as soon as possible.
   - Dial: glass, dial
 
 ### Changed
+- Pocket Watches can now be stacked to 64
 - Updated Bornholm Dial Block Model
   - Hour marker sizes adjusted
   - Center marker added
