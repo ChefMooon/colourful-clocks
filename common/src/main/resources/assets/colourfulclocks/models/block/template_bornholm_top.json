@@ -3,10 +3,6 @@
 	"render_type": "minecraft:cutout",
 	"parent": "colourfulclocks:block/bornholm_block",
 	"textures": {
-		"0": "#side",
-		"2": "#clock_dial",
-		"4": "#clock_dial_cover",
-		"5": "#clock_dial_marks",
 		"particle": "#side"
 	},
 	"elements": [
@@ -16,12 +12,12 @@
 			"to": [14, 2, 14],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 1, 8]},
 			"faces": {
-				"north": {"uv": [2, 2, 14, 4], "texture": "#0"},
-				"east": {"uv": [2, 4, 14, 6], "texture": "#0"},
-				"south": {"uv": [2, 6, 14, 8], "texture": "#0"},
-				"west": {"uv": [2, 8, 14, 10], "texture": "#0"},
-				"up": {"uv": [2, 2, 14, 14], "texture": "#0"},
-				"down": {"uv": [2, 2, 14, 14], "texture": "#0"}
+				"north": {"uv": [2, 2, 14, 4], "texture": "#side"},
+				"east": {"uv": [2, 4, 14, 6], "texture": "#side"},
+				"south": {"uv": [2, 6, 14, 8], "texture": "#side"},
+				"west": {"uv": [2, 8, 14, 10], "texture": "#side"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#side"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#side"}
 			}
 		},
 		{
@@ -30,12 +26,12 @@
 			"to": [14, 16, 14],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 15, 8]},
 			"faces": {
-				"north": {"uv": [2, 2, 14, 4], "texture": "#0"},
-				"east": {"uv": [2, 4, 14, 6], "texture": "#0"},
-				"south": {"uv": [2, 6, 14, 8], "texture": "#0"},
-				"west": {"uv": [2, 8, 14, 10], "texture": "#0"},
-				"up": {"uv": [2, 2, 14, 14], "texture": "#0", "cullface": "up"},
-				"down": {"uv": [2, 2, 14, 14], "texture": "#0"}
+				"north": {"uv": [2, 2, 14, 4], "texture": "#side"},
+				"east": {"uv": [2, 4, 14, 6], "texture": "#side"},
+				"south": {"uv": [2, 6, 14, 8], "texture": "#side"},
+				"west": {"uv": [2, 8, 14, 10], "texture": "#side"},
+				"up": {"uv": [2, 2, 14, 14], "texture": "#side", "cullface": "up"},
+				"down": {"uv": [2, 2, 14, 14], "texture": "#side"}
 			}
 		},
 		{
@@ -43,9 +39,9 @@
 			"to": [12, 14, 13],
 			"rotation": {"angle": 0, "axis": "y", "origin": [4, 12, 4]},
 			"faces": {
-				"north": {"uv": [4, 2, 12, 4], "texture": "#0"},
-				"south": {"uv": [4, 2, 12, 4], "texture": "#0"},
-				"down": {"uv": [4, 4, 12, 14], "texture": "#0"}
+				"north": {"uv": [4, 2, 12, 4], "texture": "#side"},
+				"south": {"uv": [4, 2, 12, 4], "texture": "#side"},
+				"down": {"uv": [4, 4, 12, 14], "texture": "#side"}
 			}
 		},
 		{
@@ -53,10 +49,10 @@
 			"to": [4, 14, 13],
 			"rotation": {"angle": 0, "axis": "y", "origin": [3, 2, 4]},
 			"faces": {
-				"north": {"uv": [12, 2, 13, 14], "texture": "#0"},
-				"east": {"uv": [2, 2, 12, 14], "texture": "#0"},
-				"south": {"uv": [3, 2, 4, 14], "texture": "#0"},
-				"west": {"uv": [3, 2, 13, 14], "texture": "#0"}
+				"north": {"uv": [12, 2, 13, 14], "texture": "#side"},
+				"east": {"uv": [2, 2, 12, 14], "texture": "#side"},
+				"south": {"uv": [3, 2, 4, 14], "texture": "#side"},
+				"west": {"uv": [3, 2, 13, 14], "texture": "#side"}
 			}
 		},
 		{
@@ -64,9 +60,9 @@
 			"to": [12, 4, 13],
 			"rotation": {"angle": 0, "axis": "y", "origin": [4, 2, 4]},
 			"faces": {
-				"north": {"uv": [4, 12, 12, 14], "texture": "#0"},
-				"south": {"uv": [4, 12, 12, 14], "texture": "#0"},
-				"up": {"uv": [4, 2, 12, 12], "texture": "#0"}
+				"north": {"uv": [4, 12, 12, 14], "texture": "#side"},
+				"south": {"uv": [4, 12, 12, 14], "texture": "#side"},
+				"up": {"uv": [4, 2, 12, 12], "texture": "#side"}
 			}
 		},
 		{
@@ -74,10 +70,10 @@
 			"to": [13, 14, 13],
 			"rotation": {"angle": 0, "axis": "y", "origin": [12, 2, 4]},
 			"faces": {
-				"north": {"uv": [3, 2, 4, 14], "texture": "#0"},
-				"east": {"uv": [3, 2, 13, 14], "texture": "#0"},
-				"south": {"uv": [12, 2, 13, 14], "texture": "#0"},
-				"west": {"uv": [4, 2, 14, 14], "texture": "#0"}
+				"north": {"uv": [3, 2, 4, 14], "texture": "#side"},
+				"east": {"uv": [3, 2, 13, 14], "texture": "#side"},
+				"south": {"uv": [12, 2, 13, 14], "texture": "#side"},
+				"west": {"uv": [4, 2, 14, 14], "texture": "#side"}
 			}
 		},
 		{
@@ -85,8 +81,8 @@
 			"to": [12, 12, 12],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 12]},
 			"faces": {
-				"north": {"uv": [4, 4, 12, 12], "texture": "#0"},
-				"south": {"uv": [4, 4, 12, 12], "texture": "#2"}
+				"north": {"uv": [4, 4, 12, 12], "texture": "#side"},
+				"south": {"uv": [4, 4, 12, 12], "texture": "#clock_dial"}
 			}
 		},
 		{
@@ -94,11 +90,12 @@
 			"from": [10.5, 7.5, 12],
 			"to": [11.5, 8.5, 12.1],
 			"faces": {
-				"east": {"uv": [4, 0, 4.1, 1], "texture": "#5"},
-				"south": {"uv": [4, 0, 5, 1], "texture": "#5"},
-				"west": {"uv": [4, 0, 4.1, 1], "texture": "#5"},
-				"up": {"uv": [4, 0, 5, 0.1], "texture": "#5"},
-				"down": {"uv": [4, 0, 5, 0.1], "texture": "#5"}
+				"north": {"uv": [0, 0, 1, 1], "texture": "#clock_dial_marks"},
+				"east": {"uv": [0, 0, 0.1, 1], "texture": "#clock_dial_marks"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#clock_dial_marks"},
+				"west": {"uv": [0, 0, 0.1, 1], "texture": "#clock_dial_marks"},
+				"up": {"uv": [0, 0, 1, 0.1], "texture": "#clock_dial_marks"},
+				"down": {"uv": [0, 0, 1, 0.1], "texture": "#clock_dial_marks"}
 			}
 		},
 		{
@@ -106,11 +103,12 @@
 			"from": [7.5, 4.5, 12],
 			"to": [8.5, 5.5, 12.1],
 			"faces": {
-				"east": {"uv": [7, 0, 7.1, 1], "texture": "#5"},
-				"south": {"uv": [7, 0, 8, 1], "texture": "#5"},
-				"west": {"uv": [7, 0, 7.1, 1], "texture": "#5"},
-				"up": {"uv": [7, 0, 8, 0.1], "texture": "#5"},
-				"down": {"uv": [7, 0, 8, 0.1], "texture": "#5"}
+				"north": {"uv": [0, 0, 1, 1], "texture": "#clock_dial_marks"},
+				"east": {"uv": [0, 0, 0.1, 1], "texture": "#clock_dial_marks"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#clock_dial_marks"},
+				"west": {"uv": [0, 0, 0.1, 1], "texture": "#clock_dial_marks"},
+				"up": {"uv": [0, 0, 1, 0.1], "texture": "#clock_dial_marks"},
+				"down": {"uv": [0, 0, 1, 0.1], "texture": "#clock_dial_marks"}
 			}
 		},
 		{
@@ -118,11 +116,12 @@
 			"from": [4.5, 7.5, 12],
 			"to": [5.5, 8.5, 12.1],
 			"faces": {
-				"east": {"uv": [2, 0, 2.1, 1], "texture": "#5"},
-				"south": {"uv": [2, 0, 3, 1], "texture": "#5"},
-				"west": {"uv": [2, 0, 2.1, 1], "texture": "#5"},
-				"up": {"uv": [2, 0, 3, 0.1], "texture": "#5"},
-				"down": {"uv": [2, 0, 3, 0.1], "texture": "#5"}
+				"north": {"uv": [0, 0, 1, 1], "texture": "#clock_dial_marks"},
+				"east": {"uv": [0, 0, 0.1, 1], "texture": "#clock_dial_marks"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#clock_dial_marks"},
+				"west": {"uv": [0, 0, 0.1, 1], "texture": "#clock_dial_marks"},
+				"up": {"uv": [0, 0, 1, 0.1], "texture": "#clock_dial_marks"},
+				"down": {"uv": [0, 0, 1, 0.1], "texture": "#clock_dial_marks"}
 			}
 		},
 		{
@@ -130,24 +129,25 @@
 			"from": [7.5, 10.5, 12],
 			"to": [8.5, 11.5, 12.1],
 			"faces": {
-				"east": {"uv": [0, 0, 0.1, 1], "texture": "#5"},
-				"south": {"uv": [0, 0, 1, 1], "texture": "#5"},
-				"west": {"uv": [0, 0, 0.1, 1], "texture": "#5"},
-				"up": {"uv": [0, 0, 1, 0.1], "texture": "#5"},
-				"down": {"uv": [0, 0, 1, 0.1], "texture": "#5"}
+				"north": {"uv": [0, 0, 1, 1], "texture": "#clock_dial_marks"},
+				"east": {"uv": [0, 0, 0.1, 1], "texture": "#clock_dial_marks"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#clock_dial_marks"},
+				"west": {"uv": [0, 0, 0.1, 1], "texture": "#clock_dial_marks"},
+				"up": {"uv": [0, 0, 1, 0.1], "texture": "#clock_dial_marks"},
+				"down": {"uv": [0, 0, 1, 0.1], "texture": "#clock_dial_marks"}
 			}
 		},
 		{
 			"name": "marker_middle",
 			"from": [7.5, 7.5, 12],
 			"to": [8.5, 8.5, 12.4],
-			"rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 12.2]},
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 8, 12.2]},
 			"faces": {
-				"east": {"uv": [2, 0, 2.4, 1], "texture": "#5"},
-				"south": {"uv": [2, 0, 3, 1], "texture": "#5"},
-				"west": {"uv": [2, 0, 2.4, 1], "texture": "#5"},
-				"up": {"uv": [2, 0, 3, 0.4], "texture": "#5"},
-				"down": {"uv": [2, 0, 3, 0.4], "texture": "#5"}
+				"east": {"uv": [0, 0, 0.4, 1], "texture": "#clock_dial_marks"},
+				"south": {"uv": [0, 0, 1, 1], "texture": "#clock_dial_marks"},
+				"west": {"uv": [0, 0, 0.4, 1], "texture": "#clock_dial_marks"},
+				"up": {"uv": [0, 0, 1, 0.4], "texture": "#clock_dial_marks"},
+				"down": {"uv": [0, 0, 1, 0.4], "texture": "#clock_dial_marks"}
 			}
 		}
 	],
@@ -159,12 +159,11 @@
 		4,
 		5,
 		6,
-		7,
 		{
 			"name": "markers",
 			"origin": [8, 8, 12.2],
 			"color": 0,
-			"children": [8, 9, 10, 11, 12]
+			"children": [7, 8, 9, 10, 11]
 		}
 	]
 }

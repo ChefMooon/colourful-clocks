@@ -1,13 +1,19 @@
 package com.chefmooon.colourfulclocks.data.fabric;
 
+import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTemplates;
+import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTextureSlots;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.model.ModelLocationUtils;
 import net.minecraft.data.models.model.TextureMapping;
 import net.minecraft.data.models.model.TextureSlot;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Blocks;
 
 public class ItemModelGenerator {
     private static ItemModelGenerators GENERATOR;
@@ -53,6 +59,59 @@ public class ItemModelGenerator {
         generateWaxedPendulumItem(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_PENDULUM.get(), itemModelGenerators);
         generateWaxedPendulumItem(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_PENDULUM.get(), itemModelGenerators);
         generateWaxedPendulumItem(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_PENDULUM.get(), itemModelGenerators);
+
+        generateBornholmMiddleItems();
+        generateBornholmTopItems();
+        generateMantelClockItems();
+    }
+
+    private static void generateBornholmMiddleItems() {
+        for (WoodTypes woodTypes : WoodTypes.values()) {
+            for (BornholmDoorTypes bornholmDoorTypes : BornholmDoorTypes.values()) {
+                if (bornholmDoorTypes == BornholmDoorTypes.BASE) continue;
+                ResourceLocation itemLocation = ModelLocationUtils.getModelLocation(ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.get(woodTypes).get());
+                TextureMapping variantMapping = TextureMapping.singleSlot(TextureSlot.SIDE, ModelLocationUtils.getModelLocation(woodTypes.getBlock()))
+                        .put(TextureSlot.INSIDE, ModelLocationUtils.getModelLocation(woodTypes.getStrippedBlock()))
+                        .put(ColourfulClocksTextureSlots.DOOR, TextUtil.res(bornholmDoorTypes.getBornholmDoorTexture().getPath() + "_transparent"));
+
+                ColourfulClocksTemplates.BORNHOLM_MIDDLE_ITEM.create(itemLocation.withSuffix(bornholmDoorTypes.getSerializedName()), variantMapping, GENERATOR.output);
+            }
+        }
+    }
+
+    private static void generateBornholmTopItems() {
+        for (WoodTypes woodTypes : WoodTypes.values()) {
+            for (BornholmTopGlassTypes bornholmTopGlassTypes : BornholmTopGlassTypes.values()) {
+                ResourceLocation itemLocation = ModelLocationUtils.getModelLocation(ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.get(woodTypes).get());
+                ResourceLocation glassLocation = bornholmTopGlassTypes == BornholmTopGlassTypes.GLASS ?
+                        bornholmTopGlassTypes.getBornholmGlassTexture() :
+                        TextUtil.res(bornholmTopGlassTypes.getBornholmGlassTexture().getPath() + "_transparent");
+                TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, ModelLocationUtils.getModelLocation(woodTypes.getBlock()))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/quartz_bornholm_clockface"))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, glassLocation)
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
+
+                ColourfulClocksTemplates.BORNHOLM_TOP_ITEM.create(itemLocation.withSuffix(bornholmTopGlassTypes.getSerializedName()), mapping, GENERATOR.output);
+            }
+        }
+    }
+
+    private static void generateMantelClockItems() {
+        for (WoodTypes woodTypes : WoodTypes.values()) {
+            for (BornholmTopGlassTypes bornholmTopGlassTypes : BornholmTopGlassTypes.values()) {
+                ResourceLocation itemLocation = ModelLocationUtils.getModelLocation(ColourfulClocksItemsImpl.MANTEL_CLOCK_VARIANTS.get(woodTypes).get());
+                ResourceLocation glassLocation = bornholmTopGlassTypes == BornholmTopGlassTypes.GLASS ?
+                        TextUtil.res("block/" + bornholmTopGlassTypes.getName() + "_dial_small") :
+                        TextUtil.res("block/" + bornholmTopGlassTypes.getName() + "_dial_small_transparent");
+
+                TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, ModelLocationUtils.getModelLocation(woodTypes.getBlock()))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clockface"))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, glassLocation)
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
+
+                ColourfulClocksTemplates.MANTEL_CLOCK_ITEM.create(itemLocation.withSuffix(bornholmTopGlassTypes.getSerializedName()), mapping, GENERATOR.output);
+            }
+        }
     }
 
     private static void generatePendulumItem(Item item, ItemModelGenerators itemModelGenerators) {

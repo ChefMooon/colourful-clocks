@@ -10,7 +10,8 @@ actively watching the issues page to resolve any bugs as soon as possible.
   - Right-click with a pickaxe to disable ticking (uses durability)
   - Can be disabled with a redstone signal
   - Clock must be assembled properly with trunk and base below
-- Recipes for glass variants of the Bornholm Trunk and Dial
+- Recipes for glass variants of the Bornholm Trunk and Dial 
+- Item models now show glass type
 - Pick Block now collects Trunk and Dial Glass Data
 - Glass types now use translatable item name translations
 - Silk Touch now retains glass type, pendulum, and dial

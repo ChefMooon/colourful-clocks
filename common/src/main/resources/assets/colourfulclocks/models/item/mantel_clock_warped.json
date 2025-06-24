@@ -1,98 +1,98 @@
 {
-  "parent": "colourfulclocks:block/mantel_clock_warped_glass",
+  "parent": "colourfulclocks:item/mantel_clock_warped_glass",
   "overrides": [
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_white_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_white_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.01
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_orange_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_orange_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.02
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_magenta_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_magenta_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.03
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_light_blue_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_light_blue_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.04
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_yellow_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_yellow_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.05
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_lime_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_lime_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.06
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_pink_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_pink_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.07
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_gray_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_gray_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.08
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_light_gray_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_light_gray_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.09
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_cyan_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_cyan_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.1
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_purple_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_purple_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.11
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_blue_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_blue_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.12
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_brown_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_brown_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.13
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_green_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_green_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.14
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_red_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_red_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.15
       }
     },
     {
-      "model": "colourfulclocks:block/mantel_clock_warped_black_stained_glass",
+      "model": "colourfulclocks:item/mantel_clock_warped_black_stained_glass",
       "predicate": {
         "colourfulclocks:glass": 0.16
       }

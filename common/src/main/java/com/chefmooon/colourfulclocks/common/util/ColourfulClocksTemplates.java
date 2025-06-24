@@ -12,20 +12,26 @@ public class ColourfulClocksTemplates {
     public static final ModelTemplate BORNHOLM_BASE = block("template_bornholm_base", TextureSlot.LAYER0);
     public static final ModelTemplate BORNHOLM_MIDDLE = block("template_bornholm_middle",
             TextureSlot.SIDE, TextureSlot.INSIDE, ColourfulClocksTextureSlots.DOOR);
+    public static final ModelTemplate BORNHOLM_MIDDLE_OPEN = block("template_bornholm_middle_open",
+            TextureSlot.SIDE, TextureSlot.INSIDE, ColourfulClocksTextureSlots.DOOR);
     public static final ModelTemplate BORNHOLM_MIDDLE_BASE = block("template_bornholm_middle_base",
             TextureSlot.SIDE, TextureSlot.INSIDE);
     public static final ModelTemplate BORNHOLM_MIDDLE_BASE_OPEN = block("template_bornholm_middle_base_open",
             TextureSlot.SIDE, TextureSlot.INSIDE);
-    public static final ModelTemplate BORNHOLM_MIDDLE_OPEN = block("template_bornholm_middle_open",
+    public static final ModelTemplate BORNHOLM_MIDDLE_ITEM = item("template_bornholm_middle",
             TextureSlot.SIDE, TextureSlot.INSIDE, ColourfulClocksTextureSlots.DOOR);
     public static final ModelTemplate BORNHOLM_MIDDLE_NO_DOOR = block("template_bornholm_middle_no_door",
             TextureSlot.SIDE, TextureSlot.INSIDE, ColourfulClocksTextureSlots.DOOR);
     public static final ModelTemplate BORNHOLM_TOP = block("template_bornholm_top",
         TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_COVER,
             ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
-    public static final ModelTemplate BORNHOLM_CLOCK_DIAL_HOUR = block("template_bornholm_clock_dial_hour", TextureSlot.ALL);
+    public static final ModelTemplate BORNHOLM_TOP_ITEM = item("template_bornholm_top", TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL,
+        ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
 
     public static final ModelTemplate MANTEL_CLOCK = block("template_mantel_clock",
+            TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_COVER,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
+    public static final ModelTemplate MANTEL_CLOCK_ITEM = item("template_mantel_clock",
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_COVER,
             ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
     public static final ModelTemplate TALL_MANTEL_CLOCK = block("template_tall_mantel_clock",
@@ -41,9 +47,6 @@ public class ColourfulClocksTemplates {
     public static final ModelTemplate BORNHOLM_TOP_GLASS = block("template_bornholm_top_glass", TextureSlot.ALL);
     public static final ModelTemplate BORNHOLM_DOOR = block("template_bornholm_door", TextureSlot.ALL);
     public static final ModelTemplate GLASS_DIAL_SMALL = block("template_glass_dial_small", TextureSlot.ALL);
-
-    public static final ModelTemplate BORNHOLM_TOP_ITEM = item("template_bornholm_top", TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL,
-            ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
 
     public static final ModelTemplate PENDULUM_BLOCK = item("template_pendulum", TextureSlot.ALL);
 
