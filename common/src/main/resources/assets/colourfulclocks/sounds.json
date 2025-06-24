@@ -119,6 +119,16 @@
   "block.bornholm.tick": {
     "subtitle": "colourfulclocks.subtitles.block.bornholm.tick",
     "sounds": [
+      "colourfulclocks:bornholm_dial_tick_0",
+      "colourfulclocks:bornholm_dial_tick_1",
+      "colourfulclocks:bornholm_dial_tick_2",
+      "colourfulclocks:bornholm_dial_tick_3",
+      "colourfulclocks:bornholm_dial_tick_4"
+    ]
+  },
+  "block.clock.tick": {
+    "subtitle": "colourfulclocks.subtitles.block.clock.tick",
+    "sounds": [
       "colourfulclocks:dial_tick_0",
       "colourfulclocks:dial_tick_1",
       "colourfulclocks:dial_tick_2",
