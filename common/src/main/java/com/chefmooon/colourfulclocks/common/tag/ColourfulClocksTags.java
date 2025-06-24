@@ -13,7 +13,7 @@ public class ColourfulClocksTags {
     public static final TagKey<Item> CLOCK_TOP_GLASS = getItemTagKey("clock_dial_glass");
     public static final TagKey<Item> CLOCK_HAND = getItemTagKey("clock_hand");
 
-    public static final TagKey<Item> BORNHOLM_TOP = getItemTagKey("bornholm_top");
+    public static final TagKey<Item> BORNHOLM_DIAL = getItemTagKey("bornholm_dial");
 
 
     public static TagKey<Item> getItemTagKey(String path) {

@@ -103,6 +103,6 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
                         );
 
         ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.forEach((key, value) ->
-                getOrCreateTagBuilder(ColourfulClocksTags.BORNHOLM_TOP).add(value.get()));
+                getOrCreateTagBuilder(ColourfulClocksTags.BORNHOLM_DIAL).add(value.get()));
     }
 }

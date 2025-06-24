@@ -20,6 +20,7 @@ actively watching the issues page to resolve any bugs as soon as possible.
 - DataComponents for Trunk and Dial
   - Trunk: glass, pendulum
   - Dial: glass, dial
+- New tag: colourfulclocks:bornholm_dial
 
 ### Changed
 - When placing a Bornholm Dial on the top of a Bornholm Trunk, the dial block will try to place instead of open the trunk door 
@@ -28,7 +29,7 @@ actively watching the issues page to resolve any bugs as soon as possible.
   - Hour marker sizes adjusted
   - Center marker added
   - Clock now has 2 hands: minute and hour
-- General Improvements to the Bornholm Trunk and Dial models
+- General Improvements to the Bornholm Trunk and Dial item models
 - Adjusted Copper Pendulum swing speeds(Also Waxed)
   - Exposed Copper: Full Speed -> 3/4 Speed
   - Weathered Copper: Full Speed -> 1/2 Speed
