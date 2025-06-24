@@ -101,5 +101,8 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
                         ColourfulClocksItemsImpl.REDSTONE_POCKET_WATCH.get(),
                         ColourfulClocksItemsImpl.EMERALD_POCKET_WATCH.get()
                         );
+
+        ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.forEach((key, value) ->
+                getOrCreateTagBuilder(ColourfulClocksTags.BORNHOLM_TOP).add(value.get()));
     }
 }

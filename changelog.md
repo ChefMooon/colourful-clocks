@@ -22,6 +22,7 @@ actively watching the issues page to resolve any bugs as soon as possible.
   - Dial: glass, dial
 
 ### Changed
+- When placing a Bornholm Dial on the top of a Bornholm Trunk, the dial block will try to place instead of open the trunk door 
 - Pocket Watches can now be stacked to 64
 - Updated Bornholm Dial Block Model
   - Hour marker sizes adjusted

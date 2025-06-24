@@ -228,7 +228,9 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     } else {
                         return toggleDoor(level, state, pos, player);
                     }
-                } else {
+                } else if (mainHandItem.is(ColourfulClocksTags.BORNHOLM_TOP) && hit.getDirection() == Direction.UP) {
+                    return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+                }else {
                     return toggleDoor(level, state, pos, player);
                 }
             } else {
