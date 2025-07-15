@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 
 public class ColourfulClocks {
     public static final String MOD_ID = "colourfulclocks";
-
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
     
     public static void init() {
@@ -15,5 +14,6 @@ public class ColourfulClocks {
         ColourfulClocksBlockEntities.init();
         ColourfulClocksDataComponentTypes.init();
         ColourfulClocksSounds.init();
+        ColourfulClocksAdvancements.init();
     }
 }

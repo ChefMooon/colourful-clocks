@@ -1,0 +1,27 @@
+{
+  "parent": "colourfulclocks:main/insert_pocket_watch",
+  "criteria": {
+    "has_insert_pendulum_trigger": {
+      "trigger": "colourfulclocks:insert_pendulum"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "colourfulclocks.advancement.insert_pendulum.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "colourfulclocks:amethyst_pendulum"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.insert_pendulum"
+    }
+  },
+  "requirements": [
+    [
+      "has_insert_pendulum_trigger"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

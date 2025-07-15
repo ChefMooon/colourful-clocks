@@ -97,7 +97,7 @@ public class MantelClockBlock extends BaseGlassClockBlock {
                     return setWaxedState(level, pos, player, mainHandItem, mantelClockBlockEntity, true);
                 } else if (mainHandItem.is(ItemTags.AXES)) {
                     return setWaxedState(level, pos, player, mainHandItem, mantelClockBlockEntity, false);
-                } else if (mainHandItem.is(Items.REDSTONE)) {
+                } else if (!state.getValue(TICKING) && mainHandItem.is(Items.REDSTONE)) {
                     return setTicking(level, pos, player, mainHandItem, mantelClockBlockEntity, true);
                 } else if (state.getValue(TICKING) && mainHandItem.is(ItemTags.PICKAXES)) {
                     return setTicking(level, pos, player, mainHandItem, mantelClockBlockEntity, false);

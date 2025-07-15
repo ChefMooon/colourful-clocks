@@ -1,0 +1,27 @@
+{
+  "parent": "colourfulclocks:main/copper_wax_on",
+  "criteria": {
+    "has_copper_wax_off_trigger": {
+      "trigger": "colourfulclocks:copper_wax_off"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "colourfulclocks.advancement.copper_wax_off.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:stone_axe"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.copper_wax_off"
+    }
+  },
+  "requirements": [
+    [
+      "has_copper_wax_off_trigger"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

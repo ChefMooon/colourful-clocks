@@ -1,0 +1,27 @@
+{
+  "parent": "colourfulclocks:main/bornholm_trunk",
+  "criteria": {
+    "has_bornholm_trunk_wind_charge_trigger": {
+      "trigger": "colourfulclocks:bornholm_trunk_wind_charge"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "colourfulclocks.advancement.bornholm_trunk_wind_charge.desc"
+    },
+    "hidden": true,
+    "icon": {
+      "count": 1,
+      "id": "minecraft:wind_charge"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.bornholm_trunk_wind_charge"
+    }
+  },
+  "requirements": [
+    [
+      "has_bornholm_trunk_wind_charge_trigger"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

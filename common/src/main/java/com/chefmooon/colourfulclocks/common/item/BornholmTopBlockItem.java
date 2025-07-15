@@ -44,27 +44,4 @@ public class BornholmTopBlockItem extends BlockItem {
 
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }
-
-    @Override
-    public InteractionResult place(BlockPlaceContext context) {
-        Player player = context.getPlayer();
-        if (player != null) {
-            BlockPlaceContext blockPlaceContext = this.updatePlacementContext(context);
-            if (blockPlaceContext == null) {
-                return InteractionResult.FAIL;
-            } else {
-                BlockState blockState = this.getPlacementState(blockPlaceContext);
-                if (blockState == null) {
-                    return InteractionResult.FAIL;
-                } else {
-                    BlockPos blockPostBelow = blockPlaceContext.getClickedPos().below();
-                    Level level = blockPlaceContext.getLevel();
-                    if (level.getBlockState(blockPostBelow).getBlock() instanceof BornholmMiddleBlock) {
-                        return super.place(context);
-                    }
-                }
-            }
-        }
-        return InteractionResult.FAIL;
-    }
 }

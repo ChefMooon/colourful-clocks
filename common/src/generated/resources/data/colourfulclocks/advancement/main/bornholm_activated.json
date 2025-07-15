@@ -1,0 +1,27 @@
+{
+  "parent": "colourfulclocks:main/bornholm_clock",
+  "criteria": {
+    "has_bornholm_activated_trigger": {
+      "trigger": "colourfulclocks:bornholm_activated"
+    }
+  },
+  "display": {
+    "description": {
+      "translate": "colourfulclocks.advancement.bornholm_activated.desc"
+    },
+    "frame": "goal",
+    "icon": {
+      "count": 1,
+      "id": "colourfulclocks:oxidized_copper_pocket_watch"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.bornholm_activated"
+    }
+  },
+  "requirements": [
+    [
+      "has_bornholm_activated_trigger"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

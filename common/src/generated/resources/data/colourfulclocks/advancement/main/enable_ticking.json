@@ -1,0 +1,27 @@
+{
+  "parent": "colourfulclocks:main/glass_change",
+  "criteria": {
+    "has_enable_ticking_trigger": {
+      "trigger": "colourfulclocks:enable_ticking"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "colourfulclocks.advancement.enable_ticking.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:redstone"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.enable_ticking"
+    }
+  },
+  "requirements": [
+    [
+      "has_enable_ticking_trigger"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

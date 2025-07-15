@@ -1,0 +1,27 @@
+{
+  "parent": "colourfulclocks:main/insert_pendulum",
+  "criteria": {
+    "has_glass_change_trigger": {
+      "trigger": "colourfulclocks:glass_change"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "colourfulclocks.advancement.glass_change.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:pink_stained_glass_pane"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.glass_change"
+    }
+  },
+  "requirements": [
+    [
+      "has_glass_change_trigger"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -7,6 +7,7 @@ import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
@@ -18,6 +19,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
@@ -108,9 +110,13 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
+        boolean isActivated = isActivated(context.getLevel().getBlockState(context.getClickedPos().above()), context.getLevel().getBlockState(context.getClickedPos().below()));
+        if (isActivated && context.getPlayer() instanceof ServerPlayer serverPlayer) {
+            ColourfulClocksAdvancements.BORNHOLM_ACTIVATED_TRIGGER.get().trigger(serverPlayer);
+        }
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection())
                 .setValue(DOOR_TYPE, context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData(), BornholmMiddleDoorComponent.getDefaultValue()).getDoorType())
-                .setValue(ACTIVATED, isActivated(context.getLevel().getBlockState(context.getClickedPos().above()), context.getLevel().getBlockState(context.getClickedPos().below())))
+                .setValue(ACTIVATED, isActivated)
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER);
     }
 
@@ -176,6 +182,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     level.setBlockAndUpdate(pos, state.setValue(DOOR_TYPE, BornholmDoorTypes.BASE));
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_WOOD.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
                     if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
+                    if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.BORNHOLM_TRUNK_GLASS_CHANGE.get().trigger(serverPlayer);
 
                     return ItemInteractionResult.SUCCESS;
                 } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_DOOR)) {
@@ -185,6 +192,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     level.setBlockAndUpdate(pos, state.setValue(DOOR_TYPE, newBornholmDoorTypes));
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_GLASS.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
                     if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
+                    if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.BORNHOLM_TRUNK_GLASS_CHANGE.get().trigger(serverPlayer);
 
                     return ItemInteractionResult.SUCCESS;
                 } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_PENDULUM) && state.getValue(OPEN)) {
@@ -201,6 +209,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     block.setPendulumType(player.getAbilities().instabuild ? mainHandItem.copy() : mainHandItem);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_PENDULUM.get(), SoundSource.BLOCKS, 0.8F, 0.5F);
+                    if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_PENDULUM_TRIGGER.get().trigger(serverPlayer);
 
                     return ItemInteractionResult.SUCCESS;
                 } else if (mainHandItem.is(Items.HONEYCOMB)) {
@@ -210,6 +219,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
                         if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
+                        if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_ON_TRIGGER.get().trigger(serverPlayer);
 
                         return ItemInteractionResult.SUCCESS;
                     } else {
@@ -223,6 +233,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, pendulumInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
                         if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                        if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
 
                         return ItemInteractionResult.SUCCESS;
                     } else {
@@ -319,6 +330,9 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     protected void onExplosionHit(BlockState blockState, Level level, BlockPos blockPos, Explosion explosion, BiConsumer<ItemStack, BlockPos> biConsumer) {
         if (explosion.canTriggerBlocks()) {
             level.setBlock(blockPos, blockState.setValue(OPEN, blockState.getValue(OPEN) ? Boolean.FALSE : Boolean.TRUE), 3);
+            if (explosion.getIndirectSourceEntity() instanceof ServerPlayer serverPlayer) {
+                ColourfulClocksAdvancements.BORNHOLM_TRUNK_WIND_CHARGE.get().trigger(serverPlayer);
+            }
         }
         super.onExplosionHit(blockState, level, blockPos, explosion, biConsumer);
     }

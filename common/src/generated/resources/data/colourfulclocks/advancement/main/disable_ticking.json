@@ -1,0 +1,27 @@
+{
+  "parent": "colourfulclocks:main/enable_ticking",
+  "criteria": {
+    "has_disable_ticking_trigger": {
+      "trigger": "colourfulclocks:disable_ticking"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "colourfulclocks.advancement.disable_ticking.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "minecraft:stone_pickaxe"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.disable_ticking"
+    }
+  },
+  "requirements": [
+    [
+      "has_disable_ticking_trigger"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-24T15:12:00.2887729	colourfulclocks/Block Loot Tables
+// 1.21.1	2025-07-15T14:42:13.53079	colourfulclocks/Block Loot Tables
 8f00099b6a269cce6a9c653ebcdb3a490e683289 data\colourfulclocks\loot_table\blocks\bornholm_top_stripped_birch.json
 4846c237819667742e20724adcea12d14a0c21b5 data\colourfulclocks\loot_table\blocks\bornholm_base_acacia.json
 4c61570b539b5eb6cb868d1d6d3edfe8e9a97f91 data\colourfulclocks\loot_table\blocks\bornholm_top_stripped_crimson.json
@@ -36,8 +36,8 @@ e59b1cca398a11b5865989dfb7ac10909a736ab9 data\colourfulclocks\loot_table\blocks\
 58c4f6f78da25b6cf9a21f5b9793d658a8efb912 data\colourfulclocks\loot_table\blocks\bornholm_top_dark_oak.json
 7a13ce85018e26eeda5a4915d4079e3c6b4ec492 data\colourfulclocks\loot_table\blocks\bornholm_middle_birch.json
 27726e628bbaac937a91d567acd7f4e986b884f4 data\colourfulclocks\loot_table\blocks\bornholm_top_cherry.json
-1ac7edae2ce0dd9edc46fe217a6e878be1eee94d data\colourfulclocks\loot_table\blocks\bornholm_middle_spruce.json
 fc87cd06520e493b0051ef6d49c7e44d31cc9141 data\colourfulclocks\loot_table\blocks\bornholm_base_stripped_cherry.json
+1ac7edae2ce0dd9edc46fe217a6e878be1eee94d data\colourfulclocks\loot_table\blocks\bornholm_middle_spruce.json
 0cfb0786d8307e48cacb1f0f6410db844f26e71c data\colourfulclocks\loot_table\blocks\bornholm_middle_acacia.json
 b4e10b464f9e54e82546f3336c511be059a68d7f data\colourfulclocks\loot_table\blocks\mantel_clock_dark_oak.json
 9b536d3cc1527385cf3296363eaaee90a492f5c4 data\colourfulclocks\loot_table\blocks\mantel_clock_stripped_oak.json

@@ -14,6 +14,6 @@ public class DataGeneration implements DataGeneratorEntrypoint {
         pack.addProvider(ModelGenerator::new);
         pack.addProvider(RecipeGenerator::new);
         pack.addProvider(LootTableGenerator::new);
-//        pack.addProvider(AdvancementGenerator::new); // todo - enable after advancements are complete
+        pack.addProvider(AdvancementGenerator::new);
     }
 }

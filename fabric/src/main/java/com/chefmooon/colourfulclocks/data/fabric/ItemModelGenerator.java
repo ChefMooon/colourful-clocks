@@ -70,9 +70,12 @@ public class ItemModelGenerator {
             for (BornholmDoorTypes bornholmDoorTypes : BornholmDoorTypes.values()) {
                 if (bornholmDoorTypes == BornholmDoorTypes.BASE) continue;
                 ResourceLocation itemLocation = ModelLocationUtils.getModelLocation(ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.get(woodTypes).get());
+                ResourceLocation doorLocation = bornholmDoorTypes == BornholmDoorTypes.GLASS ?
+                        bornholmDoorTypes.getBornholmDoorTexture() :
+                        TextUtil.res(bornholmDoorTypes.getBornholmDoorTexture().getPath() + "_transparent");
                 TextureMapping variantMapping = TextureMapping.singleSlot(TextureSlot.SIDE, ModelLocationUtils.getModelLocation(woodTypes.getBlock()))
                         .put(TextureSlot.INSIDE, ModelLocationUtils.getModelLocation(woodTypes.getStrippedBlock()))
-                        .put(ColourfulClocksTextureSlots.DOOR, TextUtil.res(bornholmDoorTypes.getBornholmDoorTexture().getPath() + "_transparent"));
+                        .put(ColourfulClocksTextureSlots.DOOR, doorLocation);
 
                 ColourfulClocksTemplates.BORNHOLM_MIDDLE_ITEM.create(itemLocation.withSuffix(bornholmDoorTypes.getSerializedName()), variantMapping, GENERATOR.output);
             }

@@ -2,11 +2,14 @@ package com.chefmooon.colourfulclocks.common.block;
 
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SimpleWaterloggedBlock;
@@ -81,6 +84,10 @@ public class BornholmBaseBlock extends Block implements SimpleWaterloggedBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
+        boolean isActivated = isActivated(context.getLevel(), context.getClickedPos());
+        if (isActivated && context.getPlayer() instanceof ServerPlayer serverPlayer) {
+            ColourfulClocksAdvancements.BORNHOLM_ACTIVATED_TRIGGER.get().trigger(serverPlayer);
+        }
         return this.defaultBlockState()
                 .setValue(FACING, context.getClickedFace().getOpposite())
                 .setValue(ACTIVATED, Boolean.TRUE)
@@ -100,6 +107,12 @@ public class BornholmBaseBlock extends Block implements SimpleWaterloggedBlock {
         }
 
         return super.updateShape(stateIn, facing, facingState, level, currentPos, facingPos);
+    }
+
+    public boolean isActivated(Level level, BlockPos blockPos) {
+        BlockState trunkState = level.getBlockState(blockPos.above());
+        BlockState dialState = level.getBlockState(blockPos.above(2));
+        return trunkState.getBlock() instanceof BornholmMiddleBlock && dialState.getBlock() instanceof BornholmTopBlock;
     }
 
     @Override

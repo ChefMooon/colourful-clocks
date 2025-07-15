@@ -116,6 +116,54 @@ public class TranslationGenerator extends FabricLanguageProvider {
 
         translationBuilder.add(ADVANCEMENT + "root", FORMATTED_MOD_ID);
         translationBuilder.add(ADVANCEMENT + "root.desc", "Stylish Clocks!");
+
+        translationBuilder.add(ADVANCEMENT + "bornholm_clock", "Bornholm Clock");
+        translationBuilder.add(ADVANCEMENT + "bornholm_clock.desc", "This clock comes in 3 parts, place them from top to bottom: base, trunk, dial to activate it.");
+
+        translationBuilder.add(ADVANCEMENT + "bornholm_base", "Solid Foundations");
+        translationBuilder.add(ADVANCEMENT + "bornholm_base.desc", "Craft and place a Bornholm Base of any type. Every great clock starts with a sturdy base!");
+
+        translationBuilder.add(ADVANCEMENT + "bornholm_trunk", "Time's Backbone");
+        translationBuilder.add(ADVANCEMENT + "bornholm_trunk.desc", "Craft and place a Bornholm Trunk of any type. Building upward, one tick at a time!");
+
+        translationBuilder.add(ADVANCEMENT + "bornholm_dial", "Face the Clock");
+        translationBuilder.add(ADVANCEMENT + "bornholm_dial.desc", "Craft and Place a Bornholm Dial of any type. Give your clock its identity!");
+
+        translationBuilder.add(ADVANCEMENT + "mantel_clock", "Mantel Clock");
+        translationBuilder.add(ADVANCEMENT + "mantel_clock.desc", "This small clock can be placed on any surface. It can be crafted with any wood type and has a few customization options available.");
+
+        translationBuilder.add(ADVANCEMENT + "bornholm_trunk_wind_charge", "How could you?!");
+        translationBuilder.add(ADVANCEMENT + "bornholm_trunk_wind_charge.desc", "Trunk doors can be opened/closed by a wind charge. Do what you will with this information.");
+
+        translationBuilder.add(ADVANCEMENT + "bornholm_activated", "Bornholm Activated");
+        translationBuilder.add(ADVANCEMENT + "bornholm_activated.desc", "Copper Pocket Watches and Pendulums will only weather when the clock is fully assembled");
+
+        translationBuilder.add(ADVANCEMENT + "insert_pocket_watch", "Clock Hands");
+        translationBuilder.add(ADVANCEMENT + "insert_pocket_watch.desc", "Craft and insert a Pocket Watch into a Bornholm Dial or clock");
+
+        translationBuilder.add(ADVANCEMENT + "insert_pendulum", "Pendulum");
+        translationBuilder.add(ADVANCEMENT + "insert_pendulum.desc", "Craft and insert a Pendulum into a Bornholm Trunk or Clock");
+
+        translationBuilder.add(ADVANCEMENT + "glass_change", "Custom Panes");
+        translationBuilder.add(ADVANCEMENT + "glass_change.desc", "Use a Glass Pane to change the glass in a clock");
+
+        translationBuilder.add(ADVANCEMENT + "enable_ticking", "Tick Tock");
+        translationBuilder.add(ADVANCEMENT + "enable_ticking.desc", "Use Redstone to activate the ticking sound in your Bornholm Dial or clock");
+
+        translationBuilder.add(ADVANCEMENT + "disable_ticking", "Silence");
+        translationBuilder.add(ADVANCEMENT + "disable_ticking.desc", "Use a Pickaxe to stop the ticking sound");
+
+        translationBuilder.add(ADVANCEMENT + "copper_items", "Oxidized");
+        translationBuilder.add(ADVANCEMENT + "copper_items.desc", "Copper items only weather when placed in a clock. They can be waxed to preserve their condition.");
+
+        translationBuilder.add(ADVANCEMENT + "copper_wax_on", "Wax On");
+        translationBuilder.add(ADVANCEMENT + "copper_wax_on.desc", "Apply Honeycomb to a Copper Pocket Watch or Pendulum in a clock");
+
+        translationBuilder.add(ADVANCEMENT + "copper_wax_off", "Wax Off");
+        translationBuilder.add(ADVANCEMENT + "copper_wax_off.desc", "Scrape Oxidation or Wax off of a Copper Pocket Watch or Pendulum in a clock");
+
+        translationBuilder.add(ADVANCEMENT + "bornholm_trunk_glass_change", "Custom Door");
+        translationBuilder.add(ADVANCEMENT + "bornholm_trunk_glass_change.desc", "Use a Glass Pane to customize your Bornholm Trunk door. A block of wood can be used to restore the original door!");
     }
 
     private static void generateBornholmBaseTranslations(TranslationBuilder translationBuilder) {

@@ -15,6 +15,7 @@ public class ColourfulClocksFabric implements ModInitializer {
         ColourfulClocksCreativeTabsImpl.register();
         ColourfulClocksDataComponentTypesImpl.register();
         ColourfulClocksSoundsImpl.register();
+        ColourfulClocksAdvancementsImpl.register();
 
     }
 }

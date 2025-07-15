@@ -1,0 +1,45 @@
+{
+  "parent": "colourfulclocks:main/root",
+  "criteria": {
+    "has_copper_pendulum": {
+      "conditions": {
+        "items": [
+          {
+            "items": "colourfulclocks:copper_pendulum"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_copper_pocket_watch": {
+      "conditions": {
+        "items": [
+          {
+            "items": "colourfulclocks:copper_pocket_watch"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "colourfulclocks.advancement.copper_items.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "colourfulclocks:oxidized_copper_pocket_watch"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.copper_items"
+    }
+  },
+  "requirements": [
+    [
+      "has_copper_pendulum",
+      "has_copper_pocket_watch"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

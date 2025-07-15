@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.common.block.entity.base.BaseGlassClockBloc
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
@@ -11,6 +12,7 @@ import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -151,6 +153,7 @@ public class BaseClockBlock extends BaseEntityBlock {
                 baseGlassClockBlockEntity.setPocketWatchType(player.getAbilities().instabuild ? itemStack.copy() : itemStack.split(1));
                 level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.6F);
                 level.updateNeighborsAt(pos, this);
+                if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_POCKET_WATCH_TRIGGER.get().trigger(serverPlayer);
                 return ItemInteractionResult.SUCCESS;
             }
         }
@@ -165,6 +168,7 @@ public class BaseClockBlock extends BaseEntityBlock {
                 level.blockEntityChanged(pos);
                 level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
                 if (!player.getAbilities().instabuild) itemStack.shrink(1);
+                if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_ON_TRIGGER.get().trigger(serverPlayer);
 
                 return ItemInteractionResult.SUCCESS;
             }
@@ -176,6 +180,7 @@ public class BaseClockBlock extends BaseEntityBlock {
                 level.blockEntityChanged(pos);
                 level.playSound(player, pos, clockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
                 if (!player.getAbilities().instabuild) itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
 
                 return ItemInteractionResult.SUCCESS;
             }
@@ -192,6 +197,7 @@ public class BaseClockBlock extends BaseEntityBlock {
                 level.blockEntityChanged(pos);
                 level.playSound(player, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
                 if (!player.getAbilities().instabuild) itemStack.shrink(1);
+                if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.ENABLE_TICKING_TRIGGER.get().trigger(serverPlayer);
 
                 return ItemInteractionResult.SUCCESS;
             }
@@ -207,6 +213,7 @@ public class BaseClockBlock extends BaseEntityBlock {
                         Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), Items.REDSTONE.getDefaultInstance());
                     }
                 }
+                if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.DISABLE_TICKING_TRIGGER.get().trigger(serverPlayer);
 
                 return ItemInteractionResult.SUCCESS;
             }

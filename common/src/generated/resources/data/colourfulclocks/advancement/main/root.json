@@ -1,0 +1,33 @@
+{
+  "criteria": {
+    "has_redstone": {
+      "conditions": {
+        "items": [
+          {
+            "items": "minecraft:redstone"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "background": "minecraft:textures/block/stripped_spruce_log.png",
+    "description": {
+      "translate": "colourfulclocks.advancement.root.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "colourfulclocks:iron_pocket_watch"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.root"
+    }
+  },
+  "requirements": [
+    [
+      "has_redstone"
+    ]
+  ],
+  "sends_telemetry_event": true
+}
