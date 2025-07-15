@@ -31,8 +31,8 @@ public class BornholmBaseBlock extends Block implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
-    public int FLAMMABILITY = 30;
-    public int FIRE_SPREAD = 60;
+    public static int FLAMMABILITY = 30;
+    public static int FIRE_SPREAD = 60;
 
     private static HashMap<Direction, VoxelShape> SHAPES;
 

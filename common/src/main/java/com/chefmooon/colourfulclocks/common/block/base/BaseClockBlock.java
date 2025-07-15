@@ -51,8 +51,8 @@ public class BaseClockBlock extends BaseEntityBlock {
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
     public WoodTypes woodType;
 
-    public int FLAMMABILITY = 30;
-    public int FIRE_SPREAD = 60;
+    public static int FLAMMABILITY = 30;
+    public static int FIRE_SPREAD = 60;
 
     public BaseClockBlock(Properties properties) {
         this(WoodTypes.OAK, properties);

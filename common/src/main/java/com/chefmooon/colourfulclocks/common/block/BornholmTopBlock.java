@@ -74,8 +74,8 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
     public WoodTypes woodType;
 
-    public int FLAMMABILITY = 30;
-    public int FIRE_SPREAD = 60;
+    public static int FLAMMABILITY = 30;
+    public static int FIRE_SPREAD = 60;
 
     private static final VoxelShape SHAPE  = Shapes.or(
             Block.box(2, 0, 2, 14, 2, 14),

@@ -1,6 +1,7 @@
 package com.chefmooon.colourfulclocks.fabric;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
+import com.chefmooon.colourfulclocks.common.fabric.CommonSetup;
 import com.chefmooon.colourfulclocks.common.registry.fabric.*;
 import net.fabricmc.api.ModInitializer;
 
@@ -17,5 +18,6 @@ public class ColourfulClocksFabric implements ModInitializer {
         ColourfulClocksSoundsImpl.register();
         ColourfulClocksAdvancementsImpl.register();
 
+        CommonSetup.init();
     }
 }
