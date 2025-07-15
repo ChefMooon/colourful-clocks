@@ -66,6 +66,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
 
         buildBornholmRecipes(recipeOutput);
         buildMantelClockRecipes();
+        buildWaxedCopperItemRecipes();
     }
 
     private static void buildPocketWatchRecipe(ItemLike item, PocketWatchTypes pocketWatchTypes, RecipeOutput recipeOutput) {
@@ -211,5 +212,49 @@ public class RecipeGenerator extends FabricRecipeProvider {
                             Items.QUARTZ)))
                     .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result) + "_" + glassTypes.getName());
         }
+    }
+
+    private static void buildWaxedCopperItemRecipes() {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get())
+                .requires(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get())
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_copper_pocket_watch", RecipeProvider.has(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get()))
+                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get()));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_POCKET_WATCH.get())
+                .requires(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get())
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_exposed_copper_pocket_watch", RecipeProvider.has(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get()))
+                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_POCKET_WATCH.get()));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_POCKET_WATCH.get())
+                .requires(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get())
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_weathered_copper_pocket_watch", RecipeProvider.has(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get()))
+                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_POCKET_WATCH.get()));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_POCKET_WATCH.get())
+                .requires(ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH.get())
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_oxidized_copper_pocket_watch", RecipeProvider.has(ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH.get()))
+                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_POCKET_WATCH.get()));
+
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_COPPER_PENDULUM.get())
+                .requires(ColourfulClocksItemsImpl.COPPER_PENDULUM.get())
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_copper_pendulum", RecipeProvider.has(ColourfulClocksItemsImpl.COPPER_PENDULUM.get()))
+                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_COPPER_PENDULUM.get()));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_PENDULUM.get())
+                .requires(ColourfulClocksItemsImpl.EXPOSED_COPPER_PENDULUM.get())
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_exposed_copper_pendulum", RecipeProvider.has(ColourfulClocksItemsImpl.EXPOSED_COPPER_PENDULUM.get()))
+                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_PENDULUM.get()));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_PENDULUM.get())
+                .requires(ColourfulClocksItemsImpl.WEATHERED_COPPER_PENDULUM.get())
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_weathered_copper_pendulum", RecipeProvider.has(ColourfulClocksItemsImpl.WEATHERED_COPPER_PENDULUM.get()))
+                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_PENDULUM.get()));
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_PENDULUM.get())
+                .requires(ColourfulClocksItemsImpl.OXIDIZED_COPPER_PENDULUM.get())
+                .requires(Items.HONEYCOMB)
+                .unlockedBy("has_oxidized_copper_pendulum", RecipeProvider.has(ColourfulClocksItemsImpl.OXIDIZED_COPPER_PENDULUM.get()))
+                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_PENDULUM.get()));
     }
 }

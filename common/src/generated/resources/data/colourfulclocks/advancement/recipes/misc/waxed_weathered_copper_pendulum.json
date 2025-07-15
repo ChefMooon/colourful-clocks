@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:waxed_weathered_copper_pendulum"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_weathered_copper_pendulum": {
+      "conditions": {
+        "items": [
+          {
+            "items": "colourfulclocks:weathered_copper_pendulum"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_weathered_copper_pendulum"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:waxed_weathered_copper_pendulum"
+    ]
+  }
+}

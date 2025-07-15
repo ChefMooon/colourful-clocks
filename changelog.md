@@ -3,6 +3,7 @@ Before updating, please **back-up** your world. Greatly appreciate any bug repor
 actively watching the issues page to resolve any bugs as soon as possible.
 
 ### Added
+- 16 Advancements
 - New Clock Type:
   - Mantel Clock: Can customize the glass, clock hands(pocket watch), and can tick
 - Bornholm Dials can now make a ticking sound
@@ -21,6 +22,7 @@ actively watching the issues page to resolve any bugs as soon as possible.
   - Trunk: glass, pendulum
   - Dial: glass, dial
 - New tag: colourfulclocks:bornholm_dial
+- Recipes for Waxed versions of Copper Pocket Watches and Pendulums
 
 ### Changed
 - When placing a Bornholm Dial on the top of a Bornholm Trunk, the dial block will try to place instead of open the trunk door 
