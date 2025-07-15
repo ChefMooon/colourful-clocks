@@ -1,6 +1,7 @@
 package com.chefmooon.colourfulclocks.client.event.neoforge;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
+import com.chefmooon.colourfulclocks.client.ColourfulClocksClient;
 import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmMiddleBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmTopBlockEntityRendererImpl;
@@ -34,6 +35,7 @@ public class ClientSetupEventsImpl {
 
     @SubscribeEvent
     public static void onClientSetup(FMLClientSetupEvent event) {
+        ColourfulClocksClient.init();
         event.enqueueWork(() -> {
             ColourfulClocksItemPropertiesImpl.addCustomItemProperties();
         });

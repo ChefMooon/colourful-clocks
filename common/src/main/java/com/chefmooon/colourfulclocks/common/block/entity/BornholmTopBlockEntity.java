@@ -5,6 +5,7 @@ import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
@@ -206,7 +207,7 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     }
 
     public ItemStack getBlockAsItem(WoodTypes woodType) {
-        ItemStack itemStack = getItemStack(woodType).getDefaultInstance(); // todo : update this, see MantelClockBlockEntity.getBlockAsItem
+        ItemStack itemStack = BuiltInRegistries.ITEM.get(ColourfulClocksBlocks.BORNHOLM_TOP.withSuffix(woodType.getSerializedName())).getDefaultInstance();
         itemStack.applyComponents(this.collectComponents());
         return itemStack;
     }

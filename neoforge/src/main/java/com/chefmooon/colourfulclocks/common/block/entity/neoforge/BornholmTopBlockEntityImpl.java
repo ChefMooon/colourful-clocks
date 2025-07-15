@@ -33,8 +33,4 @@ public class BornholmTopBlockEntityImpl extends BornholmTopBlockEntity {
             return ItemStack.EMPTY::getItem;
         }
     }
-
-    public static Item getItemStack(WoodTypes woodTypes) {
-        return ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.get(woodTypes).get();
-    }
 }
