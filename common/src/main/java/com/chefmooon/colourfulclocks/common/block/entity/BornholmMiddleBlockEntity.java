@@ -1,6 +1,5 @@
 package com.chefmooon.colourfulclocks.common.block.entity;
 
-import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
@@ -32,7 +31,6 @@ import java.util.function.Supplier;
 
 public class BornholmMiddleBlockEntity extends BlockEntity implements Container {
     private ItemStack pendelumItem = ItemStack.EMPTY;
-    private ItemStack doorItem = ItemStack.EMPTY; // TODO - remove this? door change implementation no longer requires this, use elsewhere?
     private BornholmMiddleDoorComponent trunkData;
     private static boolean hasChimed = false;
 
@@ -50,15 +48,13 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
 
     @Override
     public boolean isEmpty() {
-        return getItem(0).isEmpty() && getItem(1).isEmpty();
+        return getItem(0).isEmpty();
     }
 
     @Override
     public ItemStack getItem(int slot) {
         if (slot == 0) {
             return pendelumItem;
-        } else if (slot == 1) {
-            return doorItem;
         }
         return ItemStack.EMPTY;
     }
@@ -79,15 +75,6 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
         return pendelumItem;
     }
 
-    public void setDoorItem(ItemStack stack) {
-        setItem(1, stack.split(1));
-        setChanged();
-    }
-
-    public ItemStack getDoorItem() {
-        return doorItem;
-    }
-
     public NonNullList<ItemStack> getDroppableInventory() {
         NonNullList<ItemStack> drops = NonNullList.create();
         drops.add(getPendelumItem());
@@ -104,8 +91,6 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
         ItemStack stored = ItemStack.EMPTY;
         if (slot == 0) {
             stored = pendelumItem;
-        } else if (slot == 1) {
-            stored =  doorItem;
         }
         clearContent();
         return stored;
@@ -115,8 +100,6 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     public void setItem(int slot, ItemStack stack) {
         if (slot == 0) {
             pendelumItem = stack.split(1);
-        } else if (slot == 1) {
-            doorItem =  stack.split(1);
         }
         setChanged();
     }
@@ -129,7 +112,6 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     @Override
     public void clearContent() {
         pendelumItem = ItemStack.EMPTY;
-        doorItem = ItemStack.EMPTY;
         setChanged();
     }
 
@@ -138,29 +120,21 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
         super.loadAdditional(tag, provider);
 
         this.trunkData = BornholmMiddleDoorComponent.load(tag);
-        if (trunkData.pendulumType() != PendulumTypes.EMPTY) {
-            setPendelumItem(new ItemStack(ColourfulClocksTypeUtil.getPendulumItemFromType(trunkData.pendulumType())));
-        }
-        if (tag.contains("pendelum_item")) {
+        if (tag.contains("pendelum_item")) { // Legacy data support
             CompoundTag pendelumItemTag = tag.getCompound("pendelum_item");
             pendelumItem = ItemStack.parse(provider, pendelumItemTag).orElse(ItemStack.EMPTY);
-        }
-        if (tag.contains("door_item")) {
-            CompoundTag doorItemTag = tag.getCompound("door_item");
-            doorItem = ItemStack.parse(provider, doorItemTag).orElse(ItemStack.EMPTY);
+            setPendulumType(pendelumItem);
+            setPendelumItem(pendelumItem);
+        } else {
+            if (trunkData.pendulumType() != PendulumTypes.EMPTY) {
+                setPendelumItem(new ItemStack(ColourfulClocksTypeUtil.getPendulumItemFromType(trunkData.pendulumType())));
+            }
         }
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         this.trunkData.save(tag);
-//        if (!pendelumItem.isEmpty()) {
-//            tag.put("pendelum_item", pendelumItem.save(provider, new CompoundTag()));
-//        }
-//        if (!doorItem.isEmpty()) {
-//            tag.put("door_item", doorItem.save(provider, new CompoundTag()));
-//        }
-
         super.saveAdditional(tag, provider);
     }
 

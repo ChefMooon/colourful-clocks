@@ -51,6 +51,11 @@ public class BornholmMiddleBlockEntityRendererImpl<T extends BornholmMiddleBlock
         }
 
         BornholmDoorTypes doorType = blockEntity.getTrunkData().getDoorType();
+        BornholmDoorTypes stateDoorType = state.getValue(BornholmMiddleBlock.DOOR_TYPE);
+        if (doorType != stateDoorType) { // Legacy data support
+            doorType = stateDoorType;
+            blockEntity.setDoorType(doorType);
+        }
         if (doorType != BornholmDoorTypes.BASE) {
             poseStack.pushPose();
             poseStack.rotateAround(getRotation(state.getValue(BornholmMiddleBlock.FACING)), 0.5F, 0.5F, 0.5F);

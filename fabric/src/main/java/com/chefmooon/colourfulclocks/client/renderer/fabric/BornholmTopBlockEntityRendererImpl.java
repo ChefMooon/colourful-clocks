@@ -65,6 +65,11 @@ public class BornholmTopBlockEntityRendererImpl<T extends BornholmTopBlockEntity
         poseStack.pushPose();
         poseStack.rotateAround(getRotation(state.getValue(BornholmTopBlock.FACING)), 0.5F, 0.5F, 0.5F);
         BornholmTopGlassTypes glassType = blockEntity.getDialData().getGlassType();
+        BornholmTopGlassTypes stateGlassType = state.getValue(BornholmTopBlock.GLASS_TYPE);
+        if (glassType != stateGlassType) { // Legacy data support
+            glassType = stateGlassType;
+            blockEntity.setGlassType(glassType);
+        }
         BakedModel glassModel = minecraft.getModelManager().getModel(TextUtil.res(ColourfulClocksModels.BORNHOLM_DIAL_PATH.formatted(glassType.getName())));
         minecraft.getBlockRenderer().getModelRenderer().renderModel(
                 poseStack.last(),

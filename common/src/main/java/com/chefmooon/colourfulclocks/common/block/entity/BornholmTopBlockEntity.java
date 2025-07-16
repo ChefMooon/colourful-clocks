@@ -113,19 +113,21 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
         super.loadAdditional(tag, provider);
 
         this.dialData = BornholmTopGlassComponent.load(tag);
-        if (dialData.getPocketWatchType() != PocketWatchTypes.EMPTY) {
-            setClockHandsItem(new ItemStack(ColourfulClocksTypeUtil.getPocketWatchItemFromType(dialData.getPocketWatchType())));
-        }
-        if (tag.contains("clock_hands")) { // legacy data check
+        if (tag.contains("clock_hands")) { // Legacy data support
             CompoundTag clockHandsItemTag = tag.getCompound("clock_hands");
             clockHandsItem = ItemStack.parse(provider, clockHandsItemTag).orElse(ItemStack.EMPTY);
+            setPocketWatchType(clockHandsItem);
+            setClockHandsItem(clockHandsItem);
+        } else {
+            if (dialData.getPocketWatchType() != PocketWatchTypes.EMPTY) {
+                setClockHandsItem(new ItemStack(ColourfulClocksTypeUtil.getPocketWatchItemFromType(dialData.getPocketWatchType())));
+            }
         }
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         this.dialData.save(tag);
-
         super.saveAdditional(tag, provider);
     }
 
