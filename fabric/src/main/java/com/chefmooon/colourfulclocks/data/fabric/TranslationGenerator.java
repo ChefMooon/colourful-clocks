@@ -93,6 +93,8 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(SUBTITLE + "block.bornholm.insert_pocket_watch", "Pocket Watch Inserted");
         translationBuilder.add(SUBTITLE + "block.bornholm.tick", "Bornholm Tick");
         translationBuilder.add(SUBTITLE + "block.clock.tick", "Clock Tick");
+        translationBuilder.add(SUBTITLE + "block.enable_ticking", "Ticking Enabled");
+        translationBuilder.add(SUBTITLE + "block.disable_ticking", "Ticking Disabled");
 
         translationBuilder.add(TOOLTIP + "weathering", "Weathering");
         translationBuilder.add(TOOLTIP + "ticking", "Ticking");

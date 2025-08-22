@@ -234,5 +234,23 @@
         "type": "event"
       }
     ]
+  },
+  "block.enable_ticking": {
+    "subtitle": "colourfulclocks.subtitles.block.enable_ticking",
+    "sounds": [
+      {
+        "name": "block.chain.place",
+        "type": "event"
+      }
+    ]
+  },
+  "block.disable_ticking": {
+      "subtitle": "colourfulclocks.subtitles.block.disable_ticking",
+      "sounds": [
+      {
+          "name": "block.chain.break",
+          "type": "event"
+      }
+    ]
   }
 }

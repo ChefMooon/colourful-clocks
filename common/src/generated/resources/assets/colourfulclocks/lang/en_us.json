@@ -212,6 +212,8 @@
   "colourfulclocks.subtitles.block.bornholm.wax_off": "Wax Off",
   "colourfulclocks.subtitles.block.bornholm.wax_on": "Wax On",
   "colourfulclocks.subtitles.block.clock.tick": "Clock Tick",
+  "colourfulclocks.subtitles.block.disable_ticking": "Ticking Disabled",
+  "colourfulclocks.subtitles.block.enable_ticking": "Ticking Enabled",
   "colourfulclocks.tooltip.ticking": "Ticking",
   "colourfulclocks.tooltip.weathering": "Weathering",
   "config.jade.plugin_colourfulclocks.bornholm_dial_glass_type": "Bornholm Dial Glass Type",

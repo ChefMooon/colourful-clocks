@@ -195,7 +195,7 @@ public class BaseClockBlock extends BaseEntityBlock {
                 level.setBlock(pos, level.getBlockState(pos).setValue(CAN_TICK, true).setValue(TICKING, true), 3);
                 this.checkPoweredState(level, pos, level.getBlockState(pos));
                 level.blockEntityChanged(pos);
-                level.playSound(player, pos, SoundEvents.CHAIN_PLACE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.playSound(player, pos, ColourfulClocksSounds.BLOCK_ENABLE_TICKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 if (!player.getAbilities().instabuild) itemStack.shrink(1);
                 if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.ENABLE_TICKING_TRIGGER.get().trigger(serverPlayer);
 
@@ -206,7 +206,7 @@ public class BaseClockBlock extends BaseEntityBlock {
                 baseGlassClockBlockEntity.setTicking(false);
                 level.setBlock(pos, level.getBlockState(pos).setValue(CAN_TICK, false).setValue(TICKING, false), 3);
                 level.blockEntityChanged(pos);
-                level.playSound(player, pos, SoundEvents.CHAIN_BREAK, SoundSource.BLOCKS, 1.0F, 1.0F);
+                level.playSound(player, pos, ColourfulClocksSounds.BLOCK_DISABLE_TICKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
                 if (!player.getAbilities().instabuild) {
                     itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                     if (!player.getInventory().add(Items.REDSTONE.getDefaultInstance())) {

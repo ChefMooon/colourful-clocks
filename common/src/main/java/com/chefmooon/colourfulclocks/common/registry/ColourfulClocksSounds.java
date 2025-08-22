@@ -37,6 +37,8 @@ public class ColourfulClocksSounds {
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_AXE_SCRAPES = registerSound("block.bornholm.axe_scrapes");
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_REMOVE_POCKET_WATCH = registerSound("block.bornholm.remove_pocket_watch");
     public static final Supplier<SoundEvent> BLOCK_BORNHOLM_INSERT_POCKET_WATCH = registerSound("block.bornholm.insert_pocket_watch");
+    public static final Supplier<SoundEvent> BLOCK_ENABLE_TICKING = registerSound("block.enable_ticking");
+    public static final Supplier<SoundEvent> BLOCK_DISABLE_TICKING = registerSound("block.disable_ticking");
 
     private static Supplier<SoundEvent> registerSound(String string) {
         return registerSound(TextUtil.res(string), () -> SoundEvent.createVariableRangeEvent(TextUtil.res(string)));
