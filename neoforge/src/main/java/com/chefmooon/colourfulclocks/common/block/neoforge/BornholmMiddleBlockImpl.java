@@ -2,7 +2,7 @@ package com.chefmooon.colourfulclocks.common.block.neoforge;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmMiddleBlockEntityImpl;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
@@ -23,8 +23,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Supplier;
 
 public class BornholmMiddleBlockImpl extends BornholmMiddleBlock {
-    public BornholmMiddleBlockImpl(WoodTypes woodTypes, Properties properties) {
-        super(woodTypes, properties);
+    public BornholmMiddleBlockImpl(ClockTypes clockTypes, Properties properties) {
+        super(clockTypes, properties);
     }
 
     @Override

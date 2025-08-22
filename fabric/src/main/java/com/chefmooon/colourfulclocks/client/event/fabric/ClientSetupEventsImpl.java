@@ -6,7 +6,6 @@ import com.chefmooon.colourfulclocks.client.renderer.fabric.BornholmTopBlockEnti
 import com.chefmooon.colourfulclocks.client.renderer.fabric.MantelClockBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;

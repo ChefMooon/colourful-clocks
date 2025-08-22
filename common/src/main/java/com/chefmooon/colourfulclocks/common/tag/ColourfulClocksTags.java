@@ -13,8 +13,10 @@ public class ColourfulClocksTags {
     public static final TagKey<Item> CLOCK_TOP_GLASS = getItemTagKey("clock_dial_glass");
     public static final TagKey<Item> CLOCK_HAND = getItemTagKey("clock_hand");
 
+    public static final TagKey<Item> BORNHOLM_BASE = getItemTagKey("bornholm_base");
+    public static final TagKey<Item> BORNHOLM_TRUNK = getItemTagKey("bornholm_trunk");
     public static final TagKey<Item> BORNHOLM_DIAL = getItemTagKey("bornholm_dial");
-
+    public static final TagKey<Item> MANTEL_CLOCK = getItemTagKey("mantel_clock");
 
     public static TagKey<Item> getItemTagKey(String path) {
         return TagKey.create(Registries.ITEM, TextUtil.res(path));

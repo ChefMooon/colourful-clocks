@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bornholm_top_mossy_stone_bricks",
+  "key": {
+    "A": {
+      "item": "minecraft:mossy_stone_bricks"
+    },
+    "B": {
+      "item": "minecraft:orange_stained_glass_pane"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "BCA",
+    "AAA"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:bornholm_dial_data": {
+        "glass": "_orange_stained_glass"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:bornholm_top_mossy_stone_bricks"
+  }
+}

@@ -2,7 +2,7 @@ package com.chefmooon.colourfulclocks.common.block.fabric;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.fabric.BornholmTopBlockEntityImpl;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
@@ -21,8 +21,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Supplier;
 
 public class BornholmTopBlockImpl extends BornholmTopBlock {
-    public BornholmTopBlockImpl(WoodTypes woodTypes, Properties properties) {
-        super(woodTypes, properties);
+    public BornholmTopBlockImpl(ClockTypes clockTypes, Properties properties) {
+        super(clockTypes, properties);
     }
 
     @Override

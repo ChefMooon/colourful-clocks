@@ -4,6 +4,9 @@ actively watching the issues page to resolve any bugs as soon as possible.
 
 ### Added
 - 16 Advancements
+- New Clock Material Types: Stone Bricks, Mossy Stone Bricks, Polished Granite, Polished Diorite, Polished Andesite,
+Polished Deepslate, Deepslate Bricks, Polished Tuff, Tuff Bricks, Bricks, Mud Bricks, Cut Sandstone, Cut Red Sandstone,
+Prismarine Bricks, Dark Prismarine, Nether Bricks, Red Nether Bricks, Polished Blackstone, Polished Blackstone Bricks
 - New Clock Type:
   - Mantel Clock: Can customize the glass, clock hands(pocket watch), and can tick
 - Bornholm Dials can now make a ticking sound
@@ -41,3 +44,4 @@ actively watching the issues page to resolve any bugs as soon as possible.
 
 ### Fixed
 - Fixed incorrect translation for the colourfulclocks:clock_pendulum tag
+- Fixed Sound Type for Cherry, Bamboo, Crimson, and Warped blocks

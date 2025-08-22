@@ -102,7 +102,16 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
                         ColourfulClocksItemsImpl.EMERALD_POCKET_WATCH.get()
                         );
 
+        ColourfulClocksItemsImpl.BORNHOLM_BASE_VARIANTS.forEach((key, value) ->
+                getOrCreateTagBuilder(ColourfulClocksTags.BORNHOLM_BASE).add(value.get()));
+
+        ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.forEach((key, value) ->
+                getOrCreateTagBuilder(ColourfulClocksTags.BORNHOLM_TRUNK).add(value.get()));
+
         ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.forEach((key, value) ->
                 getOrCreateTagBuilder(ColourfulClocksTags.BORNHOLM_DIAL).add(value.get()));
+
+        ColourfulClocksItemsImpl.MANTEL_CLOCK_VARIANTS.forEach((key, value) ->
+                getOrCreateTagBuilder(ColourfulClocksTags.MANTEL_CLOCK).add(value.get()));
     }
 }

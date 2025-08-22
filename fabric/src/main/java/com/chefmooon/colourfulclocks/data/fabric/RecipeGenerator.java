@@ -98,76 +98,76 @@ public class RecipeGenerator extends FabricRecipeProvider {
     }
 
     private static void buildBornholmRecipes(RecipeOutput recipeOutput) {
-        for (WoodTypes woodTypes : WoodTypes.values()) {
-            ItemLike baseResult = ColourfulClocksItemsImpl.BORNHOLM_BASE_VARIANTS.get(woodTypes).get();
+        for (ClockTypes clockTypes : ClockTypes.values()) {
+            ItemLike baseResult = ColourfulClocksItemsImpl.BORNHOLM_BASE_VARIANTS.get(clockTypes).get();
             ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, baseResult)
                     .pattern(" A ")
                     .pattern("AAA")
-                    .define('A', woodTypes.getCraftingIngredient())
-                    .unlockedBy(RecipeProvider.getHasName(woodTypes.getCraftingIngredient()), RecipeProvider.has(woodTypes.getCraftingIngredient()))
+                    .define('A', clockTypes.getCraftingIngredient())
+                    .unlockedBy(RecipeProvider.getHasName(clockTypes.getCraftingIngredient()), RecipeProvider.has(clockTypes.getCraftingIngredient()))
                     .save(recipeOutput, RecipeProvider.getSimpleRecipeName(baseResult));
 
-            ItemLike middleResult = ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.get(woodTypes).get();
+            ItemLike middleResult = ColourfulClocksItemsImpl.BORNHOLM_MIDDLE_VARIANTS.get(clockTypes).get();
             ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, middleResult)
                     .pattern("AAA")
                     .pattern("A A")
                     .pattern("AAA")
-                    .define('A', woodTypes.getCraftingIngredient())
-                    .group("bornholm_middle_" + woodTypes.getName())
-                    .unlockedBy(RecipeProvider.getHasName(woodTypes.getCraftingIngredient()), RecipeProvider.has(woodTypes.getCraftingIngredient()))
+                    .define('A', clockTypes.getCraftingIngredient())
+                    .group("bornholm_middle_" + clockTypes.getName())
+                    .unlockedBy(RecipeProvider.getHasName(clockTypes.getCraftingIngredient()), RecipeProvider.has(clockTypes.getCraftingIngredient()))
                     .save(recipeOutput, RecipeProvider.getSimpleRecipeName(middleResult));
-            buildBornholmMiddleVariantRecipes(woodTypes, middleResult);
+            buildBornholmMiddleVariantRecipes(clockTypes, middleResult);
 
-            ItemLike topResult = ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.get(woodTypes).get();
+            ItemLike topResult = ColourfulClocksItemsImpl.BORNHOLM_TOP_VARIANTS.get(clockTypes).get();
             ShapedRecipeBuilder.shaped(RecipeCategory.MISC, topResult)
                     .pattern("AAA")
                     .pattern("BCA")
                     .pattern("AAA")
-                    .define('A', woodTypes.getCraftingIngredient())
+                    .define('A', clockTypes.getCraftingIngredient())
                     .define('B', BornholmTopGlassTypes.GLASS.getItem())
                     .define('C', Items.QUARTZ)
-                    .group("bornholm_top_" + woodTypes.getName())
+                    .group("bornholm_top_" + clockTypes.getName())
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
-                            woodTypes.getCraftingIngredient(),
+                            clockTypes.getCraftingIngredient(),
                             BornholmTopGlassTypes.GLASS.getItem(),
                             Items.QUARTZ)))
                     .save(recipeOutput, RecipeProvider.getSimpleRecipeName(topResult));
-            buildBornholmTopVariantRecipes(woodTypes, topResult);
+            buildBornholmTopVariantRecipes(clockTypes, topResult);
         }
     }
 
-    private static void buildBornholmMiddleVariantRecipes(WoodTypes woodType, ItemLike result) {
+    private static void buildBornholmMiddleVariantRecipes(ClockTypes clockType, ItemLike result) {
         for (BornholmDoorTypes doorType : BornholmDoorTypes.values()) {
             if (doorType == BornholmDoorTypes.BASE) continue;
             BornholmMiddleDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
                     .pattern("AAA")
                     .pattern("A B")
                     .pattern("AAA")
-                    .define('A', woodType.getCraftingIngredient())
+                    .define('A', clockType.getCraftingIngredient())
                     .define('B', doorType.getItem())
-                    .group("bornholm_middle_" + woodType.getName())
+                    .group("bornholm_middle_" + clockType.getName())
                     .setResultData(doorType)
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
-                            woodType.getCraftingIngredient(),
+                            clockType.getCraftingIngredient(),
                             doorType.getItem())))
                     .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result) + "_" + doorType.getName());
         }
     }
 
-    private static void buildBornholmTopVariantRecipes(WoodTypes woodType, ItemLike result) {
+    private static void buildBornholmTopVariantRecipes(ClockTypes clockType, ItemLike result) {
         for (BornholmTopGlassTypes glassType : BornholmTopGlassTypes.values()) {
             if (glassType == BornholmTopGlassTypes.GLASS) continue;
             BornholmTopDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
                     .pattern("AAA")
                     .pattern("BCA")
                     .pattern("AAA")
-                    .define('A', woodType.getCraftingIngredient())
+                    .define('A', clockType.getCraftingIngredient())
                     .define('B', glassType.getItem())
                     .define('C', Items.QUARTZ)
-                    .group("bornholm_top_" + woodType.getName())
+                    .group("bornholm_top_" + clockType.getName())
                     .setResultData(glassType)
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
-                            woodType.getCraftingIngredient(),
+                            clockType.getCraftingIngredient(),
                             glassType.getItem(),
                             Items.QUARTZ)))
                     .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result) + "_" + glassType.getName());
@@ -175,39 +175,39 @@ public class RecipeGenerator extends FabricRecipeProvider {
     }
 
     private static void buildMantelClockRecipes() {
-        for (WoodTypes woodType : WoodTypes.values()) {
-            ItemLike result = ColourfulClocksItemsImpl.MANTEL_CLOCK_VARIANTS.get(woodType).get();
+        for (ClockTypes clockType : ClockTypes.values()) {
+            ItemLike result = ColourfulClocksItemsImpl.MANTEL_CLOCK_VARIANTS.get(clockType).get();
             ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
                     .pattern(" A ")
                     .pattern("ACA")
                     .pattern("ABA")
-                    .define('A', woodType.getCraftingIngredient())
+                    .define('A', clockType.getCraftingIngredient())
                     .define('B', BornholmTopGlassTypes.GLASS.getItem())
                     .define('C', Items.QUARTZ)
-                    .group("mantel_clock_" + woodType.getName())
+                    .group("mantel_clock_" + clockType.getName())
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
-                            woodType.getCraftingIngredient(),
+                            clockType.getCraftingIngredient(),
                             BornholmTopGlassTypes.GLASS.getItem(),
                             Items.QUARTZ)))
                     .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result));
-            buildMantelClockVariantRecipes(woodType, result);
+            buildMantelClockVariantRecipes(clockType, result);
         }
     }
 
-    private static void buildMantelClockVariantRecipes(WoodTypes woodType, ItemLike result) {
+    private static void buildMantelClockVariantRecipes(ClockTypes clockType, ItemLike result) {
         for (BornholmTopGlassTypes glassTypes : BornholmTopGlassTypes.values()) {
             if (glassTypes == BornholmTopGlassTypes.GLASS) continue;
             GlassDialDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
                     .pattern(" A ")
                     .pattern("ACA")
                     .pattern("ABA")
-                    .define('A', woodType.getCraftingIngredient())
+                    .define('A', clockType.getCraftingIngredient())
                     .define('B', glassTypes.getItem())
                     .define('C', Items.QUARTZ)
-                    .group("mantel_clock_" + woodType.getName())
+                    .group("mantel_clock_" + clockType.getName())
                     .setResultData(glassTypes)
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
-                            woodType.getCraftingIngredient(),
+                            clockType.getCraftingIngredient(),
                             glassTypes.getItem(),
                             Items.QUARTZ)))
                     .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result) + "_" + glassTypes.getName());

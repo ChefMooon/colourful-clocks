@@ -4,7 +4,7 @@ import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import dev.architectury.injectables.annotations.ExpectPlatform;
@@ -213,8 +213,8 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
         return this.trunkData;
     }
 
-    public ItemStack getBlockAsItem(WoodTypes woodType) {
-        ItemStack itemStack = getItemStack(woodType).getDefaultInstance();
+    public ItemStack getBlockAsItem(ClockTypes clockType) {
+        ItemStack itemStack = getItemStack(clockType).getDefaultInstance();
         itemStack.applyComponents(this.collectComponents());
         return itemStack;
     }
@@ -232,7 +232,7 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     }
 
     @ExpectPlatform
-    public static Item getItemStack(WoodTypes woodTypes) {
+    public static Item getItemStack(ClockTypes clockTypes) {
         throw new AssertionError();
     }
 

@@ -4,7 +4,7 @@ import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
@@ -208,8 +208,8 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
         return this.dialData;
     }
 
-    public ItemStack getBlockAsItem(WoodTypes woodType) {
-        ItemStack itemStack = BuiltInRegistries.ITEM.get(ColourfulClocksBlocks.BORNHOLM_TOP.withSuffix(woodType.getSerializedName())).getDefaultInstance();
+    public ItemStack getBlockAsItem(ClockTypes clockType) {
+        ItemStack itemStack = BuiltInRegistries.ITEM.get(ColourfulClocksBlocks.BORNHOLM_TOP.withSuffix(clockType.getSerializedName())).getDefaultInstance();
         itemStack.applyComponents(this.collectComponents());
         return itemStack;
     }
@@ -227,7 +227,7 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
     }
 
     @ExpectPlatform
-    public static Item getItemStack(WoodTypes woodTypes) {
+    public static Item getItemStack(ClockTypes clockTypes) {
         throw new AssertionError();
     }
 

@@ -5,7 +5,7 @@ import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTemplates;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTextureSlots;
@@ -72,7 +72,7 @@ public class BlockModelGenerator {
     private static void registerBornholmBaseBlockAll(BlockModelGenerators blockModelGenerators) {
         ColourfulClocksBlocksImpl.BORNHOLM_BASE_VARIANTS.forEach(((entry, blockSupplier) -> {
             ResourceLocation blockLocation = ModelLocationUtils.getModelLocation(blockSupplier.get());
-            ResourceLocation woodTypeLocation = ModelLocationUtils.getModelLocation(entry.getBlock());
+            ResourceLocation woodTypeLocation = getBlockModelLocation(entry);
 
             ResourceLocation BORNHOLM_BASE = ColourfulClocksTemplates.BORNHOLM_BASE.create(blockLocation,
                     TextureMapping.layer0(woodTypeLocation), blockModelGenerators.modelOutput
@@ -94,8 +94,8 @@ public class BlockModelGenerator {
     private static void registerBornholmMiddleBlockAll(BlockModelGenerators blockModelGenerators) {
         ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.forEach(((entry, blockSupplier) -> {
             ResourceLocation blockLocation = ModelLocationUtils.getModelLocation(blockSupplier.get());
-            ResourceLocation woodTypeLocation = ModelLocationUtils.getModelLocation(entry.getBlock());
-            ResourceLocation strippedBlockLocation = ModelLocationUtils.getModelLocation(entry.getStrippedBlock());
+            ResourceLocation woodTypeLocation = getBlockModelLocation(entry);
+            ResourceLocation strippedBlockLocation = getStrippedBlockModelLocation(entry);
 
             HashMap<BornholmDoorTypes, Map.Entry<ResourceLocation, ResourceLocation>> MODELS = new HashMap<>();
             for (BornholmDoorTypes bornholmDoorTypes : BornholmDoorTypes.values()) {
@@ -204,7 +204,7 @@ public class BlockModelGenerator {
 
             HashMap<BornholmTopGlassTypes, ResourceLocation> MODELS = new HashMap<>();
             for (BornholmTopGlassTypes bornholmTopGlassTypes : BornholmTopGlassTypes.values()) {
-                TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, ModelLocationUtils.getModelLocation(entry.getBlock()))
+                TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, getBlockModelLocation(entry))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/quartz_bornholm_clockface"))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, bornholmTopGlassTypes.getBornholmGlassTexture())
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
@@ -248,7 +248,7 @@ public class BlockModelGenerator {
 
             HashMap<BornholmTopGlassTypes, ResourceLocation> MODELS = new HashMap<>();
             for (BornholmTopGlassTypes bornholmTopGlassTypes : BornholmTopGlassTypes.values()) {
-                TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, ModelLocationUtils.getModelLocation(entry.getBlock()))
+                TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, getBlockModelLocation(entry))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clockface"))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, TextUtil.res("block/" + bornholmTopGlassTypes.getName() + "_dial_small"))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
@@ -283,6 +283,28 @@ public class BlockModelGenerator {
             );
             blockModelGenerators.skipAutoItemBlock(blockSupplier.get());
         });
+    }
+
+    public static ResourceLocation getBlockModelLocation(ClockTypes clockTypes) {
+        return ModelLocationUtils.getModelLocation(clockTypes.getBlock());
+//        if (clockTypes == ClockTypes.SMOOTH_SANDSTONE) { // Can be removed when final stone types are chosen
+//            return ResourceLocation.withDefaultNamespace("block/sandstone_top");
+//        } else if (clockTypes == ClockTypes.SMOOTH_RED_SANDSTONE) {
+//            return ResourceLocation.withDefaultNamespace("block/red_sandstone_top");
+//        } else {
+//            return ModelLocationUtils.getModelLocation(clockTypes.getBlock());
+//        }
+    }
+
+    public static ResourceLocation getStrippedBlockModelLocation(ClockTypes clockTypes) {
+        return ModelLocationUtils.getModelLocation(clockTypes.getStrippedBlock());
+//        if (clockTypes == ClockTypes.SMOOTH_SANDSTONE) { // Can be removed when final stone types are chosen
+//            return ResourceLocation.withDefaultNamespace("block/sandstone_top");
+//        } else if (clockTypes == ClockTypes.SMOOTH_RED_SANDSTONE) {
+//            return ResourceLocation.withDefaultNamespace("block/red_sandstone_top");
+//        } else {
+//            return ModelLocationUtils.getModelLocation(clockTypes.getStrippedBlock());
+//        }
     }
 
     private static void registerBasicRotationBlockState(Block block, BlockModelGenerators blockModelGenerators) {

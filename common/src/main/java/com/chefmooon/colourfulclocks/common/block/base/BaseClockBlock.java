@@ -3,7 +3,7 @@ package com.chefmooon.colourfulclocks.common.block.base;
 import com.chefmooon.colourfulclocks.common.block.entity.base.BaseGlassClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
@@ -49,18 +49,18 @@ public class BaseClockBlock extends BaseEntityBlock {
     public static final BooleanProperty TICKING = ColourfulClocksBlockStateProperties.TICKING;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
-    public WoodTypes woodType;
+    public ClockTypes clockType;
 
     public static int FLAMMABILITY = 30;
     public static int FIRE_SPREAD = 60;
 
     public BaseClockBlock(Properties properties) {
-        this(WoodTypes.OAK, properties);
+        this(ClockTypes.OAK, properties);
     }
 
-    protected BaseClockBlock(WoodTypes woodType, Properties properties) {
+    protected BaseClockBlock(ClockTypes clockType, Properties properties) {
         super(properties);
-        this.woodType = woodType;
+        this.clockType = clockType;
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(ACTIVATED, Boolean.TRUE)

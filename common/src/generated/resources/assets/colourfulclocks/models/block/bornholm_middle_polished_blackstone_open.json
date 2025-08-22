@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:block/template_bornholm_middle_base_open",
+  "textures": {
+    "inside": "minecraft:block/polished_blackstone",
+    "side": "minecraft:block/polished_blackstone"
+  }
+}

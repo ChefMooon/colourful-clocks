@@ -1,0 +1,112 @@
+{
+  "parent": "colourfulclocks:item/template_bornholm_middle",
+  "overrides": [
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.01
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_white_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.02
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_orange_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.03
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_magenta_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.04
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_light_blue_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.05
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_yellow_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.06
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_lime_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.07
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_pink_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.08
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_gray_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.09
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_light_gray_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.1
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_cyan_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.11
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_purple_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.12
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_blue_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.13
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_brown_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.14
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_green_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.15
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_red_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.16
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_middle_stripped_spruce_black_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.17
+      }
+    }
+  ],
+  "textures": {
+    "door": "minecraft:block/stripped_spruce_log",
+    "inside": "minecraft:block/stripped_spruce_log",
+    "side": "minecraft:block/stripped_spruce_log"
+  }
+}

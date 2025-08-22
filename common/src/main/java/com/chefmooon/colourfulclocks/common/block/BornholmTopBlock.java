@@ -6,7 +6,7 @@ import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulCloc
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
@@ -72,7 +72,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     public static final BooleanProperty TICKING = ColourfulClocksBlockStateProperties.TICKING;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
-    public WoodTypes woodType;
+    public ClockTypes clockType;
 
     public static int FLAMMABILITY = 30;
     public static int FIRE_SPREAD = 60;
@@ -89,12 +89,12 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     }
 
     public BornholmTopBlock(Properties properties) {
-        this(WoodTypes.OAK, properties);
+        this(ClockTypes.OAK, properties);
     }
 
-    public BornholmTopBlock(WoodTypes woodTypes, Properties properties) {
+    public BornholmTopBlock(ClockTypes clockType, Properties properties) {
         super(properties);
-        this.woodType = woodTypes;
+        this.clockType = clockType;
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(GLASS_TYPE, BornholmTopGlassTypes.GLASS)
@@ -297,7 +297,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof BornholmTopBlockEntity bornholmTopBlockEntity) {
-            return bornholmTopBlockEntity.getBlockAsItem(this.woodType);
+            return bornholmTopBlockEntity.getBlockAsItem(this.clockType);
         } else {
             return super.getCloneItemStack(level, pos, state);
         }

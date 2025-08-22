@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bornholm_middle_prismarine_bricks",
+  "key": {
+    "A": {
+      "item": "minecraft:prismarine_bricks"
+    },
+    "B": {
+      "item": "minecraft:cyan_stained_glass_pane"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "A B",
+    "AAA"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:bornholm_trunk_data": {
+        "glass": "_cyan_stained_glass"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:bornholm_middle_prismarine_bricks"
+  }
+}

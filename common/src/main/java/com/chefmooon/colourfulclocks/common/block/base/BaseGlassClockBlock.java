@@ -4,7 +4,7 @@ import com.chefmooon.colourfulclocks.common.block.entity.base.BaseGlassClockBloc
 import com.chefmooon.colourfulclocks.common.block.state.properties.BornholmTopGlassTypeProperty;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
@@ -22,8 +22,8 @@ import net.minecraft.world.level.block.state.StateDefinition;
 
 public class BaseGlassClockBlock extends BaseClockBlock {
     public static final BornholmTopGlassTypeProperty GLASS_TYPE = ColourfulClocksBlockStateProperties.BORNHOLM_TOP_GLASS_TYPE;
-    public BaseGlassClockBlock(WoodTypes woodType, Properties properties) {
-        super(woodType, properties);
+    public BaseGlassClockBlock(ClockTypes clockType, Properties properties) {
+        super(clockType, properties);
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(GLASS_TYPE, BornholmTopGlassTypes.GLASS));
     }

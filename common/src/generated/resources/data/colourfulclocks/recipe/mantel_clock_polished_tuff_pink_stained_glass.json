@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "mantel_clock_polished_tuff",
+  "key": {
+    "A": {
+      "item": "minecraft:polished_tuff"
+    },
+    "B": {
+      "item": "minecraft:pink_stained_glass_pane"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    " A ",
+    "ACA",
+    "ABA"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:glass_dial_data": {
+        "glass": "_pink_stained_glass"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:mantel_clock_polished_tuff"
+  }
+}

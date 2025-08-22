@@ -5,7 +5,8 @@ import com.chefmooon.colourfulclocks.common.block.neoforge.BornholmBaseBlockImpl
 import com.chefmooon.colourfulclocks.common.block.neoforge.BornholmMiddleBlockImpl;
 import com.chefmooon.colourfulclocks.common.block.neoforge.BornholmTopBlockImpl;
 import com.chefmooon.colourfulclocks.common.block.neoforge.MantelClockBlockImpl;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockMaterialTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import net.minecraft.core.registries.Registries;
@@ -21,47 +22,48 @@ import java.util.function.Supplier;
 
 public class ColourfulClocksBlocksImpl {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(Registries.BLOCK, ColourfulClocks.MOD_ID);
-    public static final HashMap<WoodTypes, Supplier<Block>> BORNHOLM_BASE_VARIANTS = registerBaseVariantsAll(ColourfulClocksBlocks.BORNHOLM_BASE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).strength(2.0F).ignitedByLava());
-    public static final HashMap<WoodTypes, Supplier<Block>> BORNHOLM_MIDDLE_VARIANTS = registerMiddleVariantsAll(ColourfulClocksBlocks.BORNHOLM_MIDDLE, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).strength(2.0F).ignitedByLava());
-    public static final HashMap<WoodTypes, Supplier<Block>> BORNHOLM_TOP_VARIANTS = registerTopVariantsAll(ColourfulClocksBlocks.BORNHOLM_TOP, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS).strength(2.0F).ignitedByLava());
+    public static final HashMap<ClockTypes, Supplier<Block>> BORNHOLM_BASE_VARIANTS = registerBaseVariantsAll(ColourfulClocksBlocks.BORNHOLM_BASE);
+    public static final HashMap<ClockTypes, Supplier<Block>> BORNHOLM_MIDDLE_VARIANTS = registerMiddleVariantsAll(ColourfulClocksBlocks.BORNHOLM_MIDDLE);
+    public static final HashMap<ClockTypes, Supplier<Block>> BORNHOLM_TOP_VARIANTS = registerTopVariantsAll(ColourfulClocksBlocks.BORNHOLM_TOP);
 
-    public static final HashMap<WoodTypes, Supplier<Block>> MANTEL_CLOCK_VARIANTS = registerMantelClockVariants(ColourfulClocksItems.MANTEL_CLOCK, BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_PLANKS));
+    public static final HashMap<ClockTypes, Supplier<Block>> MANTEL_CLOCK_VARIANTS = registerMantelClockVariants(ColourfulClocksBlocks.MANTEL_CLOCK);
 
-    private static HashMap<WoodTypes, Supplier<Block>> registerBaseVariantsAll(ResourceLocation baseLocation, BlockBehaviour.Properties properties) {
-        HashMap<WoodTypes, Supplier<Block>> hashMap = new HashMap<>();
-        for (WoodTypes woodTypes : WoodTypes.values()) {
-            Supplier<Block> block = registerBlock(baseLocation.withSuffix(woodTypes.getSerializedName()), () -> new BornholmBaseBlockImpl(properties));
-            hashMap.put(woodTypes, block);
+    private static HashMap<ClockTypes, Supplier<Block>> registerBaseVariantsAll(ResourceLocation baseLocation) {
+        HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
+        for (ClockTypes clockTypes : ClockTypes.values()) {
+            Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
+                    () -> new BornholmBaseBlockImpl(ColourfulClocksBlocks.getProperties(clockTypes)));
+            hashMap.put(clockTypes, block);
         }
         return hashMap;
     }
 
-    private static HashMap<WoodTypes, Supplier<Block>> registerMiddleVariantsAll(ResourceLocation baseLocation, BlockBehaviour.Properties properties) {
-        HashMap<WoodTypes, Supplier<Block>> hashMap = new HashMap<>();
-        for (WoodTypes woodTypes : WoodTypes.values()) {
-            Supplier<Block> block = registerBlock(baseLocation.withSuffix(woodTypes.getSerializedName()),
-                    () -> new BornholmMiddleBlockImpl(woodTypes, properties));
-            hashMap.put(woodTypes, block);
+    private static HashMap<ClockTypes, Supplier<Block>> registerMiddleVariantsAll(ResourceLocation baseLocation) {
+        HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
+        for (ClockTypes clockTypes : ClockTypes.values()) {
+            Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
+                    () -> new BornholmMiddleBlockImpl(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
+            hashMap.put(clockTypes, block);
         }
         return hashMap;
     }
 
-    private static HashMap<WoodTypes, Supplier<Block>> registerTopVariantsAll(ResourceLocation baseLocation, BlockBehaviour.Properties properties) {
-        HashMap<WoodTypes, Supplier<Block>> hashMap = new HashMap<>();
-        for (WoodTypes woodTypes : WoodTypes.values()) {
-            Supplier<Block> block = registerBlock(baseLocation.withSuffix(woodTypes.getSerializedName()),
-                    () -> new BornholmTopBlockImpl(woodTypes, properties));
-            hashMap.put(woodTypes, block);
+    private static HashMap<ClockTypes, Supplier<Block>> registerTopVariantsAll(ResourceLocation baseLocation) {
+        HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
+        for (ClockTypes clockTypes : ClockTypes.values()) {
+            Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
+                    () -> new BornholmTopBlockImpl(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
+            hashMap.put(clockTypes, block);
         }
         return hashMap;
     }
 
-    private static HashMap<WoodTypes, Supplier<Block>> registerMantelClockVariants(ResourceLocation baseLocation, BlockBehaviour.Properties properties) {
-        HashMap<WoodTypes, Supplier<Block>> hashMap = new HashMap<>();
-        for (WoodTypes woodTypes : WoodTypes.values()) {
-            Supplier<Block> block = registerBlock(baseLocation.withSuffix(woodTypes.getSerializedName()),
-                    () -> new MantelClockBlockImpl(woodTypes, properties));
-            hashMap.put(woodTypes, block);
+    private static HashMap<ClockTypes, Supplier<Block>> registerMantelClockVariants(ResourceLocation baseLocation) {
+        HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
+        for (ClockTypes clockTypes : ClockTypes.values()) {
+            Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
+                    () -> new MantelClockBlockImpl(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
+            hashMap.put(clockTypes, block);
         }
         return hashMap;
     }

@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:block/template_bornholm_middle_base_open",
+  "textures": {
+    "inside": "minecraft:block/dark_prismarine",
+    "side": "minecraft:block/dark_prismarine"
+  }
+}

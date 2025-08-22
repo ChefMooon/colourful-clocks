@@ -6,7 +6,7 @@ import com.chefmooon.colourfulclocks.common.block.state.properties.DoorTypePrope
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
@@ -69,7 +69,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty OPEN = BooleanProperty.create("open");
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
-    public WoodTypes woodType;
+    public ClockTypes clockType;
 
     public static int FLAMMABILITY = 30;
     public static int FIRE_SPREAD = 60;
@@ -93,12 +93,12 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     }
 
     public BornholmMiddleBlock(Properties properties) {
-        this(WoodTypes.OAK, properties);
+        this(ClockTypes.OAK, properties);
     }
 
-    public BornholmMiddleBlock(WoodTypes woodTypes, Properties properties) {
+    public BornholmMiddleBlock(ClockTypes clockType, Properties properties) {
         super(properties);
-        this.woodType = woodTypes;
+        this.clockType = clockType;
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(FACING, Direction.NORTH)
                 .setValue(OPEN, Boolean.FALSE)
@@ -176,7 +176,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
             }
 
             if (!mainHandItem.isEmpty()) {
-                if (mainHandItem.is(woodType.getItem())) {
+                if (mainHandItem.is(clockType.getItem())) {
                     if (state.getValue(DOOR_TYPE) == BornholmDoorTypes.BASE) return toggleDoor(level, state, pos, player);
                     block.setDoorType(BornholmDoorTypes.BASE);
                     level.setBlockAndUpdate(pos, state.setValue(DOOR_TYPE, BornholmDoorTypes.BASE));
@@ -341,7 +341,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
-            return bornholmMiddleBlockEntity.getBlockAsItem(this.woodType);
+            return bornholmMiddleBlockEntity.getBlockAsItem(this.clockType);
         } else {
             return super.getCloneItemStack(level, pos, state);
         }

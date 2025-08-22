@@ -1,0 +1,29 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "colourfulclocks:block/bornholm_base_tuff_bricks"
+    },
+    "facing=east": {
+      "model": "colourfulclocks:block/bornholm_base_tuff_bricks",
+      "x": 90,
+      "y": 270
+    },
+    "facing=north": {
+      "model": "colourfulclocks:block/bornholm_base_tuff_bricks",
+      "x": 270
+    },
+    "facing=south": {
+      "model": "colourfulclocks:block/bornholm_base_tuff_bricks",
+      "x": 90
+    },
+    "facing=up": {
+      "model": "colourfulclocks:block/bornholm_base_tuff_bricks",
+      "x": 180
+    },
+    "facing=west": {
+      "model": "colourfulclocks:block/bornholm_base_tuff_bricks",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

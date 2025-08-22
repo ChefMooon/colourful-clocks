@@ -1,0 +1,107 @@
+{
+  "parent": "colourfulclocks:item/template_bornholm_top",
+  "overrides": [
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_white_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.01
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_orange_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.02
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_magenta_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.03
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_light_blue_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.04
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_yellow_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.05
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_lime_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.06
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_pink_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.07
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_gray_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.08
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_light_gray_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.09
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_cyan_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.1
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_purple_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.11
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_blue_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.12
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_brown_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.13
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_green_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.14
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_red_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.15
+      }
+    },
+    {
+      "model": "colourfulclocks:item/bornholm_top_mossy_stone_bricks_black_stained_glass",
+      "predicate": {
+        "colourfulclocks:glass": 0.16
+      }
+    }
+  ],
+  "textures": {
+    "clock_dial": "colourfulclocks:block/quartz_bornholm_clockface",
+    "clock_dial_cover": "colourfulclocks:block/glass_bornholm_dial",
+    "clock_dial_marks": "minecraft:block/coal_block",
+    "side": "minecraft:block/mossy_stone_bricks"
+  }
+}

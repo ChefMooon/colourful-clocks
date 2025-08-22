@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bornholm_top_prismarine_bricks",
+  "key": {
+    "A": {
+      "item": "minecraft:prismarine_bricks"
+    },
+    "B": {
+      "item": "minecraft:black_stained_glass_pane"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "BCA",
+    "AAA"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:bornholm_dial_data": {
+        "glass": "_black_stained_glass"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:bornholm_top_prismarine_bricks"
+  }
+}

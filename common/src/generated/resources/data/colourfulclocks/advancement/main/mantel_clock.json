@@ -34,6 +34,17 @@
       },
       "trigger": "minecraft:placed_block"
     },
+    "has_mantel_clock_bricks": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_bricks",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
     "has_mantel_clock_cherry": {
       "conditions": {
         "location": [
@@ -56,11 +67,55 @@
       },
       "trigger": "minecraft:placed_block"
     },
+    "has_mantel_clock_cut_red_sandstone": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_cut_red_sandstone",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_cut_sandstone": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_cut_sandstone",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
     "has_mantel_clock_dark_oak": {
       "conditions": {
         "location": [
           {
             "block": "colourfulclocks:mantel_clock_dark_oak",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_dark_prismarine": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_dark_prismarine",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_deepslate_bricks": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_deepslate_bricks",
             "condition": "minecraft:block_state_property"
           }
         ]
@@ -89,6 +144,39 @@
       },
       "trigger": "minecraft:placed_block"
     },
+    "has_mantel_clock_mossy_stone_bricks": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_mossy_stone_bricks",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_mud_bricks": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_mud_bricks",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_nether_bricks": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_nether_bricks",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
     "has_mantel_clock_oak": {
       "conditions": {
         "location": [
@@ -100,11 +188,121 @@
       },
       "trigger": "minecraft:placed_block"
     },
+    "has_mantel_clock_polished_andesite": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_polished_andesite",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_polished_blackstone": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_polished_blackstone",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_polished_blackstone_bricks": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_polished_blackstone_bricks",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_polished_deepslate": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_polished_deepslate",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_polished_diorite": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_polished_diorite",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_polished_granite": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_polished_granite",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_polished_tuff": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_polished_tuff",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_prismarine_bricks": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_prismarine_bricks",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_red_nether_bricks": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_red_nether_bricks",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
     "has_mantel_clock_spruce": {
       "conditions": {
         "location": [
           {
             "block": "colourfulclocks:mantel_clock_spruce",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
+    "has_mantel_clock_stone_bricks": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_stone_bricks",
             "condition": "minecraft:block_state_property"
           }
         ]
@@ -232,6 +430,17 @@
       },
       "trigger": "minecraft:placed_block"
     },
+    "has_mantel_clock_tuff_bricks": {
+      "conditions": {
+        "location": [
+          {
+            "block": "colourfulclocks:mantel_clock_tuff_bricks",
+            "condition": "minecraft:block_state_property"
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    },
     "has_mantel_clock_warped": {
       "conditions": {
         "location": [
@@ -280,7 +489,26 @@
       "has_mantel_clock_stripped_cherry",
       "has_mantel_clock_stripped_bamboo",
       "has_mantel_clock_stripped_crimson",
-      "has_mantel_clock_stripped_warped"
+      "has_mantel_clock_stripped_warped",
+      "has_mantel_clock_stone_bricks",
+      "has_mantel_clock_mossy_stone_bricks",
+      "has_mantel_clock_polished_granite",
+      "has_mantel_clock_polished_diorite",
+      "has_mantel_clock_polished_andesite",
+      "has_mantel_clock_polished_deepslate",
+      "has_mantel_clock_deepslate_bricks",
+      "has_mantel_clock_polished_tuff",
+      "has_mantel_clock_tuff_bricks",
+      "has_mantel_clock_bricks",
+      "has_mantel_clock_mud_bricks",
+      "has_mantel_clock_cut_sandstone",
+      "has_mantel_clock_cut_red_sandstone",
+      "has_mantel_clock_prismarine_bricks",
+      "has_mantel_clock_dark_prismarine",
+      "has_mantel_clock_nether_bricks",
+      "has_mantel_clock_red_nether_bricks",
+      "has_mantel_clock_polished_blackstone",
+      "has_mantel_clock_polished_blackstone_bricks"
     ]
   ],
   "sends_telemetry_event": true

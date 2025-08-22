@@ -2,7 +2,6 @@ package com.chefmooon.colourfulclocks.common.util.fabric;
 
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import com.mojang.datafixers.util.Pair;

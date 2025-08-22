@@ -5,7 +5,7 @@ import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.item.*;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -22,11 +22,11 @@ import static com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems
 
 public class ColourfulClocksItemsImpl {
 
-    public static final HashMap<WoodTypes, Supplier<Item>> BORNHOLM_BASE_VARIANTS = new HashMap<>();
-    public static final HashMap<WoodTypes, Supplier<Item>> BORNHOLM_MIDDLE_VARIANTS = new HashMap<>();
-    public static final HashMap<WoodTypes, Supplier<Item>> BORNHOLM_TOP_VARIANTS = new HashMap<>();
+    public static final HashMap<ClockTypes, Supplier<Item>> BORNHOLM_BASE_VARIANTS = new HashMap<>();
+    public static final HashMap<ClockTypes, Supplier<Item>> BORNHOLM_MIDDLE_VARIANTS = new HashMap<>();
+    public static final HashMap<ClockTypes, Supplier<Item>> BORNHOLM_TOP_VARIANTS = new HashMap<>();
 
-    public static final HashMap<WoodTypes, Supplier<Item>> MANTEL_CLOCK_VARIANTS = new HashMap<>();
+    public static final HashMap<ClockTypes, Supplier<Item>> MANTEL_CLOCK_VARIANTS = new HashMap<>();
 
     public static final Supplier<Item> IRON_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.IRON_POCKET_WATCH,
             new PocketWatchItem(PocketWatchTypes.IRON, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
@@ -134,34 +134,30 @@ public class ColourfulClocksItemsImpl {
         PENDULUM_VARIANTS.put(PendulumTypes.EMERALD, EMERALD_PENDULUM);
     }
 
-    private static void registerBornholmItems() {
-        for (WoodTypes woodTypes : WoodTypes.values()) {
-            // Base
-            Supplier<Item> baseItem = registerItemWithTab(ColourfulClocksItems.BORNHOLM_BASE.withSuffix(woodTypes.getSerializedName()),
-                    new BlockItem(ColourfulClocksBlocksImpl.BORNHOLM_BASE_VARIANTS.get(woodTypes).get(), basicItem()));
-            BORNHOLM_BASE_VARIANTS.put(woodTypes, baseItem);
+    private static void registerClockItems() {
+        for (ClockTypes clockTypes : ClockTypes.values()) {
+            // Bornholm Base
+            Supplier<Item> baseItem = registerItemWithTab(ColourfulClocksItems.BORNHOLM_BASE.withSuffix(clockTypes.getSerializedName()),
+                    new BlockItem(ColourfulClocksBlocksImpl.BORNHOLM_BASE_VARIANTS.get(clockTypes).get(), basicItem()));
+            BORNHOLM_BASE_VARIANTS.put(clockTypes, baseItem);
 
-            // Middle
-            Supplier<Item> middleItem = registerItemWithTab(ColourfulClocksItems.BORNHOLM_MIDDLE.withSuffix(woodTypes.getSerializedName()),
-                    new BornholmMiddleBlockItem(ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.get(woodTypes).get(), basicItem()
+            // Bornholm Middle
+            Supplier<Item> middleItem = registerItemWithTab(ColourfulClocksItems.BORNHOLM_MIDDLE.withSuffix(clockTypes.getSerializedName()),
+                    new BornholmMiddleBlockItem(ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.get(clockTypes).get(), basicItem()
                             .component(ColourfulClocksDataComponentTypesImpl.BORNHOLM_MIDDLE_GLASS_DATA, BornholmMiddleDoorComponent.getDefaultValue())));
-            BORNHOLM_MIDDLE_VARIANTS.put(woodTypes, middleItem);
+            BORNHOLM_MIDDLE_VARIANTS.put(clockTypes, middleItem);
 
-            // Top
-            Supplier<Item> topItem = registerItemWithTab(ColourfulClocksItems.BORNHOLM_TOP.withSuffix(woodTypes.getSerializedName()),
-                    new BornholmTopBlockItem(ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.get(woodTypes).get(), basicItem()
+            // Bornholm Top
+            Supplier<Item> topItem = registerItemWithTab(ColourfulClocksItems.BORNHOLM_TOP.withSuffix(clockTypes.getSerializedName()),
+                    new BornholmTopBlockItem(ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.get(clockTypes).get(), basicItem()
                             .component(ColourfulClocksDataComponentTypesImpl.BORNHOLM_TOP_GLASS_DATA, BornholmTopGlassComponent.getDefaultValue())));
-            BORNHOLM_TOP_VARIANTS.put(woodTypes, topItem);
-        }
-    }
+            BORNHOLM_TOP_VARIANTS.put(clockTypes, topItem);
 
-    private static void registerMantelClockItems() {
-        for (WoodTypes woodTypes : WoodTypes.values()) {
             // Mantel Clock
-            Supplier<Item> mantelClockItem = registerItemWithTab(ColourfulClocksItems.MANTEL_CLOCK.withSuffix(woodTypes.getSerializedName()),
-                    new MantelClockBlockItem(ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.get(woodTypes).get(), basicItem()
+            Supplier<Item> mantelClockItem = registerItemWithTab(ColourfulClocksItems.MANTEL_CLOCK.withSuffix(clockTypes.getSerializedName()),
+                    new MantelClockBlockItem(ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
                             .component(ColourfulClocksDataComponentTypesImpl.GLASS_DIAL_DATA, GlassDialComponent.getDefaultValue())));
-            MANTEL_CLOCK_VARIANTS.put(woodTypes, mantelClockItem);
+            MANTEL_CLOCK_VARIANTS.put(clockTypes, mantelClockItem);
         }
     }
 
@@ -177,7 +173,6 @@ public class ColourfulClocksItemsImpl {
     }
 
     public static void register() {
-        registerBornholmItems();
-        registerMantelClockItems();
+        registerClockItems();
     }
 }

@@ -4,7 +4,7 @@ import com.chefmooon.colourfulclocks.common.block.base.BaseGlassClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.MantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
-import com.chefmooon.colourfulclocks.common.data.types.WoodTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
@@ -58,8 +58,8 @@ public class MantelClockBlock extends BaseGlassClockBlock {
             Block.box(5, 8, 5, 11, 9, 11)
     );
     private final VoxelShape SHAPE_AXIS_X;
-    public MantelClockBlock(WoodTypes woodType, Properties properties) {
-        super(woodType, properties);
+    public MantelClockBlock(ClockTypes clockType, Properties properties) {
+        super(clockType, properties);
         this.SHAPE_AXIS_X = VoxelShapeUtil.rotateVoxelShape(SHAPE_AXIS_Z, Direction.EAST);
     }
 
@@ -139,7 +139,7 @@ public class MantelClockBlock extends BaseGlassClockBlock {
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (blockEntity instanceof MantelClockBlockEntity mantelClockBlockEntity) {
-            return mantelClockBlockEntity.getBlockAsItem(this.woodType);
+            return mantelClockBlockEntity.getBlockAsItem(this.clockType);
         } else {
             return super.getCloneItemStack(level, pos, state);
         }
