@@ -77,7 +77,10 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(ColourfulClocksTags.CLOCK_DOOR, "Clock Door");
         translationBuilder.add(ColourfulClocksTags.CLOCK_TOP_GLASS, "Clock Dial Glass");
         translationBuilder.add(ColourfulClocksTags.CLOCK_HAND, "Clock Hand");
+        translationBuilder.add(ColourfulClocksTags.BORNHOLM_BASE, "Bornholm Base");
+        translationBuilder.add(ColourfulClocksTags.BORNHOLM_TRUNK, "Bornholm Trunk");
         translationBuilder.add(ColourfulClocksTags.BORNHOLM_DIAL, "Bornholm Dial");
+        translationBuilder.add(ColourfulClocksTags.MANTEL_CLOCK, "Mantel Clock");
 
         translationBuilder.add(SUBTITLE + "block.bornholm.chime", "Bornholm Chime");
         translationBuilder.add(SUBTITLE + "block.bornholm.door_open", "Door Opened");
