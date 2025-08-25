@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
+import com.chefmooon.colourfulclocks.common.data.TallMantelClockComponent;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.component.DataComponentType;
@@ -40,12 +41,20 @@ public class ColourfulClocksDataComponentTypesImpl {
             ColourfulClocksDataComponentTypes.GLASS_DIAL_DATA.getPath(), glassDialComponentBuilder -> glassDialComponentBuilder.persistent(GlassDialComponent.CODEC).networkSynchronized(GlassDialComponent.STREAM_CODEC)
     );
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<TallMantelClockComponent>> TALL_MANTEL_CLOCK_DATA = DATA_COMPONENTS.registerComponentType(
+            ColourfulClocksDataComponentTypes.TALL_MANTEL_CLOCK_DATA.getPath(), tallMantelClockComponentBuilder -> tallMantelClockComponentBuilder.persistent(TallMantelClockComponent.CODEC).networkSynchronized(TallMantelClockComponent.STREAM_CODEC)
+    );
+
     public static DataComponentType<BornholmMiddleDoorComponent> getBornholmMiddleGlassData() {
         return BORNHOLM_MIDDLE_GLASS_DATA.get();
     }
 
     public static DataComponentType<BornholmTopGlassComponent> getBornholmTopGlassData() {
         return BORNHOLM_TOP_GLASS_DATA.get();
+    }
+
+    public static DataComponentType<TallMantelClockComponent> getTallMantelClockData() {
+        return TALL_MANTEL_CLOCK_DATA.get();
     }
 
     public static DataComponentType<GlassDialComponent> getGlassDialData() {

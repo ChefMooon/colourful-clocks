@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
+import com.chefmooon.colourfulclocks.common.data.TallMantelClockComponent;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksDataComponentTypesImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksItemProperties;
@@ -29,6 +30,8 @@ public class ColourfulClocksItemPropertiesImpl {
                 registerBornholmTop(supplier.get()));
         ColourfulClocksItemsImpl.MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) ->
                 registerMantelClock(supplier.get()));
+        ColourfulClocksItemsImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) ->
+                registerTallMantelClock(supplier.get()));
         ColourfulClocksItemsImpl.POCKET_WATCH_VARIANTS.forEach(((pocketWatchTypes, itemSupplier) ->
                 registerPocketWatch(itemSupplier.get())));
     }
@@ -54,6 +57,14 @@ public class ColourfulClocksItemPropertiesImpl {
                 (itemStack, clientLevel, livingEntity, i) -> {
                     // Convert the id to a float and return
                     return itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.GLASS_DIAL_DATA, GlassDialComponent.getDefaultValue()).getGlassType().getId() / 100.0f;
+                });
+    }
+
+    private static void registerTallMantelClock(Item item) {
+        ItemProperties.register(item, ColourfulClocksItemProperties.GLASS_TYPE,
+                (itemStack, clientLevel, livingEntity, i) -> {
+                    // Convert the id to a float and return
+                    return itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.TALL_MANTEL_CLOCK_DATA, TallMantelClockComponent.getDefaultValue()).getGlassType().getId() / 100.0f;
                 });
     }
 

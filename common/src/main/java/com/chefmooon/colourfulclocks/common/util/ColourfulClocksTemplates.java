@@ -37,6 +37,12 @@ public class ColourfulClocksTemplates {
     public static final ModelTemplate TALL_MANTEL_CLOCK = block("template_tall_mantel_clock",
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_COVER,
             ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
+    public static final ModelTemplate TALL_MANTEL_CLOCK_WALL = block("template_tall_mantel_clock_wall",
+            TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_COVER,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
+    public static final ModelTemplate TALL_MANTEL_CLOCK_ITEM = item("template_tall_mantel_clock",
+            TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_COVER,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
 
     public static final ModelTemplate POCKET_WATCH_CLOCK = block("template_pocket_watch_in_clock", TextureSlot.ALL);
     public static final ModelTemplate POCKET_WATCH_MINUTE_HAND = block("template_pocket_watch_minute_hand", TextureSlot.ALL);

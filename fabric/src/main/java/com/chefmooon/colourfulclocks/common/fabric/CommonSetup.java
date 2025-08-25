@@ -1,9 +1,6 @@
 package com.chefmooon.colourfulclocks.common.fabric;
 
-import com.chefmooon.colourfulclocks.common.block.BornholmBaseBlock;
-import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
-import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
-import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
+import com.chefmooon.colourfulclocks.common.block.*;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.minecraft.world.level.block.Block;
@@ -29,6 +26,10 @@ public class CommonSetup {
 
         ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
             addFlammableBlock(supplier.get(), MantelClockBlock.FLAMMABILITY, MantelClockBlock.FIRE_SPREAD);
+        });
+
+        ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
+            addFlammableBlock(supplier.get(), TallMantelClockBlock.FLAMMABILITY, TallMantelClockBlock.FIRE_SPREAD);
         });
     }
 

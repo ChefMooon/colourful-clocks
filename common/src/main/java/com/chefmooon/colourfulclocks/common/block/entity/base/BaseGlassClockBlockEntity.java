@@ -1,5 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block.entity.base;
 
+import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
@@ -121,6 +122,7 @@ public class BaseGlassClockBlockEntity extends BaseClockBlockEntity {
                     if (weathering >= WEATHERED_THRESHOLD) {
                         advanceWeathering(level, blockPos, itemStack, baseGlassClockBlockEntity);
                     } else {
+                        ColourfulClocks.LOGGER.info("Weathering copper clock hands: " + weathering + 1);
                         itemStack.set((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING), weathering + 1);
                     }
                 }

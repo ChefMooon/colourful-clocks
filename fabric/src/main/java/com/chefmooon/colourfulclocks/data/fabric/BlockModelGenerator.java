@@ -3,6 +3,7 @@ package com.chefmooon.colourfulclocks.data.fabric;
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
+import com.chefmooon.colourfulclocks.common.block.TallMantelClockBlock;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
@@ -35,6 +36,7 @@ public class BlockModelGenerator {
 
         registerBornholm(blockModelGenerators);
         registerMantelClockBlockAll(blockModelGenerators);
+        registerTallMantelClockBlockAll(blockModelGenerators);
 
         generateBornholmTopDialGlass();
         generateBornholmDoorTypes();
@@ -279,6 +281,69 @@ public class BlockModelGenerator {
                             .select(BornholmTopGlassTypes.GLASS_GREEN, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_GREEN)))
                             .select(BornholmTopGlassTypes.GLASS_RED, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_RED)))
                             .select(BornholmTopGlassTypes.GLASS_BLACK, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_BLACK)))
+                    )
+            );
+            blockModelGenerators.skipAutoItemBlock(blockSupplier.get());
+        });
+    }
+
+    private static void registerTallMantelClockBlockAll(BlockModelGenerators blockModelGenerators) {
+        ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach((entry, blockSupplier) -> {
+            ResourceLocation blockLocation = ModelLocationUtils.getModelLocation(blockSupplier.get());
+
+            HashMap<BornholmTopGlassTypes, Map.Entry<ResourceLocation, ResourceLocation>> MODELS = new HashMap<>();
+            for (BornholmTopGlassTypes bornholmTopGlassTypes : BornholmTopGlassTypes.values()) {
+                TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, getBlockModelLocation(entry))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clockface"))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, TextUtil.res("block/" + bornholmTopGlassTypes.getName() + "_dial_small"))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
+
+                ResourceLocation TALL_MANTEL_CLOCK = ColourfulClocksTemplates.TALL_MANTEL_CLOCK.create(
+                        blockLocation.withSuffix(bornholmTopGlassTypes.getSerializedName()), mapping, blockModelGenerators.modelOutput);
+                ResourceLocation TALL_MANTEL_CLOCK_WALL = ColourfulClocksTemplates.TALL_MANTEL_CLOCK_WALL.create(
+                        blockLocation.withSuffix(bornholmTopGlassTypes.getSerializedName() + "_wall"), mapping, blockModelGenerators.modelOutput);
+                MODELS.put(bornholmTopGlassTypes, new AbstractMap.SimpleEntry<>(TALL_MANTEL_CLOCK, TALL_MANTEL_CLOCK_WALL));
+            }
+
+            blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(blockSupplier.get(),
+                            Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS).getKey()))
+                    .with(BlockModelGenerators.createHorizontalFacingDispatch())
+                    .with(PropertyDispatch.properties(TallMantelClockBlock.WALL, TallMantelClockBlock.GLASS_TYPE)
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_WHITE, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_WHITE).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_ORANGE, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_ORANGE).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_MAGENTA, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_MAGENTA).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_LIGHT_BLUE, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_LIGHT_BLUE).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_YELLOW, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_YELLOW).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_LIME, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_LIME).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_PINK, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_PINK).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_GRAY, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_GRAY).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_LIGHT_GRAY, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_LIGHT_GRAY).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_CYAN, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_CYAN).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_PURPLE, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_PURPLE).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_BLUE, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_BLUE).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_BROWN, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_BROWN).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_GREEN, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_GREEN).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_RED, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_RED).getKey()))
+                            .select(Boolean.FALSE, BornholmTopGlassTypes.GLASS_BLACK, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_BLACK).getKey()))
+
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_WHITE, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_WHITE).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_ORANGE, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_ORANGE).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_MAGENTA, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_MAGENTA).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_LIGHT_BLUE, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_LIGHT_BLUE).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_YELLOW, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_YELLOW).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_LIME, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_LIME).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_PINK, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_PINK).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_GRAY, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_GRAY).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_LIGHT_GRAY, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_LIGHT_GRAY).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_CYAN, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_CYAN).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_PURPLE, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_PURPLE).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_BLUE, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_BLUE).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_BROWN, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_BROWN).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_GREEN, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_GREEN).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_RED, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_RED).getValue()))
+                            .select(Boolean.TRUE, BornholmTopGlassTypes.GLASS_BLACK, Variant.variant().with(VariantProperties.MODEL, MODELS.get(BornholmTopGlassTypes.GLASS_BLACK).getValue()))
                     )
             );
             blockModelGenerators.skipAutoItemBlock(blockSupplier.get());

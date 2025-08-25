@@ -67,6 +67,7 @@ public class ItemModelGenerator {
         generateBornholmMiddleItems();
         generateBornholmTopItems();
         generateMantelClockItems();
+        generateTallMantelClockItems();
     }
 
     private static void generateBornholmMiddleItems() {
@@ -174,6 +175,47 @@ public class ItemModelGenerator {
 
     private static JsonObject generateMantelClockItemJson(ResourceLocation modelLocation, Map<TextureSlot, ResourceLocation> modelGetter) {
         JsonObject jsonObject = ColourfulClocksTemplates.MANTEL_CLOCK_ITEM.createBaseTemplate(modelLocation, modelGetter);
+        JsonArray jsonArray = new JsonArray();
+
+        for (BornholmTopGlassTypes glassType : BornholmTopGlassTypes.values()) {
+            if (glassType == BornholmTopGlassTypes.GLASS) continue;
+            JsonObject modelObject = new JsonObject();
+            JsonObject predicateObject = new JsonObject();
+            predicateObject.addProperty(TextUtil.res("glass").toString(), glassType.getId() / 100.0F);
+            modelObject.add("predicate", predicateObject);
+            modelObject.addProperty("model", modelLocation.withSuffix("_" + glassType.getName()).toString());
+            jsonArray.add(modelObject);
+        }
+
+        jsonObject.add("overrides", jsonArray);
+        return jsonObject;
+    }
+
+    private static void generateTallMantelClockItems() {
+        for (ClockTypes clockTypes : ClockTypes.values()) {
+            ResourceLocation itemLocation = ModelLocationUtils.getModelLocation(ColourfulClocksItemsImpl.TALL_MANTEL_CLOCK_VARIANTS.get(clockTypes).get());
+            for (BornholmTopGlassTypes bornholmTopGlassTypes : BornholmTopGlassTypes.values()) {
+                ResourceLocation glassLocation = bornholmTopGlassTypes == BornholmTopGlassTypes.GLASS ?
+                        TextUtil.res("block/" + bornholmTopGlassTypes.getName() + "_dial_small") :
+                        TextUtil.res("block/" + bornholmTopGlassTypes.getName() + "_dial_small_transparent");
+
+                TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, BlockModelGenerator.getBlockModelLocation(clockTypes))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clockface"))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, glassLocation)
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
+
+                ColourfulClocksTemplates.TALL_MANTEL_CLOCK_ITEM.create(itemLocation.withSuffix(bornholmTopGlassTypes.getSerializedName()), mapping, GENERATOR.output);
+            }
+            TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, BlockModelGenerator.getBlockModelLocation(clockTypes))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clockface"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, TextUtil.res("block/" + BornholmTopGlassTypes.GLASS.getName() + "_dial_small"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
+            ColourfulClocksTemplates.TALL_MANTEL_CLOCK_ITEM.create(itemLocation, mapping, GENERATOR.output, ItemModelGenerator::generateTallMantelClockItemJson);
+        }
+    }
+
+    private static JsonObject generateTallMantelClockItemJson(ResourceLocation modelLocation, Map<TextureSlot, ResourceLocation> modelGetter) {
+        JsonObject jsonObject = ColourfulClocksTemplates.TALL_MANTEL_CLOCK_ITEM.createBaseTemplate(modelLocation, modelGetter);
         JsonArray jsonArray = new JsonArray();
 
         for (BornholmTopGlassTypes glassType : BornholmTopGlassTypes.values()) {

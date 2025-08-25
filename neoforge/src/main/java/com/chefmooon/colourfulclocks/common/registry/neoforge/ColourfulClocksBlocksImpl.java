@@ -1,10 +1,7 @@
 package com.chefmooon.colourfulclocks.common.registry.neoforge;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
-import com.chefmooon.colourfulclocks.common.block.neoforge.BornholmBaseBlockImpl;
-import com.chefmooon.colourfulclocks.common.block.neoforge.BornholmMiddleBlockImpl;
-import com.chefmooon.colourfulclocks.common.block.neoforge.BornholmTopBlockImpl;
-import com.chefmooon.colourfulclocks.common.block.neoforge.MantelClockBlockImpl;
+import com.chefmooon.colourfulclocks.common.block.neoforge.*;
 import com.chefmooon.colourfulclocks.common.data.types.ClockMaterialTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
@@ -27,6 +24,7 @@ public class ColourfulClocksBlocksImpl {
     public static final HashMap<ClockTypes, Supplier<Block>> BORNHOLM_TOP_VARIANTS = registerTopVariantsAll(ColourfulClocksBlocks.BORNHOLM_TOP);
 
     public static final HashMap<ClockTypes, Supplier<Block>> MANTEL_CLOCK_VARIANTS = registerMantelClockVariants(ColourfulClocksBlocks.MANTEL_CLOCK);
+    public static final HashMap<ClockTypes, Supplier<Block>> TALL_MANTEL_CLOCK_VARIANTS = registerTallMantelClockVariants(ColourfulClocksBlocks.TALL_MANTEL_CLOCK);
 
     private static HashMap<ClockTypes, Supplier<Block>> registerBaseVariantsAll(ResourceLocation baseLocation) {
         HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
@@ -63,6 +61,16 @@ public class ColourfulClocksBlocksImpl {
         for (ClockTypes clockTypes : ClockTypes.values()) {
             Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
                     () -> new MantelClockBlockImpl(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
+            hashMap.put(clockTypes, block);
+        }
+        return hashMap;
+    }
+
+    private static HashMap<ClockTypes, Supplier<Block>> registerTallMantelClockVariants(ResourceLocation baseLocation) {
+        HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
+        for (ClockTypes clockTypes : ClockTypes.values()) {
+            Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
+                    () -> new TallMantelClockBlockImpl(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
             hashMap.put(clockTypes, block);
         }
         return hashMap;

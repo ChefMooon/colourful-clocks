@@ -17,6 +17,7 @@ public class ColourfulClocksTags {
     public static final TagKey<Item> BORNHOLM_TRUNK = getItemTagKey("bornholm_trunk");
     public static final TagKey<Item> BORNHOLM_DIAL = getItemTagKey("bornholm_dial");
     public static final TagKey<Item> MANTEL_CLOCK = getItemTagKey("mantel_clock");
+    public static final TagKey<Item> TALL_MANTEL_CLOCK = getItemTagKey("tall_mantel_clock");
 
     public static TagKey<Item> getItemTagKey(String path) {
         return TagKey.create(Registries.ITEM, TextUtil.res(path));

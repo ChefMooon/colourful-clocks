@@ -1,0 +1,9 @@
+{
+  "parent": "colourfulclocks:block/template_tall_mantel_clock",
+  "textures": {
+    "clock_dial": "colourfulclocks:block/small_quartz_clockface",
+    "clock_dial_cover": "colourfulclocks:block/light_blue_stained_glass_dial_small",
+    "clock_dial_marks": "minecraft:block/coal_block",
+    "side": "minecraft:block/stripped_cherry_log"
+  }
+}

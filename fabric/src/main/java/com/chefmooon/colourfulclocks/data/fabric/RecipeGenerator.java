@@ -66,6 +66,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
 
         buildBornholmRecipes(recipeOutput);
         buildMantelClockRecipes();
+        buildTallMantelClockRecipes();
         buildWaxedCopperItemRecipes();
     }
 
@@ -213,6 +214,48 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result) + "_" + glassTypes.getName());
         }
     }
+
+    private static void buildTallMantelClockRecipes() {
+        for (ClockTypes clockType : ClockTypes.values()) {
+            ItemLike result = ColourfulClocksItemsImpl.TALL_MANTEL_CLOCK_VARIANTS.get(clockType).get();
+            ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
+                    .pattern("ACA")
+                    .pattern("ABA")
+                    .pattern("AAA")
+                    .define('A', clockType.getCraftingIngredient())
+                    .define('B', BornholmTopGlassTypes.GLASS.getItem())
+                    .define('C', Items.QUARTZ)
+                    .group("tall_mantel_clock_" + clockType.getName())
+                    .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
+                            clockType.getCraftingIngredient(),
+                            BornholmTopGlassTypes.GLASS.getItem(),
+                            Items.QUARTZ)))
+                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result));
+//            buildTallMantelClockVariantRecipes(clockType, result);
+        }
+    }
+
+    // TODO: implement after DataComponent update
+    private static void buildTallMantelClockVariantRecipes(ClockTypes clockType, ItemLike result) {
+        for (BornholmTopGlassTypes glassTypes : BornholmTopGlassTypes.values()) {
+            if (glassTypes == BornholmTopGlassTypes.GLASS) continue;
+            GlassDialDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
+                    .pattern("ACA")
+                    .pattern("ABA")
+                    .pattern("AAA")
+                    .define('A', clockType.getCraftingIngredient())
+                    .define('B', glassTypes.getItem())
+                    .define('C', Items.QUARTZ)
+                    .group("tall_mantel_clock_" + clockType.getName())
+                    .setResultData(glassTypes)
+                    .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
+                            clockType.getCraftingIngredient(),
+                            glassTypes.getItem(),
+                            Items.QUARTZ)))
+                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result) + "_" + glassTypes.getName());
+        }
+    }
+
 
     private static void buildWaxedCopperItemRecipes() {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get())

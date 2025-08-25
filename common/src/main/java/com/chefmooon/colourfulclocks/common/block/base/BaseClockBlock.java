@@ -2,8 +2,8 @@ package com.chefmooon.colourfulclocks.common.block.base;
 
 import com.chefmooon.colourfulclocks.common.block.entity.base.BaseGlassClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
-import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
@@ -14,7 +14,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.ItemInteractionResult;
@@ -129,7 +128,7 @@ public class BaseClockBlock extends BaseEntityBlock {
         this.checkPoweredState(level, pos, state);
     }
 
-    private void checkPoweredState(Level level, BlockPos pos, BlockState state) {
+    protected void checkPoweredState(Level level, BlockPos pos, BlockState state) {
         boolean bl = !level.hasNeighborSignal(pos);
         if (state.getValue(CAN_TICK) && bl != state.getValue(TICKING)) {
             level.setBlock(pos, state.setValue(TICKING, bl), 2);
@@ -141,81 +140,87 @@ public class BaseClockBlock extends BaseEntityBlock {
         }
     }
 
-    protected ItemInteractionResult setPocketWatchType(Level level, BlockPos pos, Player player, ItemStack itemStack, BaseGlassClockBlockEntity baseGlassClockBlockEntity) {
+    protected ItemInteractionResult setPocketWatchType(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity) {
         if (itemStack.is(ColourfulClocksTags.CLOCK_HAND)) {
-            PocketWatchTypes pocketWatchType = ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(itemStack.getItem());
-            if (pocketWatchType != baseGlassClockBlockEntity.getDialData().pocketWatchType()) {
-                if (baseGlassClockBlockEntity.getDialData().getPocketWatchType().getId() != 0 && !player.getAbilities().instabuild) {
-                    if (!player.getInventory().add(baseGlassClockBlockEntity.removePocketWatchType())) {
-                        Containers.dropContents(level, pos, baseGlassClockBlockEntity.getDroppableInventory());
+            if (blockEntity instanceof BaseGlassClockBlockEntity baseGlassClockBlockEntity) {
+                PocketWatchTypes pocketWatchType = ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(itemStack.getItem());
+                if (pocketWatchType != baseGlassClockBlockEntity.getDialData().pocketWatchType()) {
+                    if (baseGlassClockBlockEntity.getDialData().getPocketWatchType().getId() != 0 && !player.getAbilities().instabuild) {
+                        if (!player.getInventory().add(baseGlassClockBlockEntity.removePocketWatchType())) {
+                            Containers.dropContents(level, pos, baseGlassClockBlockEntity.getDroppableInventory());
+                        }
                     }
+                    baseGlassClockBlockEntity.setPocketWatchType(player.getAbilities().instabuild ? itemStack.copy() : itemStack.split(1));
+                    level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.6F);
+                    level.updateNeighborsAt(pos, this);
+                    if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_POCKET_WATCH_TRIGGER.get().trigger(serverPlayer);
+                    return ItemInteractionResult.SUCCESS;
                 }
-                baseGlassClockBlockEntity.setPocketWatchType(player.getAbilities().instabuild ? itemStack.copy() : itemStack.split(1));
-                level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.6F);
-                level.updateNeighborsAt(pos, this);
-                if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_POCKET_WATCH_TRIGGER.get().trigger(serverPlayer);
-                return ItemInteractionResult.SUCCESS;
             }
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    protected ItemInteractionResult setWaxedState(Level level, BlockPos pos, Player player, ItemStack itemStack, BaseGlassClockBlockEntity baseGlassClockBlockEntity, boolean tryWax) {
-        if (tryWax) {
-            ItemStack waxedClockHands = ColourfulClocksTypeUtil.getWaxedClockHands(ColourfulClocksTypeUtil.getPocketWatchItemFromType(baseGlassClockBlockEntity.getDialData().getPocketWatchType()).getDefaultInstance()).get().getDefaultInstance();
-            if (!waxedClockHands.isEmpty()) {
-                baseGlassClockBlockEntity.setPocketWatchType(waxedClockHands);
-                level.blockEntityChanged(pos);
-                level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
-                if (!player.getAbilities().instabuild) itemStack.shrink(1);
-                if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_ON_TRIGGER.get().trigger(serverPlayer);
+    protected ItemInteractionResult setWaxedState(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity, boolean tryWax) {
+        if (blockEntity instanceof BaseGlassClockBlockEntity baseGlassClockBlockEntity) {
+            if (tryWax) {
+                ItemStack waxedClockHands = ColourfulClocksTypeUtil.getWaxedClockHands(ColourfulClocksTypeUtil.getPocketWatchItemFromType(baseGlassClockBlockEntity.getDialData().getPocketWatchType()).getDefaultInstance()).get().getDefaultInstance();
+                if (!waxedClockHands.isEmpty()) {
+                    baseGlassClockBlockEntity.setPocketWatchType(waxedClockHands);
+                    level.blockEntityChanged(pos);
+                    level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
+                    if (!player.getAbilities().instabuild) itemStack.shrink(1);
+                    if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_ON_TRIGGER.get().trigger(serverPlayer);
 
-                return ItemInteractionResult.SUCCESS;
-            }
-        } else {
-            Pair<Supplier<Item>, Supplier<SoundEvent>> clockHandInfo = ColourfulClocksTypeUtil.getScrapedClockHands(ColourfulClocksTypeUtil.getPocketWatchItemFromType(baseGlassClockBlockEntity.getDialData().getPocketWatchType()).getDefaultInstance());
-            ItemStack scrapedClockHands = new ItemStack(clockHandInfo.getFirst().get());
-            if (!scrapedClockHands.isEmpty()) {
-                baseGlassClockBlockEntity.setPocketWatchType(scrapedClockHands);
-                level.blockEntityChanged(pos);
-                level.playSound(player, pos, clockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
-                if (!player.getAbilities().instabuild) itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-                if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
+                    return ItemInteractionResult.SUCCESS;
+                }
+            } else {
+                Pair<Supplier<Item>, Supplier<SoundEvent>> clockHandInfo = ColourfulClocksTypeUtil.getScrapedClockHands(ColourfulClocksTypeUtil.getPocketWatchItemFromType(baseGlassClockBlockEntity.getDialData().getPocketWatchType()).getDefaultInstance());
+                ItemStack scrapedClockHands = new ItemStack(clockHandInfo.getFirst().get());
+                if (!scrapedClockHands.isEmpty()) {
+                    baseGlassClockBlockEntity.setPocketWatchType(scrapedClockHands);
+                    level.blockEntityChanged(pos);
+                    level.playSound(player, pos, clockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                    if (!player.getAbilities().instabuild) itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                    if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
 
-                return ItemInteractionResult.SUCCESS;
+                    return ItemInteractionResult.SUCCESS;
+                }
             }
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    protected ItemInteractionResult setTicking(Level level, BlockPos pos, Player player, ItemStack itemStack, BaseGlassClockBlockEntity baseGlassClockBlockEntity, boolean tryTicking) {
-        if (tryTicking) {
-            if (!baseGlassClockBlockEntity.getDialData().ticking()) {
-                baseGlassClockBlockEntity.setTicking(true);
-                level.setBlock(pos, level.getBlockState(pos).setValue(CAN_TICK, true).setValue(TICKING, true), 3);
-                this.checkPoweredState(level, pos, level.getBlockState(pos));
-                level.blockEntityChanged(pos);
-                level.playSound(player, pos, ColourfulClocksSounds.BLOCK_ENABLE_TICKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-                if (!player.getAbilities().instabuild) itemStack.shrink(1);
-                if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.ENABLE_TICKING_TRIGGER.get().trigger(serverPlayer);
+    protected ItemInteractionResult setTicking(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity, boolean tryTicking) {
+        if (blockEntity instanceof BaseGlassClockBlockEntity baseGlassClockBlockEntity) {
+            if (tryTicking) {
+                if (!baseGlassClockBlockEntity.getDialData().ticking()) {
+                    baseGlassClockBlockEntity.setTicking(true);
+                    level.setBlock(pos, level.getBlockState(pos).setValue(CAN_TICK, true).setValue(TICKING, true), 3);
+                    this.checkPoweredState(level, pos, level.getBlockState(pos));
+                    level.blockEntityChanged(pos);
+                    level.playSound(player, pos, ColourfulClocksSounds.BLOCK_ENABLE_TICKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                    if (!player.getAbilities().instabuild) itemStack.shrink(1);
+                    if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.ENABLE_TICKING_TRIGGER.get().trigger(serverPlayer);
 
-                return ItemInteractionResult.SUCCESS;
-            }
-        } else  {
-            if (baseGlassClockBlockEntity.getDialData().getTicking()) {
-                baseGlassClockBlockEntity.setTicking(false);
-                level.setBlock(pos, level.getBlockState(pos).setValue(CAN_TICK, false).setValue(TICKING, false), 3);
-                level.blockEntityChanged(pos);
-                level.playSound(player, pos, ColourfulClocksSounds.BLOCK_DISABLE_TICKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
-                if (!player.getAbilities().instabuild) {
-                    itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
-                    if (!player.getInventory().add(Items.REDSTONE.getDefaultInstance())) {
-                        Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), Items.REDSTONE.getDefaultInstance());
-                    }
+                    return ItemInteractionResult.SUCCESS;
                 }
-                if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.DISABLE_TICKING_TRIGGER.get().trigger(serverPlayer);
+            } else  {
+                if (baseGlassClockBlockEntity.getDialData().getTicking()) {
+                    baseGlassClockBlockEntity.setTicking(false);
+                    level.setBlock(pos, level.getBlockState(pos).setValue(CAN_TICK, false).setValue(TICKING, false), 3);
+                    level.blockEntityChanged(pos);
+                    level.playSound(player, pos, ColourfulClocksSounds.BLOCK_DISABLE_TICKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+                    if (!player.getAbilities().instabuild) {
+                        itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                        if (!player.getInventory().add(Items.REDSTONE.getDefaultInstance())) {
+                            Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), Items.REDSTONE.getDefaultInstance());
+                        }
+                    }
+                    if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.DISABLE_TICKING_TRIGGER.get().trigger(serverPlayer);
 
-                return ItemInteractionResult.SUCCESS;
+                    return ItemInteractionResult.SUCCESS;
+                }
             }
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;

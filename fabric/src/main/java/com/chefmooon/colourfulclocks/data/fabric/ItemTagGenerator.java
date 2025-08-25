@@ -113,5 +113,8 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
 
         ColourfulClocksItemsImpl.MANTEL_CLOCK_VARIANTS.forEach((key, value) ->
                 getOrCreateTagBuilder(ColourfulClocksTags.MANTEL_CLOCK).add(value.get()));
+
+        ColourfulClocksItemsImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach((key, value) ->
+                getOrCreateTagBuilder(ColourfulClocksTags.TALL_MANTEL_CLOCK).add(value.get()));
     }
 }

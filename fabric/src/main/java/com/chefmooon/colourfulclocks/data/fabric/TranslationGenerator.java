@@ -72,6 +72,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
         generateBonrholmTopTranslations(translationBuilder);
 
         generateMantelClockTranslations(translationBuilder);
+        generateTallMantelClockTranslations(translationBuilder);
 
         translationBuilder.add(ColourfulClocksTags.CLOCK_PENDULUM, "Clock Pendulum");
         translationBuilder.add(ColourfulClocksTags.CLOCK_DOOR, "Clock Door");
@@ -81,6 +82,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(ColourfulClocksTags.BORNHOLM_TRUNK, "Bornholm Trunk");
         translationBuilder.add(ColourfulClocksTags.BORNHOLM_DIAL, "Bornholm Dial");
         translationBuilder.add(ColourfulClocksTags.MANTEL_CLOCK, "Mantel Clock");
+        translationBuilder.add(ColourfulClocksTags.TALL_MANTEL_CLOCK, "Tall Mantel Clock");
 
         translationBuilder.add(SUBTITLE + "block.bornholm.chime", "Bornholm Chime");
         translationBuilder.add(SUBTITLE + "block.bornholm.door_open", "Door Opened");
@@ -197,5 +199,12 @@ public class TranslationGenerator extends FabricLanguageProvider {
             String translation = entry.getBaseTranslationNoSpace() + " Mantel Clock";
             translationBuilder.add(supplier.get(), translation);
         }));
+    }
+
+    private static void generateTallMantelClockTranslations(TranslationBuilder translationBuilder) {
+        ColourfulClocksItemsImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
+            String translation = entry.getBaseTranslationNoSpace() + " Tall Mantel Clock";
+            translationBuilder.add(supplier.get(), translation);
+        });
     }
 }

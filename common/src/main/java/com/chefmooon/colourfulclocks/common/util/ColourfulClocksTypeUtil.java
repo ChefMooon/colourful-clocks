@@ -55,6 +55,7 @@ public class ColourfulClocksTypeUtil {
         throw new AssertionError();
     }
 
+    // TODO: rename to getNextWeatheredCopperPocketWatch
     @ExpectPlatform
     public static Supplier<Item> getNextWeatheredCopperItem(ItemStack itemStack) {
         throw new AssertionError();
@@ -67,6 +68,26 @@ public class ColourfulClocksTypeUtil {
 
     @ExpectPlatform
     public static Pair<Supplier<Item>, Supplier<SoundEvent>> getScrapedClockHands(ItemStack itemStack) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static boolean isCopperPendulum(ItemStack itemStack) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static Supplier<Item> getNextWeatheredCopperPendulum(ItemStack itemStack) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static Supplier<Item> getWaxedCopperPendulum(ItemStack itemStack) {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static Pair<Supplier<Item>, Supplier<SoundEvent>> getScrapedCopperPendulum(ItemStack itemStack) {
         throw new AssertionError();
     }
 }

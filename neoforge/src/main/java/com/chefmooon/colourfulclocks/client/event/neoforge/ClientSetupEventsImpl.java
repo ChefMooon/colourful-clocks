@@ -6,6 +6,7 @@ import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmMiddleBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmTopBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.MantelClockBlockEntityRendererImpl;
+import com.chefmooon.colourfulclocks.client.renderer.neoforge.TallMantelClockBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlockEntitiesImpl;
@@ -31,6 +32,7 @@ public class ClientSetupEventsImpl {
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS.get(), BornholmMiddleBlockEntityRendererImpl::new);
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS.get(), BornholmTopBlockEntityRendererImpl::new);
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.MANTEL_CLOCK_VARIANTS.get(), MantelClockBlockEntityRendererImpl::new);
+        event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.TALL_MANTEL_CLOCK_VARIANTS.get(), TallMantelClockBlockEntityRendererImpl::new);
     }
 
     @SubscribeEvent

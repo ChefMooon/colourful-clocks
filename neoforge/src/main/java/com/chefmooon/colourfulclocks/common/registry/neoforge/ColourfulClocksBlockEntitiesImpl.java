@@ -2,6 +2,7 @@ package com.chefmooon.colourfulclocks.common.registry.neoforge;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.block.entity.MantelClockBlockEntity;
+import com.chefmooon.colourfulclocks.common.block.entity.TallMantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmMiddleBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmTopBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
@@ -29,6 +30,11 @@ public class ColourfulClocksBlockEntitiesImpl {
     public static final Supplier<BlockEntityType<MantelClockBlockEntity>> MANTEL_CLOCK_VARIANTS = BLOCK_ENTITIES.register(ColourfulClocksBlockEntities.MANTEL_CLOCK.getPath(),
             () -> BlockEntityType.Builder.of(MantelClockBlockEntity::new,
                     ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
+            ).build(null));
+
+    public static final Supplier<BlockEntityType<TallMantelClockBlockEntity>> TALL_MANTEL_CLOCK_VARIANTS = BLOCK_ENTITIES.register(ColourfulClocksBlockEntities.TALL_MANTEL_CLOCK.getPath(),
+            () -> BlockEntityType.Builder.of(TallMantelClockBlockEntity::new,
+                    ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
             ).build(null));
 
     public static void register(IEventBus eventBus) {

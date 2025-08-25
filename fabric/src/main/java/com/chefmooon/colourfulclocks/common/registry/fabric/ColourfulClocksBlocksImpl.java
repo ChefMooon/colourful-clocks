@@ -1,6 +1,7 @@
 package com.chefmooon.colourfulclocks.common.registry.fabric;
 
 import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
+import com.chefmooon.colourfulclocks.common.block.TallMantelClockBlock;
 import com.chefmooon.colourfulclocks.common.block.fabric.BornholmBaseBlockImpl;
 import com.chefmooon.colourfulclocks.common.block.fabric.BornholmMiddleBlockImpl;
 import com.chefmooon.colourfulclocks.common.block.fabric.BornholmTopBlockImpl;
@@ -20,6 +21,7 @@ public class ColourfulClocksBlocksImpl {
     public static final HashMap<ClockTypes, Supplier<Block>> BORNHOLM_TOP_VARIANTS = registerTopVariantsAll(ColourfulClocksBlocks.BORNHOLM_TOP);
 
     public static final HashMap<ClockTypes, Supplier<Block>> MANTEL_CLOCK_VARIANTS = registerMantelClockVariants(ColourfulClocksBlocks.MANTEL_CLOCK);
+    public static final HashMap<ClockTypes, Supplier<Block>> TALL_MANTEL_CLOCK_VARIANTS = registerTallMantelClockVariants(ColourfulClocksBlocks.TALL_MANTEL_CLOCK);
 
     private static HashMap<ClockTypes, Supplier<Block>> registerBaseVariantsAll(ResourceLocation baseLocation) {
         HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
@@ -56,6 +58,16 @@ public class ColourfulClocksBlocksImpl {
         for (ClockTypes clockTypes : ClockTypes.values()) {
             Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
                     new MantelClockBlock(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
+            hashMap.put(clockTypes, block);
+        }
+        return hashMap;
+    }
+
+    private static HashMap<ClockTypes, Supplier<Block>> registerTallMantelClockVariants(ResourceLocation baseLocation) {
+        HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
+        for (ClockTypes clockTypes : ClockTypes.values()) {
+            Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
+                    new TallMantelClockBlock(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes).noOcclusion()));
             hashMap.put(clockTypes, block);
         }
         return hashMap;

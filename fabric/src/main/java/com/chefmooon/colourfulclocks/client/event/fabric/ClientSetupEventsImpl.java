@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
 import com.chefmooon.colourfulclocks.client.renderer.fabric.BornholmMiddleBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.client.renderer.fabric.BornholmTopBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.client.renderer.fabric.MantelClockBlockEntityRendererImpl;
+import com.chefmooon.colourfulclocks.client.renderer.fabric.TallMantelClockBlockEntityRendererImpl;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlockEntitiesImpl;
@@ -27,6 +28,7 @@ public class ClientSetupEventsImpl {
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.BORNHOLM_MIDDLE_VARIANTS, BornholmMiddleBlockEntityRendererImpl::new);
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS, BornholmTopBlockEntityRendererImpl::new);
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.MANTEL_CLOCK_VARIANTS, MantelClockBlockEntityRendererImpl::new);
+        BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.TALL_MANTEL_CLOCK_VARIANTS, TallMantelClockBlockEntityRendererImpl::new);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
