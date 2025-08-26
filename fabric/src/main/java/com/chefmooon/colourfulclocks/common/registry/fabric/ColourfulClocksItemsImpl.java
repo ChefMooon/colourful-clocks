@@ -1,9 +1,6 @@
 package com.chefmooon.colourfulclocks.common.registry.fabric;
 
-import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
-import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
-import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
-import com.chefmooon.colourfulclocks.common.data.TallMantelClockComponent;
+import com.chefmooon.colourfulclocks.common.data.*;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
@@ -164,7 +161,7 @@ public class ColourfulClocksItemsImpl {
             // Tall Mantel Clock
             Supplier<Item> tallMantelClockItem = registerItemWithTab(ColourfulClocksItems.TALL_MANTEL_CLOCK.withSuffix(clockTypes.getSerializedName()),
                     new TallMantelClockBlockItem(ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.TALL_MANTEL_CLOCK_DATA, TallMantelClockComponent.getDefaultValue())));
+                            .component(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getBasicClockValue())));
             TALL_MANTEL_CLOCK_VARIANTS.put(clockTypes, tallMantelClockItem);
         }
     }

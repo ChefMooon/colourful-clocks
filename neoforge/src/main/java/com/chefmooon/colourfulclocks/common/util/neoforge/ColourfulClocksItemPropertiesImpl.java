@@ -3,8 +3,8 @@ package com.chefmooon.colourfulclocks.common.util.neoforge;
 import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
+import com.chefmooon.colourfulclocks.common.data.ClockComponent;
 import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
-import com.chefmooon.colourfulclocks.common.data.TallMantelClockComponent;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksDataComponentTypesImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksItemProperties;
@@ -64,7 +64,12 @@ public class ColourfulClocksItemPropertiesImpl {
         ItemProperties.register(item, ColourfulClocksItemProperties.GLASS_TYPE,
                 (itemStack, clientLevel, livingEntity, i) -> {
                     // Convert the id to a float and return
-                    return itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.TALL_MANTEL_CLOCK_DATA, TallMantelClockComponent.getDefaultValue()).getGlassType().getId() / 100.0f;
+                    ClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getBasicClockValue());
+                    if (component.getGlassType().isPresent()) {
+                        return component.getGlassType().get().getId() / 100.0f;
+                    } else {
+                        return 0.0f;
+                    }
                 });
     }
 

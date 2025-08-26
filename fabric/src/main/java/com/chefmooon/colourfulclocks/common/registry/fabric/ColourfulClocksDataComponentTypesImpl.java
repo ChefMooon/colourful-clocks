@@ -1,9 +1,6 @@
 package com.chefmooon.colourfulclocks.common.registry.fabric;
 
-import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
-import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
-import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
-import com.chefmooon.colourfulclocks.common.data.TallMantelClockComponent;
+import com.chefmooon.colourfulclocks.common.data.*;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.mojang.serialization.Codec;
@@ -40,8 +37,8 @@ public class ColourfulClocksDataComponentTypesImpl {
             ColourfulClocksDataComponentTypes.GLASS_DIAL_DATA.getPath(), glassDialComponentBuilder -> glassDialComponentBuilder.persistent(GlassDialComponent.CODEC).networkSynchronized(GlassDialComponent.STREAM_CODEC)
     );
 
-    public static final DataComponentType<TallMantelClockComponent> TALL_MANTEL_CLOCK_DATA = register(
-            ColourfulClocksDataComponentTypes.TALL_MANTEL_CLOCK_DATA.getPath(), tallMantelClockComponentBuilder -> tallMantelClockComponentBuilder.persistent(TallMantelClockComponent.CODEC).networkSynchronized(TallMantelClockComponent.STREAM_CODEC)
+    public static final DataComponentType<ClockComponent> CLOCK_DATA = register(
+            ColourfulClocksDataComponentTypes.CLOCK_DATA.getPath(), clockComponentBuilder -> clockComponentBuilder.persistent(ClockComponent.CODEC).networkSynchronized(ClockComponent.STREAM_CODEC)
     );
 
     private static <T> DataComponentType<T> register(String name, UnaryOperator<DataComponentType.Builder<T>> builder) {
@@ -56,8 +53,8 @@ public class ColourfulClocksDataComponentTypesImpl {
         return BORNHOLM_TOP_GLASS_DATA;
     }
 
-    public static DataComponentType<TallMantelClockComponent> getTallMantelClockData() {
-        return TALL_MANTEL_CLOCK_DATA;
+    public static DataComponentType<ClockComponent> getClockData() {
+        return CLOCK_DATA;
     }
 
     public static DataComponentType<GlassDialComponent> getGlassDialData() {

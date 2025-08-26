@@ -38,30 +38,32 @@ public class TallMantelClockBlockEntityRendererImpl extends TallMantelClockBlock
         BlockState state = level.getBlockState(blockEntity.getBlockPos());
         if (!(state.getBlock() instanceof TallMantelClockBlock)) return;
 
-        PocketWatchTypes pocketWatchType = blockEntity.getData().pocketWatchType();
+        PocketWatchTypes pocketWatchType = blockEntity.getData().pocketWatchType().orElse(PocketWatchTypes.EMPTY);
         if (pocketWatchType != PocketWatchTypes.EMPTY) {
             renderPocketWatch(minecraft, pocketWatchType, state, blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
         }
 
-        PendulumTypes pendulumType = blockEntity.getData().pendulumType();
+        PendulumTypes pendulumType = blockEntity.getData().pendulumType().orElse(PendulumTypes.EMPTY);
         if (pendulumType != PendulumTypes.EMPTY) {
             renderPendulum(minecraft, pendulumType, state, blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
         }
 
-        poseStack.pushPose();
-        poseStack.rotateAround(getRotation(state.getValue(MantelClockBlock.FACING)), 0.5F, 0.5F, 0.5F);
-        poseStack.translate(0, 0.435F, 0.1875F);
-        if (state.getValue(TallMantelClockBlock.WALL)) poseStack.translate(0, 0, -0.315F);
-        BornholmTopGlassTypes glassType = blockEntity.getData().getGlassType();
-        BakedModel glassModel = minecraft.getModelManager().getModel(new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.DIAL_SMALL_PATH.formatted(glassType.getName())), "standalone"));
-        minecraft.getBlockRenderer().getModelRenderer().renderModel(
-                poseStack.last(),
-                bufferSource.getBuffer(RenderType.translucent()),
-                blockEntity.getBlockState(),
-                glassModel,
-                1f, 1f, 1f,
-                packedLight, packedOverlay);
-        poseStack.popPose();
+        if (blockEntity.getData().getGlassType().isPresent()) {
+            poseStack.pushPose();
+            poseStack.rotateAround(getRotation(state.getValue(MantelClockBlock.FACING)), 0.5F, 0.5F, 0.5F);
+            poseStack.translate(0, 0.435F, 0.1875F);
+            if (state.getValue(TallMantelClockBlock.WALL)) poseStack.translate(0, 0, -0.315F);
+            BornholmTopGlassTypes glassType = blockEntity.getData().getGlassType().get();
+            BakedModel glassModel = minecraft.getModelManager().getModel(new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.DIAL_SMALL_PATH.formatted(glassType.getName())), "standalone"));
+            minecraft.getBlockRenderer().getModelRenderer().renderModel(
+                    poseStack.last(),
+                    bufferSource.getBuffer(RenderType.translucent()),
+                    blockEntity.getBlockState(),
+                    glassModel,
+                    1f, 1f, 1f,
+                    packedLight, packedOverlay);
+            poseStack.popPose();
+        }
     }
 
     private void renderPocketWatch(Minecraft minecraft, PocketWatchTypes pocketWatchType, BlockState state, BlockEntity blockEntity, float partialTick, PoseStack poseStack, MultiBufferSource bufferSource, int packedLight, int packedOverlay) {
