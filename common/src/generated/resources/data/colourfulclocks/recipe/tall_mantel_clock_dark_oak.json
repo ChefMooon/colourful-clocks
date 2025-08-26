@@ -19,6 +19,11 @@
     "AAA"
   ],
   "result": {
+    "components": {
+      "colourfulclocks:clock_data": {
+        "glass": "_glass"
+      }
+    },
     "count": 1,
     "id": "colourfulclocks:tall_mantel_clock_dark_oak"
   }

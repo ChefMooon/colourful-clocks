@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tall_mantel_clock_stripped_bamboo",
+  "key": {
+    "A": {
+      "item": "minecraft:stripped_bamboo_block"
+    },
+    "B": {
+      "item": "minecraft:white_stained_glass_pane"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:clock_data": {
+        "glass": "_white_stained_glass"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:tall_mantel_clock_stripped_bamboo"
+  }
+}

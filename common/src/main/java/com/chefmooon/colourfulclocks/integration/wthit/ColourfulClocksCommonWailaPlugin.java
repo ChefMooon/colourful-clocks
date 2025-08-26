@@ -12,6 +12,7 @@ public class ColourfulClocksCommonWailaPlugin implements IWailaCommonPlugin {
         public static final ResourceLocation BORNHOLM_DIAL_GLASS_TYPE = TextUtil.res("bornholm_dial_glass_type");
         public static final ResourceLocation GLASS_TYPE = TextUtil.res("glass_type");
         public static final ResourceLocation POCKET_WATCH_TYPE = TextUtil.res("pocket_watch_type");
+        public static final ResourceLocation PENDULUM_TYPE = TextUtil.res("pendulum_type");
         public static final ResourceLocation TICKING = TextUtil.res("ticking");
     }
 
@@ -22,6 +23,7 @@ public class ColourfulClocksCommonWailaPlugin implements IWailaCommonPlugin {
 
         registrar.localConfig(Options.GLASS_TYPE, true);
         registrar.localConfig(Options.POCKET_WATCH_TYPE, true);
+        registrar.localConfig(Options.PENDULUM_TYPE, true);
         registrar.localConfig(Options.TICKING, true);
     }
 }

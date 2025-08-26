@@ -1,9 +1,11 @@
 package com.chefmooon.colourfulclocks.data.fabric;
 
+import com.chefmooon.colourfulclocks.common.data.ClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.*;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.data.builder.fabric.BornholmMiddleDataShapedRecipeBuilder;
 import com.chefmooon.colourfulclocks.data.builder.fabric.BornholmTopDataShapedRecipeBuilder;
+import com.chefmooon.colourfulclocks.data.builder.fabric.ClockDataShapedRecipeBuilder;
 import com.chefmooon.colourfulclocks.data.builder.fabric.GlassDialDataShapedRecipeBuilder;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -14,6 +16,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public class RecipeGenerator extends FabricRecipeProvider {
@@ -218,7 +221,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
     private static void buildTallMantelClockRecipes() {
         for (ClockTypes clockType : ClockTypes.values()) {
             ItemLike result = ColourfulClocksItemsImpl.TALL_MANTEL_CLOCK_VARIANTS.get(clockType).get();
-            ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
+            ClockDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
                     .pattern("ACA")
                     .pattern("ABA")
                     .pattern("AAA")
@@ -226,20 +229,20 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .define('B', BornholmTopGlassTypes.GLASS.getItem())
                     .define('C', Items.QUARTZ)
                     .group("tall_mantel_clock_" + clockType.getName())
+                    .setData(new ClockComponent(Optional.of(BornholmTopGlassTypes.GLASS), Optional.empty(), Optional.empty(), Optional.empty()))
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
                             clockType.getCraftingIngredient(),
                             BornholmTopGlassTypes.GLASS.getItem(),
                             Items.QUARTZ)))
                     .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result));
-//            buildTallMantelClockVariantRecipes(clockType, result);
+            buildTallMantelClockVariantRecipes(clockType, result);
         }
     }
 
-    // TODO: implement after DataComponent update
     private static void buildTallMantelClockVariantRecipes(ClockTypes clockType, ItemLike result) {
         for (BornholmTopGlassTypes glassTypes : BornholmTopGlassTypes.values()) {
             if (glassTypes == BornholmTopGlassTypes.GLASS) continue;
-            GlassDialDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
+            ClockDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
                     .pattern("ACA")
                     .pattern("ABA")
                     .pattern("AAA")
@@ -247,7 +250,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .define('B', glassTypes.getItem())
                     .define('C', Items.QUARTZ)
                     .group("tall_mantel_clock_" + clockType.getName())
-                    .setResultData(glassTypes)
+                    .setData(new ClockComponent(Optional.of(glassTypes), Optional.empty(), Optional.empty(), Optional.empty()))
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
                             clockType.getCraftingIngredient(),
                             glassTypes.getItem(),

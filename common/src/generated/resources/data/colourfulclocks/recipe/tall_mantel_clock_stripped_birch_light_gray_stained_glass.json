@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tall_mantel_clock_stripped_birch",
+  "key": {
+    "A": {
+      "item": "minecraft:stripped_birch_wood"
+    },
+    "B": {
+      "item": "minecraft:light_gray_stained_glass_pane"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:clock_data": {
+        "glass": "_light_gray_stained_glass"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:tall_mantel_clock_stripped_birch"
+  }
+}
