@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
@@ -139,8 +140,12 @@ public class BaseDataClockBlockEntity extends BlockEntity {
         setData(this.clockData.getGlassType().orElse(BornholmTopGlassTypes.GLASS), this.clockData.getPocketWatchType().orElse(PocketWatchTypes.EMPTY), this.clockData.getPendulumType().orElse(PendulumTypes.EMPTY), ticking);
     }
 
-    public void setData(BornholmTopGlassTypes glassType, PocketWatchTypes pocketWatchType, PendulumTypes pendulumType, boolean ticking) {
-        this.clockData = new ClockComponent(Optional.of(glassType), Optional.of(pocketWatchType), Optional.of(pendulumType), Optional.of(ticking));
+    public void setData(@Nullable BornholmTopGlassTypes glassType, @Nullable PocketWatchTypes pocketWatchType, @Nullable PendulumTypes pendulumType, @Nullable Boolean ticking) {
+        this.clockData = new ClockComponent(
+                glassType != null ? Optional.of(glassType) : Optional.empty(),
+                pocketWatchType != null ? Optional.of(pocketWatchType) : Optional.empty(),
+                pendulumType != null ? Optional.of(pendulumType) : Optional.empty(),
+                ticking != null ? Optional.of(ticking) : Optional.empty());
         setChanged();
     }
 

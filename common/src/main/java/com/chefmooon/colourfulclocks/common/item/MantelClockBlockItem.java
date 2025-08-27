@@ -1,8 +1,7 @@
 package com.chefmooon.colourfulclocks.common.item;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
-import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
-import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
+import com.chefmooon.colourfulclocks.common.data.ClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
@@ -23,17 +22,21 @@ public class MantelClockBlockItem extends BlockItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        if (stack.has(ColourfulClocksDataComponentTypes.getGlassDialData())) {
-            GlassDialComponent glassData = stack.getOrDefault(ColourfulClocksDataComponentTypes.getGlassDialData(), GlassDialComponent.getDefaultValue());
-            Block glassType = glassData.getGlassType().getBlock();
-            if (glassType != BornholmTopGlassTypes.GLASS.getBlock()) {
-                tooltipComponents.add(Component.translatable(glassType.getDescriptionId()));
+        if (stack.has(ColourfulClocksDataComponentTypes.getClockData())) {
+            ClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getNoPendulumValue());
+            if (component.getGlassType().isPresent()) {
+                BornholmTopGlassTypes glassType = component.getGlassType().get();
+                if (glassType != BornholmTopGlassTypes.GLASS) {
+                    tooltipComponents.add(Component.translatable(glassType.getBlock().getDescriptionId()));
+                }
             }
-            Item pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(glassData.getPocketWatchType());
-            if (pocketWatchItem != PocketWatchTypes.EMPTY.getItem()) {
-                tooltipComponents.add(Component.translatable(pocketWatchItem.getDescriptionId()));
+            if (component.getPocketWatchType().isPresent()) {
+                Item pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatchType().get());
+                if (pocketWatchItem != PocketWatchTypes.EMPTY.getItem()) {
+                    tooltipComponents.add(Component.translatable(pocketWatchItem.getDescriptionId()));
+                }
             }
-            if (glassData.getTicking()) {
+            if (component.getTicking().isPresent() && component.getTicking().get()) {
                 tooltipComponents.add(Component.translatable(ColourfulClocks.MOD_ID + ".tooltip.ticking"));
             }
         }

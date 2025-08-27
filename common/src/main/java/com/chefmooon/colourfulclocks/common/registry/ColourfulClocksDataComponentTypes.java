@@ -29,6 +29,7 @@ public class ColourfulClocksDataComponentTypes {
         throw new AssertionError();
     }
 
+    // TODO: remove after testing of getClockData
     @ExpectPlatform
     public static DataComponentType<GlassDialComponent> getGlassDialData() {
         throw new AssertionError();

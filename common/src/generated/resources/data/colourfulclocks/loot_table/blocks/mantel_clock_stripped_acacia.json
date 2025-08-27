@@ -30,7 +30,7 @@
                 {
                   "function": "minecraft:copy_components",
                   "include": [
-                    "colourfulclocks:glass_dial_data"
+                    "colourfulclocks:clock_data"
                   ],
                   "source": "block_entity"
                 }

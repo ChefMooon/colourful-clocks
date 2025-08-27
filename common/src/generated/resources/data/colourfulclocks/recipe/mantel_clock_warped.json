@@ -19,6 +19,11 @@
     "ABA"
   ],
   "result": {
+    "components": {
+      "colourfulclocks:clock_data": {
+        "glass": "_glass"
+      }
+    },
     "count": 1,
     "id": "colourfulclocks:mantel_clock_warped"
   }

@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.integration.jade.provider;
 
-import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
-import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
+import com.chefmooon.colourfulclocks.common.block.base.BaseDataClockBlock;
+import com.chefmooon.colourfulclocks.common.data.ClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
@@ -9,6 +9,8 @@ import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import snownee.jade.api.BlockAccessor;
 import snownee.jade.api.IBlockComponentProvider;
 import snownee.jade.api.IServerDataProvider;
@@ -26,9 +28,11 @@ public enum PocketWatchDataProvider implements IBlockComponentProvider, IServerD
 
     @Override
     public void appendServerData(CompoundTag compoundTag, BlockAccessor blockAccessor) {
-        if (blockAccessor.getBlock() instanceof MantelClockBlock) {
-            GlassDialComponent glassDialData = blockAccessor.getBlockEntity().collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getGlassDialData(), GlassDialComponent.getDefaultValue());
-            if (glassDialData != null && glassDialData.getPocketWatchType() != PocketWatchTypes.EMPTY) compoundTag.putString("pocket_watch_type", ColourfulClocksTypeUtil.getPocketWatchItemFromType(glassDialData.getPocketWatchType()).getDescriptionId());
+        if (blockAccessor.getBlock() instanceof BaseDataClockBlock) {
+            ClockComponent component = blockAccessor.getBlockEntity().collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getDefaultValue());
+            Item item = ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatchType().get());
+            if (component != null && component.getPocketWatchType().isPresent() && component.getPocketWatchType().get() != PocketWatchTypes.EMPTY && item != Items.AIR) compoundTag.putString(("pocket_watch_type"), item.getDescriptionId());
+
         }
     }
 

@@ -54,6 +54,10 @@ public record ClockComponent(Optional<BornholmTopGlassTypes> topGlassType, Optio
         return new ClockComponent(Optional.of(BornholmTopGlassTypes.GLASS), Optional.of(PocketWatchTypes.EMPTY), Optional.of(PendulumTypes.EMPTY), Optional.of(Boolean.FALSE));
     }
 
+    public static ClockComponent getNoPendulumValue() {
+        return new ClockComponent(Optional.of(BornholmTopGlassTypes.GLASS), Optional.of(PocketWatchTypes.EMPTY), Optional.empty(), Optional.of(Boolean.FALSE));
+    }
+
     public CompoundTag save(CompoundTag tag) {
         tag.put("clock_data", (Tag)CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
         return tag;

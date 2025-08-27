@@ -1,7 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block.base;
 
 import com.chefmooon.colourfulclocks.common.block.entity.base.BaseDataClockBlockEntity;
-import com.chefmooon.colourfulclocks.common.block.entity.base.BaseGlassClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
@@ -42,7 +41,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.function.Supplier;
 
 public class BaseDataClockBlock extends BaseEntityBlock {
-    public static final MapCodec<BaseClockBlock> CODEC = simpleCodec(BaseClockBlock::new);
+    public static final MapCodec<BaseDataClockBlock> CODEC = simpleCodec(BaseDataClockBlock::new);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty CAN_TICK = ColourfulClocksBlockStateProperties.CAN_TICK;
     public static final BooleanProperty TICKING = ColourfulClocksBlockStateProperties.TICKING;
@@ -122,8 +121,8 @@ public class BaseDataClockBlock extends BaseEntityBlock {
         if (state.getValue(CAN_TICK) && bl != state.getValue(TICKING)) {
             level.setBlock(pos, state.setValue(TICKING, bl), 2);
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof BaseGlassClockBlockEntity baseGlassClockBlockEntity) {
-                baseGlassClockBlockEntity.setTicking(bl);
+            if (blockEntity instanceof BaseDataClockBlockEntity baseDataClockBlockEntity) {
+                baseDataClockBlockEntity.setTicking(bl);
                 level.blockEntityChanged(pos);
             }
         }

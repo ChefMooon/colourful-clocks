@@ -164,7 +164,7 @@ public class ColourfulClocksItemsImpl {
             // Mantel Clock
             Supplier<Item> mantelClockItem = registerItemWithTab(ColourfulClocksItems.MANTEL_CLOCK.withSuffix(clockTypes.getSerializedName()),
                     () -> new MantelClockBlockItem(ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.GLASS_DIAL_DATA, GlassDialComponent.getDefaultValue())));
+                            .component(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getNoPendulumValue())));
             MANTEL_CLOCK_VARIANTS.put(clockTypes, mantelClockItem);
 
             // Tall Mantel Clock

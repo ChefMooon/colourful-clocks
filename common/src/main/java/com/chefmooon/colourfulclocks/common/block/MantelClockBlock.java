@@ -1,13 +1,13 @@
 package com.chefmooon.colourfulclocks.common.block;
 
-import com.chefmooon.colourfulclocks.common.block.base.BaseGlassClockBlock;
+import com.chefmooon.colourfulclocks.common.block.base.BaseDataGlassClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.MantelClockBlockEntity;
-import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
-import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
+import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
-import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.VoxelShapeUtil;
@@ -16,9 +16,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -50,7 +48,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Objects;
 
-public class MantelClockBlock extends BaseGlassClockBlock {
+public class MantelClockBlock extends BaseDataGlassClockBlock {
     private static final VoxelShape SHAPE_AXIS_Z = Shapes.or(
             Block.box(0, 0, 5, 16, 1, 11),
             Block.box(1, 1, 5, 15, 2, 11),
@@ -66,12 +64,12 @@ public class MantelClockBlock extends BaseGlassClockBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
-        GlassDialComponent glassDialComponent = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getGlassDialData(), GlassDialComponent.getDefaultValue());
+        ClockComponent component = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getNoPendulumValue());
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection())
-                .setValue(GLASS_TYPE, glassDialComponent.getGlassType())
+                .setValue(GLASS_TYPE, component.getGlassType().orElse(BornholmTopGlassTypes.GLASS))
                 .setValue(ACTIVATED, Boolean.TRUE)
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER)
-                .setValue(CAN_TICK,  glassDialComponent.getTicking())
+                .setValue(CAN_TICK,  component.getTicking().get())
                 .setValue(TICKING, Boolean.FALSE);
     }
 
@@ -103,16 +101,8 @@ public class MantelClockBlock extends BaseGlassClockBlock {
                     return setTicking(level, pos, player, mainHandItem, mantelClockBlockEntity, false);
                 }
             } else {
-                if (player.isShiftKeyDown() && !mantelClockBlockEntity.isEmpty()) {
-                    if (player.isCreative()) {
-                        mantelClockBlockEntity.removePocketWatchType();
-                    } else if (!player.getInventory().add(mantelClockBlockEntity.removePocketWatchType())) {
-                        Containers.dropContents(level, pos, mantelClockBlockEntity.getDroppableInventory());
-                    }
-                    level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
-                    level.updateNeighborsAt(pos, this);
-
-                    return ItemInteractionResult.SUCCESS;
+                if (player.isShiftKeyDown() && mantelClockBlockEntity.getData().getPocketWatchType().isPresent() && mantelClockBlockEntity.getData().getPocketWatchType().get().getId() != 0) {
+                    return removePocketWatch(level, pos, player, mantelClockBlockEntity);
                 }
             }
         }
@@ -157,10 +147,7 @@ public class MantelClockBlock extends BaseGlassClockBlock {
         if (!hasSilkTouch) {
             BlockEntity blockEntity = context.getParamOrNull(LootContextParams.BLOCK_ENTITY);
             if (blockEntity instanceof MantelClockBlockEntity mantelClockBlockEntity) {
-                ItemStack pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(mantelClockBlockEntity.getDialData().pocketWatchType()).getDefaultInstance();
-                if (!pocketWatchItem.isEmpty()) {
-                    drops.add(pocketWatchItem);
-                }
+                drops.addAll(mantelClockBlockEntity.getDroppableInventory());
             }
         }
         return drops;
@@ -172,11 +159,11 @@ public class MantelClockBlock extends BaseGlassClockBlock {
         if (!level.isClientSide) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof MantelClockBlockEntity mantelClockBlockEntity) {
-                GlassDialComponent dialData = stack.get(ColourfulClocksDataComponentTypes.getGlassDialData());
-                if (dialData != null) {
-                    mantelClockBlockEntity.setDialData(dialData.getGlassType(), dialData.getPocketWatchType(), dialData.getTicking());
-                    if (dialData.getPocketWatchType() != PocketWatchTypes.EMPTY) {
-                        mantelClockBlockEntity.setPocketWatchType(ColourfulClocksTypeUtil.getPocketWatchItemFromType(dialData.getPocketWatchType()).getDefaultInstance());
+                ClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getNoPendulumValue());
+                if (component != null) {
+                    mantelClockBlockEntity.setData(component.getGlassType().get(), component.getPocketWatchType().get(), null, component.getTicking().get());
+                    if (component.getPocketWatchType().get() != PocketWatchTypes.EMPTY) {
+                        mantelClockBlockEntity.setPocketWatchType(ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatchType().get()).getDefaultInstance());
                     }
                 }
             }

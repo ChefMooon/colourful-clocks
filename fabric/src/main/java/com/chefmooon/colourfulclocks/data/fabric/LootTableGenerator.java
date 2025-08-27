@@ -53,7 +53,7 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
     }
 
     public LootTable.Builder createMantelClockEntityDrop(Block block) {
-        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder) LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.GLASS_DIAL_DATA)).otherwise(LootItem.lootTableItem(block))));
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder) LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA)).otherwise(LootItem.lootTableItem(block))));
     }
 
     public LootTable.Builder createTallMantelClockEntityDrop(Block block) {

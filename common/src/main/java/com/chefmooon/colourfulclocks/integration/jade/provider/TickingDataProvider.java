@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.integration.jade.provider;
 
-import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
-import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
+import com.chefmooon.colourfulclocks.common.block.base.BaseDataClockBlock;
+import com.chefmooon.colourfulclocks.common.data.ClockComponent;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.nbt.CompoundTag;
@@ -24,9 +24,9 @@ public enum TickingDataProvider implements IBlockComponentProvider, IServerDataP
 
     @Override
     public void appendServerData(CompoundTag compoundTag, BlockAccessor blockAccessor) {
-        if (blockAccessor.getBlock() instanceof MantelClockBlock) {
-            GlassDialComponent glassDialData = blockAccessor.getBlockEntity().collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getGlassDialData(), GlassDialComponent.getDefaultValue());
-            if (glassDialData != null && glassDialData.getTicking()) compoundTag.putString("ticking", TextUtil.getTranslatable("tooltip.ticking").getString());
+        if (blockAccessor.getBlock() instanceof BaseDataClockBlock) {
+            ClockComponent component = blockAccessor.getBlockEntity().collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getDefaultValue());
+            if (component != null && component.getTicking().isPresent() && component.getTicking().get()) compoundTag.putString("ticking", TextUtil.getTranslatable("tooltip.ticking").getString());
         }
     }
 

@@ -47,23 +47,6 @@ public class TallMantelClockBlockItem extends BlockItem {
                     tooltipComponents.add(Component.translatable(ColourfulClocks.MOD_ID + ".tooltip.ticking"));
                 }
             }
-
-//            TallMantelClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getTallMantelClockData(), TallMantelClockComponent.getDefaultValue());
-//            Block glassType = component.getGlassType().getBlock();
-//            if (glassType != BornholmTopGlassTypes.GLASS.getBlock()) {
-//                tooltipComponents.add(Component.translatable(glassType.getDescriptionId()));
-//            }
-//            Item pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatchType());
-//            if (pocketWatchItem != PocketWatchTypes.EMPTY.getItem()) {
-//                tooltipComponents.add(Component.translatable(pocketWatchItem.getDescriptionId()));
-//            }
-//            Item pendulumItem = ColourfulClocksTypeUtil.getPendulumItemFromType(component.getPendulumType());
-//            if (pendulumItem != PocketWatchTypes.EMPTY.getItem()) {
-//                tooltipComponents.add(Component.translatable(pendulumItem.getDescriptionId()));
-//            }
-//            if (component.getTicking()) {
-//                tooltipComponents.add(Component.translatable(ColourfulClocks.MOD_ID + ".tooltip.ticking"));
-//            }
         }
         super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
     }

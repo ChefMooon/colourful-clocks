@@ -34,7 +34,7 @@ public class MantelClockBlockEntityRendererImpl extends MantelClockBlockEntityRe
         BlockState state = level.getBlockState(blockEntity.getBlockPos());
         if (!(state.getBlock() instanceof MantelClockBlock)) return;
 
-        PocketWatchTypes pocketWatchType = blockEntity.getDialData().pocketWatchType();
+        PocketWatchTypes pocketWatchType = blockEntity.getData().pocketWatchType().orElse(PocketWatchTypes.EMPTY);
         if (pocketWatchType != PocketWatchTypes.EMPTY) {
             poseStack.pushPose();
             renderMinuteHand(poseStack, partialTick, state);
@@ -63,18 +63,20 @@ public class MantelClockBlockEntityRendererImpl extends MantelClockBlockEntityRe
             poseStack.popPose();
         }
 
-        poseStack.pushPose();
-        poseStack.rotateAround(getRotation(state.getValue(MantelClockBlock.FACING)), 0.5F, 0.5F, 0.5F);
-        poseStack.translate(0, 0, 0.1875F);
-        BornholmTopGlassTypes glassType = blockEntity.getDialData().getGlassType();
-        BakedModel glassModel = minecraft.getModelManager().getModel(new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.DIAL_SMALL_PATH.formatted(glassType.getName())), "standalone"));
-        minecraft.getBlockRenderer().getModelRenderer().renderModel(
-                poseStack.last(),
-                bufferSource.getBuffer(RenderType.translucent()),
-                blockEntity.getBlockState(),
-                glassModel,
-                1f, 1f, 1f,
-                packedLight, packedOverlay);
-        poseStack.popPose();
+        if (blockEntity.getData().getGlassType().isPresent()) {
+            poseStack.pushPose();
+            poseStack.rotateAround(getRotation(state.getValue(MantelClockBlock.FACING)), 0.5F, 0.5F, 0.5F);
+            poseStack.translate(0, 0, 0.1875F);
+            BornholmTopGlassTypes glassType = blockEntity.getData().getGlassType().get();
+            BakedModel glassModel = minecraft.getModelManager().getModel(new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.DIAL_SMALL_PATH.formatted(glassType.getName())), "standalone"));
+            minecraft.getBlockRenderer().getModelRenderer().renderModel(
+                    poseStack.last(),
+                    bufferSource.getBuffer(RenderType.translucent()),
+                    blockEntity.getBlockState(),
+                    glassModel,
+                    1f, 1f, 1f,
+                    packedLight, packedOverlay);
+            poseStack.popPose();
+        }
     }
 }

@@ -24,10 +24,10 @@ public class JadePlugin implements IWailaPlugin {
         registration.registerBlockComponent(PocketWatchDataProvider.INSTANCE, MantelClockBlock.class);
         registration.registerBlockComponent(TickingDataProvider.INSTANCE, MantelClockBlock.class);
 
-        registration.registerBlockComponent(CommonGlassDataProvider.INSTANCE, TallMantelClockBlock.class);
-        registration.registerBlockComponent(CommonPocketWatchDataProvider.INSTANCE, TallMantelClockBlock.class);
+        registration.registerBlockComponent(GlassDataProvider.INSTANCE, TallMantelClockBlock.class);
+        registration.registerBlockComponent(PocketWatchDataProvider.INSTANCE, TallMantelClockBlock.class);
         registration.registerBlockComponent(PendulumDataProvider.INSTANCE, TallMantelClockBlock.class);
-        registration.registerBlockComponent(CommonTickingDataProvider.INSTANCE, TallMantelClockBlock.class);
+        registration.registerBlockComponent(TickingDataProvider.INSTANCE, TallMantelClockBlock.class);
     }
     @Override
     public void register(IWailaCommonRegistration registration) {
@@ -38,9 +38,9 @@ public class JadePlugin implements IWailaPlugin {
         registration.registerBlockDataProvider(PocketWatchDataProvider.INSTANCE, MantelClockBlock.class);
         registration.registerBlockDataProvider(TickingDataProvider.INSTANCE, MantelClockBlock.class);
 
-        registration.registerBlockDataProvider(CommonGlassDataProvider.INSTANCE, TallMantelClockBlock.class);
-        registration.registerBlockDataProvider(CommonPocketWatchDataProvider.INSTANCE, TallMantelClockBlock.class);
+        registration.registerBlockDataProvider(GlassDataProvider.INSTANCE, TallMantelClockBlock.class);
+        registration.registerBlockDataProvider(PocketWatchDataProvider.INSTANCE, TallMantelClockBlock.class);
         registration.registerBlockDataProvider(PendulumDataProvider.INSTANCE, TallMantelClockBlock.class);
-        registration.registerBlockDataProvider(CommonTickingDataProvider.INSTANCE, TallMantelClockBlock.class);
+        registration.registerBlockDataProvider(TickingDataProvider.INSTANCE, TallMantelClockBlock.class);
     }
 }
