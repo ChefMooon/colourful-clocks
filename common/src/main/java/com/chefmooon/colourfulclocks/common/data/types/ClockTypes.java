@@ -134,4 +134,8 @@ public enum ClockTypes implements StringRepresentable {
     public @NotNull String getSerializedName() {
         return "_" + name;
     }
+
+    public boolean isWooden() {
+        return clockMaterialTypes == ClockMaterialTypes.WOOD;
+    }
 }
