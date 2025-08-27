@@ -1,7 +1,7 @@
 {
   "parent": "colourfulclocks:item/template_mantel_clock",
   "textures": {
-    "clock_dial": "colourfulclocks:block/small_quartz_clockface",
+    "clock_dial": "colourfulclocks:block/small_quartz_clock_face",
     "clock_dial_cover": "colourfulclocks:block/magenta_stained_glass_dial_small_transparent",
     "clock_dial_marks": "minecraft:block/coal_block",
     "side": "minecraft:block/polished_deepslate"

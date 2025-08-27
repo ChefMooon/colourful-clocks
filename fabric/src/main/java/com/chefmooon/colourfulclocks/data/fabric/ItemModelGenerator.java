@@ -118,14 +118,14 @@ public class ItemModelGenerator {
                         bornholmTopGlassTypes.getBornholmGlassTexture() :
                         TextUtil.res(bornholmTopGlassTypes.getBornholmGlassTexture().getPath() + "_transparent");
                 TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, BlockModelGenerator.getBlockModelLocation(clockTypes))
-                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/quartz_bornholm_clockface"))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/medium_quartz_clock_face"))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, glassLocation)
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
 
                 ColourfulClocksTemplates.BORNHOLM_TOP_ITEM.create(itemLocation.withSuffix(bornholmTopGlassTypes.getSerializedName()), mapping, GENERATOR.output);
             }
             TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, BlockModelGenerator.getBlockModelLocation(clockTypes))
-                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/quartz_bornholm_clockface"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/medium_quartz_clock_face"))
                     .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, TextUtil.res("block/glass_bornholm_dial"))
                     .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
             ColourfulClocksTemplates.BORNHOLM_TOP_ITEM.create(itemLocation, mapping, GENERATOR.output, ItemModelGenerator::generateBornholmTopItemJson);
@@ -159,14 +159,14 @@ public class ItemModelGenerator {
                         TextUtil.res("block/" + bornholmTopGlassTypes.getName() + "_dial_small_transparent");
 
                 TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, BlockModelGenerator.getBlockModelLocation(clockTypes))
-                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clockface"))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clock_face"))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, glassLocation)
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
 
                 ColourfulClocksTemplates.MANTEL_CLOCK_ITEM.create(itemLocation.withSuffix(bornholmTopGlassTypes.getSerializedName()), mapping, GENERATOR.output);
             }
             TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, BlockModelGenerator.getBlockModelLocation(clockTypes))
-                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clockface"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clock_face"))
                     .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, TextUtil.res("block/" + BornholmTopGlassTypes.GLASS.getName() + "_dial_small"))
                     .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
             ColourfulClocksTemplates.MANTEL_CLOCK_ITEM.create(itemLocation, mapping, GENERATOR.output, ItemModelGenerator::generateMantelClockItemJson);
@@ -200,14 +200,14 @@ public class ItemModelGenerator {
                         TextUtil.res("block/" + bornholmTopGlassTypes.getName() + "_dial_small_transparent");
 
                 TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, BlockModelGenerator.getBlockModelLocation(clockTypes))
-                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clockface"))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clock_face"))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, glassLocation)
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
 
                 ColourfulClocksTemplates.TALL_MANTEL_CLOCK_ITEM.create(itemLocation.withSuffix(bornholmTopGlassTypes.getSerializedName()), mapping, GENERATOR.output);
             }
             TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, BlockModelGenerator.getBlockModelLocation(clockTypes))
-                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clockface"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clock_face"))
                     .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, TextUtil.res("block/" + BornholmTopGlassTypes.GLASS.getName() + "_dial_small"))
                     .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
             ColourfulClocksTemplates.TALL_MANTEL_CLOCK_ITEM.create(itemLocation, mapping, GENERATOR.output, ItemModelGenerator::generateTallMantelClockItemJson);

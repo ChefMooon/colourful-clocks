@@ -207,7 +207,7 @@ public class BlockModelGenerator {
             HashMap<BornholmTopGlassTypes, ResourceLocation> MODELS = new HashMap<>();
             for (BornholmTopGlassTypes bornholmTopGlassTypes : BornholmTopGlassTypes.values()) {
                 TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, getBlockModelLocation(entry))
-                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/quartz_bornholm_clockface"))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/medium_quartz_clock_face"))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, bornholmTopGlassTypes.getBornholmGlassTexture())
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
 
@@ -251,7 +251,7 @@ public class BlockModelGenerator {
             HashMap<BornholmTopGlassTypes, ResourceLocation> MODELS = new HashMap<>();
             for (BornholmTopGlassTypes bornholmTopGlassTypes : BornholmTopGlassTypes.values()) {
                 TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, getBlockModelLocation(entry))
-                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clockface"))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clock_face"))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, TextUtil.res("block/" + bornholmTopGlassTypes.getName() + "_dial_small"))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
 
@@ -294,7 +294,7 @@ public class BlockModelGenerator {
             HashMap<BornholmTopGlassTypes, Map.Entry<ResourceLocation, ResourceLocation>> MODELS = new HashMap<>();
             for (BornholmTopGlassTypes bornholmTopGlassTypes : BornholmTopGlassTypes.values()) {
                 TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, getBlockModelLocation(entry))
-                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clockface"))
+                        .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/small_quartz_clock_face"))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_COVER, TextUtil.res("block/" + bornholmTopGlassTypes.getName() + "_dial_small"))
                         .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
 
