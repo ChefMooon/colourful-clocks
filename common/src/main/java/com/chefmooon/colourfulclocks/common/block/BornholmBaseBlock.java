@@ -1,6 +1,7 @@
 package com.chefmooon.colourfulclocks.common.block;
 
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
@@ -30,6 +31,7 @@ public class BornholmBaseBlock extends Block implements SimpleWaterloggedBlock {
     public static final DirectionProperty FACING = BlockStateProperties.FACING;
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
+    public ClockTypes clockType;
     public static int FLAMMABILITY = 30;
     public static int FIRE_SPREAD = 60;
 
@@ -41,8 +43,13 @@ public class BornholmBaseBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     public BornholmBaseBlock(Properties properties) {
+        this(ClockTypes.OAK, properties);
+    }
+
+    public BornholmBaseBlock(ClockTypes clockType, Properties properties) {
         super(properties);
         SHAPES = buildShapes();
+        this.clockType = clockType;
         this.registerDefaultState(this.getStateDefinition().any()
                 .setValue(FACING, Direction.DOWN)
                 .setValue(ACTIVATED, Boolean.TRUE)

@@ -14,11 +14,11 @@ public class MantelClockBlockImpl extends MantelClockBlock {
 
     @Override
     public int getFlammability(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return FLAMMABILITY;
+        return clockType.isWooden() ? FLAMMABILITY : 0;
     }
 
     @Override
     public int getFireSpreadSpeed(BlockState state, BlockGetter level, BlockPos pos, Direction direction) {
-        return FIRE_SPREAD;
+        return clockType.isWooden() ? FIRE_SPREAD : 0;
     }
 }

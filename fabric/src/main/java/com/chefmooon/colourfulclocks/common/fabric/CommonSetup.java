@@ -13,23 +13,23 @@ public class CommonSetup {
 
     public static void registerFlammableBlocks() {
         ColourfulClocksBlocksImpl.BORNHOLM_BASE_VARIANTS.forEach((entry, supplier) -> {
-            addFlammableBlock(supplier.get(), BornholmBaseBlock.FLAMMABILITY, BornholmBaseBlock.FIRE_SPREAD);
+            if (entry.isWooden()) addFlammableBlock(supplier.get(), BornholmBaseBlock.FLAMMABILITY, BornholmBaseBlock.FIRE_SPREAD);
         });
 
         ColourfulClocksBlocksImpl.BORNHOLM_MIDDLE_VARIANTS.forEach((entry, supplier) -> {
-            addFlammableBlock(supplier.get(), BornholmMiddleBlock.FLAMMABILITY, BornholmMiddleBlock.FIRE_SPREAD);
+            if (entry.isWooden()) addFlammableBlock(supplier.get(), BornholmMiddleBlock.FLAMMABILITY, BornholmMiddleBlock.FIRE_SPREAD);
         });
 
         ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.forEach((entry, supplier) -> {
-            addFlammableBlock(supplier.get(), BornholmTopBlock.FLAMMABILITY, BornholmTopBlock.FIRE_SPREAD);
+            if (entry.isWooden()) addFlammableBlock(supplier.get(), BornholmTopBlock.FLAMMABILITY, BornholmTopBlock.FIRE_SPREAD);
         });
 
         ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
-            addFlammableBlock(supplier.get(), MantelClockBlock.FLAMMABILITY, MantelClockBlock.FIRE_SPREAD);
+            if (entry.isWooden()) addFlammableBlock(supplier.get(), MantelClockBlock.FLAMMABILITY, MantelClockBlock.FIRE_SPREAD);
         });
 
         ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
-            addFlammableBlock(supplier.get(), TallMantelClockBlock.FLAMMABILITY, TallMantelClockBlock.FIRE_SPREAD);
+            if (entry.isWooden()) addFlammableBlock(supplier.get(), TallMantelClockBlock.FLAMMABILITY, TallMantelClockBlock.FIRE_SPREAD);
         });
     }
 
