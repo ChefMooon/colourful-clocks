@@ -1,10 +1,7 @@
 package com.chefmooon.colourfulclocks.client.event.fabric;
 
 import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
-import com.chefmooon.colourfulclocks.client.renderer.fabric.BornholmMiddleBlockEntityRendererImpl;
-import com.chefmooon.colourfulclocks.client.renderer.fabric.BornholmTopBlockEntityRendererImpl;
-import com.chefmooon.colourfulclocks.client.renderer.fabric.MantelClockBlockEntityRendererImpl;
-import com.chefmooon.colourfulclocks.client.renderer.fabric.TallMantelClockBlockEntityRendererImpl;
+import com.chefmooon.colourfulclocks.client.renderer.fabric.*;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlockEntitiesImpl;
@@ -29,6 +26,7 @@ public class ClientSetupEventsImpl {
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS, BornholmTopBlockEntityRendererImpl::new);
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.MANTEL_CLOCK_VARIANTS, MantelClockBlockEntityRendererImpl::new);
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.TALL_MANTEL_CLOCK_VARIANTS, TallMantelClockBlockEntityRendererImpl::new);
+        BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.WALL_CLOCK_VARIANTS, WallClockBlockEntityRendererImpl::new);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
@@ -39,10 +37,23 @@ public class ClientSetupEventsImpl {
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
         );
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
+                ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
+        );
     }
 
     public static void onRegisterModels(Consumer<ResourceLocation> consumer) {
         ColourfulClocksItemsImpl.POCKET_WATCH_VARIANTS.forEach(((pocketWatchTypes, itemSupplier) -> {
+            ResourceLocation minuteHandXLLocation = TextUtil.res(ColourfulClocksModels.MINUTE_HAND_XL_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath()));
+            consumer.accept(minuteHandXLLocation);
+            ResourceLocation hourHandXLLocation = TextUtil.res(ColourfulClocksModels.HOUR_HAND_XL_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath()));
+            consumer.accept(hourHandXLLocation);
+
+            ResourceLocation minuteHandLargeLocation = TextUtil.res(ColourfulClocksModels.MINUTE_HAND_LARGE_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath()));
+            consumer.accept(minuteHandLargeLocation);
+            ResourceLocation hourHandLargeLocation = TextUtil.res(ColourfulClocksModels.HOUR_HAND_LARGE_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath()));
+            consumer.accept(hourHandLargeLocation);
+
             ResourceLocation minuteHandLocation = TextUtil.res(ColourfulClocksModels.MINUTE_HAND_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath()));
             consumer.accept(minuteHandLocation);
             ResourceLocation hourHandLocation = TextUtil.res(ColourfulClocksModels.HOUR_HAND_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath()));

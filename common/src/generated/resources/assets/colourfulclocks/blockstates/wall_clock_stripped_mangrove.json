@@ -1,0 +1,304 @@
+{
+  "variants": {
+    "facing=east,part=base,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove",
+      "y": 90
+    },
+    "facing=east,part=base,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove",
+      "y": 90
+    },
+    "facing=east,part=bottom_left,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_left",
+      "y": 90
+    },
+    "facing=east,part=bottom_left,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_left_xl",
+      "y": 90
+    },
+    "facing=east,part=bottom_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_middle",
+      "y": 90
+    },
+    "facing=east,part=bottom_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_middle",
+      "y": 90
+    },
+    "facing=east,part=bottom_right,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_right",
+      "y": 90
+    },
+    "facing=east,part=bottom_right,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_right_xl",
+      "y": 90
+    },
+    "facing=east,part=center,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_center",
+      "y": 90
+    },
+    "facing=east,part=center,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_center",
+      "y": 90
+    },
+    "facing=east,part=left_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_left_middle",
+      "y": 90
+    },
+    "facing=east,part=left_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_left_middle",
+      "y": 90
+    },
+    "facing=east,part=right_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_right_middle",
+      "y": 90
+    },
+    "facing=east,part=right_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_right_middle",
+      "y": 90
+    },
+    "facing=east,part=top_left,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_left",
+      "y": 90
+    },
+    "facing=east,part=top_left,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_left_xl",
+      "y": 90
+    },
+    "facing=east,part=top_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_middle",
+      "y": 90
+    },
+    "facing=east,part=top_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_middle",
+      "y": 90
+    },
+    "facing=east,part=top_right,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_right",
+      "y": 90
+    },
+    "facing=east,part=top_right,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_right_xl",
+      "y": 90
+    },
+    "facing=north,part=base,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove"
+    },
+    "facing=north,part=base,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove"
+    },
+    "facing=north,part=bottom_left,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_left"
+    },
+    "facing=north,part=bottom_left,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_left_xl"
+    },
+    "facing=north,part=bottom_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_middle"
+    },
+    "facing=north,part=bottom_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_middle"
+    },
+    "facing=north,part=bottom_right,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_right"
+    },
+    "facing=north,part=bottom_right,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_right_xl"
+    },
+    "facing=north,part=center,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_center"
+    },
+    "facing=north,part=center,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_center"
+    },
+    "facing=north,part=left_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_left_middle"
+    },
+    "facing=north,part=left_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_left_middle"
+    },
+    "facing=north,part=right_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_right_middle"
+    },
+    "facing=north,part=right_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_right_middle"
+    },
+    "facing=north,part=top_left,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_left"
+    },
+    "facing=north,part=top_left,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_left_xl"
+    },
+    "facing=north,part=top_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_middle"
+    },
+    "facing=north,part=top_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_middle"
+    },
+    "facing=north,part=top_right,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_right"
+    },
+    "facing=north,part=top_right,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_right_xl"
+    },
+    "facing=south,part=base,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove",
+      "y": 180
+    },
+    "facing=south,part=base,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove",
+      "y": 180
+    },
+    "facing=south,part=bottom_left,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_left",
+      "y": 180
+    },
+    "facing=south,part=bottom_left,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_left_xl",
+      "y": 180
+    },
+    "facing=south,part=bottom_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_middle",
+      "y": 180
+    },
+    "facing=south,part=bottom_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_middle",
+      "y": 180
+    },
+    "facing=south,part=bottom_right,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_right",
+      "y": 180
+    },
+    "facing=south,part=bottom_right,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_right_xl",
+      "y": 180
+    },
+    "facing=south,part=center,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_center",
+      "y": 180
+    },
+    "facing=south,part=center,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_center",
+      "y": 180
+    },
+    "facing=south,part=left_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_left_middle",
+      "y": 180
+    },
+    "facing=south,part=left_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_left_middle",
+      "y": 180
+    },
+    "facing=south,part=right_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_right_middle",
+      "y": 180
+    },
+    "facing=south,part=right_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_right_middle",
+      "y": 180
+    },
+    "facing=south,part=top_left,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_left",
+      "y": 180
+    },
+    "facing=south,part=top_left,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_left_xl",
+      "y": 180
+    },
+    "facing=south,part=top_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_middle",
+      "y": 180
+    },
+    "facing=south,part=top_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_middle",
+      "y": 180
+    },
+    "facing=south,part=top_right,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_right",
+      "y": 180
+    },
+    "facing=south,part=top_right,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_right_xl",
+      "y": 180
+    },
+    "facing=west,part=base,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove",
+      "y": 270
+    },
+    "facing=west,part=base,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove",
+      "y": 270
+    },
+    "facing=west,part=bottom_left,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_left",
+      "y": 270
+    },
+    "facing=west,part=bottom_left,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_left_xl",
+      "y": 270
+    },
+    "facing=west,part=bottom_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_middle",
+      "y": 270
+    },
+    "facing=west,part=bottom_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_middle",
+      "y": 270
+    },
+    "facing=west,part=bottom_right,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_right",
+      "y": 270
+    },
+    "facing=west,part=bottom_right,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_bottom_right_xl",
+      "y": 270
+    },
+    "facing=west,part=center,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_center",
+      "y": 270
+    },
+    "facing=west,part=center,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_center",
+      "y": 270
+    },
+    "facing=west,part=left_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_left_middle",
+      "y": 270
+    },
+    "facing=west,part=left_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_left_middle",
+      "y": 270
+    },
+    "facing=west,part=right_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_right_middle",
+      "y": 270
+    },
+    "facing=west,part=right_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_right_middle",
+      "y": 270
+    },
+    "facing=west,part=top_left,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_left",
+      "y": 270
+    },
+    "facing=west,part=top_left,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_left_xl",
+      "y": 270
+    },
+    "facing=west,part=top_middle,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_middle",
+      "y": 270
+    },
+    "facing=west,part=top_middle,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_middle",
+      "y": 270
+    },
+    "facing=west,part=top_right,xl=false": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_right",
+      "y": 270
+    },
+    "facing=west,part=top_right,xl=true": {
+      "model": "colourfulclocks:block/wall_clock_stripped_mangrove_top_right_xl",
+      "y": 270
+    }
+  }
+}

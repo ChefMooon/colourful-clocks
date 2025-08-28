@@ -70,6 +70,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
         buildMantelClockRecipes();
         buildTallMantelClockRecipes();
         buildWaxedCopperItemRecipes();
+        buildWallClockRecipes();
     }
 
     private static void buildPocketWatchRecipe(ItemLike item, PocketWatchTypes pocketWatchTypes, RecipeOutput recipeOutput) {
@@ -259,6 +260,22 @@ public class RecipeGenerator extends FabricRecipeProvider {
         }
     }
 
+    private static void buildWallClockRecipes() {
+        for (ClockTypes clockType : ClockTypes.values()) {
+            ItemLike result = ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS.get(clockType).get();
+            ClockDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
+                    .pattern("AAA")
+                    .pattern("ABA")
+                    .pattern("AAA")
+                    .define('A', clockType.getCraftingIngredient())
+                    .define('B', Items.QUARTZ)
+                    .group("wall_clock_" + clockType.getName())
+                    .setData(new ClockComponent(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()))
+                    .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(clockType.getCraftingIngredient(), Items.QUARTZ)))
+                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result));
+            buildTallMantelClockVariantRecipes(clockType, result);
+        }
+    }
 
     private static void buildWaxedCopperItemRecipes() {
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get())

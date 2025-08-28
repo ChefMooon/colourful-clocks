@@ -42,6 +42,10 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
         ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
             this.add(supplier.get(), createTallMantelClockEntityDrop(supplier.get()));
         });
+
+        ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
+            this.add(supplier.get(), createWallClockEntityDrop(supplier.get()));
+        });
     }
 
     public LootTable.Builder createBornholmMiddleEntityDrop(Block block) {
@@ -57,6 +61,10 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
     }
 
     public LootTable.Builder createTallMantelClockEntityDrop(Block block) {
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder) LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA)).otherwise(LootItem.lootTableItem(block))));
+    }
+
+    public LootTable.Builder createWallClockEntityDrop(Block block) {
         return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder) LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA)).otherwise(LootItem.lootTableItem(block))));
     }
 }

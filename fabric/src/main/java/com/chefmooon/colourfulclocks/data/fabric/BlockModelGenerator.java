@@ -1,9 +1,7 @@
 package com.chefmooon.colourfulclocks.data.fabric;
 
-import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
-import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
-import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
-import com.chefmooon.colourfulclocks.common.block.TallMantelClockBlock;
+import com.chefmooon.colourfulclocks.common.block.*;
+import com.chefmooon.colourfulclocks.common.block.properties.WallClockPartProperty;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
@@ -37,6 +35,7 @@ public class BlockModelGenerator {
         registerBornholm(blockModelGenerators);
         registerMantelClockBlockAll(blockModelGenerators);
         registerTallMantelClockBlockAll(blockModelGenerators);
+        registerWallClockBlockAll(blockModelGenerators);
 
         generateBornholmTopDialGlass();
         generateBornholmDoorTypes();
@@ -347,6 +346,84 @@ public class BlockModelGenerator {
                     )
             );
             blockModelGenerators.skipAutoItemBlock(blockSupplier.get());
+        });
+    }
+
+    private static void registerWallClockBlockAll(BlockModelGenerators blockModelGenerators) {
+        ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.forEach((entry, blockSupplier) -> {
+            TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, getBlockModelLocation(entry))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/large_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
+            ResourceLocation WALL_CLOCK_BASE = ColourfulClocksTemplates.WALL_CLOCK_BASE.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()), mapping, blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_BOTTOM_LEFT = ColourfulClocksTemplates.WALL_CLOCK_BOTTOM_LEFT.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_bottom_left"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/large_bottom_left_quartz_clock_face")), blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_BOTTOM_RIGHT = ColourfulClocksTemplates.WALL_CLOCK_BOTTOM_RIGHT.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_bottom_right"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/large_bottom_right_quartz_clock_face")), blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_TOP_LEFT = ColourfulClocksTemplates.WALL_CLOCK_TOP_LEFT.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_top_left"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/large_top_left_quartz_clock_face")), blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_TOP_RIGHT = ColourfulClocksTemplates.WALL_CLOCK_TOP_RIGHT.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_top_right"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/large_top_right_quartz_clock_face")), blockModelGenerators.modelOutput);
+
+            ResourceLocation WALL_CLOCK_BOTTOM_LEFT_XL = ColourfulClocksTemplates.WALL_CLOCK_BOTTOM_LEFT_XL.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_bottom_left_xl"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/xl_bottom_left_quartz_clock_face")), blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_BOTTOM_RIGHT_XL = ColourfulClocksTemplates.WALL_CLOCK_BOTTOM_RIGHT.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_bottom_right_xl"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/xl_bottom_right_quartz_clock_face")), blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_TOP_LEFT_XL = ColourfulClocksTemplates.WALL_CLOCK_TOP_LEFT.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_top_left_xl"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/xl_top_left_quartz_clock_face")), blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_TOP_RIGHT_XL = ColourfulClocksTemplates.WALL_CLOCK_TOP_RIGHT_XL.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_top_right_xl"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/xl_top_right_quartz_clock_face")), blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_BOTTOM_MIDDLE = ColourfulClocksTemplates.WALL_CLOCK_BOTTOM_MIDDLE.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_bottom_middle"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/xl_bottom_middle_quartz_clock_face")), blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_LEFT_MIDDLE = ColourfulClocksTemplates.WALL_CLOCK_LEFT_MIDDLE.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_left_middle"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/xl_left_middle_quartz_clock_face")), blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_TOP_MIDDLE = ColourfulClocksTemplates.WALL_CLOCK_TOP_MIDDLE.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_top_middle"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/xl_top_middle_quartz_clock_face")), blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_RIGHT_MIDDLE = ColourfulClocksTemplates.WALL_CLOCK_RIGHT_MIDDLE.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_right_middle"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/xl_right_middle_quartz_clock_face")), blockModelGenerators.modelOutput);
+            ResourceLocation WALL_CLOCK_CENTER = ColourfulClocksTemplates.WALL_CLOCK_CENTER.create(
+                    ModelLocationUtils.getModelLocation(blockSupplier.get()).withSuffix("_center"),
+                    mapping.put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/xl_center_quartz_clock_face")), blockModelGenerators.modelOutput);
+
+            blockModelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(blockSupplier.get(),
+                    Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_BASE))
+                            .with(BlockModelGenerators.createHorizontalFacingDispatch())
+                            .with(PropertyDispatch.properties(WallClockBlock.PART, WallClockBlock.XL)
+                                    .select(WallClockPartProperty.BASE, Boolean.FALSE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_BASE))
+                                    .select(WallClockPartProperty.BOTTOM_LEFT, Boolean.FALSE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_BOTTOM_LEFT))
+                                    .select(WallClockPartProperty.BOTTOM_RIGHT, Boolean.FALSE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_BOTTOM_RIGHT))
+                                    .select(WallClockPartProperty.TOP_LEFT, Boolean.FALSE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_TOP_LEFT))
+                                    .select(WallClockPartProperty.TOP_RIGHT, Boolean.FALSE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_TOP_RIGHT))
+                                    .select(WallClockPartProperty.BOTTOM_MIDDLE, Boolean.FALSE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_BOTTOM_MIDDLE))
+                                    .select(WallClockPartProperty.LEFT_MIDDLE, Boolean.FALSE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_LEFT_MIDDLE))
+                                    .select(WallClockPartProperty.TOP_MIDDLE, Boolean.FALSE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_TOP_MIDDLE))
+                                    .select(WallClockPartProperty.RIGHT_MIDDLE, Boolean.FALSE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_RIGHT_MIDDLE))
+                                    .select(WallClockPartProperty.CENTER, Boolean.FALSE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_CENTER))
+
+                                    .select(WallClockPartProperty.BASE, Boolean.TRUE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_BASE))
+                                    .select(WallClockPartProperty.BOTTOM_LEFT, Boolean.TRUE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_BOTTOM_LEFT_XL))
+                                    .select(WallClockPartProperty.BOTTOM_RIGHT, Boolean.TRUE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_BOTTOM_RIGHT_XL))
+                                    .select(WallClockPartProperty.TOP_LEFT, Boolean.TRUE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_TOP_LEFT_XL))
+                                    .select(WallClockPartProperty.TOP_RIGHT, Boolean.TRUE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_TOP_RIGHT_XL))
+                                    .select(WallClockPartProperty.BOTTOM_MIDDLE, Boolean.TRUE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_BOTTOM_MIDDLE))
+                                    .select(WallClockPartProperty.LEFT_MIDDLE, Boolean.TRUE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_LEFT_MIDDLE))
+                                    .select(WallClockPartProperty.TOP_MIDDLE, Boolean.TRUE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_TOP_MIDDLE))
+                                    .select(WallClockPartProperty.RIGHT_MIDDLE, Boolean.TRUE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_RIGHT_MIDDLE))
+                                    .select(WallClockPartProperty.CENTER, Boolean.TRUE, Variant.variant().with(VariantProperties.MODEL, WALL_CLOCK_CENTER))
+                            )
+            );
         });
     }
 

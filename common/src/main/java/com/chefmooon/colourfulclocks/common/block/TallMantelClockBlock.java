@@ -1,6 +1,5 @@
 package com.chefmooon.colourfulclocks.common.block;
 
-import com.chefmooon.colourfulclocks.common.block.base.BaseDataClockBlock;
 import com.chefmooon.colourfulclocks.common.block.base.BaseDataGlassClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.TallMantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.data.ClockComponent;

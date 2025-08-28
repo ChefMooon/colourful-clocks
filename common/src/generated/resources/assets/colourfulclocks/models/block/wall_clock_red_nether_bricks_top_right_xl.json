@@ -1,0 +1,8 @@
+{
+  "parent": "colourfulclocks:block/template_wall_clock_top_right_xl",
+  "textures": {
+    "clock_dial": "colourfulclocks:block/xl_top_right_quartz_clock_face",
+    "clock_dial_marks": "minecraft:block/coal_block",
+    "side": "minecraft:block/red_nether_bricks"
+  }
+}

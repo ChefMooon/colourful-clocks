@@ -23,6 +23,7 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider{
         ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.forEach(this::registerMineableClockBlocktags);
         ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.forEach(this::registerMineableClockBlocktags);
         ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach(this::registerMineableClockBlocktags);
+        ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.forEach(this::registerMineableClockBlocktags);
     }
 
     private void registerMineableClockBlocktags(ClockTypes clockType, Supplier<Block> supplier) {

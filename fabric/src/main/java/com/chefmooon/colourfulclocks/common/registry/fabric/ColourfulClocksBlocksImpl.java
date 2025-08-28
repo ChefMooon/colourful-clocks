@@ -2,6 +2,7 @@ package com.chefmooon.colourfulclocks.common.registry.fabric;
 
 import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
 import com.chefmooon.colourfulclocks.common.block.TallMantelClockBlock;
+import com.chefmooon.colourfulclocks.common.block.WallClockBlock;
 import com.chefmooon.colourfulclocks.common.block.fabric.BornholmBaseBlockImpl;
 import com.chefmooon.colourfulclocks.common.block.fabric.BornholmMiddleBlockImpl;
 import com.chefmooon.colourfulclocks.common.block.fabric.BornholmTopBlockImpl;
@@ -22,6 +23,7 @@ public class ColourfulClocksBlocksImpl {
 
     public static final HashMap<ClockTypes, Supplier<Block>> MANTEL_CLOCK_VARIANTS = registerMantelClockVariants(ColourfulClocksBlocks.MANTEL_CLOCK);
     public static final HashMap<ClockTypes, Supplier<Block>> TALL_MANTEL_CLOCK_VARIANTS = registerTallMantelClockVariants(ColourfulClocksBlocks.TALL_MANTEL_CLOCK);
+    public static final HashMap<ClockTypes, Supplier<Block>> WALL_CLOCK_VARIANTS = registerWallClockVariants(ColourfulClocksBlocks.WALL_CLOCK);
 
     private static HashMap<ClockTypes, Supplier<Block>> registerBaseVariantsAll(ResourceLocation baseLocation) {
         HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
@@ -68,6 +70,16 @@ public class ColourfulClocksBlocksImpl {
         for (ClockTypes clockTypes : ClockTypes.values()) {
             Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
                     new TallMantelClockBlock(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes).noOcclusion()));
+            hashMap.put(clockTypes, block);
+        }
+        return hashMap;
+    }
+
+    private static HashMap<ClockTypes, Supplier<Block>> registerWallClockVariants(ResourceLocation baseLocation) {
+        HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
+        for (ClockTypes clockTypes : ClockTypes.values()) {
+            Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
+                    new WallClockBlock(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
             hashMap.put(clockTypes, block);
         }
         return hashMap;

@@ -9,6 +9,7 @@ public class ColourfulClocksBlockEntities {
 
     public static final ResourceLocation MANTEL_CLOCK = blockEntity("mantel_clock");
     public static final ResourceLocation TALL_MANTEL_CLOCK = blockEntity("tall_mantel_clock");
+    public static final ResourceLocation WALL_CLOCK = blockEntity("wall_clock");
 
     private static ResourceLocation blockEntity(String string) {
         return TextUtil.res(string);

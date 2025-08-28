@@ -1,6 +1,10 @@
 package com.chefmooon.colourfulclocks.client.model;
 
 public class ColourfulClocksModels {
+    public static final String MINUTE_HAND_XL_PATH = "item/%s_minute_hand_xl";
+    public static final String HOUR_HAND_XL_PATH = "item/%s_hour_hand_xl";
+    public static final String MINUTE_HAND_LARGE_PATH = "item/%s_minute_hand_large";
+    public static final String HOUR_HAND_LARGE_PATH = "item/%s_hour_hand_large";
     public static final String MINUTE_HAND_PATH = "item/%s_minute_hand";
     public static final String HOUR_HAND_PATH = "item/%s_hour_hand";
     public static final String MINUTE_HAND_SMALL_PATH = "item/%s_minute_hand_small";

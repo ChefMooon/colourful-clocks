@@ -14,6 +14,7 @@ public class ColourfulClocksBlocks {
 
     public static ResourceLocation MANTEL_CLOCK = block("mantel_clock");
     public static ResourceLocation TALL_MANTEL_CLOCK = block("tall_mantel_clock");
+    public static ResourceLocation WALL_CLOCK = block("wall_clock");
 
     public static BlockBehaviour.Properties getProperties(ClockTypes clockTypes) {
 //        return BlockBehaviour.Properties.ofFullCopy(clockTypes.getBlock());

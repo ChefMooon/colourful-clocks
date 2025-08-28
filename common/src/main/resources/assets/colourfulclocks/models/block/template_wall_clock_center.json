@@ -1,0 +1,42 @@
+{
+	"credit": "Made with Blockbench",
+	"render_type": "minecraft:cutout",
+	"parent": "colourfulclocks:block/bornholm_block",
+	"textures": {
+		"particle": "#side"
+	},
+	"elements": [
+		{
+			"name": "back",
+			"from": [0, 0, 0],
+			"to": [16, 16, 1],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2, 2, 0]},
+			"faces": {
+				"north": {"uv": [0, 0, 16, 16], "texture": "#side"},
+				"south": {"uv": [0, 0, 16, 16], "texture": "#clock_dial"}
+			}
+		},
+		{
+			"name": "marker_middle",
+			"from": [7, 7, 1],
+			"to": [9, 9, 1.4],
+			"rotation": {"angle": 45, "axis": "z", "origin": [8, 8, 1.2]},
+			"faces": {
+				"east": {"uv": [2, 0, 2.4, 2], "texture": "#clock_dial_marks"},
+				"south": {"uv": [2, 0, 4, 2], "texture": "#clock_dial_marks"},
+				"west": {"uv": [2, 0, 2.4, 2], "texture": "#clock_dial_marks"},
+				"up": {"uv": [2, 0, 4, 0.4], "texture": "#clock_dial_marks"},
+				"down": {"uv": [2, 0, 4, 0.4], "texture": "#clock_dial_marks"}
+			}
+		}
+	],
+	"groups": [
+		0,
+		{
+			"name": "markers",
+			"origin": [8, 8, 12.2],
+			"color": 0,
+			"children": [1]
+		}
+	]
+}

@@ -73,6 +73,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
 
         generateMantelClockTranslations(translationBuilder);
         generateTallMantelClockTranslations(translationBuilder);
+        generateWallClockTranslations(translationBuilder);
 
         translationBuilder.add(ColourfulClocksTags.CLOCK_PENDULUM, "Clock Pendulum");
         translationBuilder.add(ColourfulClocksTags.CLOCK_DOOR, "Clock Door");
@@ -205,6 +206,13 @@ public class TranslationGenerator extends FabricLanguageProvider {
     private static void generateTallMantelClockTranslations(TranslationBuilder translationBuilder) {
         ColourfulClocksItemsImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
             String translation = entry.getBaseTranslationNoSpace() + " Tall Mantel Clock";
+            translationBuilder.add(supplier.get(), translation);
+        });
+    }
+
+    private static void generateWallClockTranslations(TranslationBuilder translationBuilder) {
+        ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
+            String translation = entry.getBaseTranslationNoSpace() + " Wall Clock";
             translationBuilder.add(supplier.get(), translation);
         });
     }
