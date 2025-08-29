@@ -42,6 +42,7 @@ import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
@@ -49,7 +50,11 @@ import java.util.List;
 import java.util.Objects;
 
 public class AlarmClockBlock extends BaseDataGlassClockBlock {
-    private static final VoxelShape SHAPE_AXIS_Z = Block.box(4, 0, 5, 12, 9, 11);
+    private static final VoxelShape SHAPE_AXIS_Z = Shapes.or(
+            Block.box(5, 0, 5.5, 11, 1, 10.5),
+            Block.box(5, 1, 5, 11, 2, 11),
+            Block.box(4, 2, 5, 12, 8, 11),
+            Block.box(5, 8, 5, 11, 9, 11));
     private final VoxelShape SHAPE_AXIS_X;
     public AlarmClockBlock(ClockTypes clockType, Properties properties) {
         super(clockType, properties);
