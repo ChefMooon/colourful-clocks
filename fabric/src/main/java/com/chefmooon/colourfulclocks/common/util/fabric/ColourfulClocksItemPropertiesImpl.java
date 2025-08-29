@@ -54,22 +54,19 @@ public class ColourfulClocksItemPropertiesImpl {
     private static void registerMantelClock(Item item) {
         ItemProperties.register(item, ColourfulClocksItemProperties.GLASS_TYPE,
                 (itemStack, clientLevel, livingEntity, i) -> {
-                    // Convert the id to a float and return
-                    return itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.GLASS_DIAL_DATA, GlassDialComponent.getDefaultValue()).getGlassType().getId() / 100.0f;
-                });
+            // Convert the id to a float and return
+            ClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getNoPendulumValue());
+            return component.getGlassType().isPresent() ? component.getGlassType().get().getId() / 100.0f : 0.0f;
+        });
     }
 
     private static void registerTallMantelClock(Item item) {
         ItemProperties.register(item, ColourfulClocksItemProperties.GLASS_TYPE,
                 (itemStack, clientLevel, livingEntity, i) -> {
-                    // Convert the id to a float and return
-                    ClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getBasicClockValue());
-                    if (component.getGlassType().isPresent()) {
-                        return component.getGlassType().get().getId() / 100.0f;
-                    } else {
-                        return 0.0f;
-                    }
-                });
+            // Convert the id to a float and return
+            ClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getBasicClockValue());
+            return component.getGlassType().isPresent() ? component.getGlassType().get().getId() / 100.0f : 0.0f;
+        });
     }
 
     private static void registerPocketWatch(Item item) {
