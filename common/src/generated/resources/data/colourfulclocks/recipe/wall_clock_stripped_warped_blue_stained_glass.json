@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tall_mantel_clock_stripped_warped",
+  "key": {
+    "A": {
+      "item": "minecraft:stripped_warped_hyphae"
+    },
+    "B": {
+      "item": "minecraft:blue_stained_glass_pane"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:clock_data": {
+        "glass": "_blue_stained_glass"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_stripped_warped"
+  }
+}

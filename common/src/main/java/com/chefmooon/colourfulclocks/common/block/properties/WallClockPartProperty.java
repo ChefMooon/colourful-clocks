@@ -1,38 +1,56 @@
 package com.chefmooon.colourfulclocks.common.block.properties;
 
-import com.chefmooon.colourfulclocks.common.data.OffsetPair;
-import com.chefmooon.colourfulclocks.common.data.OffsetRecord;
 import net.minecraft.util.StringRepresentable;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Locale;
 
 public enum WallClockPartProperty implements StringRepresentable {
-    BASE(new OffsetPair(new OffsetRecord(0, 0, 0), new OffsetRecord(0, 0, 0))),
-    BOTTOM_LEFT(new OffsetPair(new OffsetRecord(0, 0, 0), new OffsetRecord(0, 0, 0))),
-    BOTTOM_RIGHT(new OffsetPair(new OffsetRecord(1, 0, 0), new OffsetRecord(2, 0, 0))),
-    TOP_LEFT(new OffsetPair(new OffsetRecord(0, 1, 0), new OffsetRecord(0, 2, 0))),
-    TOP_RIGHT(new OffsetPair(new OffsetRecord(1, 1, 0), new OffsetRecord(2, 2, 0))),
 
-    CENTER(new OffsetPair(new OffsetRecord(1, 1, 0), new OffsetRecord(1, 1, 0))),
-    BOTTOM_MIDDLE(new OffsetPair(new OffsetRecord(1, 0, 0), new OffsetRecord(1 , 0, 0))),
-    LEFT_MIDDLE(new OffsetPair(new OffsetRecord(0, 1, 0), new OffsetRecord(0 , 1, 0))),
-    TOP_MIDDLE(new OffsetPair(new OffsetRecord(1, 2, 0), new OffsetRecord(1 , 2, 0))),
-    RIGHT_MIDDLE(new OffsetPair(new OffsetRecord(2, 1, 0), new OffsetRecord(2 , 1, 0))),
+    BASE(0, 0, false),
+    BOTTOM_LEFT(-1, -1, false),
+    BOTTOM_RIGHT(0, -1, false),
+    TOP_LEFT(-1, 0, false),
+    TOP_RIGHT(0, 0, false),
+
+    CENTER(0, 0, true),
+    BOTTOM_MIDDLE(0, -1, true),
+    LEFT_MIDDLE(-1, 0, true),
+    TOP_MIDDLE(0, 1, true),
+    RIGHT_MIDDLE(1, 0, true),
+
+    BOTTOM_LEFT_XL(-1, -1, true),
+    BOTTOM_RIGHT_XL(1, -1, true),
+    TOP_LEFT_XL(-1, 1, true),
+    TOP_RIGHT_XL(1, 1, true),
     ;
+    private final int xOffset;
+    private final int yOffset;
+    private final boolean isXL;
 
-    private final OffsetPair offset; // first is 2x2, second is 3x3
-
-    WallClockPartProperty(OffsetPair offset) {
-        this.offset = offset;
+    WallClockPartProperty(int xOffset, int yOffset, boolean isXL) {
+        this.xOffset = xOffset;
+        this.yOffset = yOffset;
+        this.isXL = isXL;
     }
 
-    public OffsetPair getOffset() {
-        return offset;
+    public int getxOffset() {
+        return xOffset;
+    }
+
+    public int getyOffset() {
+        return yOffset;
+    }
+
+    public boolean isXL() {
+        return isXL;
     }
 
     @Override
-    public @NotNull String getSerializedName() {
+    public String getSerializedName() {
         return name().toLowerCase(Locale.ROOT);
+    }
+
+    public boolean isController() {
+        return this == BASE || this == TOP_RIGHT || this == CENTER;
     }
 }

@@ -3,10 +3,7 @@ package com.chefmooon.colourfulclocks.client.event.neoforge;
 import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.client.ColourfulClocksClient;
 import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
-import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmMiddleBlockEntityRendererImpl;
-import com.chefmooon.colourfulclocks.client.renderer.neoforge.BornholmTopBlockEntityRendererImpl;
-import com.chefmooon.colourfulclocks.client.renderer.neoforge.MantelClockBlockEntityRendererImpl;
-import com.chefmooon.colourfulclocks.client.renderer.neoforge.TallMantelClockBlockEntityRendererImpl;
+import com.chefmooon.colourfulclocks.client.renderer.neoforge.*;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlockEntitiesImpl;
@@ -15,6 +12,7 @@ import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.chefmooon.colourfulclocks.common.util.neoforge.ColourfulClocksItemPropertiesImpl;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -33,6 +31,7 @@ public class ClientSetupEventsImpl {
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.BORNHOLM_TOP_VARIANTS.get(), BornholmTopBlockEntityRendererImpl::new);
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.MANTEL_CLOCK_VARIANTS.get(), MantelClockBlockEntityRendererImpl::new);
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.TALL_MANTEL_CLOCK_VARIANTS.get(), TallMantelClockBlockEntityRendererImpl::new);
+        event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.WALL_CLOCK_VARIANTS.get(), WallClockBlockEntityRendererImpl::new);
     }
 
     @SubscribeEvent
@@ -50,10 +49,21 @@ public class ClientSetupEventsImpl {
 
     public static void onRegisterModels(Consumer<ModelResourceLocation> consumer) {
         ColourfulClocksItemsImpl.POCKET_WATCH_VARIANTS.forEach(((pocketWatchTypes, itemSupplier) -> {
+            ModelResourceLocation minuteHandXLLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.MINUTE_HAND_XL_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            consumer.accept(minuteHandXLLocation);
+            ModelResourceLocation hourHandXLLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.HOUR_HAND_XL_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            consumer.accept(hourHandXLLocation);
+
+            ModelResourceLocation minuteHandLargeLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.MINUTE_HAND_LARGE_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            consumer.accept(minuteHandLargeLocation);
+            ModelResourceLocation hourHandLargeLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.HOUR_HAND_LARGE_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
+            consumer.accept(hourHandLargeLocation);
+
             ModelResourceLocation minuteHandLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.MINUTE_HAND_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
             consumer.accept(minuteHandLocation);
             ModelResourceLocation hourHandLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.HOUR_HAND_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
             consumer.accept(hourHandLocation);
+
             ModelResourceLocation minuteHandSmallLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.MINUTE_HAND_SMALL_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");
             consumer.accept(minuteHandSmallLocation);
             ModelResourceLocation hourHandSmallLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.HOUR_HAND_SMALL_PATH.formatted(BuiltInRegistries.ITEM.getKey(itemSupplier.get()).getPath())), "standalone");

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tall_mantel_clock_cherry",
+  "key": {
+    "A": {
+      "item": "minecraft:cherry_wood"
+    },
+    "B": {
+      "item": "minecraft:purple_stained_glass_pane"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "ACA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:clock_data": {
+        "glass": "_purple_stained_glass"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_cherry"
+  }
+}

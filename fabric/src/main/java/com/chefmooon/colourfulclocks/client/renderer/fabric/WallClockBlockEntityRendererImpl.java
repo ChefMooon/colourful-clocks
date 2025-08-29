@@ -38,12 +38,10 @@ public class WallClockBlockEntityRendererImpl<T extends WallClockBlockEntity> ex
             renderMinuteHand(poseStack, partialTick, state);
 
             ResourceLocation minuteHandLocation = TextUtil.res(ColourfulClocksModels.MINUTE_HAND_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
-            if (state.getValue(WallClockBlock.PART) == WallClockPartProperty.BOTTOM_LEFT) {
-                if (!state.getValue(WallClockBlock.XL)) {
-                    minuteHandLocation = TextUtil.res(ColourfulClocksModels.MINUTE_HAND_LARGE_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
-                } else {
-                    minuteHandLocation = TextUtil.res(ColourfulClocksModels.MINUTE_HAND_XL_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
-                }
+            if (state.getValue(WallClockBlock.PART) == WallClockPartProperty.TOP_RIGHT) {
+                minuteHandLocation = TextUtil.res(ColourfulClocksModels.MINUTE_HAND_LARGE_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
+            } else if (state.getValue(WallClockBlock.PART) == WallClockPartProperty.CENTER) {
+                minuteHandLocation = TextUtil.res(ColourfulClocksModels.MINUTE_HAND_XL_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
             }
             BakedModel minuteHandModel = minecraft.getModelManager().getModel(minuteHandLocation);
             minecraft.getBlockRenderer().getModelRenderer().renderModel(
@@ -58,11 +56,9 @@ public class WallClockBlockEntityRendererImpl<T extends WallClockBlockEntity> ex
 
             ResourceLocation hourHandLocation = TextUtil.res(ColourfulClocksModels.HOUR_HAND_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
             if (state.getValue(WallClockBlock.PART) == WallClockPartProperty.BOTTOM_LEFT) {
-                if (!state.getValue(WallClockBlock.XL)) {
-                    hourHandLocation = TextUtil.res(ColourfulClocksModels.HOUR_HAND_LARGE_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
-                } else {
-                    hourHandLocation = TextUtil.res(ColourfulClocksModels.HOUR_HAND_XL_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
-                }
+                hourHandLocation = TextUtil.res(ColourfulClocksModels.HOUR_HAND_LARGE_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
+            } else if (state.getValue(WallClockBlock.PART) == WallClockPartProperty.CENTER) {
+                hourHandLocation = TextUtil.res(ColourfulClocksModels.HOUR_HAND_XL_PATH.formatted(BuiltInRegistries.ITEM.getKey(ColourfulClocksTypeUtil.getPocketWatchItemFromType(pocketWatchType)).getPath()));
             }
             BakedModel hourHandModel = minecraft.getModelManager().getModel(hourHandLocation);
             minecraft.getBlockRenderer().getModelRenderer().renderModel(

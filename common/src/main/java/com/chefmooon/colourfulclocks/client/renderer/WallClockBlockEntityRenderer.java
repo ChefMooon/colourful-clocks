@@ -1,8 +1,6 @@
 package com.chefmooon.colourfulclocks.client.renderer;
 
-import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
-import com.chefmooon.colourfulclocks.common.block.TallMantelClockBlock;
 import com.chefmooon.colourfulclocks.common.block.WallClockBlock;
 import com.chefmooon.colourfulclocks.common.block.properties.WallClockPartProperty;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -16,9 +14,12 @@ public class WallClockBlockEntityRenderer {
     public static void renderMinuteHand(PoseStack poseStack, float partialTick, BlockState state) {
         poseStack.rotateAround(getRotation(state.getValue(BornholmTopBlock.FACING)), 0.5F, 0.5F, 0.5F);
         poseStack.translate(0.5F, 0.5F, 0.07F);
-        if (state.getValue(WallClockBlock.PART) != WallClockPartProperty.BASE) {
-            float adjustment = state.getValue(WallClockBlock.XL) ? 1.0F : 0.5F;
-            poseStack.translate(adjustment, adjustment, 0);
+//        if (state.getValue(WallClockBlock.PART) != WallClockPartProperty.BASE) {
+//            float adjustment = state.getValue(WallClockBlock.XL) ? 1.0F : 0.5F;
+//            poseStack.translate(adjustment, adjustment, 0);
+//        }
+        if (state.getValue(WallClockBlock.PART) == WallClockPartProperty.TOP_RIGHT) {
+            poseStack.translate(-0.5, -0.5, 0);
         }
 //        poseStack.translate(0, 0.438F, -0.315F);
         if (state.getValue(BornholmTopBlock.ACTIVATED)) poseStack.rotateAround(Axis.ZN.rotationDegrees(getMinuteHandRotation(partialTick)), 0, 0, 0);
