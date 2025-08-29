@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "alarm_clock_polished_tuff",
+  "key": {
+    "A": {
+      "item": "minecraft:polished_tuff"
+    },
+    "B": {
+      "item": "minecraft:blue_stained_glass_pane"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    " A ",
+    "BCA",
+    " A "
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:clock_data": {
+        "glass": "_blue_stained_glass"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:alarm_clock_polished_tuff"
+  }
+}

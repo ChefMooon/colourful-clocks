@@ -31,6 +31,8 @@ public class ColourfulClocksItemPropertiesImpl {
                 registerMantelClock(supplier.get()));
         ColourfulClocksItemsImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) ->
                 registerTallMantelClock(supplier.get()));
+        ColourfulClocksItemsImpl.ALARM_CLOCK_VARIANTS.forEach((entry, supplier) ->
+                registerAlarmClock(supplier.get()));
         ColourfulClocksItemsImpl.POCKET_WATCH_VARIANTS.forEach(((pocketWatchTypes, itemSupplier) ->
                 registerPocketWatch(itemSupplier.get())));
     }
@@ -67,6 +69,15 @@ public class ColourfulClocksItemPropertiesImpl {
             ClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getBasicClockValue());
             return component.getGlassType().isPresent() ? component.getGlassType().get().getId() / 100.0f : 0.0f;
         });
+    }
+
+    private static void registerAlarmClock(Item item) {
+        ItemProperties.register(item, ColourfulClocksItemProperties.GLASS_TYPE,
+                (itemStack, clientLevel, livingEntity, i) -> {
+                    // Convert the id to a float and return
+                    ClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getNoPendulumValue());
+                    return component.getGlassType().isPresent() ? component.getGlassType().get().getId() / 100.0f : 0.0f;
+                });
     }
 
     private static void registerPocketWatch(Item item) {

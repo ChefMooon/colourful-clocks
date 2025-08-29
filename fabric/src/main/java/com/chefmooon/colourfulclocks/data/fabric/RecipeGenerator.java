@@ -71,6 +71,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
         buildTallMantelClockRecipes();
         buildWaxedCopperItemRecipes();
         buildWallClockRecipes();
+        buildAlarmClockRecipes();
     }
 
     private static void buildPocketWatchRecipe(ItemLike item, PocketWatchTypes pocketWatchTypes, RecipeOutput recipeOutput) {
@@ -273,7 +274,28 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .setData(new ClockComponent(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()))
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(clockType.getCraftingIngredient(), Items.QUARTZ)))
                     .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result));
-            buildTallMantelClockVariantRecipes(clockType, result);
+        }
+    }
+
+    private static void buildAlarmClockRecipes() {
+        for (ClockTypes clockType : ClockTypes.values()) {
+            for (BornholmTopGlassTypes glassTypes : BornholmTopGlassTypes.values()) {
+                ItemLike result = ColourfulClocksItemsImpl.ALARM_CLOCK_VARIANTS.get(clockType).get();
+                ClockDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
+                        .pattern(" A ")
+                        .pattern("BCA")
+                        .pattern(" A ")
+                        .define('A', clockType.getCraftingIngredient())
+                        .define('B', glassTypes.getItem())
+                        .define('C', Items.QUARTZ)
+                        .group("alarm_clock_" + clockType.getName())
+                        .setData(new ClockComponent(Optional.of(glassTypes), Optional.empty(), Optional.empty(), Optional.empty()))
+                        .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
+                                clockType.getCraftingIngredient(),
+                                glassTypes.getItem(),
+                                Items.QUARTZ)))
+                        .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result) + "_" + glassTypes.getName());
+            }
         }
     }
 

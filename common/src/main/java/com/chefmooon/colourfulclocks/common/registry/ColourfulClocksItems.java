@@ -79,6 +79,7 @@ public class ColourfulClocksItems {
     public static final ResourceLocation MANTEL_CLOCK = item("mantel_clock");
     public static final ResourceLocation TALL_MANTEL_CLOCK = item("tall_mantel_clock");
     public static final ResourceLocation WALL_CLOCK = item("wall_clock");
+    public static final ResourceLocation ALARM_CLOCK = item("alarm_clock");
 
     private static ResourceLocation item(String string) {
         return TextUtil.res(string);

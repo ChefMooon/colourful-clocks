@@ -32,6 +32,7 @@ public class ClientSetupEventsImpl {
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.MANTEL_CLOCK_VARIANTS.get(), MantelClockBlockEntityRendererImpl::new);
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.TALL_MANTEL_CLOCK_VARIANTS.get(), TallMantelClockBlockEntityRendererImpl::new);
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.WALL_CLOCK_VARIANTS.get(), WallClockBlockEntityRendererImpl::new);
+        event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.ALARM_CLOCK_VARIANTS.get(), AlarmClockBlockEntityRendererImpl::new);
     }
 
     @SubscribeEvent

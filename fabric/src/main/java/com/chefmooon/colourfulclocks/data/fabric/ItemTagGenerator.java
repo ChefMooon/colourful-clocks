@@ -119,5 +119,8 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
 
         ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS.forEach((key, value) ->
                 getOrCreateTagBuilder(ColourfulClocksTags.WALL_CLOCK).add(value.get()));
+
+        ColourfulClocksItemsImpl.ALARM_CLOCK_VARIANTS.forEach((key, value) ->
+                getOrCreateTagBuilder(ColourfulClocksTags.ALARM_CLOCK).add(value.get()));
     }
 }

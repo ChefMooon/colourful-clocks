@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "alarm_clock_acacia",
+  "key": {
+    "A": {
+      "item": "minecraft:acacia_wood"
+    },
+    "B": {
+      "item": "minecraft:light_gray_stained_glass_pane"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    " A ",
+    "BCA",
+    " A "
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:clock_data": {
+        "glass": "_light_gray_stained_glass"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:alarm_clock_acacia"
+  }
+}

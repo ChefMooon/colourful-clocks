@@ -27,6 +27,7 @@ public class ClientSetupEventsImpl {
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.MANTEL_CLOCK_VARIANTS, MantelClockBlockEntityRendererImpl::new);
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.TALL_MANTEL_CLOCK_VARIANTS, TallMantelClockBlockEntityRendererImpl::new);
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.WALL_CLOCK_VARIANTS, WallClockBlockEntityRendererImpl::new);
+        BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.ALARM_CLOCK_VARIANTS, AlarmClockBlockEntityRendererImpl::new);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
@@ -38,7 +39,13 @@ public class ClientSetupEventsImpl {
                 ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
+                ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
+        );
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
+        );
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
+                ColourfulClocksBlocksImpl.ALARM_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
         );
     }
 

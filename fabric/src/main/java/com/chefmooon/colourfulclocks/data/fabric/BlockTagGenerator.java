@@ -24,6 +24,7 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider{
         ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.forEach(this::registerMineableClockBlocktags);
         ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach(this::registerMineableClockBlocktags);
         ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.forEach(this::registerMineableClockBlocktags);
+        ColourfulClocksBlocksImpl.ALARM_CLOCK_VARIANTS.forEach(this::registerMineableClockBlocktags);
     }
 
     private void registerMineableClockBlocktags(ClockTypes clockType, Supplier<Block> supplier) {

@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "alarm_clock_cut_red_sandstone",
+  "key": {
+    "A": {
+      "item": "minecraft:cut_red_sandstone"
+    },
+    "B": {
+      "item": "minecraft:glass_pane"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    " A ",
+    "BCA",
+    " A "
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:clock_data": {
+        "glass": "_glass"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:alarm_clock_cut_red_sandstone"
+  }
+}

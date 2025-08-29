@@ -68,7 +68,7 @@ public class ColourfulClocksTemplates {
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
     public static final ModelTemplate WALL_CLOCK_BOTTOM_LEFT_XL = block("template_wall_clock_bottom_left_xl",
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
-    public static final ModelTemplate WALL_CLOCK_BOTTOM_RIGHT_XL = block("template_wall_clock_bottom",
+    public static final ModelTemplate WALL_CLOCK_BOTTOM_RIGHT_XL = block("template_wall_clock_bottom", // TODO: check usage of this
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
     public static final ModelTemplate WALL_CLOCK_TOP_LEFT_XL = block("template_wall_clock_top_left_xl",
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
@@ -76,6 +76,13 @@ public class ColourfulClocksTemplates {
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
     public static final ModelTemplate WALL_CLOCK_ITEM = item("template_wall_clock",
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
+
+    public static final ModelTemplate ALARM_CLOCK = block("template_alarm_clock",
+            TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
+    public static final ModelTemplate ALARM_CLOCK_ITEM = item("template_alarm_clock",
+            TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_COVER,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
 
     public static final ModelTemplate POCKET_WATCH_CLOCK = block("template_pocket_watch_in_clock", TextureSlot.ALL);
     public static final ModelTemplate POCKET_WATCH_MINUTE_HAND_XL = block("template_pocket_watch_minute_hand_xl", TextureSlot.ALL);

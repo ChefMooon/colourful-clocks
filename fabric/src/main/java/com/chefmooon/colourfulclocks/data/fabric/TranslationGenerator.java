@@ -74,6 +74,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
         generateMantelClockTranslations(translationBuilder);
         generateTallMantelClockTranslations(translationBuilder);
         generateWallClockTranslations(translationBuilder);
+        generateAlarmClockTranslations(translationBuilder);
 
         translationBuilder.add(ColourfulClocksTags.CLOCK_PENDULUM, "Clock Pendulum");
         translationBuilder.add(ColourfulClocksTags.CLOCK_DOOR, "Clock Door");
@@ -85,6 +86,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(ColourfulClocksTags.MANTEL_CLOCK, "Mantel Clock");
         translationBuilder.add(ColourfulClocksTags.TALL_MANTEL_CLOCK, "Tall Mantel Clock");
         translationBuilder.add(ColourfulClocksTags.WALL_CLOCK, "Wall Clock");
+        translationBuilder.add(ColourfulClocksTags.ALARM_CLOCK, "Alarm Clock");
 
         translationBuilder.add(SUBTITLE + "block.bornholm.chime", "Bornholm Chime");
         translationBuilder.add(SUBTITLE + "block.bornholm.door_open", "Door Opened");
@@ -214,6 +216,13 @@ public class TranslationGenerator extends FabricLanguageProvider {
     private static void generateWallClockTranslations(TranslationBuilder translationBuilder) {
         ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
             String translation = entry.getBaseTranslationNoSpace() + " Wall Clock";
+            translationBuilder.add(supplier.get(), translation);
+        });
+    }
+
+    private static void generateAlarmClockTranslations(TranslationBuilder translationBuilder) {
+        ColourfulClocksItemsImpl.ALARM_CLOCK_VARIANTS.forEach((entry, supplier) -> {
+            String translation = entry.getBaseTranslationNoSpace() + " Alarm Clock";
             translationBuilder.add(supplier.get(), translation);
         });
     }

@@ -22,6 +22,7 @@ public class ColourfulClocksBlocksImpl {
     public static final HashMap<ClockTypes, Supplier<Block>> MANTEL_CLOCK_VARIANTS = registerMantelClockVariants(ColourfulClocksBlocks.MANTEL_CLOCK);
     public static final HashMap<ClockTypes, Supplier<Block>> TALL_MANTEL_CLOCK_VARIANTS = registerTallMantelClockVariants(ColourfulClocksBlocks.TALL_MANTEL_CLOCK);
     public static final HashMap<ClockTypes, Supplier<Block>> WALL_CLOCK_VARIANTS = registerWallClockVariants(ColourfulClocksBlocks.WALL_CLOCK);
+    public static final HashMap<ClockTypes, Supplier<Block>> ALARM_CLOCK_VARIANTS = registerAlarmClockVariants(ColourfulClocksBlocks.ALARM_CLOCK);
 
     private static HashMap<ClockTypes, Supplier<Block>> registerBaseVariantsAll(ResourceLocation baseLocation) {
         HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
@@ -78,6 +79,16 @@ public class ColourfulClocksBlocksImpl {
         for (ClockTypes clockTypes : ClockTypes.values()) {
             Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
                     () -> new WallClockBlockImpl(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
+            hashMap.put(clockTypes, block);
+        }
+        return hashMap;
+    }
+
+    private static HashMap<ClockTypes, Supplier<Block>> registerAlarmClockVariants(ResourceLocation baseLocation) {
+        HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
+        for (ClockTypes clockTypes : ClockTypes.values()) {
+            Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
+                    () -> new AlarmClockBlockImpl(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
             hashMap.put(clockTypes, block);
         }
         return hashMap;

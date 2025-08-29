@@ -31,6 +31,14 @@ public class CommonSetup {
         ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
             if (entry.isWooden()) addFlammableBlock(supplier.get(), TallMantelClockBlock.FLAMMABILITY, TallMantelClockBlock.FIRE_SPREAD);
         });
+
+        ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.forEach((entry, supplier) -> {
+            if (entry.isWooden()) addFlammableBlock(supplier.get(), WallClockBlock.FLAMMABILITY, WallClockBlock.FIRE_SPREAD);
+        });
+
+        ColourfulClocksBlocksImpl.ALARM_CLOCK_VARIANTS.forEach((entry, supplier) -> {
+            if (entry.isWooden()) addFlammableBlock(supplier.get(), AlarmClockBlock.FLAMMABILITY, AlarmClockBlock.FIRE_SPREAD);
+        });
     }
 
     private static void addFlammableBlock(Block block, int burn, int spread) {

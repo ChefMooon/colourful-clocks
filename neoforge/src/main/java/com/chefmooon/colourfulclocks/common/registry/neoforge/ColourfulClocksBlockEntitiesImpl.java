@@ -1,6 +1,7 @@
 package com.chefmooon.colourfulclocks.common.registry.neoforge;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
+import com.chefmooon.colourfulclocks.common.block.entity.AlarmClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.entity.MantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.entity.TallMantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.entity.WallClockBlockEntity;
@@ -41,6 +42,11 @@ public class ColourfulClocksBlockEntitiesImpl {
     public static final Supplier<BlockEntityType<WallClockBlockEntity>> WALL_CLOCK_VARIANTS = BLOCK_ENTITIES.register(ColourfulClocksBlockEntities.WALL_CLOCK.getPath(),
             () -> BlockEntityType.Builder.of(WallClockBlockEntity::new,
                     ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
+            ).build(null));
+
+    public static final Supplier<BlockEntityType<AlarmClockBlockEntity>> ALARM_CLOCK_VARIANTS = BLOCK_ENTITIES.register(ColourfulClocksBlockEntities.ALARM_CLOCK.getPath(),
+            () -> BlockEntityType.Builder.of(AlarmClockBlockEntity::new,
+                    ColourfulClocksBlocksImpl.ALARM_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
             ).build(null));
 
     public static void register(IEventBus eventBus) {
