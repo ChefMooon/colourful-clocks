@@ -207,7 +207,7 @@ public class WallClockBlock extends BaseDataClockBlock {
         }
 
         // Top Right
-        if ((part != WallClockPartProperty.BOTTOM_LEFT && isPart(belowBlockState, WallClockPartProperty.BASE) && isPart(leftBlockState, WallClockPartProperty.BASE) && isPart(belowLeftBlockState, WallClockPartProperty.BASE))
+        if ((part != WallClockPartProperty.BOTTOM_LEFT && isPart(facing, belowBlockState, WallClockPartProperty.BASE) && isPart(facing, leftBlockState, WallClockPartProperty.BASE) && isPart(facing, belowLeftBlockState, WallClockPartProperty.BASE))
                 || (isPart(facing, belowBlockState, WallClockPartProperty.BOTTOM_RIGHT) && isPart(facing, leftBlockState, WallClockPartProperty.BASE))
                 || (isPart(facing, leftBlockState, WallClockPartProperty.TOP_LEFT) && isPart(facing, belowBlockState, WallClockPartProperty.BASE))
                 || (isPart(facing, belowBlockState, WallClockPartProperty.BOTTOM_RIGHT) && isPart(facing, leftBlockState, WallClockPartProperty.TOP_LEFT))) {
