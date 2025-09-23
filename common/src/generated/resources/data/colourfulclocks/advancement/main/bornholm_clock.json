@@ -30,16 +30,6 @@
         ]
       },
       "trigger": "minecraft:inventory_changed"
-    },
-    "has_mantel_clock": {
-      "conditions": {
-        "items": [
-          {
-            "items": "#colourfulclocks:mantel_clock"
-          }
-        ]
-      },
-      "trigger": "minecraft:inventory_changed"
     }
   },
   "display": {
@@ -59,8 +49,7 @@
     [
       "has_bornholm_base",
       "has_bornholm_trunk",
-      "has_bornholm_dial",
-      "has_mantel_clock"
+      "has_bornholm_dial"
     ]
   ],
   "sends_telemetry_event": true

@@ -50,7 +50,6 @@ public class AdvancementGenerator extends FabricAdvancementProvider {
                 .addCriterion("has_bornholm_base", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(ColourfulClocksTags.BORNHOLM_BASE)))
                 .addCriterion("has_bornholm_trunk", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(ColourfulClocksTags.BORNHOLM_TRUNK)))
                 .addCriterion("has_bornholm_dial", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(ColourfulClocksTags.BORNHOLM_DIAL)))
-                .addCriterion("has_mantel_clock", InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(ColourfulClocksTags.MANTEL_CLOCK)))
                 .requirements(AdvancementRequirements.Strategy.OR)
                 .build(getAdvancementName("bornholm_clock"));
         consumer.accept(bornholmClock);
