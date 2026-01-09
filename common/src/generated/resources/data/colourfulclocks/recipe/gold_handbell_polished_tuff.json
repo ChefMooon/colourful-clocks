@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "gold_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:polished_tuff"
+    },
+    "B": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell_data": {
+        "handle": "polished_tuff"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:gold_handbell"
+  }
+}

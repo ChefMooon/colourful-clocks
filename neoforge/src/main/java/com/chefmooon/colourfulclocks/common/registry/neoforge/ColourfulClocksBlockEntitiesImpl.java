@@ -1,10 +1,7 @@
 package com.chefmooon.colourfulclocks.common.registry.neoforge;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
-import com.chefmooon.colourfulclocks.common.block.entity.AlarmClockBlockEntity;
-import com.chefmooon.colourfulclocks.common.block.entity.MantelClockBlockEntity;
-import com.chefmooon.colourfulclocks.common.block.entity.TallMantelClockBlockEntity;
-import com.chefmooon.colourfulclocks.common.block.entity.WallClockBlockEntity;
+import com.chefmooon.colourfulclocks.common.block.entity.*;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmMiddleBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmTopBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
@@ -18,6 +15,10 @@ import java.util.function.Supplier;
 
 public class ColourfulClocksBlockEntitiesImpl {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, ColourfulClocks.MOD_ID);
+
+    public static final Supplier<BlockEntityType<HandbellBlockEntity>> HANDBELL_VARIANTS = BLOCK_ENTITIES.register(ColourfulClocksBlockEntities.HANDBELL.getPath(),
+            () -> BlockEntityType.Builder.of(HandbellBlockEntity::new,
+                    ColourfulClocksBlocksImpl.HANDBELL_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)).build(null));
 
     public static final Supplier<BlockEntityType<BornholmMiddleBlockEntityImpl>> BORNHOLM_MIDDLE_VARIANTS = BLOCK_ENTITIES.register(ColourfulClocksBlockEntities.BORNHOLM_MIDDLE.getPath(),
             () -> BlockEntityType.Builder.of(BornholmMiddleBlockEntityImpl::new,

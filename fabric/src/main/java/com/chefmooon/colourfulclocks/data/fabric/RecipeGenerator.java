@@ -1,11 +1,13 @@
 package com.chefmooon.colourfulclocks.data.fabric;
 
 import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.types.*;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.data.builder.fabric.BornholmMiddleDataShapedRecipeBuilder;
 import com.chefmooon.colourfulclocks.data.builder.fabric.BornholmTopDataShapedRecipeBuilder;
 import com.chefmooon.colourfulclocks.data.builder.fabric.ClockDataShapedRecipeBuilder;
+import com.chefmooon.colourfulclocks.data.builder.fabric.HandbellShapedRecipeBuilder;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -27,6 +29,25 @@ public class RecipeGenerator extends FabricRecipeProvider {
     @Override
     public void buildRecipes(RecipeOutput recipeOutput) {
         RECIPE_OUTPUT = recipeOutput;
+
+        buildHandbellRecipe(ColourfulClocksItemsImpl.IRON_HANDBELL.get(), HandbellTypes.IRON);
+        buildHandbellRecipe(ColourfulClocksItemsImpl.COPPER_HANDBELL.get(), HandbellTypes.COPPER);
+        buildHandbellRecipe(ColourfulClocksItemsImpl.GOLD_HANDBELL.get(), HandbellTypes.GOLD);
+        buildHandbellRecipe(ColourfulClocksItemsImpl.DIAMOND_HANDBELL.get(), HandbellTypes.DIAMOND);
+
+        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                Ingredient.of(ColourfulClocksItemsImpl.DIAMOND_HANDBELL.get()),
+                        Ingredient.of(Items.NETHERITE_INGOT),
+                        RecipeCategory.DECORATIONS,
+                        ColourfulClocksItemsImpl.NETHERITE_HANDBELL.get())
+                .unlocks(RecipeProvider.getHasName(ColourfulClocksItemsImpl.DIAMOND_HANDBELL.get()), RecipeProvider.has(ColourfulClocksItemsImpl.DIAMOND_HANDBELL.get()))
+                .save(recipeOutput, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.NETHERITE_HANDBELL.get()) + "_smithing");
+
+        buildHandbellRecipe(ColourfulClocksItemsImpl.QUARTZ_HANDBELL.get(), HandbellTypes.QUARTZ);
+        buildHandbellRecipe(ColourfulClocksItemsImpl.AMETHYST_HANDBELL.get(), HandbellTypes.AMETHYST);
+        buildHandbellRecipe(ColourfulClocksItemsImpl.LAPIS_LAZULI_HANDBELL.get(), HandbellTypes.LAPIS_LAZULI);
+        buildHandbellRecipe(ColourfulClocksItemsImpl.REDSTONE_HANDBELL.get(), HandbellTypes.REDSTONE);
+        buildHandbellRecipe(ColourfulClocksItemsImpl.EMERALD_HANDBELL.get(), HandbellTypes.EMERALD);
 
         buildPocketWatchRecipe(ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get(), PocketWatchTypes.IRON, recipeOutput);
         buildPocketWatchRecipe(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get(), PocketWatchTypes.COPPER, recipeOutput);
@@ -72,6 +93,20 @@ public class RecipeGenerator extends FabricRecipeProvider {
         buildWaxedCopperItemRecipes();
         buildWallClockRecipes();
         buildAlarmClockRecipes();
+    }
+
+    private static void buildHandbellRecipe(ItemLike item, HandbellTypes handbellTypes) {
+        for (HandbellHandleTypes handleType : HandbellHandleTypes.values()) {
+            HandbellShapedRecipeBuilder.shaped(RecipeCategory.MISC, item)
+                    .pattern("A")
+                    .pattern("B")
+                    .define('A', handleType.getCraftingIngredient())
+                    .define('B', handbellTypes.getCraftingIngredient())
+                    .group(item.asItem().getDescriptionId().replace("block.colourfulclocks.", ""))
+                    .setData(new HandbellComponent(handleType))
+                    .unlockedBy(RecipeProvider.getHasName(handbellTypes.getCraftingIngredient()), RecipeProvider.has(handbellTypes.getCraftingIngredient()))
+                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(item) + "_" + handleType.getSerializedName());
+        }
     }
 
     private static void buildPocketWatchRecipe(ItemLike item, PocketWatchTypes pocketWatchTypes, RecipeOutput recipeOutput) {

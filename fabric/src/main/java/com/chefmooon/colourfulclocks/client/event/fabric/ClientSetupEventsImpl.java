@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
 import com.chefmooon.colourfulclocks.client.renderer.fabric.*;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
@@ -28,6 +29,7 @@ public class ClientSetupEventsImpl {
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.TALL_MANTEL_CLOCK_VARIANTS, TallMantelClockBlockEntityRendererImpl::new);
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.WALL_CLOCK_VARIANTS, WallClockBlockEntityRendererImpl::new);
         BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.ALARM_CLOCK_VARIANTS, AlarmClockBlockEntityRendererImpl::new);
+        BlockEntityRenderers.register(ColourfulClocksBlockEntitiesImpl.HANDBELL_VARIANTS, HandbellBlockEntityRendererImpl::new);
 
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 ColourfulClocksBlocksImpl.BORNHOLM_TOP_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
@@ -46,6 +48,9 @@ public class ClientSetupEventsImpl {
         );
         BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
                 ColourfulClocksBlocksImpl.ALARM_CLOCK_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
+        );
+        BlockRenderLayerMap.INSTANCE.putBlocks(RenderType.cutout(),
+                ColourfulClocksBlocksImpl.HANDBELL_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new)
         );
     }
 
@@ -82,6 +87,10 @@ public class ClientSetupEventsImpl {
         for (BornholmDoorTypes doorTypes : BornholmDoorTypes.values()) {
             if (doorTypes == BornholmDoorTypes.BASE) continue; // Skip empty door type
             ResourceLocation location = TextUtil.res(ColourfulClocksModels.BORNHOLM_DOOR_PATH.formatted(doorTypes.getName()));
+            consumer.accept(location);
+        }
+        for (HandbellTypes handbellTypes : HandbellTypes.values()) {
+            ResourceLocation location = TextUtil.res(ColourfulClocksModels.HANDBELL_PATH.formatted(handbellTypes.getSerializedName()));
             consumer.accept(location);
         }
     }

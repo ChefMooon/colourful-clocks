@@ -1,8 +1,10 @@
 package com.chefmooon.colourfulclocks.data.fabric;
 
+import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.HandbellHandleTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTemplates;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTextureSlots;
@@ -23,6 +25,26 @@ public class ItemModelGenerator {
     private static ItemModelGenerators GENERATOR;
     public static void generateItemModels(ItemModelGenerators itemModelGenerators) {
         GENERATOR = itemModelGenerators;
+
+        generateHandbellItem(ColourfulClocksItemsImpl.IRON_HANDBELL.get());
+        generateHandbellItem(ColourfulClocksItemsImpl.COPPER_HANDBELL.get());
+        generateHandbellItem(ColourfulClocksItemsImpl.EXPOSED_COPPER_HANDBELL.get());
+        generateHandbellItem(ColourfulClocksItemsImpl.WEATHERED_COPPER_HANDBELL.get());
+        generateHandbellItem(ColourfulClocksItemsImpl.OXIDIZED_COPPER_HANDBELL.get());
+
+        generateWaxedHandbellItem(ColourfulClocksItemsImpl.WAXED_COPPER_HANDBELL.get());
+        generateWaxedHandbellItem(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_HANDBELL.get());
+        generateWaxedHandbellItem(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_HANDBELL.get());
+        generateWaxedHandbellItem(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_HANDBELL.get());
+
+        generateHandbellItem(ColourfulClocksItemsImpl.GOLD_HANDBELL.get());
+        generateHandbellItem(ColourfulClocksItemsImpl.DIAMOND_HANDBELL.get());
+        generateHandbellItem(ColourfulClocksItemsImpl.NETHERITE_HANDBELL.get());
+        generateHandbellItem(ColourfulClocksItemsImpl.QUARTZ_HANDBELL.get());
+        generateHandbellItem(ColourfulClocksItemsImpl.AMETHYST_HANDBELL.get());
+        generateHandbellItem(ColourfulClocksItemsImpl.LAPIS_LAZULI_HANDBELL.get());
+        generateHandbellItem(ColourfulClocksItemsImpl.REDSTONE_HANDBELL.get());
+        generateHandbellItem(ColourfulClocksItemsImpl.EMERALD_HANDBELL.get());
 
         generatePocketWatchItem(ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get(), itemModelGenerators);
         generatePocketWatchItem(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get(), itemModelGenerators);
@@ -283,6 +305,52 @@ public class ItemModelGenerator {
     private static void generateWaxedPendulumItem(Item item, ItemModelGenerators itemModelGenerators) {
         ColourfulClocksTemplates.PENDULUM_BLOCK.create(ModelLocationUtils.getModelLocation(item),
                 TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", ""))), itemModelGenerators.output);
+    }
+
+    private static void generateWaxedHandbellItem(Item item) {
+        for (HandbellHandleTypes handbellHandleType : HandbellHandleTypes.values()) {
+            if (handbellHandleType == HandbellHandleTypes.OAK) continue;
+            ResourceLocation handleTexture = ModelLocationUtils.getModelLocation(handbellHandleType.getBlock());
+            ColourfulClocksTemplates.TEMPLATE_HANDBELL_ITEM.create(ModelLocationUtils.getModelLocation(item, "_" + handbellHandleType.getSerializedName()),
+                    TextureMapping.singleSlot(ColourfulClocksTextureSlots.HANDBELL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", "")))
+                            .put(ColourfulClocksTextureSlots.HANDLE, handleTexture),
+                    GENERATOR.output);
+        }
+        TextureMapping mapping = TextureMapping.singleSlot(ColourfulClocksTextureSlots.HANDBELL, TextUtil.res(ModelLocationUtils.getModelLocation(item).getPath().replace("waxed_", "")))
+                .put(ColourfulClocksTextureSlots.HANDLE, ModelLocationUtils.getModelLocation(HandbellComponent.getDefaultValue().getMaterialType().getBlock()));
+        ColourfulClocksTemplates.TEMPLATE_HANDBELL_ITEM.create(ModelLocationUtils.getModelLocation(item), mapping, GENERATOR.output, ItemModelGenerator::generateHandbellItemJson);
+    }
+
+    private static void generateHandbellItem(Item item) {
+        for (HandbellHandleTypes handbellHandleType : HandbellHandleTypes.values()) {
+            if (handbellHandleType == HandbellHandleTypes.OAK) continue;
+            ResourceLocation handleTexture = ModelLocationUtils.getModelLocation(handbellHandleType.getBlock());
+            ColourfulClocksTemplates.TEMPLATE_HANDBELL_ITEM.create(ModelLocationUtils.getModelLocation(item, "_" + handbellHandleType.getSerializedName()),
+                    TextureMapping.singleSlot(ColourfulClocksTextureSlots.HANDBELL, ModelLocationUtils.getModelLocation(item))
+                            .put(ColourfulClocksTextureSlots.HANDLE, handleTexture),
+                    GENERATOR.output);
+        }
+        TextureMapping mapping = TextureMapping.singleSlot(ColourfulClocksTextureSlots.HANDBELL, ModelLocationUtils.getModelLocation(item))
+                .put(ColourfulClocksTextureSlots.HANDLE, ModelLocationUtils.getModelLocation(HandbellComponent.getDefaultValue().getMaterialType().getBlock()));
+        ColourfulClocksTemplates.TEMPLATE_HANDBELL_ITEM.create(ModelLocationUtils.getModelLocation(item), mapping, GENERATOR.output, ItemModelGenerator::generateHandbellItemJson);
+    }
+
+    private static JsonObject generateHandbellItemJson(ResourceLocation modelLocation, Map<TextureSlot, ResourceLocation> modelGetter) {
+        JsonObject jsonObject = ColourfulClocksTemplates.TEMPLATE_HANDBELL_ITEM.createBaseTemplate(modelLocation, modelGetter);
+        JsonArray jsonArray = new JsonArray();
+
+        for (HandbellHandleTypes handleType : HandbellHandleTypes.values()) {
+            if (handleType == HandbellHandleTypes.OAK) continue;
+            JsonObject modelObject = new JsonObject();
+            JsonObject predicateObject = new JsonObject();
+            predicateObject.addProperty(TextUtil.res("handle").toString(), handleType.getId() / 100.0F);
+            modelObject.add("predicate", predicateObject);
+            modelObject.addProperty("model", modelLocation.withSuffix("_" + handleType.getSerializedName()).toString());
+            jsonArray.add(modelObject);
+        }
+
+        jsonObject.add("overrides", jsonArray);
+        return jsonObject;
     }
 
     private static void generatePocketWatchItem(Item item, ItemModelGenerators itemModelGenerators) {

@@ -1,0 +1,2764 @@
+{
+  "variants": {
+    "attachment=ceiling,facing=down,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=north,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_ceiling"
+    },
+    "attachment=ceiling,facing=south,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=up,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_ceiling",
+      "y": 270
+    },
+    "attachment=double_wall,facing=down,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=north,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_double_wall"
+    },
+    "attachment=double_wall,facing=south,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=up,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_double_wall",
+      "y": 270
+    },
+    "attachment=floor,facing=down,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=east,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=north,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_floor"
+    },
+    "attachment=floor,facing=north,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_floor"
+    },
+    "attachment=floor,facing=north,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_floor"
+    },
+    "attachment=floor,facing=north,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_floor"
+    },
+    "attachment=floor,facing=north,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_floor"
+    },
+    "attachment=floor,facing=north,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_floor"
+    },
+    "attachment=floor,facing=north,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_floor"
+    },
+    "attachment=floor,facing=north,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_floor"
+    },
+    "attachment=floor,facing=north,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_floor"
+    },
+    "attachment=floor,facing=north,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_floor"
+    },
+    "attachment=floor,facing=north,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_floor"
+    },
+    "attachment=floor,facing=north,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_floor"
+    },
+    "attachment=floor,facing=north,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_floor"
+    },
+    "attachment=floor,facing=north,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_floor"
+    },
+    "attachment=floor,facing=north,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_floor"
+    },
+    "attachment=floor,facing=north,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_floor"
+    },
+    "attachment=floor,facing=north,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_floor"
+    },
+    "attachment=floor,facing=north,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_floor"
+    },
+    "attachment=floor,facing=north,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_floor"
+    },
+    "attachment=floor,facing=north,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_floor"
+    },
+    "attachment=floor,facing=north,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_floor"
+    },
+    "attachment=floor,facing=north,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_floor"
+    },
+    "attachment=floor,facing=north,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_floor"
+    },
+    "attachment=floor,facing=north,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_floor"
+    },
+    "attachment=floor,facing=north,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_floor"
+    },
+    "attachment=floor,facing=north,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_floor"
+    },
+    "attachment=floor,facing=north,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_floor"
+    },
+    "attachment=floor,facing=north,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_floor"
+    },
+    "attachment=floor,facing=north,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_floor"
+    },
+    "attachment=floor,facing=south,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=up,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=west,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_floor",
+      "y": 270
+    },
+    "attachment=single_wall,facing=down,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=north,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_single_wall"
+    },
+    "attachment=single_wall,facing=south,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=up,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=acacia": {
+      "model": "colourfulclocks:block/quartz_handbell_acacia_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=bamboo": {
+      "model": "colourfulclocks:block/quartz_handbell_bamboo_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=birch": {
+      "model": "colourfulclocks:block/quartz_handbell_birch_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_bricks_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=cherry": {
+      "model": "colourfulclocks:block/quartz_handbell_cherry_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=crimson": {
+      "model": "colourfulclocks:block/quartz_handbell_crimson_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=cut_red_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_red_sandstone_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=cut_sandstone": {
+      "model": "colourfulclocks:block/quartz_handbell_cut_sandstone_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=dark_oak": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_oak_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=dark_prismarine": {
+      "model": "colourfulclocks:block/quartz_handbell_dark_prismarine_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=deepslate_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_deepslate_bricks_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=jungle": {
+      "model": "colourfulclocks:block/quartz_handbell_jungle_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=mangrove": {
+      "model": "colourfulclocks:block/quartz_handbell_mangrove_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=mossy_stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mossy_stone_bricks_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=mud_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_mud_bricks_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_nether_bricks_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=oak": {
+      "model": "colourfulclocks:block/quartz_handbell_oak_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=polished_andesite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_andesite_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=polished_blackstone": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=polished_blackstone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_blackstone_bricks_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=polished_deepslate": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_deepslate_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=polished_diorite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_diorite_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=polished_granite": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_granite_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=polished_tuff": {
+      "model": "colourfulclocks:block/quartz_handbell_polished_tuff_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=prismarine_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_prismarine_bricks_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=red_nether_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_red_nether_bricks_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=spruce": {
+      "model": "colourfulclocks:block/quartz_handbell_spruce_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stone_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_stone_bricks_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=tuff_bricks": {
+      "model": "colourfulclocks:block/quartz_handbell_tuff_bricks_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=warped": {
+      "model": "colourfulclocks:block/quartz_handbell_warped_single_wall",
+      "y": 270
+    }
+  }
+}

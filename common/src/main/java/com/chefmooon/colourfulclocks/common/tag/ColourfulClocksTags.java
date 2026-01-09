@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.Block;
 
 public class ColourfulClocksTags {
 
+    public static final TagKey<Item> ITEM_HANDBELL = getItemTagKey("handbell");
     public static final TagKey<Item> CLOCK_PENDULUM = getItemTagKey("clock_pendulum");
     public static final TagKey<Item> CLOCK_DOOR = getItemTagKey("clock_door");
     public static final TagKey<Item> CLOCK_TOP_GLASS = getItemTagKey("clock_dial_glass");

@@ -1,11 +1,9 @@
 package com.chefmooon.colourfulclocks.common.registry.neoforge;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
-import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
-import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
-import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
+import com.chefmooon.colourfulclocks.common.data.*;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.item.*;
@@ -37,6 +35,82 @@ public class ColourfulClocksItemsImpl {
     public static final HashMap<ClockTypes, Supplier<Item>> TALL_MANTEL_CLOCK_VARIANTS = new HashMap<>();
     public static final HashMap<ClockTypes, Supplier<Item>> WALL_CLOCK_VARIANTS = new HashMap<>();
     public static final HashMap<ClockTypes, Supplier<Item>> ALARM_CLOCK_VARIANTS = new HashMap<>();
+
+    public static final Supplier<Item> IRON_HANDBELL = registerItemWithTab(ColourfulClocksItems.IRON_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.IRON_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.IRON));
+    public static final Supplier<Item> COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.COPPER_HANDBELL,
+            () -> new WeatheringCopperHandbellBlockItem(ColourfulClocksBlocksImpl.COPPER_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue())
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_WEATHERING, 0), HandbellTypes.COPPER));
+    public static final Supplier<Item> EXPOSED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.EXPOSED_COPPER_HANDBELL,
+            () -> new WeatheringCopperHandbellBlockItem(ColourfulClocksBlocksImpl.EXPOSED_COPPER_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue())
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_WEATHERING, 0), HandbellTypes.COPPER));
+    public static final Supplier<Item> WEATHERED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.WEATHERED_COPPER_HANDBELL,
+            () -> new WeatheringCopperHandbellBlockItem(ColourfulClocksBlocksImpl.WEATHERED_COPPER_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue())
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_WEATHERING, 0), HandbellTypes.COPPER));
+    public static final Supplier<Item> OXIDIZED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.OXIDIZED_COPPER_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.OXIDIZED_COPPER_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.COPPER));
+    public static final Supplier<Item> WAXED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.WAXED_COPPER_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.WAXED_COPPER_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.COPPER));
+    public static final Supplier<Item> WAXED_EXPOSED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.WAXED_EXPOSED_COPPER_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.WAXED_EXPOSED_COPPER_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.COPPER));
+    public static final Supplier<Item> WAXED_WEATHERED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.WAXED_WEATHERED_COPPER_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.WAXED_WEATHERED_COPPER_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.COPPER));
+    public static final Supplier<Item> WAXED_OXIDIZED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.WAXED_OXIDIZED_COPPER_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.COPPER));
+    public static final Supplier<Item> GOLD_HANDBELL = registerItemWithTab(ColourfulClocksItems.GOLD_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.GOLD_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.GOLD));
+    public static final Supplier<Item> DIAMOND_HANDBELL = registerItemWithTab(ColourfulClocksItems.DIAMOND_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.DIAMOND_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.DIAMOND));
+    public static final Supplier<Item> NETHERITE_HANDBELL = registerItemWithTab(ColourfulClocksItems.NETHERITE_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.NETHERITE_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.NETHERITE));
+    public static final Supplier<Item> QUARTZ_HANDBELL = registerItemWithTab(ColourfulClocksItems.QUARTZ_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.QUARTZ_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.QUARTZ));
+    public static final Supplier<Item> AMETHYST_HANDBELL = registerItemWithTab(ColourfulClocksItems.AMETHYST_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.AMETHYST_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.AMETHYST));
+    public static final Supplier<Item> LAPIS_LAZULI_HANDBELL = registerItemWithTab(ColourfulClocksItems.LAPIS_LAZULI_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.LAPIS_LAZULI_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.LAPIS_LAZULI));
+    public static final Supplier<Item> REDSTONE_HANDBELL = registerItemWithTab(ColourfulClocksItems.REDSTONE_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.REDSTONE_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.REDSTONE));
+    public static final Supplier<Item> EMERALD_HANDBELL = registerItemWithTab(ColourfulClocksItems.EMERALD_HANDBELL,
+            () -> new HandbellBlockItem(ColourfulClocksBlocksImpl.EMERALD_HANDBELL.get(), basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()), HandbellTypes.EMERALD));
+
+    public static final HashMap<HandbellTypes, Supplier<Item>> HANDBELL_VARIANTS = new HashMap<>();
+    static {
+        HANDBELL_VARIANTS.put(HandbellTypes.IRON, IRON_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.COPPER, COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.EXPOSED_COPPER, EXPOSED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.WEATHERED_COPPER, WEATHERED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.OXIDIZED_COPPER, OXIDIZED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.WAXED_COPPER, WAXED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.WAXED_EXPOSED_COPPER, WAXED_EXPOSED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.WAXED_WEATHERED_COPPER, WAXED_WEATHERED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.WAXED_OXIDIZED_COPPER, WAXED_OXIDIZED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.GOLD, GOLD_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.DIAMOND, DIAMOND_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.NETHERITE, NETHERITE_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.QUARTZ, QUARTZ_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.AMETHYST, AMETHYST_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.LAPIS_LAZULI, LAPIS_LAZULI_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.REDSTONE, REDSTONE_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.EMERALD, EMERALD_HANDBELL);
+    }
 
     public static final Supplier<Item> IRON_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.IRON_POCKET_WATCH,
             () -> new PocketWatchItem(PocketWatchTypes.IRON, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));

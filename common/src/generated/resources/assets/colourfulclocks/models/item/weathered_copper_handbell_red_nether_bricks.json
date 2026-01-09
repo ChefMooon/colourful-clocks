@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:item/template_handbell_item",
+  "textures": {
+    "handbell": "colourfulclocks:item/weathered_copper_handbell",
+    "handle": "minecraft:block/red_nether_bricks"
+  }
+}

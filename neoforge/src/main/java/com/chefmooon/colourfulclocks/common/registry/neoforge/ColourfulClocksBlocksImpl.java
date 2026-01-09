@@ -1,12 +1,17 @@
 package com.chefmooon.colourfulclocks.common.registry.neoforge;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
+import com.chefmooon.colourfulclocks.common.block.HandbellBlock;
+import com.chefmooon.colourfulclocks.common.block.WeatheringCopperHandbellBlock;
 import com.chefmooon.colourfulclocks.common.block.neoforge.*;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.WeatheringCopper;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -23,6 +28,62 @@ public class ColourfulClocksBlocksImpl {
     public static final HashMap<ClockTypes, Supplier<Block>> TALL_MANTEL_CLOCK_VARIANTS = registerTallMantelClockVariants(ColourfulClocksBlocks.TALL_MANTEL_CLOCK);
     public static final HashMap<ClockTypes, Supplier<Block>> WALL_CLOCK_VARIANTS = registerWallClockVariants(ColourfulClocksBlocks.WALL_CLOCK);
     public static final HashMap<ClockTypes, Supplier<Block>> ALARM_CLOCK_VARIANTS = registerAlarmClockVariants(ColourfulClocksBlocks.ALARM_CLOCK);
+
+    public static final Supplier<Block> IRON_HANDBELL = registerBlock(ColourfulClocksBlocks.IRON_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.IRON, ColourfulClocksBlocks.getHandbellProperties(Blocks.IRON_BLOCK)));
+    public static final Supplier<Block> COPPER_HANDBELL = registerBlock(ColourfulClocksBlocks.COPPER_HANDBELL,
+            () -> new WeatheringCopperHandbellBlock(WeatheringCopper.WeatherState.UNAFFECTED, HandbellTypes.COPPER, ColourfulClocksBlocks.getHandbellProperties(Blocks.COPPER_BLOCK)));
+    public static final Supplier<Block> EXPOSED_COPPER_HANDBELL = registerBlock(ColourfulClocksBlocks.EXPOSED_COPPER_HANDBELL,
+            () -> new WeatheringCopperHandbellBlock(WeatheringCopper.WeatherState.EXPOSED, HandbellTypes.COPPER, ColourfulClocksBlocks.getHandbellProperties(Blocks.EXPOSED_COPPER)));
+    public static final Supplier<Block> WEATHERED_COPPER_HANDBELL = registerBlock(ColourfulClocksBlocks.WEATHERED_COPPER_HANDBELL,
+            () -> new WeatheringCopperHandbellBlock(WeatheringCopper.WeatherState.WEATHERED, HandbellTypes.COPPER, ColourfulClocksBlocks.getHandbellProperties(Blocks.WEATHERED_COPPER)));
+    public static final Supplier<Block> OXIDIZED_COPPER_HANDBELL = registerBlock(ColourfulClocksBlocks.OXIDIZED_COPPER_HANDBELL,
+            () -> new WeatheringCopperHandbellBlock(WeatheringCopper.WeatherState.OXIDIZED, HandbellTypes.COPPER, ColourfulClocksBlocks.getHandbellProperties(Blocks.OXIDIZED_COPPER)));
+    public static final Supplier<Block> WAXED_COPPER_HANDBELL = registerBlock(ColourfulClocksBlocks.WAXED_COPPER_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.COPPER, ColourfulClocksBlocks.getHandbellProperties(Blocks.WAXED_COPPER_BLOCK)));
+    public static final Supplier<Block> WAXED_EXPOSED_COPPER_HANDBELL = registerBlock(ColourfulClocksBlocks.WAXED_EXPOSED_COPPER_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.COPPER, ColourfulClocksBlocks.getHandbellProperties(Blocks.WAXED_EXPOSED_COPPER)));
+    public static final Supplier<Block> WAXED_WEATHERED_COPPER_HANDBELL = registerBlock(ColourfulClocksBlocks.WAXED_WEATHERED_COPPER_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.COPPER, ColourfulClocksBlocks.getHandbellProperties(Blocks.WAXED_WEATHERED_COPPER)));
+    public static final Supplier<Block> WAXED_OXIDIZED_COPPER_HANDBELL = registerBlock(ColourfulClocksBlocks.WAXED_OXIDIZED_COPPER_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.COPPER, ColourfulClocksBlocks.getHandbellProperties(Blocks.WAXED_OXIDIZED_COPPER)));
+    public static final Supplier<Block> GOLD_HANDBELL = registerBlock(ColourfulClocksBlocks.GOLD_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.GOLD, ColourfulClocksBlocks.getHandbellProperties(Blocks.GOLD_BLOCK)));
+    public static final Supplier<Block> DIAMOND_HANDBELL = registerBlock(ColourfulClocksBlocks.DIAMOND_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.DIAMOND, ColourfulClocksBlocks.getHandbellProperties(Blocks.DIAMOND_BLOCK)));
+    public static final Supplier<Block> NETHERITE_HANDBELL = registerBlock(ColourfulClocksBlocks.NETHERITE_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.NETHERITE, ColourfulClocksBlocks.getHandbellProperties(Blocks.NETHERITE_BLOCK)));
+    public static final Supplier<Block> QUARTZ_HANDBELL = registerBlock(ColourfulClocksBlocks.QUARTZ_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.QUARTZ, ColourfulClocksBlocks.getHandbellProperties(Blocks.QUARTZ_BLOCK)));
+    public static final Supplier<Block> AMETHYST_HANDBELL = registerBlock(ColourfulClocksBlocks.AMETHYST_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.AMETHYST, ColourfulClocksBlocks.getHandbellProperties(Blocks.AMETHYST_BLOCK)));
+    public static final Supplier<Block> LAPIS_LAZULI_HANDBELL = registerBlock(ColourfulClocksBlocks.LAPIS_LAZULI_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.LAPIS_LAZULI, ColourfulClocksBlocks.getHandbellProperties(Blocks.LAPIS_BLOCK)));
+    public static final Supplier<Block> REDSTONE_HANDBELL = registerBlock(ColourfulClocksBlocks.REDSTONE_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.REDSTONE, ColourfulClocksBlocks.getHandbellProperties(Blocks.REDSTONE_BLOCK)));
+    public static final Supplier<Block> EMERALD_HANDBELL = registerBlock(ColourfulClocksBlocks.EMERALD_HANDBELL,
+            () -> new HandbellBlock(HandbellTypes.EMERALD, ColourfulClocksBlocks.getHandbellProperties(Blocks.EMERALD_BLOCK)));
+
+    public static final HashMap<HandbellTypes, Supplier<Block>> HANDBELL_VARIANTS = new HashMap<>();
+    static {
+        HANDBELL_VARIANTS.put(HandbellTypes.IRON, IRON_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.COPPER, COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.EXPOSED_COPPER, EXPOSED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.WEATHERED_COPPER, WEATHERED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.OXIDIZED_COPPER, OXIDIZED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.WAXED_COPPER, WAXED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.WAXED_EXPOSED_COPPER, WAXED_EXPOSED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.WAXED_WEATHERED_COPPER, WAXED_WEATHERED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.WAXED_OXIDIZED_COPPER, WAXED_OXIDIZED_COPPER_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.GOLD, GOLD_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.DIAMOND, DIAMOND_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.NETHERITE, NETHERITE_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.QUARTZ, QUARTZ_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.AMETHYST, AMETHYST_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.LAPIS_LAZULI, LAPIS_LAZULI_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.REDSTONE, REDSTONE_HANDBELL);
+        HANDBELL_VARIANTS.put(HandbellTypes.EMERALD, EMERALD_HANDBELL);
+    }
 
     private static HashMap<ClockTypes, Supplier<Block>> registerBaseVariantsAll(ResourceLocation baseLocation) {
         HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();

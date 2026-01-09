@@ -2,9 +2,7 @@ package com.chefmooon.colourfulclocks.data.fabric;
 
 import com.chefmooon.colourfulclocks.common.block.*;
 import com.chefmooon.colourfulclocks.common.block.properties.WallClockPartProperty;
-import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
-import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.*;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTemplates;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTextureSlots;
@@ -21,6 +19,7 @@ import net.minecraft.data.models.model.TextureSlot;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BellAttachType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 
 import java.util.AbstractMap;
@@ -37,10 +36,12 @@ public class BlockModelGenerator {
         registerTallMantelClockBlockAll(blockModelGenerators);
         registerWallClockBlockAll(blockModelGenerators);
         registerAlarmClockBlockAll(blockModelGenerators);
+        registerHandbellAll();
 
         generateBornholmTopDialGlass();
         generateBornholmDoorTypes();
         generateSmallGlassDial();
+        generateHandbellTypes();
     }
 
     private static void generateBornholmTopDialGlass() {
@@ -62,6 +63,16 @@ public class BlockModelGenerator {
         for (BornholmTopGlassTypes type : BornholmTopGlassTypes.values()) {
             ColourfulClocksTemplates.GLASS_DIAL_SMALL.create(TextUtil.res("block/" + type.getName() + "_dial_small"),
                     TextureMapping.singleSlot(TextureSlot.ALL, TextUtil.res("block/" + type.getName() + "_dial_small")), GENERATOR.modelOutput);
+        }
+    }
+
+    private static void generateHandbellTypes() {
+        for (HandbellTypes type : HandbellTypes.values()) {
+            ResourceLocation textureLocation = type.getSerializedName().contains("waxed_") ?
+                    TextUtil.res("item/" + type.getSerializedName().replace("waxed_", "") + "_handbell") :
+                    TextUtil.res("item/" + type.getSerializedName() + "_handbell");
+            ColourfulClocksTemplates.TEMPLATE_HANDBELL.create(TextUtil.res("block/" + type.getSerializedName() + "_handbell"),
+                    TextureMapping.singleSlot(TextureSlot.PARTICLE, textureLocation).put(ColourfulClocksTextureSlots.HANDBELL, textureLocation), GENERATOR.modelOutput);
         }
     }
 
@@ -466,8 +477,190 @@ public class BlockModelGenerator {
         });
     }
 
+    private static void registerHandbellAll() {
+        ColourfulClocksBlocksImpl.HANDBELL_VARIANTS.forEach((entry, blockSupplier) -> {
+            Block block = blockSupplier.get();
+            ResourceLocation blockLocation = ModelLocationUtils.getModelLocation(block);
+
+            HashMap<HandbellHandleTypes, HashMap<BellAttachType, ResourceLocation>> MODELS = new HashMap<>();
+            for (HandbellHandleTypes handbellHandleTypes : HandbellHandleTypes.values()) {
+                TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.PARTICLE, ModelLocationUtils.getModelLocation(handbellHandleTypes.getBlock()))
+                        .put(ColourfulClocksTextureSlots.HANDLE, ModelLocationUtils.getModelLocation(handbellHandleTypes.getBlock()));
+
+                ResourceLocation HANDBELL_CEILING = ColourfulClocksTemplates.TEMPLATE_HANDBELL_CEILING.create(blockLocation.withSuffix("_" + handbellHandleTypes.getSerializedName() + "_ceiling"), mapping, GENERATOR.modelOutput);
+                ResourceLocation HANDBELL_FLOOR = ColourfulClocksTemplates.TEMPLATE_HANDBELL_FLOOR.create(blockLocation.withSuffix("_" + handbellHandleTypes.getSerializedName() + "_floor"), mapping, GENERATOR.modelOutput);
+                ResourceLocation HANDBELL_SINGLE_WALL = ColourfulClocksTemplates.TEMPLATE_HANDBELL_SINGLE_WALL.create(blockLocation.withSuffix("_" + handbellHandleTypes.getSerializedName() + "_single_wall"), mapping, GENERATOR.modelOutput);
+                ResourceLocation HANDBELL_DOUBLE_WALL = ColourfulClocksTemplates.TEMPLATE_HANDBELL_DOUBLE_WALL.create(blockLocation.withSuffix("_" + handbellHandleTypes.getSerializedName() + "_double_wall"), mapping, GENERATOR.modelOutput);
+                HashMap<BellAttachType, ResourceLocation> ATTACH_MODELS = new HashMap<>();
+                ATTACH_MODELS.put(BellAttachType.CEILING, HANDBELL_CEILING);
+                ATTACH_MODELS.put(BellAttachType.FLOOR, HANDBELL_FLOOR);
+                ATTACH_MODELS.put(BellAttachType.SINGLE_WALL, HANDBELL_SINGLE_WALL);
+                ATTACH_MODELS.put(BellAttachType.DOUBLE_WALL, HANDBELL_DOUBLE_WALL);
+                MODELS.put(handbellHandleTypes, ATTACH_MODELS);
+            }
+
+            GENERATOR.blockStateOutput.accept(MultiVariantGenerator.multiVariant(block,
+                            Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.OAK).get(BellAttachType.CEILING)))
+                    .with(BlockModelGenerators.createFacingDispatch())
+                    .with(PropertyDispatch.properties(HandbellBlock.HANDLE_TYPE, HandbellBlock.ATTACHMENT)
+                            .select(HandbellHandleTypes.OAK, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.OAK).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.OAK, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.OAK).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.OAK, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.OAK).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.OAK, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.OAK).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.SPRUCE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.SPRUCE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.SPRUCE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.SPRUCE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.SPRUCE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.SPRUCE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.SPRUCE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.SPRUCE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.BIRCH, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BIRCH).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.BIRCH, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BIRCH).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.BIRCH, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BIRCH).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.BIRCH, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BIRCH).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.JUNGLE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.JUNGLE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.JUNGLE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.JUNGLE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.JUNGLE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.JUNGLE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.JUNGLE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.JUNGLE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.ACACIA, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.ACACIA).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.ACACIA, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.ACACIA).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.ACACIA, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.ACACIA).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.ACACIA, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.ACACIA).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.DARK_OAK, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DARK_OAK).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.DARK_OAK, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DARK_OAK).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.DARK_OAK, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DARK_OAK).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.DARK_OAK, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DARK_OAK).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.MANGROVE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MANGROVE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.MANGROVE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MANGROVE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.MANGROVE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MANGROVE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.MANGROVE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MANGROVE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.CHERRY, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CHERRY).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.CHERRY, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CHERRY).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.CHERRY, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CHERRY).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.CHERRY, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CHERRY).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.BAMBOO, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BAMBOO).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.BAMBOO, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BAMBOO).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.BAMBOO, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BAMBOO).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.BAMBOO, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BAMBOO).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.CRIMSON, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CRIMSON).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.CRIMSON, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CRIMSON).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.CRIMSON, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CRIMSON).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.CRIMSON, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CRIMSON).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.WARPED, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.WARPED).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.WARPED, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.WARPED).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.WARPED, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.WARPED).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.WARPED, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.WARPED).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.STONE_BRICKS, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STONE_BRICKS).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STONE_BRICKS, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STONE_BRICKS).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STONE_BRICKS, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STONE_BRICKS).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STONE_BRICKS, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STONE_BRICKS).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.MOSSY_STONE_BRICKS, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MOSSY_STONE_BRICKS).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.MOSSY_STONE_BRICKS, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MOSSY_STONE_BRICKS).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.MOSSY_STONE_BRICKS, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MOSSY_STONE_BRICKS).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.MOSSY_STONE_BRICKS, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MOSSY_STONE_BRICKS).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.POLISHED_GRANITE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_GRANITE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.POLISHED_GRANITE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_GRANITE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.POLISHED_GRANITE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_GRANITE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.POLISHED_GRANITE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_GRANITE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.POLISHED_DIORITE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_DIORITE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.POLISHED_DIORITE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_DIORITE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.POLISHED_DIORITE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_DIORITE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.POLISHED_DIORITE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_DIORITE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.POLISHED_ANDESITE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_ANDESITE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.POLISHED_ANDESITE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_ANDESITE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.POLISHED_ANDESITE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_ANDESITE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.POLISHED_ANDESITE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_ANDESITE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.POLISHED_DEEPSLATE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_DEEPSLATE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.POLISHED_DEEPSLATE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_DEEPSLATE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.POLISHED_DEEPSLATE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_DEEPSLATE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.POLISHED_DEEPSLATE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_DEEPSLATE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.DEEPSLATE_BRICKS, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DEEPSLATE_BRICKS).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.DEEPSLATE_BRICKS, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DEEPSLATE_BRICKS).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.DEEPSLATE_BRICKS, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DEEPSLATE_BRICKS).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.DEEPSLATE_BRICKS, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DEEPSLATE_BRICKS).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.POLISHED_TUFF, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_TUFF).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.POLISHED_TUFF, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_TUFF).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.POLISHED_TUFF, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_TUFF).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.POLISHED_TUFF, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_TUFF).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.TUFF_BRICKS, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.TUFF_BRICKS).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.TUFF_BRICKS, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.TUFF_BRICKS).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.TUFF_BRICKS, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.TUFF_BRICKS).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.TUFF_BRICKS, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.TUFF_BRICKS).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.BRICKS, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BRICKS).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.BRICKS, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BRICKS).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.BRICKS, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BRICKS).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.BRICKS, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.BRICKS).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.MUD_BRICKS, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MUD_BRICKS).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.MUD_BRICKS, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MUD_BRICKS).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.MUD_BRICKS, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MUD_BRICKS).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.MUD_BRICKS, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.MUD_BRICKS).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.CUT_SANDSTONE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CUT_SANDSTONE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.CUT_SANDSTONE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CUT_SANDSTONE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.CUT_SANDSTONE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CUT_SANDSTONE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.CUT_SANDSTONE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CUT_SANDSTONE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.CUT_RED_SANDSTONE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CUT_RED_SANDSTONE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.CUT_RED_SANDSTONE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CUT_RED_SANDSTONE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.CUT_RED_SANDSTONE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CUT_RED_SANDSTONE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.CUT_RED_SANDSTONE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.CUT_RED_SANDSTONE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.PRISMARINE_BRICKS, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.PRISMARINE_BRICKS).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.PRISMARINE_BRICKS, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.PRISMARINE_BRICKS).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.PRISMARINE_BRICKS, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.PRISMARINE_BRICKS).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.PRISMARINE_BRICKS, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.PRISMARINE_BRICKS).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.DARK_PRISMARINE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DARK_PRISMARINE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.DARK_PRISMARINE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DARK_PRISMARINE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.DARK_PRISMARINE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DARK_PRISMARINE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.DARK_PRISMARINE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.DARK_PRISMARINE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.NETHER_BRICKS, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.NETHER_BRICKS).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.NETHER_BRICKS, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.NETHER_BRICKS).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.NETHER_BRICKS, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.NETHER_BRICKS).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.NETHER_BRICKS, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.NETHER_BRICKS).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.RED_NETHER_BRICKS, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.RED_NETHER_BRICKS).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.RED_NETHER_BRICKS, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.RED_NETHER_BRICKS).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.RED_NETHER_BRICKS, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.RED_NETHER_BRICKS).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.RED_NETHER_BRICKS, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.RED_NETHER_BRICKS).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.POLISHED_BLACKSTONE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_BLACKSTONE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.POLISHED_BLACKSTONE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_BLACKSTONE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.POLISHED_BLACKSTONE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_BLACKSTONE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.POLISHED_BLACKSTONE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_BLACKSTONE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.POLISHED_BLACKSTONE_BRICKS, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_BLACKSTONE_BRICKS).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.POLISHED_BLACKSTONE_BRICKS, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_BLACKSTONE_BRICKS).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.POLISHED_BLACKSTONE_BRICKS, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_BLACKSTONE_BRICKS).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.POLISHED_BLACKSTONE_BRICKS, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.POLISHED_BLACKSTONE_BRICKS).get(BellAttachType.DOUBLE_WALL)))
+                    )
+            );
+            GENERATOR.skipAutoItemBlock(block);
+        });
+    }
+
     public static ResourceLocation getBlockModelLocation(ClockTypes clockTypes) {
         return ModelLocationUtils.getModelLocation(clockTypes.getBlock());
+        // TODO : tidy
 //        if (clockTypes == ClockTypes.SMOOTH_SANDSTONE) { // Can be removed when final stone types are chosen
 //            return ResourceLocation.withDefaultNamespace("block/sandstone_top");
 //        } else if (clockTypes == ClockTypes.SMOOTH_RED_SANDSTONE) {
@@ -479,6 +672,7 @@ public class BlockModelGenerator {
 
     public static ResourceLocation getStrippedBlockModelLocation(ClockTypes clockTypes) {
         return ModelLocationUtils.getModelLocation(clockTypes.getStrippedBlock());
+        // TODO : tidy
 //        if (clockTypes == ClockTypes.SMOOTH_SANDSTONE) { // Can be removed when final stone types are chosen
 //            return ResourceLocation.withDefaultNamespace("block/sandstone_top");
 //        } else if (clockTypes == ClockTypes.SMOOTH_RED_SANDSTONE) {

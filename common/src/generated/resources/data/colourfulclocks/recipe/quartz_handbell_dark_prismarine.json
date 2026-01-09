@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "quartz_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:dark_prismarine"
+    },
+    "B": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell_data": {
+        "handle": "dark_prismarine"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:quartz_handbell"
+  }
+}

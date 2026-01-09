@@ -6,6 +6,7 @@ import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
 import com.chefmooon.colourfulclocks.client.renderer.neoforge.*;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksBlockEntitiesImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
@@ -33,6 +34,7 @@ public class ClientSetupEventsImpl {
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.TALL_MANTEL_CLOCK_VARIANTS.get(), TallMantelClockBlockEntityRendererImpl::new);
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.WALL_CLOCK_VARIANTS.get(), WallClockBlockEntityRendererImpl::new);
         event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.ALARM_CLOCK_VARIANTS.get(), AlarmClockBlockEntityRendererImpl::new);
+        event.registerBlockEntityRenderer(ColourfulClocksBlockEntitiesImpl.HANDBELL_VARIANTS.get(), HandbellBlockEntityRendererImpl::new);
     }
 
     @SubscribeEvent
@@ -81,6 +83,10 @@ public class ClientSetupEventsImpl {
         for (BornholmDoorTypes doorTypes : BornholmDoorTypes.values()) {
             if (doorTypes == BornholmDoorTypes.BASE) continue; // Skip empty door type
             ModelResourceLocation location = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.BORNHOLM_DOOR_PATH.formatted(doorTypes.getName())), "standalone");
+            consumer.accept(location);
+        }
+        for (HandbellTypes handbellTypes : HandbellTypes.values()) {
+            ModelResourceLocation location = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.HANDBELL_PATH.formatted(handbellTypes.getSerializedName())), "standalone");
             consumer.accept(location);
         }
     }

@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:block/template_handbell",
+  "textures": {
+    "handbell": "colourfulclocks:item/iron_handbell",
+    "particle": "colourfulclocks:item/iron_handbell"
+  }
+}

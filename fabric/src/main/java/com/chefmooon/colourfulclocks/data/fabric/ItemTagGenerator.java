@@ -17,6 +17,26 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
+        getOrCreateTagBuilder(ColourfulClocksTags.ITEM_HANDBELL)
+                .add(
+                        ColourfulClocksItemsImpl.IRON_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.COPPER_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.EXPOSED_COPPER_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.WEATHERED_COPPER_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.OXIDIZED_COPPER_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.WAXED_COPPER_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.GOLD_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.DIAMOND_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.NETHERITE_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.QUARTZ_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.AMETHYST_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.LAPIS_LAZULI_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.REDSTONE_HANDBELL.get(),
+                        ColourfulClocksItemsImpl.EMERALD_HANDBELL.get()
+                );
 
         getOrCreateTagBuilder(ColourfulClocksTags.CLOCK_DOOR)
                 .add(

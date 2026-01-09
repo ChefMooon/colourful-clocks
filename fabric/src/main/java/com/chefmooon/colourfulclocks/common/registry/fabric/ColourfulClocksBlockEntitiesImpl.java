@@ -1,9 +1,6 @@
 package com.chefmooon.colourfulclocks.common.registry.fabric;
 
-import com.chefmooon.colourfulclocks.common.block.entity.AlarmClockBlockEntity;
-import com.chefmooon.colourfulclocks.common.block.entity.MantelClockBlockEntity;
-import com.chefmooon.colourfulclocks.common.block.entity.TallMantelClockBlockEntity;
-import com.chefmooon.colourfulclocks.common.block.entity.WallClockBlockEntity;
+import com.chefmooon.colourfulclocks.common.block.entity.*;
 import com.chefmooon.colourfulclocks.common.block.entity.fabric.BornholmMiddleBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.block.entity.fabric.BornholmTopBlockEntityImpl;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
@@ -17,6 +14,11 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import java.util.function.Supplier;
 
 public class ColourfulClocksBlockEntitiesImpl {
+
+    public static final BlockEntityType<HandbellBlockEntity> HANDBELL_VARIANTS = registerBlockEntity(ColourfulClocksBlockEntities.HANDBELL,
+            BlockEntityType.Builder.of(HandbellBlockEntity::new,
+                    ColourfulClocksBlocksImpl.HANDBELL_VARIANTS.values().stream().map(Supplier::get).toArray(Block[]::new))
+    );
 
     public static final BlockEntityType<BornholmMiddleBlockEntityImpl> BORNHOLM_MIDDLE_VARIANTS = registerBlockEntity(ColourfulClocksBlockEntities.BORNHOLM_MIDDLE,
             BlockEntityType.Builder.of(BornholmMiddleBlockEntityImpl::new,

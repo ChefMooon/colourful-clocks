@@ -9,4 +9,6 @@ public class ColourfulClocksTextureSlots {
     public static final TextureSlot CLOCK_DIAL_COVER = TextureSlot.create("clock_dial_cover");
     public static final TextureSlot CLOCK_DIAL_MARKS = TextureSlot.create("clock_dial_marks");
     public static final TextureSlot CLOCK_HAND = TextureSlot.create("clock_hand");
+    public static final TextureSlot HANDLE = TextureSlot.create("handle");
+    public static final TextureSlot HANDBELL = TextureSlot.create("handbell");
 }

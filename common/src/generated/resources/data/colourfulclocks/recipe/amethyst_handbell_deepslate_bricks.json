@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "amethyst_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:deepslate_bricks"
+    },
+    "B": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell_data": {
+        "handle": "deepslate_bricks"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:amethyst_handbell"
+  }
+}

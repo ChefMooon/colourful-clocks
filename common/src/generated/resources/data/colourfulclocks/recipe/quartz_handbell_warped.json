@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "quartz_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:warped_planks"
+    },
+    "B": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell_data": {
+        "handle": "warped"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:quartz_handbell"
+  }
+}

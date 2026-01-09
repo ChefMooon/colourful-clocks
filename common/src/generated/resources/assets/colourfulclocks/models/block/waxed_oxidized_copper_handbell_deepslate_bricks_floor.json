@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:block/template_handbell_floor",
+  "textures": {
+    "handle": "minecraft:block/deepslate_bricks",
+    "particle": "minecraft:block/deepslate_bricks"
+  }
+}

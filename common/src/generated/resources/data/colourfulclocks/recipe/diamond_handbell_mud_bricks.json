@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "diamond_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:mud_bricks"
+    },
+    "B": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell_data": {
+        "handle": "mud_bricks"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:diamond_handbell"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:block/template_handbell_ceiling",
+  "textures": {
+    "handle": "minecraft:block/mud_bricks",
+    "particle": "minecraft:block/mud_bricks"
+  }
+}

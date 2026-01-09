@@ -1,4 +1,238 @@
 {
+  "item.iron_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.copper_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.exposed_copper_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.weathered_copper_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.oxidized_copper_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.gold_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.diamond_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.netherite_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.emerald_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.amethyst_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.quartz_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.lapis_lazuli_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.redstone_handbell.ring": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.iron_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.copper_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.exposed_copper_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.weathered_copper_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.oxidized_copper_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.gold_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.diamond_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.netherite_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.emerald_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.amethyst_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.quartz_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.lapis_lazuli_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
+  "item.redstone_handbell.hit": {
+    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
+    "sounds": [
+      {
+        "name": "block.bell.use",
+        "type": "event"
+      }
+    ]
+  },
   "item.iron_pendulum.chime": {
     "subtitle": "colourfulclocks.subtitles.block.bornholm.chime",
     "sounds": [

@@ -120,6 +120,13 @@ public class ColourfulClocksTemplates {
     public static final ModelTemplate POCKET_WATCH_OPEN_14 = item("template_pocket_watch_open_14", TextureSlot.ALL);
     public static final ModelTemplate POCKET_WATCH_OPEN_15 = item("template_pocket_watch_open_15", TextureSlot.ALL);
 
+    public static final ModelTemplate TEMPLATE_HANDBELL = block("template_handbell", ColourfulClocksTextureSlots.HANDBELL, TextureSlot.PARTICLE);
+    public static final ModelTemplate TEMPLATE_HANDBELL_ITEM = item("template_handbell_item", ColourfulClocksTextureSlots.HANDLE, ColourfulClocksTextureSlots.HANDBELL);
+    public static final ModelTemplate TEMPLATE_HANDBELL_CEILING = block("template_handbell_ceiling", ColourfulClocksTextureSlots.HANDLE, TextureSlot.PARTICLE);
+    public static final ModelTemplate TEMPLATE_HANDBELL_FLOOR = block("template_handbell_floor", ColourfulClocksTextureSlots.HANDLE, TextureSlot.PARTICLE);
+    public static final ModelTemplate TEMPLATE_HANDBELL_SINGLE_WALL = block("template_handbell_single_wall", ColourfulClocksTextureSlots.HANDLE, TextureSlot.PARTICLE);
+    public static final ModelTemplate TEMPLATE_HANDBELL_DOUBLE_WALL = block("template_handbell_double_wall", ColourfulClocksTextureSlots.HANDLE, TextureSlot.PARTICLE);
+
     private static ModelTemplate item(String itemModelLocation, TextureSlot... requiredSlots) {
         return new ModelTemplate(Optional.of(TextUtil.res("item/" + itemModelLocation)), Optional.empty(), requiredSlots);
     }

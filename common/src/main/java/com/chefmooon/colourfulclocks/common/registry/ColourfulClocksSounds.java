@@ -9,6 +9,36 @@ import java.util.function.Supplier;
 
 public class ColourfulClocksSounds {
 
+    public static final Supplier<SoundEvent> ITEM_IRON_HANDBELL_RING = registerSound("item.iron_handbell.ring");
+    public static final Supplier<SoundEvent> ITEM_COPPER_HANDBELL_RING = registerSound("item.copper_handbell.ring");
+    public static final Supplier<SoundEvent> ITEM_EXPOSED_COPPER_HANDBELL_RING = registerSound("item.exposed_copper_handbell.ring");
+    public static final Supplier<SoundEvent> ITEM_WEATHERED_COPPER_HANDBELL_RING = registerSound("item.weathered_copper_handbell.ring");
+    public static final Supplier<SoundEvent> ITEM_OXIDIZED_COPPER_HANDBELL_RING = registerSound("item.oxidized_copper_handbell.ring");
+    public static final Supplier<SoundEvent> ITEM_GOLD_HANDBELL_RING = registerSound("item.gold_handbell.ring");
+    public static final Supplier<SoundEvent> ITEM_DIAMOND_HANDBELL_RING = registerSound("item.diamond_handbell.ring");
+    public static final Supplier<SoundEvent> ITEM_NETHERITE_HANDBELL_RING = registerSound("item.netherite_handbell.ring");
+
+    public static final Supplier<SoundEvent> ITEM_EMERALD_HANDBELL_RING = registerSound("item.emerald_handbell.ring");
+    public static final Supplier<SoundEvent> ITEM_AMETHYST_HANDBELL_RING = registerSound("item.amethyst_handbell.ring");
+    public static final Supplier<SoundEvent> ITEM_QUARTZ_HANDBELL_RING = registerSound("item.quartz_handbell.ring");
+    public static final Supplier<SoundEvent> ITEM_LAPIS_LAZULI_HANDBELL_RING = registerSound("item.lapis_lazuli_handbell.ring");
+    public static final Supplier<SoundEvent> ITEM_REDSTONE_HANDBELL_RING = registerSound("item.redstone_handbell.ring");
+
+    public static final Supplier<SoundEvent> ITEM_IRON_HANDBELL_HIT = registerSound("item.iron_handbell.hit");
+    public static final Supplier<SoundEvent> ITEM_COPPER_HANDBELL_HIT = registerSound("item.copper_handbell.hit");
+    public static final Supplier<SoundEvent> ITEM_EXPOSED_COPPER_HANDBELL_HIT = registerSound("item.exposed_copper_handbell.hit");
+    public static final Supplier<SoundEvent> ITEM_WEATHERED_COPPER_HANDBELL_HIT = registerSound("item.weathered_copper_handbell.hit");
+    public static final Supplier<SoundEvent> ITEM_OXIDIZED_COPPER_HANDBELL_HIT = registerSound("item.oxidized_copper_handbell.hit");
+    public static final Supplier<SoundEvent> ITEM_GOLD_HANDBELL_HIT = registerSound("item.gold_handbell.hit");
+    public static final Supplier<SoundEvent> ITEM_DIAMOND_HANDBELL_HIT = registerSound("item.diamond_handbell.hit");
+    public static final Supplier<SoundEvent> ITEM_NETHERITE_HANDBELL_HIT = registerSound("item.netherite_handbell.hit");
+
+    public static final Supplier<SoundEvent> ITEM_EMERALD_HANDBELL_HIT = registerSound("item.emerald_handbell.hit");
+    public static final Supplier<SoundEvent> ITEM_AMETHYST_HANDBELL_HIT = registerSound("item.amethyst_handbell.hit");
+    public static final Supplier<SoundEvent> ITEM_QUARTZ_HANDBELL_HIT = registerSound("item.quartz_handbell.hit");
+    public static final Supplier<SoundEvent> ITEM_LAPIS_LAZULI_HANDBELL_HIT = registerSound("item.lapis_lazuli_handbell.hit");
+    public static final Supplier<SoundEvent> ITEM_REDSTONE_HANDBELL_HIT = registerSound("item.redstone_handbell.hit");
+
     public static final Supplier<SoundEvent> ITEM_IRON_PENDULUM_CHIME = registerSound("item.iron_pendulum.chime");
     public static final Supplier<SoundEvent> ITEM_COPPER_PENDULUM_CHIME = registerSound("item.copper_pendulum.chime");
     public static final Supplier<SoundEvent> ITEM_EXPOSED_COPPER_PENDULUM_CHIME = registerSound("item.exposed_copper_pendulum.chime");

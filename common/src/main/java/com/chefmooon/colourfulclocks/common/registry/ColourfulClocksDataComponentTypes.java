@@ -7,6 +7,10 @@ import net.minecraft.core.component.DataComponentType;
 import net.minecraft.resources.ResourceLocation;
 
 public class ColourfulClocksDataComponentTypes {
+
+    public static final ResourceLocation HANDBELL_DATA = dataComponent("handbell_data");
+    public static final ResourceLocation HANDBELL_WEATHERING = dataComponent("handbell_weathering");
+
     public static final ResourceLocation POCKET_WATCH_CLOSED = dataComponent("pocket_watch_closed");
     public static final ResourceLocation POCKET_WATCH_WEATHERING = dataComponent("pocket_watch_weathering");
     public static final ResourceLocation PENDULUM_WEATHERING = dataComponent("pendulum_weathering");
@@ -18,6 +22,11 @@ public class ColourfulClocksDataComponentTypes {
     public static final ResourceLocation GLASS_DIAL_PENDULUM_DATA = dataComponent("glass_dial_pendulum_data");
 
     public static final ResourceLocation CLOCK_DATA = dataComponent("clock_data");
+
+    @ExpectPlatform
+    public static DataComponentType<HandbellComponent> getHandbellData() {
+        throw new AssertionError();
+    }
 
     @ExpectPlatform
     public static DataComponentType<BornholmMiddleDoorComponent> getBornholmMiddleGlassData() {

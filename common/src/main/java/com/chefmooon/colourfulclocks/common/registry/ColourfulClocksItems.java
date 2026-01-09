@@ -15,6 +15,24 @@ public class ColourfulClocksItems {
         return basicItem().stacksTo(1);
     }
 
+    public static final ResourceLocation IRON_HANDBELL = item("iron_handbell");
+    public static final ResourceLocation COPPER_HANDBELL = item("copper_handbell");
+    public static final ResourceLocation EXPOSED_COPPER_HANDBELL = item("exposed_copper_handbell");
+    public static final ResourceLocation WEATHERED_COPPER_HANDBELL = item("weathered_copper_handbell");
+    public static final ResourceLocation OXIDIZED_COPPER_HANDBELL = item("oxidized_copper_handbell");
+    public static final ResourceLocation WAXED_COPPER_HANDBELL = item("waxed_copper_handbell");
+    public static final ResourceLocation WAXED_EXPOSED_COPPER_HANDBELL = item("waxed_exposed_copper_handbell");
+    public static final ResourceLocation WAXED_WEATHERED_COPPER_HANDBELL = item("waxed_weathered_copper_handbell");
+    public static final ResourceLocation WAXED_OXIDIZED_COPPER_HANDBELL = item("waxed_oxidized_copper_handbell");
+    public static final ResourceLocation GOLD_HANDBELL = item("gold_handbell");
+    public static final ResourceLocation DIAMOND_HANDBELL = item("diamond_handbell");
+    public static final ResourceLocation NETHERITE_HANDBELL = item("netherite_handbell");
+    public static final ResourceLocation QUARTZ_HANDBELL = item("quartz_handbell");
+    public static final ResourceLocation AMETHYST_HANDBELL = item("amethyst_handbell");
+    public static final ResourceLocation LAPIS_LAZULI_HANDBELL = item("lapis_lazuli_handbell");
+    public static final ResourceLocation REDSTONE_HANDBELL = item("redstone_handbell");
+    public static final ResourceLocation EMERALD_HANDBELL = item("emerald_handbell");
+
     public static final ResourceLocation IRON_POCKET_WATCH = item("iron_pocket_watch");
     public static final ResourceLocation COPPER_POCKET_WATCH = item("copper_pocket_watch");
     public static final ResourceLocation EXPOSED_COPPER_POCKET_WATCH = item("exposed_copper_pocket_watch");

@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.resources.ResourceLocation;
 
 public class ColourfulClocksBlockEntities {
+    public static final ResourceLocation HANDBELL = blockEntity("handbell");
     public static final ResourceLocation BORNHOLM_MIDDLE = blockEntity("bornholm_middle");
     public static final ResourceLocation BORNHOLM_TOP = blockEntity("bornholm_top");
 

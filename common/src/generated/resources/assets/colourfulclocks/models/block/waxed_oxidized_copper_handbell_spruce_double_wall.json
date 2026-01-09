@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:block/template_handbell_double_wall",
+  "textures": {
+    "handle": "minecraft:block/spruce_planks",
+    "particle": "minecraft:block/spruce_planks"
+  }
+}

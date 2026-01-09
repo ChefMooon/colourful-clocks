@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:block/template_handbell_ceiling",
+  "textures": {
+    "handle": "minecraft:block/polished_diorite",
+    "particle": "minecraft:block/polished_diorite"
+  }
+}

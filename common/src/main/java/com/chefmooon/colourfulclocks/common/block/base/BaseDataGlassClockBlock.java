@@ -20,7 +20,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 
-public class BaseDataGlassClockBlock extends BaseDataClockBlock{
+public class BaseDataGlassClockBlock extends BaseDataClockBlock {
     public static final BornholmTopGlassTypeProperty GLASS_TYPE = ColourfulClocksBlockStateProperties.BORNHOLM_TOP_GLASS_TYPE;
     public BaseDataGlassClockBlock(Properties properties) {
         super(properties);

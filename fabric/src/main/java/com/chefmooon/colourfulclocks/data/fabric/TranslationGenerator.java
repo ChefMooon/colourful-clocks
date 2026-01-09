@@ -29,6 +29,55 @@ public class TranslationGenerator extends FabricLanguageProvider {
 
         translationBuilder.add("itemGroup." + MOD_ID, FORMATTED_MOD_ID);
 
+        translationBuilder.add(ColourfulClocksItemsImpl.IRON_HANDBELL.get(), "Iron Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.COPPER_HANDBELL.get(), "Copper Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.EXPOSED_COPPER_HANDBELL.get(), "Exposed Copper Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.WEATHERED_COPPER_HANDBELL.get(), "Weathered Copper Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.OXIDIZED_COPPER_HANDBELL.get(), "Oxidized Copper Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.WAXED_COPPER_HANDBELL.get(), "Waxed Copper Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_HANDBELL.get(), "Waxed Exposed Copper Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_HANDBELL.get(), "Waxed Weathered Copper Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_HANDBELL.get(), "Waxed Oxidized Copper Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.GOLD_HANDBELL.get(), "Gold Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.DIAMOND_HANDBELL.get(), "Diamond Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.NETHERITE_HANDBELL.get(), "Netherite Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.QUARTZ_HANDBELL.get(), "Quartz Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.AMETHYST_HANDBELL.get(), "Amethyst Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.LAPIS_LAZULI_HANDBELL.get(), "Lapis Lazuli Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.REDSTONE_HANDBELL.get(), "Redstone Handbell");
+        translationBuilder.add(ColourfulClocksItemsImpl.EMERALD_HANDBELL.get(), "Emerald Handbell");
+
+        translationBuilder.add(MOD_ID + ".item.oak_handbell_handle", "Oak");
+        translationBuilder.add(MOD_ID + ".item.spruce_handbell_handle", "Spruce");
+        translationBuilder.add(MOD_ID + ".item.birch_handbell_handle", "Birch");
+        translationBuilder.add(MOD_ID + ".item.jungle_handbell_handle", "Jungle");
+        translationBuilder.add(MOD_ID + ".item.acacia_handbell_handle", "Acacia");
+        translationBuilder.add(MOD_ID + ".item.dark_oak_handbell_handle", "Dark Oak");
+        translationBuilder.add(MOD_ID + ".item.mangrove_handbell_handle", "Mangrove");
+        translationBuilder.add(MOD_ID + ".item.cherry_handbell_handle", "Cherry");
+        translationBuilder.add(MOD_ID + ".item.bamboo_handbell_handle", "Bamboo");
+        translationBuilder.add(MOD_ID + ".item.crimson_handbell_handle", "Crimson");
+        translationBuilder.add(MOD_ID + ".item.warped_handbell_handle", "Warped");
+        translationBuilder.add(MOD_ID + ".item.stone_bricks_handbell_handle", "Stone Bricks");
+        translationBuilder.add(MOD_ID + ".item.mossy_stone_bricks_handbell_handle", "Mossy Stone Bricks");
+        translationBuilder.add(MOD_ID + ".item.polished_granite_handbell_handle", "Polished Granite");
+        translationBuilder.add(MOD_ID + ".item.polished_diorite_handbell_handle", "Polished Diorite");
+        translationBuilder.add(MOD_ID + ".item.polished_andesite_handbell_handle", "Polished Andesite");
+        translationBuilder.add(MOD_ID + ".item.polished_deepslate_handbell_handle", "Polished Deepslate");
+        translationBuilder.add(MOD_ID + ".item.deepslate_bricks_handbell_handle", "Deepslate Bricks");
+        translationBuilder.add(MOD_ID + ".item.polished_tuff_handbell_handle", "Polished Tuff");
+        translationBuilder.add(MOD_ID + ".item.tuff_bricks_handbell_handle", "Tuff Bricks");
+        translationBuilder.add(MOD_ID + ".item.bricks_handbell_handle", "Bricks");
+        translationBuilder.add(MOD_ID + ".item.mud_bricks_handbell_handle", "Mud Bricks");
+        translationBuilder.add(MOD_ID + ".item.cut_sandstone_handbell_handle", "Cut Sandstone");
+        translationBuilder.add(MOD_ID + ".item.cut_red_sandstone_handbell_handle", "Cut Red Sandstone");
+        translationBuilder.add(MOD_ID + ".item.prismarine_bricks_handbell_handle", "Prismarine Bricks");
+        translationBuilder.add(MOD_ID + ".item.dark_prismarine_handbell_handle", "Dark Prismarine");
+        translationBuilder.add(MOD_ID + ".item.nether_bricks_handbell_handle", "Nether Bricks");
+        translationBuilder.add(MOD_ID + ".item.red_nether_bricks_handbell_handle", "Red Nether Bricks");
+        translationBuilder.add(MOD_ID + ".item.polished_blackstone_handbell_handle", "Polished Blackstone");
+        translationBuilder.add(MOD_ID + ".item.polished_blackstone_bricks_handbell_handle", "Polished Blackstone Bricks");
+
         translationBuilder.add(ColourfulClocksItemsImpl.IRON_POCKET_WATCH.get(), "Iron Pocket Watch");
         translationBuilder.add(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get(), "Copper Pocket Watch");
         translationBuilder.add(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get(), "Exposed Copper Pocket Watch");
@@ -87,7 +136,10 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(ColourfulClocksTags.TALL_MANTEL_CLOCK, "Tall Mantel Clock");
         translationBuilder.add(ColourfulClocksTags.WALL_CLOCK, "Wall Clock");
         translationBuilder.add(ColourfulClocksTags.ALARM_CLOCK, "Alarm Clock");
+        translationBuilder.add(ColourfulClocksTags.ITEM_HANDBELL, "Handbell");
 
+        translationBuilder.add(SUBTITLE + "item.handbell.ring", "Handbell Ring");
+        translationBuilder.add(SUBTITLE + "item.handbell.hit", "Handbell Hit");
         translationBuilder.add(SUBTITLE + "block.bornholm.chime", "Bornholm Chime");
         translationBuilder.add(SUBTITLE + "block.bornholm.door_open", "Door Opened");
         translationBuilder.add(SUBTITLE + "block.bornholm.door_close", "Door Closed");

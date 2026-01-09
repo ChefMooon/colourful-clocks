@@ -1,6 +1,7 @@
 package com.chefmooon.colourfulclocks.data.fabric;
 
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
@@ -25,6 +26,7 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider{
         ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.forEach(this::registerMineableClockBlocktags);
         ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.forEach(this::registerMineableClockBlocktags);
         ColourfulClocksBlocksImpl.ALARM_CLOCK_VARIANTS.forEach(this::registerMineableClockBlocktags);
+        ColourfulClocksBlocksImpl.HANDBELL_VARIANTS.forEach(this::registerMineableHandbellBlocktags);
     }
 
     private void registerMineableClockBlocktags(ClockTypes clockType, Supplier<Block> supplier) {
@@ -35,5 +37,10 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider{
             getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                     .add(supplier.get());
         }
+    }
+
+    private void registerMineableHandbellBlocktags(HandbellTypes type, Supplier<Block> supplier) {
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(supplier.get());
     }
 }

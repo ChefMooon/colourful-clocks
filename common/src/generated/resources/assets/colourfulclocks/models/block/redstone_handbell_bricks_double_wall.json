@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:block/template_handbell_double_wall",
+  "textures": {
+    "handle": "minecraft:block/bricks",
+    "particle": "minecraft:block/bricks"
+  }
+}

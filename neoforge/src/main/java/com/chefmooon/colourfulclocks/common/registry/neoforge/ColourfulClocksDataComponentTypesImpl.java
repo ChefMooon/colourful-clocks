@@ -14,6 +14,14 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class ColourfulClocksDataComponentTypesImpl {
 
     public static final DeferredRegister.DataComponents DATA_COMPONENTS = DeferredRegister.createDataComponents(Registries.DATA_COMPONENT_TYPE, ColourfulClocks.MOD_ID);
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<HandbellComponent>> HANDBELL_DATA = DATA_COMPONENTS.registerComponentType(
+            ColourfulClocksDataComponentTypes.HANDBELL_DATA.getPath(), handBellComponentBuilder -> handBellComponentBuilder.persistent(HandbellComponent.CODEC).networkSynchronized(HandbellComponent.STREAM_CODEC)
+    );
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> HANDBELL_WEATHERING = DATA_COMPONENTS.registerComponentType(
+            ColourfulClocksDataComponentTypes.HANDBELL_WEATHERING.getPath(), (builder) -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT)
+    );
+
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> POCKET_WATCH_CLOSED = DATA_COMPONENTS.registerComponentType(
             ColourfulClocksDataComponentTypes.POCKET_WATCH_CLOSED.getPath(), (builder) -> builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL)
     );
@@ -48,6 +56,10 @@ public class ColourfulClocksDataComponentTypesImpl {
 
     public static DataComponentType<BornholmTopGlassComponent> getBornholmTopGlassData() {
         return BORNHOLM_TOP_GLASS_DATA.get();
+    }
+
+    public static DataComponentType<HandbellComponent> getHandbellData() {
+        return HANDBELL_DATA.get();
     }
 
     public static DataComponentType<ClockComponent> getClockData() {
