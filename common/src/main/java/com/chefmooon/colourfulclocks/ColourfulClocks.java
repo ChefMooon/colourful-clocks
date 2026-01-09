@@ -14,6 +14,7 @@ public class ColourfulClocks {
         ColourfulClocksBlockEntities.init();
         ColourfulClocksDataComponentTypes.init();
         ColourfulClocksSounds.init();
+        ColourfulClocksRecipeSerializers.init();
         ColourfulClocksAdvancements.init();
     }
 }
