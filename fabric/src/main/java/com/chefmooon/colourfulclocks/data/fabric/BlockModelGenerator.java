@@ -660,26 +660,10 @@ public class BlockModelGenerator {
 
     public static ResourceLocation getBlockModelLocation(ClockTypes clockTypes) {
         return ModelLocationUtils.getModelLocation(clockTypes.getBlock());
-        // TODO : tidy
-//        if (clockTypes == ClockTypes.SMOOTH_SANDSTONE) { // Can be removed when final stone types are chosen
-//            return ResourceLocation.withDefaultNamespace("block/sandstone_top");
-//        } else if (clockTypes == ClockTypes.SMOOTH_RED_SANDSTONE) {
-//            return ResourceLocation.withDefaultNamespace("block/red_sandstone_top");
-//        } else {
-//            return ModelLocationUtils.getModelLocation(clockTypes.getBlock());
-//        }
     }
 
     public static ResourceLocation getStrippedBlockModelLocation(ClockTypes clockTypes) {
         return ModelLocationUtils.getModelLocation(clockTypes.getStrippedBlock());
-        // TODO : tidy
-//        if (clockTypes == ClockTypes.SMOOTH_SANDSTONE) { // Can be removed when final stone types are chosen
-//            return ResourceLocation.withDefaultNamespace("block/sandstone_top");
-//        } else if (clockTypes == ClockTypes.SMOOTH_RED_SANDSTONE) {
-//            return ResourceLocation.withDefaultNamespace("block/red_sandstone_top");
-//        } else {
-//            return ModelLocationUtils.getModelLocation(clockTypes.getStrippedBlock());
-//        }
     }
 
     private static void registerBasicRotationBlockState(Block block, BlockModelGenerators blockModelGenerators) {
