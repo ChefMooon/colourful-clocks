@@ -258,9 +258,8 @@ public class ColourfulClocksItemsImpl {
 
             // Alarm Clock
             Supplier<Item> alarmClockItem = registerItemWithTab(ColourfulClocksItems.ALARM_CLOCK.withSuffix(clockTypes.getSerializedName()),
-                    () -> new ClockDataBlockItem(ColourfulClocksBlocksImpl.ALARM_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getNoPendulumValue())
-                            .component(ColourfulClocksDataComponentTypesImpl.GLASS_DIAL_DATA, GlassDialComponent.getDefaultValue())));
+                    () -> new AlarmClockBlockItem(ColourfulClocksBlocksImpl.ALARM_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
+                            .component(ColourfulClocksDataComponentTypesImpl.ALARM_CLOCK_DATA, AlarmClockComponent.getDefaultValue())));
             ALARM_CLOCK_VARIANTS.put(clockTypes, alarmClockItem);
         }
     }

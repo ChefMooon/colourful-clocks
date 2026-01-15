@@ -13,6 +13,9 @@ import java.util.function.UnaryOperator;
 
 public class ColourfulClocksDataComponentTypesImpl {
 
+    public static final DataComponentType<AlarmClockComponent> ALARM_CLOCK_DATA = register(
+            ColourfulClocksDataComponentTypes.ALARM_CLOCK_DATA.getPath(), alarmClockComponentBuilder -> alarmClockComponentBuilder.persistent(AlarmClockComponent.CODEC).networkSynchronized(AlarmClockComponent.STREAM_CODEC)
+    );
     public static final DataComponentType<HandbellComponent> HANDBELL_DATA = register(
             ColourfulClocksDataComponentTypes.HANDBELL_DATA.getPath(), handBellComponentBuilder -> handBellComponentBuilder.persistent(HandbellComponent.CODEC).networkSynchronized(HandbellComponent.STREAM_CODEC)
     );
@@ -50,6 +53,14 @@ public class ColourfulClocksDataComponentTypesImpl {
 
     private static <T> DataComponentType<T> register(String name, UnaryOperator<DataComponentType.Builder<T>> builder) {
         return (DataComponentType) Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, TextUtil.res(name), ((DataComponentType.Builder)builder.apply(DataComponentType.builder())).build());
+    }
+
+    public static DataComponentType<Integer> getHandbellWeatheringData() {
+        return HANDBELL_WEATHERING;
+    }
+
+    public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
+        return ALARM_CLOCK_DATA;
     }
 
     public static DataComponentType<HandbellComponent> getHandbellData() {

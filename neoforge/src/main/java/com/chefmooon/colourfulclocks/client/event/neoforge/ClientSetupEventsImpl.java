@@ -86,8 +86,10 @@ public class ClientSetupEventsImpl {
             consumer.accept(location);
         }
         for (HandbellTypes handbellTypes : HandbellTypes.values()) {
-            ModelResourceLocation location = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.HANDBELL_PATH.formatted(handbellTypes.getSerializedName())), "standalone");
-            consumer.accept(location);
+            ModelResourceLocation handbellLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.HANDBELL_PATH.formatted(handbellTypes.getSerializedName())), "standalone");
+            consumer.accept(handbellLocation);
+            ModelResourceLocation alarmClockBellLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(handbellTypes.getSerializedName())), "standalone");
+            consumer.accept(alarmClockBellLocation);
         }
     }
 }

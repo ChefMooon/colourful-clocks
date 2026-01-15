@@ -13,6 +13,7 @@ public class ColourfulClocksModels {
     public static final String DIAL_SMALL_PATH = "block/%s_dial_small";
     public static final String BORNHOLM_DOOR_PATH = "block/%s_bornholm_door";
     public static final String HANDBELL_PATH = "block/%s_handbell";
+    public static final String ALARM_CLOCK_BELL_PATH = "block/%s_alarm_clock_bell";
 
     public static void init() {
     }

@@ -2,6 +2,9 @@ package com.chefmooon.colourfulclocks.common.data.types;
 
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.mojang.serialization.Codec;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
+import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.item.Item;
@@ -31,7 +34,8 @@ public enum HandbellTypes implements StringRepresentable {
     REDSTONE(16, "redstone", Items.REDSTONE, ColourfulClocksSounds.ITEM_REDSTONE_HANDBELL_RING, ColourfulClocksSounds.ITEM_REDSTONE_HANDBELL_HIT, 1.5F)
     ;
 
-    public static final Codec<HandbellTypes> CODEC = Codec.stringResolver(HandbellTypes::getSerializedName, HandbellTypes::valueOf);
+    public static final Codec<HandbellTypes> CODEC = StringRepresentable.fromEnum(HandbellTypes::values);
+    public static final StreamCodec<ByteBuf, HandbellTypes> STREAM_CODEC = ByteBufCodecs.STRING_UTF8.map(HandbellTypes::parse, HandbellTypes::getSerializedName);
 
     private final int id;
     private final String name;
@@ -72,5 +76,14 @@ public enum HandbellTypes implements StringRepresentable {
 
     public float getPitch() {
         return pitch;
+    }
+
+    public static HandbellTypes parse(String name) {
+        for (HandbellTypes type : values()) {
+            if (type.name.equals(name)) {
+                return type;
+            }
+        }
+        return null;
     }
 }

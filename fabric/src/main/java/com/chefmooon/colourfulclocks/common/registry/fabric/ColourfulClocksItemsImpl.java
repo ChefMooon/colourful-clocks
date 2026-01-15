@@ -1,10 +1,10 @@
 package com.chefmooon.colourfulclocks.common.registry.fabric;
 
 import com.chefmooon.colourfulclocks.common.data.*;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
-import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.item.*;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -251,8 +251,8 @@ public class ColourfulClocksItemsImpl {
 
             // Alarm Clock
             Supplier<Item> alarmClockItem = registerItemWithTab(ColourfulClocksItems.ALARM_CLOCK.withSuffix(clockTypes.getSerializedName()),
-                    new ClockDataBlockItem(ColourfulClocksBlocksImpl.ALARM_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getNoPendulumValue())));
+                    new AlarmClockBlockItem(ColourfulClocksBlocksImpl.ALARM_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
+                            .component(ColourfulClocksDataComponentTypesImpl.ALARM_CLOCK_DATA, AlarmClockComponent.getDefaultValue())));
             ALARM_CLOCK_VARIANTS.put(clockTypes, alarmClockItem);
         }
     }

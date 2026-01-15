@@ -90,8 +90,10 @@ public class ClientSetupEventsImpl {
             consumer.accept(location);
         }
         for (HandbellTypes handbellTypes : HandbellTypes.values()) {
-            ResourceLocation location = TextUtil.res(ColourfulClocksModels.HANDBELL_PATH.formatted(handbellTypes.getSerializedName()));
-            consumer.accept(location);
+            ResourceLocation handbellLocation = TextUtil.res(ColourfulClocksModels.HANDBELL_PATH.formatted(handbellTypes.getSerializedName()));
+            consumer.accept(handbellLocation);
+            ResourceLocation alarmClockBellLocation = TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(handbellTypes.getSerializedName()));
+            consumer.accept(alarmClockBellLocation);
         }
     }
 }

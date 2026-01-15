@@ -80,6 +80,7 @@ public class ColourfulClocksTemplates {
     public static final ModelTemplate ALARM_CLOCK = block("template_alarm_clock",
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL,
             ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
+    public static final ModelTemplate ALARM_CLOCK_BELL = block("template_alarm_clock_bell", TextureSlot.ALL);
     public static final ModelTemplate ALARM_CLOCK_ITEM = item("template_alarm_clock",
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_COVER,
             ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);

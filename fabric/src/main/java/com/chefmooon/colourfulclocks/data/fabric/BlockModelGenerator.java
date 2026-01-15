@@ -42,6 +42,7 @@ public class BlockModelGenerator {
         generateBornholmDoorTypes();
         generateSmallGlassDial();
         generateHandbellTypes();
+        generateAlarmClockBells();
     }
 
     private static void generateBornholmTopDialGlass() {
@@ -73,6 +74,16 @@ public class BlockModelGenerator {
                     TextUtil.res("item/" + type.getSerializedName() + "_handbell");
             ColourfulClocksTemplates.TEMPLATE_HANDBELL.create(TextUtil.res("block/" + type.getSerializedName() + "_handbell"),
                     TextureMapping.singleSlot(TextureSlot.PARTICLE, textureLocation).put(ColourfulClocksTextureSlots.HANDBELL, textureLocation), GENERATOR.modelOutput);
+        }
+    }
+
+    private static void generateAlarmClockBells() {
+        for (HandbellTypes type : HandbellTypes.values()) {
+            ResourceLocation textureLocation = type.getSerializedName().contains("waxed_") ?
+                    TextUtil.res("item/" + type.getSerializedName().replace("waxed_", "") + "_handbell") :
+                    TextUtil.res("item/" + type.getSerializedName() + "_handbell");
+            ColourfulClocksTemplates.ALARM_CLOCK_BELL.create(TextUtil.res("block/" + type.getSerializedName() + "_alarm_clock_bell"),
+                    TextureMapping.singleSlot(TextureSlot.ALL, textureLocation), GENERATOR.modelOutput);
         }
     }
 

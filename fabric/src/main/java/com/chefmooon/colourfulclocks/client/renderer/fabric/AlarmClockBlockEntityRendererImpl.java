@@ -9,12 +9,14 @@ import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
@@ -62,11 +64,45 @@ public class AlarmClockBlockEntityRendererImpl<T extends AlarmClockBlockEntity> 
             poseStack.popPose();
         }
 
-        if (blockEntity.getData().getGlassType().isPresent()) {
+        if (blockEntity.getData().leftBell().isPresent()) {
+            Direction facing = state.getValue(AlarmClockBlock.FACING);
+            poseStack.pushPose();
+            translateBell(poseStack, facing, true);
+
+            ResourceLocation leftBellLocation = TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(blockEntity.getData().leftBell().get().getSerializedName()));
+            BakedModel leftBellModel = minecraft.getModelManager().getModel(leftBellLocation);
+            minecraft.getBlockRenderer().getModelRenderer().renderModel(
+                    poseStack.last(),
+                    bufferSource.getBuffer(RenderType.cutout()),
+                    blockEntity.getBlockState(),
+                    leftBellModel,
+                    1f, 1f, 1f,
+                    packedLight, packedOverlay);
+            poseStack.popPose();
+        }
+
+        if (blockEntity.getData().rightBell().isPresent()) {
+            Direction facing = state.getValue(AlarmClockBlock.FACING);
+            poseStack.pushPose();
+            translateBell(poseStack, facing, false);
+
+            ResourceLocation rightBellLocation = TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(blockEntity.getData().rightBell().get().getSerializedName()));
+            BakedModel rightBellModel = minecraft.getModelManager().getModel(rightBellLocation);
+            minecraft.getBlockRenderer().getModelRenderer().renderModel(
+                    poseStack.last(),
+                    bufferSource.getBuffer(RenderType.cutout()),
+                    blockEntity.getBlockState(),
+                    rightBellModel,
+                    1f, 1f, 1f,
+                    packedLight, packedOverlay);
+            poseStack.popPose();
+        }
+
+        if (blockEntity.getData().glassType().isPresent()) {
             poseStack.pushPose();
             poseStack.rotateAround(getRotation(state.getValue(AlarmClockBlock.FACING)), 0.5F, 0.5F, 0.5F);
             poseStack.translate(0, 0, 0.1875F);
-            BornholmTopGlassTypes glassType = blockEntity.getData().getGlassType().get();
+            BornholmTopGlassTypes glassType = blockEntity.getData().glassType().get();
             BakedModel glassModel = minecraft.getModelManager().getModel(TextUtil.res(ColourfulClocksModels.DIAL_SMALL_PATH.formatted(glassType.getName())));
             minecraft.getBlockRenderer().getModelRenderer().renderModel(
                     poseStack.last(),

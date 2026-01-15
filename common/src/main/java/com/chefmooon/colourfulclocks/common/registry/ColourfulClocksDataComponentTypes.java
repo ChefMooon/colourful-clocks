@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ColourfulClocksDataComponentTypes {
 
+    public static final ResourceLocation ALARM_CLOCK_DATA = dataComponent("alarm_clock_data");
     public static final ResourceLocation HANDBELL_DATA = dataComponent("handbell_data");
     public static final ResourceLocation HANDBELL_WEATHERING = dataComponent("handbell_weathering");
 
@@ -22,6 +23,16 @@ public class ColourfulClocksDataComponentTypes {
     public static final ResourceLocation GLASS_DIAL_PENDULUM_DATA = dataComponent("glass_dial_pendulum_data");
 
     public static final ResourceLocation CLOCK_DATA = dataComponent("clock_data");
+
+    @ExpectPlatform
+    public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static DataComponentType<Integer> getHandbellWeatheringData() {
+        throw new AssertionError();
+    }
 
     @ExpectPlatform
     public static DataComponentType<HandbellComponent> getHandbellData() {

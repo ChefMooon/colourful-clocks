@@ -1,0 +1,6 @@
+{
+  "parent": "colourfulclocks:block/template_alarm_clock_bell",
+  "textures": {
+    "all": "colourfulclocks:item/diamond_handbell"
+  }
+}
