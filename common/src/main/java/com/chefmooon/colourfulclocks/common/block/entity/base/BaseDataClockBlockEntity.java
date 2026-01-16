@@ -9,6 +9,7 @@ import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -29,7 +30,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class BaseDataClockBlockEntity extends BlockEntity {
-    public static final int WEATHERED_THRESHOLD = 6000; // 5 min to weather
     private ItemStack pocketWatchItem = ItemStack.EMPTY;
     private ItemStack pendulumItem = ItemStack.EMPTY;
     private static boolean hasChimed = false;
@@ -170,7 +170,7 @@ public class BaseDataClockBlockEntity extends BlockEntity {
             if (ColourfulClocksTypeUtil.isCopperClockHands(pocketWatchStack)) {
                 if (pocketWatchStack.get(BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING)) != null) {
                     Integer weathering = pocketWatchStack.get((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING));
-                    if (weathering >= WEATHERED_THRESHOLD) {
+                    if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
                         advancePocketWatchWeathering(level, blockPos, pocketWatchStack, baseDataClockBlockEntity);
                     } else {
                         pocketWatchStack.set((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING), weathering + 1);
@@ -184,7 +184,7 @@ public class BaseDataClockBlockEntity extends BlockEntity {
             if (ColourfulClocksTypeUtil.isCopperPendulum(pendulumStack)) {
                 if (pendulumStack.get(BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING)) != null) {
                     Integer weathering = pendulumStack.get((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING));
-                    if (weathering >= WEATHERED_THRESHOLD) {
+                    if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
                         advancePendulumWeathering(level, blockPos, pendulumStack, baseDataClockBlockEntity);
                     } else {
                         pendulumStack.set((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING), weathering + 1);

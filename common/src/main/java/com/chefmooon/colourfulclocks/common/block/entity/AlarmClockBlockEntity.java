@@ -11,6 +11,7 @@ import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -31,7 +32,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class AlarmClockBlockEntity extends BlockEntity {
-    public static final int WEATHERED_THRESHOLD = 6000; // 5 min to weather
     private ItemStack pocketWatchItem = ItemStack.EMPTY;
     private AlarmClockComponent alarmClockData;
     public AlarmClockBlockEntity(BlockPos pos, BlockState blockState) {
@@ -184,7 +184,7 @@ public class AlarmClockBlockEntity extends BlockEntity {
             HandbellComponent leftBellComponent = alarmClockBlockEntity.getData().leftBell().get();
             if (leftBellComponent.getWeathering().isPresent() && ColourfulClocksTypeUtil.bellCanWeather(leftBellComponent)) {
                 int weathering = leftBellComponent.getWeathering().get();
-                if (weathering >= WEATHERED_THRESHOLD) {
+                if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
                     advanceBellWeathering(level, blockPos, leftBellComponent, alarmClockBlockEntity, true);
                 } else {
                     HandbellComponent updatedLeftBellComponent = new HandbellComponent(leftBellComponent.getType(), leftBellComponent.getMaterialType(), Optional.of(weathering + 1));
@@ -197,7 +197,7 @@ public class AlarmClockBlockEntity extends BlockEntity {
             HandbellComponent rightBellComponent = alarmClockBlockEntity.getData().rightBell().get();
             if (rightBellComponent.getWeathering().isPresent() && ColourfulClocksTypeUtil.bellCanWeather(rightBellComponent)) {
                 int weathering = rightBellComponent.getWeathering().get();
-                if (weathering >= WEATHERED_THRESHOLD) {
+                if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
                     advanceBellWeathering(level, blockPos, rightBellComponent, alarmClockBlockEntity, false);
                 } else {
                     HandbellComponent updatedRightBellComponent = new HandbellComponent(rightBellComponent.getType(), rightBellComponent.getMaterialType(), Optional.of(weathering + 1));
@@ -211,7 +211,7 @@ public class AlarmClockBlockEntity extends BlockEntity {
             if (ColourfulClocksTypeUtil.isCopperClockHands(pocketWatchStack)) {
                 if (pocketWatchStack.get(BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING)) != null) {
                     Integer weathering = pocketWatchStack.get((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING));
-                    if (weathering >= WEATHERED_THRESHOLD) {
+                    if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
                         advancePocketWatchWeathering(level, blockPos, pocketWatchStack, alarmClockBlockEntity);
                     } else {
                         pocketWatchStack.set((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING), weathering + 1);

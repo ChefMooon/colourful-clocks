@@ -9,6 +9,7 @@ import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -34,8 +35,6 @@ import java.util.function.Supplier;
 public class BornholmTopBlockEntity extends BlockEntity implements Container {
     private ItemStack clockHandsItem = ItemStack.EMPTY;
     private BornholmTopGlassComponent dialData;
-
-    public static final int WEATHERED_THRESHOLD = 6000; // 5 min to weather
     public BornholmTopBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
         this.dialData = BornholmTopGlassComponent.getDefaultValue();
@@ -156,7 +155,7 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
             if (isCopperClockHands(itemStack)) {
                 if (itemStack.get(BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING)) != null) {
                     Integer weathering = itemStack.get((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING));
-                    if (weathering >= WEATHERED_THRESHOLD) {
+                    if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
                         advanceWeathering(level, blockPos, itemStack, bornholmTopBlockEntity);
                     } else {
                         itemStack.set((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING), weathering + 1);

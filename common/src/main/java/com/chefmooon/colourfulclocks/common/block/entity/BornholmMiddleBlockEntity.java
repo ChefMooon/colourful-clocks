@@ -7,6 +7,7 @@ import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -33,8 +34,6 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     private ItemStack pendelumItem = ItemStack.EMPTY;
     private BornholmMiddleDoorComponent trunkData;
     private static boolean hasChimed = false;
-
-    public static final int WEATHERED_THRESHOLD = 6000; // 5 min to weather
 
     public BornholmMiddleBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -161,7 +160,7 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
             if (isCopperPendulum(itemStack)) {
                 if (itemStack.get(BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING)) != null) {
                     Integer weathering = itemStack.get((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING));
-                    if (weathering >= WEATHERED_THRESHOLD) {
+                    if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
                         advanceWeathering(level, blockPos, itemStack, bornholmMiddleBlockEntity);
                     } else {
                         itemStack.set((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING), weathering + 1);
