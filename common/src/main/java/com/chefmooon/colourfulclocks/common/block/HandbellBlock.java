@@ -140,8 +140,6 @@ public class HandbellBlock extends BaseEntityBlock implements SimpleWaterloggedB
 //                ModAdvancements.COPPER_DOUBLE_DOOR_WAX_OFF_TRIGGER.get().trigger(serverPlayer); // TODO : wax off advancement here
             }
 
-
-
             level.setBlock(pos, newState, Block.UPDATE_ALL_IMMEDIATE);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
             addParticle(level, pos, ParticleTypes.WAX_OFF);
@@ -250,6 +248,11 @@ public class HandbellBlock extends BaseEntityBlock implements SimpleWaterloggedB
     }
 
     @Override
+    public FluidState getFluidState(BlockState state) {
+        return state.getValue(WATERLOGGED) ? Fluids.WATER.getSource(false) : super.getFluidState(state);
+    }
+
+    @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         HandbellComponent handbellComponent = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getHandbellData(), HandbellComponent.getDefaultValue());
@@ -300,6 +303,12 @@ public class HandbellBlock extends BaseEntityBlock implements SimpleWaterloggedB
 
     @Override
     protected BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
+        if (!state.isAir()) {
+            if (state.getValue(WATERLOGGED)) {
+                level.scheduleTick(pos, Fluids.WATER, Fluids.WATER.getTickDelay(level));
+            }
+        }
+
         BellAttachType bellAttachType = (BellAttachType)state.getValue(ATTACHMENT);
         Direction direction2 = getConnectedDirection(state).getOpposite();
         if (direction2 == direction && !state.canSurvive(level, pos) && bellAttachType != BellAttachType.DOUBLE_WALL) {

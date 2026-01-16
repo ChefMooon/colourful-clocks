@@ -206,7 +206,6 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
             if (alarmClockBlockEntity.getData().leftBell().isPresent()) {
                 HandbellComponent mainHandBellComponent = mainHandItem.get(ColourfulClocksDataComponentTypes.getHandbellData());
                 if (mainHandBellComponent.getType() == alarmClockBlockEntity.getData().leftBell().get().getType() && mainHandBellComponent.getMaterialType() == alarmClockBlockEntity.getData().leftBell().get().materialType()) {
-//                if (mainHandItem.is(alarmClockBlockEntity.getLeftBellItem().getItem())) {
                     return ItemInteractionResult.CONSUME;
                 } else if (!player.getAbilities().instabuild) {
                     ItemStack oldLeftBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().leftBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
@@ -224,7 +223,6 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
             if (alarmClockBlockEntity.getData().rightBell().isPresent()) {
                 HandbellComponent mainHandBellComponent = mainHandItem.get(ColourfulClocksDataComponentTypes.getHandbellData());
                 if (mainHandBellComponent.getType() == alarmClockBlockEntity.getData().rightBell().get().getType() && mainHandBellComponent.getMaterialType() == alarmClockBlockEntity.getData().rightBell().get().materialType()) {
-//                if (mainHandItem.is(alarmClockBlockEntity.getRightBellItem().getItem())) {
                     return ItemInteractionResult.CONSUME;
                 } else if (!player.getAbilities().instabuild) {
                     ItemStack oldRightBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().rightBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
@@ -372,12 +370,6 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
         HandbellTypes bellOpt = left ? data.leftBell().get().getType() : data.rightBell().get().getType();
         if (bellOpt == null) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 
-//        // current item in the bell slot and setter for left/right
-//        ItemStack currentBellItem = left ? alarmClockBlockEntity.getLeftBellItem() : alarmClockBlockEntity.getRightBellItem();
-//        Consumer<ItemStack> setBell = bs -> {
-//            if (left) alarmClockBlockEntity.setLeftHandbellType(bs);
-//            else alarmClockBlockEntity.setRightHandbellType(bs);
-//        };
         ItemStack currentBellItem = left ? BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().leftBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance() :
                 BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().rightBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
         Optional<HandbellComponent> currentBellComponent = left ? alarmClockBlockEntity.getData().leftBell() : alarmClockBlockEntity.getData().rightBell();
@@ -399,10 +391,8 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
                 return ItemInteractionResult.SUCCESS;
             }
         } else {
-//            Pair<Item, Supplier<SoundEvent>> unwaxed = ColourfulClocksTypeUtil.getUnwaxedBell(currentBellItem);
             Pair<Item, Supplier<SoundEvent>> unwaxed = ColourfulClocksTypeUtil.getUnwaxedBell(currentBellComponent.get());
             if (!unwaxed.getFirst().equals(ItemStack.EMPTY.getItem())) {
-//                setBell.accept(unwaxed.getFirst().getDefaultInstance());
                 setBellComponent.accept(unwaxed.getFirst().components().get(ColourfulClocksDataComponentTypes.getHandbellData()));
                 level.blockEntityChanged(pos);
                 addBellParticle(level, pos, facing, left, ParticleTypes.WAX_OFF);
@@ -412,10 +402,8 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
                 return ItemInteractionResult.SUCCESS;
             }
 
-//            Pair<Item, Supplier<SoundEvent>> scraped = ColourfulClocksTypeUtil.getScrapedBell(currentBellItem);
             Pair<Item, Supplier<SoundEvent>> scraped = ColourfulClocksTypeUtil.getScrapedBell(currentBellComponent.get());
             if (!scraped.getFirst().equals(ItemStack.EMPTY.getItem())) {
-//                setBell.accept(scraped.getFirst().getDefaultInstance());
                 setBellComponent.accept(scraped.getFirst().components().get(ColourfulClocksDataComponentTypes.getHandbellData()));
                 level.blockEntityChanged(pos);
                 addBellParticle(level, pos, facing, left, ParticleTypes.SCRAPE);
