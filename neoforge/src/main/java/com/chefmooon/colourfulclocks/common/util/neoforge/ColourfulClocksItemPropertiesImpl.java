@@ -1,10 +1,7 @@
 package com.chefmooon.colourfulclocks.common.util.neoforge;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
-import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
-import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
-import com.chefmooon.colourfulclocks.common.data.GlassDialComponent;
+import com.chefmooon.colourfulclocks.common.data.*;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksDataComponentTypesImpl;
 import com.chefmooon.colourfulclocks.common.registry.neoforge.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksItemProperties;
@@ -36,6 +33,16 @@ public class ColourfulClocksItemPropertiesImpl {
                 registerPocketWatch(itemSupplier.get())));
         ColourfulClocksItemsImpl.ALARM_CLOCK_VARIANTS.forEach((entry, supplier) ->
                 registerAlarmClock(supplier.get()));
+        ColourfulClocksItemsImpl.HANDBELL_VARIANTS.forEach(((handbellMaterialTypes, itemSupplier) ->
+                registerHandbell(itemSupplier.get())));
+    }
+
+    private static void registerHandbell(Item item) {
+        ItemProperties.register(item, ColourfulClocksItemProperties.HANDLE,
+                (itemStack, clientLevel, livingEntity, i) -> {
+                    // Convert the id to a float and return
+                    return itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getDefaultValue()).getMaterialType().getId() / 100.0f;
+                });
     }
 
     private static void registerBornholmMiddle(Item item) {

@@ -4,10 +4,10 @@
   "group": "diamond_handbell",
   "key": {
     "A": {
-      "item": "minecraft:polished_blackstone_bricks"
+      "item": "minecraft:diamond"
     },
     "B": {
-      "item": "minecraft:diamond"
+      "item": "minecraft:polished_blackstone_bricks"
     }
   },
   "pattern": [
@@ -17,6 +17,7 @@
   "result": {
     "components": {
       "colourfulclocks:handbell_data": {
+        "type": "diamond",
         "handle": "polished_blackstone_bricks"
       }
     },

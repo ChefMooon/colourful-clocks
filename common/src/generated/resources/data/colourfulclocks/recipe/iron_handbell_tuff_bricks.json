@@ -4,10 +4,10 @@
   "group": "iron_handbell",
   "key": {
     "A": {
-      "item": "minecraft:tuff_bricks"
+      "item": "minecraft:iron_ingot"
     },
     "B": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:tuff_bricks"
     }
   },
   "pattern": [
@@ -17,6 +17,7 @@
   "result": {
     "components": {
       "colourfulclocks:handbell_data": {
+        "type": "iron",
         "handle": "tuff_bricks"
       }
     },

@@ -4,10 +4,10 @@
   "group": "emerald_handbell",
   "key": {
     "A": {
-      "item": "minecraft:prismarine_bricks"
+      "item": "minecraft:emerald"
     },
     "B": {
-      "item": "minecraft:emerald"
+      "item": "minecraft:prismarine_bricks"
     }
   },
   "pattern": [
@@ -17,6 +17,7 @@
   "result": {
     "components": {
       "colourfulclocks:handbell_data": {
+        "type": "emerald",
         "handle": "prismarine_bricks"
       }
     },

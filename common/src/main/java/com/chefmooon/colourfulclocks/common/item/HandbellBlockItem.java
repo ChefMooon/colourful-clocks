@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.types.HandbellHandleTypes;
 import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
+import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -31,7 +32,14 @@ public class HandbellBlockItem extends BlockItem {
             if (component != null) {
                 HandbellHandleTypes handbellType = component.getMaterialType();
                 tooltipComponents.add(handbellType.getBaseTranslation());
+                if (component.getWeathering().isPresent()) {
+                    int weathering = component.getWeathering().get();
+                    if (weathering > 0) {
+                        tooltipComponents.add(TextUtil.getTranslatable("tooltip.weathering").append(": ").append(TextUtil.getWeatheringPercentage(weathering)));
+                    }
+                }
             }
+
             super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
         }
     }

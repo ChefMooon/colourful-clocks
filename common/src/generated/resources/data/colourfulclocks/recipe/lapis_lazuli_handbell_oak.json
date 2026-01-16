@@ -4,10 +4,10 @@
   "group": "lapis_lazuli_handbell",
   "key": {
     "A": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:lapis_lazuli"
     },
     "B": {
-      "item": "minecraft:lapis_lazuli"
+      "item": "minecraft:oak_planks"
     }
   },
   "pattern": [

@@ -1,19 +1,17 @@
 package com.chefmooon.colourfulclocks.common.util;
 
-import com.chefmooon.colourfulclocks.ColourfulClocks;
+import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.types.*;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.mojang.datafixers.util.Pair;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Map;
 import java.util.function.Supplier;
 
 public class ColourfulClocksTypeUtil {
@@ -36,53 +34,48 @@ public class ColourfulClocksTypeUtil {
         return BornholmTopGlassTypes.GLASS;
     }
 
-    private static final Map<Item, PendulumTypes> BELL_SCRAPED = Map.ofEntries(
-
-    );
-
-    public static Pair<Item, Supplier<SoundEvent>> getUnwaxedBell(ItemStack itemStack) {
-        if (itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_COPPER_HANDBELL))) {
+    public static Pair<Item, Supplier<SoundEvent>> getUnwaxedBell(HandbellComponent component) {
+        if (component.getType() == HandbellTypes.WAXED_COPPER) {
             return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.COPPER_HANDBELL), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
-        } else if (itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_EXPOSED_COPPER_HANDBELL))) {
+        } else if (component.getType() == HandbellTypes.WAXED_EXPOSED_COPPER) {
             return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_HANDBELL), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
-        } else if (itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_WEATHERED_COPPER_HANDBELL))) {
+        } else if (component.getType() == HandbellTypes.WAXED_WEATHERED_COPPER) {
             return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_HANDBELL), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
-        } else if (itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_HANDBELL))) {
+        } else if (component.getType() == HandbellTypes.WAXED_OXIDIZED_COPPER) {
             return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.OXIDIZED_COPPER_HANDBELL), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
         } else {
             return Pair.of(ItemStack.EMPTY.getItem(), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
         }
     }
 
-    public static Pair<Item, Supplier<SoundEvent>> getScrapedBell(ItemStack itemStack) {
-        if (itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_HANDBELL))) {
+    public static Pair<Item, Supplier<SoundEvent>> getScrapedBell(HandbellComponent component) {
+        if (component.getType() == HandbellTypes.EXPOSED_COPPER) {
             return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.COPPER_HANDBELL), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
-        } else if (itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_HANDBELL))) {
+        } else if (component.getType() == HandbellTypes.WEATHERED_COPPER) {
             return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_HANDBELL), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
-        } else if (itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.OXIDIZED_COPPER_HANDBELL))) {
+        } else if (component.getType() == HandbellTypes.OXIDIZED_COPPER) {
             return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_HANDBELL), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
         } else {
             return Pair.of(ItemStack.EMPTY.getItem(), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
         }
     }
 
-    public static Item getNextWeatheredCopperBell(ItemStack itemStack) {
-        if (itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.COPPER_HANDBELL))) {
+    public static Item getNextWeatheredCopperBell(HandbellComponent component) {
+        if (component.getType() == HandbellTypes.COPPER) {
             return BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_HANDBELL);
-        } else if (itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_HANDBELL))) {
+        } else if (component.getType() == HandbellTypes.EXPOSED_COPPER) {
             return BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_HANDBELL);
-        } else if (itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_HANDBELL))) {
+        } else if (component.getType() == HandbellTypes.WEATHERED_COPPER) {
             return BuiltInRegistries.ITEM.get(ColourfulClocksItems.OXIDIZED_COPPER_HANDBELL);
         } else {
             return ItemStack.EMPTY.getItem();
         }
     }
 
-    public static boolean isCopperBell(ItemStack itemStack) {
-        return itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.COPPER_HANDBELL)) ||
-               itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_HANDBELL)) ||
-               itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_HANDBELL)) ||
-               itemStack.is(BuiltInRegistries.ITEM.get(ColourfulClocksItems.OXIDIZED_COPPER_HANDBELL));
+    public static boolean bellCanWeather(HandbellComponent component) {
+        return component.getType() == HandbellTypes.COPPER ||
+               component.getType() == HandbellTypes.EXPOSED_COPPER ||
+               component.getType() == HandbellTypes.WEATHERED_COPPER;
     }
 
     @ExpectPlatform

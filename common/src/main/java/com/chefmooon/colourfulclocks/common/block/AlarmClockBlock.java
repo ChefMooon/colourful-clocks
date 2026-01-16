@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.common.block.base.BaseClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.AlarmClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.data.AlarmClockComponent;
 import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
@@ -66,6 +67,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterloggedBlock {
@@ -183,10 +185,10 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
                 AlarmClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getAlarmClockData(), AlarmClockComponent.getDefaultValue());
                 if (component != null) {
                     if (component.leftBell().isPresent()) {
-                        alarmClockBlockEntity.setLeftHandbellType(BuiltInRegistries.ITEM.get(TextUtil.res(component.leftBell().get().getSerializedName() + "_handbell")).getDefaultInstance());
+                        alarmClockBlockEntity.setLeftHandbellType(BuiltInRegistries.ITEM.get(TextUtil.res(component.leftBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance());
                     }
                     if (component.rightBell().isPresent()) {
-                        alarmClockBlockEntity.setRightHandbellType(BuiltInRegistries.ITEM.get(TextUtil.res(component.rightBell().get().getSerializedName() + "_handbell")).getDefaultInstance());
+                        alarmClockBlockEntity.setRightHandbellType(BuiltInRegistries.ITEM.get(TextUtil.res(component.rightBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance());
                     }
                     if (component.pocketWatchType().get() != PocketWatchTypes.EMPTY) {
                         alarmClockBlockEntity.setPocketWatchType(BuiltInRegistries.ITEM.get(TextUtil.res(component.pocketWatchType().get().getSerializedName() + "_pocket_watch")).getDefaultInstance());
@@ -202,10 +204,14 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
 
         if (left) {
             if (alarmClockBlockEntity.getData().leftBell().isPresent()) {
-                if (mainHandItem.is(alarmClockBlockEntity.getLeftBellItem().getItem())) {
+                HandbellComponent mainHandBellComponent = mainHandItem.get(ColourfulClocksDataComponentTypes.getHandbellData());
+                if (mainHandBellComponent.getType() == alarmClockBlockEntity.getData().leftBell().get().getType() && mainHandBellComponent.getMaterialType() == alarmClockBlockEntity.getData().leftBell().get().materialType()) {
+//                if (mainHandItem.is(alarmClockBlockEntity.getLeftBellItem().getItem())) {
                     return ItemInteractionResult.CONSUME;
                 } else if (!player.getAbilities().instabuild) {
-                    ItemStack oldLeftBellItemStack = alarmClockBlockEntity.removeLeftHandbellType();
+                    ItemStack oldLeftBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().leftBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
+                    HandbellComponent component = alarmClockBlockEntity.removeLeftHandbellType();
+                    oldLeftBellItemStack.set(ColourfulClocksDataComponentTypes.getHandbellData(), component);
                     if (!player.getInventory().add(oldLeftBellItemStack)) {
                         Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldLeftBellItemStack);
                     }
@@ -216,10 +222,14 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
 //          if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.BELL_CHANGE_TRIGGER.get().trigger(serverPlayer);
         } else {
             if (alarmClockBlockEntity.getData().rightBell().isPresent()) {
-                if (mainHandItem.is(alarmClockBlockEntity.getRightBellItem().getItem())) {
+                HandbellComponent mainHandBellComponent = mainHandItem.get(ColourfulClocksDataComponentTypes.getHandbellData());
+                if (mainHandBellComponent.getType() == alarmClockBlockEntity.getData().rightBell().get().getType() && mainHandBellComponent.getMaterialType() == alarmClockBlockEntity.getData().rightBell().get().materialType()) {
+//                if (mainHandItem.is(alarmClockBlockEntity.getRightBellItem().getItem())) {
                     return ItemInteractionResult.CONSUME;
                 } else if (!player.getAbilities().instabuild) {
-                    ItemStack oldRightBellItemStack = alarmClockBlockEntity.removeRightHandbellType();
+                    ItemStack oldRightBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().rightBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
+                    HandbellComponent component = alarmClockBlockEntity.removeRightHandbellType();
+                    oldRightBellItemStack.set(ColourfulClocksDataComponentTypes.getHandbellData(), component);
                     if (!player.getInventory().add(oldRightBellItemStack)) {
                         Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldRightBellItemStack);
                     }
@@ -290,8 +300,9 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
     protected ItemInteractionResult removeBell(Level level, BlockPos pos, Player player, AlarmClockBlockEntity alarmClockBlockEntity, boolean left) {
         if (left) {
             if (alarmClockBlockEntity.getData().leftBell().isPresent()) {
-                ItemStack oldLeftBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().leftBell().get().getSerializedName() + "_handbell")).getDefaultInstance();
-                alarmClockBlockEntity.removeLeftHandbellType();
+                ItemStack oldLeftBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().leftBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
+                HandbellComponent component = alarmClockBlockEntity.removeLeftHandbellType();
+                oldLeftBellItemStack.set(ColourfulClocksDataComponentTypes.getHandbellData(), component);
                 if (!player.getAbilities().instabuild && !player.getInventory().add(oldLeftBellItemStack)) {
                     Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldLeftBellItemStack);
                 }
@@ -300,8 +311,9 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
             }
         } else {
             if (alarmClockBlockEntity.getData().rightBell().isPresent()) {
-                ItemStack oldRightBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().rightBell().get().getSerializedName() + "_handbell")).getDefaultInstance();
-                alarmClockBlockEntity.removeRightHandbellType();
+                ItemStack oldRightBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().rightBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
+                HandbellComponent component = alarmClockBlockEntity.removeRightHandbellType();
+                oldRightBellItemStack.set(ColourfulClocksDataComponentTypes.getHandbellData(), component);
                 if (!player.getAbilities().instabuild && !player.getInventory().add(oldRightBellItemStack)) {
                     Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldRightBellItemStack);
                 }
@@ -357,20 +369,28 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
 
     protected ItemInteractionResult setBellWaxedState(Level level, BlockPos pos, Player player, ItemStack itemStack, AlarmClockBlockEntity alarmClockBlockEntity, Direction facing, boolean tryWax, boolean left) {
         AlarmClockComponent data = alarmClockBlockEntity.getData();
-        Optional<HandbellTypes> bellOpt = left ? data.leftBell() : data.rightBell();
-        if (bellOpt.isEmpty()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        HandbellTypes bellOpt = left ? data.leftBell().get().getType() : data.rightBell().get().getType();
+        if (bellOpt == null) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 
-        // current item in the bell slot and setter for left/right
-        ItemStack currentBellItem = left ? alarmClockBlockEntity.getLeftBellItem() : alarmClockBlockEntity.getRightBellItem();
-        java.util.function.Consumer<ItemStack> setBell = bs -> {
-            if (left) alarmClockBlockEntity.setLeftHandbellType(bs);
-            else alarmClockBlockEntity.setRightHandbellType(bs);
+//        // current item in the bell slot and setter for left/right
+//        ItemStack currentBellItem = left ? alarmClockBlockEntity.getLeftBellItem() : alarmClockBlockEntity.getRightBellItem();
+//        Consumer<ItemStack> setBell = bs -> {
+//            if (left) alarmClockBlockEntity.setLeftHandbellType(bs);
+//            else alarmClockBlockEntity.setRightHandbellType(bs);
+//        };
+        ItemStack currentBellItem = left ? BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().leftBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance() :
+                BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().rightBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
+        Optional<HandbellComponent> currentBellComponent = left ? alarmClockBlockEntity.getData().leftBell() : alarmClockBlockEntity.getData().rightBell();
+        currentBellItem.set(ColourfulClocksDataComponentTypes.getHandbellData(), currentBellComponent.get());
+        Consumer<HandbellComponent> setBellComponent = component -> {
+            if (left) alarmClockBlockEntity.setLeftHandbellType(component);
+            else alarmClockBlockEntity.setRightHandbellType(component);
         };
 
         if (tryWax) {
-            ItemStack waxed = BuiltInRegistries.ITEM.get(TextUtil.res("waxed_" + bellOpt.get().getSerializedName() + "_handbell")).getDefaultInstance();
+            ItemStack waxed = BuiltInRegistries.ITEM.get(TextUtil.res("waxed_" + bellOpt.getSerializedName() + "_handbell")).getDefaultInstance();
             if (!waxed.isEmpty()) {
-                setBell.accept(waxed);
+                setBellComponent.accept(waxed.get(ColourfulClocksDataComponentTypes.getHandbellData()));
                 level.blockEntityChanged(pos);
                 addBellParticle(level, pos, facing, left, ParticleTypes.WAX_ON);
                 level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
@@ -379,9 +399,11 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
                 return ItemInteractionResult.SUCCESS;
             }
         } else {
-            Pair<Item, Supplier<SoundEvent>> unwaxed = ColourfulClocksTypeUtil.getUnwaxedBell(currentBellItem);
+//            Pair<Item, Supplier<SoundEvent>> unwaxed = ColourfulClocksTypeUtil.getUnwaxedBell(currentBellItem);
+            Pair<Item, Supplier<SoundEvent>> unwaxed = ColourfulClocksTypeUtil.getUnwaxedBell(currentBellComponent.get());
             if (!unwaxed.getFirst().equals(ItemStack.EMPTY.getItem())) {
-                setBell.accept(unwaxed.getFirst().getDefaultInstance());
+//                setBell.accept(unwaxed.getFirst().getDefaultInstance());
+                setBellComponent.accept(unwaxed.getFirst().components().get(ColourfulClocksDataComponentTypes.getHandbellData()));
                 level.blockEntityChanged(pos);
                 addBellParticle(level, pos, facing, left, ParticleTypes.WAX_OFF);
                 level.playSound(player, pos, unwaxed.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
@@ -390,9 +412,11 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
                 return ItemInteractionResult.SUCCESS;
             }
 
-            Pair<Item, Supplier<SoundEvent>> scraped = ColourfulClocksTypeUtil.getScrapedBell(currentBellItem);
+//            Pair<Item, Supplier<SoundEvent>> scraped = ColourfulClocksTypeUtil.getScrapedBell(currentBellItem);
+            Pair<Item, Supplier<SoundEvent>> scraped = ColourfulClocksTypeUtil.getScrapedBell(currentBellComponent.get());
             if (!scraped.getFirst().equals(ItemStack.EMPTY.getItem())) {
-                setBell.accept(scraped.getFirst().getDefaultInstance());
+//                setBell.accept(scraped.getFirst().getDefaultInstance());
+                setBellComponent.accept(scraped.getFirst().components().get(ColourfulClocksDataComponentTypes.getHandbellData()));
                 level.blockEntityChanged(pos);
                 addBellParticle(level, pos, facing, left, ParticleTypes.SCRAPE);
                 level.playSound(player, pos, scraped.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);

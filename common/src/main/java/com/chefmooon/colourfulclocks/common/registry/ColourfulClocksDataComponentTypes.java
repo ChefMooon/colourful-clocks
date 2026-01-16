@@ -10,7 +10,6 @@ public class ColourfulClocksDataComponentTypes {
 
     public static final ResourceLocation ALARM_CLOCK_DATA = dataComponent("alarm_clock_data");
     public static final ResourceLocation HANDBELL_DATA = dataComponent("handbell_data");
-    public static final ResourceLocation HANDBELL_WEATHERING = dataComponent("handbell_weathering");
 
     public static final ResourceLocation POCKET_WATCH_CLOSED = dataComponent("pocket_watch_closed");
     public static final ResourceLocation POCKET_WATCH_WEATHERING = dataComponent("pocket_watch_weathering");
@@ -26,11 +25,6 @@ public class ColourfulClocksDataComponentTypes {
 
     @ExpectPlatform
     public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static DataComponentType<Integer> getHandbellWeatheringData() {
         throw new AssertionError();
     }
 

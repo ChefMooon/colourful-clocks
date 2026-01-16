@@ -4,10 +4,10 @@
   "group": "copper_handbell",
   "key": {
     "A": {
-      "item": "minecraft:cut_red_sandstone"
+      "item": "minecraft:copper_ingot"
     },
     "B": {
-      "item": "minecraft:copper_ingot"
+      "item": "minecraft:cut_red_sandstone"
     }
   },
   "pattern": [
@@ -17,7 +17,9 @@
   "result": {
     "components": {
       "colourfulclocks:handbell_data": {
-        "handle": "cut_red_sandstone"
+        "type": "copper",
+        "handle": "cut_red_sandstone",
+        "weathering": 0
       }
     },
     "count": 1,

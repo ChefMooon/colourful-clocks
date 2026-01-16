@@ -4,10 +4,10 @@
   "group": "amethyst_handbell",
   "key": {
     "A": {
-      "item": "minecraft:spruce_planks"
+      "item": "minecraft:amethyst_shard"
     },
     "B": {
-      "item": "minecraft:amethyst_shard"
+      "item": "minecraft:spruce_planks"
     }
   },
   "pattern": [
@@ -17,6 +17,7 @@
   "result": {
     "components": {
       "colourfulclocks:handbell_data": {
+        "type": "amethyst",
         "handle": "spruce"
       }
     },

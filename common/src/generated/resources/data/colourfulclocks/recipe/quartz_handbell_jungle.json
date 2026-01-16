@@ -4,10 +4,10 @@
   "group": "quartz_handbell",
   "key": {
     "A": {
-      "item": "minecraft:jungle_planks"
+      "item": "minecraft:quartz"
     },
     "B": {
-      "item": "minecraft:quartz"
+      "item": "minecraft:jungle_planks"
     }
   },
   "pattern": [
@@ -17,6 +17,7 @@
   "result": {
     "components": {
       "colourfulclocks:handbell_data": {
+        "type": "quartz",
         "handle": "jungle"
       }
     },

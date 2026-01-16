@@ -4,10 +4,10 @@
   "group": "redstone_handbell",
   "key": {
     "A": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:redstone"
     },
     "B": {
-      "item": "minecraft:redstone"
+      "item": "minecraft:oak_planks"
     }
   },
   "pattern": [

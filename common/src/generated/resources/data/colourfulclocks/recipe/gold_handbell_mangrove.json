@@ -4,10 +4,10 @@
   "group": "gold_handbell",
   "key": {
     "A": {
-      "item": "minecraft:mangrove_planks"
+      "item": "minecraft:gold_ingot"
     },
     "B": {
-      "item": "minecraft:gold_ingot"
+      "item": "minecraft:mangrove_planks"
     }
   },
   "pattern": [
@@ -17,6 +17,7 @@
   "result": {
     "components": {
       "colourfulclocks:handbell_data": {
+        "type": "gold",
         "handle": "mangrove"
       }
     },

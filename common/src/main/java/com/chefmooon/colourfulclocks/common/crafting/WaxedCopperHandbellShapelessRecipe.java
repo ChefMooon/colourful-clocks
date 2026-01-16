@@ -1,5 +1,6 @@
 package com.chefmooon.colourfulclocks.common.crafting;
 
+import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.types.HandbellHandleTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksRecipeSerializers;
@@ -74,21 +75,21 @@ public class WaxedCopperHandbellShapelessRecipe implements CraftingRecipe {
             return false;
         }
 
-        if (input.ingredientCount() == 1 && this.ingredients.size() == 1) {
-            for (int i = 0; i < input.size(); i++) {
-                ItemStack stack = input.getItem(i);
-                if (!stack.isEmpty()) {
-                    return this.ingredients.getFirst().test(stack);
-                }
-            }
-            return false;
-        }
-
         return input.stackedContents().canCraft(this, (IntList) null);
     }
 
     public ItemStack assemble(CraftingInput input, HolderLookup.Provider registries) {
-        return this.result.copy();
+        HandbellComponent foundHandbellComponent = null;
+        for (int i = 0; i < input.size(); i++) {
+            ItemStack stack = input.getItem(i);
+            if (stack.has(ColourfulClocksDataComponentTypes.getHandbellData())) {
+                foundHandbellComponent = stack.get(ColourfulClocksDataComponentTypes.getHandbellData());
+                break;
+            }
+        }
+        ItemStack resultStack = this.result.copy();
+        resultStack.set(ColourfulClocksDataComponentTypes.getHandbellData(), foundHandbellComponent);
+        return resultStack;
     }
 
     public boolean canCraftInDimensions(int width, int height) {

@@ -19,9 +19,6 @@ public class ColourfulClocksDataComponentTypesImpl {
     public static final DataComponentType<HandbellComponent> HANDBELL_DATA = register(
             ColourfulClocksDataComponentTypes.HANDBELL_DATA.getPath(), handBellComponentBuilder -> handBellComponentBuilder.persistent(HandbellComponent.CODEC).networkSynchronized(HandbellComponent.STREAM_CODEC)
     );
-    public static final DataComponentType<Integer> HANDBELL_WEATHERING = register(
-            ColourfulClocksDataComponentTypes.HANDBELL_WEATHERING.getPath(), (builder) -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT)
-    );
 
     public static final DataComponentType<Boolean> POCKET_WATCH_CLOSED = register(
             ColourfulClocksDataComponentTypes.POCKET_WATCH_CLOSED.getPath(), (builder) -> builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL)
@@ -53,10 +50,6 @@ public class ColourfulClocksDataComponentTypesImpl {
 
     private static <T> DataComponentType<T> register(String name, UnaryOperator<DataComponentType.Builder<T>> builder) {
         return (DataComponentType) Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, TextUtil.res(name), ((DataComponentType.Builder)builder.apply(DataComponentType.builder())).build());
-    }
-
-    public static DataComponentType<Integer> getHandbellWeatheringData() {
-        return HANDBELL_WEATHERING;
     }
 
     public static DataComponentType<AlarmClockComponent> getAlarmClockData() {

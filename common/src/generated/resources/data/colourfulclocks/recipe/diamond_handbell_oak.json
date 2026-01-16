@@ -4,10 +4,10 @@
   "group": "diamond_handbell",
   "key": {
     "A": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:diamond"
     },
     "B": {
-      "item": "minecraft:diamond"
+      "item": "minecraft:oak_planks"
     }
   },
   "pattern": [

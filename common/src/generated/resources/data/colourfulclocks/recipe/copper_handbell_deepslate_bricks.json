@@ -4,10 +4,10 @@
   "group": "copper_handbell",
   "key": {
     "A": {
-      "item": "minecraft:deepslate_bricks"
+      "item": "minecraft:copper_ingot"
     },
     "B": {
-      "item": "minecraft:copper_ingot"
+      "item": "minecraft:deepslate_bricks"
     }
   },
   "pattern": [
@@ -17,7 +17,9 @@
   "result": {
     "components": {
       "colourfulclocks:handbell_data": {
-        "handle": "deepslate_bricks"
+        "type": "copper",
+        "handle": "deepslate_bricks",
+        "weathering": 0
       }
     },
     "count": 1,

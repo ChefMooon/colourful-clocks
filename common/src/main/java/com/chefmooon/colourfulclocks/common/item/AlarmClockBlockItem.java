@@ -27,13 +27,13 @@ public class AlarmClockBlockItem extends BlockItem {
         if (stack.has(ColourfulClocksDataComponentTypes.getAlarmClockData())) {
             AlarmClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getAlarmClockData(), AlarmClockComponent.getDefaultValue());
             if (component.leftBell().isPresent()) {
-                Item leftBellItem = BuiltInRegistries.ITEM.get(TextUtil.res(component.leftBell().get().getSerializedName() + "_handbell"));
+                Item leftBellItem = BuiltInRegistries.ITEM.get(TextUtil.res(component.leftBell().get().getType().getSerializedName() + "_handbell"));
                 if (leftBellItem != null) {
                     tooltipComponents.add(Component.translatable(leftBellItem.getDescriptionId()));
                 }
             }
             if (component.rightBell().isPresent()) {
-                Item rightBellItem = BuiltInRegistries.ITEM.get(TextUtil.res(component.rightBell().get().getSerializedName() + "_handbell"));
+                Item rightBellItem = BuiltInRegistries.ITEM.get(TextUtil.res(component.rightBell().get().getType().getSerializedName() + "_handbell"));
                 if (rightBellItem != null) {
                     tooltipComponents.add(Component.translatable(rightBellItem.getDescriptionId()));
                 }

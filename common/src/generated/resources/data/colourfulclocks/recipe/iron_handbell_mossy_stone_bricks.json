@@ -4,10 +4,10 @@
   "group": "iron_handbell",
   "key": {
     "A": {
-      "item": "minecraft:mossy_stone_bricks"
+      "item": "minecraft:iron_ingot"
     },
     "B": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:mossy_stone_bricks"
     }
   },
   "pattern": [
@@ -17,6 +17,7 @@
   "result": {
     "components": {
       "colourfulclocks:handbell_data": {
+        "type": "iron",
         "handle": "mossy_stone_bricks"
       }
     },

@@ -1,7 +1,6 @@
 package com.chefmooon.colourfulclocks.common.data;
 
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -15,28 +14,28 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public record AlarmClockComponent(Optional<HandbellTypes> leftBell, Optional<HandbellTypes> rightBell, Optional<BornholmTopGlassTypes> glassType, Optional<PocketWatchTypes> pocketWatchType, Optional<Boolean> ticking) {
+public record AlarmClockComponent(Optional<HandbellComponent> leftBell, Optional<HandbellComponent> rightBell, Optional<BornholmTopGlassTypes> glassType, Optional<PocketWatchTypes> pocketWatchType, Optional<Boolean> ticking) {
     public static final Codec<AlarmClockComponent> CODEC = RecordCodecBuilder.create(instance -> instance.group(
-            HandbellTypes.CODEC.optionalFieldOf("left_bell").forGetter(AlarmClockComponent::leftBell),
-            HandbellTypes.CODEC.optionalFieldOf("right_bell").forGetter(AlarmClockComponent::rightBell),
+            HandbellComponent.CODEC.optionalFieldOf("left_bell").forGetter(AlarmClockComponent::leftBell),
+            HandbellComponent.CODEC.optionalFieldOf("right_bell").forGetter(AlarmClockComponent::rightBell),
             BornholmTopGlassTypes.CODEC.optionalFieldOf("glass").forGetter(AlarmClockComponent::glassType),
             PocketWatchTypes.CODEC.optionalFieldOf("pocket_watch").forGetter(AlarmClockComponent::pocketWatchType),
             Codec.BOOL.optionalFieldOf("ticking").forGetter(AlarmClockComponent::ticking)
     ).apply(instance, AlarmClockComponent::new));
 
     public static final StreamCodec<ByteBuf, AlarmClockComponent> STREAM_CODEC = StreamCodec.composite(
-            HandbellTypes.STREAM_CODEC.apply(ByteBufCodecs::optional), AlarmClockComponent::leftBell,
-            HandbellTypes.STREAM_CODEC.apply(ByteBufCodecs::optional), AlarmClockComponent::rightBell,
+            HandbellComponent.STREAM_CODEC.apply(ByteBufCodecs::optional), AlarmClockComponent::leftBell,
+            HandbellComponent.STREAM_CODEC.apply(ByteBufCodecs::optional), AlarmClockComponent::rightBell,
             BornholmTopGlassTypes.STREAM_CODEC.apply(ByteBufCodecs::optional), AlarmClockComponent::glassType,
             PocketWatchTypes.STREAM_CODEC.apply(ByteBufCodecs::optional), AlarmClockComponent::pocketWatchType,
             ByteBufCodecs.BOOL.apply(ByteBufCodecs::optional), AlarmClockComponent::ticking,
             AlarmClockComponent::new);
 
-    public Optional<HandbellTypes> leftBell() {
+    public Optional<HandbellComponent> leftBell() {
         return leftBell;
     }
 
-    public Optional<HandbellTypes> rightBell() {
+    public Optional<HandbellComponent> rightBell() {
         return rightBell;
     }
 

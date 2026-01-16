@@ -4,10 +4,10 @@
   "group": "quartz_handbell",
   "key": {
     "A": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:quartz"
     },
     "B": {
-      "item": "minecraft:quartz"
+      "item": "minecraft:oak_planks"
     }
   },
   "pattern": [

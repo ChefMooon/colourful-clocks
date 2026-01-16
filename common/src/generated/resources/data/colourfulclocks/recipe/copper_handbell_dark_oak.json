@@ -4,10 +4,10 @@
   "group": "copper_handbell",
   "key": {
     "A": {
-      "item": "minecraft:dark_oak_planks"
+      "item": "minecraft:copper_ingot"
     },
     "B": {
-      "item": "minecraft:copper_ingot"
+      "item": "minecraft:dark_oak_planks"
     }
   },
   "pattern": [
@@ -17,7 +17,9 @@
   "result": {
     "components": {
       "colourfulclocks:handbell_data": {
-        "handle": "dark_oak"
+        "type": "copper",
+        "handle": "dark_oak",
+        "weathering": 0
       }
     },
     "count": 1,

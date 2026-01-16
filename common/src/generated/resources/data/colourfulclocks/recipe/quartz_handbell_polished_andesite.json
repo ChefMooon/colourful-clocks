@@ -4,10 +4,10 @@
   "group": "quartz_handbell",
   "key": {
     "A": {
-      "item": "minecraft:polished_andesite"
+      "item": "minecraft:quartz"
     },
     "B": {
-      "item": "minecraft:quartz"
+      "item": "minecraft:polished_andesite"
     }
   },
   "pattern": [
@@ -17,6 +17,7 @@
   "result": {
     "components": {
       "colourfulclocks:handbell_data": {
+        "type": "quartz",
         "handle": "polished_andesite"
       }
     },

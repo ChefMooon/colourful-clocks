@@ -14,4 +14,9 @@ public class TextUtil {
     public static ResourceLocation res(String string) {
         return ResourceLocation.fromNamespaceAndPath(ColourfulClocks.MOD_ID, string);
     }
+
+    public static String getWeatheringPercentage(int weathering) {
+        int percentage = (int) ((weathering / (double)(CopperWeatheringUtil.WEATHERED_THRESHOLD)) * 100);
+        return percentage + "%";
+    }
 }

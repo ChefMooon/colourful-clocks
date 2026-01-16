@@ -1,0 +1,23 @@
+{
+  "type": "colourfulclocks:waxed_copper_handbell",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "colourfulclocks:oxidized_copper_handbell"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell_data": {
+        "type": "waxed_oxidized_copper",
+        "handle": "polished_tuff",
+        "weathering": 0
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:waxed_oxidized_copper_handbell"
+  }
+}

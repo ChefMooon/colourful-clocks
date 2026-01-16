@@ -2,15 +2,16 @@ package com.chefmooon.colourfulclocks.common.block.entity;
 
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.AlarmClockComponent;
+import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
-import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
@@ -31,8 +32,6 @@ import java.util.Optional;
 
 public class AlarmClockBlockEntity extends BlockEntity {
     public static final int WEATHERED_THRESHOLD = 6000; // 5 min to weather
-    private ItemStack leftBellItem = ItemStack.EMPTY;
-    private ItemStack rightBellItem = ItemStack.EMPTY;
     private ItemStack pocketWatchItem = ItemStack.EMPTY;
     private AlarmClockComponent alarmClockData;
     public AlarmClockBlockEntity(BlockPos pos, BlockState blockState) {
@@ -45,16 +44,6 @@ public class AlarmClockBlockEntity extends BlockEntity {
         super.loadAdditional(tag, provider);
         this.alarmClockData = AlarmClockComponent.load(tag);
 
-        if (tag.contains("left_bell")) {
-            CompoundTag leftBellItemTag = tag.getCompound("left_bell");
-            setLeftHandbellType(ItemStack.parse(provider, leftBellItemTag).orElse(ItemStack.EMPTY));
-        }
-
-        if (tag.contains("right_bell")) {
-            CompoundTag rightBellItemTag = tag.getCompound("right_bell");
-            setRightHandbellType(ItemStack.parse(provider, rightBellItemTag).orElse(ItemStack.EMPTY));
-        }
-
         if (tag.contains("pocket_watch")) {
             CompoundTag clockHandsItemTag = tag.getCompound("pocket_watch");
             setPocketWatchType(ItemStack.parse(provider, clockHandsItemTag).orElse(ItemStack.EMPTY));
@@ -65,14 +54,6 @@ public class AlarmClockBlockEntity extends BlockEntity {
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         this.alarmClockData.save(tag);
         super.saveAdditional(tag, provider);
-
-        if (!leftBellItem.isEmpty()) {
-            tag.put("left_bell", leftBellItem.save(provider, new CompoundTag()));
-        }
-
-        if (!rightBellItem.isEmpty()) {
-            tag.put("right_bell", rightBellItem.save(provider, new CompoundTag()));
-        }
 
         if (!pocketWatchItem.isEmpty()) {
             tag.put("pocket_watch", pocketWatchItem.save(provider, new CompoundTag()));
@@ -104,10 +85,14 @@ public class AlarmClockBlockEntity extends BlockEntity {
     public NonNullList<ItemStack> getDroppableInventory() {
         NonNullList<ItemStack> drops = NonNullList.create();
         if (this.alarmClockData.leftBell().isPresent()) {
-            drops.add(getLeftBellItem());
+            ItemStack leftBell = BuiltInRegistries.ITEM.get(TextUtil.res(this.alarmClockData.leftBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
+            leftBell.set(ColourfulClocksDataComponentTypes.getHandbellData(), this.alarmClockData.leftBell().get());
+            drops.add(leftBell);
         }
         if (this.alarmClockData.rightBell().isPresent()) {
-            drops.add(getRightBellItem());
+            ItemStack rightBell = BuiltInRegistries.ITEM.get(TextUtil.res(this.alarmClockData.rightBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
+            rightBell.set(ColourfulClocksDataComponentTypes.getHandbellData(), this.alarmClockData.rightBell().get());
+            drops.add(rightBell);
         }
         if (this.alarmClockData.pocketWatchType().isPresent()) {
             if (this.alarmClockData.pocketWatchType().get().getId() != 0) {
@@ -115,14 +100,6 @@ public class AlarmClockBlockEntity extends BlockEntity {
             }
         }
         return drops;
-    }
-
-    public ItemStack getLeftBellItem() {
-        return leftBellItem;
-    }
-
-    public ItemStack getRightBellItem() {
-        return rightBellItem;
     }
 
     public ItemStack getPocketWatchItem() {
@@ -134,27 +111,31 @@ public class AlarmClockBlockEntity extends BlockEntity {
     }
 
     public void setLeftHandbellType(ItemStack itemStack) {
-        leftBellItem = itemStack;
-        setData(ColourfulClocksTypeUtil.getHandbellTypeFromItem(itemStack.getItem()), this.alarmClockData.rightBell().orElse(null), this.alarmClockData.glassType().orElse(BornholmTopGlassTypes.GLASS), this.alarmClockData.pocketWatchType().orElse(PocketWatchTypes.EMPTY), this.alarmClockData.ticking().orElse(Boolean.FALSE));
+        setData(itemStack.get(ColourfulClocksDataComponentTypes.getHandbellData()), this.alarmClockData.rightBell().orElse(null), this.alarmClockData.glassType().orElse(BornholmTopGlassTypes.GLASS), this.alarmClockData.pocketWatchType().orElse(PocketWatchTypes.EMPTY), this.alarmClockData.ticking().orElse(Boolean.FALSE));
     }
 
-    public ItemStack removeLeftHandbellType() {
-        ItemStack stored = leftBellItem;
-        leftBellItem = ItemStack.EMPTY;
+    public void setLeftHandbellType(HandbellComponent component) {
+        setData(component, this.alarmClockData.rightBell().orElse(null), this.alarmClockData.glassType().orElse(BornholmTopGlassTypes.GLASS), this.alarmClockData.pocketWatchType().orElse(PocketWatchTypes.EMPTY), this.alarmClockData.ticking().orElse(Boolean.FALSE));
+    }
+
+    public HandbellComponent removeLeftHandbellType() {
+        HandbellComponent removed = this.alarmClockData.leftBell().orElse(HandbellComponent.getDefaultValue());
         setData(null, this.alarmClockData.rightBell().orElse(null), this.alarmClockData.glassType().orElse(BornholmTopGlassTypes.GLASS), this.alarmClockData.pocketWatchType().orElse(PocketWatchTypes.EMPTY), this.alarmClockData.ticking().orElse(Boolean.FALSE));
-        return stored;
+        return removed;
+    }
+
+    public void setRightHandbellType(HandbellComponent component) {
+        setData(this.alarmClockData.leftBell().orElse(null), component, this.alarmClockData.glassType().orElse(BornholmTopGlassTypes.GLASS), this.alarmClockData.pocketWatchType().orElse(PocketWatchTypes.EMPTY), this.alarmClockData.ticking().orElse(Boolean.FALSE));
     }
 
     public void setRightHandbellType(ItemStack itemStack) {
-        rightBellItem = itemStack;
-        setData(this.alarmClockData.leftBell().orElse(null), ColourfulClocksTypeUtil.getHandbellTypeFromItem(itemStack.getItem()), this.alarmClockData.glassType().orElse(BornholmTopGlassTypes.GLASS), this.alarmClockData.pocketWatchType().orElse(PocketWatchTypes.EMPTY), this.alarmClockData.ticking().orElse(Boolean.FALSE));
+        setData(this.alarmClockData.leftBell().orElse(null), itemStack.get(ColourfulClocksDataComponentTypes.getHandbellData()), this.alarmClockData.glassType().orElse(BornholmTopGlassTypes.GLASS), this.alarmClockData.pocketWatchType().orElse(PocketWatchTypes.EMPTY), this.alarmClockData.ticking().orElse(Boolean.FALSE));
     }
 
-    public ItemStack removeRightHandbellType() {
-        ItemStack stored = rightBellItem;
-        rightBellItem = ItemStack.EMPTY;
+    public HandbellComponent removeRightHandbellType() {
+        HandbellComponent removed = this.alarmClockData.rightBell().orElse(HandbellComponent.getDefaultValue());
         setData(this.alarmClockData.leftBell().orElse(null), null, this.alarmClockData.glassType().orElse(BornholmTopGlassTypes.GLASS), this.alarmClockData.pocketWatchType().orElse(PocketWatchTypes.EMPTY), this.alarmClockData.ticking().orElse(Boolean.FALSE));
-        return stored;
+        return removed;
     }
 
     public void setGlassType(BornholmTopGlassTypes glassType) {
@@ -177,7 +158,7 @@ public class AlarmClockBlockEntity extends BlockEntity {
         setData(this.alarmClockData.leftBell().orElse(null), this.alarmClockData.rightBell().orElse(null), this.alarmClockData.glassType().orElse(BornholmTopGlassTypes.GLASS), this.alarmClockData.pocketWatchType().orElse(PocketWatchTypes.EMPTY), ticking);
     }
 
-    public void setData(@Nullable HandbellTypes leftBell, @Nullable HandbellTypes rightBell, @Nullable BornholmTopGlassTypes glassType, @Nullable PocketWatchTypes pocketWatchType, @Nullable Boolean ticking) {
+    public void setData(@Nullable HandbellComponent leftBell, @Nullable HandbellComponent rightBell, @Nullable BornholmTopGlassTypes glassType, @Nullable PocketWatchTypes pocketWatchType, @Nullable Boolean ticking) {
         this.alarmClockData = new AlarmClockComponent(
                 leftBell != null ? Optional.of(leftBell) : Optional.empty(),
                 rightBell != null ? Optional.of(rightBell) : Optional.empty(),
@@ -199,30 +180,28 @@ public class AlarmClockBlockEntity extends BlockEntity {
     }
 
     private static void weatherItem(Level level, BlockPos blockPos, AlarmClockBlockEntity alarmClockBlockEntity) {
-        ItemStack leftBellStack = alarmClockBlockEntity.getLeftBellItem();
-        if (!leftBellStack.isEmpty()) {
-            if (ColourfulClocksTypeUtil.isCopperBell(leftBellStack)) {
-                if (leftBellStack.get(ColourfulClocksDataComponentTypes.getHandbellWeatheringData()) != null) {
-                    Integer weathering = leftBellStack.get(ColourfulClocksDataComponentTypes.getHandbellWeatheringData());
-                    if (weathering >= WEATHERED_THRESHOLD) {
-                        advanceBellWeathering(level, blockPos, leftBellStack, alarmClockBlockEntity, true);
-                    } else {
-                        leftBellStack.set(ColourfulClocksDataComponentTypes.getHandbellWeatheringData(), weathering + 1);
-                    }
+        if (alarmClockBlockEntity.getData().leftBell().isPresent()) {
+            HandbellComponent leftBellComponent = alarmClockBlockEntity.getData().leftBell().get();
+            if (leftBellComponent.getWeathering().isPresent() && ColourfulClocksTypeUtil.bellCanWeather(leftBellComponent)) {
+                int weathering = leftBellComponent.getWeathering().get();
+                if (weathering >= WEATHERED_THRESHOLD) {
+                    advanceBellWeathering(level, blockPos, leftBellComponent, alarmClockBlockEntity, true);
+                } else {
+                    HandbellComponent updatedLeftBellComponent = new HandbellComponent(leftBellComponent.getType(), leftBellComponent.getMaterialType(), Optional.of(weathering + 1));
+                    alarmClockBlockEntity.setLeftHandbellType(updatedLeftBellComponent);
                 }
             }
         }
 
-        ItemStack rightBellStack = alarmClockBlockEntity.getRightBellItem();
-        if (!rightBellStack.isEmpty()) {
-            if (ColourfulClocksTypeUtil.isCopperBell(rightBellStack)) {
-                if (rightBellStack.get(ColourfulClocksDataComponentTypes.getHandbellWeatheringData()) != null) {
-                    Integer weathering = rightBellStack.get(ColourfulClocksDataComponentTypes.getHandbellWeatheringData());
-                    if (weathering >= WEATHERED_THRESHOLD) {
-                        advanceBellWeathering(level, blockPos, rightBellStack, alarmClockBlockEntity, false);
-                    } else {
-                        rightBellStack.set(ColourfulClocksDataComponentTypes.getHandbellWeatheringData(), weathering + 1);
-                    }
+        if (alarmClockBlockEntity.getData().rightBell().isPresent()) {
+            HandbellComponent rightBellComponent = alarmClockBlockEntity.getData().rightBell().get();
+            if (rightBellComponent.getWeathering().isPresent() && ColourfulClocksTypeUtil.bellCanWeather(rightBellComponent)) {
+                int weathering = rightBellComponent.getWeathering().get();
+                if (weathering >= WEATHERED_THRESHOLD) {
+                    advanceBellWeathering(level, blockPos, rightBellComponent, alarmClockBlockEntity, false);
+                } else {
+                    HandbellComponent updatedRightBellComponent = new HandbellComponent(rightBellComponent.getType(), rightBellComponent.getMaterialType(), Optional.of(weathering + 1));
+                    alarmClockBlockEntity.setRightHandbellType(updatedRightBellComponent);
                 }
             }
         }
@@ -248,11 +227,15 @@ public class AlarmClockBlockEntity extends BlockEntity {
             alarmClockBlockEntity.setPocketWatchType(weatheredItemStack);
             level.blockEntityChanged(blockPos);
             alarmClockBlockEntity.setChanged();
+            if (!level.isClientSide()) {
+                BlockState state = level.getBlockState(blockPos);
+                level.sendBlockUpdated(blockPos, state, state, 3);
+            }
         }
     }
 
-    protected static void advanceBellWeathering(Level level, BlockPos blockPos, ItemStack itemStack, AlarmClockBlockEntity alarmClockBlockEntity, boolean isLeft) {
-        ItemStack weatheredItemStack = new ItemStack(ColourfulClocksTypeUtil.getNextWeatheredCopperBell(itemStack));
+    protected static void advanceBellWeathering(Level level, BlockPos blockPos, HandbellComponent handbellComponent, AlarmClockBlockEntity alarmClockBlockEntity, boolean isLeft) {
+        ItemStack weatheredItemStack = new ItemStack(ColourfulClocksTypeUtil.getNextWeatheredCopperBell(handbellComponent));
         if (!weatheredItemStack.isEmpty()) {
             if (isLeft) {
                 alarmClockBlockEntity.setLeftHandbellType(weatheredItemStack);
@@ -261,6 +244,10 @@ public class AlarmClockBlockEntity extends BlockEntity {
             }
             level.blockEntityChanged(blockPos);
             alarmClockBlockEntity.setChanged();
+            if (!level.isClientSide()) {
+                BlockState state = level.getBlockState(blockPos);
+                level.sendBlockUpdated(blockPos, state, state, 3);
+            }
         }
     }
 

@@ -4,10 +4,10 @@
   "group": "iron_handbell",
   "key": {
     "A": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:iron_ingot"
     },
     "B": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:oak_planks"
     }
   },
   "pattern": [

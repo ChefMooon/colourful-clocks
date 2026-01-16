@@ -4,10 +4,10 @@
   "group": "amethyst_handbell",
   "key": {
     "A": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:amethyst_shard"
     },
     "B": {
-      "item": "minecraft:amethyst_shard"
+      "item": "minecraft:oak_planks"
     }
   },
   "pattern": [

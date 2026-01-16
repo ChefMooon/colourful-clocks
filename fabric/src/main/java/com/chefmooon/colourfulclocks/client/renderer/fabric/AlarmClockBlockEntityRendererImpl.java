@@ -9,7 +9,6 @@ import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -69,7 +68,7 @@ public class AlarmClockBlockEntityRendererImpl<T extends AlarmClockBlockEntity> 
             poseStack.pushPose();
             translateBell(poseStack, facing, true);
 
-            ResourceLocation leftBellLocation = TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(blockEntity.getData().leftBell().get().getSerializedName()));
+            ResourceLocation leftBellLocation = TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(blockEntity.getData().leftBell().get().getType().getSerializedName()));
             BakedModel leftBellModel = minecraft.getModelManager().getModel(leftBellLocation);
             minecraft.getBlockRenderer().getModelRenderer().renderModel(
                     poseStack.last(),
@@ -86,7 +85,7 @@ public class AlarmClockBlockEntityRendererImpl<T extends AlarmClockBlockEntity> 
             poseStack.pushPose();
             translateBell(poseStack, facing, false);
 
-            ResourceLocation rightBellLocation = TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(blockEntity.getData().rightBell().get().getSerializedName()));
+            ResourceLocation rightBellLocation = TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(blockEntity.getData().rightBell().get().getType().getSerializedName()));
             BakedModel rightBellModel = minecraft.getModelManager().getModel(rightBellLocation);
             minecraft.getBlockRenderer().getModelRenderer().renderModel(
                     poseStack.last(),

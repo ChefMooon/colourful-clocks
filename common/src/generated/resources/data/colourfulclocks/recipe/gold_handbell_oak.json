@@ -4,10 +4,10 @@
   "group": "gold_handbell",
   "key": {
     "A": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:gold_ingot"
     },
     "B": {
-      "item": "minecraft:gold_ingot"
+      "item": "minecraft:oak_planks"
     }
   },
   "pattern": [

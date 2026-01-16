@@ -28,14 +28,10 @@ public class AlarmClockBlockImpl extends AlarmClockBlock {
         double localZ = hit.z - pos.getZ();
 
         return switch (facing) {
-            case NORTH ->
-                    localX > 0.5;
-            case SOUTH ->
-                    localX < 0.5;
-            case WEST ->
-                    localZ < 0.5;
-            case EAST ->
-                    localZ > 0.5;
+            case NORTH -> localX > 0.5;
+            case SOUTH -> localX < 0.5;
+            case WEST -> localZ < 0.5;
+            case EAST -> localZ > 0.5;
             default -> false;
         };
     }

@@ -4,10 +4,10 @@
   "group": "emerald_handbell",
   "key": {
     "A": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:emerald"
     },
     "B": {
-      "item": "minecraft:emerald"
+      "item": "minecraft:oak_planks"
     }
   },
   "pattern": [

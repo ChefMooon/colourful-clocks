@@ -68,7 +68,7 @@ public class AlarmClockBlockEntityRendererImpl<T extends AlarmClockBlockEntity> 
             poseStack.pushPose();
             translateBell(poseStack, facing, false);
 
-            ModelResourceLocation rightBellLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(blockEntity.getData().leftBell().get().getSerializedName())), "standalone");
+            ModelResourceLocation rightBellLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(blockEntity.getData().leftBell().get().getType().getSerializedName())), "standalone");
             BakedModel leftBellModel = minecraft.getModelManager().getModel(rightBellLocation);
             minecraft.getBlockRenderer().getModelRenderer().renderModel(
                     poseStack.last(),
@@ -85,7 +85,7 @@ public class AlarmClockBlockEntityRendererImpl<T extends AlarmClockBlockEntity> 
             poseStack.pushPose();
             translateBell(poseStack, facing, true);
 
-            ModelResourceLocation rightBellLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(blockEntity.getData().rightBell().get().getSerializedName())), "standalone");
+            ModelResourceLocation rightBellLocation = new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.ALARM_CLOCK_BELL_PATH.formatted(blockEntity.getData().rightBell().get().getType().getSerializedName())), "standalone");
             BakedModel rightBellModel = minecraft.getModelManager().getModel(rightBellLocation);
             minecraft.getBlockRenderer().getModelRenderer().renderModel(
                     poseStack.last(),

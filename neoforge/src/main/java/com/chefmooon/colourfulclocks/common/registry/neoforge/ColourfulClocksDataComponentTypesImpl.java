@@ -21,9 +21,6 @@ public class ColourfulClocksDataComponentTypesImpl {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<HandbellComponent>> HANDBELL_DATA = DATA_COMPONENTS.registerComponentType(
             ColourfulClocksDataComponentTypes.HANDBELL_DATA.getPath(), handBellComponentBuilder -> handBellComponentBuilder.persistent(HandbellComponent.CODEC).networkSynchronized(HandbellComponent.STREAM_CODEC)
     );
-    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> HANDBELL_WEATHERING = DATA_COMPONENTS.registerComponentType(
-            ColourfulClocksDataComponentTypes.HANDBELL_WEATHERING.getPath(), (builder) -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT)
-    );
 
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Boolean>> POCKET_WATCH_CLOSED = DATA_COMPONENTS.registerComponentType(
             ColourfulClocksDataComponentTypes.POCKET_WATCH_CLOSED.getPath(), (builder) -> builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL)
@@ -59,10 +56,6 @@ public class ColourfulClocksDataComponentTypesImpl {
 
     public static DataComponentType<BornholmTopGlassComponent> getBornholmTopGlassData() {
         return BORNHOLM_TOP_GLASS_DATA.get();
-    }
-
-    public static DataComponentType<Integer> getHandbellWeatheringData() {
-        return HANDBELL_WEATHERING.get();
     }
 
     public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
