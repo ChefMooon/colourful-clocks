@@ -60,6 +60,10 @@ public class ColourfulClocksDataComponentTypesImpl {
         return HANDBELL_DATA;
     }
 
+    public static DataComponentType<Integer> getPendulumWeatheringData() {
+        return PENDULUM_WEATHERING;
+    }
+
     public static DataComponentType<BornholmMiddleDoorComponent> getBornholmMiddleGlassData() {
         return BORNHOLM_MIDDLE_GLASS_DATA;
     }

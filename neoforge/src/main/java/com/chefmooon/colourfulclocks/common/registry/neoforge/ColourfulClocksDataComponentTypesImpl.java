@@ -66,6 +66,10 @@ public class ColourfulClocksDataComponentTypesImpl {
         return HANDBELL_DATA.get();
     }
 
+    public static DataComponentType<Integer> getPendulumWeatheringData() {
+        return PENDULUM_WEATHERING.get();
+    }
+
     public static DataComponentType<ClockComponent> getClockData() {
         return CLOCK_DATA.get();
     }

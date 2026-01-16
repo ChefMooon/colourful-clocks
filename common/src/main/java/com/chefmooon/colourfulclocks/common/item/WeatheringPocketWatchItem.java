@@ -1,8 +1,8 @@
 package com.chefmooon.colourfulclocks.common.item;
 
-import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
+import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -29,7 +29,7 @@ public class WeatheringPocketWatchItem extends PocketWatchItem {
     }
 
     private static String getWeatheringPercentage(int weathering) {
-        int percentage = (int) ((weathering / (double)(BornholmTopBlockEntity.WEATHERED_THRESHOLD)) * 100);
+        int percentage = (int) ((weathering / (double)(CopperWeatheringUtil.WEATHERED_THRESHOLD)) * 100);
         return percentage + "%";
     }
 }

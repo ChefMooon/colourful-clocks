@@ -3,8 +3,8 @@ package com.chefmooon.colourfulclocks.common.block.entity;
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
@@ -13,7 +13,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -122,7 +121,6 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
         if (tag.contains("pendelum_item")) { // Legacy data support
             CompoundTag pendelumItemTag = tag.getCompound("pendelum_item");
             pendelumItem = ItemStack.parse(provider, pendelumItemTag).orElse(ItemStack.EMPTY);
-            setPendulumType(pendelumItem);
             setPendelumItem(pendelumItem);
         } else {
             if (trunkData.pendulumType() != PendulumTypes.EMPTY) {
@@ -159,11 +157,11 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
         if (!itemStack.isEmpty()) {
             if (isCopperPendulum(itemStack)) {
                 if (itemStack.get(BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING)) != null) {
-                    Integer weathering = itemStack.get((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING));
+                    Integer weathering = itemStack.get(ColourfulClocksDataComponentTypes.getPendulumWeatheringData());
                     if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
                         advanceWeathering(level, blockPos, itemStack, bornholmMiddleBlockEntity);
                     } else {
-                        itemStack.set((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING), weathering + 1);
+                        itemStack.set(ColourfulClocksDataComponentTypes.getPendulumWeatheringData(), weathering + 1);
                     }
                 }
             }
@@ -173,9 +171,13 @@ public class BornholmMiddleBlockEntity extends BlockEntity implements Container 
     private static void advanceWeathering(Level level, BlockPos blockPos, ItemStack itemStack, BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
         ItemStack weatheredItemStack = new ItemStack(getNextWeatheredCopperItem(itemStack).get());
         if (!weatheredItemStack.isEmpty()) {
-            bornholmMiddleBlockEntity.setPendelumItem(weatheredItemStack);
+            bornholmMiddleBlockEntity.setPendulumType(weatheredItemStack);
             level.blockEntityChanged(blockPos);
             bornholmMiddleBlockEntity.setChanged();
+            if (!level.isClientSide()) {
+                BlockState state = level.getBlockState(blockPos);
+                level.sendBlockUpdated(blockPos, state, state, 3);
+            }
         }
     }
 

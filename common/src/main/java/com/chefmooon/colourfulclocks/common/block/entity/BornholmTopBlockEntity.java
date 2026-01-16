@@ -3,8 +3,8 @@ package com.chefmooon.colourfulclocks.common.block.entity;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
@@ -171,6 +171,10 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
             bornholmTopBlockEntity.setPocketWatchType(weatheredItemStack);
             level.blockEntityChanged(blockPos);
             bornholmTopBlockEntity.setChanged();
+            if (!level.isClientSide()) {
+                BlockState state = level.getBlockState(blockPos);
+                level.sendBlockUpdated(blockPos, state, state, 3);
+            }
         }
     }
 

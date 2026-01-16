@@ -34,6 +34,11 @@ public class ColourfulClocksDataComponentTypes {
     }
 
     @ExpectPlatform
+    public static DataComponentType<Integer> getPendulumWeatheringData() {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
     public static DataComponentType<BornholmMiddleDoorComponent> getBornholmMiddleGlassData() {
         throw new AssertionError();
     }

@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.common.item;
 
-import com.chefmooon.colourfulclocks.common.block.entity.BornholmMiddleBlockEntity;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
+import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -29,7 +29,7 @@ public class WeatheringPendulumItem extends Item {
     }
 
     private static String getWeatheringPercentage(int weathering) {
-        int percentage = (int) ((weathering / (double)(BornholmMiddleBlockEntity.WEATHERED_THRESHOLD)) * 100);
+        int percentage = (int) ((weathering / (double)(CopperWeatheringUtil.WEATHERED_THRESHOLD)) * 100);
         return percentage + "%";
     }
 }

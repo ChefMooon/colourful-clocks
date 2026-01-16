@@ -200,6 +200,10 @@ public class BaseDataClockBlockEntity extends BlockEntity {
             baseDataClockBlockEntity.setPocketWatchType(weatheredItemStack);
             level.blockEntityChanged(blockPos);
             baseDataClockBlockEntity.setChanged();
+            if (!level.isClientSide()) {
+                BlockState state = level.getBlockState(blockPos);
+                level.sendBlockUpdated(blockPos, state, state, 3);
+            }
         }
     }
 
@@ -209,6 +213,10 @@ public class BaseDataClockBlockEntity extends BlockEntity {
             baseDataClockBlockEntity.setPendulumType(weatheredItemStack);
             level.blockEntityChanged(blockPos);
             baseDataClockBlockEntity.setChanged();
+            if (!level.isClientSide()) {
+                BlockState state = level.getBlockState(blockPos);
+                level.sendBlockUpdated(blockPos, state, state, 3);
+            }
         }
     }
 
