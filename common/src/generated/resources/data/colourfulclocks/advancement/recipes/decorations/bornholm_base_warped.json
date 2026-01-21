@@ -3,7 +3,7 @@
   "criteria": {
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bornholm_base_warped"
+        "recipe": "colourfulclocks:bornholm_base_warped"
       },
       "trigger": "minecraft:recipe_unlocked"
     },
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bornholm_base_warped"
+      "colourfulclocks:bornholm_base_warped"
     ]
   }
 }

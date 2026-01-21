@@ -17,7 +17,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bornholm_top_dark_prismarine"
+        "recipe": "colourfulclocks:bornholm_top_dark_prismarine"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -30,7 +30,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bornholm_top_dark_prismarine"
+      "colourfulclocks:bornholm_top_dark_prismarine"
     ]
   }
 }

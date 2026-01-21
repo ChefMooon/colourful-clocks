@@ -17,7 +17,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:copper_pocket_watch"
+        "recipe": "colourfulclocks:copper_pocket_watch"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -30,7 +30,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:copper_pocket_watch"
+      "colourfulclocks:copper_pocket_watch"
     ]
   }
 }

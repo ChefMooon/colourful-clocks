@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bornholm_middle_cut_red_sandstone"
+        "recipe": "colourfulclocks:bornholm_middle_cut_red_sandstone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bornholm_middle_cut_red_sandstone"
+      "colourfulclocks:bornholm_middle_cut_red_sandstone"
     ]
   }
 }

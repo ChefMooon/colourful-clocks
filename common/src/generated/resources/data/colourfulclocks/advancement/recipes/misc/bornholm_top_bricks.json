@@ -17,7 +17,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bornholm_top_bricks"
+        "recipe": "colourfulclocks:bornholm_top_bricks"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -30,7 +30,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bornholm_top_bricks"
+      "colourfulclocks:bornholm_top_bricks"
     ]
   }
 }

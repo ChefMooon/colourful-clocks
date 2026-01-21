@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bornholm_base_birch"
+        "recipe": "colourfulclocks:bornholm_base_birch"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bornholm_base_birch"
+      "colourfulclocks:bornholm_base_birch"
     ]
   }
 }

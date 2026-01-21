@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bornholm_base_stripped_spruce"
+        "recipe": "colourfulclocks:bornholm_base_stripped_spruce"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bornholm_base_stripped_spruce"
+      "colourfulclocks:bornholm_base_stripped_spruce"
     ]
   }
 }

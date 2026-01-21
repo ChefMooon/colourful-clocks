@@ -17,7 +17,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:gold_pocket_watch"
+        "recipe": "colourfulclocks:gold_pocket_watch"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -30,7 +30,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:gold_pocket_watch"
+      "colourfulclocks:gold_pocket_watch"
     ]
   }
 }

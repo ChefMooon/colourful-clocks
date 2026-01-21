@@ -16,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:lapis_lazuli_pendulum"
+        "recipe": "colourfulclocks:lapis_lazuli_pendulum"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -29,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:lapis_lazuli_pendulum"
+      "colourfulclocks:lapis_lazuli_pendulum"
     ]
   }
 }

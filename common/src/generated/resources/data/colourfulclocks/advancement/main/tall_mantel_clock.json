@@ -1,0 +1,39 @@
+{
+  "parent": "colourfulclocks:main/root",
+  "criteria": {
+    "placed_tall_mantel_clock": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "#colourfulclocks:tall_mantel_clock"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "colourfulclocks.advancement.tall_mantel_clock.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "colourfulclocks:tall_mantel_clock_stripped_oak"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.tall_mantel_clock"
+    }
+  },
+  "requirements": [
+    [
+      "placed_tall_mantel_clock"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

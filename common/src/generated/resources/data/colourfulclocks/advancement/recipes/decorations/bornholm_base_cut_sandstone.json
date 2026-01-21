@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bornholm_base_cut_sandstone"
+        "recipe": "colourfulclocks:bornholm_base_cut_sandstone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bornholm_base_cut_sandstone"
+      "colourfulclocks:bornholm_base_cut_sandstone"
     ]
   }
 }

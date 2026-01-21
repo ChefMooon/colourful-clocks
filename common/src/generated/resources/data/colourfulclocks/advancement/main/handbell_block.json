@@ -1,0 +1,39 @@
+{
+  "parent": "colourfulclocks:main/handbell",
+  "criteria": {
+    "placed_handbell": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "#colourfulclocks:handbell"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "colourfulclocks.advancement.handbell_block.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "colourfulclocks:netherite_handbell"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.handbell_block"
+    }
+  },
+  "requirements": [
+    [
+      "placed_handbell"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

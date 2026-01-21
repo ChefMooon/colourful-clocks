@@ -196,6 +196,18 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(ADVANCEMENT + "mantel_clock", "Mantel Clock");
         translationBuilder.add(ADVANCEMENT + "mantel_clock.desc", "This small clock can be placed on any surface. It can be crafted with any wood type and has a few customization options available.");
 
+        translationBuilder.add(ADVANCEMENT + "tall_mantel_clock", "Tall Mantel Clock");
+        translationBuilder.add(ADVANCEMENT + "tall_mantel_clock.desc", "A tall version of the mantel clock. It can also hold a Pendulum and be placed on the wall.");
+
+        translationBuilder.add(ADVANCEMENT + "alarm_clock", "Alarm Clock");
+        translationBuilder.add(ADVANCEMENT + "alarm_clock.desc", "A small clock that can have Handbells attached.");
+
+        translationBuilder.add(ADVANCEMENT + "handbell", "Handbell");
+        translationBuilder.add(ADVANCEMENT + "handbell.desc", "A handheld bell that can be rung by right clicking. Different materials produce different sounds!");
+
+        translationBuilder.add(ADVANCEMENT + "handbell_block", "Ding Dong");
+        translationBuilder.add(ADVANCEMENT + "handbell_block.desc", "The Handbell can also be placed as a block and rung by right clicking or by using Redstone!");
+
         translationBuilder.add(ADVANCEMENT + "bornholm_trunk_wind_charge", "How could you?!");
         translationBuilder.add(ADVANCEMENT + "bornholm_trunk_wind_charge.desc", "Trunk doors can be opened/closed by a wind charge. Do what you will with this information.");
 

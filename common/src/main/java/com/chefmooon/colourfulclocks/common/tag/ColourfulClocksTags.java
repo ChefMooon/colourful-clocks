@@ -22,6 +22,15 @@ public class ColourfulClocksTags {
     public static final TagKey<Item> WALL_CLOCK = getItemTagKey("wall_clock");
     public static final TagKey<Item> ALARM_CLOCK = getItemTagKey("alarm_clock");
 
+    public static final TagKey<Block> BLOCK_BORNHOLM_BASE = getBlockTagKey("bornholm_base");
+    public static final TagKey<Block> BLOCK_BORNHOLM_TRUNK = getBlockTagKey("bornholm_trunk");
+    public static final TagKey<Block> BLOCK_BORNHOLM_DIAL = getBlockTagKey("bornholm_dial");
+    public static final TagKey<Block> BLOCK_MANTEL_CLOCK = getBlockTagKey("mantel_clock");
+    public static final TagKey<Block> BLOCK_TALL_MANTEL_CLOCK = getBlockTagKey("tall_mantel_clock");
+    public static final TagKey<Block> BLOCK_WALL_CLOCK = getBlockTagKey("wall_clock");
+    public static final TagKey<Block> BLOCK_ALARM_CLOCK = getBlockTagKey("alarm_clock");
+    public static final TagKey<Block> BLOCK_HANDBELL = getBlockTagKey("handbell");
+
     public static TagKey<Item> getItemTagKey(String path) {
         return TagKey.create(Registries.ITEM, TextUtil.res(path));
     }

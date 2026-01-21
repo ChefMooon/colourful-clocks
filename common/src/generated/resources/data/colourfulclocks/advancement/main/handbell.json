@@ -1,0 +1,34 @@
+{
+  "parent": "colourfulclocks:main/root",
+  "criteria": {
+    "has_handbell": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#colourfulclocks:handbell"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "colourfulclocks.advancement.handbell.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "colourfulclocks:diamond_handbell"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.handbell"
+    }
+  },
+  "requirements": [
+    [
+      "has_handbell"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

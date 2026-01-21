@@ -1,13 +1,13 @@
-// 1.21.1	2026-01-16T14:41:40.1906655	colourfulclocks/Tags for minecraft:item
-0baf06637db4883847a10514ee0a3e05533800dd data\colourfulclocks\tags\item\bornholm_base.json
-6fb4f522a05b07ca059225b657aa0b6fdc3d82fb data\colourfulclocks\tags\item\wall_clock.json
+// 1.21.1	2026-01-21T11:15:31.4131912	colourfulclocks/Tags for minecraft:item
+d9ac7892498d37f9b22ad81efae2f5c4e86c3bf5 data\colourfulclocks\tags\item\bornholm_base.json
+4d4a557a2eb8b7eff33e2f967fd9145a15d3ce43 data\colourfulclocks\tags\item\wall_clock.json
 24bb8f85849ed3d0deb17d9828cb2d595a053895 data\colourfulclocks\tags\item\handbell.json
 ba7902de1a4e632c2230b7868effff60c253cb16 data\colourfulclocks\tags\item\clock_pendulum.json
-38b2a351a8740b39af6aafb306f3ca5f135e0db6 data\colourfulclocks\tags\item\bornholm_trunk.json
-99c7cf1beb96e263a9997bffbb72617dfd45f313 data\colourfulclocks\tags\item\bornholm_dial.json
+9d2ea43db6c19dcdb79b038807875b4280dc03a0 data\colourfulclocks\tags\item\bornholm_trunk.json
+03217b15f0d40122501b3243f8aee95dbc342531 data\colourfulclocks\tags\item\bornholm_dial.json
+401ce09f6e24b1e5125d5168de196ac185739ce1 data\colourfulclocks\tags\item\mantel_clock.json
 249f1443af67a121147fe21b88505f33e40099db data\colourfulclocks\tags\item\clock_hand.json
-5b80b052991a8aac7051400007c7d9dbc54d1bfa data\colourfulclocks\tags\item\mantel_clock.json
 0a20218273c87ee1535047a6594e5e7e7faaa512 data\colourfulclocks\tags\item\clock_dial_glass.json
-e3b03bd625a521745c6b547fb3f7b099711fad16 data\colourfulclocks\tags\item\tall_mantel_clock.json
+6f970e06624b3c452b03935d556bc4f63c51673b data\colourfulclocks\tags\item\tall_mantel_clock.json
 0a20218273c87ee1535047a6594e5e7e7faaa512 data\colourfulclocks\tags\item\clock_door.json
-3c5ef4d0f18807eb326c287362c99eebaa149987 data\colourfulclocks\tags\item\alarm_clock.json
+a3ec8dc6b88a29b4526aede5d9966a8a6cdaa0fa data\colourfulclocks\tags\item\alarm_clock.json

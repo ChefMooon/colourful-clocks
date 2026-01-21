@@ -17,7 +17,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bornholm_top_cut_sandstone"
+        "recipe": "colourfulclocks:bornholm_top_cut_sandstone"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -30,7 +30,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bornholm_top_cut_sandstone"
+      "colourfulclocks:bornholm_top_cut_sandstone"
     ]
   }
 }

@@ -16,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:copper_pendulum"
+        "recipe": "colourfulclocks:copper_pendulum"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -29,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:copper_pendulum"
+      "colourfulclocks:copper_pendulum"
     ]
   }
 }

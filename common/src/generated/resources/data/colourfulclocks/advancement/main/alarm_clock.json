@@ -1,0 +1,39 @@
+{
+  "parent": "colourfulclocks:main/root",
+  "criteria": {
+    "placed_alarm_clock": {
+      "conditions": {
+        "location": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "block": {
+                "blocks": "#colourfulclocks:alarm_clock"
+              }
+            }
+          }
+        ]
+      },
+      "trigger": "minecraft:placed_block"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "colourfulclocks.advancement.alarm_clock.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "colourfulclocks:alarm_clock_stripped_oak"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.alarm_clock"
+    }
+  },
+  "requirements": [
+    [
+      "placed_alarm_clock"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

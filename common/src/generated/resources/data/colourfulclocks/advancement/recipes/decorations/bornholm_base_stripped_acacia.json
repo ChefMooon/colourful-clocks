@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bornholm_base_stripped_acacia"
+        "recipe": "colourfulclocks:bornholm_base_stripped_acacia"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bornholm_base_stripped_acacia"
+      "colourfulclocks:bornholm_base_stripped_acacia"
     ]
   }
 }

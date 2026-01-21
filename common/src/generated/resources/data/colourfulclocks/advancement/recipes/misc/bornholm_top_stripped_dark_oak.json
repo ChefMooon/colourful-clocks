@@ -17,7 +17,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:bornholm_top_stripped_dark_oak"
+        "recipe": "colourfulclocks:bornholm_top_stripped_dark_oak"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -30,7 +30,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:bornholm_top_stripped_dark_oak"
+      "colourfulclocks:bornholm_top_stripped_dark_oak"
     ]
   }
 }

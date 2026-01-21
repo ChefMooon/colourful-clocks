@@ -16,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:quartz_pendulum"
+        "recipe": "colourfulclocks:quartz_pendulum"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -29,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:quartz_pendulum"
+      "colourfulclocks:quartz_pendulum"
     ]
   }
 }

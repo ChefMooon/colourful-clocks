@@ -17,7 +17,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:amethyst_pocket_watch"
+        "recipe": "colourfulclocks:amethyst_pocket_watch"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -30,7 +30,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:amethyst_pocket_watch"
+      "colourfulclocks:amethyst_pocket_watch"
     ]
   }
 }

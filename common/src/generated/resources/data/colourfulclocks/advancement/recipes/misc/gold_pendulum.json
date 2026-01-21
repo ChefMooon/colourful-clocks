@@ -16,7 +16,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:gold_pendulum"
+        "recipe": "colourfulclocks:gold_pendulum"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -29,7 +29,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:gold_pendulum"
+      "colourfulclocks:gold_pendulum"
     ]
   }
 }
