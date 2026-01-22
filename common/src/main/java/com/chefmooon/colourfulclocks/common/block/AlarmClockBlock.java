@@ -504,6 +504,7 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
     }
 
     private void addBellParticle(Level level, BlockPos pos, Direction facing, boolean left, ParticleOptions particleData) {
+        left = loaderParticleSide(left);
         for (int i = 0; i < 4; i++) {
             double xBase = pos.getX() + 0.5;
             double yBase = pos.getY() + 0.7;
@@ -540,5 +541,10 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
 
             level.addParticle(particleData, xBase + offsetX, yBase + offsetY, zBase + offsetZ, dx, dy, dz);
         }
+    }
+
+    @ExpectPlatform
+    public static boolean loaderParticleSide(boolean left) {
+        throw new AssertionError();
     }
 }

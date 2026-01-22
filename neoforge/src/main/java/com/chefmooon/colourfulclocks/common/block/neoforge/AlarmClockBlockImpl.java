@@ -35,4 +35,8 @@ public class AlarmClockBlockImpl extends AlarmClockBlock {
             default -> false;
         };
     }
+
+    public static boolean loaderParticleSide(boolean left) {
+        return !left;
+    }
 }
