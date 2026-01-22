@@ -4,13 +4,15 @@ import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.types.HandbellHandleTypes;
 import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
-import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
@@ -30,12 +32,6 @@ public class HandbellBlockItem extends BlockItem {
             if (component != null) {
                 HandbellHandleTypes handbellType = component.getMaterialType();
                 tooltipComponents.add(handbellType.getBaseTranslation());
-                if (component.getWeathering().isPresent()) {
-                    int weathering = component.getWeathering().get();
-                    if (weathering > 0) {
-                        tooltipComponents.add(TextUtil.getTranslatable("tooltip.weathering").append(": ").append(TextUtil.getWeatheringPercentage(weathering)));
-                    }
-                }
             }
 
             super.appendHoverText(stack, context, tooltipComponents, tooltipFlag);
