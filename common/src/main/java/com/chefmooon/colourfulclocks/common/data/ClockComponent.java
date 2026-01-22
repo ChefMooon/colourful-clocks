@@ -1,8 +1,6 @@
 package com.chefmooon.colourfulclocks.common.data;
 
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
@@ -15,18 +13,18 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public record ClockComponent(Optional<BornholmTopGlassTypes> topGlassType, Optional<PocketWatchTypes> pocketWatchType, Optional<PendulumTypes> pendulumType, Optional<Boolean> ticking) {
+public record ClockComponent(Optional<BornholmTopGlassTypes> topGlassType, Optional<PocketWatchComponent> pocketWatch, Optional<PendulumComponent> pendulum, Optional<Boolean> ticking) {
     public static final Codec<ClockComponent> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             BornholmTopGlassTypes.CODEC.optionalFieldOf("glass").forGetter(ClockComponent::getGlassType),
-            PocketWatchTypes.CODEC.optionalFieldOf("pocket_watch").forGetter(ClockComponent::getPocketWatchType),
-            PendulumTypes.CODEC.optionalFieldOf("pendulum").forGetter(ClockComponent::getPendulumType),
+            PocketWatchComponent.CODEC.optionalFieldOf("pocket_watch").forGetter(ClockComponent::getPocketWatch),
+            PendulumComponent.CODEC.optionalFieldOf("pendulum").forGetter(ClockComponent::getPendulum),
             Codec.BOOL.optionalFieldOf("ticking").forGetter(ClockComponent::getTicking)
     ).apply(instance, ClockComponent::new));
 
     public static final StreamCodec<ByteBuf, ClockComponent> STREAM_CODEC = StreamCodec.composite(
             BornholmTopGlassTypes.STREAM_CODEC.apply(ByteBufCodecs::optional), ClockComponent::getGlassType,
-            PocketWatchTypes.STREAM_CODEC.apply(ByteBufCodecs::optional), ClockComponent::getPocketWatchType,
-            PendulumTypes.STREAM_CODEC.apply(ByteBufCodecs::optional), ClockComponent::getPendulumType,
+            PocketWatchComponent.STREAM_CODEC.apply(ByteBufCodecs::optional), ClockComponent::getPocketWatch,
+            PendulumComponent.STREAM_CODEC.apply(ByteBufCodecs::optional), ClockComponent::getPendulum,
             ByteBufCodecs.BOOL.apply(ByteBufCodecs::optional), ClockComponent::getTicking,
             ClockComponent::new);
 
@@ -34,12 +32,12 @@ public record ClockComponent(Optional<BornholmTopGlassTypes> topGlassType, Optio
         return topGlassType;
     }
 
-    public Optional<PocketWatchTypes> getPocketWatchType() {
-        return pocketWatchType;
+    public Optional<PocketWatchComponent> getPocketWatch() {
+        return pocketWatch;
     }
 
-    public Optional<PendulumTypes> getPendulumType() {
-        return pendulumType;
+    public Optional<PendulumComponent> getPendulum() {
+        return pendulum;
     }
 
     public Optional<Boolean> getTicking() {
@@ -51,15 +49,15 @@ public record ClockComponent(Optional<BornholmTopGlassTypes> topGlassType, Optio
     }
 
     public static ClockComponent getBasicClockValue() {
-        return new ClockComponent(Optional.of(BornholmTopGlassTypes.GLASS), Optional.of(PocketWatchTypes.EMPTY), Optional.of(PendulumTypes.EMPTY), Optional.of(Boolean.FALSE));
+        return new ClockComponent(Optional.of(BornholmTopGlassTypes.GLASS), Optional.of(PocketWatchComponent.getDefaultValue()), Optional.of(PendulumComponent.getDefaultValue()), Optional.of(Boolean.FALSE));
     }
 
     public static ClockComponent getNoPendulumValue() {
-        return new ClockComponent(Optional.of(BornholmTopGlassTypes.GLASS), Optional.of(PocketWatchTypes.EMPTY), Optional.empty(), Optional.of(Boolean.FALSE));
+        return new ClockComponent(Optional.of(BornholmTopGlassTypes.GLASS), Optional.of(PocketWatchComponent.getDefaultValue()), Optional.empty(), Optional.of(Boolean.FALSE));
     }
 
     public static ClockComponent getNoGlassPendulumValue() {
-        return new ClockComponent(Optional.empty(), Optional.of(PocketWatchTypes.EMPTY), Optional.empty(), Optional.of(Boolean.FALSE));
+        return new ClockComponent(Optional.empty(), Optional.of(PocketWatchComponent.getDefaultValue()), Optional.empty(), Optional.of(Boolean.FALSE));
     }
 
     public CompoundTag save(CompoundTag tag) {

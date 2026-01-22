@@ -4,19 +4,21 @@ import com.chefmooon.colourfulclocks.common.block.entity.BornholmMiddleBlockEnti
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.block.state.properties.DoorTypeProperty;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
+import com.chefmooon.colourfulclocks.common.data.PendulumComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
-import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -168,7 +170,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
         ItemInteractionResult result = ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 
         BlockEntity blockEntity = level.getBlockEntity(pos);
-        if (blockEntity instanceof BornholmMiddleBlockEntity block) {
+        if (blockEntity instanceof BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
             ItemStack mainHandItem = player.getMainHandItem();
             ItemStack offHandItem = player.getOffhandItem();
             if (mainHandItem.isEmpty() && !offHandItem.isEmpty()) {
@@ -178,7 +180,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
             if (!mainHandItem.isEmpty()) {
                 if (mainHandItem.is(clockType.getItem())) {
                     if (state.getValue(DOOR_TYPE) == BornholmDoorTypes.BASE) return toggleDoor(level, state, pos, player);
-                    block.setDoorType(BornholmDoorTypes.BASE);
+                    bornholmMiddleBlockEntity.setDoorType(BornholmDoorTypes.BASE);
                     level.setBlockAndUpdate(pos, state.setValue(DOOR_TYPE, BornholmDoorTypes.BASE));
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_WOOD.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
                     if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
@@ -188,7 +190,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                 } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_DOOR)) {
                     if (mainHandItem.is(state.getValue(DOOR_TYPE).getItem())) return toggleDoor(level, state, pos, player);
                     BornholmDoorTypes newBornholmDoorTypes = ColourfulClocksTypeUtil.getTypeFromItem(mainHandItem.getItem());
-                    block.setDoorType(newBornholmDoorTypes);
+                    bornholmMiddleBlockEntity.setDoorType(newBornholmDoorTypes);
                     level.setBlockAndUpdate(pos, state.setValue(DOOR_TYPE, newBornholmDoorTypes));
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_GLASS.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
                     if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
@@ -196,26 +198,30 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
 
                     return ItemInteractionResult.SUCCESS;
                 } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_PENDULUM) && state.getValue(OPEN)) {
-                    if (!block.getPendelumItem().isEmpty()) {
-                        if (mainHandItem.is(block.getPendelumItem().getItem())) {
+                    if (bornholmMiddleBlockEntity.getData().getPendulum().isPresent()) {
+                        PendulumTypes pendulumType = mainHandItem.get(ColourfulClocksDataComponentTypes.getPendulumData()).getType();
+                        if (pendulumType.equals(bornholmMiddleBlockEntity.getData().getPendulum().get().getType())) {
                             return toggleDoor(level, state, pos, player);
                         } else if (!player.getAbilities().instabuild) {
-                            if (!player.getInventory().add(block.removeItem(0, 1))) {
-                                Containers.dropContents(level, pos, block.getDroppableInventory());
+                            ItemStack oldPendulumItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(bornholmMiddleBlockEntity.getData().getPendulum().get().getType().getSerializedName() + "_pendulum")).getDefaultInstance();
+                            PendulumComponent component = bornholmMiddleBlockEntity.removePendulumItem();
+                            oldPendulumItemStack.set(ColourfulClocksDataComponentTypes.getPendulumData(), component);
+                            if (!player.getInventory().add(oldPendulumItemStack)) {
+                                Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPendulumItemStack);
                             }
                         }
                     }
 
-                    block.setPendulumType(player.getAbilities().instabuild ? mainHandItem.copy() : mainHandItem);
+                    bornholmMiddleBlockEntity.setPendulum(player.getAbilities().instabuild ? mainHandItem.copy() : mainHandItem);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_PENDULUM.get(), SoundSource.BLOCKS, 0.8F, 0.5F);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_PENDULUM_TRIGGER.get().trigger(serverPlayer);
 
                     return ItemInteractionResult.SUCCESS;
                 } else if (mainHandItem.is(Items.HONEYCOMB)) {
-                    ItemStack waxedPendulum = new ItemStack(getWaxedCopperPendulum(block.getPendelumItem()).get());
+                    ItemStack waxedPendulum = ColourfulClocksTypeUtil.getWaxedPendulum(bornholmMiddleBlockEntity.getData().getPendulum().get());
                     if (!waxedPendulum.isEmpty()) {
-                        block.setPendulumType(waxedPendulum);
+                        bornholmMiddleBlockEntity.setPendulum(waxedPendulum);
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
                         if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
@@ -226,19 +232,32 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                         return toggleDoor(level, state, pos, player);
                     }
                 } else if (mainHandItem.is(ItemTags.AXES)) {
-                    Pair<Supplier<Item>, Supplier<SoundEvent>> pendulumInfo = getScrapedCopperPendulum(block.getPendelumItem());
-                    ItemStack scrapedPendulum = new ItemStack(pendulumInfo.getFirst().get());
-                    if (!scrapedPendulum.isEmpty()) {
-                        block.setPendulumType(scrapedPendulum);
+                    Pair<Item, Supplier<SoundEvent>> unwaxedPendulumInfo = ColourfulClocksTypeUtil.getUnwaxedPendulum(bornholmMiddleBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()));
+                    ItemStack unwaxedPendulum = new ItemStack(unwaxedPendulumInfo.getFirst());
+                    if (!unwaxedPendulum.isEmpty()) {
+                        bornholmMiddleBlockEntity.setPendulum(unwaxedPendulum);
                         level.blockEntityChanged(pos);
-                        level.playSound(player, pos, pendulumInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
-                        if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                        level.playSound(player, pos, unwaxedPendulumInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                        if (!player.getAbilities().instabuild)
+                            mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                         if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
 
                         return ItemInteractionResult.SUCCESS;
-                    } else {
-                        return toggleDoor(level, state, pos, player);
                     }
+
+                    Pair<Item, Supplier<SoundEvent>> scrapedPendulumInfo = ColourfulClocksTypeUtil.getScrapedPendulum(bornholmMiddleBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()));
+                    ItemStack scrapedPendulum = new ItemStack(scrapedPendulumInfo.getFirst());
+                    if (!scrapedPendulum.isEmpty()) {
+                        bornholmMiddleBlockEntity.setPendulum(scrapedPendulum);
+                        level.blockEntityChanged(pos);
+                        level.playSound(player, pos, scrapedPendulumInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                        if (!player.getAbilities().instabuild)
+                            mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
+                        if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
+
+                        return ItemInteractionResult.SUCCESS;
+                    }
+                    return toggleDoor(level, state, pos, player);
                 } else if (mainHandItem.is(ColourfulClocksTags.BORNHOLM_DIAL) && hit.getDirection() == Direction.UP) {
                     return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
                 }else {
@@ -246,15 +265,15 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                 }
             } else {
                 if (player.isShiftKeyDown() && state.getValue(OPEN)) {
-                    ItemStack pendulum = block.getPendelumItem();
-                    if (!pendulum.isEmpty()) {
-                        if (player.isCreative()) {
-                            block.removePendulumItem();
-                        } else if (!player.getInventory().add(block.removePendulumItem())) {
-                            Containers.dropContents(level, pos, block.getDroppableInventory());
+                    if (bornholmMiddleBlockEntity.getData().getPendulum().isPresent() && bornholmMiddleBlockEntity.getData().getPendulum().get().getType() != PendulumTypes.EMPTY) {
+                        ItemStack oldPendulum = BuiltInRegistries.ITEM.get(TextUtil.res(bornholmMiddleBlockEntity.getData().getPendulum().get().getType().getSerializedName() + "_pendulum")).getDefaultInstance();
+                        PendulumComponent component = bornholmMiddleBlockEntity.removePendulumItem();
+                        oldPendulum.set(ColourfulClocksDataComponentTypes.getPendulumData(), component);
+                        if (!player.getAbilities().instabuild && !player.getInventory().add(oldPendulum)) {
+                            Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPendulum);
                         }
-                        level.blockEntityChanged(pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_PENDULUM.get(), SoundSource.BLOCKS, 0.8F, 0.7F);
+                        level.updateNeighborsAt(pos, this);
 
                         return ItemInteractionResult.SUCCESS;
                     }
@@ -289,13 +308,9 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
         if (!hasSilkTouch) {
             BlockEntity blockEntity = context.getParamOrNull(LootContextParams.BLOCK_ENTITY);
             if (blockEntity instanceof BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
-                ItemStack pendulumItem = bornholmMiddleBlockEntity.getPendelumItem();
-                if (!pendulumItem.isEmpty()) {
-                    drops.add(pendulumItem);
-                }
+                drops.addAll(bornholmMiddleBlockEntity.getDroppableInventory());
             }
         }
-
         return drops;
     }
 
@@ -307,10 +322,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
             if (blockEntity instanceof BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
                 BornholmMiddleDoorComponent trunkData = stack.get(ColourfulClocksDataComponentTypes.getBornholmMiddleGlassData());
                 if (trunkData != null) {
-                    bornholmMiddleBlockEntity.setTrunkData(trunkData.getDoorType(), trunkData.getPendulumType());
-                    if (trunkData.getPendulumType() != PendulumTypes.EMPTY) {
-                        bornholmMiddleBlockEntity.setPendulumType(new ItemStack(ColourfulClocksTypeUtil.getPendulumItemFromType(trunkData.getPendulumType())));
-                    }
+                    bornholmMiddleBlockEntity.setData(trunkData);
                 }
             }
         }
@@ -345,15 +357,5 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
         } else {
             return super.getCloneItemStack(level, pos, state);
         }
-    }
-
-    @ExpectPlatform
-    public static Supplier<Item> getWaxedCopperPendulum(ItemStack itemStack) {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static Pair<Supplier<Item>, Supplier<SoundEvent>> getScrapedCopperPendulum(ItemStack itemStack) {
-        throw new AssertionError();
     }
 }

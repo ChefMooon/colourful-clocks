@@ -26,6 +26,14 @@ public class ColourfulClocksDataComponentTypesImpl {
             ColourfulClocksDataComponentTypes.POCKET_WATCH_CLOSED.getPath(), (builder) -> builder.persistent(Codec.BOOL).networkSynchronized(ByteBufCodecs.BOOL)
     );
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<PocketWatchComponent>> POCKET_WATCH = DATA_COMPONENTS.registerComponentType(
+            ColourfulClocksDataComponentTypes.POCKET_WATCH.getPath(), pocketWatchComponentBuilder -> pocketWatchComponentBuilder.persistent(PocketWatchComponent.CODEC).networkSynchronized(PocketWatchComponent.STREAM_CODEC)
+    );
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<PendulumComponent>> PENDULUM = DATA_COMPONENTS.registerComponentType(
+            ColourfulClocksDataComponentTypes.PENDULUM.getPath(), pendulumComponentBuilder -> pendulumComponentBuilder.persistent(PendulumComponent.CODEC).networkSynchronized(PendulumComponent.STREAM_CODEC)
+    );
+
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> POCKET_WATCH_WEATHERING = DATA_COMPONENTS.registerComponentType(
             ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING.getPath(), (builder) -> builder.persistent(Codec.INT).networkSynchronized(ByteBufCodecs.INT)
     );
@@ -64,6 +72,14 @@ public class ColourfulClocksDataComponentTypesImpl {
 
     public static DataComponentType<HandbellComponent> getHandbellData() {
         return HANDBELL_DATA.get();
+    }
+
+    public static DataComponentType<PocketWatchComponent> getPocketWatchData() {
+        return POCKET_WATCH.get();
+    }
+
+    public static DataComponentType<PendulumComponent> getPendulumData() {
+        return PENDULUM.get();
     }
 
     public static DataComponentType<Integer> getPendulumWeatheringData() {

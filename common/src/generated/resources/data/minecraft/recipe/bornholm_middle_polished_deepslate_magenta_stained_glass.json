@@ -18,7 +18,10 @@
   "result": {
     "components": {
       "colourfulclocks:bornholm_trunk_data": {
-        "glass": "_magenta_stained_glass"
+        "glass": "_magenta_stained_glass",
+        "pendulum": {
+          "type": "empty"
+        }
       }
     },
     "count": 1,

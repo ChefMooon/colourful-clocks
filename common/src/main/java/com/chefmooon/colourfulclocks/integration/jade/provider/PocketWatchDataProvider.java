@@ -30,9 +30,10 @@ public enum PocketWatchDataProvider implements IBlockComponentProvider, IServerD
     public void appendServerData(CompoundTag compoundTag, BlockAccessor blockAccessor) {
         if (blockAccessor.getBlock() instanceof BaseDataClockBlock) {
             ClockComponent component = blockAccessor.getBlockEntity().collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getDefaultValue());
-            Item item = ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatchType().get());
-            if (component != null && component.getPocketWatchType().isPresent() && component.getPocketWatchType().get() != PocketWatchTypes.EMPTY && item != Items.AIR) compoundTag.putString(("pocket_watch_type"), item.getDescriptionId());
-
+            if (component != null && component.getPocketWatch().isPresent()) {
+                Item item = ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatch().get().getType());
+                if (component.getPocketWatch().get().getType() != PocketWatchTypes.EMPTY && item != Items.AIR) compoundTag.putString(("pocket_watch_type"), item.getDescriptionId());
+            }
         }
     }
 

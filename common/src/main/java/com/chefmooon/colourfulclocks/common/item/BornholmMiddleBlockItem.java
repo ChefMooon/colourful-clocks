@@ -24,9 +24,11 @@ public class BornholmMiddleBlockItem extends BlockItem {
             if (glassType != Blocks.AIR) {
                 tooltipComponents.add(Component.translatable(glassType.getDescriptionId()));
             }
-            Item pendulumItem = ColourfulClocksTypeUtil.getPendulumItemFromType(bornholmMiddleGlassData.getPendulumType());
-            if (pendulumItem != PendulumTypes.EMPTY.getItem()) {
-                tooltipComponents.add(Component.translatable(pendulumItem.getDescriptionId()));
+            if (bornholmMiddleGlassData.getPendulum().isPresent()) {
+                Item pendulumItem = ColourfulClocksTypeUtil.getPendulumItemFromType(bornholmMiddleGlassData.getPendulum().get().getType());
+                if (pendulumItem != PendulumTypes.EMPTY.getItem()) {
+                    tooltipComponents.add(Component.translatable(pendulumItem.getDescriptionId()));
+                }
             }
         }
 

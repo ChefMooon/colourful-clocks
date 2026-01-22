@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.data.builder.fabric;
 
-import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.BornholmMiddleDoorComponent;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
@@ -93,7 +93,7 @@ public class BornholmMiddleDataShapedRecipeBuilder implements RecipeBuilder {
     }
 
     public BornholmMiddleDataShapedRecipeBuilder setResultData(BornholmDoorTypes doorType) {
-        this.bornholmMiddleDoorComponent = new BornholmMiddleDoorComponent(doorType, this.bornholmMiddleDoorComponent.getPendulumType());
+        this.bornholmMiddleDoorComponent = new BornholmMiddleDoorComponent(doorType, this.bornholmMiddleDoorComponent.getPendulum());
         return this;
     }
 

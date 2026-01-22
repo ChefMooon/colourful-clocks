@@ -3,6 +3,7 @@ package com.chefmooon.colourfulclocks.integration.jade.provider;
 import com.chefmooon.colourfulclocks.common.block.base.BaseDataClockBlock;
 import com.chefmooon.colourfulclocks.common.data.ClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
@@ -30,8 +31,10 @@ public enum PendulumDataProvider implements IBlockComponentProvider, IServerData
     public void appendServerData(CompoundTag compoundTag, BlockAccessor blockAccessor) {
         if (blockAccessor.getBlock() instanceof BaseDataClockBlock) {
             ClockComponent component = blockAccessor.getBlockEntity().collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getDefaultValue());
-            Item item = ColourfulClocksTypeUtil.getPendulumItemFromType(component.getPendulumType().get());
-            if (component != null && component.getGlassType().isPresent() && component.getGlassType().get() != BornholmTopGlassTypes.GLASS && item != Items.AIR) compoundTag.putString(("pendulum_type"), item.getDescriptionId());
+            if (component != null && component.getPendulum().isPresent()) {
+                Item item = ColourfulClocksTypeUtil.getPendulumItemFromType(component.getPendulum().get().getType());
+                if (component.getPendulum().get().getType() != PendulumTypes.EMPTY && item != Items.AIR) compoundTag.putString("pendulum_type", item.getDescriptionId());
+            }
         }
     }
 

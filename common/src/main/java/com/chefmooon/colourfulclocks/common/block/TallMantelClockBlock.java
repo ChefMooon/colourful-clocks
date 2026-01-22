@@ -4,12 +4,9 @@ import com.chefmooon.colourfulclocks.common.block.base.BaseDataGlassClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.TallMantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.data.ClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
-import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.VoxelShapeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -203,13 +200,7 @@ public class TallMantelClockBlock extends BaseDataGlassClockBlock {
             if (blockEntity instanceof TallMantelClockBlockEntity tallMantelClockBlockEntity) {
                 ClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getBasicClockValue());
                 if (component != null) {
-                    tallMantelClockBlockEntity.setData(component.getGlassType().get(), component.getPocketWatchType().get(), component.getPendulumType().get(), component.getTicking().get());
-                    if (component.getPocketWatchType().get() != PocketWatchTypes.EMPTY) {
-                        tallMantelClockBlockEntity.setPocketWatchType(ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatchType().get()).getDefaultInstance());
-                    }
-                    if (component.getPendulumType().get() != PendulumTypes.EMPTY) {
-                        tallMantelClockBlockEntity.setPendulumType(ColourfulClocksTypeUtil.getPendulumItemFromType(component.getPendulumType().get()).getDefaultInstance());
-                    }
+                    tallMantelClockBlockEntity.setData(component);
                 }
             }
         }

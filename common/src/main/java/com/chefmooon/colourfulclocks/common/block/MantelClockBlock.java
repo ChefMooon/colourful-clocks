@@ -101,7 +101,7 @@ public class MantelClockBlock extends BaseDataGlassClockBlock {
                     return setTicking(level, pos, player, mainHandItem, mantelClockBlockEntity, false);
                 }
             } else {
-                if (player.isShiftKeyDown() && mantelClockBlockEntity.getData().getPocketWatchType().isPresent() && mantelClockBlockEntity.getData().getPocketWatchType().get().getId() != 0) {
+                if (player.isShiftKeyDown() && mantelClockBlockEntity.getData().getPocketWatch().isPresent() && mantelClockBlockEntity.getData().getPocketWatch().get().getType().getId() != 0) {
                     return removePocketWatch(level, pos, player, mantelClockBlockEntity);
                 }
             }
@@ -161,10 +161,7 @@ public class MantelClockBlock extends BaseDataGlassClockBlock {
             if (blockEntity instanceof MantelClockBlockEntity mantelClockBlockEntity) {
                 ClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getNoPendulumValue());
                 if (component != null) {
-                    mantelClockBlockEntity.setData(component.getGlassType().get(), component.getPocketWatchType().get(), null, component.getTicking().get());
-                    if (component.getPocketWatchType().get() != PocketWatchTypes.EMPTY) {
-                        mantelClockBlockEntity.setPocketWatchType(ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatchType().get()).getDefaultInstance());
-                    }
+                    mantelClockBlockEntity.setData(component);
                 }
             }
         }

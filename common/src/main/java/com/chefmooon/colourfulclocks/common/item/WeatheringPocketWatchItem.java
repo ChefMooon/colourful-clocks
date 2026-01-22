@@ -1,11 +1,9 @@
 package com.chefmooon.colourfulclocks.common.item;
 
+import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
-import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -20,16 +18,14 @@ public class WeatheringPocketWatchItem extends PocketWatchItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        if (stack.get(BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING)) != null) {
-            int weathering = stack.get((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING));
-            if (weathering > 0) {
-                tooltipComponents.add(TextUtil.getTranslatable("tooltip.weathering").append(": ").append(getWeatheringPercentage(weathering)));
+        if (stack.has(ColourfulClocksDataComponentTypes.getPocketWatchData())) {
+            PocketWatchComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getPocketWatchData(), PocketWatchComponent.getDefaultValue());
+            if (component.getWeathering().isPresent()) {
+                int weathering = component.getWeathering().get();
+                if (weathering > 0) {
+                    tooltipComponents.add(TextUtil.getTranslatable("tooltip.weathering").append(": ").append(TextUtil.getWeatheringPercentage(weathering)));
+                }
             }
         }
-    }
-
-    private static String getWeatheringPercentage(int weathering) {
-        int percentage = (int) ((weathering / (double)(CopperWeatheringUtil.WEATHERED_THRESHOLD)) * 100);
-        return percentage + "%";
     }
 }

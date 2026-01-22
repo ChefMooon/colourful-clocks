@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
 import com.chefmooon.colourfulclocks.client.renderer.BornholmMiddleBlockEntityRenderer;
 import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmMiddleBlockEntityImpl;
+import com.chefmooon.colourfulclocks.common.data.PendulumComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
@@ -36,7 +37,7 @@ public class BornholmMiddleBlockEntityRendererImpl extends BornholmMiddleBlockEn
         BlockState state = level.getBlockState(blockEntity.getBlockPos());
         if (!(state.getBlock() instanceof BornholmMiddleBlock)) return;
 
-        PendulumTypes pendulumType = blockEntity.getTrunkData().getPendulumType();
+        PendulumTypes pendulumType = blockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()).getType();
         if (pendulumType != PendulumTypes.EMPTY) {
             poseStack.pushPose();
             ItemStack pendulum = new ItemStack(ColourfulClocksTypeUtil.getPendulumItemFromType(pendulumType));
@@ -52,7 +53,7 @@ public class BornholmMiddleBlockEntityRendererImpl extends BornholmMiddleBlockEn
             poseStack.popPose();
         }
 
-        BornholmDoorTypes doorType = blockEntity.getTrunkData().getDoorType();
+        BornholmDoorTypes doorType = blockEntity.getData().getDoorType();
         if (doorType != BornholmDoorTypes.BASE) {
             poseStack.pushPose();
             poseStack.rotateAround(getRotation(state.getValue(BornholmMiddleBlock.FACING)), 0.5F, 0.5F, 0.5F);

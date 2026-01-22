@@ -5,6 +5,8 @@ import com.chefmooon.colourfulclocks.client.renderer.TallMantelClockBlockEntityR
 import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
 import com.chefmooon.colourfulclocks.common.block.TallMantelClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.TallMantelClockBlockEntity;
+import com.chefmooon.colourfulclocks.common.data.PendulumComponent;
+import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
@@ -37,12 +39,12 @@ public class TallMantelClockBlockEntityRendererImpl<T extends TallMantelClockBlo
         BlockState state = level.getBlockState(blockEntity.getBlockPos());
         if (!(state.getBlock() instanceof TallMantelClockBlock)) return;
 
-        PocketWatchTypes pocketWatchType = blockEntity.getData().pocketWatchType().orElse(PocketWatchTypes.EMPTY);
+        PocketWatchTypes pocketWatchType = blockEntity.getData().pocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType();
         if (pocketWatchType != PocketWatchTypes.EMPTY) {
             renderPocketWatch(minecraft, pocketWatchType, state, blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
         }
 
-        PendulumTypes pendulumType = blockEntity.getData().pendulumType().orElse(PendulumTypes.EMPTY);
+        PendulumTypes pendulumType = blockEntity.getData().pendulum().orElse(PendulumComponent.getDefaultValue()).getType();
         if (pendulumType != PendulumTypes.EMPTY) {
             renderPendulum(minecraft, pendulumType, state, blockEntity, partialTick, poseStack, bufferSource, packedLight, packedOverlay);
         }

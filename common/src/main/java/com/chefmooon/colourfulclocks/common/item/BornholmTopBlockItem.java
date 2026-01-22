@@ -1,21 +1,14 @@
 package com.chefmooon.colourfulclocks.common.item;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
-import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.InteractionResult;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.List;
 
@@ -33,9 +26,11 @@ public class BornholmTopBlockItem extends BlockItem {
             if (glassType != BornholmTopGlassTypes.GLASS.getBlock()) {
                 tooltipComponents.add(Component.translatable(glassType.getDescriptionId()));
             }
-            Item pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(bornholmTopGlassData.getPocketWatchType());
-            if (pocketWatchItem != PocketWatchTypes.EMPTY.getItem()) {
-                tooltipComponents.add(Component.translatable(pocketWatchItem.getDescriptionId()));
+            if (bornholmTopGlassData.getPocketWatch().isPresent()) {
+                Item pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(bornholmTopGlassData.getPocketWatch().get().getType());
+                if (pocketWatchItem != PocketWatchTypes.EMPTY.getItem()) {
+                    tooltipComponents.add(Component.translatable(pocketWatchItem.getDescriptionId()));
+                }
             }
             if (bornholmTopGlassData.getTicking()) {
                 tooltipComponents.add(Component.translatable(ColourfulClocks.MOD_ID + ".tooltip.ticking"));

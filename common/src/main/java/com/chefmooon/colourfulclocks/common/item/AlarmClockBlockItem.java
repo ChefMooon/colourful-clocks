@@ -5,7 +5,6 @@ import com.chefmooon.colourfulclocks.common.data.AlarmClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
-import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
@@ -44,8 +43,8 @@ public class AlarmClockBlockItem extends BlockItem {
                     tooltipComponents.add(Component.translatable(glassType.getBlock().getDescriptionId()));
                 }
             }
-            if (component.pocketWatchType().isPresent()) {
-                Item pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.pocketWatchType().get());
+            if (component.pocketWatch().isPresent()) {
+                Item pocketWatchItem = BuiltInRegistries.ITEM.get(TextUtil.res(component.pocketWatch().get().type().getSerializedName() + "_pocket_watch"));
                 if (pocketWatchItem != PocketWatchTypes.EMPTY.getItem()) {
                     tooltipComponents.add(Component.translatable(pocketWatchItem.getDescriptionId()));
                 }

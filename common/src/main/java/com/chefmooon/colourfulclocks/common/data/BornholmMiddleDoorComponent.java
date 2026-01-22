@@ -1,27 +1,29 @@
 package com.chefmooon.colourfulclocks.common.data;
 
 import com.chefmooon.colourfulclocks.common.data.types.BornholmDoorTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
-import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 import org.jetbrains.annotations.Nullable;
 
-public record BornholmMiddleDoorComponent(BornholmDoorTypes doorType, PendulumTypes pendulumType) {
+import java.util.Optional;
+
+public record BornholmMiddleDoorComponent(BornholmDoorTypes doorType, Optional<PendulumComponent> pendulum) {
 
     public static final Codec<BornholmMiddleDoorComponent> CODEC = RecordCodecBuilder.create(
             instance -> instance.group(
-                    BornholmDoorTypes.CODEC.optionalFieldOf("glass", BornholmDoorTypes.BASE).forGetter(BornholmMiddleDoorComponent::getDoorType),
-                    PendulumTypes.CODEC.optionalFieldOf("pendulum", PendulumTypes.EMPTY).forGetter(BornholmMiddleDoorComponent::getPendulumType)
+                    BornholmDoorTypes.CODEC.fieldOf("glass").forGetter(BornholmMiddleDoorComponent::getDoorType),
+                    PendulumComponent.CODEC.optionalFieldOf("pendulum").forGetter(BornholmMiddleDoorComponent::getPendulum)
             ).apply(instance, BornholmMiddleDoorComponent::new)
     );
-    public static final StreamCodec<RegistryFriendlyByteBuf, BornholmMiddleDoorComponent> STREAM_CODEC = StreamCodec.composite(
+    public static final StreamCodec<ByteBuf, BornholmMiddleDoorComponent> STREAM_CODEC = StreamCodec.composite(
             BornholmDoorTypes.STREAM_CODEC, BornholmMiddleDoorComponent::getDoorType,
-            PendulumTypes.STREAM_CODEC, BornholmMiddleDoorComponent::getPendulumType,
+            PendulumComponent.STREAM_CODEC.apply(ByteBufCodecs::optional), BornholmMiddleDoorComponent::getPendulum,
             BornholmMiddleDoorComponent::new
     );
 
@@ -29,12 +31,12 @@ public record BornholmMiddleDoorComponent(BornholmDoorTypes doorType, PendulumTy
         return doorType;
     }
 
-    public PendulumTypes getPendulumType() {
-        return pendulumType;
+    public Optional<PendulumComponent> getPendulum() {
+        return pendulum;
     }
 
     public static BornholmMiddleDoorComponent getDefaultValue() {
-        return new BornholmMiddleDoorComponent(BornholmDoorTypes.BASE, PendulumTypes.EMPTY);
+        return new BornholmMiddleDoorComponent(BornholmDoorTypes.BASE, Optional.of(PendulumComponent.getDefaultValue()));
     }
 
     public CompoundTag save(CompoundTag tag) {

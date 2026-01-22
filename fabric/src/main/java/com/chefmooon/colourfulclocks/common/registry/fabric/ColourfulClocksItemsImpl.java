@@ -104,46 +104,75 @@ public class ColourfulClocksItemsImpl {
     }
 
     public static final Supplier<Item> IRON_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.IRON_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.IRON, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.IRON, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.IRON))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.COPPER_POCKET_WATCH,
             new WeatheringPocketWatchItem(PocketWatchTypes.COPPER, basicItem()
-                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_WEATHERING, 0)
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getWeatheredValue(PocketWatchTypes.COPPER))
                     .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> EXPOSED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.EXPOSED_COPPER_POCKET_WATCH,
             new WeatheringPocketWatchItem(PocketWatchTypes.COPPER, basicItem()
-                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_WEATHERING, 0)
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getWeatheredValue(PocketWatchTypes.EXPOSED_COPPER))
                     .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> WEATHERED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.WEATHERED_COPPER_POCKET_WATCH,
             new WeatheringPocketWatchItem(PocketWatchTypes.COPPER, basicItem()
-                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_WEATHERING, 0)
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getWeatheredValue(PocketWatchTypes.WEATHERED_COPPER))
                     .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+
     public static final Supplier<Item> OXIDIZED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.OXIDIZED_COPPER_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.COPPER, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.COPPER, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.OXIDIZED_COPPER))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> WAXED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.WAXED_COPPER_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.COPPER, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.COPPER, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.WAXED_COPPER))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> WAXED_EXPOSED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.WAXED_EXPOSED_COPPER_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.COPPER, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.COPPER, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.WAXED_EXPOSED_COPPER))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> WAXED_WEATHERED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.WAXED_WEATHERED_COPPER_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.COPPER, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.COPPER, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.WAXED_WEATHERED_COPPER))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> WAXED_OXIDIZED_COPPER_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.COPPER, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.COPPER, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.WAXED_OXIDIZED_COPPER))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> GOLD_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.GOLD_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.GOLD, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.GOLD, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.GOLD))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> DIAMOND_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.DIAMOND_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.DIAMOND, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.DIAMOND, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.DIAMOND))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> NETHERITE_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.NETHERITE_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.NETHERITE, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.NETHERITE, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.NETHERITE))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
 
     public static final Supplier<Item> QUARTZ_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.QUARTZ_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.QUARTZ, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.QUARTZ, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.QUARTZ))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> AMETHYST_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.AMETHYST_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.AMETHYST, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.AMETHYST, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.AMETHYST))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> LAPIS_LAZULI_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.LAPIS_LAZULI_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.LAPIS_LAZULI, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.LAPIS_LAZULI, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.LAPIS_LAZULI))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> REDSTONE_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.REDSTONE_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.REDSTONE, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.REDSTONE, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.REDSTONE))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
     public static final Supplier<Item> EMERALD_POCKET_WATCH = registerItemWithTab(ColourfulClocksItems.EMERALD_POCKET_WATCH,
-            new PocketWatchItem(PocketWatchTypes.EMERALD, basicItem().component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
+            new PocketWatchItem(PocketWatchTypes.EMERALD, basicItem()
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH, PocketWatchComponent.getBaseValue(PocketWatchTypes.EMERALD))
+                    .component(ColourfulClocksDataComponentTypesImpl.POCKET_WATCH_CLOSED, Boolean.FALSE)));
 
     public static final HashMap<PocketWatchTypes, Supplier<Item>> POCKET_WATCH_VARIANTS = new HashMap<>();
     static {
@@ -166,27 +195,41 @@ public class ColourfulClocksItemsImpl {
         POCKET_WATCH_VARIANTS.put(PocketWatchTypes.EMERALD, EMERALD_POCKET_WATCH);
     }
 
-    public static final Supplier<Item> IRON_PENDULUM = registerItemWithTab(ColourfulClocksItems.IRON_PENDULUM, new Item(basicItem()));
+    public static final Supplier<Item> IRON_PENDULUM = registerItemWithTab(ColourfulClocksItems.IRON_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.IRON))));
     public static final Supplier<Item> COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.COPPER_PENDULUM, new WeatheringPendulumItem(basicItem()
-            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM_WEATHERING, 0)));
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getWeatheringCopperValue(PendulumTypes.COPPER))));
     public static final Supplier<Item> EXPOSED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.EXPOSED_COPPER_PENDULUM, new WeatheringPendulumItem(basicItem()
-            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM_WEATHERING, 0)));
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getWeatheringCopperValue(PendulumTypes.EXPOSED_COPPER))));
     public static final Supplier<Item> WEATHERED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WEATHERED_COPPER_PENDULUM, new WeatheringPendulumItem(basicItem()
-            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM_WEATHERING, 0)));
-    public static final Supplier<Item> OXIDIZED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.OXIDIZED_COPPER_PENDULUM, new Item(basicItem()));
-    public static final Supplier<Item> WAXED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_COPPER_PENDULUM, new Item(basicItem()));
-    public static final Supplier<Item> WAXED_EXPOSED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_EXPOSED_COPPER_PENDULUM, new Item(basicItem()));
-    public static final Supplier<Item> WAXED_WEATHERED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_WEATHERED_COPPER_PENDULUM, new Item(basicItem()));
-    public static final Supplier<Item> WAXED_OXIDIZED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_PENDULUM, new Item(basicItem()));
-    public static final Supplier<Item> GOLD_PENDULUM = registerItemWithTab(ColourfulClocksItems.GOLD_PENDULUM, new Item(basicItem()));
-    public static final Supplier<Item> DIAMOND_PENDULUM = registerItemWithTab(ColourfulClocksItems.DIAMOND_PENDULUM, new Item(basicItem()));
-    public static final Supplier<Item> NETHERITE_PENDULUM = registerItemWithTab(ColourfulClocksItems.NETHERITE_PENDULUM, new Item(basicItem()));
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getWeatheringCopperValue(PendulumTypes.WEATHERED_COPPER))));
+    public static final Supplier<Item> OXIDIZED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.OXIDIZED_COPPER_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.OXIDIZED_COPPER))));
+    public static final Supplier<Item> WAXED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_COPPER_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.WAXED_COPPER))));
+    public static final Supplier<Item> WAXED_EXPOSED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_EXPOSED_COPPER_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.WAXED_EXPOSED_COPPER))));
+    public static final Supplier<Item> WAXED_WEATHERED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_WEATHERED_COPPER_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.WAXED_WEATHERED_COPPER))));
+    public static final Supplier<Item> WAXED_OXIDIZED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.WAXED_OXIDIZED_COPPER))));
+    public static final Supplier<Item> GOLD_PENDULUM = registerItemWithTab(ColourfulClocksItems.GOLD_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.GOLD))));
+    public static final Supplier<Item> DIAMOND_PENDULUM = registerItemWithTab(ColourfulClocksItems.DIAMOND_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.DIAMOND))));
+    public static final Supplier<Item> NETHERITE_PENDULUM = registerItemWithTab(ColourfulClocksItems.NETHERITE_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.NETHERITE))));
 
-    public static final Supplier<Item> QUARTZ_PENDULUM = registerItemWithTab(ColourfulClocksItems.QUARTZ_PENDULUM, new Item(basicItem()));
-    public static final Supplier<Item> AMETHYST_PENDULUM = registerItemWithTab(ColourfulClocksItems.AMETHYST_PENDULUM, new Item(basicItem()));
-    public static final Supplier<Item> LAPIS_LAZULI_PENDULUM = registerItemWithTab(ColourfulClocksItems.LAPIS_LAZULI_PENDULUM, new Item(basicItem()));
-    public static final Supplier<Item> REDSTONE_PENDULUM = registerItemWithTab(ColourfulClocksItems.REDSTONE_PENDULUM, new Item(basicItem()));
-    public static final Supplier<Item> EMERALD_PENDULUM = registerItemWithTab(ColourfulClocksItems.EMERALD_PENDULUM, new Item(basicItem()));
+    public static final Supplier<Item> QUARTZ_PENDULUM = registerItemWithTab(ColourfulClocksItems.QUARTZ_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.QUARTZ))));
+    public static final Supplier<Item> AMETHYST_PENDULUM = registerItemWithTab(ColourfulClocksItems.AMETHYST_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.AMETHYST))));
+    public static final Supplier<Item> LAPIS_LAZULI_PENDULUM = registerItemWithTab(ColourfulClocksItems.LAPIS_LAZULI_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.LAPIS_LAZULI))));
+    public static final Supplier<Item> REDSTONE_PENDULUM = registerItemWithTab(ColourfulClocksItems.REDSTONE_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.REDSTONE))));
+    public static final Supplier<Item> EMERALD_PENDULUM = registerItemWithTab(ColourfulClocksItems.EMERALD_PENDULUM, new Item(basicItem()
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.EMERALD))));
 
     public static final HashMap<PendulumTypes, Supplier<Item>> PENDULUM_VARIANTS = new HashMap<>();
     static {

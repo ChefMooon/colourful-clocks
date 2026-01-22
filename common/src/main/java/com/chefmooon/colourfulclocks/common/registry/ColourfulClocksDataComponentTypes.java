@@ -12,6 +12,8 @@ public class ColourfulClocksDataComponentTypes {
     public static final ResourceLocation HANDBELL_DATA = dataComponent("handbell_data");
 
     public static final ResourceLocation POCKET_WATCH_CLOSED = dataComponent("pocket_watch_closed");
+    public static final ResourceLocation POCKET_WATCH = dataComponent("pocket_watch_data");
+    public static final ResourceLocation PENDULUM = dataComponent("pendulum_data");
     public static final ResourceLocation POCKET_WATCH_WEATHERING = dataComponent("pocket_watch_weathering");
     public static final ResourceLocation PENDULUM_WEATHERING = dataComponent("pendulum_weathering");
 
@@ -30,6 +32,16 @@ public class ColourfulClocksDataComponentTypes {
 
     @ExpectPlatform
     public static DataComponentType<HandbellComponent> getHandbellData() {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static DataComponentType<PocketWatchComponent> getPocketWatchData() {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static DataComponentType<PendulumComponent> getPendulumData() {
         throw new AssertionError();
     }
 

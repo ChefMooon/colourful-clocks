@@ -1,6 +1,8 @@
 package com.chefmooon.colourfulclocks.common.util;
 
 import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
+import com.chefmooon.colourfulclocks.common.data.PendulumComponent;
+import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
 import com.chefmooon.colourfulclocks.common.data.types.*;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
@@ -78,6 +80,122 @@ public class ColourfulClocksTypeUtil {
                component.getType() == HandbellTypes.WEATHERED_COPPER;
     }
 
+    public static ItemStack getWaxedPocketWatch(PocketWatchComponent component) {
+        if (component.getType() == PocketWatchTypes.COPPER) {
+            return new ItemStack(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_COPPER_POCKET_WATCH));
+        } else if (component.getType() == PocketWatchTypes.EXPOSED_COPPER) {
+            return new ItemStack(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_EXPOSED_COPPER_POCKET_WATCH));
+        } else if (component.getType() == PocketWatchTypes.WEATHERED_COPPER) {
+            return new ItemStack(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_WEATHERED_COPPER_POCKET_WATCH));
+        } else if (component.getType() == PocketWatchTypes.OXIDIZED_COPPER) {
+            return new ItemStack(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_POCKET_WATCH));
+        } else {
+            return ItemStack.EMPTY;
+        }
+    }
+
+    public static Pair<Item, Supplier<SoundEvent>> getUnwaxedPocketWatch(PocketWatchComponent component) {
+        if (component.getType() == PocketWatchTypes.WAXED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.COPPER_POCKET_WATCH), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
+        } else if (component.getType() == PocketWatchTypes.WAXED_EXPOSED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_POCKET_WATCH), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
+        } else if (component.getType() == PocketWatchTypes.WAXED_WEATHERED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_POCKET_WATCH), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
+        } else if (component.getType() == PocketWatchTypes.WAXED_OXIDIZED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.OXIDIZED_COPPER_POCKET_WATCH), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
+        } else {
+            return Pair.of(ItemStack.EMPTY.getItem(), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
+        }
+    }
+
+    public static Pair<Item, Supplier<SoundEvent>> getScrapedPocketWatch(PocketWatchComponent component) {
+        if (component.getType() == PocketWatchTypes.EXPOSED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.COPPER_POCKET_WATCH), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
+        } else if (component.getType() == PocketWatchTypes.WEATHERED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_POCKET_WATCH), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
+        } else if (component.getType() == PocketWatchTypes.OXIDIZED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_POCKET_WATCH), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
+        } else {
+            return Pair.of(ItemStack.EMPTY.getItem(), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
+        }
+    }
+
+    public static Item getNextWeatheredCopperPocketWatch(PocketWatchComponent component) {
+        if (component.getType() == PocketWatchTypes.COPPER) {
+            return BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_POCKET_WATCH);
+        } else if (component.getType() == PocketWatchTypes.EXPOSED_COPPER) {
+            return BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_POCKET_WATCH);
+        } else if (component.getType() == PocketWatchTypes.WEATHERED_COPPER) {
+            return BuiltInRegistries.ITEM.get(ColourfulClocksItems.OXIDIZED_COPPER_POCKET_WATCH);
+        } else {
+            return ItemStack.EMPTY.getItem();
+        }
+    }
+
+    public static boolean pocketWatchCanWeather(PocketWatchComponent component) {
+        return component.getType() == PocketWatchTypes.COPPER ||
+                component.getType() == PocketWatchTypes.EXPOSED_COPPER ||
+                component.getType() == PocketWatchTypes.WEATHERED_COPPER;
+    }
+
+    public static ItemStack getWaxedPendulum(PendulumComponent component) {
+        if (component.getType() == PendulumTypes.COPPER) {
+            return new ItemStack(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_COPPER_PENDULUM));
+        } else if (component.getType() == PendulumTypes.EXPOSED_COPPER) {
+            return new ItemStack(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_EXPOSED_COPPER_PENDULUM));
+        } else if (component.getType() == PendulumTypes.WEATHERED_COPPER) {
+            return new ItemStack(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_WEATHERED_COPPER_PENDULUM));
+        } else if (component.getType() == PendulumTypes.OXIDIZED_COPPER) {
+            return new ItemStack(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_PENDULUM));
+        } else {
+            return ItemStack.EMPTY;
+        }
+    }
+
+    public static Pair<Item, Supplier<SoundEvent>> getUnwaxedPendulum(PendulumComponent component) {
+        if (component.getType() == PendulumTypes.WAXED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.COPPER_PENDULUM), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
+        } else if (component.getType() == PendulumTypes.WAXED_EXPOSED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_PENDULUM), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
+        } else if (component.getType() == PendulumTypes.WAXED_WEATHERED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_PENDULUM), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
+        } else if (component.getType() == PendulumTypes.WAXED_OXIDIZED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.OXIDIZED_COPPER_PENDULUM), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
+        } else {
+            return Pair.of(ItemStack.EMPTY.getItem(), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
+        }
+    }
+
+    public static Pair<Item, Supplier<SoundEvent>> getScrapedPendulum(PendulumComponent component) {
+        if (component.getType() == PendulumTypes.EXPOSED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.COPPER_PENDULUM), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
+        } else if (component.getType() == PendulumTypes.WEATHERED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_PENDULUM), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
+        } else if (component.getType() == PendulumTypes.OXIDIZED_COPPER) {
+            return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_PENDULUM), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
+        } else {
+            return Pair.of(ItemStack.EMPTY.getItem(), ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
+        }
+    }
+
+    public static Item getNextWeatheredCopperPendulum(PendulumComponent component) {
+        if (component.getType() == PendulumTypes.COPPER) {
+            return BuiltInRegistries.ITEM.get(ColourfulClocksItems.EXPOSED_COPPER_PENDULUM);
+        } else if (component.getType() == PendulumTypes.EXPOSED_COPPER) {
+            return BuiltInRegistries.ITEM.get(ColourfulClocksItems.WEATHERED_COPPER_PENDULUM);
+        } else if (component.getType() == PendulumTypes.WEATHERED_COPPER) {
+            return BuiltInRegistries.ITEM.get(ColourfulClocksItems.OXIDIZED_COPPER_PENDULUM);
+        } else {
+            return ItemStack.EMPTY.getItem();
+        }
+    }
+
+    public static boolean pendulumCanWeather(PendulumComponent component) {
+        return component.getType() == PendulumTypes.COPPER ||
+                component.getType() == PendulumTypes.EXPOSED_COPPER ||
+                component.getType() == PendulumTypes.WEATHERED_COPPER;
+    }
+
     @ExpectPlatform
     public static Item getPocketWatchItemFromType(PocketWatchTypes pocketWatchTypes) {
         throw new AssertionError();
@@ -95,27 +213,6 @@ public class ColourfulClocksTypeUtil {
 
     @ExpectPlatform
     public static PendulumTypes getPendulumTypeFromItem(Item item) {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static boolean isCopperClockHands(ItemStack itemStack) {
-        throw new AssertionError();
-    }
-
-    // TODO: rename to getNextWeatheredCopperPocketWatch
-    @ExpectPlatform
-    public static Supplier<Item> getNextWeatheredCopperItem(ItemStack itemStack) {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static Supplier<Item> getWaxedClockHands(ItemStack itemStack) {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static Pair<Supplier<Item>, Supplier<SoundEvent>> getScrapedClockHands(ItemStack itemStack) {
         throw new AssertionError();
     }
 

@@ -5,6 +5,7 @@ import com.chefmooon.colourfulclocks.client.renderer.WallClockBlockEntityRendere
 import com.chefmooon.colourfulclocks.common.block.WallClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.WallClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.properties.WallClockPartProperty;
+import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
@@ -32,7 +33,7 @@ public class WallClockBlockEntityRendererImpl<T extends WallClockBlockEntity> ex
         BlockState state = level.getBlockState(blockEntity.getBlockPos());
         if (!(state.getBlock() instanceof WallClockBlock)) return;
 
-        PocketWatchTypes pocketWatchType = blockEntity.getData().pocketWatchType().orElse(PocketWatchTypes.EMPTY);
+        PocketWatchTypes pocketWatchType = blockEntity.getData().pocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType();
         if (pocketWatchType != PocketWatchTypes.EMPTY) {
             poseStack.pushPose();
             renderMinuteHand(poseStack, partialTick, state);

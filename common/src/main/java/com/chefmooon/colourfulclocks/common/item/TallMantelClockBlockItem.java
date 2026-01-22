@@ -30,14 +30,14 @@ public class TallMantelClockBlockItem extends BlockItem {
                     tooltipComponents.add(Component.translatable(glassType.getDescriptionId()));
                 }
             }
-            if (component.getPocketWatchType().isPresent()) {
-                Item pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatchType().get());
+            if (component.getPocketWatch().isPresent()) {
+                Item pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatch().get().getType());
                 if (pocketWatchItem != PocketWatchTypes.EMPTY.getItem()) {
                     tooltipComponents.add(Component.translatable(pocketWatchItem.getDescriptionId()));
                 }
             }
-            if (component.getPendulumType().isPresent()) {
-                Item pendulumItem = ColourfulClocksTypeUtil.getPendulumItemFromType(component.getPendulumType().get());
+            if (component.getPendulum().isPresent()) {
+                Item pendulumItem = ColourfulClocksTypeUtil.getPendulumItemFromType(component.getPendulum().get().getType());
                 if (pendulumItem != PocketWatchTypes.EMPTY.getItem()) {
                     tooltipComponents.add(Component.translatable(pendulumItem.getDescriptionId()));
                 }

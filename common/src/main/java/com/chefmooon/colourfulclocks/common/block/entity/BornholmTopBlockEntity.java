@@ -2,6 +2,7 @@ package com.chefmooon.colourfulclocks.common.block.entity;
 
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
+import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
@@ -10,18 +11,16 @@ import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponen
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
+import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Container;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -30,81 +29,23 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Optional;
 import java.util.function.Supplier;
 
-public class BornholmTopBlockEntity extends BlockEntity implements Container {
-    private ItemStack clockHandsItem = ItemStack.EMPTY;
+public class BornholmTopBlockEntity extends BlockEntity {
     private BornholmTopGlassComponent dialData;
     public BornholmTopBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
         this.dialData = BornholmTopGlassComponent.getDefaultValue();
     }
 
-    @Override
-    public int getContainerSize() {
-        return 1;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return clockHandsItem.isEmpty();
-    }
-
-    @Override
-    public ItemStack getItem(int slot) {
-        return clockHandsItem;
-    }
-
-    public void setClockHandsItem(ItemStack stack) {
-        setItem(0, stack.split(1));
-    }
-
-    public ItemStack removeClockHandsItem() {
-        ItemStack stored = clockHandsItem;
-        setClockHandsItem(ItemStack.EMPTY);
-        setDialData(this.dialData.getGlassType(), PocketWatchTypes.EMPTY, this.dialData.getTicking());
-        return stored;
-    }
-
-    public ItemStack getClockHandsItem() {
-        return this.clockHandsItem;
-    }
-
     public NonNullList<ItemStack> getDroppableInventory() {
         NonNullList<ItemStack> drops = NonNullList.create();
-        drops.add(getClockHandsItem());
-        return drops;
-    }
-
-    @Override
-    public ItemStack removeItem(int slot, int amount) {
-        return removeItemNoUpdate(0);
-    }
-
-    @Override
-    public ItemStack removeItemNoUpdate(int slot) {
-        ItemStack stored = clockHandsItem;
-        clearContent();
-        return stored;
-    }
-
-    @Override
-    public void setItem(int slot, ItemStack stack) {
-        if (slot == 0) {
-            clockHandsItem = stack;
+        if (this.dialData.getPocketWatch().isPresent() && this.dialData.getPocketWatch().get().getType() != PocketWatchTypes.EMPTY) {
+            ItemStack pocketWatch = BuiltInRegistries.ITEM.get(TextUtil.res(this.dialData.getPocketWatch().get().getType().getSerializedName() + "_pocket_watch")).getDefaultInstance();
+            drops.add(pocketWatch);
         }
-        setChanged();
-    }
-
-    @Override
-    public boolean stillValid(Player player) {
-        return true;
-    }
-
-    @Override
-    public void clearContent() {
-        clockHandsItem = ItemStack.EMPTY;
-        setChanged();
+        return drops;
     }
 
     @Override
@@ -114,12 +55,12 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
         this.dialData = BornholmTopGlassComponent.load(tag);
         if (tag.contains("clock_hands")) { // Legacy data support
             CompoundTag clockHandsItemTag = tag.getCompound("clock_hands");
-            clockHandsItem = ItemStack.parse(provider, clockHandsItemTag).orElse(ItemStack.EMPTY);
-            setPocketWatchType(clockHandsItem);
-            setClockHandsItem(clockHandsItem);
+            ItemStack legacyClockHandsItem = ItemStack.parse(provider, clockHandsItemTag).orElse(ItemStack.EMPTY);
+            PocketWatchComponent component = legacyClockHandsItem.get(ColourfulClocksDataComponentTypes.getPocketWatchData());
+            setPocketWatch(component);
         } else {
-            if (dialData.getPocketWatchType() != PocketWatchTypes.EMPTY) {
-                setClockHandsItem(new ItemStack(ColourfulClocksTypeUtil.getPocketWatchItemFromType(dialData.getPocketWatchType())));
+            if (dialData.getPocketWatch().isPresent() && dialData.getPocketWatch().get().getType() != PocketWatchTypes.EMPTY) {
+                setPocketWatch(dialData.getPocketWatch().get());
             }
         }
     }
@@ -144,31 +85,30 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
         if (blockState.getValue(BornholmTopBlock.ACTIVATED)) {
             weatherItem(level, blockPos, bornholmTopBlockEntity);
         }
-        if (!bornholmTopBlockEntity.getClockHandsItem().isEmpty() && blockState.getValue(BornholmTopBlock.TICKING) && blockState.getValue(BornholmTopBlock.ACTIVATED)) {
+        if (bornholmTopBlockEntity.getData().getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType() != PocketWatchTypes.EMPTY && blockState.getValue(BornholmTopBlock.TICKING)
+                && blockState.getValue(BornholmTopBlock.ACTIVATED)) {
             tickSound(level, blockPos);
         }
     }
 
     private static void weatherItem(Level level, BlockPos blockPos, BornholmTopBlockEntity bornholmTopBlockEntity) {
-        ItemStack itemStack = bornholmTopBlockEntity.getClockHandsItem();
-        if (!itemStack.isEmpty()) {
-            if (isCopperClockHands(itemStack)) {
-                if (itemStack.get(BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING)) != null) {
-                    Integer weathering = itemStack.get((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING));
-                    if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
-                        advanceWeathering(level, blockPos, itemStack, bornholmTopBlockEntity);
-                    } else {
-                        itemStack.set((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING), weathering + 1);
-                    }
+        if (bornholmTopBlockEntity.getData().getPocketWatch().isPresent()) {
+            PocketWatchComponent pocketWatchComponent = bornholmTopBlockEntity.getData().getPocketWatch().get();
+            if (pocketWatchComponent.getWeathering().isPresent() && ColourfulClocksTypeUtil.pocketWatchCanWeather(pocketWatchComponent)) {
+                int weathering = pocketWatchComponent.getWeathering().get();
+                if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
+                    advanceWeathering(level, blockPos, pocketWatchComponent, bornholmTopBlockEntity);
+                } else {
+                    bornholmTopBlockEntity.setPocketWatch(new PocketWatchComponent(pocketWatchComponent.getType(), Optional.of(weathering + 1)));
                 }
             }
         }
     }
 
-    private static void advanceWeathering(Level level, BlockPos blockPos, ItemStack itemStack, BornholmTopBlockEntity bornholmTopBlockEntity) {
-        ItemStack weatheredItemStack = new ItemStack(getNextWeatheredCopperItem(itemStack).get());
+    private static void advanceWeathering(Level level, BlockPos blockPos, PocketWatchComponent pocketWatchComponent, BornholmTopBlockEntity bornholmTopBlockEntity) {
+        ItemStack weatheredItemStack = new ItemStack(ColourfulClocksTypeUtil.getNextWeatheredCopperPocketWatch(pocketWatchComponent));
         if (!weatheredItemStack.isEmpty()) {
-            bornholmTopBlockEntity.setPocketWatchType(weatheredItemStack);
+            bornholmTopBlockEntity.setPocketWatch(weatheredItemStack);
             level.blockEntityChanged(blockPos);
             bornholmTopBlockEntity.setChanged();
             if (!level.isClientSide()) {
@@ -189,25 +129,40 @@ public class BornholmTopBlockEntity extends BlockEntity implements Container {
         }
     }
 
-    public void setPocketWatchType(ItemStack itemStack) {
-        setDialData(this.dialData.getGlassType(), ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(itemStack.getItem()), this.dialData.getTicking());
-        setClockHandsItem(itemStack); // TODO : cannot render dial from dataComponent, remove this after that is figured out
+    public void setPocketWatch(ItemStack itemStack) {
+        PocketWatchComponent component = itemStack.get(ColourfulClocksDataComponentTypes.getPocketWatchData());
+        setDialData(this.dialData.getGlassType(), component, this.dialData.getTicking());
+    }
+
+    public void setPocketWatch(PocketWatchComponent component) {
+        setDialData(this.dialData.getGlassType(), component, this.dialData.getTicking());
+    }
+
+    public PocketWatchComponent removePocketWatch() {
+        PocketWatchComponent removed = this.dialData.getPocketWatch().orElse(PocketWatchComponent.getDefaultValue());
+        setDialData(this.dialData.getGlassType(), PocketWatchComponent.getDefaultValue(), this.dialData.getTicking());
+        return removed;
     }
 
     public void setGlassType(BornholmTopGlassTypes glassType) {
-        setDialData(glassType, this.dialData.getPocketWatchType(), this.dialData.getTicking());
+        setDialData(glassType, this.dialData.getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()), this.dialData.getTicking());
     }
 
     public void setTicking(boolean ticking) {
-        setDialData(this.dialData.getGlassType(), this.dialData.getPocketWatchType(), ticking);
+        setDialData(this.dialData.getGlassType(), this.dialData.getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()), ticking);
     }
 
-    public void setDialData(BornholmTopGlassTypes glassType, PocketWatchTypes pocketWatchType, boolean ticking) {
-        this.dialData = new BornholmTopGlassComponent(glassType, pocketWatchType, ticking);
+    public void setData(BornholmTopGlassComponent data) {
+        this.dialData = data;
         setChanged();
     }
 
-    public BornholmTopGlassComponent getDialData() {
+    public void setDialData(BornholmTopGlassTypes glassType, PocketWatchComponent pocketWatchComponent, boolean ticking) {
+        this.dialData = new BornholmTopGlassComponent(glassType, Optional.of(pocketWatchComponent), ticking);
+        setChanged();
+    }
+
+    public BornholmTopGlassComponent getData() {
         return this.dialData;
     }
 

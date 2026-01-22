@@ -93,7 +93,7 @@ public class BornholmTopDataShapedRecipeBuilder implements RecipeBuilder {
     }
 
     public BornholmTopDataShapedRecipeBuilder setResultData(BornholmTopGlassTypes topGlassType) {
-        this.bornholmTopGlassComponent = new BornholmTopGlassComponent(topGlassType, this.bornholmTopGlassComponent.getPocketWatchType(), this.bornholmTopGlassComponent.getTicking());
+        this.bornholmTopGlassComponent = new BornholmTopGlassComponent(topGlassType, this.bornholmTopGlassComponent.getPocketWatch(), this.bornholmTopGlassComponent.getTicking());
         return this;
     }
 

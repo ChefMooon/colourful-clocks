@@ -3,18 +3,19 @@ package com.chefmooon.colourfulclocks.common.block.entity.base;
 import com.chefmooon.colourfulclocks.common.block.TallMantelClockBlock;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.PendulumComponent;
+import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
+import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.component.DataComponentMap;
-import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
@@ -30,8 +31,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class BaseDataClockBlockEntity extends BlockEntity {
-    private ItemStack pocketWatchItem = ItemStack.EMPTY;
-    private ItemStack pendulumItem = ItemStack.EMPTY;
     private static boolean hasChimed = false;
     private ClockComponent clockData;
     public BaseDataClockBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
@@ -43,28 +42,12 @@ public class BaseDataClockBlockEntity extends BlockEntity {
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.loadAdditional(tag, provider);
         this.clockData = ClockComponent.load(tag);
-
-        if (tag.contains("pocket_watch")) {
-            CompoundTag clockHandsItemTag = tag.getCompound("pocket_watch");
-            setPocketWatchType(ItemStack.parse(provider, clockHandsItemTag).orElse(ItemStack.EMPTY));
-        }
-        if (tag.contains("pendulum")) {
-            CompoundTag pendulumItemTag = tag.getCompound("pendulum");
-            setPendulumType(ItemStack.parse(provider, pendulumItemTag).orElse(ItemStack.EMPTY));
-        }
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         this.clockData.save(tag);
         super.saveAdditional(tag, provider);
-
-        if (!pocketWatchItem.isEmpty()) {
-            tag.put("pocket_watch", pocketWatchItem.save(provider, new CompoundTag()));
-        }
-        if (!pendulumItem.isEmpty()) {
-            tag.put("pendulum", pendulumItem.save(provider, new CompoundTag()));
-        }
     }
 
     @Override
@@ -91,61 +74,70 @@ public class BaseDataClockBlockEntity extends BlockEntity {
 
     public NonNullList<ItemStack> getDroppableInventory() {
         NonNullList<ItemStack> drops = NonNullList.create();
-        if (this.clockData.getPocketWatchType().isPresent()) {
-            if (this.clockData.getPocketWatchType().get().getId() != 0) {
-                drops.add(new ItemStack(ColourfulClocksTypeUtil.getPocketWatchItemFromType(this.clockData.getPocketWatchType().get())));
-            }
+        if (this.clockData.getPocketWatch().isPresent() && this.clockData.getPocketWatch().get().getType().getId() != 0) {
+            ItemStack pocketWatch = BuiltInRegistries.ITEM.get(TextUtil.res(this.clockData.getPocketWatch().get().getType().getSerializedName() + "_pocket_watch")).getDefaultInstance();
+            pocketWatch.set(ColourfulClocksDataComponentTypes.getPocketWatchData(), this.clockData.getPocketWatch().get());
+            drops.add(pocketWatch);
         }
-        if (this.clockData.getPendulumType().isPresent()) {
-            if (this.clockData.getPendulumType().get().getId() != 0) {
-                drops.add(new ItemStack(ColourfulClocksTypeUtil.getPendulumItemFromType(this.clockData.getPendulumType().get())));
-            }
+        if (this.clockData.getPendulum().isPresent() && this.clockData.getPendulum().get().getType().getId() != 0) {
+            ItemStack pendulum = BuiltInRegistries.ITEM.get(TextUtil.res(this.clockData.getPendulum().get().getType().getSerializedName() + "_pendulum")).getDefaultInstance();
+            pendulum.set(ColourfulClocksDataComponentTypes.getPendulumData(), this.clockData.getPendulum().get());
+            drops.add(pendulum);
         }
         return drops;
     }
 
     public boolean isEmpty() {
-        return this.clockData.getPocketWatchType().orElse(PocketWatchTypes.EMPTY).getId() == 0 || this.clockData.getPendulumType().orElse(PendulumTypes.EMPTY).getId() == 0;
+        return this.clockData.getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType().getId() == 0 || this.clockData.getPendulum().orElse(PendulumComponent.getDefaultValue()).getType().getId() == 0;
     }
 
-    public void setPocketWatchType(ItemStack itemStack) {
-        pocketWatchItem = itemStack;
-        setData(this.clockData.getGlassType().orElse(BornholmTopGlassTypes.GLASS), ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(itemStack.getItem()), this.clockData.getPendulumType().orElse(PendulumTypes.EMPTY), this.clockData.getTicking().orElse(Boolean.FALSE));
+    public void setPocketWatch(ItemStack itemStack) {
+        setPocketWatch(itemStack.get(ColourfulClocksDataComponentTypes.getPocketWatchData()));
     }
 
-    public ItemStack removePocketWatchType() {
-        ItemStack stored = pocketWatchItem;
-        pocketWatchItem = ItemStack.EMPTY;
-        setData(this.clockData.getGlassType().orElse(BornholmTopGlassTypes.GLASS), PocketWatchTypes.EMPTY, this.clockData.getPendulumType().orElse(PendulumTypes.EMPTY), this.clockData.getTicking().orElse(Boolean.FALSE));
-        return stored;
+    public void setPocketWatch(PocketWatchComponent component) {
+        setData(this.clockData.getGlassType().orElse(BornholmTopGlassTypes.GLASS), component, this.clockData.getPendulum().orElse(PendulumComponent.getDefaultValue()), this.clockData.getTicking().orElse(Boolean.FALSE));
     }
 
-    public void setPendulumType(ItemStack itemStack) {
-        pendulumItem = itemStack;
-        setData(this.clockData.getGlassType().orElse(BornholmTopGlassTypes.GLASS), this.clockData.getPocketWatchType().orElse(PocketWatchTypes.EMPTY), ColourfulClocksTypeUtil.getPendulumTypeFromItem(itemStack.getItem()), this.clockData.getTicking().orElse(Boolean.FALSE));
+    public PocketWatchComponent removePocketWatch() {
+        PocketWatchComponent removed = this.clockData.getPocketWatch().orElse(PocketWatchComponent.getDefaultValue());
+        setData(this.clockData.getGlassType().orElse(BornholmTopGlassTypes.GLASS), PocketWatchComponent.getDefaultValue(), this.clockData.getPendulum().orElse(PendulumComponent.getDefaultValue()), this.clockData.getTicking().orElse(Boolean.FALSE));
+        return removed;
     }
 
-    public ItemStack removePendulumType() {
-        ItemStack stored = pendulumItem;
-        pendulumItem = ItemStack.EMPTY;
-        setData(this.clockData.getGlassType().orElse(BornholmTopGlassTypes.GLASS), this.clockData.getPocketWatchType().orElse(PocketWatchTypes.EMPTY), PendulumTypes.EMPTY, this.clockData.getTicking().orElse(Boolean.FALSE));
-        return stored;
+    public void setPendulum(ItemStack itemStack) {
+        setPendulum(itemStack.get(ColourfulClocksDataComponentTypes.getPendulumData()));
+    }
+
+    public void setPendulum(PendulumComponent component) {
+        setData(this.clockData.getGlassType().orElse(BornholmTopGlassTypes.GLASS), this.clockData.getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()), component, this.clockData.getTicking().orElse(Boolean.FALSE));
+    }
+
+    public PendulumComponent removePendulum() {
+        PendulumComponent removed = this.clockData.getPendulum().orElse(PendulumComponent.getDefaultValue());
+        setData(this.clockData.getGlassType().orElse(BornholmTopGlassTypes.GLASS), this.clockData.getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()), PendulumComponent.getDefaultValue(), this.clockData.getTicking().orElse(Boolean.FALSE));
+        return removed;
     }
 
     public void setGlassType(BornholmTopGlassTypes glassType) {
-        setData(glassType, this.clockData.getPocketWatchType().orElse(PocketWatchTypes.EMPTY), this.clockData.getPendulumType().orElse(PendulumTypes.EMPTY), this.clockData.getTicking().orElse(Boolean.FALSE));
+        setData(glassType, this.clockData.getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()), this.clockData.getPendulum().orElse(PendulumComponent.getDefaultValue()), this.clockData.getTicking().orElse(Boolean.FALSE));
     }
 
     public void setTicking(boolean ticking) {
-        setData(this.clockData.getGlassType().orElse(BornholmTopGlassTypes.GLASS), this.clockData.getPocketWatchType().orElse(PocketWatchTypes.EMPTY), this.clockData.getPendulumType().orElse(PendulumTypes.EMPTY), ticking);
+        setData(this.clockData.getGlassType().orElse(BornholmTopGlassTypes.GLASS), this.clockData.getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()), this.clockData.getPendulum().orElse(PendulumComponent.getDefaultValue()), ticking);
     }
 
-    public void setData(@Nullable BornholmTopGlassTypes glassType, @Nullable PocketWatchTypes pocketWatchType, @Nullable PendulumTypes pendulumType, @Nullable Boolean ticking) {
+    public void setData(@Nullable BornholmTopGlassTypes glassType, @Nullable PocketWatchComponent pocketWatchType, @Nullable PendulumComponent pendulumType, @Nullable Boolean ticking) {
         this.clockData = new ClockComponent(
                 glassType != null ? Optional.of(glassType) : Optional.empty(),
                 pocketWatchType != null ? Optional.of(pocketWatchType) : Optional.empty(),
                 pendulumType != null ? Optional.of(pendulumType) : Optional.empty(),
                 ticking != null ? Optional.of(ticking) : Optional.empty());
+        setChanged();
+    }
+
+    public void setData(ClockComponent component) {
+        this.clockData = component;
         setChanged();
     }
 
@@ -156,48 +148,44 @@ public class BaseDataClockBlockEntity extends BlockEntity {
     public static void weatherTick(Level level, BlockPos blockPos, BlockState blockState, BaseDataClockBlockEntity baseDataClockBlockEntity) {
         if (blockState.getValue(TallMantelClockBlock.ACTIVATED)) {
             weatherItem(level, blockPos, baseDataClockBlockEntity);
-            if (!baseDataClockBlockEntity.pendulumItem.isEmpty()) sound(level, blockPos, baseDataClockBlockEntity);
+            if (baseDataClockBlockEntity.getData().getPendulum().isPresent() && baseDataClockBlockEntity.getData().getPendulum().get().getType().getId() != 0) sound(level, blockPos, baseDataClockBlockEntity);
         }
-        if (baseDataClockBlockEntity.getData().pocketWatchType().orElse(PocketWatchTypes.EMPTY).getId() != 0 && blockState.getValue(ColourfulClocksBlockStateProperties.TICKING)
+        if (baseDataClockBlockEntity.getData().pocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType().getId() != 0 && blockState.getValue(ColourfulClocksBlockStateProperties.TICKING)
                 && blockState.getValue(ColourfulClocksBlockStateProperties.ACTIVATED)) {
             tickSound(level, blockPos);
         }
     }
 
     private static void weatherItem(Level level, BlockPos blockPos, BaseDataClockBlockEntity baseDataClockBlockEntity) {
-        ItemStack pocketWatchStack = baseDataClockBlockEntity.pocketWatchItem;
-        if (!pocketWatchStack.isEmpty()) {
-            if (ColourfulClocksTypeUtil.isCopperClockHands(pocketWatchStack)) {
-                if (pocketWatchStack.get(BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING)) != null) {
-                    Integer weathering = pocketWatchStack.get((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING));
-                    if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
-                        advancePocketWatchWeathering(level, blockPos, pocketWatchStack, baseDataClockBlockEntity);
-                    } else {
-                        pocketWatchStack.set((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_WEATHERING), weathering + 1);
-                    }
+        if (baseDataClockBlockEntity.getData().getPocketWatch().isPresent()) {
+            PocketWatchComponent pocketWatchComponent = baseDataClockBlockEntity.getData().getPocketWatch().get();
+            if (pocketWatchComponent.getWeathering().isPresent() && ColourfulClocksTypeUtil.pocketWatchCanWeather(pocketWatchComponent)) {
+                int weathering = pocketWatchComponent.getWeathering().get();
+                if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
+                    advancePocketWatchWeathering(level, blockPos, pocketWatchComponent, baseDataClockBlockEntity);
+                } else {
+                    baseDataClockBlockEntity.setPocketWatch(new PocketWatchComponent(pocketWatchComponent.getType(), Optional.of(weathering + 1)));
                 }
             }
         }
 
-        ItemStack pendulumStack = baseDataClockBlockEntity.pendulumItem;
-        if (!pendulumStack.isEmpty()) {
-            if (ColourfulClocksTypeUtil.isCopperPendulum(pendulumStack)) {
-                if (pendulumStack.get(BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING)) != null) {
-                    Integer weathering = pendulumStack.get((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING));
-                    if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
-                        advancePendulumWeathering(level, blockPos, pendulumStack, baseDataClockBlockEntity);
-                    } else {
-                        pendulumStack.set((DataComponentType<Integer>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.PENDULUM_WEATHERING), weathering + 1);
-                    }
+        if (baseDataClockBlockEntity.getData().getPendulum().isPresent()) {
+            PendulumComponent pendulumComponent = baseDataClockBlockEntity.getData().getPendulum().get();
+            if (pendulumComponent.getWeathering().isPresent() && ColourfulClocksTypeUtil.pendulumCanWeather(pendulumComponent)) {
+                int weathering = pendulumComponent.getWeathering().get();
+                if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
+                    advancePendulumWeathering(level, blockPos, pendulumComponent, baseDataClockBlockEntity);
+                } else {
+                    baseDataClockBlockEntity.setPendulum(new PendulumComponent(pendulumComponent.getType(), Optional.of(weathering + 1)));
                 }
             }
         }
     }
 
-    protected static void advancePocketWatchWeathering(Level level, BlockPos blockPos, ItemStack itemStack, BaseDataClockBlockEntity baseDataClockBlockEntity) {
-        ItemStack weatheredItemStack = new ItemStack(ColourfulClocksTypeUtil.getNextWeatheredCopperItem(itemStack).get());
+    protected static void advancePocketWatchWeathering(Level level, BlockPos blockPos, PocketWatchComponent pocketWatchComponent, BaseDataClockBlockEntity baseDataClockBlockEntity) {
+        ItemStack weatheredItemStack = new ItemStack(ColourfulClocksTypeUtil.getNextWeatheredCopperPocketWatch(pocketWatchComponent));
         if (!weatheredItemStack.isEmpty()) {
-            baseDataClockBlockEntity.setPocketWatchType(weatheredItemStack);
+            baseDataClockBlockEntity.setPocketWatch(weatheredItemStack);
             level.blockEntityChanged(blockPos);
             baseDataClockBlockEntity.setChanged();
             if (!level.isClientSide()) {
@@ -207,10 +195,10 @@ public class BaseDataClockBlockEntity extends BlockEntity {
         }
     }
 
-    protected static void advancePendulumWeathering(Level level, BlockPos blockPos, ItemStack itemStack, BaseDataClockBlockEntity baseDataClockBlockEntity) {
-        ItemStack weatheredItemStack = new ItemStack(ColourfulClocksTypeUtil.getNextWeatheredCopperPendulum(itemStack).get());
+    protected static void advancePendulumWeathering(Level level, BlockPos blockPos, PendulumComponent pendulumComponent, BaseDataClockBlockEntity baseDataClockBlockEntity) {
+        ItemStack weatheredItemStack = new ItemStack(ColourfulClocksTypeUtil.getNextWeatheredCopperPendulum(pendulumComponent));
         if (!weatheredItemStack.isEmpty()) {
-            baseDataClockBlockEntity.setPendulumType(weatheredItemStack);
+            baseDataClockBlockEntity.setPendulum(weatheredItemStack);
             level.blockEntityChanged(blockPos);
             baseDataClockBlockEntity.setChanged();
             if (!level.isClientSide()) {
@@ -223,7 +211,7 @@ public class BaseDataClockBlockEntity extends BlockEntity {
     protected static void sound(Level level, BlockPos blockPos, BaseDataClockBlockEntity baseDataClockBlockEntity) {
         if (level == null || level.isClientSide()) return;
 
-        PendulumTypes pendulumType = ColourfulClocksTypeUtil.getPendulumTypeFromItem(baseDataClockBlockEntity.pendulumItem.getItem());
+        PendulumTypes pendulumType = baseDataClockBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()).getType();
 
         long timeOfDay = level.getDayTime() % 24000;
 

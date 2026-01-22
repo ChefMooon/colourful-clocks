@@ -71,60 +71,6 @@ public class ColourfulClocksTypeUtilImpl {
         return PENDULUM_BY_ITEM.getOrDefault(item, PendulumTypes.EMPTY);
     }
 
-    public static boolean isCopperClockHands(ItemStack itemStack) {
-        return itemStack.is(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get())
-                || itemStack.is(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get())
-                || itemStack.is(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get());
-    }
-
-    public static Supplier<Item> getNextWeatheredCopperItem(ItemStack itemStack) {
-        if (itemStack.is(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get())) {
-            return ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH;
-        } else if (itemStack.is(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get())) {
-            return ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH;
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get())) {
-            return ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH;
-        } else {
-            return ItemStack.EMPTY::getItem;
-        }
-    }
-
-    public static Supplier<Item> getWaxedClockHands(ItemStack itemStack) {
-        if (itemStack.is(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get())) {
-            return ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH;
-        } else if (itemStack.is(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get())) {
-            return ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_POCKET_WATCH;
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get())) {
-            return ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_POCKET_WATCH;
-        } else if (itemStack.is(ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH.get())) {
-            return ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_POCKET_WATCH;
-        } else {
-            return ItemStack.EMPTY::getItem;
-        }
-    }
-
-    public static Pair<Supplier<Item>, Supplier<SoundEvent>> getScrapedClockHands(ItemStack itemStack) {
-        // wax -> no wax
-        if (itemStack.is(ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get())) {
-            return new Pair<>(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_POCKET_WATCH.get())) {
-            return new Pair<>(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_POCKET_WATCH.get())) {
-            return new Pair<>(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_POCKET_WATCH.get())) {
-            return new Pair<>(ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
-            // previous weathered state
-        } else if (itemStack.is(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH.get())) {
-            return new Pair<>(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH, ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
-        } else if (itemStack.is(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH.get())) {
-            return new Pair<>(ColourfulClocksItemsImpl.EXPOSED_COPPER_POCKET_WATCH, ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
-        } else if (itemStack.is(ColourfulClocksItemsImpl.OXIDIZED_COPPER_POCKET_WATCH.get())) {
-            return new Pair<>(ColourfulClocksItemsImpl.WEATHERED_COPPER_POCKET_WATCH, ColourfulClocksSounds.BLOCK_BORNHOLM_AXE_SCRAPES);
-        }else {
-            return new Pair<>(ItemStack.EMPTY::getItem, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
-        }
-    }
-
     public static boolean isCopperPendulum(ItemStack itemStack) {
         return itemStack.is(ColourfulClocksItemsImpl.COPPER_PENDULUM.get())
                 || itemStack.is(ColourfulClocksItemsImpl.EXPOSED_COPPER_PENDULUM.get())

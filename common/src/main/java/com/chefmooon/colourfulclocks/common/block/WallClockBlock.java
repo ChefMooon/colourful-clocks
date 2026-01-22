@@ -332,7 +332,7 @@ public class WallClockBlock extends BaseDataClockBlock {
                     return setTicking(level, pos, player, mainHandItem, wallClockBlockEntity, false);
                 }
             } else {
-                if (player.isShiftKeyDown() && wallClockBlockEntity.getData().getPocketWatchType().isPresent() && wallClockBlockEntity.getData().getPocketWatchType().get().getId() != 0) {
+                if (player.isShiftKeyDown() && wallClockBlockEntity.getData().getPocketWatch().isPresent() && wallClockBlockEntity.getData().getPocketWatch().get().getType().getId() != 0) {
                     return removePocketWatch(level, pos, player, wallClockBlockEntity);
                 }
             }
@@ -396,10 +396,7 @@ public class WallClockBlock extends BaseDataClockBlock {
             if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
                 ClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getBasicClockValue());
                 if (component != null) {
-                    wallClockBlockEntity.setData(null, component.getPocketWatchType().get(), null, component.getTicking().get());
-                    if (component.getPocketWatchType().get() != PocketWatchTypes.EMPTY) {
-                        wallClockBlockEntity.setPocketWatchType(ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatchType().get()).getDefaultInstance());
-                    }
+                    wallClockBlockEntity.setData(component);
                 }
             }
 

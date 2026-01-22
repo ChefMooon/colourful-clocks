@@ -14,6 +14,7 @@ import mcp.mobius.waila.api.IBlockComponentProvider;
 import mcp.mobius.waila.api.IPluginConfig;
 import mcp.mobius.waila.api.ITooltip;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class ClockDataProvider implements IBlockComponentProvider {
     @Override
@@ -24,12 +25,15 @@ public class ClockDataProvider implements IBlockComponentProvider {
         boolean ticking = config.getBoolean(ColourfulClocksCommonWailaPlugin.Options.TICKING);
         if (glassType || pocketWatchType || ticking) {
             if (accessor.getBlock() instanceof BaseDataClockBlock) {
-                ClockComponent component = accessor.getBlockEntity().collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getBasicClockValue());
-                if (component != null) {
-                    if (glassType && component.getGlassType().isPresent() && component.getGlassType().get() != BornholmTopGlassTypes.GLASS) addGlassTypeTooltip(tooltip, component.getGlassType().get());
-                    if (pocketWatchType && component.getPocketWatchType().isPresent() && component.getPocketWatchType().get() != PocketWatchTypes.EMPTY) addPocketWatchTypeTooltip(tooltip, component.getPocketWatchType().get());
-                    if (pendulumType && component.getPendulumType().isPresent() && component.getPendulumType().get() != PendulumTypes.EMPTY) addPendulumTypeTooltip(tooltip, component.getPendulumType().get());
-                    if (ticking && component.getTicking().isPresent() && component.getTicking().get()) addTickingTooltip(tooltip);
+                BlockEntity blockEntity = accessor.getBlockEntity();
+                if (blockEntity != null) {
+                    ClockComponent component = blockEntity.collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getBasicClockValue());
+                    if (component != null) {
+                        if (glassType && component.getGlassType().isPresent() && component.getGlassType().get() != BornholmTopGlassTypes.GLASS) addGlassTypeTooltip(tooltip, component.getGlassType().get());
+                        if (pocketWatchType && component.getPocketWatch().isPresent() && component.getPocketWatch().get().getType() != PocketWatchTypes.EMPTY) addPocketWatchTypeTooltip(tooltip, component.getPocketWatch().get().getType());
+                        if (pendulumType && component.getPendulum().isPresent() && component.getPendulum().get() .getType()!= PendulumTypes.EMPTY) addPendulumTypeTooltip(tooltip, component.getPendulum().get().getType());
+                        if (ticking && component.getTicking().isPresent() && component.getTicking().get()) addTickingTooltip(tooltip);
+                    }
                 }
             }
         }

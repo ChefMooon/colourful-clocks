@@ -30,8 +30,8 @@ public class MantelClockBlockItem extends BlockItem {
                     tooltipComponents.add(Component.translatable(glassType.getBlock().getDescriptionId()));
                 }
             }
-            if (component.getPocketWatchType().isPresent()) {
-                Item pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatchType().get());
+            if (component.getPocketWatch().isPresent()) {
+                Item pocketWatchItem = ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatch().get().getType());
                 if (pocketWatchItem != PocketWatchTypes.EMPTY.getItem()) {
                     tooltipComponents.add(Component.translatable(pocketWatchItem.getDescriptionId()));
                 }

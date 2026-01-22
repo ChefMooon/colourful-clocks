@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
 import com.chefmooon.colourfulclocks.client.renderer.BornholmTopBlockEntityRenderer;
 import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.neoforge.BornholmTopBlockEntityImpl;
+import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
@@ -34,7 +35,7 @@ public class BornholmTopBlockEntityRendererImpl extends BornholmTopBlockEntityRe
         BlockState state = world.getBlockState(blockEntity.getBlockPos());
         if (!(state.getBlock() instanceof BornholmTopBlock)) return;
 
-        PocketWatchTypes pocketWatchType = blockEntity.getDialData().getPocketWatchType();
+        PocketWatchTypes pocketWatchType = blockEntity.getData().getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType();
         if (pocketWatchType != PocketWatchTypes.EMPTY) {
             poseStack.pushPose();
             renderMinuteHand(poseStack, partialTick, state);
@@ -65,7 +66,7 @@ public class BornholmTopBlockEntityRendererImpl extends BornholmTopBlockEntityRe
 
         poseStack.pushPose();
         poseStack.rotateAround(getRotation(state.getValue(BornholmTopBlock.FACING)), 0.5F, 0.5F, 0.5F);
-        BornholmTopGlassTypes glassType = blockEntity.getDialData().getGlassType();
+        BornholmTopGlassTypes glassType = blockEntity.getData().getGlassType();
         BakedModel glassModel = minecraft.getModelManager().getModel(new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.BORNHOLM_DIAL_PATH.formatted(glassType.getName())), "standalone"));
         minecraft.getBlockRenderer().getModelRenderer().renderModel(
                 poseStack.last(),
