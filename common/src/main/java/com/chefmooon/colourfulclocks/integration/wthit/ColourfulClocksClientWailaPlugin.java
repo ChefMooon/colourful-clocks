@@ -1,9 +1,7 @@
 package com.chefmooon.colourfulclocks.integration.wthit;
 
-import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
-import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
-import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
-import com.chefmooon.colourfulclocks.common.block.TallMantelClockBlock;
+import com.chefmooon.colourfulclocks.common.block.*;
+import com.chefmooon.colourfulclocks.integration.wthit.provider.AlarmClockDataProvider;
 import com.chefmooon.colourfulclocks.integration.wthit.provider.BornholmDialProvider;
 import com.chefmooon.colourfulclocks.integration.wthit.provider.BornholmTrunkProvider;
 import com.chefmooon.colourfulclocks.integration.wthit.provider.ClockDataProvider;
@@ -18,5 +16,9 @@ public class ColourfulClocksClientWailaPlugin implements IWailaClientPlugin {
 
         registrar.body(new ClockDataProvider(), MantelClockBlock.class);
         registrar.body(new ClockDataProvider(), TallMantelClockBlock.class);
+
+        registrar.body(new ClockDataProvider(), WallClockBlock.class);
+
+        registrar.body(new AlarmClockDataProvider(), AlarmClockBlock.class);
     }
 }

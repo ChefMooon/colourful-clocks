@@ -396,6 +396,7 @@
   "colourfulclocks.subtitles.item.handbell.ring": "Handbell Ring",
   "colourfulclocks.tooltip.ticking": "Ticking",
   "colourfulclocks.tooltip.weathering": "Weathering",
+  "config.jade.plugin_colourfulclocks.alarm_clock_data": "Ticking",
   "config.jade.plugin_colourfulclocks.bornholm_dial_glass_type": "Bornholm Dial Glass Type",
   "config.jade.plugin_colourfulclocks.bornholm_trunk_door_type": "Bornholm Dial Glass Type",
   "config.jade.plugin_colourfulclocks.glass_type": "Glass Type",

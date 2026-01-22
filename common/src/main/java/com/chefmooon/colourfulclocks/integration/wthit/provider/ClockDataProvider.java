@@ -23,7 +23,7 @@ public class ClockDataProvider implements IBlockComponentProvider {
         boolean pocketWatchType = config.getBoolean(ColourfulClocksCommonWailaPlugin.Options.POCKET_WATCH_TYPE);
         boolean pendulumType = config.getBoolean(ColourfulClocksCommonWailaPlugin.Options.PENDULUM_TYPE);
         boolean ticking = config.getBoolean(ColourfulClocksCommonWailaPlugin.Options.TICKING);
-        if (glassType || pocketWatchType || ticking) {
+        if (glassType || pocketWatchType || pendulumType || ticking) {
             if (accessor.getBlock() instanceof BaseDataClockBlock) {
                 BlockEntity blockEntity = accessor.getBlockEntity();
                 if (blockEntity != null) {
@@ -31,7 +31,7 @@ public class ClockDataProvider implements IBlockComponentProvider {
                     if (component != null) {
                         if (glassType && component.getGlassType().isPresent() && component.getGlassType().get() != BornholmTopGlassTypes.GLASS) addGlassTypeTooltip(tooltip, component.getGlassType().get());
                         if (pocketWatchType && component.getPocketWatch().isPresent() && component.getPocketWatch().get().getType() != PocketWatchTypes.EMPTY) addPocketWatchTypeTooltip(tooltip, component.getPocketWatch().get().getType());
-                        if (pendulumType && component.getPendulum().isPresent() && component.getPendulum().get() .getType()!= PendulumTypes.EMPTY) addPendulumTypeTooltip(tooltip, component.getPendulum().get().getType());
+                        if (pendulumType && component.getPendulum().isPresent() && component.getPendulum().get().getType()!= PendulumTypes.EMPTY) addPendulumTypeTooltip(tooltip, component.getPendulum().get().getType());
                         if (ticking && component.getTicking().isPresent() && component.getTicking().get()) addTickingTooltip(tooltip);
                     }
                 }

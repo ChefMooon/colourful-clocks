@@ -1,4 +1,4 @@
-// 1.21.1	2026-01-22T14:06:55.0462355	colourfulclocks/Advancements
+// 1.21.1	2026-01-22T15:09:22.384053	colourfulclocks/Advancements
 b57d474b3cb989feeb57411a67cb052a63c33dfb data\colourfulclocks\advancement\main\copper_wax_on.json
 81427766ffd058daa130e6f7a4d2baf039cf88ae data\colourfulclocks\advancement\main\handbell_block.json
 8eea039eaf85d56244e0eac969ba53fcd502a56a data\colourfulclocks\advancement\main\bornholm_trunk_wind_charge.json
@@ -16,7 +16,7 @@ cca29ce19d4913f5c74af7e19351ee1d4a775a8d data\colourfulclocks\advancement\main\e
 6e5ceaf73a7080201077b3157c76fec7f2f64828 data\colourfulclocks\advancement\main\bornholm_base.json
 eb5a22eaad44b5dc4ccb25a6d511c9bd9ae5ea63 data\colourfulclocks\advancement\main\root.json
 ab3e35aa161b0670a748c24da19e86cfd3e7da6e data\colourfulclocks\advancement\main\disable_ticking.json
-42070eb37d6fa9e661710a51c8a235300da36efe data\colourfulclocks\advancement\main\bornholm_dial.json
 e8e70d0c1e6f8c410383b1387f35ec87a1b802d5 data\colourfulclocks\advancement\main\bornholm_trunk.json
+42070eb37d6fa9e661710a51c8a235300da36efe data\colourfulclocks\advancement\main\bornholm_dial.json
 6c4dae7aee34c62b3ebb5b86fa45aa341a544f16 data\colourfulclocks\advancement\main\bornholm_activated.json
 a9bbf7406c0d352e09f75939bd5fd2e6cbb1804b data\colourfulclocks\advancement\main\tall_mantel_clock.json

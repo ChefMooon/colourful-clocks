@@ -1,9 +1,6 @@
 package com.chefmooon.colourfulclocks.integration.jade;
 
-import com.chefmooon.colourfulclocks.common.block.BornholmMiddleBlock;
-import com.chefmooon.colourfulclocks.common.block.BornholmTopBlock;
-import com.chefmooon.colourfulclocks.common.block.MantelClockBlock;
-import com.chefmooon.colourfulclocks.common.block.TallMantelClockBlock;
+import com.chefmooon.colourfulclocks.common.block.*;
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmMiddleBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.entity.BornholmTopBlockEntity;
 import com.chefmooon.colourfulclocks.integration.jade.provider.*;
@@ -28,6 +25,10 @@ public class JadePlugin implements IWailaPlugin {
         registration.registerBlockComponent(PocketWatchDataProvider.INSTANCE, TallMantelClockBlock.class);
         registration.registerBlockComponent(PendulumDataProvider.INSTANCE, TallMantelClockBlock.class);
         registration.registerBlockComponent(TickingDataProvider.INSTANCE, TallMantelClockBlock.class);
+
+        registration.registerBlockComponent(PocketWatchDataProvider.INSTANCE, WallClockBlock.class);
+
+        registration.registerBlockComponent(AlarmClockDataProvider.INSTANCE, AlarmClockBlock.class);
     }
     @Override
     public void register(IWailaCommonRegistration registration) {
@@ -42,5 +43,9 @@ public class JadePlugin implements IWailaPlugin {
         registration.registerBlockDataProvider(PocketWatchDataProvider.INSTANCE, TallMantelClockBlock.class);
         registration.registerBlockDataProvider(PendulumDataProvider.INSTANCE, TallMantelClockBlock.class);
         registration.registerBlockDataProvider(TickingDataProvider.INSTANCE, TallMantelClockBlock.class);
+
+        registration.registerBlockDataProvider(PocketWatchDataProvider.INSTANCE, WallClockBlock.class);
+
+        registration.registerBlockDataProvider(AlarmClockDataProvider.INSTANCE, AlarmClockBlock.class);
     }
 }

@@ -36,6 +36,10 @@ public class ColourfulClocksTypeUtil {
         return BornholmTopGlassTypes.GLASS;
     }
 
+    public static Item getHandbellItemFromType(HandbellTypes handbellType) {
+        return BuiltInRegistries.ITEM.get(TextUtil.res(handbellType.getSerializedName() + "_handbell"));
+    }
+
     public static Pair<Item, Supplier<SoundEvent>> getUnwaxedBell(HandbellComponent component) {
         if (component.getType() == HandbellTypes.WAXED_COPPER) {
             return Pair.of(BuiltInRegistries.ITEM.get(ColourfulClocksItems.COPPER_HANDBELL), ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_OFF);
