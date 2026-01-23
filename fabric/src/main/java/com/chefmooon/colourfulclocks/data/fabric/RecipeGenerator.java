@@ -186,7 +186,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
     private static void buildMantelClockRecipes() {
         for (ClockTypes clockType : ClockTypes.values()) {
             ItemLike result = ColourfulClocksItemsImpl.MANTEL_CLOCK_VARIANTS.get(clockType).get();
-            ClockDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
+            MantelClockShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
                     .pattern(" A ")
                     .pattern("ACA")
                     .pattern("ABA")
@@ -204,7 +204,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
     private static void buildTallMantelClockRecipes() {
         for (ClockTypes clockType : ClockTypes.values()) {
             ItemLike result = ColourfulClocksItemsImpl.TALL_MANTEL_CLOCK_VARIANTS.get(clockType).get();
-            ClockDataShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
+            MantelClockShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
                     .pattern("ACA")
                     .pattern("ABA")
                     .pattern("AAA")

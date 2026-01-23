@@ -3,13 +3,11 @@ package com.chefmooon.colourfulclocks.common.block;
 import com.chefmooon.colourfulclocks.common.block.base.BaseDataClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.WallClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.properties.WallClockPartProperty;
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
-import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
 import com.chefmooon.colourfulclocks.common.util.VoxelShapeUtil;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -67,7 +65,7 @@ public class WallClockBlock extends BaseDataClockBlock {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         Direction facing = context.getClickedFace().getAxis().isHorizontal() ? context.getClickedFace().getOpposite() : context.getHorizontalDirection();
-        ClockComponent component = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getBasicClockValue());
+        MantelClockComponent component = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getBasicClockValue());
         WallClockPartProperty part = getPartForPlacement(context);
 //        WallClockPartProperty part = WallClockPartProperty.BASE;
         return this.defaultBlockState().setValue(FACING, facing)
@@ -394,7 +392,7 @@ public class WallClockBlock extends BaseDataClockBlock {
         if (!level.isClientSide) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
-                ClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getBasicClockValue());
+                MantelClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getBasicClockValue());
                 if (component != null) {
                     wallClockBlockEntity.setData(component);
                 }
@@ -406,7 +404,7 @@ public class WallClockBlock extends BaseDataClockBlock {
             // the below will pass placed data to the controller, decide implementation
 //            BlockEntity blockEntity = getController(state, pos, level);
 //            if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
-//                ClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getBasicClockValue());
+//                MantelClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), MantelClockComponent.getBasicClockValue());
 //                if (component != null) {
 //                    wallClockBlockEntity.setData(null, component.getPocketWatchType().get(), null, component.getTicking().get());
 //                    if (wallClockBlockEntity.getData().getPocketWatchType().get().getId() != 0 && wallClockBlockEntity.getData().getPocketWatchType().get() != component.getPocketWatchType().get()) {

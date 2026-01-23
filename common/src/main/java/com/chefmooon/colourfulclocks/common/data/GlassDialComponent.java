@@ -48,11 +48,11 @@ public record GlassDialComponent(BornholmTopGlassTypes topGlassType, PocketWatch
     }
 
     public CompoundTag save(CompoundTag tag) {
-        tag.put("glass_dial_data", (Tag)CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
+        tag.put("glass_dial", (Tag)CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
         return tag;
     }
 
     public static GlassDialComponent load(@Nullable CompoundTag tag) {
-        return CODEC.parse(NbtOps.INSTANCE, tag.get("glass_dial_data")).result().orElse(getDefaultValue());
+        return CODEC.parse(NbtOps.INSTANCE, tag.get("glass_dial")).result().orElse(getDefaultValue());
     }
 }

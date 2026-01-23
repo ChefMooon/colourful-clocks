@@ -11,7 +11,7 @@
   ],
   "result": {
     "components": {
-      "colourfulclocks:handbell_data": {
+      "colourfulclocks:handbell": {
         "type": "waxed_weathered_copper",
         "handle": "polished_tuff",
         "weathering": 0

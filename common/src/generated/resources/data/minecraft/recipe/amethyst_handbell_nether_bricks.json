@@ -16,7 +16,7 @@
   ],
   "result": {
     "components": {
-      "colourfulclocks:handbell_data": {
+      "colourfulclocks:handbell": {
         "type": "amethyst",
         "handle": "nether_bricks"
       }

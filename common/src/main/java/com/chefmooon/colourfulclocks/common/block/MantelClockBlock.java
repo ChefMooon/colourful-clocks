@@ -2,7 +2,7 @@ package com.chefmooon.colourfulclocks.common.block;
 
 import com.chefmooon.colourfulclocks.common.block.base.BaseDataGlassClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.MantelClockBlockEntity;
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
@@ -62,7 +62,7 @@ public class MantelClockBlock extends BaseDataGlassClockBlock {
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
-        ClockComponent component = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getNoPendulumValue());
+        MantelClockComponent component = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getNoPendulumValue());
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection())
                 .setValue(GLASS_TYPE, component.getGlassType().orElse(BornholmTopGlassTypes.GLASS))
                 .setValue(ACTIVATED, Boolean.TRUE)
@@ -157,7 +157,7 @@ public class MantelClockBlock extends BaseDataGlassClockBlock {
         if (!level.isClientSide) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof MantelClockBlockEntity mantelClockBlockEntity) {
-                ClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getNoPendulumValue());
+                MantelClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getNoPendulumValue());
                 if (component != null) {
                     mantelClockBlockEntity.setData(component);
                 }

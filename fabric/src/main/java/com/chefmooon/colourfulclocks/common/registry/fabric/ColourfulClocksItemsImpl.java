@@ -274,19 +274,19 @@ public class ColourfulClocksItemsImpl {
             // Mantel Clock
             Supplier<Item> mantelClockItem = registerItemWithTab(ColourfulClocksItems.MANTEL_CLOCK.withSuffix(clockTypes.getSerializedName()),
                     new MantelClockBlockItem(ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getNoPendulumValue())));
+                            .component(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA, MantelClockComponent.getNoPendulumValue())));
             MANTEL_CLOCK_VARIANTS.put(clockTypes, mantelClockItem);
 
             // Tall Mantel Clock
             Supplier<Item> tallMantelClockItem = registerItemWithTab(ColourfulClocksItems.TALL_MANTEL_CLOCK.withSuffix(clockTypes.getSerializedName()),
                     new TallMantelClockBlockItem(ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getBasicClockValue())));
+                            .component(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA, MantelClockComponent.getBasicClockValue())));
             TALL_MANTEL_CLOCK_VARIANTS.put(clockTypes, tallMantelClockItem);
 
             // Wall Clock
             Supplier<Item> wallClockItem = registerItemWithTab(ColourfulClocksItems.WALL_CLOCK.withSuffix(clockTypes.getSerializedName()),
                     new ClockDataBlockItem(ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getNoGlassPendulumValue())));
+                            .component(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA, MantelClockComponent.getNoGlassPendulumValue())));
             WALL_CLOCK_VARIANTS.put(clockTypes, wallClockItem);
 
             // Alarm Clock

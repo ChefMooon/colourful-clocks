@@ -2,7 +2,7 @@ package com.chefmooon.colourfulclocks.common.block.entity.base;
 
 import com.chefmooon.colourfulclocks.common.block.TallMantelClockBlock;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
 import com.chefmooon.colourfulclocks.common.data.PendulumComponent;
 import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
@@ -30,18 +30,18 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class BaseDataClockBlockEntity extends BlockEntity {
+public class BaseMantelClockBlockEntity extends BlockEntity {
     private static boolean hasChimed = false;
-    private ClockComponent clockData;
-    public BaseDataClockBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
+    private MantelClockComponent clockData;
+    public BaseMantelClockBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
-        this.clockData = ClockComponent.getDefaultValue();
+        this.clockData = MantelClockComponent.getDefaultValue();
     }
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider provider) {
         super.loadAdditional(tag, provider);
-        this.clockData = ClockComponent.load(tag);
+        this.clockData = MantelClockComponent.load(tag);
     }
 
     @Override
@@ -63,13 +63,13 @@ public class BaseDataClockBlockEntity extends BlockEntity {
     @Override
     protected void collectImplicitComponents(DataComponentMap.Builder components) {
         super.collectImplicitComponents(components);
-        components.set(ColourfulClocksDataComponentTypes.getClockData(), this.clockData);
+        components.set(ColourfulClocksDataComponentTypes.getMantelClockData(), this.clockData);
     }
 
     @Override
     protected void applyImplicitComponents(BlockEntity.DataComponentInput componentInput) {
         super.applyImplicitComponents(componentInput);
-        this.clockData = componentInput.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), this.clockData);
+        this.clockData = componentInput.getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), this.clockData);
     }
 
     public NonNullList<ItemStack> getDroppableInventory() {
@@ -128,7 +128,7 @@ public class BaseDataClockBlockEntity extends BlockEntity {
     }
 
     public void setData(@Nullable BornholmTopGlassTypes glassType, @Nullable PocketWatchComponent pocketWatchType, @Nullable PendulumComponent pendulumType, @Nullable Boolean ticking) {
-        this.clockData = new ClockComponent(
+        this.clockData = new MantelClockComponent(
                 glassType != null ? Optional.of(glassType) : Optional.empty(),
                 pocketWatchType != null ? Optional.of(pocketWatchType) : Optional.empty(),
                 pendulumType != null ? Optional.of(pendulumType) : Optional.empty(),
@@ -136,58 +136,58 @@ public class BaseDataClockBlockEntity extends BlockEntity {
         setChanged();
     }
 
-    public void setData(ClockComponent component) {
+    public void setData(MantelClockComponent component) {
         this.clockData = component;
         setChanged();
     }
 
-    public ClockComponent getData() {
+    public MantelClockComponent getData() {
         return this.clockData;
     }
 
-    public static void weatherTick(Level level, BlockPos blockPos, BlockState blockState, BaseDataClockBlockEntity baseDataClockBlockEntity) {
+    public static void weatherTick(Level level, BlockPos blockPos, BlockState blockState, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
         if (blockState.getValue(TallMantelClockBlock.ACTIVATED)) {
-            weatherItem(level, blockPos, baseDataClockBlockEntity);
-            if (baseDataClockBlockEntity.getData().getPendulum().isPresent() && baseDataClockBlockEntity.getData().getPendulum().get().getType().getId() != 0) sound(level, blockPos, baseDataClockBlockEntity);
+            weatherItem(level, blockPos, baseMantelClockBlockEntity);
+            if (baseMantelClockBlockEntity.getData().getPendulum().isPresent() && baseMantelClockBlockEntity.getData().getPendulum().get().getType().getId() != 0) sound(level, blockPos, baseMantelClockBlockEntity);
         }
-        if (baseDataClockBlockEntity.getData().pocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType().getId() != 0 && blockState.getValue(ColourfulClocksBlockStateProperties.TICKING)
+        if (baseMantelClockBlockEntity.getData().pocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType().getId() != 0 && blockState.getValue(ColourfulClocksBlockStateProperties.TICKING)
                 && blockState.getValue(ColourfulClocksBlockStateProperties.ACTIVATED)) {
             tickSound(level, blockPos);
         }
     }
 
-    private static void weatherItem(Level level, BlockPos blockPos, BaseDataClockBlockEntity baseDataClockBlockEntity) {
-        if (baseDataClockBlockEntity.getData().getPocketWatch().isPresent()) {
-            PocketWatchComponent pocketWatchComponent = baseDataClockBlockEntity.getData().getPocketWatch().get();
+    private static void weatherItem(Level level, BlockPos blockPos, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
+        if (baseMantelClockBlockEntity.getData().getPocketWatch().isPresent()) {
+            PocketWatchComponent pocketWatchComponent = baseMantelClockBlockEntity.getData().getPocketWatch().get();
             if (pocketWatchComponent.getWeathering().isPresent() && ColourfulClocksTypeUtil.pocketWatchCanWeather(pocketWatchComponent)) {
                 int weathering = pocketWatchComponent.getWeathering().get();
                 if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
-                    advancePocketWatchWeathering(level, blockPos, pocketWatchComponent, baseDataClockBlockEntity);
+                    advancePocketWatchWeathering(level, blockPos, pocketWatchComponent, baseMantelClockBlockEntity);
                 } else {
-                    baseDataClockBlockEntity.setPocketWatch(new PocketWatchComponent(pocketWatchComponent.getType(), Optional.of(weathering + 1)));
+                    baseMantelClockBlockEntity.setPocketWatch(new PocketWatchComponent(pocketWatchComponent.getType(), Optional.of(weathering + 1)));
                 }
             }
         }
 
-        if (baseDataClockBlockEntity.getData().getPendulum().isPresent()) {
-            PendulumComponent pendulumComponent = baseDataClockBlockEntity.getData().getPendulum().get();
+        if (baseMantelClockBlockEntity.getData().getPendulum().isPresent()) {
+            PendulumComponent pendulumComponent = baseMantelClockBlockEntity.getData().getPendulum().get();
             if (pendulumComponent.getWeathering().isPresent() && ColourfulClocksTypeUtil.pendulumCanWeather(pendulumComponent)) {
                 int weathering = pendulumComponent.getWeathering().get();
                 if (weathering >= CopperWeatheringUtil.WEATHERED_THRESHOLD) {
-                    advancePendulumWeathering(level, blockPos, pendulumComponent, baseDataClockBlockEntity);
+                    advancePendulumWeathering(level, blockPos, pendulumComponent, baseMantelClockBlockEntity);
                 } else {
-                    baseDataClockBlockEntity.setPendulum(new PendulumComponent(pendulumComponent.getType(), Optional.of(weathering + 1)));
+                    baseMantelClockBlockEntity.setPendulum(new PendulumComponent(pendulumComponent.getType(), Optional.of(weathering + 1)));
                 }
             }
         }
     }
 
-    protected static void advancePocketWatchWeathering(Level level, BlockPos blockPos, PocketWatchComponent pocketWatchComponent, BaseDataClockBlockEntity baseDataClockBlockEntity) {
+    protected static void advancePocketWatchWeathering(Level level, BlockPos blockPos, PocketWatchComponent pocketWatchComponent, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
         ItemStack weatheredItemStack = new ItemStack(ColourfulClocksTypeUtil.getNextWeatheredCopperPocketWatch(pocketWatchComponent));
         if (!weatheredItemStack.isEmpty()) {
-            baseDataClockBlockEntity.setPocketWatch(weatheredItemStack);
+            baseMantelClockBlockEntity.setPocketWatch(weatheredItemStack);
             level.blockEntityChanged(blockPos);
-            baseDataClockBlockEntity.setChanged();
+            baseMantelClockBlockEntity.setChanged();
             if (!level.isClientSide()) {
                 BlockState state = level.getBlockState(blockPos);
                 level.sendBlockUpdated(blockPos, state, state, 3);
@@ -195,12 +195,12 @@ public class BaseDataClockBlockEntity extends BlockEntity {
         }
     }
 
-    protected static void advancePendulumWeathering(Level level, BlockPos blockPos, PendulumComponent pendulumComponent, BaseDataClockBlockEntity baseDataClockBlockEntity) {
+    protected static void advancePendulumWeathering(Level level, BlockPos blockPos, PendulumComponent pendulumComponent, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
         ItemStack weatheredItemStack = new ItemStack(ColourfulClocksTypeUtil.getNextWeatheredCopperPendulum(pendulumComponent));
         if (!weatheredItemStack.isEmpty()) {
-            baseDataClockBlockEntity.setPendulum(weatheredItemStack);
+            baseMantelClockBlockEntity.setPendulum(weatheredItemStack);
             level.blockEntityChanged(blockPos);
-            baseDataClockBlockEntity.setChanged();
+            baseMantelClockBlockEntity.setChanged();
             if (!level.isClientSide()) {
                 BlockState state = level.getBlockState(blockPos);
                 level.sendBlockUpdated(blockPos, state, state, 3);
@@ -208,10 +208,10 @@ public class BaseDataClockBlockEntity extends BlockEntity {
         }
     }
 
-    protected static void sound(Level level, BlockPos blockPos, BaseDataClockBlockEntity baseDataClockBlockEntity) {
+    protected static void sound(Level level, BlockPos blockPos, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
         if (level == null || level.isClientSide()) return;
 
-        PendulumTypes pendulumType = baseDataClockBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()).getType();
+        PendulumTypes pendulumType = baseMantelClockBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()).getType();
 
         long timeOfDay = level.getDayTime() % 24000;
 

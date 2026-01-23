@@ -1,21 +1,16 @@
 package com.chefmooon.colourfulclocks.data.fabric;
 
-import com.chefmooon.colourfulclocks.common.block.HandbellBlock;
-import com.chefmooon.colourfulclocks.common.data.types.HandbellHandleTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksBlocksImpl;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksDataComponentTypesImpl;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
-import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
-import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
 import net.minecraft.world.level.storage.loot.functions.CopyComponentsFunction;
-import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
 import java.util.concurrent.CompletableFuture;
@@ -71,15 +66,15 @@ public class LootTableGenerator extends FabricBlockLootTableProvider {
 
     // TODO: the below can be simplified into one method, pending testing
     public LootTable.Builder createMantelClockEntityDrop(Block block) {
-        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder) LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA)).otherwise(LootItem.lootTableItem(block))));
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder) LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA)).otherwise(LootItem.lootTableItem(block))));
     }
 
     public LootTable.Builder createTallMantelClockEntityDrop(Block block) {
-        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder) LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA)).otherwise(LootItem.lootTableItem(block))));
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder) LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA)).otherwise(LootItem.lootTableItem(block))));
     }
 
     public LootTable.Builder createWallClockEntityDrop(Block block) {
-        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder) LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA)).otherwise(LootItem.lootTableItem(block))));
+        return LootTable.lootTable().withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(((LootPoolSingletonContainer.Builder) LootItem.lootTableItem(block).when(this.hasSilkTouch())).apply(CopyComponentsFunction.copyComponents(CopyComponentsFunction.Source.BLOCK_ENTITY).include(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA)).otherwise(LootItem.lootTableItem(block))));
     }
 
     public LootTable.Builder createAlarmClockEntityDrop(Block block) {

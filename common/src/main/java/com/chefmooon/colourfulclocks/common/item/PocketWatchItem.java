@@ -2,8 +2,6 @@ package com.chefmooon.colourfulclocks.common.item;
 
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
-import net.minecraft.core.component.DataComponentType;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.player.Player;
@@ -31,11 +29,11 @@ public class PocketWatchItem extends Item {
         ItemStack item = player.getItemInHand(usedHand);
 
         if (player.isShiftKeyDown()) {
-            Boolean open = item.getOrDefault((DataComponentType<Boolean>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_CLOSED), false);
+            Boolean open = item.getOrDefault(ColourfulClocksDataComponentTypes.getPocketWatchClosedData(), false);
             if (open) {
-                item.set((DataComponentType<Boolean>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_CLOSED), false);
+                item.set(ColourfulClocksDataComponentTypes.getPocketWatchClosedData(), false);
             } else {
-                item.set((DataComponentType<Boolean>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ColourfulClocksDataComponentTypes.POCKET_WATCH_CLOSED), true);
+                item.set(ColourfulClocksDataComponentTypes.getPocketWatchClosedData(), true);
             }
             return InteractionResultHolder.consume(player.getItemInHand(usedHand));
         }

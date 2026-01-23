@@ -4,8 +4,6 @@ import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.NbtOps;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
 
@@ -41,14 +39,5 @@ public record PocketWatchComponent(PocketWatchTypes type, Optional<Integer> weat
 
     public static PocketWatchComponent getDefaultValue() {
         return new PocketWatchComponent(PocketWatchTypes.EMPTY, Optional.empty());
-    }
-
-    public CompoundTag save(CompoundTag tag) {
-        tag.put("pocket_watch_data", CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
-        return tag;
-    }
-
-    public static PocketWatchComponent load(CompoundTag tag) {
-        return CODEC.parse(NbtOps.INSTANCE, tag.get("pocket_watch_data")).result().orElse(getDefaultValue());
     }
 }

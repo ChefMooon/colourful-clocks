@@ -203,14 +203,11 @@ public class ColourfulClocksItemsImpl {
     public static final Supplier<Item> IRON_PENDULUM = registerItemWithTab(ColourfulClocksItems.IRON_PENDULUM, () -> new Item(basicItem()
             .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.IRON))));
     public static final Supplier<Item> COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.COPPER_PENDULUM, () -> new WeatheringPendulumItem(basicItem()
-            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getWeatheringCopperValue(PendulumTypes.COPPER))
-            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM_WEATHERING, 0)));
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getWeatheringCopperValue(PendulumTypes.COPPER))));
     public static final Supplier<Item> EXPOSED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.EXPOSED_COPPER_PENDULUM, () -> new WeatheringPendulumItem(basicItem()
-            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getWeatheringCopperValue(PendulumTypes.EXPOSED_COPPER))
-            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM_WEATHERING, 0)));
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getWeatheringCopperValue(PendulumTypes.EXPOSED_COPPER))));
     public static final Supplier<Item> WEATHERED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WEATHERED_COPPER_PENDULUM, () -> new WeatheringPendulumItem(basicItem()
-            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getWeatheringCopperValue(PendulumTypes.WEATHERED_COPPER))
-            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM_WEATHERING, 0)));
+            .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getWeatheringCopperValue(PendulumTypes.WEATHERED_COPPER))));
     public static final Supplier<Item> OXIDIZED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.OXIDIZED_COPPER_PENDULUM, () -> new Item(basicItem()
             .component(ColourfulClocksDataComponentTypesImpl.PENDULUM, PendulumComponent.getBaseValue(PendulumTypes.OXIDIZED_COPPER))));
     public static final Supplier<Item> WAXED_COPPER_PENDULUM = registerItemWithTab(ColourfulClocksItems.WAXED_COPPER_PENDULUM, () -> new Item(basicItem()
@@ -282,20 +279,19 @@ public class ColourfulClocksItemsImpl {
             // Mantel Clock
             Supplier<Item> mantelClockItem = registerItemWithTab(ColourfulClocksItems.MANTEL_CLOCK.withSuffix(clockTypes.getSerializedName()),
                     () -> new MantelClockBlockItem(ColourfulClocksBlocksImpl.MANTEL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getNoPendulumValue())));
+                            .component(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA, MantelClockComponent.getNoPendulumValue())));
             MANTEL_CLOCK_VARIANTS.put(clockTypes, mantelClockItem);
 
             // Tall Mantel Clock
             Supplier<Item> tallMantelClockItem = registerItemWithTab(ColourfulClocksItems.TALL_MANTEL_CLOCK.withSuffix(clockTypes.getSerializedName()),
                     () -> new TallMantelClockBlockItem(ColourfulClocksBlocksImpl.TALL_MANTEL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getBasicClockValue())));
+                            .component(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA, MantelClockComponent.getBasicClockValue())));
             TALL_MANTEL_CLOCK_VARIANTS.put(clockTypes, tallMantelClockItem);
 
             // Wall Clock
             Supplier<Item> wallClockItem = registerItemWithTab(ColourfulClocksItems.WALL_CLOCK.withSuffix(clockTypes.getSerializedName()),
                     () -> new ClockDataBlockItem(ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getNoPendulumValue())
-                            .component(ColourfulClocksDataComponentTypesImpl.GLASS_DIAL_DATA, GlassDialComponent.getDefaultValue())));
+                            .component(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA, MantelClockComponent.getNoPendulumValue())));
             WALL_CLOCK_VARIANTS.put(clockTypes, wallClockItem);
 
             // Alarm Clock

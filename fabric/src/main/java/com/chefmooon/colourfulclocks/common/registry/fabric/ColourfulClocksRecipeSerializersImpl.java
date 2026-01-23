@@ -14,7 +14,7 @@ public class ColourfulClocksRecipeSerializersImpl {
     public static final Supplier<RecipeSerializer<?>> WAXED_COPPER_HANDBELL = registerRecipeSerializer(ColourfulClocksRecipeSerializers.WAXED_COPPER_HANDBELL, WaxedCopperHandbellShapelessRecipe.Serializer::new);
     public static final Supplier<RecipeSerializer<?>> BORNHOLM_MIDDLE = registerRecipeSerializer(ColourfulClocksRecipeSerializers.BORNHOLM_MIDDLE, BornholmMiddleShapedRecipe.Serializer::new);
     public static final Supplier<RecipeSerializer<?>> BORNHOLM_TOP = registerRecipeSerializer(ColourfulClocksRecipeSerializers.BORNHOLM_TOP, BornholmTopShapedRecipe.Serializer::new);
-    public static final Supplier<RecipeSerializer<?>> CLOCK = registerRecipeSerializer(ColourfulClocksRecipeSerializers.CLOCK, ClockDataShapedRecipe.Serializer::new);
+    public static final Supplier<RecipeSerializer<?>> MANTEL_CLOCK = registerRecipeSerializer(ColourfulClocksRecipeSerializers.MANTEL_CLOCK, MantelClockShapedRecipe.Serializer::new);
     public static final Supplier<RecipeSerializer<?>> ALARM_CLOCK = registerRecipeSerializer(ColourfulClocksRecipeSerializers.ALARM_CLOCK, AlarmClockShapedRecipe.Serializer::new);
     public static final Supplier<RecipeSerializer<?>> WALL_CLOCK = registerRecipeSerializer(ColourfulClocksRecipeSerializers.WALL_CLOCK, WallClockShapedRecipe.Serializer::new);
     public static <B extends RecipeSerializer<?>> Supplier<B> registerRecipeSerializer(ResourceLocation resourceLocation, Supplier<B> supplier) {

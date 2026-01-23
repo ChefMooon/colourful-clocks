@@ -56,11 +56,11 @@ public record HandbellComponent(HandbellTypes type, HandbellHandleTypes material
     }
 
     public CompoundTag save(CompoundTag tag) {
-        tag.put("handbell_data", CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
+        tag.put("handbell", CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
         return tag;
     }
 
     public static HandbellComponent load(CompoundTag tag) {
-        return CODEC.parse(NbtOps.INSTANCE, tag.get("handbell_data")).result().orElse(getDefaultValue());
+        return CODEC.parse(NbtOps.INSTANCE, tag.get("handbell")).result().orElse(getDefaultValue());
     }
 }

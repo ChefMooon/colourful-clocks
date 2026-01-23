@@ -15,7 +15,7 @@
             {
               "function": "minecraft:copy_components",
               "include": [
-                "colourfulclocks:handbell_data"
+                "colourfulclocks:handbell"
               ],
               "source": "block_entity"
             }

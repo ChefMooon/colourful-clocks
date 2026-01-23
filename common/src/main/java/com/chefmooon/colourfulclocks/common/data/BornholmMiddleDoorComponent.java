@@ -40,11 +40,11 @@ public record BornholmMiddleDoorComponent(BornholmDoorTypes doorType, Optional<P
     }
 
     public CompoundTag save(CompoundTag tag) {
-        tag.put("bornholm_trunk_data", (Tag)CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
+        tag.put("bornholm_trunk", (Tag)CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
         return tag;
     }
 
     public static BornholmMiddleDoorComponent load(@Nullable CompoundTag tag) {
-        return CODEC.parse(NbtOps.INSTANCE, tag.get("bornholm_trunk_data")).result().orElse(getDefaultValue());
+        return CODEC.parse(NbtOps.INSTANCE, tag.get("bornholm_trunk")).result().orElse(getDefaultValue());
     }
 }

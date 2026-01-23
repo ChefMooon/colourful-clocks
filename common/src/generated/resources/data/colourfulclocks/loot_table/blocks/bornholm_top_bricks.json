@@ -30,7 +30,7 @@
                 {
                   "function": "minecraft:copy_components",
                   "include": [
-                    "colourfulclocks:bornholm_dial_data"
+                    "colourfulclocks:bornholm_dial"
                   ],
                   "source": "block_entity"
                 }

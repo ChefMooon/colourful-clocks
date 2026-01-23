@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks.common.crafting;
 
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksRecipeSerializers;
@@ -20,14 +20,14 @@ import net.minecraft.world.level.Level;
 import java.util.Objects;
 import java.util.Optional;
 
-public class ClockDataShapedRecipe implements CraftingRecipe {
+public class MantelClockShapedRecipe implements CraftingRecipe {
     final ShapedRecipePattern pattern;
     final ItemStack result;
     final String group;
     final CraftingBookCategory category;
     final boolean showNotification;
 
-    public ClockDataShapedRecipe(String group, CraftingBookCategory category, ShapedRecipePattern pattern, ItemStack result, boolean showNotification) {
+    public MantelClockShapedRecipe(String group, CraftingBookCategory category, ShapedRecipePattern pattern, ItemStack result, boolean showNotification) {
         this.group = group;
         this.category = category;
         this.pattern = pattern;
@@ -35,12 +35,12 @@ public class ClockDataShapedRecipe implements CraftingRecipe {
         this.showNotification = showNotification;
     }
 
-    public ClockDataShapedRecipe(String group, CraftingBookCategory category, ShapedRecipePattern pattern, ItemStack result) {
+    public MantelClockShapedRecipe(String group, CraftingBookCategory category, ShapedRecipePattern pattern, ItemStack result) {
         this(group, category, pattern, result, true);
     }
 
     public RecipeSerializer<?> getSerializer() {
-        return Objects.requireNonNull(BuiltInRegistries.RECIPE_SERIALIZER.get(ColourfulClocksRecipeSerializers.CLOCK));
+        return Objects.requireNonNull(BuiltInRegistries.RECIPE_SERIALIZER.get(ColourfulClocksRecipeSerializers.MANTEL_CLOCK));
     }
 
     public String getGroup() {
@@ -86,7 +86,7 @@ public class ClockDataShapedRecipe implements CraftingRecipe {
             if (stack.is(ColourfulClocksTags.CLOCK_TOP_GLASS)) {
                 for (BornholmTopGlassTypes glassType : BornholmTopGlassTypes.values()) {
                     if (glassType.getItem().equals(stack.getItem())) {
-                        result.set(ColourfulClocksDataComponentTypes.getClockData(), new ClockComponent(Optional.of(glassType), Optional.empty(), Optional.empty(), Optional.of(false)));
+                        result.set(ColourfulClocksDataComponentTypes.getMantelClockData(), new MantelClockComponent(Optional.of(glassType), Optional.empty(), Optional.empty(), Optional.of(false)));
                     }
                 }
             }
@@ -107,34 +107,34 @@ public class ClockDataShapedRecipe implements CraftingRecipe {
         return nonNullList.isEmpty() || nonNullList.stream().filter((ingredient) -> !ingredient.isEmpty()).anyMatch((ingredient) -> ingredient.getItems().length == 0);
     }
 
-    public static class Serializer implements RecipeSerializer<ClockDataShapedRecipe> {
-        public static final MapCodec<ClockDataShapedRecipe> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
+    public static class Serializer implements RecipeSerializer<MantelClockShapedRecipe> {
+        public static final MapCodec<MantelClockShapedRecipe> CODEC = RecordCodecBuilder.mapCodec((instance) -> instance.group(
                 Codec.STRING.optionalFieldOf("group", "").forGetter((shapedRecipe) -> shapedRecipe.group),
                 CraftingBookCategory.CODEC.fieldOf("category").orElse(CraftingBookCategory.MISC).forGetter((shapedRecipe) -> shapedRecipe.category),
                 ShapedRecipePattern.MAP_CODEC.forGetter((shapedRecipe) -> shapedRecipe.pattern),
                 ItemStack.STRICT_CODEC.fieldOf("result").forGetter((shapedRecipe) -> shapedRecipe.result),
                 Codec.BOOL.optionalFieldOf("show_notification", true).forGetter((shapedRecipe) -> shapedRecipe.showNotification)
-        ).apply(instance, ClockDataShapedRecipe::new));
-        public static final StreamCodec<RegistryFriendlyByteBuf, ClockDataShapedRecipe> STREAM_CODEC = StreamCodec.of(ClockDataShapedRecipe.Serializer::toNetwork, ClockDataShapedRecipe.Serializer::fromNetwork);
+        ).apply(instance, MantelClockShapedRecipe::new));
+        public static final StreamCodec<RegistryFriendlyByteBuf, MantelClockShapedRecipe> STREAM_CODEC = StreamCodec.of(MantelClockShapedRecipe.Serializer::toNetwork, MantelClockShapedRecipe.Serializer::fromNetwork);
 
-        public MapCodec<ClockDataShapedRecipe> codec() {
+        public MapCodec<MantelClockShapedRecipe> codec() {
             return CODEC;
         }
 
-        public StreamCodec<RegistryFriendlyByteBuf, ClockDataShapedRecipe> streamCodec() {
+        public StreamCodec<RegistryFriendlyByteBuf, MantelClockShapedRecipe> streamCodec() {
             return STREAM_CODEC;
         }
 
-        private static ClockDataShapedRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
+        private static MantelClockShapedRecipe fromNetwork(RegistryFriendlyByteBuf buffer) {
             String string = buffer.readUtf();
             CraftingBookCategory craftingBookCategory = (CraftingBookCategory)buffer.readEnum(CraftingBookCategory.class);
             ShapedRecipePattern shapedRecipePattern = (ShapedRecipePattern)ShapedRecipePattern.STREAM_CODEC.decode(buffer);
             ItemStack itemStack = (ItemStack)ItemStack.STREAM_CODEC.decode(buffer);
             boolean bl = buffer.readBoolean();
-            return new ClockDataShapedRecipe(string, craftingBookCategory, shapedRecipePattern, itemStack, bl);
+            return new MantelClockShapedRecipe(string, craftingBookCategory, shapedRecipePattern, itemStack, bl);
         }
 
-        private static void toNetwork(RegistryFriendlyByteBuf buffer, ClockDataShapedRecipe recipe) {
+        private static void toNetwork(RegistryFriendlyByteBuf buffer, MantelClockShapedRecipe recipe) {
             buffer.writeUtf(recipe.group);
             buffer.writeEnum(recipe.category);
             ShapedRecipePattern.STREAM_CODEC.encode(buffer, recipe.pattern);

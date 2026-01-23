@@ -8,30 +8,19 @@ import net.minecraft.resources.ResourceLocation;
 
 public class ColourfulClocksDataComponentTypes {
 
-    public static final ResourceLocation ALARM_CLOCK_DATA = dataComponent("alarm_clock_data");
-    public static final ResourceLocation HANDBELL_DATA = dataComponent("handbell_data");
-
     public static final ResourceLocation POCKET_WATCH_CLOSED = dataComponent("pocket_watch_closed");
-    public static final ResourceLocation POCKET_WATCH = dataComponent("pocket_watch_data");
-    public static final ResourceLocation PENDULUM = dataComponent("pendulum_data");
-    public static final ResourceLocation POCKET_WATCH_WEATHERING = dataComponent("pocket_watch_weathering");
-    public static final ResourceLocation PENDULUM_WEATHERING = dataComponent("pendulum_weathering");
+    public static final ResourceLocation POCKET_WATCH = dataComponent("pocket_watch");
+    public static final ResourceLocation PENDULUM = dataComponent("pendulum");
+    public static final ResourceLocation HANDBELL = dataComponent("handbell");
 
-    public static final ResourceLocation BORNHOLM_MIDDLE_GLASS_DATA = dataComponent("bornholm_trunk_data");
-    public static final ResourceLocation BORNHOLM_TOP_GLASS_DATA = dataComponent("bornholm_dial_data");
+    public static final ResourceLocation BORNHOLM_MIDDLE_GLASS = dataComponent("bornholm_trunk");
+    public static final ResourceLocation BORNHOLM_TOP_GLASS = dataComponent("bornholm_dial");
 
-    public static final ResourceLocation GLASS_DIAL_DATA = dataComponent("glass_dial_data");
-    public static final ResourceLocation GLASS_DIAL_PENDULUM_DATA = dataComponent("glass_dial_pendulum_data");
-
-    public static final ResourceLocation CLOCK_DATA = dataComponent("clock_data");
+    public static final ResourceLocation MANTEL_CLOCK = dataComponent("mantel_clock");
+    public static final ResourceLocation ALARM_CLOCK = dataComponent("alarm_clock");
 
     @ExpectPlatform
-    public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static DataComponentType<HandbellComponent> getHandbellData() {
+    public static DataComponentType<Boolean> getPocketWatchClosedData() {
         throw new AssertionError();
     }
 
@@ -46,7 +35,7 @@ public class ColourfulClocksDataComponentTypes {
     }
 
     @ExpectPlatform
-    public static DataComponentType<Integer> getPendulumWeatheringData() {
+    public static DataComponentType<HandbellComponent> getHandbellData() {
         throw new AssertionError();
     }
 
@@ -60,14 +49,13 @@ public class ColourfulClocksDataComponentTypes {
         throw new AssertionError();
     }
 
-    // TODO: remove after testing of getClockData
     @ExpectPlatform
-    public static DataComponentType<GlassDialComponent> getGlassDialData() {
+    public static DataComponentType<MantelClockComponent> getMantelClockData() {
         throw new AssertionError();
     }
 
     @ExpectPlatform
-    public static DataComponentType<ClockComponent> getClockData() {
+    public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
         throw new AssertionError();
     }
 

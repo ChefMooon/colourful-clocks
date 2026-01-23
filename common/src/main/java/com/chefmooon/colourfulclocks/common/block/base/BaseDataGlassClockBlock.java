@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block.base;
 
-import com.chefmooon.colourfulclocks.common.block.entity.base.BaseDataClockBlockEntity;
+import com.chefmooon.colourfulclocks.common.block.entity.base.BaseMantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.BornholmTopGlassTypeProperty;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
@@ -38,11 +38,11 @@ public class BaseDataGlassClockBlock extends BaseDataClockBlock {
         builder.add(GLASS_TYPE);
     }
 
-    protected ItemInteractionResult setGlassType(Level level, BlockState state, BlockPos pos, Player player, ItemStack itemStack, BaseDataClockBlockEntity baseDataClockBlockEntity) {
+    protected ItemInteractionResult setGlassType(Level level, BlockState state, BlockPos pos, Player player, ItemStack itemStack, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
         if (itemStack.is(ColourfulClocksTags.CLOCK_TOP_GLASS)) {
             if (itemStack.is(state.getValue(GLASS_TYPE).getItem())) return ItemInteractionResult.CONSUME;
             BornholmTopGlassTypes newBornholmTopGlassTypes = ColourfulClocksTypeUtil.getBornholmTopGlassTypeFromItem(itemStack.getItem());
-            baseDataClockBlockEntity.setGlassType(newBornholmTopGlassTypes);
+            baseMantelClockBlockEntity.setGlassType(newBornholmTopGlassTypes);
             level.setBlockAndUpdate(pos, state.setValue(GLASS_TYPE, newBornholmTopGlassTypes));
             level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_GLASS.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
             if (!player.getAbilities().instabuild) itemStack.shrink(1);

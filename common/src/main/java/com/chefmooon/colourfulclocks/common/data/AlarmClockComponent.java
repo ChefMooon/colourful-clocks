@@ -55,11 +55,11 @@ public record AlarmClockComponent(Optional<HandbellComponent> leftBell, Optional
     }
 
     public CompoundTag save(CompoundTag tag) {
-        tag.put("alarm_clock_data", (Tag)CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
+        tag.put("alarm_clock", (Tag)CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
         return tag;
     }
 
     public static AlarmClockComponent load(@Nullable CompoundTag tag) {
-        return CODEC.parse(NbtOps.INSTANCE, tag.get("alarm_clock_data")).result().orElse(getDefaultValue());
+        return CODEC.parse(NbtOps.INSTANCE, tag.get("alarm_clock")).result().orElse(getDefaultValue());
     }
 }

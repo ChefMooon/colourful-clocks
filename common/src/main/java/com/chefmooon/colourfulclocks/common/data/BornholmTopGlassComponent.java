@@ -50,11 +50,11 @@ public record BornholmTopGlassComponent(BornholmTopGlassTypes topGlassType, Opti
     }
 
     public CompoundTag save(CompoundTag tag) {
-        tag.put("bornholm_dial_data", (Tag)CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
+        tag.put("bornholm_dial", (Tag)CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow());
         return tag;
     }
 
     public static BornholmTopGlassComponent load(@Nullable CompoundTag tag) {
-        return CODEC.parse(NbtOps.INSTANCE, tag.get("bornholm_dial_data")).result().orElse(getDefaultValue());
+        return CODEC.parse(NbtOps.INSTANCE, tag.get("bornholm_dial")).result().orElse(getDefaultValue());
     }
 }

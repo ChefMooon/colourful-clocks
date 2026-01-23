@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.common.item;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
@@ -22,8 +22,8 @@ public class TallMantelClockBlockItem extends BlockItem {
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        if (stack.has(ColourfulClocksDataComponentTypes.getClockData())) {
-            ClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getBasicClockValue());
+        if (stack.has(ColourfulClocksDataComponentTypes.getMantelClockData())) {
+            MantelClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getBasicClockValue());
             if (component.getGlassType().isPresent()) {
                 Block glassType = component.getGlassType().get().getBlock();
                 if (glassType != BornholmTopGlassTypes.GLASS.getBlock()) {

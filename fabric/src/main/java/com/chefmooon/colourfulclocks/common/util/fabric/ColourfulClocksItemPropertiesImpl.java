@@ -64,7 +64,7 @@ public class ColourfulClocksItemPropertiesImpl {
         ItemProperties.register(item, ColourfulClocksItemProperties.GLASS_TYPE,
                 (itemStack, clientLevel, livingEntity, i) -> {
             // Convert the id to a float and return
-            ClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getNoPendulumValue());
+            MantelClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA, MantelClockComponent.getNoPendulumValue());
             return component.getGlassType().isPresent() ? component.getGlassType().get().getId() / 100.0f : 0.0f;
         });
     }
@@ -73,7 +73,7 @@ public class ColourfulClocksItemPropertiesImpl {
         ItemProperties.register(item, ColourfulClocksItemProperties.GLASS_TYPE,
                 (itemStack, clientLevel, livingEntity, i) -> {
             // Convert the id to a float and return
-            ClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getBasicClockValue());
+            MantelClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA, MantelClockComponent.getBasicClockValue());
             return component.getGlassType().isPresent() ? component.getGlassType().get().getId() / 100.0f : 0.0f;
         });
     }
@@ -82,8 +82,8 @@ public class ColourfulClocksItemPropertiesImpl {
         ItemProperties.register(item, ColourfulClocksItemProperties.GLASS_TYPE,
                 (itemStack, clientLevel, livingEntity, i) -> {
                     // Convert the id to a float and return
-                    ClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.CLOCK_DATA, ClockComponent.getNoPendulumValue());
-                    return component.getGlassType().isPresent() ? component.getGlassType().get().getId() / 100.0f : 0.0f;
+                    AlarmClockComponent component = itemStack.getOrDefault(ColourfulClocksDataComponentTypesImpl.ALARM_CLOCK_DATA, AlarmClockComponent.getDefaultValue());
+                    return component.glassType().isPresent() ? component.glassType().get().getId() / 100.0f : 0.0f;
                 });
     }
 

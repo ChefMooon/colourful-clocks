@@ -2,7 +2,7 @@ package com.chefmooon.colourfulclocks.common.block;
 
 import com.chefmooon.colourfulclocks.common.block.base.BaseDataGlassClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.TallMantelClockBlockEntity;
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
@@ -77,7 +77,7 @@ public class TallMantelClockBlock extends BaseDataGlassClockBlock {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         Direction facing = context.getClickedFace().getAxis().isHorizontal() ? context.getClickedFace().getOpposite() : context.getHorizontalDirection();
         boolean isWall = context.getClickedFace().getAxis().isHorizontal();
-        ClockComponent component = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getBasicClockValue());
+        MantelClockComponent component = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getBasicClockValue());
         return this.defaultBlockState().setValue(FACING, facing)
                 .setValue(GLASS_TYPE, component.getGlassType().get())
                 .setValue(WALL, isWall)
@@ -198,7 +198,7 @@ public class TallMantelClockBlock extends BaseDataGlassClockBlock {
         if (!level.isClientSide) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof TallMantelClockBlockEntity tallMantelClockBlockEntity) {
-                ClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getBasicClockValue());
+                MantelClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getBasicClockValue());
                 if (component != null) {
                     tallMantelClockBlockEntity.setData(component);
                 }

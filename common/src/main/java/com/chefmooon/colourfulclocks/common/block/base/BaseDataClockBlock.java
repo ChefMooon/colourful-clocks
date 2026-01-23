@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block.base;
 
-import com.chefmooon.colourfulclocks.common.block.entity.base.BaseDataClockBlockEntity;
+import com.chefmooon.colourfulclocks.common.block.entity.base.BaseMantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.PendulumComponent;
 import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
@@ -126,26 +126,26 @@ public class BaseDataClockBlock extends BaseEntityBlock {
         if (state.getValue(CAN_TICK) && bl != state.getValue(TICKING)) {
             level.setBlock(pos, state.setValue(TICKING, bl), 2);
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof BaseDataClockBlockEntity baseDataClockBlockEntity) {
-                baseDataClockBlockEntity.setTicking(bl);
+            if (blockEntity instanceof BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
+                baseMantelClockBlockEntity.setTicking(bl);
                 level.blockEntityChanged(pos);
             }
         }
     }
 
-    protected ItemInteractionResult setPendulumType(Level level, BlockPos pos, Player player, ItemStack itemStack, BaseDataClockBlockEntity baseDataClockBlockEntity) {
+    protected ItemInteractionResult setPendulumType(Level level, BlockPos pos, Player player, ItemStack itemStack, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
         if (itemStack.is(ColourfulClocksTags.CLOCK_PENDULUM)) {
             PendulumTypes pendulumType = itemStack.get(ColourfulClocksDataComponentTypes.getPendulumData()).getType();
-            if (baseDataClockBlockEntity.getData().getPendulum().isPresent() && pendulumType != baseDataClockBlockEntity.getData().pendulum().orElse(PendulumComponent.getDefaultValue()).getType()) {
-                if (baseDataClockBlockEntity.getData().pendulum().get().getType().getId()!= 0 && !player.getAbilities().instabuild) {
-                    ItemStack oldPendulumItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseDataClockBlockEntity.getData().getPendulum().get().getType().getSerializedName() + "_pendulum")).getDefaultInstance();
-                    PendulumComponent component = baseDataClockBlockEntity.removePendulum();
+            if (baseMantelClockBlockEntity.getData().getPendulum().isPresent() && pendulumType != baseMantelClockBlockEntity.getData().pendulum().orElse(PendulumComponent.getDefaultValue()).getType()) {
+                if (baseMantelClockBlockEntity.getData().pendulum().get().getType().getId()!= 0 && !player.getAbilities().instabuild) {
+                    ItemStack oldPendulumItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseMantelClockBlockEntity.getData().getPendulum().get().getType().getSerializedName() + "_pendulum")).getDefaultInstance();
+                    PendulumComponent component = baseMantelClockBlockEntity.removePendulum();
                     oldPendulumItemStack.set(ColourfulClocksDataComponentTypes.getPendulumData(), component);
                     if (!player.getInventory().add(oldPendulumItemStack)) {
                         Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPendulumItemStack);
                     }
                 }
-                baseDataClockBlockEntity.setPendulum(player.getAbilities().instabuild ? itemStack.copy() : itemStack.split(1));
+                baseMantelClockBlockEntity.setPendulum(player.getAbilities().instabuild ? itemStack.copy() : itemStack.split(1));
                 level.blockEntityChanged(pos);
                 level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_PENDULUM.get(), SoundSource.BLOCKS, 0.8F, 0.5F);
                 if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_PENDULUM_TRIGGER.get().trigger(serverPlayer);
@@ -156,10 +156,10 @@ public class BaseDataClockBlock extends BaseEntityBlock {
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    protected ItemInteractionResult removePocketWatch(Level level, BlockPos pos, Player player, BaseDataClockBlockEntity baseDataClockBlockEntity) {
-        if (baseDataClockBlockEntity.getData().pocketWatch().isPresent() && baseDataClockBlockEntity.getData().pocketWatch().get().getType().getId() != 0) {
-            ItemStack oldPocketWatchItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseDataClockBlockEntity.getData().pocketWatch().get().type().getSerializedName() + "_pocket_watch")).getDefaultInstance();
-            PocketWatchComponent component = baseDataClockBlockEntity.removePocketWatch();
+    protected ItemInteractionResult removePocketWatch(Level level, BlockPos pos, Player player, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
+        if (baseMantelClockBlockEntity.getData().pocketWatch().isPresent() && baseMantelClockBlockEntity.getData().pocketWatch().get().getType().getId() != 0) {
+            ItemStack oldPocketWatchItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseMantelClockBlockEntity.getData().pocketWatch().get().type().getSerializedName() + "_pocket_watch")).getDefaultInstance();
+            PocketWatchComponent component = baseMantelClockBlockEntity.removePocketWatch();
             oldPocketWatchItemStack.set(ColourfulClocksDataComponentTypes.getPocketWatchData(), component);
             if (!player.getAbilities().instabuild && !player.getInventory().add(oldPocketWatchItemStack)) {
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPocketWatchItemStack);
@@ -172,10 +172,10 @@ public class BaseDataClockBlock extends BaseEntityBlock {
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    protected ItemInteractionResult removePendulum(Level level, BlockPos pos, Player player, BaseDataClockBlockEntity baseDataClockBlockEntity) {
-        if (baseDataClockBlockEntity.getData().pendulum().isPresent() && baseDataClockBlockEntity.getData().pendulum().get().getType().getId() != 0) {
-            ItemStack oldPendulumItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseDataClockBlockEntity.getData().pendulum().get().getType().getSerializedName() + "_pendulum")).getDefaultInstance();
-            PendulumComponent component = baseDataClockBlockEntity.removePendulum();
+    protected ItemInteractionResult removePendulum(Level level, BlockPos pos, Player player, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
+        if (baseMantelClockBlockEntity.getData().pendulum().isPresent() && baseMantelClockBlockEntity.getData().pendulum().get().getType().getId() != 0) {
+            ItemStack oldPendulumItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseMantelClockBlockEntity.getData().pendulum().get().getType().getSerializedName() + "_pendulum")).getDefaultInstance();
+            PendulumComponent component = baseMantelClockBlockEntity.removePendulum();
             oldPendulumItemStack.set(ColourfulClocksDataComponentTypes.getPendulumData(), component);
             if (!player.getAbilities().instabuild && !player.getInventory().add(oldPendulumItemStack)) {
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPendulumItemStack);
@@ -189,11 +189,11 @@ public class BaseDataClockBlock extends BaseEntityBlock {
     }
 
     protected ItemInteractionResult setPendulumWaxedState(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity, boolean tryWax) {
-        if (blockEntity instanceof BaseDataClockBlockEntity baseDataClockBlockEntity) {
+        if (blockEntity instanceof BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
             if (tryWax) {
-                ItemStack waxedPendulum = ColourfulClocksTypeUtil.getWaxedPendulum(baseDataClockBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()));
+                ItemStack waxedPendulum = ColourfulClocksTypeUtil.getWaxedPendulum(baseMantelClockBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()));
                 if (!waxedPendulum.isEmpty()) {
-                    baseDataClockBlockEntity.setPendulum(waxedPendulum);
+                    baseMantelClockBlockEntity.setPendulum(waxedPendulum);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
                     if (!player.getAbilities().instabuild) itemStack.shrink(1);
@@ -202,10 +202,10 @@ public class BaseDataClockBlock extends BaseEntityBlock {
                     return ItemInteractionResult.SUCCESS;
                 }
             } else {
-                Pair<Item, Supplier<SoundEvent>> unwaxedPendulumInfo = ColourfulClocksTypeUtil.getUnwaxedPendulum(baseDataClockBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()));
+                Pair<Item, Supplier<SoundEvent>> unwaxedPendulumInfo = ColourfulClocksTypeUtil.getUnwaxedPendulum(baseMantelClockBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()));
                 ItemStack unwaxedPendulum = new ItemStack(unwaxedPendulumInfo.getFirst());
                 if (!unwaxedPendulum.isEmpty()) {
-                    baseDataClockBlockEntity.setPendulum(unwaxedPendulum);
+                    baseMantelClockBlockEntity.setPendulum(unwaxedPendulum);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, unwaxedPendulumInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
                     if (!player.getAbilities().instabuild) itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
@@ -214,10 +214,10 @@ public class BaseDataClockBlock extends BaseEntityBlock {
                     return ItemInteractionResult.SUCCESS;
                 }
 
-                Pair<Item, Supplier<SoundEvent>> scrapedPendulumInfo = ColourfulClocksTypeUtil.getScrapedPendulum(baseDataClockBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()));
+                Pair<Item, Supplier<SoundEvent>> scrapedPendulumInfo = ColourfulClocksTypeUtil.getScrapedPendulum(baseMantelClockBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()));
                 ItemStack scrapedPendulum = new ItemStack(scrapedPendulumInfo.getFirst());
                 if (!scrapedPendulum.isEmpty()) {
-                    baseDataClockBlockEntity.setPendulum(scrapedPendulum);
+                    baseMantelClockBlockEntity.setPendulum(scrapedPendulum);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, scrapedPendulumInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
                     if (!player.getAbilities().instabuild) itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
@@ -231,18 +231,18 @@ public class BaseDataClockBlock extends BaseEntityBlock {
     }
 
     protected ItemInteractionResult setPocketWatchType(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity) {
-        if (blockEntity instanceof BaseDataClockBlockEntity baseDataClockBlockEntity) {
+        if (blockEntity instanceof BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
             PocketWatchTypes pocketWatchType = itemStack.get(ColourfulClocksDataComponentTypes.getAlarmClockData()).pocketWatch().get().getType();
-            if (baseDataClockBlockEntity.getData().pocketWatch().isPresent() && pocketWatchType != baseDataClockBlockEntity.getData().pocketWatch().get().getType()) {
-                if (baseDataClockBlockEntity.getData().getPocketWatch().get().getType().getId() != 0 && !player.getAbilities().instabuild) {
-                    ItemStack oldPocketWatchItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseDataClockBlockEntity.getData().pocketWatch().get().type().getSerializedName() + "_pocket_watch")).getDefaultInstance();
-                    PocketWatchComponent component = baseDataClockBlockEntity.removePocketWatch();
+            if (baseMantelClockBlockEntity.getData().pocketWatch().isPresent() && pocketWatchType != baseMantelClockBlockEntity.getData().pocketWatch().get().getType()) {
+                if (baseMantelClockBlockEntity.getData().getPocketWatch().get().getType().getId() != 0 && !player.getAbilities().instabuild) {
+                    ItemStack oldPocketWatchItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseMantelClockBlockEntity.getData().pocketWatch().get().type().getSerializedName() + "_pocket_watch")).getDefaultInstance();
+                    PocketWatchComponent component = baseMantelClockBlockEntity.removePocketWatch();
                     oldPocketWatchItemStack.set(ColourfulClocksDataComponentTypes.getPocketWatchData(), component);
                     if (!player.getInventory().add(oldPocketWatchItemStack)) {
                         Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPocketWatchItemStack);
                     }
                 }
-                baseDataClockBlockEntity.setPocketWatch(player.getAbilities().instabuild ? itemStack.copy() : itemStack.split(1));
+                baseMantelClockBlockEntity.setPocketWatch(player.getAbilities().instabuild ? itemStack.copy() : itemStack.split(1));
                 level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.6F);
                 level.updateNeighborsAt(pos, this);
                 if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_POCKET_WATCH_TRIGGER.get().trigger(serverPlayer);
@@ -253,11 +253,11 @@ public class BaseDataClockBlock extends BaseEntityBlock {
     }
 
     protected ItemInteractionResult setWaxedState(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity, boolean tryWax) {
-        if (blockEntity instanceof BaseDataClockBlockEntity baseDataClockBlockEntity) {
+        if (blockEntity instanceof BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
             if (tryWax) {
-                ItemStack waxedClockHands = ColourfulClocksTypeUtil.getWaxedPocketWatch(baseDataClockBlockEntity.getData().getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()));
+                ItemStack waxedClockHands = ColourfulClocksTypeUtil.getWaxedPocketWatch(baseMantelClockBlockEntity.getData().getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()));
                 if (!waxedClockHands.isEmpty()) {
-                    baseDataClockBlockEntity.setPocketWatch(waxedClockHands);
+                    baseMantelClockBlockEntity.setPocketWatch(waxedClockHands);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
                     if (!player.getAbilities().instabuild) itemStack.shrink(1);
@@ -266,10 +266,10 @@ public class BaseDataClockBlock extends BaseEntityBlock {
                     return ItemInteractionResult.SUCCESS;
                 }
             } else {
-                Pair<Item, Supplier<SoundEvent>> unwaxedClockHandInfo = ColourfulClocksTypeUtil.getUnwaxedPocketWatch(baseDataClockBlockEntity.getData().getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()));
+                Pair<Item, Supplier<SoundEvent>> unwaxedClockHandInfo = ColourfulClocksTypeUtil.getUnwaxedPocketWatch(baseMantelClockBlockEntity.getData().getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()));
                 ItemStack unwaxedClockHands = new ItemStack(unwaxedClockHandInfo.getFirst());
                 if (!unwaxedClockHands.isEmpty()) {
-                    baseDataClockBlockEntity.setPocketWatch(unwaxedClockHands);
+                    baseMantelClockBlockEntity.setPocketWatch(unwaxedClockHands);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, unwaxedClockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
                     if (!player.getAbilities().instabuild)
@@ -279,10 +279,10 @@ public class BaseDataClockBlock extends BaseEntityBlock {
                     return ItemInteractionResult.SUCCESS;
                 }
 
-                Pair<Item, Supplier<SoundEvent>> scrapedClockHandInfo = ColourfulClocksTypeUtil.getScrapedPocketWatch(baseDataClockBlockEntity.getData().getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()));
+                Pair<Item, Supplier<SoundEvent>> scrapedClockHandInfo = ColourfulClocksTypeUtil.getScrapedPocketWatch(baseMantelClockBlockEntity.getData().getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()));
                 ItemStack scrapedClockHands = new ItemStack(scrapedClockHandInfo.getFirst());
                 if (!scrapedClockHands.isEmpty()) {
-                    baseDataClockBlockEntity.setPocketWatch(scrapedClockHands);
+                    baseMantelClockBlockEntity.setPocketWatch(scrapedClockHands);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, scrapedClockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
                     if (!player.getAbilities().instabuild) itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
@@ -296,11 +296,11 @@ public class BaseDataClockBlock extends BaseEntityBlock {
     }
 
     protected ItemInteractionResult setTicking(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity, boolean tryTicking) {
-        if (blockEntity instanceof BaseDataClockBlockEntity baseDataClockBlockEntity) {
-            if (baseDataClockBlockEntity.getData().getTicking().isPresent()) {
+        if (blockEntity instanceof BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
+            if (baseMantelClockBlockEntity.getData().getTicking().isPresent()) {
                 if (tryTicking) {
-                    if (!baseDataClockBlockEntity.getData().getTicking().get()) {
-                        baseDataClockBlockEntity.setTicking(true);
+                    if (!baseMantelClockBlockEntity.getData().getTicking().get()) {
+                        baseMantelClockBlockEntity.setTicking(true);
                         level.setBlock(pos, level.getBlockState(pos).setValue(CAN_TICK, true).setValue(TICKING, true), 3);
                         this.checkPoweredState(level, pos, level.getBlockState(pos));
                         level.blockEntityChanged(pos);
@@ -311,8 +311,8 @@ public class BaseDataClockBlock extends BaseEntityBlock {
                         return ItemInteractionResult.SUCCESS;
                     }
                 } else  {
-                    if (baseDataClockBlockEntity.getData().getTicking().get()) {
-                        baseDataClockBlockEntity.setTicking(false);
+                    if (baseMantelClockBlockEntity.getData().getTicking().get()) {
+                        baseMantelClockBlockEntity.setTicking(false);
                         level.setBlock(pos, level.getBlockState(pos).setValue(CAN_TICK, false).setValue(TICKING, false), 3);
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_DISABLE_TICKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F);

@@ -30,7 +30,7 @@
                 {
                   "function": "minecraft:copy_components",
                   "include": [
-                    "colourfulclocks:alarm_clock_data"
+                    "colourfulclocks:alarm_clock"
                   ],
                   "source": "block_entity"
                 }

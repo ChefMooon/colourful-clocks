@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.integration.wthit.provider;
 
 import com.chefmooon.colourfulclocks.common.block.base.BaseDataClockBlock;
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
@@ -27,7 +27,7 @@ public class ClockDataProvider implements IBlockComponentProvider {
             if (accessor.getBlock() instanceof BaseDataClockBlock) {
                 BlockEntity blockEntity = accessor.getBlockEntity();
                 if (blockEntity != null) {
-                    ClockComponent component = blockEntity.collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getBasicClockValue());
+                    MantelClockComponent component = blockEntity.collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getBasicClockValue());
                     if (component != null) {
                         if (glassType && component.getGlassType().isPresent() && component.getGlassType().get() != BornholmTopGlassTypes.GLASS) addGlassTypeTooltip(tooltip, component.getGlassType().get());
                         if (pocketWatchType && component.getPocketWatch().isPresent() && component.getPocketWatch().get().getType() != PocketWatchTypes.EMPTY) addPocketWatchTypeTooltip(tooltip, component.getPocketWatch().get().getType());

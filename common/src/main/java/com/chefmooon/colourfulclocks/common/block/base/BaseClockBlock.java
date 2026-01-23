@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block.base;
 
-import com.chefmooon.colourfulclocks.common.block.entity.base.BaseDataClockBlockEntity;
+import com.chefmooon.colourfulclocks.common.block.entity.base.BaseMantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.BornholmTopGlassTypeProperty;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
@@ -103,8 +103,8 @@ public class BaseClockBlock extends BaseEntityBlock {
         if (state.getValue(CAN_TICK) && bl != state.getValue(TICKING)) {
             level.setBlock(pos, state.setValue(TICKING, bl), 2);
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof BaseDataClockBlockEntity baseDataClockBlockEntity) {
-                baseDataClockBlockEntity.setTicking(bl);
+            if (blockEntity instanceof BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
+                baseMantelClockBlockEntity.setTicking(bl);
                 level.blockEntityChanged(pos);
             }
         }

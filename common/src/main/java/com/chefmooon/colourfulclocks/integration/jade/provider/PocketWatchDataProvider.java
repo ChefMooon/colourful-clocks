@@ -1,7 +1,7 @@
 package com.chefmooon.colourfulclocks.integration.jade.provider;
 
 import com.chefmooon.colourfulclocks.common.block.base.BaseDataClockBlock;
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
+import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
@@ -29,7 +29,7 @@ public enum PocketWatchDataProvider implements IBlockComponentProvider, IServerD
     @Override
     public void appendServerData(CompoundTag compoundTag, BlockAccessor blockAccessor) {
         if (blockAccessor.getBlock() instanceof BaseDataClockBlock) {
-            ClockComponent component = blockAccessor.getBlockEntity().collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getDefaultValue());
+            MantelClockComponent component = blockAccessor.getBlockEntity().collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getDefaultValue());
             if (component != null && component.getPocketWatch().isPresent()) {
                 Item item = ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatch().get().getType());
                 if (component.getPocketWatch().get().getType() != PocketWatchTypes.EMPTY && item != Items.AIR) compoundTag.putString(("pocket_watch_type"), item.getDescriptionId());

@@ -30,7 +30,7 @@
                 {
                   "function": "minecraft:copy_components",
                   "include": [
-                    "colourfulclocks:bornholm_trunk_data"
+                    "colourfulclocks:bornholm_trunk"
                   ],
                   "source": "block_entity"
                 }
