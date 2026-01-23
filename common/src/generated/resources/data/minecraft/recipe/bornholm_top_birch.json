@@ -1,0 +1,25 @@
+{
+  "type": "colourfulclocks:bornholm_dial",
+  "category": "misc",
+  "group": "bornholm_top_birch",
+  "key": {
+    "A": {
+      "item": "minecraft:birch_wood"
+    },
+    "B": {
+      "tag": "colourfulclocks:clock_dial_glass"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "BCA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:bornholm_top_birch"
+  }
+}

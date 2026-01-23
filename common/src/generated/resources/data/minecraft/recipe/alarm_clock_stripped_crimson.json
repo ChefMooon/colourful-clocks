@@ -1,0 +1,25 @@
+{
+  "type": "colourfulclocks:alarm_clock",
+  "category": "misc",
+  "group": "alarm_clock_stripped_crimson",
+  "key": {
+    "A": {
+      "item": "minecraft:stripped_crimson_hyphae"
+    },
+    "B": {
+      "tag": "colourfulclocks:clock_dial_glass"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    " A ",
+    "BCA",
+    " A "
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:alarm_clock_stripped_crimson"
+  }
+}

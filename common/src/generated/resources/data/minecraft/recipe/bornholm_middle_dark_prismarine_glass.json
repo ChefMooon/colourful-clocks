@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "colourfulclocks:bornholm_trunk",
   "category": "misc",
   "group": "bornholm_middle_dark_prismarine",
   "key": {
@@ -7,7 +7,7 @@
       "item": "minecraft:dark_prismarine"
     },
     "B": {
-      "item": "minecraft:glass_pane"
+      "tag": "colourfulclocks:clock_door"
     }
   },
   "pattern": [
@@ -16,14 +16,6 @@
     "AAA"
   ],
   "result": {
-    "components": {
-      "colourfulclocks:bornholm_trunk_data": {
-        "glass": "_glass",
-        "pendulum": {
-          "type": "empty"
-        }
-      }
-    },
     "count": 1,
     "id": "colourfulclocks:bornholm_middle_dark_prismarine"
   }

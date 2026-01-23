@@ -1,0 +1,25 @@
+{
+  "type": "colourfulclocks:bornholm_dial",
+  "category": "misc",
+  "group": "bornholm_top_stone_bricks",
+  "key": {
+    "A": {
+      "item": "minecraft:stone_bricks"
+    },
+    "B": {
+      "tag": "colourfulclocks:clock_dial_glass"
+    },
+    "C": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "BCA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:bornholm_top_stone_bricks"
+  }
+}

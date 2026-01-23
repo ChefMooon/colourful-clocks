@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "colourfulclocks:clock",
   "category": "misc",
   "group": "tall_mantel_clock_oak",
   "key": {
@@ -7,7 +7,7 @@
       "item": "minecraft:oak_wood"
     },
     "B": {
-      "item": "minecraft:glass_pane"
+      "tag": "colourfulclocks:clock_dial_glass"
     },
     "C": {
       "item": "minecraft:quartz"
@@ -19,11 +19,6 @@
     "AAA"
   ],
   "result": {
-    "components": {
-      "colourfulclocks:clock_data": {
-        "glass": "_glass"
-      }
-    },
     "count": 1,
     "id": "colourfulclocks:tall_mantel_clock_oak"
   }

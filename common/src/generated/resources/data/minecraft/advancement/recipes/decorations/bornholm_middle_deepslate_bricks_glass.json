@@ -5,10 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:deepslate_bricks",
-              "minecraft:glass_pane"
-            ]
+            "items": "minecraft:deepslate_bricks"
           }
         ]
       },

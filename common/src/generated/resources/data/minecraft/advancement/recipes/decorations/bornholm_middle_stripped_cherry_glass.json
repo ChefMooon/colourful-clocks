@@ -5,10 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:stripped_cherry_wood",
-              "minecraft:glass_pane"
-            ]
+            "items": "minecraft:stripped_cherry_wood"
           }
         ]
       },

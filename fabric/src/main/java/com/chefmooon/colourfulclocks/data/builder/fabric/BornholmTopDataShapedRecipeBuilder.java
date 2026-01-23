@@ -1,8 +1,6 @@
 package com.chefmooon.colourfulclocks.data.builder.fabric;
 
-import com.chefmooon.colourfulclocks.common.data.BornholmTopGlassComponent;
-import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
+import com.chefmooon.colourfulclocks.common.crafting.BornholmTopShapedRecipe;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import net.minecraft.advancements.Advancement;
@@ -18,7 +16,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.item.crafting.ShapedRecipePattern;
 import net.minecraft.world.level.ItemLike;
 import org.jetbrains.annotations.Nullable;
@@ -35,7 +32,6 @@ public class BornholmTopDataShapedRecipeBuilder implements RecipeBuilder {
     private final List<String> rows = Lists.newArrayList();
     private final Map<Character, Ingredient> key = Maps.newLinkedHashMap();
     private final Map<String, Criterion<?>> criteria = new LinkedHashMap();
-    private BornholmTopGlassComponent bornholmTopGlassComponent = BornholmTopGlassComponent.getDefaultValue();
     @Nullable
     private String group;
     private boolean showNotification = true;
@@ -92,11 +88,6 @@ public class BornholmTopDataShapedRecipeBuilder implements RecipeBuilder {
         return this;
     }
 
-    public BornholmTopDataShapedRecipeBuilder setResultData(BornholmTopGlassTypes topGlassType) {
-        this.bornholmTopGlassComponent = new BornholmTopGlassComponent(topGlassType, this.bornholmTopGlassComponent.getPocketWatch(), this.bornholmTopGlassComponent.getTicking());
-        return this;
-    }
-
     public BornholmTopDataShapedRecipeBuilder showNotification(boolean showNotification) {
         this.showNotification = showNotification;
         return this;
@@ -111,9 +102,7 @@ public class BornholmTopDataShapedRecipeBuilder implements RecipeBuilder {
         Advancement.Builder builder = recipeOutput.advancement().addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(id)).rewards(AdvancementRewards.Builder.recipe(id)).requirements(AdvancementRequirements.Strategy.OR);
         Objects.requireNonNull(builder);
         this.criteria.forEach(builder::addCriterion);
-        ItemStack itemStack = new ItemStack(this.result, this.count);
-        itemStack.set(ColourfulClocksDataComponentTypes.getBornholmTopGlassData(), this.bornholmTopGlassComponent);
-        ShapedRecipe shapedRecipe = new ShapedRecipe((String)Objects.requireNonNullElse(this.group, ""), RecipeBuilder.determineBookCategory(this.category), shapedRecipePattern, itemStack, this.showNotification);
+        BornholmTopShapedRecipe shapedRecipe = new BornholmTopShapedRecipe((String)Objects.requireNonNullElse(this.group, ""), RecipeBuilder.determineBookCategory(this.category), shapedRecipePattern, new ItemStack(this.result, this.count), this.showNotification);
         recipeOutput.accept(id, shapedRecipe, builder.build(id.withPrefix("recipes/" + this.category.getFolderName() + "/")));
     }
 

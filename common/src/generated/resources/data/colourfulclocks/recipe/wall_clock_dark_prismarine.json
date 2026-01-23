@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wall_clock_dark_prismarine",
+  "key": {
+    "A": {
+      "item": "minecraft:dark_prismarine"
+    },
+    "B": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_dark_prismarine"
+  }
+}

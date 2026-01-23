@@ -1,21 +1,21 @@
 {
   "values": [
-    "colourfulclocks:redstone_handbell",
-    "colourfulclocks:waxed_copper_handbell",
-    "colourfulclocks:lapis_lazuli_handbell",
-    "colourfulclocks:copper_handbell",
-    "colourfulclocks:amethyst_handbell",
-    "colourfulclocks:exposed_copper_handbell",
-    "colourfulclocks:netherite_handbell",
-    "colourfulclocks:gold_handbell",
-    "colourfulclocks:quartz_handbell",
-    "colourfulclocks:diamond_handbell",
+    "colourfulclocks:waxed_exposed_copper_handbell",
     "colourfulclocks:iron_handbell",
     "colourfulclocks:weathered_copper_handbell",
-    "colourfulclocks:waxed_weathered_copper_handbell",
-    "colourfulclocks:waxed_exposed_copper_handbell",
     "colourfulclocks:oxidized_copper_handbell",
+    "colourfulclocks:lapis_lazuli_handbell",
+    "colourfulclocks:waxed_weathered_copper_handbell",
+    "colourfulclocks:diamond_handbell",
+    "colourfulclocks:quartz_handbell",
+    "colourfulclocks:exposed_copper_handbell",
     "colourfulclocks:emerald_handbell",
-    "colourfulclocks:waxed_oxidized_copper_handbell"
+    "colourfulclocks:gold_handbell",
+    "colourfulclocks:redstone_handbell",
+    "colourfulclocks:waxed_copper_handbell",
+    "colourfulclocks:waxed_oxidized_copper_handbell",
+    "colourfulclocks:copper_handbell",
+    "colourfulclocks:netherite_handbell",
+    "colourfulclocks:amethyst_handbell"
   ]
 }

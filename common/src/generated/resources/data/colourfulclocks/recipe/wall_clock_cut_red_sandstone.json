@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wall_clock_cut_red_sandstone",
+  "key": {
+    "A": {
+      "item": "minecraft:cut_red_sandstone"
+    },
+    "B": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_cut_red_sandstone"
+  }
+}

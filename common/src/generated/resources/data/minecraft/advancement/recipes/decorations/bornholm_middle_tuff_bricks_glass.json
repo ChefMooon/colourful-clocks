@@ -5,10 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:tuff_bricks",
-              "minecraft:glass_pane"
-            ]
+            "items": "minecraft:tuff_bricks"
           }
         ]
       },

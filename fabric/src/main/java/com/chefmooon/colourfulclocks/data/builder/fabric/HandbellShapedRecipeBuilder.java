@@ -1,6 +1,5 @@
 package com.chefmooon.colourfulclocks.data.builder.fabric;
 
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
 import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.google.common.collect.Lists;

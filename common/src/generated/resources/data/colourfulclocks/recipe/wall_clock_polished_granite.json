@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "wall_clock_polished_granite",
+  "key": {
+    "A": {
+      "item": "minecraft:polished_granite"
+    },
+    "B": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_polished_granite"
+  }
+}

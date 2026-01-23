@@ -5,10 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:warped_hyphae",
-              "minecraft:glass_pane"
-            ]
+            "items": "minecraft:warped_hyphae"
           }
         ]
       },

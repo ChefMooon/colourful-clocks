@@ -5,10 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:oak_wood",
-              "minecraft:glass_pane"
-            ]
+            "items": "minecraft:oak_wood"
           }
         ]
       },

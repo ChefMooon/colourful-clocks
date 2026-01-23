@@ -5,10 +5,7 @@
       "conditions": {
         "items": [
           {
-            "items": [
-              "minecraft:polished_deepslate",
-              "minecraft:glass_pane"
-            ]
+            "items": "minecraft:polished_deepslate"
           }
         ]
       },
