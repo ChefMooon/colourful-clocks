@@ -1,6 +1,7 @@
 package com.chefmooon.colourfulclocks.common.block;
 
 import com.chefmooon.colourfulclocks.common.block.base.BaseDataClockBlock;
+import com.chefmooon.colourfulclocks.common.block.entity.MantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.entity.WallClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.properties.WallClockPartProperty;
 import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
@@ -27,6 +28,7 @@ import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
@@ -363,6 +365,16 @@ public class WallClockBlock extends BaseDataClockBlock {
         BlockEntityType<WallClockBlockEntity> wallClockType = (BlockEntityType<WallClockBlockEntity>) Objects.requireNonNull(
                 BuiltInRegistries.BLOCK_ENTITY_TYPE.get(ColourfulClocksBlockEntities.WALL_CLOCK));
         return createTickerHelper(blockEntity, wallClockType, WallClockBlockEntity::weatherTick);
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
+            return wallClockBlockEntity.getBlockAsItem(this.clockType);
+        } else {
+            return super.getCloneItemStack(level, pos, state);
+        }
     }
 
     @Override

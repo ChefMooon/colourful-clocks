@@ -291,7 +291,7 @@ public class ColourfulClocksItemsImpl {
             // Wall Clock
             Supplier<Item> wallClockItem = registerItemWithTab(ColourfulClocksItems.WALL_CLOCK.withSuffix(clockTypes.getSerializedName()),
                     () -> new WallClockBlockItem(ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA, MantelClockComponent.getNoPendulumValue())));
+                            .component(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA, MantelClockComponent.getNoGlassPendulumValue())));
             WALL_CLOCK_VARIANTS.put(clockTypes, wallClockItem);
 
             // Alarm Clock
