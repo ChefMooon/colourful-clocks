@@ -232,7 +232,7 @@ public class BaseDataClockBlock extends BaseEntityBlock {
 
     protected ItemInteractionResult setPocketWatchType(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity) {
         if (blockEntity instanceof BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
-            PocketWatchTypes pocketWatchType = itemStack.get(ColourfulClocksDataComponentTypes.getAlarmClockData()).pocketWatch().get().getType();
+            PocketWatchTypes pocketWatchType = itemStack.get(ColourfulClocksDataComponentTypes.getPocketWatchData()).getType();
             if (baseMantelClockBlockEntity.getData().pocketWatch().isPresent() && pocketWatchType != baseMantelClockBlockEntity.getData().pocketWatch().get().getType()) {
                 if (baseMantelClockBlockEntity.getData().getPocketWatch().get().getType().getId() != 0 && !player.getAbilities().instabuild) {
                     ItemStack oldPocketWatchItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseMantelClockBlockEntity.getData().pocketWatch().get().type().getSerializedName() + "_pocket_watch")).getDefaultInstance();

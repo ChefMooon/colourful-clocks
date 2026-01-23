@@ -15,8 +15,8 @@ import net.minecraft.world.level.block.Block;
 
 import java.util.List;
 
-public class ClockDataBlockItem extends BlockItem {
-    public ClockDataBlockItem(Block block, Properties properties) {
+public class WallClockBlockItem extends BlockItem {
+    public WallClockBlockItem(Block block, Properties properties) {
         super(block, properties);
     }
 
