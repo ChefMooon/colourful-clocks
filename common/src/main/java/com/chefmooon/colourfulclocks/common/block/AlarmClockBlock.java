@@ -3,7 +3,6 @@ package com.chefmooon.colourfulclocks.common.block;
 import com.chefmooon.colourfulclocks.common.block.base.BaseClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.AlarmClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.data.AlarmClockComponent;
-import com.chefmooon.colourfulclocks.common.data.ClockComponent;
 import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
@@ -86,11 +85,11 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
-        ClockComponent component = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), ClockComponent.getNoPendulumValue());
+        AlarmClockComponent component = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getAlarmClockData(), AlarmClockComponent.getDefaultValue());
         return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection())
-                .setValue(GLASS_TYPE, component.getGlassType().orElse(BornholmTopGlassTypes.GLASS))
+                .setValue(GLASS_TYPE, component.glassType().orElse(BornholmTopGlassTypes.GLASS))
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER)
-                .setValue(CAN_TICK,  component.getTicking().get())
+                .setValue(CAN_TICK,  component.ticking().get())
                 .setValue(TICKING, Boolean.FALSE);
     }
 
