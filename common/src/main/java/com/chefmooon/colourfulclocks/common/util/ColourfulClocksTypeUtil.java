@@ -12,7 +12,6 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
@@ -206,47 +205,7 @@ public class ColourfulClocksTypeUtil {
     }
 
     @ExpectPlatform
-    public static PocketWatchTypes getPocketWatchTypeFromItem(Item item) {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
     public static Item getPendulumItemFromType(PendulumTypes pendulumType) {
         throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static PendulumTypes getPendulumTypeFromItem(Item item) {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static boolean isCopperPendulum(ItemStack itemStack) {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static Supplier<Item> getNextWeatheredCopperPendulum(ItemStack itemStack) {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static Supplier<Item> getWaxedCopperPendulum(ItemStack itemStack) {
-        throw new AssertionError();
-    }
-
-    @ExpectPlatform
-    public static Pair<Supplier<Item>, Supplier<SoundEvent>> getScrapedCopperPendulum(ItemStack itemStack) {
-        throw new AssertionError();
-    }
-
-    public static @Nullable HandbellTypes getHandbellTypeFromItem(Item item) {
-        for (HandbellTypes handbellTypes : HandbellTypes.values()) {
-            Item handbell = BuiltInRegistries.ITEM.get(TextUtil.res(handbellTypes.getSerializedName() + "_handbell"));
-            if (handbell == item) {
-                return handbellTypes;
-            }
-        }
-        return null;
     }
 }

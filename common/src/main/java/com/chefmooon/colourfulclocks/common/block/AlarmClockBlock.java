@@ -256,7 +256,7 @@ public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterlogged
 
     protected ItemInteractionResult setPocketWatchType(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity) {
         if (blockEntity instanceof AlarmClockBlockEntity alarmClockBlockEntity) {
-            PocketWatchTypes pocketWatchType = ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(itemStack.getItem());
+            PocketWatchTypes pocketWatchType = itemStack.get(ColourfulClocksDataComponentTypes.getAlarmClockData()).pocketWatch().get().getType();
             if (alarmClockBlockEntity.getData().pocketWatch().isPresent() && pocketWatchType != alarmClockBlockEntity.getData().pocketWatch().get().type()) {
                 if (alarmClockBlockEntity.getData().pocketWatch().get().type().getId() != 0 && !player.getAbilities().instabuild) {
                     ItemStack oldPocketWatchItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().pocketWatch().get().type().getSerializedName() + "_pocket_watch")).getDefaultInstance();

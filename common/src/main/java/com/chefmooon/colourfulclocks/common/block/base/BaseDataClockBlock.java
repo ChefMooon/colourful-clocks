@@ -135,7 +135,7 @@ public class BaseDataClockBlock extends BaseEntityBlock {
 
     protected ItemInteractionResult setPendulumType(Level level, BlockPos pos, Player player, ItemStack itemStack, BaseDataClockBlockEntity baseDataClockBlockEntity) {
         if (itemStack.is(ColourfulClocksTags.CLOCK_PENDULUM)) {
-            PendulumTypes pendulumType = ColourfulClocksTypeUtil.getPendulumTypeFromItem(itemStack.getItem());
+            PendulumTypes pendulumType = itemStack.get(ColourfulClocksDataComponentTypes.getPendulumData()).getType();
             if (baseDataClockBlockEntity.getData().getPendulum().isPresent() && pendulumType != baseDataClockBlockEntity.getData().pendulum().orElse(PendulumComponent.getDefaultValue()).getType()) {
                 if (baseDataClockBlockEntity.getData().pendulum().get().getType().getId()!= 0 && !player.getAbilities().instabuild) {
                     ItemStack oldPendulumItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseDataClockBlockEntity.getData().getPendulum().get().getType().getSerializedName() + "_pendulum")).getDefaultInstance();
@@ -232,7 +232,7 @@ public class BaseDataClockBlock extends BaseEntityBlock {
 
     protected ItemInteractionResult setPocketWatchType(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity) {
         if (blockEntity instanceof BaseDataClockBlockEntity baseDataClockBlockEntity) {
-            PocketWatchTypes pocketWatchType = ColourfulClocksTypeUtil.getPocketWatchTypeFromItem(itemStack.getItem());
+            PocketWatchTypes pocketWatchType = itemStack.get(ColourfulClocksDataComponentTypes.getAlarmClockData()).pocketWatch().get().getType();
             if (baseDataClockBlockEntity.getData().pocketWatch().isPresent() && pocketWatchType != baseDataClockBlockEntity.getData().pocketWatch().get().getType()) {
                 if (baseDataClockBlockEntity.getData().getPocketWatch().get().getType().getId() != 0 && !player.getAbilities().instabuild) {
                     ItemStack oldPocketWatchItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseDataClockBlockEntity.getData().pocketWatch().get().type().getSerializedName() + "_pocket_watch")).getDefaultInstance();
