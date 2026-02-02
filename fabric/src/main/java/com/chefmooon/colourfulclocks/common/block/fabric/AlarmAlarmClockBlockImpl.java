@@ -1,13 +1,13 @@
 package com.chefmooon.colourfulclocks.common.block.fabric;
 
-import com.chefmooon.colourfulclocks.common.block.AlarmClockBlock;
+import com.chefmooon.colourfulclocks.common.block.AlarmAlarmClockBlock;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.Vec3;
 
-public class AlarmClockBlockImpl extends AlarmClockBlock {
-    public AlarmClockBlockImpl(ClockTypes clockType, Properties properties) {
+public class AlarmAlarmClockBlockImpl extends AlarmAlarmClockBlock {
+    public AlarmAlarmClockBlockImpl(ClockTypes clockType, Properties properties) {
         super(clockType, properties);
     }
 

@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block;
 
-import com.chefmooon.colourfulclocks.common.block.base.BaseDataGlassClockBlock;
+import com.chefmooon.colourfulclocks.common.block.base.BaseMantelClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.TallMantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
@@ -48,7 +48,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class TallMantelClockBlock extends BaseDataGlassClockBlock {
+public class TallMantelClockBlock extends BaseMantelClockBlock {
     public static final BooleanProperty WALL = BooleanProperty.create("wall");
     private static final VoxelShape SHAPE_AXIS_Z = Shapes.or(
             Block.box(3, 0, 4, 13, 1, 12),

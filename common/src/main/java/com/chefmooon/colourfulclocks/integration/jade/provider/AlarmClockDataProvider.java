@@ -1,9 +1,8 @@
 package com.chefmooon.colourfulclocks.integration.jade.provider;
 
-import com.chefmooon.colourfulclocks.common.block.AlarmClockBlock;
+import com.chefmooon.colourfulclocks.common.block.AlarmAlarmClockBlock;
 import com.chefmooon.colourfulclocks.common.data.AlarmClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
@@ -43,7 +42,7 @@ public enum AlarmClockDataProvider implements IBlockComponentProvider, IServerDa
 
     @Override
     public void appendServerData(CompoundTag compoundTag, BlockAccessor blockAccessor) {
-        if (blockAccessor.getBlock() instanceof AlarmClockBlock) {
+        if (blockAccessor.getBlock() instanceof AlarmAlarmClockBlock) {
             AlarmClockComponent component = blockAccessor.getBlockEntity().collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getAlarmClockData(), AlarmClockComponent.getDefaultValue());
             if (component != null) {
                 if (component.leftBell().isPresent()) {

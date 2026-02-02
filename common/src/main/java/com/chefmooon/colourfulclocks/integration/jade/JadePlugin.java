@@ -17,35 +17,23 @@ public class JadePlugin implements IWailaPlugin {
         registration.registerBlockComponent(BornholmDialProvider.INSTANCE, BornholmTopBlock.class);
         registration.registerBlockComponent(BornholmTrunkProvider.INSTANCE, BornholmMiddleBlock.class);
 
-        registration.registerBlockComponent(GlassDataProvider.INSTANCE, MantelClockBlock.class);
-        registration.registerBlockComponent(PocketWatchDataProvider.INSTANCE, MantelClockBlock.class);
-        registration.registerBlockComponent(TickingDataProvider.INSTANCE, MantelClockBlock.class);
-
-        registration.registerBlockComponent(GlassDataProvider.INSTANCE, TallMantelClockBlock.class);
-        registration.registerBlockComponent(PocketWatchDataProvider.INSTANCE, TallMantelClockBlock.class);
-        registration.registerBlockComponent(PendulumDataProvider.INSTANCE, TallMantelClockBlock.class);
-        registration.registerBlockComponent(TickingDataProvider.INSTANCE, TallMantelClockBlock.class);
+        registration.registerBlockComponent(MantelClockDataProvider.INSTANCE, MantelClockBlock.class);
+        registration.registerBlockComponent(MantelClockDataProvider.INSTANCE, TallMantelClockBlock.class);
 
         registration.registerBlockComponent(WallClockDataProvider.INSTANCE, WallClockBlock.class);
 
-        registration.registerBlockComponent(AlarmClockDataProvider.INSTANCE, AlarmClockBlock.class);
+        registration.registerBlockComponent(AlarmClockDataProvider.INSTANCE, AlarmAlarmClockBlock.class);
     }
     @Override
     public void register(IWailaCommonRegistration registration) {
         registration.registerBlockDataProvider(BornholmDialProvider.INSTANCE, BornholmTopBlockEntity.class);
         registration.registerBlockDataProvider(BornholmTrunkProvider.INSTANCE, BornholmMiddleBlockEntity.class);
 
-        registration.registerBlockDataProvider(GlassDataProvider.INSTANCE, MantelClockBlock.class);
-        registration.registerBlockDataProvider(PocketWatchDataProvider.INSTANCE, MantelClockBlock.class);
-        registration.registerBlockDataProvider(TickingDataProvider.INSTANCE, MantelClockBlock.class);
-
-        registration.registerBlockDataProvider(GlassDataProvider.INSTANCE, TallMantelClockBlock.class);
-        registration.registerBlockDataProvider(PocketWatchDataProvider.INSTANCE, TallMantelClockBlock.class);
-        registration.registerBlockDataProvider(PendulumDataProvider.INSTANCE, TallMantelClockBlock.class);
-        registration.registerBlockDataProvider(TickingDataProvider.INSTANCE, TallMantelClockBlock.class);
+        registration.registerBlockDataProvider(MantelClockDataProvider.INSTANCE, MantelClockBlock.class);
+        registration.registerBlockDataProvider(MantelClockDataProvider.INSTANCE, TallMantelClockBlock.class);
 
         registration.registerBlockDataProvider(WallClockDataProvider.INSTANCE, WallClockBlock.class);
 
-        registration.registerBlockDataProvider(AlarmClockDataProvider.INSTANCE, AlarmClockBlock.class);
+        registration.registerBlockDataProvider(AlarmClockDataProvider.INSTANCE, AlarmAlarmClockBlock.class);
     }
 }

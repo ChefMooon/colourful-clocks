@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks.integration.wthit.provider;
 
-import com.chefmooon.colourfulclocks.common.block.base.BaseDataClockBlock;
+import com.chefmooon.colourfulclocks.common.block.base.BaseMantelClockBlock;
 import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
@@ -16,7 +16,7 @@ import mcp.mobius.waila.api.ITooltip;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.block.entity.BlockEntity;
 
-public class ClockDataProvider implements IBlockComponentProvider {
+public class MantelClockDataProvider implements IBlockComponentProvider {
     @Override
     public void appendBody(ITooltip tooltip, IBlockAccessor accessor, IPluginConfig config) {
         boolean glassType = config.getBoolean(ColourfulClocksCommonWailaPlugin.Options.GLASS_TYPE);
@@ -24,7 +24,7 @@ public class ClockDataProvider implements IBlockComponentProvider {
         boolean pendulumType = config.getBoolean(ColourfulClocksCommonWailaPlugin.Options.PENDULUM_TYPE);
         boolean ticking = config.getBoolean(ColourfulClocksCommonWailaPlugin.Options.TICKING);
         if (glassType || pocketWatchType || pendulumType || ticking) {
-            if (accessor.getBlock() instanceof BaseDataClockBlock) {
+            if (accessor.getBlock() instanceof BaseMantelClockBlock) {
                 BlockEntity blockEntity = accessor.getBlockEntity();
                 if (blockEntity != null) {
                     MantelClockComponent component = blockEntity.collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getBasicClockValue());

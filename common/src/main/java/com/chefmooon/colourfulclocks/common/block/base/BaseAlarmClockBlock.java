@@ -22,8 +22,8 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
 
-public class BaseClockBlock extends BaseEntityBlock {
-    public static final MapCodec<BaseDataClockBlock> CODEC = simpleCodec(BaseDataClockBlock::new);
+public class BaseAlarmClockBlock extends BaseEntityBlock {
+    public static final MapCodec<BaseAlarmClockBlock> CODEC = simpleCodec(BaseAlarmClockBlock::new);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty CAN_TICK = ColourfulClocksBlockStateProperties.CAN_TICK;
     public static final BooleanProperty TICKING = ColourfulClocksBlockStateProperties.TICKING;
@@ -34,11 +34,11 @@ public class BaseClockBlock extends BaseEntityBlock {
     public static int FLAMMABILITY = 30;
     public static int FIRE_SPREAD = 60;
 
-    public BaseClockBlock(Properties properties) {
+    public BaseAlarmClockBlock(Properties properties) {
         super(properties);
     }
 
-    protected BaseClockBlock(ClockTypes clockType, Properties properties) {
+    protected BaseAlarmClockBlock(ClockTypes clockType, Properties properties) {
         super(properties);
         this.clockType = clockType;
         this.registerDefaultState(this.getStateDefinition().any()

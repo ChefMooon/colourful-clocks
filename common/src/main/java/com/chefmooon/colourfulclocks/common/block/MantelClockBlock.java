@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block;
 
-import com.chefmooon.colourfulclocks.common.block.base.BaseDataGlassClockBlock;
+import com.chefmooon.colourfulclocks.common.block.base.BaseMantelClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.MantelClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
@@ -46,7 +46,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Objects;
 
-public class MantelClockBlock extends BaseDataGlassClockBlock {
+public class MantelClockBlock extends BaseMantelClockBlock {
     private static final VoxelShape SHAPE_AXIS_Z = Shapes.or(
             Block.box(0, 0, 5, 16, 1, 11),
             Block.box(1, 1, 5, 15, 2, 11),

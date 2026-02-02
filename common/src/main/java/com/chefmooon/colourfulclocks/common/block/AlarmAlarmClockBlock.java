@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks.common.block;
 
-import com.chefmooon.colourfulclocks.common.block.base.BaseClockBlock;
+import com.chefmooon.colourfulclocks.common.block.base.BaseAlarmClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.AlarmClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.data.AlarmClockComponent;
 import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
@@ -70,14 +70,14 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class AlarmClockBlock extends BaseClockBlock implements SimpleWaterloggedBlock {
+public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleWaterloggedBlock {
     private static final VoxelShape SHAPE_AXIS_Z = Shapes.or(
             Block.box(5, 0, 5.5, 11, 1, 10.5),
             Block.box(5, 1, 5, 11, 2, 11),
             Block.box(4, 2, 5, 12, 8, 11),
             Block.box(5, 8, 5, 11, 9, 11));
     private final VoxelShape SHAPE_AXIS_X;
-    public AlarmClockBlock(ClockTypes clockType, Properties properties) {
+    public AlarmAlarmClockBlock(ClockTypes clockType, Properties properties) {
         super(clockType, properties);
         this.SHAPE_AXIS_X = VoxelShapeUtil.rotateVoxelShape(SHAPE_AXIS_Z, Direction.EAST);
     }

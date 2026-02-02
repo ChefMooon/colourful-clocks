@@ -179,13 +179,9 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(JADE_CONFIG + ".bornholm_dial_glass_type", "Bornholm Dial Glass Type");
         translationBuilder.add(JADE_CONFIG + ".bornholm_trunk_door_type", "Bornholm Dial Glass Type");
 
-        translationBuilder.add(JADE_CONFIG + ".glass_type", "Glass Type");
-        translationBuilder.add(JADE_CONFIG + ".pocket_watch_type", "Pocket Watch Type");
-        translationBuilder.add(JADE_CONFIG + ".pendulum_type", "Pendulum Type");
-        translationBuilder.add(JADE_CONFIG + ".ticking", "Ticking");
-
         translationBuilder.add(JADE_CONFIG + ".alarm_clock_data", "Ticking");
         translationBuilder.add(JADE_CONFIG + ".wall_clock_data", "Wall Clock");
+        translationBuilder.add(JADE_CONFIG + ".mantel_clock_data", "Mantel Clock");
 
         translationBuilder.add(REI + "info.copper_info", "This cannot be crafted. It can oxidize when placed in complete clocks and can be waxed to preserve the condition. An Axe can be used to remove wax.");
 

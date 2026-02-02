@@ -12,9 +12,7 @@ import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WeatheringCopper;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 
 import java.util.HashMap;
 import java.util.function.Supplier;
@@ -149,7 +147,7 @@ public class ColourfulClocksBlocksImpl {
         HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
         for (ClockTypes clockTypes : ClockTypes.values()) {
             Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
-                    new AlarmClockBlock(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
+                    new AlarmAlarmClockBlock(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
             hashMap.put(clockTypes, block);
         }
         return hashMap;

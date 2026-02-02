@@ -1,9 +1,11 @@
 package com.chefmooon.colourfulclocks.common.block.base;
 
 import com.chefmooon.colourfulclocks.common.block.entity.base.BaseMantelClockBlockEntity;
+import com.chefmooon.colourfulclocks.common.block.state.properties.BornholmTopGlassTypeProperty;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.PendulumComponent;
 import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
@@ -45,22 +47,23 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Supplier;
 
-public class BaseDataClockBlock extends BaseEntityBlock {
-    public static final MapCodec<BaseDataClockBlock> CODEC = simpleCodec(BaseDataClockBlock::new);
+public class BaseMantelClockBlock extends BaseEntityBlock {
+    public static final MapCodec<BaseMantelClockBlock> CODEC = simpleCodec(BaseMantelClockBlock::new);
     public static final BooleanProperty WATERLOGGED = BlockStateProperties.WATERLOGGED;
     public static final BooleanProperty CAN_TICK = ColourfulClocksBlockStateProperties.CAN_TICK;
     public static final BooleanProperty TICKING = ColourfulClocksBlockStateProperties.TICKING;
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
     public static final BooleanProperty ACTIVATED = ColourfulClocksBlockStateProperties.ACTIVATED;
+    public static final BornholmTopGlassTypeProperty GLASS_TYPE = ColourfulClocksBlockStateProperties.BORNHOLM_TOP_GLASS_TYPE;
     public ClockTypes clockType;
 
     public static int FLAMMABILITY = 30;
     public static int FIRE_SPREAD = 60;
-    public BaseDataClockBlock(Properties properties) {
+    public BaseMantelClockBlock(Properties properties) {
         super(properties);
     }
 
-    protected BaseDataClockBlock(ClockTypes clockType, Properties properties) {
+    protected BaseMantelClockBlock(ClockTypes clockType, Properties properties) {
         super(properties);
         this.clockType = clockType;
         this.registerDefaultState(this.getStateDefinition().any()
@@ -68,7 +71,8 @@ public class BaseDataClockBlock extends BaseEntityBlock {
                 .setValue(ACTIVATED, Boolean.TRUE)
                 .setValue(WATERLOGGED, Boolean.FALSE)
                 .setValue(CAN_TICK, Boolean.FALSE)
-                .setValue(TICKING, Boolean.FALSE));
+                .setValue(TICKING, Boolean.FALSE)
+                .setValue(GLASS_TYPE, BornholmTopGlassTypes.GLASS));
     }
 
     @Override
@@ -96,7 +100,7 @@ public class BaseDataClockBlock extends BaseEntityBlock {
     @Override
     protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
         super.createBlockStateDefinition(builder);
-        builder.add(FACING, ACTIVATED, WATERLOGGED, CAN_TICK, TICKING);
+        builder.add(FACING, ACTIVATED, WATERLOGGED, CAN_TICK, TICKING, GLASS_TYPE);
     }
 
     @Override
@@ -152,22 +156,6 @@ public class BaseDataClockBlock extends BaseEntityBlock {
 
                 return ItemInteractionResult.SUCCESS;
             }
-        }
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-    }
-
-    protected ItemInteractionResult removePocketWatch(Level level, BlockPos pos, Player player, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
-        if (baseMantelClockBlockEntity.getData().pocketWatch().isPresent() && baseMantelClockBlockEntity.getData().pocketWatch().get().getType().getId() != 0) {
-            ItemStack oldPocketWatchItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseMantelClockBlockEntity.getData().pocketWatch().get().type().getSerializedName() + "_pocket_watch")).getDefaultInstance();
-            PocketWatchComponent component = baseMantelClockBlockEntity.removePocketWatch();
-            oldPocketWatchItemStack.set(ColourfulClocksDataComponentTypes.getPocketWatchData(), component);
-            if (!player.getAbilities().instabuild && !player.getInventory().add(oldPocketWatchItemStack)) {
-                Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPocketWatchItemStack);
-            }
-            level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
-            level.updateNeighborsAt(pos, this);
-
-            return ItemInteractionResult.SUCCESS;
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
@@ -252,6 +240,22 @@ public class BaseDataClockBlock extends BaseEntityBlock {
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
+    protected ItemInteractionResult removePocketWatch(Level level, BlockPos pos, Player player, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
+        if (baseMantelClockBlockEntity.getData().pocketWatch().isPresent() && baseMantelClockBlockEntity.getData().pocketWatch().get().getType().getId() != 0) {
+            ItemStack oldPocketWatchItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(baseMantelClockBlockEntity.getData().pocketWatch().get().type().getSerializedName() + "_pocket_watch")).getDefaultInstance();
+            PocketWatchComponent component = baseMantelClockBlockEntity.removePocketWatch();
+            oldPocketWatchItemStack.set(ColourfulClocksDataComponentTypes.getPocketWatchData(), component);
+            if (!player.getAbilities().instabuild && !player.getInventory().add(oldPocketWatchItemStack)) {
+                Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPocketWatchItemStack);
+            }
+            level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
+            level.updateNeighborsAt(pos, this);
+
+            return ItemInteractionResult.SUCCESS;
+        }
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
     protected ItemInteractionResult setWaxedState(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity, boolean tryWax) {
         if (blockEntity instanceof BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
             if (tryWax) {
@@ -328,6 +332,21 @@ public class BaseDataClockBlock extends BaseEntityBlock {
                     }
                 }
             }
+        }
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    protected ItemInteractionResult setGlassType(Level level, BlockState state, BlockPos pos, Player player, ItemStack itemStack, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
+        if (itemStack.is(ColourfulClocksTags.CLOCK_TOP_GLASS)) {
+            if (itemStack.is(state.getValue(GLASS_TYPE).getItem())) return ItemInteractionResult.CONSUME;
+            BornholmTopGlassTypes newBornholmTopGlassTypes = ColourfulClocksTypeUtil.getBornholmTopGlassTypeFromItem(itemStack.getItem());
+            baseMantelClockBlockEntity.setGlassType(newBornholmTopGlassTypes);
+            level.setBlockAndUpdate(pos, state.setValue(GLASS_TYPE, newBornholmTopGlassTypes));
+            level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_GLASS.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
+            if (!player.getAbilities().instabuild) itemStack.shrink(1);
+            if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.GLASS_CHANGE_TRIGGER.get().trigger(serverPlayer);
+
+            return ItemInteractionResult.SUCCESS;
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }

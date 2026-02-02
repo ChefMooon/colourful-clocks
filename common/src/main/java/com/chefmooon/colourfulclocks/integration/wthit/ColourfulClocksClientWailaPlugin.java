@@ -11,11 +11,11 @@ public class ColourfulClocksClientWailaPlugin implements IWailaClientPlugin {
         registrar.body(new BornholmTrunkProvider(), BornholmMiddleBlock.class);
         registrar.body(new BornholmDialProvider(), BornholmTopBlock.class);
 
-        registrar.body(new ClockDataProvider(), MantelClockBlock.class);
-        registrar.body(new ClockDataProvider(), TallMantelClockBlock.class);
+        registrar.body(new MantelClockDataProvider(), MantelClockBlock.class);
+        registrar.body(new MantelClockDataProvider(), TallMantelClockBlock.class);
 
         registrar.body(new WallClockDataProvider(), WallClockBlock.class);
 
-        registrar.body(new AlarmClockDataProvider(), AlarmClockBlock.class);
+        registrar.body(new AlarmClockDataProvider(), AlarmAlarmClockBlock.class);
     }
 }

@@ -2,7 +2,7 @@ package com.chefmooon.colourfulclocks.client.renderer.neoforge;
 
 import com.chefmooon.colourfulclocks.client.model.ColourfulClocksModels;
 import com.chefmooon.colourfulclocks.client.renderer.AlarmClockBlockEntityRenderer;
-import com.chefmooon.colourfulclocks.common.block.AlarmClockBlock;
+import com.chefmooon.colourfulclocks.common.block.AlarmAlarmClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.AlarmClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
@@ -33,7 +33,7 @@ public class AlarmClockBlockEntityRendererImpl<T extends AlarmClockBlockEntity> 
         if (level == null) return;
 
         BlockState state = level.getBlockState(blockEntity.getBlockPos());
-        if (!(state.getBlock() instanceof AlarmClockBlock)) return;
+        if (!(state.getBlock() instanceof AlarmAlarmClockBlock)) return;
 
         PocketWatchTypes pocketWatchType = blockEntity.getData().pocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType();
         if (pocketWatchType != PocketWatchTypes.EMPTY) {
@@ -65,7 +65,7 @@ public class AlarmClockBlockEntityRendererImpl<T extends AlarmClockBlockEntity> 
         }
 
         if (blockEntity.getData().leftBell().isPresent()) {
-            Direction facing = state.getValue(AlarmClockBlock.FACING);
+            Direction facing = state.getValue(AlarmAlarmClockBlock.FACING);
             poseStack.pushPose();
             translateBell(poseStack, facing, false);
 
@@ -82,7 +82,7 @@ public class AlarmClockBlockEntityRendererImpl<T extends AlarmClockBlockEntity> 
         }
 
         if (blockEntity.getData().rightBell().isPresent()) {
-            Direction facing = state.getValue(AlarmClockBlock.FACING);
+            Direction facing = state.getValue(AlarmAlarmClockBlock.FACING);
             poseStack.pushPose();
             translateBell(poseStack, facing, true);
 
@@ -100,7 +100,7 @@ public class AlarmClockBlockEntityRendererImpl<T extends AlarmClockBlockEntity> 
 
         if (blockEntity.getData().glassType().isPresent()) {
             poseStack.pushPose();
-            poseStack.rotateAround(getRotation(state.getValue(AlarmClockBlock.FACING)), 0.5F, 0.5F, 0.5F);
+            poseStack.rotateAround(getRotation(state.getValue(AlarmAlarmClockBlock.FACING)), 0.5F, 0.5F, 0.5F);
             poseStack.translate(0, 0, 0.1875F);
             BornholmTopGlassTypes glassType = blockEntity.getData().glassType().get();
             BakedModel glassModel = minecraft.getModelManager().getModel(new ModelResourceLocation(TextUtil.res(ColourfulClocksModels.DIAL_SMALL_PATH.formatted(glassType.getName())), "standalone"));
