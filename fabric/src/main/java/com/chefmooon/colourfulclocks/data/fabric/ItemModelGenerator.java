@@ -91,6 +91,9 @@ public class ItemModelGenerator {
         generateMantelClockItems();
         generateTallMantelClockItems();
         generateAlarmClockItems();
+        generateWallClockSmallItems();
+        generateWallClockMediumItems();
+        generateWallClockLargeItems();
     }
 
     private static void generateBornholmMiddleItems() {
@@ -294,6 +297,44 @@ public class ItemModelGenerator {
 
         jsonObject.add("overrides", jsonArray);
         return jsonObject;
+    }
+
+    private static void generateWallClockSmallItems() {
+        for (ClockTypes clockType : ClockTypes.values()) {
+            TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, BlockModelGenerator.getBlockModelLocation(clockType))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL, TextUtil.res("block/large_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
+            ColourfulClocksTemplates.WALL_CLOCK_BASE.create(ModelLocationUtils.getModelLocation(ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS.get(clockType).get()), mapping, GENERATOR.output);
+        }
+    }
+
+    private static void generateWallClockMediumItems() {
+        for (ClockTypes clockType : ClockTypes.values()) {
+            TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, BlockModelGenerator.getBlockModelLocation(clockType))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MEDIUM_BOTTOM_LEFT, TextUtil.res("block/large_bottom_left_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MEDIUM_BOTTOM_RIGHT, TextUtil.res("block/large_bottom_right_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MEDIUM_TOP_LEFT, TextUtil.res("block/large_top_left_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MEDIUM_TOP_RIGHT, TextUtil.res("block/large_top_right_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
+            ColourfulClocksTemplates.WALL_CLOCK_MEDIUM_ITEM.create(ModelLocationUtils.getModelLocation(ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS_MEDIUM.get(clockType).get()), mapping, GENERATOR.output);
+        }
+    }
+
+    private static void generateWallClockLargeItems() {
+        for (ClockTypes clockType : ClockTypes.values()) {
+            TextureMapping mapping = TextureMapping.singleSlot(TextureSlot.SIDE, BlockModelGenerator.getBlockModelLocation(clockType))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_BOTTOM_LEFT, TextUtil.res("block/xl_bottom_left_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_BOTTOM_RIGHT, TextUtil.res("block/xl_bottom_right_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_TOP_LEFT, TextUtil.res("block/xl_top_left_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_TOP_RIGHT, TextUtil.res("block/xl_top_right_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_LEFT_MIDDLE, TextUtil.res("block/xl_left_middle_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_RIGHT_MIDDLE, TextUtil.res("block/xl_right_middle_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_TOP_MIDDLE, TextUtil.res("block/xl_top_middle_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_BOTTOM_MIDDLE, TextUtil.res("block/xl_bottom_middle_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_CENTER, TextUtil.res("block/xl_center_quartz_clock_face"))
+                    .put(ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS, ModelLocationUtils.getModelLocation(Blocks.COAL_BLOCK));
+            ColourfulClocksTemplates.WALL_CLOCK_LARGE_ITEM.create(ModelLocationUtils.getModelLocation(ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS_LARGE.get(clockType).get()), mapping, GENERATOR.output);
+        }
     }
 
     private static void generatePendulumItem(Item item, ItemModelGenerators itemModelGenerators) {

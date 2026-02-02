@@ -1,0 +1,22 @@
+{
+  "type": "colourfulclocks:wall_clock",
+  "category": "misc",
+  "group": "wall_clock_bamboo",
+  "key": {
+    "A": {
+      "item": "minecraft:bamboo_block"
+    },
+    "B": {
+      "item": "colourfulclocks:wall_clock_bamboo"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_bamboo_medium"
+  }
+}

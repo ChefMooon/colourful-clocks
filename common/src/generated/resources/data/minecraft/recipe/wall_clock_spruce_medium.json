@@ -1,0 +1,22 @@
+{
+  "type": "colourfulclocks:wall_clock",
+  "category": "misc",
+  "group": "wall_clock_spruce",
+  "key": {
+    "A": {
+      "item": "minecraft:spruce_wood"
+    },
+    "B": {
+      "item": "colourfulclocks:wall_clock_spruce"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_spruce_medium"
+  }
+}

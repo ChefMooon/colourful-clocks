@@ -1,12 +1,13 @@
 package com.chefmooon.colourfulclocks.common.block;
 
-import com.chefmooon.colourfulclocks.common.block.base.BaseDataClockBlock;
-import com.chefmooon.colourfulclocks.common.block.entity.MantelClockBlockEntity;
+import com.chefmooon.colourfulclocks.common.block.base.BaseWallClockBlock;
 import com.chefmooon.colourfulclocks.common.block.entity.WallClockBlockEntity;
 import com.chefmooon.colourfulclocks.common.block.properties.WallClockPartProperty;
-import com.chefmooon.colourfulclocks.common.data.MantelClockComponent;
+import com.chefmooon.colourfulclocks.common.data.WallClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.WallClockType;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
 import com.chefmooon.colourfulclocks.common.util.VoxelShapeUtil;
@@ -14,8 +15,10 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,10 +29,11 @@ import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -39,20 +43,20 @@ import net.minecraft.world.level.block.state.properties.EnumProperty;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.storage.loot.LootParams;
-import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.BiConsumer;
 
-public class WallClockBlock extends BaseDataClockBlock {
-//    public static final BooleanProperty XL = BooleanProperty.create("xl");
+public class WallClockBlock extends BaseWallClockBlock {
     public static final EnumProperty<WallClockPartProperty> PART = EnumProperty.create("part", WallClockPartProperty.class);
     private static final VoxelShape SHAPE_NORTH = Shapes.or(Block.box(0, 0, 0, 16, 16, 2));
     private final ConcurrentHashMap<Direction, VoxelShape> SHAPE;
@@ -67,238 +71,14 @@ public class WallClockBlock extends BaseDataClockBlock {
     public BlockState getStateForPlacement(BlockPlaceContext context) {
         FluidState fluid = context.getLevel().getFluidState(context.getClickedPos());
         Direction facing = context.getClickedFace().getAxis().isHorizontal() ? context.getClickedFace().getOpposite() : context.getHorizontalDirection();
-        MantelClockComponent component = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getBasicClockValue());
-        WallClockPartProperty part = getPartForPlacement(context);
-//        WallClockPartProperty part = WallClockPartProperty.BASE;
+        WallClockComponent component = context.getItemInHand().getOrDefault(ColourfulClocksDataComponentTypes.getWallClockData(), WallClockComponent.getDefaultValue());
         return this.defaultBlockState().setValue(FACING, facing)
-                .setValue(PART, part)
+                .setValue(PART, WallClockPartProperty.BASE)
                 .setValue(ACTIVATED, Boolean.TRUE)
                 .setValue(WATERLOGGED, fluid.getType() == Fluids.WATER)
-                .setValue(CAN_TICK,  component.getTicking().get())
+                .setValue(CAN_TICK,  component.isTicking().get())
                 .setValue(TICKING, Boolean.FALSE);
     }
-
-    // TODO: decide check part on placement or on update shape. Maybe both?
-    private WallClockPartProperty getPartForPlacement(BlockPlaceContext context) {
-        Level level = context.getLevel();
-        BlockPos pos = context.getClickedPos();
-        Direction facing = context.getClickedFace().getAxis().isHorizontal() ? context.getClickedFace().getOpposite() : context.getHorizontalDirection();
-
-        BlockState aboveBlockState = level.getBlockState(pos.above());
-        BlockState belowBlockState = level.getBlockState(pos.below());
-        BlockState leftBlockState = level.getBlockState(pos.relative(facing.getCounterClockWise()));
-        BlockState rightBlockState = level.getBlockState(pos.relative(facing.getClockWise()));
-
-        BlockState aboveLeftBlockState = level.getBlockState(pos.above().relative(facing.getCounterClockWise()));
-        BlockState aboveRightBlockState = level.getBlockState(pos.above().relative(facing.getClockWise()));
-        BlockState belowLeftBlockState = level.getBlockState(pos.below().relative(facing.getCounterClockWise()));
-        BlockState belowRightBlockState = level.getBlockState(pos.below().relative(facing.getClockWise()));
-
-        WallClockPartProperty part = WallClockPartProperty.BASE;
-
-        // Bottom Left XL
-        if (((isWallClockBlock(facing, belowBlockState) && !isPart(facing, belowBlockState, WallClockPartProperty.BASE) && !isPart(facing, belowBlockState, WallClockPartProperty.BOTTOM_LEFT_XL))
-                && isPart(facing, aboveBlockState, WallClockPartProperty.BASE) && isPart(facing, rightBlockState, WallClockPartProperty.BOTTOM_LEFT) && isPart(facing, aboveRightBlockState, WallClockPartProperty.TOP_LEFT))
-                || (isPart(facing, aboveBlockState, WallClockPartProperty.BASE) && isPart(facing, rightBlockState, WallClockPartProperty.BASE) && isPart(facing, aboveRightBlockState, WallClockPartProperty.BOTTOM_LEFT))
-                || ((isWallClockBlock(facing, leftBlockState) && !isPart(facing, leftBlockState, WallClockPartProperty.BASE) && !isPart(facing, leftBlockState, WallClockPartProperty.BOTTOM_LEFT_XL))
-                    && isPart(facing, aboveBlockState, WallClockPartProperty.BOTTOM_LEFT) && isPart(facing, rightBlockState, WallClockPartProperty.BASE) && isPart(facing, aboveRightBlockState, WallClockPartProperty.BOTTOM_RIGHT))) {
-            part = WallClockPartProperty.BOTTOM_LEFT_XL;
-        }
-
-        // Top Left XL
-        if (((isWallClockBlock(facing, aboveBlockState) && !isPart(facing, aboveBlockState, WallClockPartProperty.BASE) && !isPart(facing, aboveBlockState, WallClockPartProperty.TOP_LEFT_XL))
-                && isPart(facing, belowBlockState, WallClockPartProperty.BASE) && isPart(facing, rightBlockState, WallClockPartProperty.TOP_LEFT) && isPart(facing, belowRightBlockState, WallClockPartProperty.BOTTOM_LEFT))
-                || (isPart(facing, belowBlockState, WallClockPartProperty.BASE) && isPart(facing, rightBlockState, WallClockPartProperty.BASE) && isPart(facing, belowRightBlockState, WallClockPartProperty.TOP_LEFT))
-                || ((isWallClockBlock(facing, leftBlockState) && !isPart(facing, leftBlockState, WallClockPartProperty.BASE) && !isPart(facing, leftBlockState, WallClockPartProperty.TOP_LEFT_XL))
-                    && isPart(facing, aboveBlockState, WallClockPartProperty.TOP_LEFT) && isPart(facing, rightBlockState, WallClockPartProperty.BASE) && isPart(facing, belowRightBlockState, WallClockPartProperty.TOP_RIGHT))) {
-            part = WallClockPartProperty.TOP_LEFT_XL;
-        }
-
-        // Top Right XL
-        if (((isWallClockBlock(facing, aboveBlockState) && !isPart(facing, aboveBlockState, WallClockPartProperty.BASE) && !isPart(facing, aboveBlockState, WallClockPartProperty.TOP_RIGHT_XL))
-                && isPart(facing, belowBlockState, WallClockPartProperty.BASE) && isPart(facing, leftBlockState, WallClockPartProperty.TOP_RIGHT) && isPart(facing, belowLeftBlockState, WallClockPartProperty.BOTTOM_RIGHT))
-                || (isPart(facing, belowBlockState, WallClockPartProperty.BASE) && isPart(facing, leftBlockState, WallClockPartProperty.BASE) && isPart(facing, belowLeftBlockState, WallClockPartProperty.TOP_RIGHT))
-                || ((isWallClockBlock(facing, rightBlockState) && !isPart(facing, rightBlockState, WallClockPartProperty.BASE) && !isPart(facing, rightBlockState, WallClockPartProperty.TOP_RIGHT_XL))
-                    && isPart(facing, aboveBlockState, WallClockPartProperty.TOP_RIGHT) && isPart(facing, leftBlockState, WallClockPartProperty.BASE) && isPart(facing, belowLeftBlockState, WallClockPartProperty.TOP_LEFT))) {
-            part = WallClockPartProperty.TOP_RIGHT_XL;
-        }
-
-        // Bottom Right XL
-        if (((isWallClockBlock(facing, belowBlockState) && !isPart(facing, belowBlockState, WallClockPartProperty.BASE) && !isPart(facing, belowBlockState, WallClockPartProperty.BOTTOM_RIGHT_XL))
-                && isPart(facing, aboveBlockState, WallClockPartProperty.BASE) && isPart(facing, leftBlockState, WallClockPartProperty.BOTTOM_RIGHT) && isPart(facing, aboveLeftBlockState, WallClockPartProperty.TOP_RIGHT))
-                || (isPart(facing, aboveBlockState, WallClockPartProperty.BASE) && isPart(facing, leftBlockState, WallClockPartProperty.BASE) && isPart(facing, aboveLeftBlockState, WallClockPartProperty.BOTTOM_RIGHT))
-                || ((isWallClockBlock(facing, rightBlockState) && !isPart(facing, rightBlockState, WallClockPartProperty.BASE) && !isPart(facing, rightBlockState, WallClockPartProperty.BOTTOM_RIGHT_XL))
-                    && isPart(facing, belowBlockState, WallClockPartProperty.BOTTOM_RIGHT) && isPart(facing, leftBlockState, WallClockPartProperty.BASE) && isPart(facing, aboveLeftBlockState, WallClockPartProperty.BOTTOM_LEFT))) {
-            part = WallClockPartProperty.BOTTOM_RIGHT_XL;
-        }
-
-//        ColourfulClocks.LOGGER.info("Placing part: {} at {}", part, pos);
-        return part;
-    }
-
-    private void setPart(Level level, BlockPos pos, WallClockPartProperty part) {
-        BlockState state = level.getBlockState(pos);
-        if (state.getBlock() instanceof WallClockBlock) {
-            level.setBlock(pos, state.setValue(PART, part), Block.UPDATE_ALL);
-        }
-    }
-
-    // TODO: this needs refinement
-    @Override
-    public BlockState updateShape(BlockState state, Direction direction, BlockState neighborState, LevelAccessor level, BlockPos pos, BlockPos neighborPos) {
-        WallClockPartProperty part = state.getValue(PART);
-        Direction facing = state.getValue(FACING);
-        BlockState aboveBlockState = level.getBlockState(pos.above());
-        BlockState belowBlockState = level.getBlockState(pos.below());
-        BlockState leftBlockState = level.getBlockState(pos.relative(state.getValue(FACING).getCounterClockWise()));
-        BlockState rightBlockState = level.getBlockState(pos.relative(state.getValue(FACING).getClockWise()));
-
-        BlockState aboveLeftBlockState = level.getBlockState(pos.above().relative(state.getValue(FACING).getCounterClockWise()));
-        BlockState aboveRightBlockState = level.getBlockState(pos.above().relative(state.getValue(FACING).getClockWise()));
-        BlockState belowLeftBlockState = level.getBlockState(pos.below().relative(state.getValue(FACING).getCounterClockWise()));
-        BlockState belowRightBlockState = level.getBlockState(pos.below().relative(state.getValue(FACING).getClockWise()));
-
-        // Bottom Middle
-        if (((isPart(facing, leftBlockState, WallClockPartProperty.BOTTOM_LEFT_XL))
-                || (isPart(facing, rightBlockState, WallClockPartProperty.BOTTOM_RIGHT_XL)))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.BOTTOM_MIDDLE), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Top Middle
-        if (((isPart(facing, leftBlockState, WallClockPartProperty.TOP_LEFT_XL))
-                || (isPart(facing, rightBlockState, WallClockPartProperty.TOP_RIGHT_XL)))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.TOP_MIDDLE), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Left Middle
-        if (((isPart(facing, aboveBlockState, WallClockPartProperty.TOP_LEFT_XL))
-                || (isPart(facing, belowBlockState, WallClockPartProperty.BOTTOM_LEFT_XL)))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.LEFT_MIDDLE), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Right Middle
-        if (((isPart(facing, aboveBlockState, WallClockPartProperty.TOP_RIGHT_XL))
-                || (isPart(facing, belowBlockState, WallClockPartProperty.BOTTOM_RIGHT_XL)))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.RIGHT_MIDDLE), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Bottom Left
-        if ((part != WallClockPartProperty.TOP_RIGHT && isPart(facing, aboveBlockState, WallClockPartProperty.BASE) && isPart(facing, rightBlockState, WallClockPartProperty.BASE) && isPart(facing, aboveRightBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, aboveBlockState, WallClockPartProperty.TOP_LEFT) && isPart(facing, rightBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, rightBlockState, WallClockPartProperty.BOTTOM_RIGHT) && isPart(facing, aboveBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, aboveBlockState, WallClockPartProperty.TOP_LEFT) && isPart(facing, rightBlockState, WallClockPartProperty.BOTTOM_RIGHT))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.BOTTOM_LEFT), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Bottom Right
-        if ((part != WallClockPartProperty.TOP_LEFT && isPart(facing, aboveBlockState, WallClockPartProperty.BASE) && isPart(facing, leftBlockState, WallClockPartProperty.BASE) && isPart(facing, aboveLeftBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, aboveBlockState, WallClockPartProperty.TOP_RIGHT) && isPart(facing, leftBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, leftBlockState, WallClockPartProperty.BOTTOM_LEFT) && isPart(facing, aboveBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, aboveBlockState, WallClockPartProperty.TOP_RIGHT) && isPart(facing, leftBlockState, WallClockPartProperty.BOTTOM_LEFT))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.BOTTOM_RIGHT), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Top Left
-        if ((part != WallClockPartProperty.BOTTOM_RIGHT && isPart(facing, belowBlockState, WallClockPartProperty.BASE) && isPart(facing, rightBlockState, WallClockPartProperty.BASE) && isPart(facing, belowRightBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, belowBlockState, WallClockPartProperty.BOTTOM_LEFT) && isPart(facing, rightBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, rightBlockState, WallClockPartProperty.TOP_RIGHT) && isPart(facing, belowBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, belowBlockState, WallClockPartProperty.BOTTOM_LEFT) && isPart(facing, rightBlockState, WallClockPartProperty.TOP_RIGHT))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.TOP_LEFT), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Top Right
-        if ((part != WallClockPartProperty.BOTTOM_LEFT && isPart(facing, belowBlockState, WallClockPartProperty.BASE) && isPart(facing, leftBlockState, WallClockPartProperty.BASE) && isPart(facing, belowLeftBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, belowBlockState, WallClockPartProperty.BOTTOM_RIGHT) && isPart(facing, leftBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, leftBlockState, WallClockPartProperty.TOP_LEFT) && isPart(facing, belowBlockState, WallClockPartProperty.BASE))
-                || (isPart(facing, belowBlockState, WallClockPartProperty.BOTTOM_RIGHT) && isPart(facing, leftBlockState, WallClockPartProperty.TOP_LEFT))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.TOP_RIGHT), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Bottom Left XL
-        if ((isPart(facing, rightBlockState, WallClockPartProperty.BOTTOM_MIDDLE) && (isPart(facing, aboveBlockState, WallClockPartProperty.BOTTOM_LEFT) || isPart(facing, aboveBlockState, WallClockPartProperty.BASE)))
-                || (isPart(aboveBlockState, WallClockPartProperty.LEFT_MIDDLE) && (isPart(facing, rightBlockState, WallClockPartProperty.BOTTOM_LEFT) || isPart(facing, rightBlockState, WallClockPartProperty.BASE)))
-                || (isPart(rightBlockState, WallClockPartProperty.BOTTOM_MIDDLE) && isPart(aboveBlockState, WallClockPartProperty.LEFT_MIDDLE))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.BOTTOM_LEFT_XL), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Bottom Right XL
-        if ((isPart(leftBlockState, WallClockPartProperty.BOTTOM_MIDDLE) && (isPart(facing, aboveBlockState, WallClockPartProperty.BOTTOM_RIGHT) || isPart(facing, aboveBlockState, WallClockPartProperty.BASE)))
-                || (isPart(aboveBlockState, WallClockPartProperty.RIGHT_MIDDLE) && (isPart(facing, leftBlockState, WallClockPartProperty.BOTTOM_RIGHT) || isPart(facing, leftBlockState, WallClockPartProperty.BASE)))
-                || (isPart(leftBlockState, WallClockPartProperty.BOTTOM_MIDDLE) && isPart(aboveBlockState, WallClockPartProperty.RIGHT_MIDDLE))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.BOTTOM_RIGHT_XL), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Top Left XL
-        if ((isPart(rightBlockState, WallClockPartProperty.TOP_MIDDLE) && (isPart(facing, belowBlockState, WallClockPartProperty.TOP_LEFT) || isPart(facing, belowBlockState, WallClockPartProperty.BASE)))
-                || (isPart(belowBlockState, WallClockPartProperty.LEFT_MIDDLE) && (isPart(facing, rightBlockState, WallClockPartProperty.TOP_LEFT) || isPart(facing, rightBlockState, WallClockPartProperty.BASE)))
-                || (isPart(rightBlockState, WallClockPartProperty.TOP_MIDDLE) && isPart(belowBlockState, WallClockPartProperty.LEFT_MIDDLE))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.TOP_LEFT_XL), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Top Right XL
-        if ((isPart(leftBlockState, WallClockPartProperty.TOP_MIDDLE) && (isPart(facing, belowBlockState, WallClockPartProperty.TOP_RIGHT) || isPart(facing, belowBlockState, WallClockPartProperty.BASE)))
-                || (isPart(belowBlockState, WallClockPartProperty.RIGHT_MIDDLE) && (isPart(facing, leftBlockState, WallClockPartProperty.TOP_RIGHT) || isPart(facing, leftBlockState, WallClockPartProperty.BASE)))
-                || (isPart(leftBlockState, WallClockPartProperty.TOP_MIDDLE) && isPart(belowBlockState, WallClockPartProperty.RIGHT_MIDDLE))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.TOP_RIGHT_XL), direction, neighborState, level, pos, neighborPos);
-        }
-
-        // Center
-        if (hasParts(2,
-                (isPart(aboveBlockState, WallClockPartProperty.TOP_MIDDLE)) && facing == aboveBlockState.getValue(FACING),
-                (isPart(rightBlockState, WallClockPartProperty.RIGHT_MIDDLE)) && facing == rightBlockState.getValue(FACING),
-                (isPart(belowBlockState, WallClockPartProperty.BOTTOM_MIDDLE)) && facing == belowBlockState.getValue(FACING),
-                (isPart(leftBlockState, WallClockPartProperty.LEFT_MIDDLE)) && facing == leftBlockState.getValue(FACING))) {
-            return super.updateShape(state.setValue(PART, WallClockPartProperty.CENTER), direction, neighborState, level, pos, neighborPos);
-        }
-
-//        ColourfulClocks.LOGGER.info("Could not find valid multiblock for wall clock at {}, setting to BASE", pos);
-        return super.updateShape(state.setValue(PART, WallClockPartProperty.BASE), direction, neighborState, level, pos, neighborPos);
-//        return super.updateShape(state, direction, neighborState, level, pos, neighborPos);
-    }
-
-    private boolean hasParts(int count, Boolean... parts) {
-        int found = 0;
-        for (Boolean part : parts) {
-            if (part != null && part) found++;
-        }
-        return found >= count;
-    }
-
-    private boolean isPart(Direction facing, BlockState blockState, WallClockPartProperty part) {
-        return isWallClockBlock(blockState) && blockState.getValue(PART) == part && blockState.getValue(FACING) == facing;
-    }
-
-    private boolean isPart(BlockState blockState, WallClockPartProperty part) {
-        return isWallClockBlock(blockState) && blockState.getValue(PART) == part;
-    }
-
-    private boolean isWallClockBlock(Direction facing, BlockState blockState) {
-        return isWallClockBlock(blockState) && blockState.getValue(FACING) == facing;
-    }
-
-    private boolean isWallClockBlock(BlockState blockState) {
-        return blockState.getBlock() instanceof WallClockBlock;
-    }
-
-    private boolean canConnect(BlockState state) {
-
-
-        return false;
-    }
-
-
-//    private boolean tryUpdateFullShape(WallClockPartProperty part, BlockState state, LevelAccessor level, BlockPos pos) {
-//        for (WallClockPartProperty partProperty : WallClockPartProperty.values()) {
-//            if (part == partProperty) continue;
-//            BlockPos controllerPos = pos.relative(state.getValue(FACING).getCounterClockWise()).offset(0, -partProperty.getOffset().first().yOffset(), 0);
-//            BlockPos partPos = controllerPos.relative(state.getValue(FACING).getClockWise(), partProperty.getOffset().first().xOffset()).offset(0, partProperty.getOffset().first().yOffset(), 0);
-//            BlockState blockState = level.getBlockState(partPos);
-//            if (blockState.getBlock() instanceof WallClockBlock) {
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
 
     @Override
     protected void createBlockStateDefinition(final StateDefinition.Builder<Block, BlockState> builder) {
@@ -313,9 +93,6 @@ public class WallClockBlock extends BaseDataClockBlock {
 
     @Override
     public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-//        BlockEntity blockEntity = level.getBlockEntity(pos);
-//        BlockEntity blockEntity = state.getValue(PART) == WallClockPartProperty.BASE || state.getValue(PART) == WallClockPartProperty.BOTTOM_LEFT ?
-//                level.getBlockEntity(pos) : getController(state, pos, level);
         BlockEntity blockEntity = getController(state, pos, level);
         if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
             ItemStack mainHandItem = player.getItemInHand(hand);
@@ -341,22 +118,9 @@ public class WallClockBlock extends BaseDataClockBlock {
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    private BlockEntity getController(BlockState state, BlockPos pos, Level level) {
-        WallClockPartProperty part = state.getValue(PART);
-        if (part.isController()) return level.getBlockEntity(pos);
-        Direction facing = state.getValue(FACING);
-        int xOffset = part.getxOffset();
-        BlockPos partPos = pos.offset(0, -part.getyOffset(), 0);
-        if (xOffset != 0) {
-            partPos = partPos.relative(xOffset < 0 ? facing.getClockWise() : facing.getCounterClockWise(), Math.abs(xOffset));
-        }
-        BlockEntity blockEntity = level.getBlockEntity(partPos);
-        return blockEntity;
-    }
-
     @Override
     public @Nullable BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return BuiltInRegistries.BLOCK_ENTITY_TYPE.get(ColourfulClocksBlockEntities.WALL_CLOCK).create(pos, state);
+        return Objects.requireNonNull(BuiltInRegistries.BLOCK_ENTITY_TYPE.get(ColourfulClocksBlockEntities.WALL_CLOCK)).create(pos, state);
     }
 
     @SuppressWarnings("unchecked")
@@ -369,63 +133,221 @@ public class WallClockBlock extends BaseDataClockBlock {
 
     @Override
     public ItemStack getCloneItemStack(LevelReader level, BlockPos pos, BlockState state) {
-        BlockEntity blockEntity = level.getBlockEntity(pos);
+        BlockEntity blockEntity = level.getBlockEntity(getControllerPos(state, pos));
         if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
-            return wallClockBlockEntity.getBlockAsItem(this.clockType);
+            WallClockComponent component = wallClockBlockEntity.getData();
+            ResourceLocation clockLocation = getClockLocation(component);
+            ItemStack itemStack = BuiltInRegistries.ITEM.get(clockLocation).getDefaultInstance();
+            itemStack.applyComponents(wallClockBlockEntity.collectComponents());
+            return itemStack;
         } else {
             return super.getCloneItemStack(level, pos, state);
         }
     }
 
     @Override
-    public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
-        List<ItemStack> drops = super.getDrops(state, params);
-
-        LootParams context = params.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
-        ItemStack tool = context.getParamOrNull(LootContextParams.TOOL);
-        ServerLevel serverLevel = context.getLevel();
-        boolean hasSilkTouch = tool != null && tool.isEnchanted() && EnchantmentHelper.getItemEnchantmentLevel(serverLevel.registryAccess().registry(Registries.ENCHANTMENT).get().getHolderOrThrow(Enchantments.SILK_TOUCH), tool) > 0;
-
-        if (!hasSilkTouch) {
-            BlockEntity blockEntity = context.getParamOrNull(LootContextParams.BLOCK_ENTITY);
-            if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
-                if (state.getValue(PART) == WallClockPartProperty.BASE || state.getValue(PART) == WallClockPartProperty.BOTTOM_LEFT) {
-                    drops.addAll(wallClockBlockEntity.getDroppableInventory());
+    public void onExplosionHit(BlockState state, Level level, BlockPos pos, Explosion explosion, BiConsumer<ItemStack, BlockPos> dropConsumer) {
+        if (!state.isAir() && explosion.getBlockInteraction() != Explosion.BlockInteraction.TRIGGER_BLOCK) {
+            Block block = state.getBlock();
+            boolean bl = explosion.getIndirectSourceEntity() instanceof Player;
+            if (block.dropFromExplosion(explosion) && level instanceof ServerLevel serverLevel) {
+                BlockEntity blockEntity = state.hasBlockEntity() ? level.getBlockEntity(pos) : null;
+                LootParams.Builder builder = (new LootParams.Builder(serverLevel)).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(pos)).withParameter(LootContextParams.TOOL, ItemStack.EMPTY).withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockEntity).withOptionalParameter(LootContextParams.THIS_ENTITY, explosion.getDirectSourceEntity());
+                if (explosion.getBlockInteraction() == Explosion.BlockInteraction.DESTROY_WITH_DECAY) {
+                    builder.withParameter(LootContextParams.EXPLOSION_RADIUS, explosion.radius());
                 }
+
+                destroy(level, pos, state, true, null);
+                state.spawnAfterBreak(serverLevel, pos, ItemStack.EMPTY, bl);
             }
+
+            level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
+            block.wasExploded(level, pos, explosion);
         }
-        return drops;
     }
 
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-        super.setPlacedBy(level, pos, state, placer, stack);
-        // TODO: test placed implementation, decide data passing
         if (!level.isClientSide) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
-                MantelClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getMantelClockData(), MantelClockComponent.getBasicClockValue());
-                if (component != null) {
-                    wallClockBlockEntity.setData(component);
+            if (stack.has(ColourfulClocksDataComponentTypes.getWallClockData())) {
+                WallClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getWallClockData(), WallClockComponent.getDefaultValue());
+                WallClockType type = component.getType();
+                if (type != null) {
+                    if (type == WallClockType.SMALL) {
+                        setPlacedBySmall(level, pos, component);
+                    } else if (type == WallClockType.MEDIUM) {
+                        setPlacedByMedium(level, pos, state, component);
+                    } else if (type == WallClockType.LARGE) {
+                        setPlacedByLarge(level, pos, state, component);
+                    }
                 }
             }
-
-//            BlockEntity blockEntity = level.getBlockEntity(pos);
-//            BlockEntity blockEntity = state.getValue(PART) == WallClockPartProperty.BASE || state.getValue(PART) == WallClockPartProperty.BOTTOM_LEFT ?
-//                    level.getBlockEntity(pos) : getController(state, pos, level);
-            // the below will pass placed data to the controller, decide implementation
-//            BlockEntity blockEntity = getController(state, pos, level);
-//            if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
-//                MantelClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getClockData(), MantelClockComponent.getBasicClockValue());
-//                if (component != null) {
-//                    wallClockBlockEntity.setData(null, component.getPocketWatchType().get(), null, component.getTicking().get());
-//                    if (wallClockBlockEntity.getData().getPocketWatchType().get().getId() != 0 && wallClockBlockEntity.getData().getPocketWatchType().get() != component.getPocketWatchType().get()) {
-//                        if (component.getPocketWatchType().get() != PocketWatchTypes.EMPTY) {
-//                            wallClockBlockEntity.setPocketWatchType(ColourfulClocksTypeUtil.getPocketWatchItemFromType(component.getPocketWatchType().get()).getDefaultInstance());
-//                        }
-//                    }
-//                }
-//            }
         }
+        super.setPlacedBy(level, pos, state, placer, stack);
+    }
+
+    private void setPlacedBySmall(Level level, BlockPos pos, WallClockComponent component) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
+            if (component != null) {
+                wallClockBlockEntity.setData(component);
+            }
+        }
+    }
+
+    private void setPlacedByMedium(Level level, BlockPos pos, BlockState state, WallClockComponent component) {
+        Direction facing = state.getValue(FACING);
+        for (WallClockPartProperty part : WallClockPartProperty.mediumParts()) {
+            BlockPos partPos = offsetPosForPart(pos.above().relative(facing.getClockWise()), facing, part);
+            boolean isWaterlogged = level.getFluidState(partPos).getType() == Fluids.WATER;
+            level.setBlock(partPos, state.setValue(PART, part).setValue(WATERLOGGED, isWaterlogged), Block.UPDATE_ALL);
+            if (part.isController()) {
+                setControllerData(level, partPos, component);
+            } else {
+                setSupportingClockData(level, partPos, component);
+            }
+        }
+    }
+
+    private void setPlacedByLarge(Level level, BlockPos pos, BlockState state, WallClockComponent component) {
+        Direction facing = state.getValue(FACING);
+        for (WallClockPartProperty part : WallClockPartProperty.largeParts()) {
+            BlockPos partPos = offsetPosForPart(pos, facing, part);
+            boolean isWaterlogged = level.getFluidState(partPos).getType() == Fluids.WATER;
+            level.setBlock(partPos, state.setValue(PART, part).setValue(WATERLOGGED, isWaterlogged), Block.UPDATE_ALL);
+            if (part.isController()) {
+                setControllerData(level, partPos, component);
+            } else {
+                setSupportingClockData(level, partPos, component);
+            }
+        }
+    }
+
+    private static void setControllerData(Level level, BlockPos pos, WallClockComponent component) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
+            if (component != null) {
+                wallClockBlockEntity.setData(component);
+            }
+        }
+    }
+
+    private static void setSupportingClockData(Level level, BlockPos pos, WallClockComponent component) {
+        BlockEntity blockEntity = level.getBlockEntity(pos);
+        if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
+            if (component != null) {
+                wallClockBlockEntity.setSupportingClockData(component);
+            }
+        }
+    }
+
+    @Override
+    public BlockState playerWillDestroy(Level level, BlockPos pos, BlockState state, Player player) {
+        destroy(level, pos, state, !level.isClientSide && !player.getAbilities().instabuild, player);
+        return super.playerWillDestroy(level, pos, state, player);
+    }
+
+    private void destroy(Level level, BlockPos pos, BlockState state, boolean dropBlock, @Nullable Player player) {
+        if (!state.is(this)) return;
+
+        BlockPos controllerPos = getControllerPos(state, pos);
+        BlockState controllerState = level.getBlockState(controllerPos);
+
+        WallClockComponent component = WallClockComponent.getDefaultValue();
+        BlockEntity controllerEntity = level.getBlockEntity(controllerPos);
+        if (controllerEntity instanceof WallClockBlockEntity controllerClockEntity) {
+            component = controllerClockEntity.collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getWallClockData(), WallClockComponent.getDefaultValue());
+        }
+
+        if (dropBlock && component != null) {
+            getWallClockDrops(level, controllerPos, controllerEntity, component, player);
+        }
+
+        if (controllerState.getBlock() instanceof WallClockBlock) {
+            Direction facing = controllerState.getValue(FACING);
+
+            Set<WallClockPartProperty> partsToClear = switch (component.type()) {
+                case SMALL -> WallClockPartProperty.smallParts();
+                case MEDIUM -> WallClockPartProperty.mediumParts();
+                case LARGE -> WallClockPartProperty.largeParts();
+            };
+
+            for (WallClockPartProperty partProp : partsToClear) {
+                BlockPos partPos = offsetPosForPart(controllerPos, facing, partProp);
+                BlockState partState = level.getBlockState(partPos);
+                if (partState.getBlock() instanceof WallClockBlock) {
+                    if (partState.getValue(PART) == partProp) {
+                        level.setBlock(partPos, partState.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState(), 35);
+                        if (player != null) {
+                            level.levelEvent(player, 2001, partPos, Block.getId(partState));
+                        }
+                    }
+                }
+            }
+        } else {
+            level.setBlock(controllerPos, state.getValue(WATERLOGGED) ? Blocks.WATER.defaultBlockState() : Blocks.AIR.defaultBlockState(), 35);
+            if (player != null) level.levelEvent(player, 2001, controllerPos, Block.getId(controllerState));
+        }
+    }
+
+    private void getWallClockDrops(Level level, BlockPos controllerPos, BlockEntity controllerEntity, WallClockComponent component, @Nullable Player player) {
+        ResourceLocation clockLocation = getClockLocation(component);
+        if (clockLocation != null && !level.isClientSide()) {
+            ServerLevel serverLevel = (ServerLevel) level;
+            boolean hasSilkTouch = player != null && EnchantmentHelper.getItemEnchantmentLevel(serverLevel.registryAccess().registry(Registries.ENCHANTMENT).get().getHolderOrThrow(Enchantments.SILK_TOUCH), player.getMainHandItem()) > 0;
+            ItemStack drop = BuiltInRegistries.ITEM.get(clockLocation).getDefaultInstance();
+            if (hasSilkTouch) {
+                drop.set(ColourfulClocksDataComponentTypes.getWallClockData(), component);
+            } else if (controllerEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
+                Containers.dropContents(level, controllerPos, wallClockBlockEntity.getDroppableInventory());
+            }
+            Containers.dropItemStack(level, controllerPos.getX(), controllerPos.getY(), controllerPos.getZ(), drop);
+        }
+    }
+
+    private ResourceLocation getClockLocation(WallClockComponent component) {
+        ResourceLocation clockLocation = null;
+        if (component.type() == WallClockType.SMALL) {
+            clockLocation = ColourfulClocksBlocks.WALL_CLOCK.withSuffix(clockType.getSerializedName());
+        } else if (component.type() == WallClockType.MEDIUM) {
+            clockLocation = ColourfulClocksBlocks.WALL_CLOCK.withSuffix(clockType.getSerializedName() + "_medium");
+        } else if (component.type() == WallClockType.LARGE) {
+            clockLocation = ColourfulClocksBlocks.WALL_CLOCK.withSuffix(clockType.getSerializedName() + "_large");
+        }
+        return clockLocation;
+    }
+
+    private BlockPos offsetPosForPart(BlockPos controllerPos, Direction facing, WallClockPartProperty part) {
+        int xOffset = part.getxOffset();
+        int yOffset = part.getyOffset();
+
+        BlockPos pos = controllerPos;
+        if (xOffset != 0) {
+            Direction horizontal = xOffset > 0 ? facing.getClockWise() : facing.getCounterClockWise();
+            pos = pos.relative(horizontal, Math.abs(xOffset));
+        }
+        if (yOffset != 0) {
+            pos = pos.above(yOffset);
+        }
+        return pos;
+    }
+
+    private BlockPos getControllerPos(BlockState state, BlockPos blockPos) {
+        WallClockPartProperty part = state.getValue(PART);
+        BlockPos controllerPos = blockPos;
+        if (!part.isController()) {
+            Direction facing = state.getValue(FACING);
+            int xOffset = part.getxOffset();
+            if (xOffset != 0) {
+                Direction horizontal = xOffset > 0 ? facing.getCounterClockWise() : facing.getClockWise();
+                controllerPos = controllerPos.relative(horizontal, Math.abs(xOffset));
+            }
+            controllerPos = controllerPos.offset(0, -part.getyOffset(), 0);
+        }
+        return controllerPos;
+    }
+
+    public BlockEntity getController(BlockState state, BlockPos blockPos, Level level) {
+        return level.getBlockEntity(getControllerPos(state, blockPos));
     }
 }

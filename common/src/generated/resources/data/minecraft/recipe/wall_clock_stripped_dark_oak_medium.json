@@ -1,0 +1,22 @@
+{
+  "type": "colourfulclocks:wall_clock",
+  "category": "misc",
+  "group": "wall_clock_stripped_dark_oak",
+  "key": {
+    "A": {
+      "item": "minecraft:stripped_dark_oak_wood"
+    },
+    "B": {
+      "item": "colourfulclocks:wall_clock_stripped_dark_oak"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_stripped_dark_oak_medium"
+  }
+}

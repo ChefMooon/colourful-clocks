@@ -42,6 +42,10 @@ public class ColourfulClocksDataComponentTypesImpl {
             ColourfulClocksDataComponentTypes.ALARM_CLOCK.getPath(), alarmClockComponentBuilder -> alarmClockComponentBuilder.persistent(AlarmClockComponent.CODEC).networkSynchronized(AlarmClockComponent.STREAM_CODEC)
     );
 
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<WallClockComponent>> WALL_CLOCK_DATA = DATA_COMPONENTS.registerComponentType(
+            ColourfulClocksDataComponentTypes.WALL_CLOCK.getPath(), wallClockComponentBuilder -> wallClockComponentBuilder.persistent(WallClockComponent.CODEC).networkSynchronized(WallClockComponent.STREAM_CODEC)
+    );
+
     public static DataComponentType<Boolean> getPocketWatchClosedData() {
         return POCKET_WATCH_CLOSED.get();
     }
@@ -72,6 +76,10 @@ public class ColourfulClocksDataComponentTypesImpl {
 
     public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
         return ALARM_CLOCK_DATA.get();
+    }
+
+    public static DataComponentType<WallClockComponent> getWallClockData() {
+        return WALL_CLOCK_DATA.get();
     }
 
     public static void register(IEventBus eventBus) {

@@ -1,0 +1,22 @@
+{
+  "type": "colourfulclocks:wall_clock",
+  "category": "misc",
+  "group": "wall_clock_cut_sandstone",
+  "key": {
+    "A": {
+      "item": "minecraft:cut_sandstone"
+    },
+    "B": {
+      "item": "colourfulclocks:wall_clock_cut_sandstone_medium"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_cut_sandstone_large"
+  }
+}

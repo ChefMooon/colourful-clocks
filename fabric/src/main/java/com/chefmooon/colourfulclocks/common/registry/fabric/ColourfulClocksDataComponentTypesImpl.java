@@ -41,6 +41,10 @@ public class ColourfulClocksDataComponentTypesImpl {
             ColourfulClocksDataComponentTypes.ALARM_CLOCK.getPath(), alarmClockComponentBuilder -> alarmClockComponentBuilder.persistent(AlarmClockComponent.CODEC).networkSynchronized(AlarmClockComponent.STREAM_CODEC)
     );
 
+    public static final DataComponentType<WallClockComponent> WALL_CLOCK_DATA = register(
+            ColourfulClocksDataComponentTypes.WALL_CLOCK.getPath(), wallClockComponentBuilder -> wallClockComponentBuilder.persistent(WallClockComponent.CODEC).networkSynchronized(WallClockComponent.STREAM_CODEC)
+    );
+
     private static <T> DataComponentType<T> register(String name, UnaryOperator<DataComponentType.Builder<T>> builder) {
         return (DataComponentType) Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, TextUtil.res(name), ((DataComponentType.Builder)builder.apply(DataComponentType.builder())).build());
     }
@@ -75,6 +79,10 @@ public class ColourfulClocksDataComponentTypesImpl {
 
     public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
         return ALARM_CLOCK_DATA;
+    }
+
+    public static DataComponentType<WallClockComponent> getWallClockData() {
+        return WALL_CLOCK_DATA;
     }
 
     public static void register() {

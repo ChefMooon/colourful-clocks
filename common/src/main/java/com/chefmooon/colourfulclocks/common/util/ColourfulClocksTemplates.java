@@ -76,6 +76,25 @@ public class ColourfulClocksTemplates {
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
     public static final ModelTemplate WALL_CLOCK_ITEM = item("template_wall_clock",
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL, ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
+    public static final ModelTemplate WALL_CLOCK_MEDIUM_ITEM = item("template_wall_clock_medium",
+            TextureSlot.SIDE,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MEDIUM_BOTTOM_LEFT,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MEDIUM_BOTTOM_RIGHT,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MEDIUM_TOP_LEFT,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MEDIUM_TOP_RIGHT,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
+    public static final ModelTemplate WALL_CLOCK_LARGE_ITEM = item("template_wall_clock_large",
+            TextureSlot.SIDE,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_BOTTOM_LEFT,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_BOTTOM_RIGHT,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_TOP_LEFT,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_TOP_RIGHT,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_LEFT_MIDDLE,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_RIGHT_MIDDLE,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_BOTTOM_MIDDLE,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_TOP_MIDDLE,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_LARGE_CENTER,
+            ColourfulClocksTextureSlots.CLOCK_DIAL_MARKS);
 
     public static final ModelTemplate ALARM_CLOCK = block("template_alarm_clock",
             TextureSlot.SIDE, ColourfulClocksTextureSlots.CLOCK_DIAL,

@@ -19,7 +19,9 @@ public class ColourfulClocksTags {
     public static final TagKey<Item> BORNHOLM_DIAL = getItemTagKey("bornholm_dial");
     public static final TagKey<Item> MANTEL_CLOCK = getItemTagKey("mantel_clock");
     public static final TagKey<Item> TALL_MANTEL_CLOCK = getItemTagKey("tall_mantel_clock");
-    public static final TagKey<Item> WALL_CLOCK = getItemTagKey("wall_clock");
+    public static final TagKey<Item> WALL_CLOCK_SMALL = getItemTagKey("wall_clock_small");
+    public static final TagKey<Item> WALL_CLOCK_MEDIUM = getItemTagKey("wall_clock_medium");
+    public static final TagKey<Item> WALL_CLOCK_LARGE = getItemTagKey("wall_clock_large");
     public static final TagKey<Item> ALARM_CLOCK = getItemTagKey("alarm_clock");
 
     public static final TagKey<Block> BLOCK_BORNHOLM_BASE = getBlockTagKey("bornholm_base");

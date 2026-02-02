@@ -1,5 +1,8 @@
 package com.chefmooon.colourfulclocks.common.crafting;
 
+import com.chefmooon.colourfulclocks.common.data.WallClockComponent;
+import com.chefmooon.colourfulclocks.common.data.types.WallClockType;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksRecipeSerializers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
@@ -67,7 +70,19 @@ public class WallClockShapedRecipe implements CraftingRecipe { // TODO: unused r
     }
 
     public ItemStack assemble(CraftingInput input, HolderLookup.Provider registries) {
-        return this.getResultItem(registries).copy();
+        ItemStack result = this.getResultItem(registries).copy();
+        for (int i = 0; i < input.ingredientCount(); i++) {
+            ItemStack stack = input.getItem(i);
+            if (stack.has(ColourfulClocksDataComponentTypes.getWallClockData())) {
+                WallClockComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getWallClockData(), WallClockComponent.getDefaultValue());
+                WallClockType type = switch(component.getType()) {
+                    case SMALL -> WallClockType.MEDIUM;
+                    case MEDIUM, LARGE -> WallClockType.LARGE;
+                };
+                result.set(ColourfulClocksDataComponentTypes.getWallClockData(), new WallClockComponent(type, component.getPocketWatch(), component.isTicking()));
+            }
+        }
+        return result;
     }
 
     public int getWidth() {
@@ -91,7 +106,7 @@ public class WallClockShapedRecipe implements CraftingRecipe { // TODO: unused r
                 ItemStack.STRICT_CODEC.fieldOf("result").forGetter((shapedRecipe) -> shapedRecipe.result),
                 Codec.BOOL.optionalFieldOf("show_notification", true).forGetter((shapedRecipe) -> shapedRecipe.showNotification)
         ).apply(instance, WallClockShapedRecipe::new));
-        public static final StreamCodec<RegistryFriendlyByteBuf, WallClockShapedRecipe> STREAM_CODEC = StreamCodec.of(WallClockShapedRecipe.Serializer::toNetwork, WallClockShapedRecipe.Serializer::fromNetwork);
+        public static final StreamCodec<RegistryFriendlyByteBuf, WallClockShapedRecipe> STREAM_CODEC = StreamCodec.of(Serializer::toNetwork, Serializer::fromNetwork);
 
         public MapCodec<WallClockShapedRecipe> codec() {
             return CODEC;

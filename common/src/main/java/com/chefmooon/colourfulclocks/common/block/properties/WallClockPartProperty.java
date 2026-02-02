@@ -2,6 +2,7 @@ package com.chefmooon.colourfulclocks.common.block.properties;
 
 import net.minecraft.util.StringRepresentable;
 
+import java.util.EnumSet;
 import java.util.Locale;
 
 public enum WallClockPartProperty implements StringRepresentable {
@@ -52,5 +53,21 @@ public enum WallClockPartProperty implements StringRepresentable {
 
     public boolean isController() {
         return this == BASE || this == TOP_RIGHT || this == CENTER;
+    }
+
+    public static EnumSet<WallClockPartProperty> smallParts() {
+        return EnumSet.of(BASE);
+    }
+
+    public static EnumSet<WallClockPartProperty> mediumParts() {
+        return EnumSet.of(BOTTOM_LEFT, BOTTOM_RIGHT, TOP_LEFT, TOP_RIGHT);
+    }
+
+    public static EnumSet<WallClockPartProperty> largeParts() {
+        return EnumSet.of(
+                BOTTOM_LEFT_XL, BOTTOM_MIDDLE, BOTTOM_RIGHT_XL,
+                LEFT_MIDDLE, CENTER, RIGHT_MIDDLE,
+                TOP_LEFT_XL, TOP_MIDDLE, TOP_RIGHT_XL
+        );
     }
 }

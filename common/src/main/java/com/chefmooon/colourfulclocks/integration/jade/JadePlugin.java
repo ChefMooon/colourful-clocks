@@ -26,7 +26,7 @@ public class JadePlugin implements IWailaPlugin {
         registration.registerBlockComponent(PendulumDataProvider.INSTANCE, TallMantelClockBlock.class);
         registration.registerBlockComponent(TickingDataProvider.INSTANCE, TallMantelClockBlock.class);
 
-        registration.registerBlockComponent(PocketWatchDataProvider.INSTANCE, WallClockBlock.class);
+        registration.registerBlockComponent(WallClockDataProvider.INSTANCE, WallClockBlock.class);
 
         registration.registerBlockComponent(AlarmClockDataProvider.INSTANCE, AlarmClockBlock.class);
     }
@@ -44,7 +44,7 @@ public class JadePlugin implements IWailaPlugin {
         registration.registerBlockDataProvider(PendulumDataProvider.INSTANCE, TallMantelClockBlock.class);
         registration.registerBlockDataProvider(TickingDataProvider.INSTANCE, TallMantelClockBlock.class);
 
-        registration.registerBlockDataProvider(PocketWatchDataProvider.INSTANCE, WallClockBlock.class);
+        registration.registerBlockDataProvider(WallClockDataProvider.INSTANCE, WallClockBlock.class);
 
         registration.registerBlockDataProvider(AlarmClockDataProvider.INSTANCE, AlarmClockBlock.class);
     }

@@ -394,7 +394,11 @@
   "colourfulclocks.subtitles.block.enable_ticking": "Ticking Enabled",
   "colourfulclocks.subtitles.item.handbell.hit": "Handbell Hit",
   "colourfulclocks.subtitles.item.handbell.ring": "Handbell Ring",
+  "colourfulclocks.tooltip.invalid_wall_clock_placement": "Clock Blocked",
   "colourfulclocks.tooltip.ticking": "Ticking",
+  "colourfulclocks.tooltip.wall_clock_type.large": "Large",
+  "colourfulclocks.tooltip.wall_clock_type.medium": "Medium",
+  "colourfulclocks.tooltip.wall_clock_type.small": "Small",
   "colourfulclocks.tooltip.weathering": "Weathering",
   "config.jade.plugin_colourfulclocks.alarm_clock_data": "Ticking",
   "config.jade.plugin_colourfulclocks.bornholm_dial_glass_type": "Bornholm Dial Glass Type",
@@ -403,6 +407,7 @@
   "config.jade.plugin_colourfulclocks.pendulum_type": "Pendulum Type",
   "config.jade.plugin_colourfulclocks.pocket_watch_type": "Pocket Watch Type",
   "config.jade.plugin_colourfulclocks.ticking": "Ticking",
+  "config.jade.plugin_colourfulclocks.wall_clock_data": "Wall Clock",
   "config.waila.plugin_colourfulclocks": "Colourful Clocks",
   "config.waila.plugin_colourfulclocks.bornholm_dial_glass_type": "Bornholm Dial Glass Type",
   "config.waila.plugin_colourfulclocks.bornholm_trunk_door_type": "Bornholm Trunk Door Type",
@@ -455,5 +460,7 @@
   "tag.item.colourfulclocks.handbell": "Handbell",
   "tag.item.colourfulclocks.mantel_clock": "Mantel Clock",
   "tag.item.colourfulclocks.tall_mantel_clock": "Tall Mantel Clock",
-  "tag.item.colourfulclocks.wall_clock": "Wall Clock"
+  "tag.item.colourfulclocks.wall_clock_large": "Wall Clock Large",
+  "tag.item.colourfulclocks.wall_clock_medium": "Wall Clock Medium",
+  "tag.item.colourfulclocks.wall_clock_small": "Wall Clock Small"
 }

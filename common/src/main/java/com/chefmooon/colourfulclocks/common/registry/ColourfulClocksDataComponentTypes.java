@@ -18,6 +18,7 @@ public class ColourfulClocksDataComponentTypes {
 
     public static final ResourceLocation MANTEL_CLOCK = dataComponent("mantel_clock");
     public static final ResourceLocation ALARM_CLOCK = dataComponent("alarm_clock");
+    public static final ResourceLocation WALL_CLOCK = dataComponent("wall_clock");
 
     @ExpectPlatform
     public static DataComponentType<Boolean> getPocketWatchClosedData() {
@@ -56,6 +57,11 @@ public class ColourfulClocksDataComponentTypes {
 
     @ExpectPlatform
     public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
+        throw new AssertionError();
+    }
+
+    @ExpectPlatform
+    public static DataComponentType<WallClockComponent> getWallClockData() {
         throw new AssertionError();
     }
 

@@ -1,0 +1,22 @@
+{
+  "type": "colourfulclocks:wall_clock",
+  "category": "misc",
+  "group": "wall_clock_polished_andesite",
+  "key": {
+    "A": {
+      "item": "minecraft:polished_andesite"
+    },
+    "B": {
+      "item": "colourfulclocks:wall_clock_polished_andesite"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_polished_andesite_medium"
+  }
+}

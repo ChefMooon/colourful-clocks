@@ -221,8 +221,8 @@ public class RecipeGenerator extends FabricRecipeProvider {
 
     private static void buildWallClockRecipes() {
         for (ClockTypes clockType : ClockTypes.values()) {
-            ItemLike result = ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS.get(clockType).get();
-            ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result)
+            ItemLike resultSmall = ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS.get(clockType).get();
+            ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, resultSmall)
                     .pattern("AAA")
                     .pattern("ABA")
                     .pattern("AAA")
@@ -230,7 +230,29 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .define('B', Items.QUARTZ)
                     .group("wall_clock_" + clockType.getName())
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(clockType.getCraftingIngredient(), Items.QUARTZ)))
-                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result));
+                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(resultSmall));
+
+            ItemLike resultMedium = ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS_MEDIUM.get(clockType).get();
+            WallClockShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, resultMedium)
+                    .pattern("AAA")
+                    .pattern("ABA")
+                    .pattern("AAA")
+                    .define('A', clockType.getCraftingIngredient())
+                    .define('B', resultSmall)
+                    .group("wall_clock_" + clockType.getName())
+                    .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(clockType.getCraftingIngredient(), resultSmall)))
+                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(resultMedium));
+
+            ItemLike resultLarge = ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS_LARGE.get(clockType).get();
+            WallClockShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, resultLarge)
+                    .pattern("AAA")
+                    .pattern("ABA")
+                    .pattern("AAA")
+                    .define('A', clockType.getCraftingIngredient())
+                    .define('B', resultMedium)
+                    .group("wall_clock_" + clockType.getName())
+                    .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(clockType.getCraftingIngredient(), resultMedium)))
+                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(resultLarge));
         }
     }
 

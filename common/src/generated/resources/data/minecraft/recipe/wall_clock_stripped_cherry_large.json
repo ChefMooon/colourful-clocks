@@ -1,0 +1,22 @@
+{
+  "type": "colourfulclocks:wall_clock",
+  "category": "misc",
+  "group": "wall_clock_stripped_cherry",
+  "key": {
+    "A": {
+      "item": "minecraft:stripped_cherry_wood"
+    },
+    "B": {
+      "item": "colourfulclocks:wall_clock_stripped_cherry_medium"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_stripped_cherry_large"
+  }
+}

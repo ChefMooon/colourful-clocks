@@ -1,0 +1,22 @@
+{
+  "type": "colourfulclocks:wall_clock",
+  "category": "misc",
+  "group": "wall_clock_warped",
+  "key": {
+    "A": {
+      "item": "minecraft:warped_hyphae"
+    },
+    "B": {
+      "item": "colourfulclocks:wall_clock_warped_medium"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_warped_large"
+  }
+}

@@ -2,10 +2,7 @@ package com.chefmooon.colourfulclocks.common.registry.neoforge;
 
 import com.chefmooon.colourfulclocks.ColourfulClocks;
 import com.chefmooon.colourfulclocks.common.data.*;
-import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
-import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PendulumTypes;
-import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
+import com.chefmooon.colourfulclocks.common.data.types.*;
 import com.chefmooon.colourfulclocks.common.item.*;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import com.google.common.collect.Sets;
@@ -34,6 +31,8 @@ public class ColourfulClocksItemsImpl {
     public static final HashMap<ClockTypes, Supplier<Item>> MANTEL_CLOCK_VARIANTS = new HashMap<>();
     public static final HashMap<ClockTypes, Supplier<Item>> TALL_MANTEL_CLOCK_VARIANTS = new HashMap<>();
     public static final HashMap<ClockTypes, Supplier<Item>> WALL_CLOCK_VARIANTS = new HashMap<>();
+    public static final HashMap<ClockTypes, Supplier<Item>> WALL_CLOCK_VARIANTS_MEDIUM = new HashMap<>();
+    public static final HashMap<ClockTypes, Supplier<Item>> WALL_CLOCK_VARIANTS_LARGE = new HashMap<>();
     public static final HashMap<ClockTypes, Supplier<Item>> ALARM_CLOCK_VARIANTS = new HashMap<>();
 
     public static final Supplier<Item> IRON_HANDBELL = registerItemWithTab(ColourfulClocksItems.IRON_HANDBELL,
@@ -291,8 +290,20 @@ public class ColourfulClocksItemsImpl {
             // Wall Clock
             Supplier<Item> wallClockItem = registerItemWithTab(ColourfulClocksItems.WALL_CLOCK.withSuffix(clockTypes.getSerializedName()),
                     () -> new WallClockBlockItem(ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
-                            .component(ColourfulClocksDataComponentTypesImpl.MANTEL_CLOCK_DATA, MantelClockComponent.getNoGlassPendulumValue())));
+                            .component(ColourfulClocksDataComponentTypesImpl.WALL_CLOCK_DATA, WallClockComponent.getDefaultValue())));
             WALL_CLOCK_VARIANTS.put(clockTypes, wallClockItem);
+
+            // Wall Clock Medium
+            Supplier<Item> wallClockMediumItem = registerItemWithTab(ColourfulClocksItems.WALL_CLOCK.withSuffix(clockTypes.getSerializedName() + "_medium"),
+                    () -> new WallClockBlockItem(ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
+                            .component(ColourfulClocksDataComponentTypesImpl.WALL_CLOCK_DATA, WallClockComponent.getValue(WallClockType.MEDIUM))));
+            WALL_CLOCK_VARIANTS_MEDIUM.put(clockTypes, wallClockMediumItem);
+
+            // Wall Clock Large
+            Supplier<Item> wallClockLargeItem = registerItemWithTab(ColourfulClocksItems.WALL_CLOCK.withSuffix(clockTypes.getSerializedName() + "_large"),
+                    () -> new WallClockBlockItem(ColourfulClocksBlocksImpl.WALL_CLOCK_VARIANTS.get(clockTypes).get(), basicItem()
+                            .component(ColourfulClocksDataComponentTypesImpl.WALL_CLOCK_DATA, WallClockComponent.getValue(WallClockType.LARGE))));
+            WALL_CLOCK_VARIANTS_LARGE.put(clockTypes, wallClockLargeItem);
 
             // Alarm Clock
             Supplier<Item> alarmClockItem = registerItemWithTab(ColourfulClocksItems.ALARM_CLOCK.withSuffix(clockTypes.getSerializedName()),

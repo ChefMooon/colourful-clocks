@@ -1,0 +1,22 @@
+{
+  "type": "colourfulclocks:wall_clock",
+  "category": "misc",
+  "group": "wall_clock_stripped_jungle",
+  "key": {
+    "A": {
+      "item": "minecraft:stripped_jungle_wood"
+    },
+    "B": {
+      "item": "colourfulclocks:wall_clock_stripped_jungle_medium"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:wall_clock_stripped_jungle_large"
+  }
+}

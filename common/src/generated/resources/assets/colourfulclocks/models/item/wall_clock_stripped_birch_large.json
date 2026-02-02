@@ -1,0 +1,16 @@
+{
+  "parent": "colourfulclocks:item/template_wall_clock_large",
+  "textures": {
+    "clock_dial_large_bottom_left": "colourfulclocks:block/xl_bottom_left_quartz_clock_face",
+    "clock_dial_large_bottom_middle": "colourfulclocks:block/xl_bottom_middle_quartz_clock_face",
+    "clock_dial_large_bottom_right": "colourfulclocks:block/xl_bottom_right_quartz_clock_face",
+    "clock_dial_large_center": "colourfulclocks:block/xl_center_quartz_clock_face",
+    "clock_dial_large_left_middle": "colourfulclocks:block/xl_left_middle_quartz_clock_face",
+    "clock_dial_large_right_middle": "colourfulclocks:block/xl_right_middle_quartz_clock_face",
+    "clock_dial_large_top_left": "colourfulclocks:block/xl_top_left_quartz_clock_face",
+    "clock_dial_large_top_middle": "colourfulclocks:block/xl_top_middle_quartz_clock_face",
+    "clock_dial_large_top_right": "colourfulclocks:block/xl_top_right_quartz_clock_face",
+    "clock_dial_marks": "minecraft:block/coal_block",
+    "side": "minecraft:block/stripped_birch_log"
+  }
+}

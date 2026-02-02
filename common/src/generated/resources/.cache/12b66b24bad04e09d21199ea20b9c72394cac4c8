@@ -1,13 +1,15 @@
-// 1.21.1	2026-01-23T10:19:25.3235076	colourfulclocks/Tags for minecraft:item
-b0f384a3351fa56a676eaa209605abc3c03ddf85 data\colourfulclocks\tags\item\bornholm_base.json
-26788946440a71cd217ab92541ef040d7d681711 data\colourfulclocks\tags\item\wall_clock.json
+// 1.21.1	2026-01-30T15:53:35.6016375	colourfulclocks/Tags for minecraft:item
+9679d16b53ccb8e2932b973b8c129b18a9075209 data\colourfulclocks\tags\item\wall_clock_large.json
+9ed0e5ea7b077b27f3f7cb3f9215ac3b93fdbc92 data\colourfulclocks\tags\item\wall_clock_small.json
+4c14c0b78ff128fd3ca110c2fa6c64db1e89481a data\colourfulclocks\tags\item\wall_clock_medium.json
+cda69a9e871f37cf4d1ba5690d79e19a9d043eb4 data\colourfulclocks\tags\item\bornholm_base.json
 24bb8f85849ed3d0deb17d9828cb2d595a053895 data\colourfulclocks\tags\item\handbell.json
 ba7902de1a4e632c2230b7868effff60c253cb16 data\colourfulclocks\tags\item\clock_pendulum.json
-9a8ac47afb5b2e439e35df3035740289cbaebbd5 data\colourfulclocks\tags\item\bornholm_trunk.json
-c657afea696481eae9665b0e2da6f7804fe386e2 data\colourfulclocks\tags\item\bornholm_dial.json
+7dfeeaed5020c3cf42435e090feed881f17480ca data\colourfulclocks\tags\item\bornholm_trunk.json
+f7c52bf702808f6e7429753c2f345a6b1699228e data\colourfulclocks\tags\item\bornholm_dial.json
 249f1443af67a121147fe21b88505f33e40099db data\colourfulclocks\tags\item\clock_hand.json
-77c728503df928b2ff47d533784a0409e379b3b3 data\colourfulclocks\tags\item\mantel_clock.json
+9fcd7f678fe9dd153e2057ec0e65d776340c79c0 data\colourfulclocks\tags\item\mantel_clock.json
 0a20218273c87ee1535047a6594e5e7e7faaa512 data\colourfulclocks\tags\item\clock_dial_glass.json
-59ea854e6de27efc231b4445573da000f25f6641 data\colourfulclocks\tags\item\tall_mantel_clock.json
+800a731f74067b1f22bbc465f29ea3d4471aa25d data\colourfulclocks\tags\item\tall_mantel_clock.json
 0a20218273c87ee1535047a6594e5e7e7faaa512 data\colourfulclocks\tags\item\clock_door.json
-3df07c779d37ffa9f8cd47d178399139024ac356 data\colourfulclocks\tags\item\alarm_clock.json
+a61fac1a08ee20e9d554272b35e18298f7d9213c data\colourfulclocks\tags\item\alarm_clock.json

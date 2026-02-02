@@ -134,7 +134,9 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(ColourfulClocksTags.BORNHOLM_DIAL, "Bornholm Dial");
         translationBuilder.add(ColourfulClocksTags.MANTEL_CLOCK, "Mantel Clock");
         translationBuilder.add(ColourfulClocksTags.TALL_MANTEL_CLOCK, "Tall Mantel Clock");
-        translationBuilder.add(ColourfulClocksTags.WALL_CLOCK, "Wall Clock");
+        translationBuilder.add(ColourfulClocksTags.WALL_CLOCK_SMALL, "Wall Clock Small");
+        translationBuilder.add(ColourfulClocksTags.WALL_CLOCK_MEDIUM, "Wall Clock Medium");
+        translationBuilder.add(ColourfulClocksTags.WALL_CLOCK_LARGE, "Wall Clock Large");
         translationBuilder.add(ColourfulClocksTags.ALARM_CLOCK, "Alarm Clock");
         translationBuilder.add(ColourfulClocksTags.ITEM_HANDBELL, "Handbell");
 
@@ -160,6 +162,12 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(TOOLTIP + "weathering", "Weathering");
         translationBuilder.add(TOOLTIP + "ticking", "Ticking");
 
+        translationBuilder.add(TOOLTIP + "wall_clock_type.small" , "Small");
+        translationBuilder.add(TOOLTIP + "wall_clock_type.medium" , "Medium");
+        translationBuilder.add(TOOLTIP + "wall_clock_type.large" , "Large");
+
+        translationBuilder.add(TOOLTIP + "invalid_wall_clock_placement", "Clock Blocked");
+
         translationBuilder.add(WAILA_CONFIG, FORMATTED_MOD_ID);
         translationBuilder.add(WAILA_CONFIG + ".bornholm_dial_glass_type", "Bornholm Dial Glass Type");
         translationBuilder.add(WAILA_CONFIG + ".bornholm_trunk_door_type", "Bornholm Trunk Door Type");
@@ -177,6 +185,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(JADE_CONFIG + ".ticking", "Ticking");
 
         translationBuilder.add(JADE_CONFIG + ".alarm_clock_data", "Ticking");
+        translationBuilder.add(JADE_CONFIG + ".wall_clock_data", "Wall Clock");
 
         translationBuilder.add(REI + "info.copper_info", "This cannot be crafted. It can oxidize when placed in complete clocks and can be waxed to preserve the condition. An Axe can be used to remove wax.");
 
