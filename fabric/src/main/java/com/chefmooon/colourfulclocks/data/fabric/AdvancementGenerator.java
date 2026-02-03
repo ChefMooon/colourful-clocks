@@ -87,6 +87,12 @@ public class AdvancementGenerator extends FabricAdvancementProvider {
                 .build(getAdvancementName("alarm_clock"));
         consumer.accept(alarmClock);
 
+        AdvancementHolder wallClock = getAdvancement(root, ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS.get(ClockTypes.STRIPPED_OAK).get(), "wall_clock", AdvancementType.TASK, true, false, false)
+                .addCriterion("placed_wall_clock", ItemUsedOnLocationTrigger.TriggerInstance.placedBlock(
+                        LocationCheck.checkLocation(LocationPredicate.Builder.location().setBlock(BlockPredicate.Builder.block().of(ColourfulClocksTags.BLOCK_WALL_CLOCK)))))
+                .build(getAdvancementName("wall_clock"));
+        consumer.accept(wallClock);
+
         AdvancementHolder handbell = getAdvancement(root, ColourfulClocksItemsImpl.HANDBELL_VARIANTS.get(HandbellTypes.DIAMOND).get(), "handbell", AdvancementType.TASK, true, false, false)
                 .addCriterion(getHasName("handbell"), InventoryChangeTrigger.TriggerInstance.hasItems(ItemPredicate.Builder.item().of(ColourfulClocksTags.ITEM_HANDBELL)))
                 .build(getAdvancementName("handbell"));

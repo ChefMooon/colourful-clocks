@@ -345,6 +345,8 @@
   "colourfulclocks.advancement.root.desc": "Stylish Clocks!",
   "colourfulclocks.advancement.tall_mantel_clock": "Tall Mantel Clock",
   "colourfulclocks.advancement.tall_mantel_clock.desc": "A tall version of the mantel clock. It can also hold a Pendulum and be placed on the wall.",
+  "colourfulclocks.advancement.wall_clock": "Wall Clock",
+  "colourfulclocks.advancement.wall_clock.desc": "A flat clock that can be placed on the wall. It comes in three sizes and can be crafted with any clock material.",
   "colourfulclocks.item.acacia_handbell_handle": "Acacia",
   "colourfulclocks.item.bamboo_handbell_handle": "Bamboo",
   "colourfulclocks.item.birch_handbell_handle": "Birch",

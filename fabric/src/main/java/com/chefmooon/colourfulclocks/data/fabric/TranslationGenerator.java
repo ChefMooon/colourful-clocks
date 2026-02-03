@@ -209,6 +209,9 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(ADVANCEMENT + "alarm_clock", "Alarm Clock");
         translationBuilder.add(ADVANCEMENT + "alarm_clock.desc", "A small clock that can have Handbells attached.");
 
+        translationBuilder.add(ADVANCEMENT + "wall_clock", "Wall Clock");
+        translationBuilder.add(ADVANCEMENT + "wall_clock.desc", "A flat clock that can be placed on the wall. It comes in three sizes and can be crafted with any clock material.");
+
         translationBuilder.add(ADVANCEMENT + "handbell", "Handbell");
         translationBuilder.add(ADVANCEMENT + "handbell.desc", "A handheld bell that can be rung by right clicking. Different materials produce different sounds!");
 

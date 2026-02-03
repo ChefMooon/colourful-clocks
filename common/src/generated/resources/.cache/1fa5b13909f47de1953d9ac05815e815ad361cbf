@@ -1,4 +1,4 @@
-// 1.21.1	2026-02-02T16:31:11.2788684	colourfulclocks/Advancements
+// 1.21.1	2026-02-02T17:10:12.8640077	colourfulclocks/Advancements
 b57d474b3cb989feeb57411a67cb052a63c33dfb data\colourfulclocks\advancement\main\copper_wax_on.json
 81427766ffd058daa130e6f7a4d2baf039cf88ae data\colourfulclocks\advancement\main\handbell_block.json
 8eea039eaf85d56244e0eac969ba53fcd502a56a data\colourfulclocks\advancement\main\bornholm_trunk_wind_charge.json
@@ -10,6 +10,7 @@ ac9b26ffc5f67cc276079aff168bebe62cea8bef data\colourfulclocks\advancement\main\i
 ebb2ae72126ae0bd291c9d29da5aa4714281c640 data\colourfulclocks\advancement\main\copper_wax_off.json
 e9a3b5ac8abae426081b43b86f774017b40c1143 data\colourfulclocks\advancement\main\glass_change.json
 746a9193b4e2c33732ca8dca1507d6bc4b5a9731 data\colourfulclocks\advancement\main\bornholm_trunk_glass_change.json
+fb54491ccb81f43adb38e62a0581d80bb0c26d94 data\colourfulclocks\advancement\main\wall_clock.json
 359d8bd52ea326402751795e063a04ae9cbbea41 data\colourfulclocks\advancement\main\insert_pendulum.json
 bdfa3996f967df22ad660c5ae0846bec7af0f54a data\colourfulclocks\advancement\main\handbell.json
 cca29ce19d4913f5c74af7e19351ee1d4a775a8d data\colourfulclocks\advancement\main\enable_ticking.json
