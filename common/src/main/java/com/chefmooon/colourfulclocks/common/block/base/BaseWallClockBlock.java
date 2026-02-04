@@ -5,15 +5,18 @@ import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulCloc
 import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
 import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
 import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
+import com.chefmooon.colourfulclocks.common.data.types.WallClockType;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -169,14 +172,16 @@ public class BaseWallClockBlock extends BaseEntityBlock {
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
-    protected ItemInteractionResult setWaxedState(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity, boolean tryWax) {
+    protected ItemInteractionResult setWaxedState(BlockState state, Level level, BlockPos pos, BlockPos controllerPos, Player player, ItemStack itemStack, BlockEntity blockEntity, boolean tryWax) {
         if (blockEntity instanceof BaseWallClockBlockEntity baseWallClockBlockEntity) {
+            Direction facing = state.getValue(FACING);
             if (tryWax) {
                 ItemStack waxedClockHands = ColourfulClocksTypeUtil.getWaxedPocketWatch(baseWallClockBlockEntity.getData().getPocketWatch().orElse(PocketWatchComponent.getDefaultValue()));
                 if (!waxedClockHands.isEmpty()) {
                     baseWallClockBlockEntity.setPocketWatch(waxedClockHands);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
+                    CopperWeatheringUtil.spawnPocketWatchUpdateParticles(level, controllerPos, facing, ParticleTypes.WAX_ON, getClockParticleType(baseWallClockBlockEntity.getData().getType()));
                     if (!player.getAbilities().instabuild) itemStack.shrink(1);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_ON_TRIGGER.get().trigger(serverPlayer);
 
@@ -189,6 +194,7 @@ public class BaseWallClockBlock extends BaseEntityBlock {
                     baseWallClockBlockEntity.setPocketWatch(unwaxedClockHands);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, unwaxedClockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                    CopperWeatheringUtil.spawnPocketWatchUpdateParticles(level, controllerPos, facing, ParticleTypes.WAX_OFF, getClockParticleType(baseWallClockBlockEntity.getData().getType()));
                     if (!player.getAbilities().instabuild)
                         itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
@@ -202,6 +208,7 @@ public class BaseWallClockBlock extends BaseEntityBlock {
                     baseWallClockBlockEntity.setPocketWatch(scrapedClockHands);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, scrapedClockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                    CopperWeatheringUtil.spawnPocketWatchUpdateParticles(level, controllerPos, facing, ParticleTypes.SCRAPE, getClockParticleType(baseWallClockBlockEntity.getData().getType()));
                     if (!player.getAbilities().instabuild) itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
 
@@ -210,6 +217,14 @@ public class BaseWallClockBlock extends BaseEntityBlock {
             }
         }
         return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    private CopperWeatheringUtil.ClockParticleType getClockParticleType(WallClockType wallClockType) {
+        return switch (wallClockType) {
+            case SMALL -> CopperWeatheringUtil.ClockParticleType.WALL_CLOCK_SMALL;
+            case MEDIUM -> CopperWeatheringUtil.ClockParticleType.WALL_CLOCK_MEDIUM;
+            case LARGE -> CopperWeatheringUtil.ClockParticleType.WALL_CLOCK_LARGE;
+        };
     }
 
     protected ItemInteractionResult setTicking(Level level, BlockPos pos, Player player, ItemStack itemStack, BlockEntity blockEntity, boolean tryTicking) {

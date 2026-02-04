@@ -13,11 +13,13 @@ import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponen
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
@@ -178,6 +180,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
             }
 
             if (!mainHandItem.isEmpty()) {
+                Direction facing = state.getValue(FACING);
                 if (mainHandItem.is(clockType.getItem())) {
                     if (state.getValue(DOOR_TYPE) == BornholmDoorTypes.BASE) return toggleDoor(level, state, pos, player);
                     bornholmMiddleBlockEntity.setDoorType(BornholmDoorTypes.BASE);
@@ -224,6 +227,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                         bornholmMiddleBlockEntity.setPendulum(waxedPendulum);
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
+                        CopperWeatheringUtil.spawnPendulumUpdateParticles(level, pos, facing, ParticleTypes.WAX_ON, CopperWeatheringUtil.ClockPendulumParticleType.BORNHOLM_MIDDLE);
                         if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
                         if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_ON_TRIGGER.get().trigger(serverPlayer);
 
@@ -238,6 +242,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                         bornholmMiddleBlockEntity.setPendulum(unwaxedPendulum);
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, unwaxedPendulumInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                        CopperWeatheringUtil.spawnPendulumUpdateParticles(level, pos, facing, ParticleTypes.WAX_OFF, CopperWeatheringUtil.ClockPendulumParticleType.BORNHOLM_MIDDLE);
                         if (!player.getAbilities().instabuild)
                             mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                         if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
@@ -251,6 +256,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                         bornholmMiddleBlockEntity.setPendulum(scrapedPendulum);
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, scrapedPendulumInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                        CopperWeatheringUtil.spawnPendulumUpdateParticles(level, pos, facing, ParticleTypes.SCRAPE, CopperWeatheringUtil.ClockPendulumParticleType.BORNHOLM_MIDDLE);
                         if (!player.getAbilities().instabuild)
                             mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                         if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);

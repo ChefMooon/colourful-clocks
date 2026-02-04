@@ -121,13 +121,13 @@ public class TallMantelClockBlock extends BaseMantelClockBlock {
                     return setPendulumType(level, pos, player, mainHandItem, tallMantelClockBlockEntity);
                 } else if (mainHandItem.is(Items.HONEYCOMB)) {
                     if (interactUpper) {
-                        return setWaxedState(level, pos, player, mainHandItem, tallMantelClockBlockEntity, true);
+                        return setPocketWatchWaxedState(level, pos, player, mainHandItem, tallMantelClockBlockEntity, true);
                     } else {
                         return setPendulumWaxedState(level, pos, player, mainHandItem, tallMantelClockBlockEntity, true);
                     }
                 } else if (mainHandItem.is(ItemTags.AXES)) {
                     if (interactUpper) {
-                        return setWaxedState(level, pos, player, mainHandItem, tallMantelClockBlockEntity, false);
+                        return setPocketWatchWaxedState(level, pos, player, mainHandItem, tallMantelClockBlockEntity, false);
                     } else {
                         return setPendulumWaxedState(level, pos, player, mainHandItem, tallMantelClockBlockEntity, false);
                     }

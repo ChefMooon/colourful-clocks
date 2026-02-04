@@ -93,16 +93,17 @@ public class WallClockBlock extends BaseWallClockBlock {
 
     @Override
     public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        BlockEntity blockEntity = getController(state, pos, level);
+        BlockPos controllerPos = getControllerPos(state, pos);
+        BlockEntity blockEntity = level.getBlockEntity(controllerPos);
         if (blockEntity instanceof WallClockBlockEntity wallClockBlockEntity) {
             ItemStack mainHandItem = player.getItemInHand(hand);
             if (!mainHandItem.isEmpty()) {
                 if (mainHandItem.is(ColourfulClocksTags.CLOCK_HAND)) {
                     return setPocketWatchType(level, pos, player, mainHandItem, wallClockBlockEntity);
                 } else if (mainHandItem.is(Items.HONEYCOMB)) {
-                    return setWaxedState(level, pos, player, mainHandItem, wallClockBlockEntity, true);
+                    return setWaxedState(state, level, pos, controllerPos, player, mainHandItem, wallClockBlockEntity, true);
                 } else if (mainHandItem.is(ItemTags.AXES)) {
-                    return setWaxedState(level, pos, player, mainHandItem, wallClockBlockEntity, false);
+                    return setWaxedState(state, level, pos, controllerPos, player, mainHandItem, wallClockBlockEntity, false);
                 } else if (!state.getValue(TICKING) && mainHandItem.is(Items.REDSTONE)) {
                     return setTicking(level, pos, player, mainHandItem, wallClockBlockEntity, true);
                 } else if (state.getValue(TICKING) && mainHandItem.is(ItemTags.PICKAXES)) {

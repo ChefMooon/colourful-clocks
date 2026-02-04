@@ -90,9 +90,9 @@ public class MantelClockBlock extends BaseMantelClockBlock {
                 } else if (mainHandItem.is(ColourfulClocksTags.CLOCK_TOP_GLASS)) {
                     return setGlassType(level, state, pos, player, mainHandItem, mantelClockBlockEntity);
                 } else if (mainHandItem.is(Items.HONEYCOMB)) {
-                    return setWaxedState(level, pos, player, mainHandItem, mantelClockBlockEntity, true);
+                    return setPocketWatchWaxedState(level, pos, player, mainHandItem, mantelClockBlockEntity, true);
                 } else if (mainHandItem.is(ItemTags.AXES)) {
-                    return setWaxedState(level, pos, player, mainHandItem, mantelClockBlockEntity, false);
+                    return setPocketWatchWaxedState(level, pos, player, mainHandItem, mantelClockBlockEntity, false);
                 } else if (!state.getValue(TICKING) && mainHandItem.is(Items.REDSTONE)) {
                     return setTicking(level, pos, player, mainHandItem, mantelClockBlockEntity, true);
                 } else if (state.getValue(TICKING) && mainHandItem.is(ItemTags.PICKAXES)) {

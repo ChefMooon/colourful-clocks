@@ -13,11 +13,13 @@ import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponen
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
@@ -166,6 +168,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
         if (blockEntity instanceof BornholmTopBlockEntity bornholmTopBlockEntity) {
             ItemStack mainHandItem = player.getMainHandItem();
             if (!mainHandItem.isEmpty()) {
+                Direction facing = state.getValue(FACING);
                 if (mainHandItem.is(ColourfulClocksTags.CLOCK_HAND)) {
                     PocketWatchTypes pocketWatchType = mainHandItem.get(ColourfulClocksDataComponentTypes.getPocketWatchData()).getType();
                     if (bornholmTopBlockEntity.getData().getPocketWatch().isPresent() && pocketWatchType != bornholmTopBlockEntity.getData().getPocketWatch().get().getType()) {
@@ -200,18 +203,20 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                         bornholmTopBlockEntity.setPocketWatch(waxedClockHands);
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
+                        CopperWeatheringUtil.spawnPocketWatchUpdateParticles(level, pos, facing, ParticleTypes.WAX_ON, CopperWeatheringUtil.ClockParticleType.BORNHOLM_TOP);
                         if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
                         if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_ON_TRIGGER.get().trigger(serverPlayer);
 
                         return ItemInteractionResult.SUCCESS;
                     }
                 } else if (mainHandItem.is(ItemTags.AXES)) {
-                    Pair<Item, Supplier<SoundEvent>> unwaxedClockHandInfo = ColourfulClocksTypeUtil.getScrapedPocketWatch(bornholmTopBlockEntity.getData().getPocketWatch().get());
+                    Pair<Item, Supplier<SoundEvent>> unwaxedClockHandInfo = ColourfulClocksTypeUtil.getUnwaxedPocketWatch(bornholmTopBlockEntity.getData().getPocketWatch().get());
                     ItemStack unwaxedClockHands = new ItemStack(unwaxedClockHandInfo.getFirst());
                     if (!unwaxedClockHands.isEmpty()) {
                         bornholmTopBlockEntity.setPocketWatch(unwaxedClockHands);
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, unwaxedClockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                        CopperWeatheringUtil.spawnPocketWatchUpdateParticles(level, pos, facing, ParticleTypes.WAX_OFF, CopperWeatheringUtil.ClockParticleType.BORNHOLM_TOP);
                         if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                         if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
 
@@ -224,6 +229,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                         bornholmTopBlockEntity.setPocketWatch(scrapedClockHands);
                         level.blockEntityChanged(pos);
                         level.playSound(player, pos, scrapedClockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                        CopperWeatheringUtil.spawnPocketWatchUpdateParticles(level, pos, facing, ParticleTypes.SCRAPE, CopperWeatheringUtil.ClockParticleType.BORNHOLM_TOP);
                         if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                         if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
 

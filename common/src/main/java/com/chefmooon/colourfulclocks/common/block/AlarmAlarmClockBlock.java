@@ -15,6 +15,7 @@ import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponen
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
 import com.chefmooon.colourfulclocks.common.util.ColourfulClocksTypeUtil;
+import com.chefmooon.colourfulclocks.common.util.CopperWeatheringUtil;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.chefmooon.colourfulclocks.common.util.VoxelShapeUtil;
 import com.mojang.datafixers.util.Pair;
@@ -430,6 +431,7 @@ public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleW
                     alarmClockBlockEntity.setPocketWatch(waxedClockHands);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
+                    CopperWeatheringUtil.spawnPocketWatchUpdateParticles(level, pos, facing, ParticleTypes.WAX_ON, CopperWeatheringUtil.ClockParticleType.ALARM_CLOCK);
                     if (!player.getAbilities().instabuild) itemStack.shrink(1);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_ON_TRIGGER.get().trigger(serverPlayer);
 
@@ -442,6 +444,7 @@ public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleW
                     alarmClockBlockEntity.setPocketWatch(unwaxedClockHands);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, unwaxedClockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                    CopperWeatheringUtil.spawnPocketWatchUpdateParticles(level, pos, facing, ParticleTypes.WAX_OFF, CopperWeatheringUtil.ClockParticleType.ALARM_CLOCK);
                     if (!player.getAbilities().instabuild)
                         itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
@@ -455,6 +458,7 @@ public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleW
                     alarmClockBlockEntity.setPocketWatch(scrapedClockHands);
                     level.blockEntityChanged(pos);
                     level.playSound(player, pos, clockHandInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
+                    CopperWeatheringUtil.spawnPocketWatchUpdateParticles(level, pos, facing, ParticleTypes.SCRAPE, CopperWeatheringUtil.ClockParticleType.ALARM_CLOCK);
                     if (!player.getAbilities().instabuild) itemStack.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
 
