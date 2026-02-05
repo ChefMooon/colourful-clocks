@@ -18,9 +18,9 @@ import java.util.function.Supplier;
 
 public interface WeatheringCopperHandbell extends ChangeOverTimeBlock<WeatheringCopper.WeatherState> {
     Supplier<ImmutableBiMap<Block, Block>> NEXT_BY_BLOCK = Suppliers.memoize(() -> buildNextByBlock().build());
-    Supplier<BiMap<Block, Block>> PREVIOUS_BY_BLOCK = Suppliers.memoize(() -> ((BiMap)NEXT_BY_BLOCK.get()).inverse());
+    Supplier<BiMap<Block, Block>> PREVIOUS_BY_BLOCK = Suppliers.memoize(() -> ((BiMap<Block, Block>)NEXT_BY_BLOCK.get()).inverse());
     Supplier<ImmutableBiMap<Block, Block>> WAXABLES = Suppliers.memoize(() -> buildWaxables().build());
-    Supplier<BiMap<Block, Block>> WAX_OFF_BY_BLOCK = Suppliers.memoize(() -> ((BiMap)WAXABLES.get()).inverse());
+    Supplier<BiMap<Block, Block>> WAX_OFF_BY_BLOCK = Suppliers.memoize(() -> ((BiMap<Block, Block>)WAXABLES.get()).inverse());
 
     private static ImmutableBiMap.Builder<Block, Block> buildNextByBlock() {
         ImmutableBiMap.Builder<Block, Block> builder = ImmutableBiMap.builder();
@@ -40,13 +40,13 @@ public interface WeatheringCopperHandbell extends ChangeOverTimeBlock<Weathering
     }
 
     static Optional<Block> getPrevious(Block block) {
-        return Optional.ofNullable((Block)((BiMap)PREVIOUS_BY_BLOCK.get()).get(block));
+        return Optional.ofNullable((Block)((BiMap<Block, Block>)PREVIOUS_BY_BLOCK.get()).get(block));
     }
 
     static Block getFirst(Block block) {
         Block block2 = block;
 
-        for(Block block3 = (Block)((BiMap)PREVIOUS_BY_BLOCK.get()).get(block); block3 != null; block3 = (Block)((BiMap)PREVIOUS_BY_BLOCK.get()).get(block3)) {
+        for(Block block3 = (Block)((BiMap<Block, Block>)PREVIOUS_BY_BLOCK.get()).get(block); block3 != null; block3 = (Block)((BiMap<Block, Block>)PREVIOUS_BY_BLOCK.get()).get(block3)) {
             block2 = block3;
         }
 
@@ -66,7 +66,7 @@ public interface WeatheringCopperHandbell extends ChangeOverTimeBlock<Weathering
     }
 
     static Optional<Block> getNext(Block block) {
-        return Optional.ofNullable((Block)((BiMap)NEXT_BY_BLOCK.get()).get(block));
+        return Optional.ofNullable((Block)((BiMap<Block, Block>)NEXT_BY_BLOCK.get()).get(block));
     }
 
     static BlockState getFirst(BlockState state) {
