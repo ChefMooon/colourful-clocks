@@ -1,11 +1,12 @@
 {
   "required": true,
-  "package": "com.chefmooon.colourfulclocks.mixin",
+  "package": "com.chefmooon.colourfulclocks.common.mixin.fabric",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
   "client": [
   ],
   "mixins": [
+    "LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

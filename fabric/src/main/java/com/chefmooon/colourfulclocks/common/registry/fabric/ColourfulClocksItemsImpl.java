@@ -3,6 +3,7 @@ package com.chefmooon.colourfulclocks.common.registry.fabric;
 import com.chefmooon.colourfulclocks.common.data.*;
 import com.chefmooon.colourfulclocks.common.data.types.*;
 import com.chefmooon.colourfulclocks.common.item.*;
+import com.chefmooon.colourfulclocks.common.item.fabric.HandbellBlockItemImpl;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksItems;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.core.Registry;
@@ -30,7 +31,7 @@ public class ColourfulClocksItemsImpl {
     public static final HashMap<ClockTypes, Supplier<Item>> ALARM_CLOCK_VARIANTS = new HashMap<>();
 
     public static final Supplier<Item> IRON_HANDBELL = registerItemWithTab(ColourfulClocksItems.IRON_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.IRON_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.IRON_HANDBELL.get(), basicItem()
                     .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getBaseValue(HandbellTypes.IRON)), HandbellTypes.IRON));
     public static final Supplier<Item> COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.COPPER_HANDBELL,
             new WeatheringCopperHandbellBlockItem(ColourfulClocksBlocksImpl.COPPER_HANDBELL.get(), basicItem()
@@ -42,43 +43,43 @@ public class ColourfulClocksItemsImpl {
             new WeatheringCopperHandbellBlockItem(ColourfulClocksBlocksImpl.WEATHERED_COPPER_HANDBELL.get(), basicItem()
                 .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getWeatheringCopperValue(HandbellTypes.WEATHERED_COPPER)), HandbellTypes.COPPER));
     public static final Supplier<Item> OXIDIZED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.OXIDIZED_COPPER_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.OXIDIZED_COPPER_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.OXIDIZED_COPPER_HANDBELL.get(), basicItem()
                     .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getCopperValue(HandbellTypes.OXIDIZED_COPPER)), HandbellTypes.COPPER));
     public static final Supplier<Item> WAXED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.WAXED_COPPER_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.WAXED_COPPER_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.WAXED_COPPER_HANDBELL.get(), basicItem()
                     .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getCopperValue(HandbellTypes.WAXED_COPPER)), HandbellTypes.COPPER));
     public static final Supplier<Item> WAXED_EXPOSED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.WAXED_EXPOSED_COPPER_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.WAXED_EXPOSED_COPPER_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.WAXED_EXPOSED_COPPER_HANDBELL.get(), basicItem()
                     .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getCopperValue(HandbellTypes.WAXED_EXPOSED_COPPER)), HandbellTypes.COPPER));
     public static final Supplier<Item> WAXED_WEATHERED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.WAXED_WEATHERED_COPPER_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.WAXED_WEATHERED_COPPER_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.WAXED_WEATHERED_COPPER_HANDBELL.get(), basicItem()
                     .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getCopperValue(HandbellTypes.WAXED_WEATHERED_COPPER)), HandbellTypes.COPPER));
     public static final Supplier<Item> WAXED_OXIDIZED_COPPER_HANDBELL = registerItemWithTab(ColourfulClocksItems.WAXED_OXIDIZED_COPPER_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.WAXED_OXIDIZED_COPPER_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.WAXED_OXIDIZED_COPPER_HANDBELL.get(), basicItem()
                     .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getCopperValue(HandbellTypes.WAXED_OXIDIZED_COPPER)), HandbellTypes.COPPER));
     public static final Supplier<Item> GOLD_HANDBELL = registerItemWithTab(ColourfulClocksItems.GOLD_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.GOLD_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.GOLD_HANDBELL.get(), basicItem()
                 .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getBaseValue(HandbellTypes.GOLD)), HandbellTypes.GOLD));
     public static final Supplier<Item> DIAMOND_HANDBELL = registerItemWithTab(ColourfulClocksItems.DIAMOND_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.DIAMOND_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.DIAMOND_HANDBELL.get(), basicItem()
                 .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getBaseValue(HandbellTypes.DIAMOND)), HandbellTypes.DIAMOND));
     public static final Supplier<Item> NETHERITE_HANDBELL = registerItemWithTab(ColourfulClocksItems.NETHERITE_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.NETHERITE_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.NETHERITE_HANDBELL.get(), basicItem()
                 .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getBaseValue(HandbellTypes.NETHERITE)), HandbellTypes.NETHERITE));
     public static final Supplier<Item> QUARTZ_HANDBELL = registerItemWithTab(ColourfulClocksItems.QUARTZ_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.QUARTZ_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.QUARTZ_HANDBELL.get(), basicItem()
                 .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getBaseValue(HandbellTypes.QUARTZ)), HandbellTypes.QUARTZ));
     public static final Supplier<Item> AMETHYST_HANDBELL = registerItemWithTab(ColourfulClocksItems.AMETHYST_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.AMETHYST_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.AMETHYST_HANDBELL.get(), basicItem()
                 .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getBaseValue(HandbellTypes.AMETHYST)), HandbellTypes.AMETHYST));
     public static final Supplier<Item> LAPIS_LAZULI_HANDBELL = registerItemWithTab(ColourfulClocksItems.LAPIS_LAZULI_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.LAPIS_LAZULI_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.LAPIS_LAZULI_HANDBELL.get(), basicItem()
                 .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getBaseValue(HandbellTypes.LAPIS_LAZULI)), HandbellTypes.LAPIS_LAZULI));
     public static final Supplier<Item> REDSTONE_HANDBELL = registerItemWithTab(ColourfulClocksItems.REDSTONE_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.REDSTONE_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.REDSTONE_HANDBELL.get(), basicItem()
                 .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getBaseValue(HandbellTypes.REDSTONE)), HandbellTypes.REDSTONE));
     public static final Supplier<Item> EMERALD_HANDBELL = registerItemWithTab(ColourfulClocksItems.EMERALD_HANDBELL,
-            new HandbellBlockItem(ColourfulClocksBlocksImpl.EMERALD_HANDBELL.get(), basicItem()
+            new HandbellBlockItemImpl(ColourfulClocksBlocksImpl.EMERALD_HANDBELL.get(), basicItem()
                 .component(ColourfulClocksDataComponentTypesImpl.HANDBELL_DATA, HandbellComponent.getBaseValue(HandbellTypes.EMERALD)), HandbellTypes.EMERALD));
 
     public static final HashMap<HandbellTypes, Supplier<Item>> HANDBELL_VARIANTS = new HashMap<>();
