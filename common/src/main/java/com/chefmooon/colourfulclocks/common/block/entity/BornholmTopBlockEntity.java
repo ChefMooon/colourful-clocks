@@ -121,7 +121,7 @@ public class BornholmTopBlockEntity extends BlockEntity {
     private static void tickSound(Level level, BlockPos blockPos) {
         if (level == null || level.isClientSide()) return;
 
-        float timeOfDay = (level.getDayTime() + 0) % 24000;
+        float timeOfDay = (level.getDayTime()) % 24000;
         float segmentTime = timeOfDay % 750.0F;
         float stepLength = 750.0F / 16.0F;
         if (Math.abs(segmentTime % stepLength) < 1.0F) {
