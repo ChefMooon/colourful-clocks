@@ -237,7 +237,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                     }
                 } else if (!state.getValue(TICKING) && mainHandItem.is(Items.REDSTONE)) {
                     bornholmTopBlockEntity.setTicking(true);
-                    level.setBlock(pos, state.setValue(TICKING, Boolean.TRUE), 3);
+                    level.setBlock(pos, state.setValue(CAN_TICK, true).setValue(TICKING, Boolean.TRUE), 3);
                     level.playSound(null, pos, ColourfulClocksSounds.BLOCK_ENABLE_TICKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F); // TODO decide sound
                     if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.ENABLE_TICKING_TRIGGER.get().trigger(serverPlayer);
@@ -245,7 +245,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                     return ItemInteractionResult.SUCCESS;
                 } else if (state.getValue(TICKING) && mainHandItem.is(ItemTags.PICKAXES)) {
                     bornholmTopBlockEntity.setTicking(false);
-                    level.setBlock(pos, state.setValue(TICKING, Boolean.FALSE), 3);
+                    level.setBlock(pos, state.setValue(CAN_TICK, false).setValue(TICKING, Boolean.FALSE), 3);
                     level.playSound(null, pos, ColourfulClocksSounds.BLOCK_DISABLE_TICKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F); // TODO decide sound
                     if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.DISABLE_TICKING_TRIGGER.get().trigger(serverPlayer);
@@ -341,6 +341,11 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
         boolean bl = !level.hasNeighborSignal(pos);
         if (state.getValue(ACTIVATED) && state.getValue(CAN_TICK) && bl != state.getValue(TICKING)) {
             level.setBlock(pos, state.setValue(TICKING, bl), 2);
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof BornholmTopBlockEntity bornholmTopBlockEntity) {
+                bornholmTopBlockEntity.setTicking(bl);
+                level.blockEntityChanged(pos);
+            }
         }
     }
 }
