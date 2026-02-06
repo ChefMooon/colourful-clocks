@@ -5,6 +5,7 @@ import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulCloc
 import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.types.HandbellHandleTypes;
 import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
+import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksAdvancements;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.mojang.serialization.MapCodec;
@@ -137,7 +138,7 @@ public class HandbellBlock extends BaseEntityBlock implements SimpleWaterloggedB
             BlockState newState = unwaxedState.get();
             if (player instanceof ServerPlayer serverPlayer) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, itemStack);
-//                ModAdvancements.COPPER_DOUBLE_DOOR_WAX_OFF_TRIGGER.get().trigger(serverPlayer); // TODO : wax off advancement here
+                ColourfulClocksAdvancements.COPPER_WAX_OFF_TRIGGER.get().trigger(serverPlayer);
             }
 
             level.setBlock(pos, newState, Block.UPDATE_ALL_IMMEDIATE);
@@ -168,7 +169,7 @@ public class HandbellBlock extends BaseEntityBlock implements SimpleWaterloggedB
             BlockState newState = waxedState.get();
             if (player instanceof ServerPlayer serverPlayer) {
                 CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger(serverPlayer, pos, itemStack);
-//                ModAdvancements.COPPER_DOUBLE_DOOR_WAX_ON_TRIGGER.get().trigger(serverPlayer); // TODO : wax on advancement here
+                ColourfulClocksAdvancements.COPPER_WAX_ON_TRIGGER.get().trigger(serverPlayer);
             }
             level.setBlock(pos, newState, Block.UPDATE_ALL_IMMEDIATE);
             level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, newState));
