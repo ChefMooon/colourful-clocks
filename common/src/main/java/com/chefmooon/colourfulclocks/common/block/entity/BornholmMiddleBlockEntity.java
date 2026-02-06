@@ -30,7 +30,7 @@ import java.util.Optional;
 
 public class BornholmMiddleBlockEntity extends BlockEntity {
     private BornholmMiddleDoorComponent trunkData;
-    private static boolean hasChimed = false;
+    private boolean hasChimed = false;
 
     public BornholmMiddleBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -83,7 +83,7 @@ public class BornholmMiddleBlockEntity extends BlockEntity {
         if (blockState.getValue(BornholmMiddleBlock.ACTIVATED)) {
             weatherItem(level, blockPos, bornholmMiddleBlockEntity);
             if (bornholmMiddleBlockEntity.getData().getPendulum().isPresent() && bornholmMiddleBlockEntity.getData().getPendulum().get().getType() != PendulumTypes.EMPTY) {
-                sound(level, blockPos, bornholmMiddleBlockEntity);
+                bornholmMiddleBlockEntity.sound(level, blockPos, bornholmMiddleBlockEntity);
             }
         }
     }
@@ -117,7 +117,7 @@ public class BornholmMiddleBlockEntity extends BlockEntity {
         }
     }
 
-    private static void sound(Level level, BlockPos blockPos, BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
+    private void sound(Level level, BlockPos blockPos, BornholmMiddleBlockEntity bornholmMiddleBlockEntity) {
         if (level == null || level.isClientSide()) return;
 
         PendulumTypes pendulumType = bornholmMiddleBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()).getType();

@@ -3,9 +3,9 @@ package com.chefmooon.colourfulclocks.common.block.entity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.AlarmClockComponent;
 import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
+import com.chefmooon.colourfulclocks.common.data.PendulumComponent;
 import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
-import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
-import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.*;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
@@ -32,6 +32,7 @@ import java.util.Optional;
 
 public class AlarmClockBlockEntity extends BlockEntity {
     private AlarmClockComponent alarmClockData;
+    private boolean hasChimed = false;
     public AlarmClockBlockEntity(BlockPos pos, BlockState blockState) {
         super(BuiltInRegistries.BLOCK_ENTITY_TYPE.get(ColourfulClocksBlockEntities.ALARM_CLOCK), pos, blockState);
         this.alarmClockData = AlarmClockComponent.getDefaultValue();
@@ -168,8 +169,12 @@ public class AlarmClockBlockEntity extends BlockEntity {
 
     public static void weatherTick(Level level, BlockPos blockPos, BlockState blockState, AlarmClockBlockEntity alarmClockBlockEntity) {
         weatherItem(level, blockPos, alarmClockBlockEntity);
-        if (alarmClockBlockEntity.getData().pocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType().getId() != 0 && blockState.getValue(ColourfulClocksBlockStateProperties.TICKING)) {
+        AlarmClockComponent data = alarmClockBlockEntity.getData();
+        if (data.pocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType().getId() != 0 && blockState.getValue(ColourfulClocksBlockStateProperties.TICKING)) {
             tickSound(level, blockPos);
+        }
+        if (data.pocketWatch().isPresent() && data.pocketWatch().get().getType() != PocketWatchTypes.EMPTY && (data.leftBell().isPresent() || data.rightBell().isPresent())) {
+            alarmClockBlockEntity.sound(level, blockPos, alarmClockBlockEntity);
         }
     }
 
@@ -251,6 +256,23 @@ public class AlarmClockBlockEntity extends BlockEntity {
         float stepLength = 750.0F / 16.0F;
         if (Math.abs(segmentTime % stepLength) < 1.0F) {
             level.playSound(null, blockPos, ColourfulClocksSounds.BLOCK_CLOCK_TICK.get(), SoundSource.BLOCKS, 1.0F, 1.0F);
+        }
+    }
+
+    private void sound(Level level, BlockPos blockPos, AlarmClockBlockEntity alarmClockBlockEntity) {
+        if (level == null || level.isClientSide()) return;
+
+        HandbellTypes leftBellType = alarmClockBlockEntity.getData().leftBell().isPresent() ? alarmClockBlockEntity.getData().leftBell().get().getType() : null;
+        HandbellTypes rightBellType = alarmClockBlockEntity.getData().rightBell().isPresent() ? alarmClockBlockEntity.getData().rightBell().get().getType() : null;
+
+        long timeOfDay = level.getDayTime() % 24000;
+
+        if ((timeOfDay == 6000 || timeOfDay == 18000) && !hasChimed) {
+            if (leftBellType != null) level.playSound(null, blockPos, leftBellType.getRingSound().get(), SoundSource.BLOCKS, 0.3F, leftBellType.getPitch());
+            if (rightBellType != null) level.playSound(null, blockPos, rightBellType.getRingSound().get(), SoundSource.BLOCKS, 0.3F, rightBellType.getPitch());
+            hasChimed = true;
+        } else if (timeOfDay == 6001 || timeOfDay == 18001) {
+            hasChimed = false;
         }
     }
 

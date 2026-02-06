@@ -31,7 +31,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Optional;
 
 public class BaseMantelClockBlockEntity extends BlockEntity {
-    private static boolean hasChimed = false;
+    private boolean hasChimed = false;
     private MantelClockComponent clockData;
     public BaseMantelClockBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState blockState) {
         super(type, pos, blockState);
@@ -148,7 +148,7 @@ public class BaseMantelClockBlockEntity extends BlockEntity {
     public static void weatherTick(Level level, BlockPos blockPos, BlockState blockState, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
         if (blockState.getValue(TallMantelClockBlock.ACTIVATED)) {
             weatherItem(level, blockPos, baseMantelClockBlockEntity);
-            if (baseMantelClockBlockEntity.getData().getPendulum().isPresent() && baseMantelClockBlockEntity.getData().getPendulum().get().getType().getId() != 0) sound(level, blockPos, baseMantelClockBlockEntity);
+            if (baseMantelClockBlockEntity.getData().getPendulum().isPresent() && baseMantelClockBlockEntity.getData().getPendulum().get().getType().getId() != 0) baseMantelClockBlockEntity.sound(level, blockPos, baseMantelClockBlockEntity);
         }
         if (baseMantelClockBlockEntity.getData().pocketWatch().orElse(PocketWatchComponent.getDefaultValue()).getType().getId() != 0 && blockState.getValue(ColourfulClocksBlockStateProperties.TICKING)
                 && blockState.getValue(ColourfulClocksBlockStateProperties.ACTIVATED)) {
@@ -208,7 +208,7 @@ public class BaseMantelClockBlockEntity extends BlockEntity {
         }
     }
 
-    protected static void sound(Level level, BlockPos blockPos, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
+    protected void sound(Level level, BlockPos blockPos, BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
         if (level == null || level.isClientSide()) return;
 
         PendulumTypes pendulumType = baseMantelClockBlockEntity.getData().getPendulum().orElse(PendulumComponent.getDefaultValue()).getType();
