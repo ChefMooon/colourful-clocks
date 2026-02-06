@@ -1,0 +1,27 @@
+{
+  "parent": "colourfulclocks:main/alarm_clock",
+  "criteria": {
+    "has_insert_handbell": {
+      "trigger": "colourfulclocks:insert_handbell"
+    }
+  },
+  "display": {
+    "announce_to_chat": false,
+    "description": {
+      "translate": "colourfulclocks.advancement.insert_handbell.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "colourfulclocks:emerald_handbell"
+    },
+    "title": {
+      "translate": "colourfulclocks.advancement.insert_handbell"
+    }
+  },
+  "requirements": [
+    [
+      "has_insert_handbell"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

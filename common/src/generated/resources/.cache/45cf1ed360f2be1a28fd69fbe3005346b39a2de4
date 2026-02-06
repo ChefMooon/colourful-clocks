@@ -1,11 +1,11 @@
-// 1.21.1	2026-02-02T17:10:12.8640077	colourfulclocks/Tags for minecraft:block
-310b63ff311685f207cce2f31b96c02b49313e74 data\colourfulclocks\tags\block\bornholm_dial.json
-77199d55b32b412edeb348074b950b9cfac19265 data\colourfulclocks\tags\block\tall_mantel_clock.json
-50230baf05d2595940ebdb89ef739286f773d953 data\colourfulclocks\tags\block\bornholm_trunk.json
-6dbfc4596ea70a2cd89dc080d12f6a45121f9068 data\colourfulclocks\tags\block\wall_clock.json
-55859bcea7ef5c383666fa267a19414c6654b9db data\colourfulclocks\tags\block\alarm_clock.json
-1ce0a1920c874c03cdc9546b30a94e21f2b5434d data\colourfulclocks\tags\block\bornholm_base.json
-1f55fea246f39865a205658d990483e0a7f38433 data\minecraft\tags\block\mineable\pickaxe.json
-736863179eb121d55c45eacd2349a0b7d43bca7d data\minecraft\tags\block\mineable\axe.json
-daa3be4b4ac207d980527897fb173e5f48bb3c9e data\colourfulclocks\tags\block\mantel_clock.json
-bbc1018d01f07e66d1185238f0a7d4a648485d0d data\colourfulclocks\tags\block\handbell.json
+// 1.21.1	2026-02-06T13:15:51.7007119	colourfulclocks/Tags for minecraft:block
+b4df63241cf96fc598bf52e7fba56020916853b9 data\colourfulclocks\tags\block\bornholm_dial.json
+1c571f5bc0accae60c541d728989e4e34951a246 data\colourfulclocks\tags\block\tall_mantel_clock.json
+410025cdcf97b33bd959409265f06c674ff41019 data\colourfulclocks\tags\block\bornholm_trunk.json
+5edee654b6e04aaeed6c5e874952c11d94afa623 data\colourfulclocks\tags\block\wall_clock.json
+990c8c417266105d945433367202bec9ede2a472 data\colourfulclocks\tags\block\alarm_clock.json
+a22bae738d0a19fc5b2cb855e8b2ec0575d43510 data\colourfulclocks\tags\block\bornholm_base.json
+9473afdbad065e12d899f0b1bd6a8cb3a90db1a4 data\minecraft\tags\block\mineable\pickaxe.json
+796b7e821f3b668fdc4a16716b21cbe63247033c data\minecraft\tags\block\mineable\axe.json
+4d8cb6e09c3b2b9ef3cc4966ff7e6f88d36a671f data\colourfulclocks\tags\block\mantel_clock.json
+2aa694583a1f649b251dbd56db2a4c384675d0bc data\colourfulclocks\tags\block\handbell.json

@@ -210,8 +210,7 @@ public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleW
                 }
             }
             alarmClockBlockEntity.setLeftHandbellType(mainHandItem.copy());
-            // TODO : advancement
-//          if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.BELL_CHANGE_TRIGGER.get().trigger(serverPlayer);
+          if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_HANDBELL_TRIGGER.get().trigger(serverPlayer);
         } else {
             if (alarmClockBlockEntity.getData().rightBell().isPresent()) {
                 HandbellComponent mainHandBellComponent = mainHandItem.get(ColourfulClocksDataComponentTypes.getHandbellData());
@@ -227,12 +226,41 @@ public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleW
                 }
             }
             alarmClockBlockEntity.setRightHandbellType(mainHandItem.copyWithCount(1));
-            // TODO : advancement
+            if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_HANDBELL_TRIGGER.get().trigger(serverPlayer);
         }
         if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
         level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0F, 0.8F);
         level.updateNeighborsAt(pos, this);
         return ItemInteractionResult.SUCCESS;
+    }
+
+    protected ItemInteractionResult removeBell(Level level, BlockPos pos, Player player, AlarmClockBlockEntity alarmClockBlockEntity, boolean left) {
+        if (left) {
+            if (alarmClockBlockEntity.getData().leftBell().isPresent()) {
+                ItemStack oldLeftBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().leftBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
+                HandbellComponent component = alarmClockBlockEntity.removeLeftHandbellType();
+                oldLeftBellItemStack.set(ColourfulClocksDataComponentTypes.getHandbellData(), component);
+                if (!player.getAbilities().instabuild && !player.getInventory().add(oldLeftBellItemStack)) {
+                    Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldLeftBellItemStack);
+                }
+                level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0F, 0.8F);
+                level.updateNeighborsAt(pos, this);
+                return ItemInteractionResult.SUCCESS;
+            }
+        } else {
+            if (alarmClockBlockEntity.getData().rightBell().isPresent()) {
+                ItemStack oldRightBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().rightBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
+                HandbellComponent component = alarmClockBlockEntity.removeRightHandbellType();
+                oldRightBellItemStack.set(ColourfulClocksDataComponentTypes.getHandbellData(), component);
+                if (!player.getAbilities().instabuild && !player.getInventory().add(oldRightBellItemStack)) {
+                    Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldRightBellItemStack);
+                }
+                level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0F, 0.8F);
+                level.updateNeighborsAt(pos, this);
+                return ItemInteractionResult.SUCCESS;
+            }
+        }
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     @ExpectPlatform
@@ -289,35 +317,6 @@ public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleW
                 return removeBell(level, pos, player, alarmClockBlockEntity, false);
             }
         }
-    }
-
-    protected ItemInteractionResult removeBell(Level level, BlockPos pos, Player player, AlarmClockBlockEntity alarmClockBlockEntity, boolean left) {
-        if (left) {
-            if (alarmClockBlockEntity.getData().leftBell().isPresent()) {
-                ItemStack oldLeftBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().leftBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
-                HandbellComponent component = alarmClockBlockEntity.removeLeftHandbellType();
-                oldLeftBellItemStack.set(ColourfulClocksDataComponentTypes.getHandbellData(), component);
-                if (!player.getAbilities().instabuild && !player.getInventory().add(oldLeftBellItemStack)) {
-                    Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldLeftBellItemStack);
-                }
-                level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0F, 0.8F);
-                level.updateNeighborsAt(pos, this);
-                return ItemInteractionResult.SUCCESS;
-            }
-        } else {
-            if (alarmClockBlockEntity.getData().rightBell().isPresent()) {
-                ItemStack oldRightBellItemStack = BuiltInRegistries.ITEM.get(TextUtil.res(alarmClockBlockEntity.getData().rightBell().get().getType().getSerializedName() + "_handbell")).getDefaultInstance();
-                HandbellComponent component = alarmClockBlockEntity.removeRightHandbellType();
-                oldRightBellItemStack.set(ColourfulClocksDataComponentTypes.getHandbellData(), component);
-                if (!player.getAbilities().instabuild && !player.getInventory().add(oldRightBellItemStack)) {
-                    Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldRightBellItemStack);
-                }
-                level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0F, 0.8F);
-                level.updateNeighborsAt(pos, this);
-                return ItemInteractionResult.SUCCESS;
-            }
-        }
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
     }
 
     protected ItemInteractionResult removePocketWatch(Level level, BlockPos pos, Player player, AlarmClockBlockEntity alarmClockBlockEntity) {

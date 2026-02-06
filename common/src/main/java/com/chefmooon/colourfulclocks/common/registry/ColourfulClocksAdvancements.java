@@ -13,6 +13,7 @@ public class ColourfulClocksAdvancements {
     public static final Supplier<BornholmActivatedTrigger> BORNHOLM_ACTIVATED_TRIGGER = registerTrigger("bornholm_activated", BornholmActivatedTrigger::new);
 
     public static final Supplier<InsertPocketWatchTrigger> INSERT_POCKET_WATCH_TRIGGER = registerTrigger("insert_pocket_watch", InsertPocketWatchTrigger::new);
+    public static final Supplier<InsertHandbellTrigger> INSERT_HANDBELL_TRIGGER = registerTrigger("insert_handbell", InsertHandbellTrigger::new);
     public static final Supplier<InsertPendulumTrigger> INSERT_PENDULUM_TRIGGER = registerTrigger("insert_pendulum", InsertPendulumTrigger::new);
     public static final Supplier<EnableTickingTrigger> ENABLE_TICKING_TRIGGER = registerTrigger("enable_ticking", EnableTickingTrigger::new);
     public static final Supplier<DisableTickingTrigger> DISABLE_TICKING_TRIGGER = registerTrigger("disable_ticking", DisableTickingTrigger::new);
