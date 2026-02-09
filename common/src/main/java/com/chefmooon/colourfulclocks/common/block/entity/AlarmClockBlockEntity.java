@@ -3,9 +3,11 @@ package com.chefmooon.colourfulclocks.common.block.entity;
 import com.chefmooon.colourfulclocks.common.block.state.properties.ColourfulClocksBlockStateProperties;
 import com.chefmooon.colourfulclocks.common.data.AlarmClockComponent;
 import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
-import com.chefmooon.colourfulclocks.common.data.PendulumComponent;
 import com.chefmooon.colourfulclocks.common.data.PocketWatchComponent;
-import com.chefmooon.colourfulclocks.common.data.types.*;
+import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
+import com.chefmooon.colourfulclocks.common.data.types.ClockTypes;
+import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
+import com.chefmooon.colourfulclocks.common.data.types.PocketWatchTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlockEntities;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksBlocks;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
@@ -267,13 +269,23 @@ public class AlarmClockBlockEntity extends BlockEntity {
 
         long timeOfDay = level.getDayTime() % 24000;
 
-        if ((timeOfDay == 6000 || timeOfDay == 18000) && !hasChimed) {
+        long sunriseTime = 23000; // rings as the sun appears on the horizon
+        if (!hasChimed && (timeOfDay == sunriseTime)) {
             if (leftBellType != null) level.playSound(null, blockPos, leftBellType.getRingSound().get(), SoundSource.BLOCKS, 0.3F, leftBellType.getPitch());
             if (rightBellType != null) level.playSound(null, blockPos, rightBellType.getRingSound().get(), SoundSource.BLOCKS, 0.3F, rightBellType.getPitch());
             hasChimed = true;
-        } else if (timeOfDay == 6001 || timeOfDay == 18001) {
+        } else if (timeOfDay == sunriseTime + 1) {
             hasChimed = false;
         }
+
+        // Legacy (can be removed after release) implementation rings at noon and midnight
+//        if ((timeOfDay == 6000 || timeOfDay == 18000) && !hasChimed) {
+//            if (leftBellType != null) level.playSound(null, blockPos, leftBellType.getRingSound().get(), SoundSource.BLOCKS, 0.3F, leftBellType.getPitch());
+//            if (rightBellType != null) level.playSound(null, blockPos, rightBellType.getRingSound().get(), SoundSource.BLOCKS, 0.3F, rightBellType.getPitch());
+//            hasChimed = true;
+//        } else if (timeOfDay == 6001 || timeOfDay == 18001) {
+//            hasChimed = false;
+//        }
     }
 
     public ItemStack getBlockAsItem(ClockTypes clockType) {
