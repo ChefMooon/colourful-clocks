@@ -16,6 +16,6 @@ public class ColourfulClocksClientWailaPlugin implements IWailaClientPlugin {
 
         registrar.body(new WallClockDataProvider(), WallClockBlock.class);
 
-        registrar.body(new AlarmClockDataProvider(), AlarmAlarmClockBlock.class);
+        registrar.body(new AlarmClockDataProvider(), AlarmClockBlock.class);
     }
 }

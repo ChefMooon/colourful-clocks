@@ -37,7 +37,7 @@ public class CommonSetup {
         });
 
         ColourfulClocksBlocksImpl.ALARM_CLOCK_VARIANTS.forEach((entry, supplier) -> {
-            if (entry.isWooden()) addFlammableBlock(supplier.get(), AlarmAlarmClockBlock.FLAMMABILITY, AlarmAlarmClockBlock.FIRE_SPREAD);
+            if (entry.isWooden()) addFlammableBlock(supplier.get(), AlarmClockBlock.FLAMMABILITY, AlarmClockBlock.FIRE_SPREAD);
         });
     }
 

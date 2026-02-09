@@ -173,7 +173,7 @@ public class BaseMantelClockBlock extends BaseEntityBlock {
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPendulumItemStack);
             }
             level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_PENDULUM.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
-            level.updateNeighborsAt(pos, this);
+            level.blockEntityChanged(pos);
 
             return ItemInteractionResult.SUCCESS;
         }
@@ -240,7 +240,7 @@ public class BaseMantelClockBlock extends BaseEntityBlock {
                 }
                 baseMantelClockBlockEntity.setPocketWatch(player.getAbilities().instabuild ? itemStack.copy() : itemStack.split(1));
                 level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.6F);
-                level.updateNeighborsAt(pos, this);
+                level.blockEntityChanged(pos);
                 if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_POCKET_WATCH_TRIGGER.get().trigger(serverPlayer);
                 return ItemInteractionResult.SUCCESS;
             }
@@ -257,7 +257,7 @@ public class BaseMantelClockBlock extends BaseEntityBlock {
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPocketWatchItemStack);
             }
             level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
-            level.updateNeighborsAt(pos, this);
+            level.blockEntityChanged(pos);
 
             return ItemInteractionResult.SUCCESS;
         }

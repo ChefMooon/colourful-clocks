@@ -71,14 +71,14 @@ import java.util.Optional;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleWaterloggedBlock {
+public class AlarmClockBlock extends BaseAlarmClockBlock implements SimpleWaterloggedBlock {
     private static final VoxelShape SHAPE_AXIS_Z = Shapes.or(
             Block.box(5, 0, 5.5, 11, 1, 10.5),
             Block.box(5, 1, 5, 11, 2, 11),
             Block.box(4, 2, 5, 12, 8, 11),
             Block.box(5, 8, 5, 11, 9, 11));
     private final VoxelShape SHAPE_AXIS_X;
-    public AlarmAlarmClockBlock(ClockTypes clockType, Properties properties) {
+    public AlarmClockBlock(ClockTypes clockType, Properties properties) {
         super(clockType, properties);
         this.SHAPE_AXIS_X = VoxelShapeUtil.rotateVoxelShape(SHAPE_AXIS_Z, Direction.EAST);
     }
@@ -230,7 +230,7 @@ public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleW
         }
         if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
         level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0F, 0.8F);
-        level.updateNeighborsAt(pos, this);
+        level.blockEntityChanged(pos);
         return ItemInteractionResult.SUCCESS;
     }
 
@@ -244,7 +244,7 @@ public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleW
                     Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldLeftBellItemStack);
                 }
                 level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0F, 0.8F);
-                level.updateNeighborsAt(pos, this);
+                level.blockEntityChanged(pos);
                 return ItemInteractionResult.SUCCESS;
             }
         } else {
@@ -256,7 +256,7 @@ public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleW
                     Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldRightBellItemStack);
                 }
                 level.playSound(player, pos, SoundEvents.ANVIL_HIT, SoundSource.BLOCKS, 1.0F, 0.8F);
-                level.updateNeighborsAt(pos, this);
+                level.blockEntityChanged(pos);
                 return ItemInteractionResult.SUCCESS;
             }
         }
@@ -297,7 +297,7 @@ public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleW
                 }
                 alarmClockBlockEntity.setPocketWatch(player.getAbilities().instabuild ? itemStack.copy() : itemStack.split(1));
                 level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.6F);
-                level.updateNeighborsAt(pos, this);
+                level.blockEntityChanged(pos);
                 if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_POCKET_WATCH_TRIGGER.get().trigger(serverPlayer);
                 return ItemInteractionResult.SUCCESS;
             }
@@ -328,7 +328,7 @@ public class AlarmAlarmClockBlock extends BaseAlarmClockBlock implements SimpleW
                 Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPocketWatchItemStack);
             }
             level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
-            level.updateNeighborsAt(pos, this);
+            level.blockEntityChanged(pos);
 
             return ItemInteractionResult.SUCCESS;
         }

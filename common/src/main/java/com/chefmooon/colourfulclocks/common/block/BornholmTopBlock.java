@@ -182,7 +182,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                         }
                         bornholmTopBlockEntity.setPocketWatch(player.getAbilities().instabuild ? mainHandItem.copy() : mainHandItem.split(1));
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.6F);
-                        level.updateNeighborsAt(pos, this);
+                        level.blockEntityChanged(pos);
                         if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_POCKET_WATCH_TRIGGER.get().trigger(serverPlayer);
 
                         return ItemInteractionResult.SUCCESS;
@@ -238,6 +238,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                 } else if (!state.getValue(TICKING) && mainHandItem.is(Items.REDSTONE)) {
                     bornholmTopBlockEntity.setTicking(true);
                     level.setBlock(pos, state.setValue(CAN_TICK, true).setValue(TICKING, Boolean.TRUE), 3);
+                    level.blockEntityChanged(pos);
                     level.playSound(null, pos, ColourfulClocksSounds.BLOCK_ENABLE_TICKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F); // TODO decide sound
                     if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.ENABLE_TICKING_TRIGGER.get().trigger(serverPlayer);
@@ -246,6 +247,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                 } else if (state.getValue(TICKING) && mainHandItem.is(ItemTags.PICKAXES)) {
                     bornholmTopBlockEntity.setTicking(false);
                     level.setBlock(pos, state.setValue(CAN_TICK, false).setValue(TICKING, Boolean.FALSE), 3);
+                    level.blockEntityChanged(pos);
                     level.playSound(null, pos, ColourfulClocksSounds.BLOCK_DISABLE_TICKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F); // TODO decide sound
                     if (!player.getAbilities().instabuild) mainHandItem.hurtAndBreak(1, player, EquipmentSlot.MAINHAND);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.DISABLE_TICKING_TRIGGER.get().trigger(serverPlayer);
@@ -262,7 +264,7 @@ public class BornholmTopBlock extends BaseEntityBlock implements SimpleWaterlogg
                             Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPocketWatch);
                         }
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_POCKET_WATCH.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
-                        level.updateNeighborsAt(pos, this);
+                        level.blockEntityChanged(pos);
 
                         return ItemInteractionResult.SUCCESS;
                     }

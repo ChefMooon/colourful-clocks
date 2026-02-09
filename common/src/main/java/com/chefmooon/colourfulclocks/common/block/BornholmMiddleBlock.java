@@ -279,7 +279,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                             Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPendulum);
                         }
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_PENDULUM.get(), SoundSource.BLOCKS, 0.8F, 0.7F);
-                        level.updateNeighborsAt(pos, this);
+                        level.blockEntityChanged(pos);
 
                         return ItemInteractionResult.SUCCESS;
                     }

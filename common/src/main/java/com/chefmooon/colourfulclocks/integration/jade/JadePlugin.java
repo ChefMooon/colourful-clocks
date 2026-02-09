@@ -22,7 +22,7 @@ public class JadePlugin implements IWailaPlugin {
 
         registration.registerBlockComponent(WallClockDataProvider.INSTANCE, WallClockBlock.class);
 
-        registration.registerBlockComponent(AlarmClockDataProvider.INSTANCE, AlarmAlarmClockBlock.class);
+        registration.registerBlockComponent(AlarmClockDataProvider.INSTANCE, AlarmClockBlock.class);
     }
     @Override
     public void register(IWailaCommonRegistration registration) {
@@ -34,6 +34,6 @@ public class JadePlugin implements IWailaPlugin {
 
         registration.registerBlockDataProvider(WallClockDataProvider.INSTANCE, WallClockBlock.class);
 
-        registration.registerBlockDataProvider(AlarmClockDataProvider.INSTANCE, AlarmAlarmClockBlock.class);
+        registration.registerBlockDataProvider(AlarmClockDataProvider.INSTANCE, AlarmClockBlock.class);
     }
 }

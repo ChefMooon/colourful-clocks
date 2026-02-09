@@ -149,7 +149,7 @@ public class ColourfulClocksBlocksImpl {
         HashMap<ClockTypes, Supplier<Block>> hashMap = new HashMap<>();
         for (ClockTypes clockTypes : ClockTypes.values()) {
             Supplier<Block> block = registerBlock(baseLocation.withSuffix(clockTypes.getSerializedName()),
-                    () -> new AlarmAlarmClockBlockImpl(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
+                    () -> new AlarmClockBlockImpl(clockTypes, ColourfulClocksBlocks.getProperties(clockTypes)));
             hashMap.put(clockTypes, block);
         }
         return hashMap;

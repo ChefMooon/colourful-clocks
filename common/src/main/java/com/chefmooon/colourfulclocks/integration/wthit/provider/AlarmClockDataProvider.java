@@ -1,6 +1,6 @@
 package com.chefmooon.colourfulclocks.integration.wthit.provider;
 
-import com.chefmooon.colourfulclocks.common.block.AlarmAlarmClockBlock;
+import com.chefmooon.colourfulclocks.common.block.AlarmClockBlock;
 import com.chefmooon.colourfulclocks.common.data.AlarmClockComponent;
 import com.chefmooon.colourfulclocks.common.data.types.BornholmTopGlassTypes;
 import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
@@ -23,7 +23,7 @@ public class AlarmClockDataProvider implements IBlockComponentProvider {
         boolean glassType = config.getBoolean(ColourfulClocksCommonWailaPlugin.Options.GLASS_TYPE);
         boolean ticking = config.getBoolean(ColourfulClocksCommonWailaPlugin.Options.TICKING);
         if (clockBell || pocketWatchType || glassType || ticking) {
-            if (accessor.getBlock() instanceof AlarmAlarmClockBlock) {
+            if (accessor.getBlock() instanceof AlarmClockBlock) {
                 BlockEntity blockEntity = accessor.getBlockEntity();
                 if (blockEntity != null) {
                     AlarmClockComponent component = blockEntity.collectComponents().getOrDefault(com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes.getAlarmClockData(), AlarmClockComponent.getDefaultValue());
