@@ -219,7 +219,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(ADVANCEMENT + "handbell.desc", "A handheld bell that can be rung by right clicking. Different materials produce different sounds!");
 
         translationBuilder.add(ADVANCEMENT + "handbell_block", "Ding Dong");
-        translationBuilder.add(ADVANCEMENT + "handbell_block.desc", "The Handbell can also be placed as a block and rung by right clicking or by using Redstone!");
+        translationBuilder.add(ADVANCEMENT + "handbell_block.desc", "The Handbell can also be placed as a block while crouching and rung by right clicking or by using Redstone!");
 
         translationBuilder.add(ADVANCEMENT + "bornholm_trunk_wind_charge", "How could you?!");
         translationBuilder.add(ADVANCEMENT + "bornholm_trunk_wind_charge.desc", "Trunk doors can be opened/closed by a wind charge. Do what you will with this information.");

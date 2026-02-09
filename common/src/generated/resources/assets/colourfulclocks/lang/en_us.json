@@ -334,7 +334,7 @@
   "colourfulclocks.advancement.handbell": "Handbell",
   "colourfulclocks.advancement.handbell.desc": "A handheld bell that can be rung by right clicking. Different materials produce different sounds!",
   "colourfulclocks.advancement.handbell_block": "Ding Dong",
-  "colourfulclocks.advancement.handbell_block.desc": "The Handbell can also be placed as a block and rung by right clicking or by using Redstone!",
+  "colourfulclocks.advancement.handbell_block.desc": "The Handbell can also be placed as a block while crouching and rung by right clicking or by using Redstone!",
   "colourfulclocks.advancement.insert_handbell": "Bells",
   "colourfulclocks.advancement.insert_handbell.desc": "Craft and insert a Handbell into an Alarm Clock",
   "colourfulclocks.advancement.insert_pendulum": "Pendulum",

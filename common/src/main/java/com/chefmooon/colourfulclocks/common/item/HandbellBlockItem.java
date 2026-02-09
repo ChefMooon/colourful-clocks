@@ -10,6 +10,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,6 +19,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 
@@ -50,6 +52,14 @@ public class HandbellBlockItem extends BlockItem {
         player.getCooldowns().addCooldown(this, 20); // TODO: review handbell ring cooldown. Seems responsible but maybe not fun.
         player.awardStat(Stats.ITEM_USED.get(this));
         return InteractionResultHolder.consume(player.getItemInHand(usedHand));
+    }
+
+    @Override
+    public InteractionResult place(BlockPlaceContext context) {
+        if (context.getPlayer() != null && context.getPlayer().isCrouching()) {
+            return super.place(context);
+        }
+        return InteractionResult.FAIL;
     }
 
     public static void handbellHitSound(Entity entity) {
