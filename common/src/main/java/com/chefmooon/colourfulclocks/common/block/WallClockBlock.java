@@ -254,15 +254,11 @@ public class WallClockBlock extends BaseWallClockBlock {
         BlockPos controllerPos = getControllerPos(state, pos);
         BlockState controllerState = level.getBlockState(controllerPos);
 
-        WallClockComponent component = WallClockComponent.getDefaultValue();
         BlockEntity controllerEntity = level.getBlockEntity(controllerPos);
-        if (controllerEntity instanceof WallClockBlockEntity controllerClockEntity) {
-            component = controllerClockEntity.collectComponents().getOrDefault(ColourfulClocksDataComponentTypes.getWallClockData(), WallClockComponent.getDefaultValue());
-        }
+        if (!(controllerEntity instanceof WallClockBlockEntity controllerClockEntity)) return;
 
-        if (dropBlock && component != null) {
-            getWallClockDrops(level, controllerPos, controllerEntity, component, player);
-        }
+        WallClockComponent component = controllerClockEntity.getData();
+        if (dropBlock) getWallClockDrops(level, controllerPos, controllerEntity, component, player);
 
         if (controllerState.getBlock() instanceof WallClockBlock) {
             Direction facing = controllerState.getValue(FACING);
