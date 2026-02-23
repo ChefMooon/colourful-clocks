@@ -164,7 +164,8 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .define('B', ColourfulClocksTags.CLOCK_TOP_GLASS)
                     .define('C', Items.QUARTZ)
                     .group("bornholm_top_" + clockTypes.getName())
-                    .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of( // TODO: add clock top glass tag?
+                    .unlockedBy("has_glass", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(ColourfulClocksTags.CLOCK_TOP_GLASS)))
+                    .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
                             clockTypes.getCraftingIngredient(),
                             Items.QUARTZ)))
                     .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(topResult));
@@ -179,7 +180,8 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .define('A', clockType.getCraftingIngredient())
                 .define('B', ColourfulClocksTags.CLOCK_DOOR)
                 .group("bornholm_middle_" + clockType.getName())
-                .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(clockType.getCraftingIngredient()))) // TODO: add clock door tag?
+                .unlockedBy("has_glass", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(ColourfulClocksTags.CLOCK_TOP_GLASS)))
+                .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(clockType.getCraftingIngredient())))
                 .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result) + "_glass");
     }
 
