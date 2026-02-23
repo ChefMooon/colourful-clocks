@@ -117,7 +117,7 @@ A flat clock that comes in three size options: small(1x1), medium(2x2), large(3x
 ****
 
 ## Handbell
-This item makes a chime sound when hitting entities and right-clicked. It can also be inserted into the Alarm Clock to allow it to chime at sunrise. The handle has ___ customization options and can be placed as a block similar to the vanilla bell. Chime pitch and swing speed are determined by bell material type 'weight', heavier metals will have a lower pitch.
+This item makes a chime sound when hitting entities and right-clicked. It can also be inserted into the Alarm Clock to allow it to chime at sunrise. The handle has 41 customization options and can be placed as a block similar to the vanilla bell. Chime pitch and swing speed are determined by bell material type 'weight', heavier metals will have a lower pitch.
 
 ![Handbell Showcase](img/showcase/handbell_showcase.png)
 
