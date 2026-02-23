@@ -107,6 +107,7 @@ public class HandbellBlockEntity extends BlockEntity {
 
     private void updateEntities() {
         BlockPos blockPos = this.getBlockPos();
+        if (this.level == null) return;
         if (this.level.getGameTime() > this.lastRingTimestamp + 60L || this.nearbyEntities == null) {
             this.lastRingTimestamp = this.level.getGameTime();
             AABB aABB = (new AABB(blockPos)).inflate((double)48.0F);
@@ -154,6 +155,7 @@ public class HandbellBlockEntity extends BlockEntity {
             this.shaking = true;
         }
 
+        if (level == null) return;
         this.level.blockEvent(blockPos, this.getBlockState().getBlock(), 1, direction.get3DDataValue());
     }
 

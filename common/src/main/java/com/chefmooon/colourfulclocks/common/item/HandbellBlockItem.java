@@ -36,7 +36,7 @@ public class HandbellBlockItem extends BlockItem {
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         if (stack.has(ColourfulClocksDataComponentTypes.getHandbellData())) {
-            HandbellComponent component = stack.getOrDefault(ColourfulClocksDataComponentTypes.getHandbellData(), HandbellComponent.getDefaultValue());
+            HandbellComponent component = stack.get(ColourfulClocksDataComponentTypes.getHandbellData());
             if (component != null) {
                 HandbellHandleTypes handbellType = component.getMaterialType();
                 tooltipComponents.add(handbellType.getBaseTranslation());
@@ -70,7 +70,7 @@ public class HandbellBlockItem extends BlockItem {
         if (!(entity instanceof LivingEntity livingEntity)) return;
         if (!livingEntity.getItemInHand(InteractionHand.MAIN_HAND).is(ColourfulClocksTags.ITEM_HANDBELL)) return;
 
-        HandbellTypes handbellType = livingEntity.getItemInHand(InteractionHand.MAIN_HAND).get(ColourfulClocksDataComponentTypes.getHandbellData()).getType();
+        HandbellTypes handbellType = livingEntity.getItemInHand(InteractionHand.MAIN_HAND).getOrDefault(ColourfulClocksDataComponentTypes.getHandbellData(), HandbellComponent.getDefaultValue()).getType();
         SoundEvent hitSound = handbellType.getHitSound() != null ? handbellType.getHitSound().get() : ColourfulClocksSounds.ITEM_BASE_HANDBELL_HIT.get();
         if (livingEntity instanceof Player player) {
             player.getCommandSenderWorld().playSound(null, player.getX(), player.getY(), player.getZ(), hitSound, SoundSource.PLAYERS, 1.0F, 1.0F);

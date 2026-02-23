@@ -2,7 +2,6 @@ package com.chefmooon.colourfulclocks.common.registry;
 
 import com.chefmooon.colourfulclocks.common.data.*;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
-import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
