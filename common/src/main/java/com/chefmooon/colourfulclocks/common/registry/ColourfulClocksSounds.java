@@ -27,14 +27,8 @@ public class ColourfulClocksSounds {
     public static final Supplier<SoundEvent> ITEM_LAPIS_LAZULI_HANDBELL_HIT = registerSound("item.lapis_lazuli_handbell.hit");
     public static final Supplier<SoundEvent> ITEM_REDSTONE_HANDBELL_HIT = registerSound("item.redstone_handbell.hit");
 
-    public static final Supplier<SoundEvent> ITEM_IRON_PENDULUM_CHIME = registerSound("item.iron_pendulum.chime");
-    public static final Supplier<SoundEvent> ITEM_COPPER_PENDULUM_CHIME = registerSound("item.copper_pendulum.chime");
-    public static final Supplier<SoundEvent> ITEM_EXPOSED_COPPER_PENDULUM_CHIME = registerSound("item.exposed_copper_pendulum.chime");
-    public static final Supplier<SoundEvent> ITEM_WEATHERED_COPPER_PENDULUM_CHIME = registerSound("item.weathered_copper_pendulum.chime");
-    public static final Supplier<SoundEvent> ITEM_OXIDIZED_COPPER_PENDULUM_CHIME = registerSound("item.oxidized_copper_pendulum.chime");
-    public static final Supplier<SoundEvent> ITEM_GOLD_PENDULUM_CHIME = registerSound("item.gold_pendulum.chime");
+    public static final Supplier<SoundEvent> ITEM_BASE_PENDULUM_CHIME = registerSound("item.base_pendulum.chime");
     public static final Supplier<SoundEvent> ITEM_DIAMOND_PENDULUM_CHIME = registerSound("item.diamond_pendulum.chime");
-    public static final Supplier<SoundEvent> ITEM_NETHERITE_PENDULUM_CHIME = registerSound("item.netherite_pendulum.chime");
 
     public static final Supplier<SoundEvent> ITEM_EMERALD_PENDULUM_CHIME = registerSound("item.emerald_pendulum.chime");
     public static final Supplier<SoundEvent> ITEM_AMETHYST_PENDULUM_CHIME = registerSound("item.amethyst_pendulum.chime");
