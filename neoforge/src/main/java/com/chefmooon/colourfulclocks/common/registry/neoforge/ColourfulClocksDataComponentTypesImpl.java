@@ -46,42 +46,6 @@ public class ColourfulClocksDataComponentTypesImpl {
             ColourfulClocksDataComponentTypes.WALL_CLOCK.getPath(), wallClockComponentBuilder -> wallClockComponentBuilder.persistent(WallClockComponent.CODEC).networkSynchronized(WallClockComponent.STREAM_CODEC)
     );
 
-    public static DataComponentType<Boolean> getPocketWatchClosedData() {
-        return POCKET_WATCH_CLOSED.get();
-    }
-
-    public static DataComponentType<PocketWatchComponent> getPocketWatchData() {
-        return POCKET_WATCH.get();
-    }
-
-    public static DataComponentType<PendulumComponent> getPendulumData() {
-        return PENDULUM.get();
-    }
-
-    public static DataComponentType<HandbellComponent> getHandbellData() {
-        return HANDBELL_DATA.get();
-    }
-
-    public static DataComponentType<BornholmMiddleDoorComponent> getBornholmMiddleGlassData() {
-        return BORNHOLM_MIDDLE_GLASS_DATA.get();
-    }
-
-    public static DataComponentType<BornholmTopGlassComponent> getBornholmTopGlassData() {
-        return BORNHOLM_TOP_GLASS_DATA.get();
-    }
-
-    public static DataComponentType<MantelClockComponent> getMantelClockData() {
-        return MANTEL_CLOCK_DATA.get();
-    }
-
-    public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
-        return ALARM_CLOCK_DATA.get();
-    }
-
-    public static DataComponentType<WallClockComponent> getWallClockData() {
-        return WALL_CLOCK_DATA.get();
-    }
-
     public static void register(IEventBus eventBus) {
         DATA_COMPONENTS.register(eventBus);
     }

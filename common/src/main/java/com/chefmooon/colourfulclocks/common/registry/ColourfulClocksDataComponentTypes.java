@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.common.data.*;
 import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import dev.architectury.injectables.annotations.ExpectPlatform;
 import net.minecraft.core.component.DataComponentType;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 
 public class ColourfulClocksDataComponentTypes {
@@ -20,49 +21,49 @@ public class ColourfulClocksDataComponentTypes {
     public static final ResourceLocation ALARM_CLOCK = dataComponent("alarm_clock");
     public static final ResourceLocation WALL_CLOCK = dataComponent("wall_clock");
 
-    @ExpectPlatform
+    @SuppressWarnings("unchecked")
     public static DataComponentType<Boolean> getPocketWatchClosedData() {
-        throw new AssertionError();
+        return (DataComponentType<Boolean>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(POCKET_WATCH_CLOSED);
     }
 
-    @ExpectPlatform
+    @SuppressWarnings("unchecked")
     public static DataComponentType<PocketWatchComponent> getPocketWatchData() {
-        throw new AssertionError();
+        return (DataComponentType<PocketWatchComponent>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(POCKET_WATCH);
     }
 
-    @ExpectPlatform
+    @SuppressWarnings("unchecked")
     public static DataComponentType<PendulumComponent> getPendulumData() {
-        throw new AssertionError();
+        return (DataComponentType<PendulumComponent>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(PENDULUM);
     }
 
-    @ExpectPlatform
+    @SuppressWarnings("unchecked")
     public static DataComponentType<HandbellComponent> getHandbellData() {
-        throw new AssertionError();
+        return (DataComponentType<HandbellComponent>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(HANDBELL);
     }
 
-    @ExpectPlatform
+    @SuppressWarnings("unchecked")
     public static DataComponentType<BornholmMiddleDoorComponent> getBornholmMiddleGlassData() {
-        throw new AssertionError();
+        return (DataComponentType<BornholmMiddleDoorComponent>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(BORNHOLM_MIDDLE_GLASS);
     }
 
-    @ExpectPlatform
+    @SuppressWarnings("unchecked")
     public static DataComponentType<BornholmTopGlassComponent> getBornholmTopGlassData() {
-        throw new AssertionError();
+        return (DataComponentType<BornholmTopGlassComponent>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(BORNHOLM_TOP_GLASS);
     }
 
-    @ExpectPlatform
+    @SuppressWarnings("unchecked")
     public static DataComponentType<MantelClockComponent> getMantelClockData() {
-        throw new AssertionError();
+        return (DataComponentType<MantelClockComponent>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(MANTEL_CLOCK);
     }
 
-    @ExpectPlatform
+    @SuppressWarnings("unchecked")
     public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
-        throw new AssertionError();
+        return (DataComponentType<AlarmClockComponent>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(ALARM_CLOCK);
     }
 
-    @ExpectPlatform
+    @SuppressWarnings("unchecked")
     public static DataComponentType<WallClockComponent> getWallClockData() {
-        throw new AssertionError();
+        return (DataComponentType<WallClockComponent>) BuiltInRegistries.DATA_COMPONENT_TYPE.get(WALL_CLOCK);
     }
 
     private static ResourceLocation dataComponent(String string) {

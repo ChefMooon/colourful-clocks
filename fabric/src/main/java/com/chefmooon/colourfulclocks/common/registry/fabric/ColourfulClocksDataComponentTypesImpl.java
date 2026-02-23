@@ -49,42 +49,6 @@ public class ColourfulClocksDataComponentTypesImpl {
         return (DataComponentType) Registry.register(BuiltInRegistries.DATA_COMPONENT_TYPE, TextUtil.res(name), ((DataComponentType.Builder)builder.apply(DataComponentType.builder())).build());
     }
 
-    public static DataComponentType<Boolean> getPocketWatchClosedData() {
-        return POCKET_WATCH_CLOSED;
-    }
-
-    public static DataComponentType<PocketWatchComponent> getPocketWatchData() {
-        return POCKET_WATCH;
-    }
-
-    public static DataComponentType<PendulumComponent> getPendulumData() {
-        return PENDULUM;
-    }
-
-    public static DataComponentType<HandbellComponent> getHandbellData() {
-        return HANDBELL_DATA;
-    }
-
-    public static DataComponentType<BornholmMiddleDoorComponent> getBornholmMiddleGlassData() {
-        return BORNHOLM_MIDDLE_GLASS_DATA;
-    }
-
-    public static DataComponentType<BornholmTopGlassComponent> getBornholmTopGlassData() {
-        return BORNHOLM_TOP_GLASS_DATA;
-    }
-
-    public static DataComponentType<MantelClockComponent> getMantelClockData() {
-        return MANTEL_CLOCK_DATA;
-    }
-
-    public static DataComponentType<AlarmClockComponent> getAlarmClockData() {
-        return ALARM_CLOCK_DATA;
-    }
-
-    public static DataComponentType<WallClockComponent> getWallClockData() {
-        return WALL_CLOCK_DATA;
-    }
-
     public static void register() {
 
     }
