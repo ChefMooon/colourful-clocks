@@ -4,6 +4,7 @@ import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.types.*;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
+import com.chefmooon.colourfulclocks.common.util.TextUtil;
 import com.chefmooon.colourfulclocks.data.builder.fabric.*;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
@@ -120,7 +121,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .group(item.asItem().getDescriptionId().replace("block.colourfulclocks.", ""))
                     .setData(new HandbellComponent(handbellTypes, handleType, handbellTypes == HandbellTypes.COPPER ? Optional.of(0) : Optional.empty()))
                     .unlockedBy(RecipeProvider.getHasName(handbellTypes.getCraftingIngredient()), RecipeProvider.has(handbellTypes.getCraftingIngredient()))
-                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(item) + "_" + handleType.getSerializedName());
+                    .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(item) + "_" + handleType.getSerializedName()));
         }
     }
 
@@ -130,7 +131,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .requires(ColourfulClocksTags.ITEM_HANDBELL_HANDLE)
                 .unlockedBy(RecipeProvider.getHasName(item), RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(item)))
                 .unlockedBy("has_any_handle", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(ColourfulClocksTags.ITEM_HANDBELL_HANDLE)))
-                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(item) + "_handle_change");
+                .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(item) + "_handle_change"));
     }
 
     private static void buildPocketWatchRecipe(ItemLike item, PocketWatchTypes pocketWatchTypes, RecipeOutput recipeOutput) {
@@ -195,7 +196,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
                             clockTypes.getCraftingIngredient(),
                             Items.QUARTZ)))
-                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(topResult));
+                    .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(topResult)));
         }
     }
 
@@ -209,7 +210,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .group("bornholm_middle_" + clockType.getName())
                 .unlockedBy("has_glass", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(ColourfulClocksTags.CLOCK_TOP_GLASS)))
                 .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(clockType.getCraftingIngredient())))
-                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result) + "_glass");
+                .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(result) + "_glass"));
     }
 
     private static void buildMantelClockRecipes() {
@@ -226,7 +227,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
                             clockType.getCraftingIngredient(),
                             Items.QUARTZ)))
-                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result));
+                    .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(result)));
         }
     }
 
@@ -244,7 +245,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
                             clockType.getCraftingIngredient(),
                             Items.QUARTZ)))
-                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result));
+                    .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(result)));
         }
     }
 
@@ -259,7 +260,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .define('B', Items.QUARTZ)
                     .group("wall_clock_" + clockType.getName())
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(clockType.getCraftingIngredient(), Items.QUARTZ)))
-                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(resultSmall));
+                    .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(resultSmall)));
 
             ItemLike resultMedium = ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS_MEDIUM.get(clockType).get();
             WallClockShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, resultMedium)
@@ -270,7 +271,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .define('B', resultSmall)
                     .group("wall_clock_" + clockType.getName())
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(clockType.getCraftingIngredient(), resultSmall)))
-                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(resultMedium));
+                    .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(resultMedium)));
 
             ItemLike resultLarge = ColourfulClocksItemsImpl.WALL_CLOCK_VARIANTS_LARGE.get(clockType).get();
             WallClockShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, resultLarge)
@@ -281,7 +282,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .define('B', resultMedium)
                     .group("wall_clock_" + clockType.getName())
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(clockType.getCraftingIngredient(), resultMedium)))
-                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(resultLarge));
+                    .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(resultLarge)));
         }
     }
 
@@ -299,7 +300,7 @@ public class RecipeGenerator extends FabricRecipeProvider {
                     .unlockedBy("has_any_ingredient", RecipeProvider.inventoryTrigger(ItemPredicate.Builder.item().of(
                             clockType.getCraftingIngredient(),
                             Items.QUARTZ)))
-                    .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(result));
+                    .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(result)));
         }
     }
 
@@ -309,25 +310,25 @@ public class RecipeGenerator extends FabricRecipeProvider {
                 .requires(Items.HONEYCOMB)
                 .setData(new HandbellComponent(HandbellTypes.WAXED_COPPER, HandbellHandleTypes.OAK, Optional.of(0)))
                 .unlockedBy(RecipeProvider.getHasName(ColourfulClocksItemsImpl.COPPER_HANDBELL.get()), RecipeProvider.has(ColourfulClocksItemsImpl.COPPER_HANDBELL.get()))
-                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_COPPER_HANDBELL.get()));
+                .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_COPPER_HANDBELL.get())));
         WaxedCopperHandbellShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_HANDBELL.get())
                 .requires(ColourfulClocksItemsImpl.EXPOSED_COPPER_HANDBELL.get())
                 .requires(Items.HONEYCOMB)
                 .setData(new HandbellComponent(HandbellTypes.WAXED_EXPOSED_COPPER, HandbellHandleTypes.OAK, Optional.of(0)))
                 .unlockedBy(RecipeProvider.getHasName(ColourfulClocksItemsImpl.EXPOSED_COPPER_HANDBELL.get()), RecipeProvider.has(ColourfulClocksItemsImpl.EXPOSED_COPPER_HANDBELL.get()))
-                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_HANDBELL.get()));
+                .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_EXPOSED_COPPER_HANDBELL.get())));
         WaxedCopperHandbellShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_HANDBELL.get())
                 .requires(ColourfulClocksItemsImpl.WEATHERED_COPPER_HANDBELL.get())
                 .requires(Items.HONEYCOMB)
                 .setData(new HandbellComponent(HandbellTypes.WAXED_WEATHERED_COPPER, HandbellHandleTypes.OAK, Optional.of(0)))
                 .unlockedBy(RecipeProvider.getHasName(ColourfulClocksItemsImpl.WEATHERED_COPPER_HANDBELL.get()), RecipeProvider.has(ColourfulClocksItemsImpl.WEATHERED_COPPER_HANDBELL.get()))
-                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_HANDBELL.get()));
+                .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_WEATHERED_COPPER_HANDBELL.get())));
         WaxedCopperHandbellShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_HANDBELL.get())
                 .requires(ColourfulClocksItemsImpl.OXIDIZED_COPPER_HANDBELL.get())
                 .requires(Items.HONEYCOMB)
                 .setData(new HandbellComponent(HandbellTypes.WAXED_OXIDIZED_COPPER, HandbellHandleTypes.OAK, Optional.of(0)))
                 .unlockedBy(RecipeProvider.getHasName(ColourfulClocksItemsImpl.OXIDIZED_COPPER_HANDBELL.get()), RecipeProvider.has(ColourfulClocksItemsImpl.OXIDIZED_COPPER_HANDBELL.get()))
-                .save(RECIPE_OUTPUT, RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_HANDBELL.get()));
+                .save(RECIPE_OUTPUT, TextUtil.res(RecipeProvider.getSimpleRecipeName(ColourfulClocksItemsImpl.WAXED_OXIDIZED_COPPER_HANDBELL.get())));
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, ColourfulClocksItemsImpl.WAXED_COPPER_POCKET_WATCH.get())
                 .requires(ColourfulClocksItemsImpl.COPPER_POCKET_WATCH.get())
