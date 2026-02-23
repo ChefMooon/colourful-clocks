@@ -48,11 +48,10 @@ public class HandbellBlockItem extends BlockItem {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
-        player.startUsingItem(usedHand);
         level.playSound(player, player, type.getRingSound().get(), player.getSoundSource(), 1.0F, type.getPitch());
         player.getCooldowns().addCooldown(this, 20); // TODO: review handbell ring cooldown. Seems responsible but maybe not fun.
         player.awardStat(Stats.ITEM_USED.get(this));
-        return InteractionResultHolder.consume(player.getItemInHand(usedHand));
+        return InteractionResultHolder.success(player.getItemInHand(usedHand));
     }
 
     @Override
@@ -60,7 +59,7 @@ public class HandbellBlockItem extends BlockItem {
         if (context.getPlayer() != null && context.getPlayer().isCrouching()) {
             return super.place(context);
         }
-        return InteractionResult.FAIL;
+        return this.use(context.getLevel(), context.getPlayer(), context.getHand()).getResult();
     }
 
     public HandbellTypes getType() {
