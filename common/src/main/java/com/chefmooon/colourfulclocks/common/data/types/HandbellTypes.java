@@ -14,24 +14,24 @@ import java.util.function.Supplier;
 
 public enum HandbellTypes implements StringRepresentable {
 
-    IRON(0, "iron", Items.IRON_INGOT, ColourfulClocksSounds.ITEM_IRON_HANDBELL_RING, ColourfulClocksSounds.ITEM_IRON_HANDBELL_HIT, 1.9F),
-    COPPER(1, "copper", Items.COPPER_INGOT, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, 1.9F),
-    EXPOSED_COPPER(2, "exposed_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, 1.9F),
-    WEATHERED_COPPER(3, "weathered_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, 1.9F),
-    OXIDIZED_COPPER(4, "oxidized_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, 1.9F),
-    WAXED_COPPER(5, "waxed_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, 1.9F),
-    WAXED_EXPOSED_COPPER(6, "waxed_exposed_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, 1.9F),
-    WAXED_WEATHERED_COPPER(7, "waxed_weathered_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, 1.9F),
-    WAXED_OXIDIZED_COPPER(8, "waxed_oxidized_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, 1.9F),
-    GOLD(9, "gold", Items.GOLD_INGOT, ColourfulClocksSounds.ITEM_GOLD_HANDBELL_RING, ColourfulClocksSounds.ITEM_GOLD_HANDBELL_HIT, 1.6F),
-    DIAMOND(10, "diamond", Items.DIAMOND, ColourfulClocksSounds.ITEM_DIAMOND_HANDBELL_RING, ColourfulClocksSounds.ITEM_DIAMOND_HANDBELL_HIT, 1.4F),
-    NETHERITE(11, "netherite", Items.NETHERITE_INGOT, ColourfulClocksSounds.ITEM_NETHERITE_HANDBELL_RING, ColourfulClocksSounds.ITEM_NETHERITE_HANDBELL_HIT, 1.2F),
+    IRON(0, "iron", Items.IRON_INGOT, ColourfulClocksSounds.ITEM_IRON_HANDBELL_RING, ColourfulClocksSounds.ITEM_IRON_HANDBELL_HIT, Pitch.FULL.getValue()),
+    COPPER(1, "copper", Items.COPPER_INGOT, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, Pitch.FULL.getValue()),
+    EXPOSED_COPPER(2, "exposed_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, Pitch.THREE_QUARTER.getValue()),
+    WEATHERED_COPPER(3, "weathered_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, Pitch.HALF.getValue()),
+    OXIDIZED_COPPER(4, "oxidized_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, Pitch.QUARTER.getValue()),
+    WAXED_COPPER(5, "waxed_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, Pitch.FULL.getValue()),
+    WAXED_EXPOSED_COPPER(6, "waxed_exposed_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, Pitch.THREE_QUARTER.getValue()),
+    WAXED_WEATHERED_COPPER(7, "waxed_weathered_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, Pitch.HALF.getValue()),
+    WAXED_OXIDIZED_COPPER(8, "waxed_oxidized_copper", Items.AIR, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_RING, ColourfulClocksSounds.ITEM_COPPER_HANDBELL_HIT, Pitch.QUARTER.getValue()),
+    GOLD(9, "gold", Items.GOLD_INGOT, ColourfulClocksSounds.ITEM_GOLD_HANDBELL_RING, ColourfulClocksSounds.ITEM_GOLD_HANDBELL_HIT, Pitch.THREE_QUARTER.getValue()),
+    DIAMOND(10, "diamond", Items.DIAMOND, ColourfulClocksSounds.ITEM_DIAMOND_HANDBELL_RING, ColourfulClocksSounds.ITEM_DIAMOND_HANDBELL_HIT, Pitch.HALF.getValue()),
+    NETHERITE(11, "netherite", Items.NETHERITE_INGOT, ColourfulClocksSounds.ITEM_NETHERITE_HANDBELL_RING, ColourfulClocksSounds.ITEM_NETHERITE_HANDBELL_HIT, Pitch.QUARTER.getValue()),
 
-    EMERALD(12, "emerald", Items.EMERALD, ColourfulClocksSounds.ITEM_EMERALD_HANDBELL_RING, ColourfulClocksSounds.ITEM_EMERALD_HANDBELL_HIT, 1.6F),
-    AMETHYST(13, "amethyst", Items.AMETHYST_SHARD, ColourfulClocksSounds.ITEM_AMETHYST_HANDBELL_RING, ColourfulClocksSounds.ITEM_AMETHYST_HANDBELL_HIT, 1.6F),
-    QUARTZ(14, "quartz", Items.QUARTZ, ColourfulClocksSounds.ITEM_QUARTZ_HANDBELL_RING, ColourfulClocksSounds.ITEM_QUARTZ_HANDBELL_HIT, 1.6F),
-    LAPIS_LAZULI(15, "lapis_lazuli", Items.LAPIS_LAZULI, ColourfulClocksSounds.ITEM_LAPIS_LAZULI_HANDBELL_RING, ColourfulClocksSounds.ITEM_LAPIS_LAZULI_HANDBELL_HIT, 1.6F),
-    REDSTONE(16, "redstone", Items.REDSTONE, ColourfulClocksSounds.ITEM_REDSTONE_HANDBELL_RING, ColourfulClocksSounds.ITEM_REDSTONE_HANDBELL_HIT, 1.6F)
+    EMERALD(12, "emerald", Items.EMERALD, ColourfulClocksSounds.ITEM_EMERALD_HANDBELL_RING, ColourfulClocksSounds.ITEM_EMERALD_HANDBELL_HIT, Pitch.THREE_QUARTER.getValue()),
+    AMETHYST(13, "amethyst", Items.AMETHYST_SHARD, ColourfulClocksSounds.ITEM_AMETHYST_HANDBELL_RING, ColourfulClocksSounds.ITEM_AMETHYST_HANDBELL_HIT, Pitch.THREE_QUARTER.getValue()),
+    QUARTZ(14, "quartz", Items.QUARTZ, ColourfulClocksSounds.ITEM_QUARTZ_HANDBELL_RING, ColourfulClocksSounds.ITEM_QUARTZ_HANDBELL_HIT, Pitch.THREE_QUARTER.getValue()),
+    LAPIS_LAZULI(15, "lapis_lazuli", Items.LAPIS_LAZULI, ColourfulClocksSounds.ITEM_LAPIS_LAZULI_HANDBELL_RING, ColourfulClocksSounds.ITEM_LAPIS_LAZULI_HANDBELL_HIT, Pitch.THREE_QUARTER.getValue()),
+    REDSTONE(16, "redstone", Items.REDSTONE, ColourfulClocksSounds.ITEM_REDSTONE_HANDBELL_RING, ColourfulClocksSounds.ITEM_REDSTONE_HANDBELL_HIT, Pitch.THREE_QUARTER.getValue())
     ;
 
     public static final Codec<HandbellTypes> CODEC = StringRepresentable.fromEnum(HandbellTypes::values);
@@ -85,5 +85,22 @@ public enum HandbellTypes implements StringRepresentable {
             }
         }
         return null;
+    }
+
+    private enum Pitch {
+        FULL(1.9F),
+        THREE_QUARTER(1.5F),
+        HALF(1.1F),
+        QUARTER(0.9F);
+
+        private final float value;
+
+        Pitch(float value) {
+            this.value = value;
+        }
+
+        public float getValue() {
+            return value;
+        }
     }
 }
