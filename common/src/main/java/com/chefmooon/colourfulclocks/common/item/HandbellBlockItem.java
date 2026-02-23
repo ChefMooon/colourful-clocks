@@ -7,6 +7,7 @@ import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponen
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksSounds;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
@@ -62,14 +63,20 @@ public class HandbellBlockItem extends BlockItem {
         return InteractionResult.FAIL;
     }
 
+    public HandbellTypes getType() {
+        return type;
+    }
+
     public static void handbellHitSound(Entity entity) {
         if (!(entity instanceof LivingEntity livingEntity)) return;
         if (!livingEntity.getItemInHand(InteractionHand.MAIN_HAND).is(ColourfulClocksTags.ITEM_HANDBELL)) return;
 
+        HandbellTypes handbellType = livingEntity.getItemInHand(InteractionHand.MAIN_HAND).get(ColourfulClocksDataComponentTypes.getHandbellData()).getType();
+        SoundEvent hitSound = handbellType.getHitSound() != null ? handbellType.getHitSound().get() : ColourfulClocksSounds.ITEM_BASE_HANDBELL_HIT.get();
         if (livingEntity instanceof Player player) {
-            player.getCommandSenderWorld().playSound(null, player.getX(), player.getY(), player.getZ(), ColourfulClocksSounds.ITEM_IRON_HANDBELL_HIT.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            player.getCommandSenderWorld().playSound(null, player.getX(), player.getY(), player.getZ(), hitSound, SoundSource.PLAYERS, 1.0F, 1.0F);
         } else {
-            livingEntity.getCommandSenderWorld().playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), ColourfulClocksSounds.ITEM_IRON_HANDBELL_HIT.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+            livingEntity.getCommandSenderWorld().playSound(null, livingEntity.getX(), livingEntity.getY(), livingEntity.getZ(), hitSound, SoundSource.PLAYERS, 1.0F, 1.0F);
         }
     }
 }

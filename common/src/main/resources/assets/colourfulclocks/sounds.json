@@ -1,50 +1,5 @@
 {
-  "item.iron_handbell.ring": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.copper_handbell.ring": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.exposed_copper_handbell.ring": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.weathered_copper_handbell.ring": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.oxidized_copper_handbell.ring": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.gold_handbell.ring": {
+  "item.base_handbell.ring": {
     "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
     "sounds": [
       {
@@ -54,15 +9,6 @@
     ]
   },
   "item.diamond_handbell.ring": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.netherite_handbell.ring": {
     "subtitle": "colourfulclocks.subtitles.item.handbell.ring",
     "sounds": [
       {
@@ -116,52 +62,7 @@
       }
     ]
   },
-  "item.iron_handbell.hit": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.copper_handbell.hit": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.exposed_copper_handbell.hit": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.weathered_copper_handbell.hit": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.oxidized_copper_handbell.hit": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.gold_handbell.hit": {
+  "item.base_handbell.hit": {
     "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
     "sounds": [
       {
@@ -171,15 +72,6 @@
     ]
   },
   "item.diamond_handbell.hit": {
-    "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
-    "sounds": [
-      {
-        "name": "block.bell.use",
-        "type": "event"
-      }
-    ]
-  },
-  "item.netherite_handbell.hit": {
     "subtitle": "colourfulclocks.subtitles.item.handbell.hit",
     "sounds": [
       {
