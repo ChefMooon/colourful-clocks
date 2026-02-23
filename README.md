@@ -117,7 +117,7 @@ A flat clock that comes in three size options: small(1x1), medium(2x2), large(3x
 ****
 
 ## Handbell
-This item makes a chime sound when hitting entities and right-clicked. It can also be inserted into the Alarm Clock to allow it to chime at sunrise. The handle has ___ customization options and can be placed as a block similar to the vanilla bell. Chime pitch is determined by bell material type 'weight', heavier metals will have a lower pitch.
+This item makes a chime sound when hitting entities and right-clicked. It can also be inserted into the Alarm Clock to allow it to chime at sunrise. The handle has ___ customization options and can be placed as a block similar to the vanilla bell. Chime pitch and swing speed are determined by bell material type 'weight', heavier metals will have a lower pitch.
 
 ![Handbell Showcase](img/showcase/handbell_showcase.png)
 
@@ -125,13 +125,18 @@ This item makes a chime sound when hitting entities and right-clicked. It can al
 
 <details>
   <summary>Details</summary>
-  <h3>Pitch</h3>
-  - Full Pitch: Iron, Copper (all variants)
-  - 3/4 Pitch: Gold, Emerald, Amethyst, Quartz, Lapis Lazuli, Redstone
-  - 1/2 Pitch: Diamond
-  - 1/4 Pitch: Netherite
   <h3>Iron Handbell</h3>
   <img src="img/recipe/handbell_recipe.png" title="Iron Handbell Recipe" alt="Iron Handbell Recipe" />
+  <h3>Pitch</h3>
+    - Full Pitch: Iron, Copper<br>
+    - 3/4 Pitch: Exposed Copper, Gold, Emerald, Amethyst, Quartz, Lapis Lazuli, Redstone<br>
+    - 1/2 Pitch: Weathered Copper, Diamond<br>
+    - 1/4 Pitch: Oxidized Copper, Netherite
+  <h3>Swing Speed</h3>
+    - Full Speed: Iron, Copper<br>
+    - 3/4 Speed: Exposed Copper, Gold, Emerald, Amethyst, Quartz, Lapis Lazuli, Redstone<br>
+    - 1/2 Speed: Weathered Copper, Diamond<br>
+    - 1/4 Speed: Oxidized Copper, Netherite
 </details>
 
 ## Pocket Watch
@@ -161,15 +166,15 @@ When placed inside a valid clock the clock chime at noon and midnight. Pendulum 
 <details>
   <summary>Details</summary>
   <h3>Swing Speed</h3>
-  - Full Speed: Iron, Copper (all variants)
-  - 3/4 Speed: Gold, Emerald, Amethyst, Quartz, Lapis Lazuli, Redstone
-  - 1/2 Speed: Diamond
-  - 1/4 Speed: Netherite
+    - Full Speed: Iron, Copper (all variants)<br>
+    - 3/4 Speed: Gold, Emerald, Amethyst, Quartz, Lapis Lazuli, Redstone<br>
+    - 1/2 Speed: Diamond<br>
+    - 1/4 Speed: Netherite
   <h3>Pitch</h3>
-  - Full Pitch: Iron, Copper (all variants)
-  - 3/4 Pitch: Gold, Emerald, Amethyst, Quartz, Lapis Lazuli, Redstone
-  - 1/2 Pitch: Diamond
-  - 1/4 Pitch: Netherite
+    - Full Pitch: Iron, Copper (all variants)<br>
+    - 3/4 Pitch: Gold, Emerald, Amethyst, Quartz, Lapis Lazuli, Redstone<br>
+    - 1/2 Pitch: Diamond<br>
+    - 1/4 Pitch: Netherite
   <h3>Iron Pendulum Crafting Recipe</h3>
   <img src="img/recipe/pendulum_recipe.png" title="Iron Pendulum Recipe" alt="Iron Pendulum Recipe" />
 </details>

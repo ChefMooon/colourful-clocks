@@ -187,6 +187,10 @@ public class HandbellBlockEntity extends BlockEntity {
         entity.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60));
     }
 
+    public float getSwingSpeedModifier() {
+        return this.getData().getType().getSwingSpeedModifier();
+    }
+
     @FunctionalInterface
     interface ResonationEndAction {
         void run(Level level, BlockPos blockPos, List<LivingEntity> list);

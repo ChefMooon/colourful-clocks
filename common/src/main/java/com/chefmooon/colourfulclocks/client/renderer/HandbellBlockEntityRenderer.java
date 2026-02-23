@@ -9,7 +9,8 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class HandbellBlockEntityRenderer {
     public static void renderHandbell(HandbellBlockEntity blockEntity, PoseStack poseStack, float partialTick, BlockState state) {
-        float f = (float)blockEntity.ticks + partialTick;
+        float swingSpeedModifier = blockEntity.getSwingSpeedModifier();
+        float f = ((float)blockEntity.ticks + partialTick) * swingSpeedModifier;
         float g = 0.0F;
         float h = 0.0F;
         if (blockEntity.shaking) {
