@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "redstone_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:redstone"
+    },
+    "B": {
+      "item": "minecraft:stripped_acacia_wood"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell": {
+        "type": "redstone",
+        "handle": "stripped_acacia"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:redstone_handbell"
+  }
+}

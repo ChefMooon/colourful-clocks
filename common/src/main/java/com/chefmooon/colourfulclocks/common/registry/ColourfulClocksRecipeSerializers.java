@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 public class ColourfulClocksRecipeSerializers {
 
     public static final ResourceLocation WAXED_COPPER_HANDBELL = recipeSerializer("waxed_copper_handbell");
+    public static final ResourceLocation HANDBELL_HANDLE = recipeSerializer("handbell_handle");
     public static final ResourceLocation BORNHOLM_MIDDLE = recipeSerializer("bornholm_trunk");
     public static final ResourceLocation BORNHOLM_TOP = recipeSerializer("bornholm_dial");
     public static final ResourceLocation MANTEL_CLOCK = recipeSerializer("mantel_clock");

@@ -1,0 +1,16 @@
+{
+  "type": "colourfulclocks:handbell_handle",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "colourfulclocks:diamond_handbell"
+    },
+    {
+      "tag": "colourfulclocks:handbell_handle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:diamond_handbell"
+  }
+}

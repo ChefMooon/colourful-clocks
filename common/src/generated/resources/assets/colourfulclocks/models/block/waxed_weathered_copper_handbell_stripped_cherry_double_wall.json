@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:block/template_handbell_double_wall",
+  "textures": {
+    "handle": "minecraft:block/stripped_cherry_log",
+    "particle": "minecraft:block/stripped_cherry_log"
+  }
+}

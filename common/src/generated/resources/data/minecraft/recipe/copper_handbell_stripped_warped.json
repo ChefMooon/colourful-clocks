@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "copper_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:copper_ingot"
+    },
+    "B": {
+      "item": "minecraft:stripped_warped_hyphae"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell": {
+        "type": "copper",
+        "handle": "stripped_warped",
+        "weathering": 0
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:copper_handbell"
+  }
+}

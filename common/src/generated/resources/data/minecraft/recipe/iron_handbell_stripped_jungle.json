@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "iron_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:stripped_jungle_wood"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell": {
+        "type": "iron",
+        "handle": "stripped_jungle"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:iron_handbell"
+  }
+}

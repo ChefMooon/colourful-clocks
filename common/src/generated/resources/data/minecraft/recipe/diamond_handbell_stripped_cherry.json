@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "diamond_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:diamond"
+    },
+    "B": {
+      "item": "minecraft:stripped_cherry_wood"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell": {
+        "type": "diamond",
+        "handle": "stripped_cherry"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:diamond_handbell"
+  }
+}

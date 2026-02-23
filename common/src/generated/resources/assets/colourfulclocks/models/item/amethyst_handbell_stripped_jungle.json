@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:item/template_handbell_item",
+  "textures": {
+    "handbell": "colourfulclocks:item/amethyst_handbell",
+    "handle": "minecraft:block/stripped_jungle_log"
+  }
+}

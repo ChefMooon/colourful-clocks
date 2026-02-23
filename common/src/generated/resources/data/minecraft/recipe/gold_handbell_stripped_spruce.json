@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "gold_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "minecraft:stripped_spruce_wood"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell": {
+        "type": "gold",
+        "handle": "stripped_spruce"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:gold_handbell"
+  }
+}

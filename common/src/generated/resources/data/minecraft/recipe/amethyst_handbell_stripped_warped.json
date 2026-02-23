@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "amethyst_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "B": {
+      "item": "minecraft:stripped_warped_hyphae"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell": {
+        "type": "amethyst",
+        "handle": "stripped_warped"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:amethyst_handbell"
+  }
+}

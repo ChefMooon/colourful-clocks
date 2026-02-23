@@ -2,6 +2,6 @@
   "parent": "colourfulclocks:item/template_handbell_item",
   "textures": {
     "handbell": "colourfulclocks:item/emerald_handbell",
-    "handle": "minecraft:block/warped_planks"
+    "handle": "minecraft:block/warped_stem"
   }
 }

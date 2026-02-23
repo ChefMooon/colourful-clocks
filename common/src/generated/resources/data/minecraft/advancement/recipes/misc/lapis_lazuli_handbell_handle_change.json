@@ -1,0 +1,43 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_any_handle": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#colourfulclocks:handbell_handle"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_lapis_lazuli_handbell": {
+      "conditions": {
+        "items": [
+          {
+            "items": "colourfulclocks:lapis_lazuli_handbell"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:lapis_lazuli_handbell_handle_change"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_lapis_lazuli_handbell",
+      "has_any_handle"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:lapis_lazuli_handbell_handle_change"
+    ]
+  }
+}

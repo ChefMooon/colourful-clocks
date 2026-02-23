@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "quartz_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:quartz"
+    },
+    "B": {
+      "item": "minecraft:stripped_spruce_wood"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell": {
+        "type": "quartz",
+        "handle": "stripped_spruce"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:quartz_handbell"
+  }
+}

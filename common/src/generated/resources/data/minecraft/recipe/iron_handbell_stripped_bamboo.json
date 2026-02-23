@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "iron_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_ingot"
+    },
+    "B": {
+      "item": "minecraft:stripped_bamboo_block"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell": {
+        "type": "iron",
+        "handle": "stripped_bamboo"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:iron_handbell"
+  }
+}

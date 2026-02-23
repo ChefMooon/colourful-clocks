@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "lapis_lazuli_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:lapis_lazuli"
+    },
+    "B": {
+      "item": "minecraft:stripped_crimson_hyphae"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell": {
+        "type": "lapis_lazuli",
+        "handle": "stripped_crimson"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:lapis_lazuli_handbell"
+  }
+}

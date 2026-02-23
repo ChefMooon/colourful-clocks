@@ -12,6 +12,7 @@ import java.util.function.Supplier;
 public class ColourfulClocksRecipeSerializersImpl {
 
     public static final Supplier<RecipeSerializer<?>> WAXED_COPPER_HANDBELL = registerRecipeSerializer(ColourfulClocksRecipeSerializers.WAXED_COPPER_HANDBELL, WaxedCopperHandbellShapelessRecipe.Serializer::new);
+    public static final Supplier<RecipeSerializer<?>> HANDBELL_HANDLE = registerRecipeSerializer(ColourfulClocksRecipeSerializers.HANDBELL_HANDLE, HandbellHandleShapelessRecipe.Serializer::new);
     public static final Supplier<RecipeSerializer<?>> BORNHOLM_MIDDLE = registerRecipeSerializer(ColourfulClocksRecipeSerializers.BORNHOLM_MIDDLE, BornholmMiddleShapedRecipe.Serializer::new);
     public static final Supplier<RecipeSerializer<?>> BORNHOLM_TOP = registerRecipeSerializer(ColourfulClocksRecipeSerializers.BORNHOLM_TOP, BornholmTopShapedRecipe.Serializer::new);
     public static final Supplier<RecipeSerializer<?>> MANTEL_CLOCK = registerRecipeSerializer(ColourfulClocksRecipeSerializers.MANTEL_CLOCK, MantelClockShapedRecipe.Serializer::new);

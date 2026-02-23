@@ -1,7 +1,7 @@
 {
   "parent": "colourfulclocks:block/template_handbell_single_wall",
   "textures": {
-    "handle": "minecraft:block/birch_planks",
-    "particle": "minecraft:block/birch_planks"
+    "handle": "minecraft:block/birch_log",
+    "particle": "minecraft:block/birch_log"
   }
 }

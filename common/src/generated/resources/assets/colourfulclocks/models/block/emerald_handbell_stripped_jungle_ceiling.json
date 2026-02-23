@@ -1,0 +1,7 @@
+{
+  "parent": "colourfulclocks:block/template_handbell_ceiling",
+  "textures": {
+    "handle": "minecraft:block/stripped_jungle_log",
+    "particle": "minecraft:block/stripped_jungle_log"
+  }
+}

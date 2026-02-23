@@ -1,0 +1,16 @@
+{
+  "type": "colourfulclocks:handbell_handle",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "colourfulclocks:lapis_lazuli_handbell"
+    },
+    {
+      "tag": "colourfulclocks:handbell_handle"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "colourfulclocks:lapis_lazuli_handbell"
+  }
+}

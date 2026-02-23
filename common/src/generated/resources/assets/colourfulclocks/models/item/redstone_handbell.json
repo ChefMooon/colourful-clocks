@@ -62,122 +62,188 @@
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_stone_bricks",
+      "model": "colourfulclocks:item/redstone_handbell_stripped_oak",
       "predicate": {
         "colourfulclocks:handle": 0.11
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_mossy_stone_bricks",
+      "model": "colourfulclocks:item/redstone_handbell_stripped_spruce",
       "predicate": {
         "colourfulclocks:handle": 0.12
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_polished_granite",
+      "model": "colourfulclocks:item/redstone_handbell_stripped_birch",
       "predicate": {
         "colourfulclocks:handle": 0.13
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_polished_diorite",
+      "model": "colourfulclocks:item/redstone_handbell_stripped_jungle",
       "predicate": {
         "colourfulclocks:handle": 0.14
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_polished_andesite",
+      "model": "colourfulclocks:item/redstone_handbell_stripped_acacia",
       "predicate": {
         "colourfulclocks:handle": 0.15
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_polished_deepslate",
+      "model": "colourfulclocks:item/redstone_handbell_stripped_dark_oak",
       "predicate": {
         "colourfulclocks:handle": 0.16
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_deepslate_bricks",
+      "model": "colourfulclocks:item/redstone_handbell_stripped_mangrove",
       "predicate": {
         "colourfulclocks:handle": 0.17
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_polished_tuff",
+      "model": "colourfulclocks:item/redstone_handbell_stripped_cherry",
       "predicate": {
         "colourfulclocks:handle": 0.18
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_tuff_bricks",
+      "model": "colourfulclocks:item/redstone_handbell_stripped_bamboo",
       "predicate": {
         "colourfulclocks:handle": 0.19
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_bricks",
+      "model": "colourfulclocks:item/redstone_handbell_stripped_crimson",
       "predicate": {
         "colourfulclocks:handle": 0.2
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_mud_bricks",
+      "model": "colourfulclocks:item/redstone_handbell_stripped_warped",
       "predicate": {
         "colourfulclocks:handle": 0.21
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_cut_sandstone",
+      "model": "colourfulclocks:item/redstone_handbell_stone_bricks",
       "predicate": {
         "colourfulclocks:handle": 0.22
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_cut_red_sandstone",
+      "model": "colourfulclocks:item/redstone_handbell_mossy_stone_bricks",
       "predicate": {
         "colourfulclocks:handle": 0.23
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_prismarine_bricks",
+      "model": "colourfulclocks:item/redstone_handbell_polished_granite",
       "predicate": {
         "colourfulclocks:handle": 0.24
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_dark_prismarine",
+      "model": "colourfulclocks:item/redstone_handbell_polished_diorite",
       "predicate": {
         "colourfulclocks:handle": 0.25
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_nether_bricks",
+      "model": "colourfulclocks:item/redstone_handbell_polished_andesite",
       "predicate": {
         "colourfulclocks:handle": 0.26
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_red_nether_bricks",
+      "model": "colourfulclocks:item/redstone_handbell_polished_deepslate",
       "predicate": {
         "colourfulclocks:handle": 0.27
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_polished_blackstone",
+      "model": "colourfulclocks:item/redstone_handbell_deepslate_bricks",
       "predicate": {
         "colourfulclocks:handle": 0.28
       }
     },
     {
-      "model": "colourfulclocks:item/redstone_handbell_polished_blackstone_bricks",
+      "model": "colourfulclocks:item/redstone_handbell_polished_tuff",
       "predicate": {
         "colourfulclocks:handle": 0.29
+      }
+    },
+    {
+      "model": "colourfulclocks:item/redstone_handbell_tuff_bricks",
+      "predicate": {
+        "colourfulclocks:handle": 0.3
+      }
+    },
+    {
+      "model": "colourfulclocks:item/redstone_handbell_bricks",
+      "predicate": {
+        "colourfulclocks:handle": 0.31
+      }
+    },
+    {
+      "model": "colourfulclocks:item/redstone_handbell_mud_bricks",
+      "predicate": {
+        "colourfulclocks:handle": 0.32
+      }
+    },
+    {
+      "model": "colourfulclocks:item/redstone_handbell_cut_sandstone",
+      "predicate": {
+        "colourfulclocks:handle": 0.33
+      }
+    },
+    {
+      "model": "colourfulclocks:item/redstone_handbell_cut_red_sandstone",
+      "predicate": {
+        "colourfulclocks:handle": 0.34
+      }
+    },
+    {
+      "model": "colourfulclocks:item/redstone_handbell_prismarine_bricks",
+      "predicate": {
+        "colourfulclocks:handle": 0.35
+      }
+    },
+    {
+      "model": "colourfulclocks:item/redstone_handbell_dark_prismarine",
+      "predicate": {
+        "colourfulclocks:handle": 0.36
+      }
+    },
+    {
+      "model": "colourfulclocks:item/redstone_handbell_nether_bricks",
+      "predicate": {
+        "colourfulclocks:handle": 0.37
+      }
+    },
+    {
+      "model": "colourfulclocks:item/redstone_handbell_red_nether_bricks",
+      "predicate": {
+        "colourfulclocks:handle": 0.38
+      }
+    },
+    {
+      "model": "colourfulclocks:item/redstone_handbell_polished_blackstone",
+      "predicate": {
+        "colourfulclocks:handle": 0.39
+      }
+    },
+    {
+      "model": "colourfulclocks:item/redstone_handbell_polished_blackstone_bricks",
+      "predicate": {
+        "colourfulclocks:handle": 0.4
       }
     }
   ],
   "textures": {
     "handbell": "colourfulclocks:item/redstone_handbell",
-    "handle": "minecraft:block/oak_planks"
+    "handle": "minecraft:block/oak_log"
   }
 }

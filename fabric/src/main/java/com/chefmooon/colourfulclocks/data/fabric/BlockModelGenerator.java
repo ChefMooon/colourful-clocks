@@ -569,6 +569,61 @@ public class BlockModelGenerator {
                             .select(HandbellHandleTypes.WARPED, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.WARPED).get(BellAttachType.SINGLE_WALL)))
                             .select(HandbellHandleTypes.WARPED, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.WARPED).get(BellAttachType.DOUBLE_WALL)))
 
+                            .select(HandbellHandleTypes.STRIPPED_OAK, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_OAK).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STRIPPED_OAK, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_OAK).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STRIPPED_OAK, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_OAK).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STRIPPED_OAK, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_OAK).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.STRIPPED_SPRUCE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_SPRUCE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STRIPPED_SPRUCE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_SPRUCE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STRIPPED_SPRUCE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_SPRUCE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STRIPPED_SPRUCE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_SPRUCE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.STRIPPED_BIRCH, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_BIRCH).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STRIPPED_BIRCH, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_BIRCH).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STRIPPED_BIRCH, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_BIRCH).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STRIPPED_BIRCH, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_BIRCH).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.STRIPPED_JUNGLE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_JUNGLE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STRIPPED_JUNGLE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_JUNGLE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STRIPPED_JUNGLE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_JUNGLE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STRIPPED_JUNGLE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_JUNGLE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.STRIPPED_ACACIA, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_ACACIA).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STRIPPED_ACACIA, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_ACACIA).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STRIPPED_ACACIA, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_ACACIA).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STRIPPED_ACACIA, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_ACACIA).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.STRIPPED_DARK_OAK, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_DARK_OAK).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STRIPPED_DARK_OAK, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_DARK_OAK).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STRIPPED_DARK_OAK, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_DARK_OAK).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STRIPPED_DARK_OAK, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_DARK_OAK).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.STRIPPED_MANGROVE, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_MANGROVE).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STRIPPED_MANGROVE, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_MANGROVE).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STRIPPED_MANGROVE, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_MANGROVE).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STRIPPED_MANGROVE, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_MANGROVE).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.STRIPPED_CHERRY, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_CHERRY).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STRIPPED_CHERRY, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_CHERRY).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STRIPPED_CHERRY, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_CHERRY).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STRIPPED_CHERRY, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_CHERRY).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.STRIPPED_BAMBOO, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_BAMBOO).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STRIPPED_BAMBOO, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_BAMBOO).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STRIPPED_BAMBOO, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_BAMBOO).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STRIPPED_BAMBOO, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_BAMBOO).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.STRIPPED_CRIMSON, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_CRIMSON).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STRIPPED_CRIMSON, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_CRIMSON).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STRIPPED_CRIMSON, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_CRIMSON).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STRIPPED_CRIMSON, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_CRIMSON).get(BellAttachType.DOUBLE_WALL)))
+
+                            .select(HandbellHandleTypes.STRIPPED_WARPED, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_WARPED).get(BellAttachType.CEILING)))
+                            .select(HandbellHandleTypes.STRIPPED_WARPED, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_WARPED).get(BellAttachType.FLOOR)))
+                            .select(HandbellHandleTypes.STRIPPED_WARPED, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_WARPED).get(BellAttachType.SINGLE_WALL)))
+                            .select(HandbellHandleTypes.STRIPPED_WARPED, BellAttachType.DOUBLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STRIPPED_WARPED).get(BellAttachType.DOUBLE_WALL)))
+
                             .select(HandbellHandleTypes.STONE_BRICKS, BellAttachType.CEILING, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STONE_BRICKS).get(BellAttachType.CEILING)))
                             .select(HandbellHandleTypes.STONE_BRICKS, BellAttachType.FLOOR, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STONE_BRICKS).get(BellAttachType.FLOOR)))
                             .select(HandbellHandleTypes.STONE_BRICKS, BellAttachType.SINGLE_WALL, Variant.variant().with(VariantProperties.MODEL, MODELS.get(HandbellHandleTypes.STONE_BRICKS).get(BellAttachType.SINGLE_WALL)))

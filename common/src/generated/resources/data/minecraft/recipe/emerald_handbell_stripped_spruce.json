@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "emerald_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:emerald"
+    },
+    "B": {
+      "item": "minecraft:stripped_spruce_wood"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell": {
+        "type": "emerald",
+        "handle": "stripped_spruce"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:emerald_handbell"
+  }
+}

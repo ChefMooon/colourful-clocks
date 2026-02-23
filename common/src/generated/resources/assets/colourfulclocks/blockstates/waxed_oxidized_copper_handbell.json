@@ -112,6 +112,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_ceiling",
       "x": 90
     },
+    "attachment=ceiling,facing=down,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_ceiling",
+      "x": 90
+    },
+    "attachment=ceiling,facing=down,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_ceiling",
+      "x": 90
+    },
     "attachment=ceiling,facing=down,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_ceiling",
       "x": 90
@@ -232,6 +276,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_ceiling",
       "y": 90
     },
+    "attachment=ceiling,facing=east,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_ceiling",
+      "y": 90
+    },
+    "attachment=ceiling,facing=east,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_ceiling",
+      "y": 90
+    },
     "attachment=ceiling,facing=east,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_ceiling",
       "y": 90
@@ -323,6 +411,39 @@
     },
     "attachment=ceiling,facing=north,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_ceiling"
+    },
+    "attachment=ceiling,facing=north,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_ceiling"
     },
     "attachment=ceiling,facing=north,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_ceiling"
@@ -440,6 +561,50 @@
     },
     "attachment=ceiling,facing=south,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_ceiling",
+      "y": 180
+    },
+    "attachment=ceiling,facing=south,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_ceiling",
       "y": 180
     },
     "attachment=ceiling,facing=south,handle_type=tuff_bricks": {
@@ -562,6 +727,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_ceiling",
       "x": 270
     },
+    "attachment=ceiling,facing=up,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_ceiling",
+      "x": 270
+    },
+    "attachment=ceiling,facing=up,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_ceiling",
+      "x": 270
+    },
     "attachment=ceiling,facing=up,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_ceiling",
       "x": 270
@@ -680,6 +889,50 @@
     },
     "attachment=ceiling,facing=west,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_ceiling",
+      "y": 270
+    },
+    "attachment=ceiling,facing=west,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_ceiling",
       "y": 270
     },
     "attachment=ceiling,facing=west,handle_type=tuff_bricks": {
@@ -802,6 +1055,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_double_wall",
       "x": 90
     },
+    "attachment=double_wall,facing=down,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_double_wall",
+      "x": 90
+    },
+    "attachment=double_wall,facing=down,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_double_wall",
+      "x": 90
+    },
     "attachment=double_wall,facing=down,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_double_wall",
       "x": 90
@@ -922,6 +1219,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_double_wall",
       "y": 90
     },
+    "attachment=double_wall,facing=east,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_double_wall",
+      "y": 90
+    },
+    "attachment=double_wall,facing=east,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_double_wall",
+      "y": 90
+    },
     "attachment=double_wall,facing=east,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_double_wall",
       "y": 90
@@ -1013,6 +1354,39 @@
     },
     "attachment=double_wall,facing=north,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_double_wall"
+    },
+    "attachment=double_wall,facing=north,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_double_wall"
     },
     "attachment=double_wall,facing=north,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_double_wall"
@@ -1130,6 +1504,50 @@
     },
     "attachment=double_wall,facing=south,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_double_wall",
+      "y": 180
+    },
+    "attachment=double_wall,facing=south,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_double_wall",
       "y": 180
     },
     "attachment=double_wall,facing=south,handle_type=tuff_bricks": {
@@ -1252,6 +1670,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_double_wall",
       "x": 270
     },
+    "attachment=double_wall,facing=up,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_double_wall",
+      "x": 270
+    },
+    "attachment=double_wall,facing=up,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_double_wall",
+      "x": 270
+    },
     "attachment=double_wall,facing=up,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_double_wall",
       "x": 270
@@ -1370,6 +1832,50 @@
     },
     "attachment=double_wall,facing=west,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_double_wall",
+      "y": 270
+    },
+    "attachment=double_wall,facing=west,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_double_wall",
       "y": 270
     },
     "attachment=double_wall,facing=west,handle_type=tuff_bricks": {
@@ -1492,6 +1998,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_floor",
       "x": 90
     },
+    "attachment=floor,facing=down,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_floor",
+      "x": 90
+    },
+    "attachment=floor,facing=down,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_floor",
+      "x": 90
+    },
     "attachment=floor,facing=down,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_floor",
       "x": 90
@@ -1612,6 +2162,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_floor",
       "y": 90
     },
+    "attachment=floor,facing=east,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_floor",
+      "y": 90
+    },
+    "attachment=floor,facing=east,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_floor",
+      "y": 90
+    },
     "attachment=floor,facing=east,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_floor",
       "y": 90
@@ -1703,6 +2297,39 @@
     },
     "attachment=floor,facing=north,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_floor"
+    },
+    "attachment=floor,facing=north,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_floor"
     },
     "attachment=floor,facing=north,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_floor"
@@ -1820,6 +2447,50 @@
     },
     "attachment=floor,facing=south,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_floor",
+      "y": 180
+    },
+    "attachment=floor,facing=south,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_floor",
       "y": 180
     },
     "attachment=floor,facing=south,handle_type=tuff_bricks": {
@@ -1942,6 +2613,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_floor",
       "x": 270
     },
+    "attachment=floor,facing=up,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_floor",
+      "x": 270
+    },
+    "attachment=floor,facing=up,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_floor",
+      "x": 270
+    },
     "attachment=floor,facing=up,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_floor",
       "x": 270
@@ -2060,6 +2775,50 @@
     },
     "attachment=floor,facing=west,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_floor",
+      "y": 270
+    },
+    "attachment=floor,facing=west,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_floor",
       "y": 270
     },
     "attachment=floor,facing=west,handle_type=tuff_bricks": {
@@ -2182,6 +2941,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_single_wall",
       "x": 90
     },
+    "attachment=single_wall,facing=down,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_single_wall",
+      "x": 90
+    },
+    "attachment=single_wall,facing=down,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_single_wall",
+      "x": 90
+    },
     "attachment=single_wall,facing=down,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_single_wall",
       "x": 90
@@ -2302,6 +3105,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_single_wall",
       "y": 90
     },
+    "attachment=single_wall,facing=east,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_single_wall",
+      "y": 90
+    },
+    "attachment=single_wall,facing=east,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_single_wall",
+      "y": 90
+    },
     "attachment=single_wall,facing=east,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_single_wall",
       "y": 90
@@ -2393,6 +3240,39 @@
     },
     "attachment=single_wall,facing=north,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_single_wall"
+    },
+    "attachment=single_wall,facing=north,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_single_wall"
     },
     "attachment=single_wall,facing=north,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_single_wall"
@@ -2510,6 +3390,50 @@
     },
     "attachment=single_wall,facing=south,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_single_wall",
+      "y": 180
+    },
+    "attachment=single_wall,facing=south,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_single_wall",
       "y": 180
     },
     "attachment=single_wall,facing=south,handle_type=tuff_bricks": {
@@ -2632,6 +3556,50 @@
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_single_wall",
       "x": 270
     },
+    "attachment=single_wall,facing=up,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_single_wall",
+      "x": 270
+    },
+    "attachment=single_wall,facing=up,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_single_wall",
+      "x": 270
+    },
     "attachment=single_wall,facing=up,handle_type=tuff_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_tuff_bricks_single_wall",
       "x": 270
@@ -2750,6 +3718,50 @@
     },
     "attachment=single_wall,facing=west,handle_type=stone_bricks": {
       "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stone_bricks_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stripped_acacia": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_acacia_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stripped_bamboo": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_bamboo_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stripped_birch": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_birch_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stripped_cherry": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_cherry_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stripped_crimson": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_crimson_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stripped_dark_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_dark_oak_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stripped_jungle": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_jungle_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stripped_mangrove": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_mangrove_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stripped_oak": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_oak_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stripped_spruce": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_spruce_single_wall",
+      "y": 270
+    },
+    "attachment=single_wall,facing=west,handle_type=stripped_warped": {
+      "model": "colourfulclocks:block/waxed_oxidized_copper_handbell_stripped_warped_single_wall",
       "y": 270
     },
     "attachment=single_wall,facing=west,handle_type=tuff_bricks": {

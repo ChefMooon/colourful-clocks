@@ -58,6 +58,17 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(MOD_ID + ".item.bamboo_handbell_handle", "Bamboo");
         translationBuilder.add(MOD_ID + ".item.crimson_handbell_handle", "Crimson");
         translationBuilder.add(MOD_ID + ".item.warped_handbell_handle", "Warped");
+        translationBuilder.add(MOD_ID + ".item.stripped_oak_handbell_handle", "Stripped Oak");
+        translationBuilder.add(MOD_ID + ".item.stripped_spruce_handbell_handle", "Stripped Spruce");
+        translationBuilder.add(MOD_ID + ".item.stripped_birch_handbell_handle", "Stripped Birch");
+        translationBuilder.add(MOD_ID + ".item.stripped_jungle_handbell_handle", "Stripped Jungle");
+        translationBuilder.add(MOD_ID + ".item.stripped_acacia_handbell_handle", "Stripped Acacia");
+        translationBuilder.add(MOD_ID + ".item.stripped_dark_oak_handbell_handle", "Stripped Dark Oak");
+        translationBuilder.add(MOD_ID + ".item.stripped_mangrove_handbell_handle", "Stripped Mangrove");
+        translationBuilder.add(MOD_ID + ".item.stripped_cherry_handbell_handle", "Stripped Cherry");
+        translationBuilder.add(MOD_ID + ".item.stripped_bamboo_handbell_handle", "Stripped Bamboo");
+        translationBuilder.add(MOD_ID + ".item.stripped_crimson_handbell_handle", "Stripped Crimson");
+        translationBuilder.add(MOD_ID + ".item.stripped_warped_handbell_handle", "Stripped Warped");
         translationBuilder.add(MOD_ID + ".item.stone_bricks_handbell_handle", "Stone Bricks");
         translationBuilder.add(MOD_ID + ".item.mossy_stone_bricks_handbell_handle", "Mossy Stone Bricks");
         translationBuilder.add(MOD_ID + ".item.polished_granite_handbell_handle", "Polished Granite");
@@ -139,6 +150,7 @@ public class TranslationGenerator extends FabricLanguageProvider {
         translationBuilder.add(ColourfulClocksTags.WALL_CLOCK_LARGE, "Wall Clock Large");
         translationBuilder.add(ColourfulClocksTags.ALARM_CLOCK, "Alarm Clock");
         translationBuilder.add(ColourfulClocksTags.ITEM_HANDBELL, "Handbell");
+        translationBuilder.add(ColourfulClocksTags.ITEM_HANDBELL_HANDLE, "Handbell Handle");
 
         translationBuilder.add(SUBTITLE + "item.handbell.ring", "Handbell Ring");
         translationBuilder.add(SUBTITLE + "item.handbell.hit", "Handbell Hit");

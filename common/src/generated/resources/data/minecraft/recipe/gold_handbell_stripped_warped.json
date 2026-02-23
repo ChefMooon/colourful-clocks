@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "gold_handbell",
+  "key": {
+    "A": {
+      "item": "minecraft:gold_ingot"
+    },
+    "B": {
+      "item": "minecraft:stripped_warped_hyphae"
+    }
+  },
+  "pattern": [
+    "A",
+    "B"
+  ],
+  "result": {
+    "components": {
+      "colourfulclocks:handbell": {
+        "type": "gold",
+        "handle": "stripped_warped"
+      }
+    },
+    "count": 1,
+    "id": "colourfulclocks:gold_handbell"
+  }
+}

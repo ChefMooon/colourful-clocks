@@ -2,6 +2,7 @@ package com.chefmooon.colourfulclocks.common.crafting;
 
 import com.chefmooon.colourfulclocks.common.data.HandbellComponent;
 import com.chefmooon.colourfulclocks.common.data.types.HandbellHandleTypes;
+import com.chefmooon.colourfulclocks.common.data.types.HandbellTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksDataComponentTypes;
 import com.chefmooon.colourfulclocks.common.registry.ColourfulClocksRecipeSerializers;
 import com.mojang.serialization.Codec;
@@ -19,6 +20,7 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
 import java.util.Objects;
+import java.util.Optional;
 
 public class WaxedCopperHandbellShapelessRecipe implements CraftingRecipe {
     final String group;
@@ -57,25 +59,9 @@ public class WaxedCopperHandbellShapelessRecipe implements CraftingRecipe {
     public boolean matches(CraftingInput input, Level level) {
         if (input.ingredientCount() != this.ingredients.size()) {
             return false;
+        } else {
+            return input.stackedContents().canCraft(this, (IntList) null);
         }
-
-        var resultComp = this.result.get(ColourfulClocksDataComponentTypes.getHandbellData());
-        if (resultComp == null) return false;
-        HandbellHandleTypes resultHandleType = resultComp.getMaterialType();
-
-        HandbellHandleTypes foundHandle = null;
-        for (int i = 0; i < input.size(); i++) {
-            ItemStack stack = input.getItem(i);
-            if (stack.has(ColourfulClocksDataComponentTypes.getHandbellData())) {
-                foundHandle = stack.get(ColourfulClocksDataComponentTypes.getHandbellData()).getMaterialType();
-                break;
-            }
-        }
-        if (foundHandle != null && !foundHandle.equals(resultHandleType)) {
-            return false;
-        }
-
-        return input.stackedContents().canCraft(this, (IntList) null);
     }
 
     public ItemStack assemble(CraftingInput input, HolderLookup.Provider registries) {
@@ -88,7 +74,9 @@ public class WaxedCopperHandbellShapelessRecipe implements CraftingRecipe {
             }
         }
         ItemStack resultStack = this.result.copy();
-        resultStack.set(ColourfulClocksDataComponentTypes.getHandbellData(), foundHandbellComponent);
+        HandbellTypes resultHandbellType = resultStack.getOrDefault(ColourfulClocksDataComponentTypes.getHandbellData(), HandbellComponent.getDefaultValue()).getType();
+        HandbellHandleTypes inputHandleType = foundHandbellComponent != null ? foundHandbellComponent.getMaterialType() : HandbellHandleTypes.OAK;
+        resultStack.set(ColourfulClocksDataComponentTypes.getHandbellData(), new HandbellComponent(resultHandbellType, inputHandleType, Optional.empty()));
         return resultStack;
     }
 

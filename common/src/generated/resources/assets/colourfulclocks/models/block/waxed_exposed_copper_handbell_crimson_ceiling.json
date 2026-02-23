@@ -1,7 +1,7 @@
 {
   "parent": "colourfulclocks:block/template_handbell_ceiling",
   "textures": {
-    "handle": "minecraft:block/crimson_planks",
-    "particle": "minecraft:block/crimson_planks"
+    "handle": "minecraft:block/crimson_stem",
+    "particle": "minecraft:block/crimson_stem"
   }
 }

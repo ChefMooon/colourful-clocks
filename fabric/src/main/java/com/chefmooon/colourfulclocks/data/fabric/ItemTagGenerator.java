@@ -1,5 +1,6 @@
 package com.chefmooon.colourfulclocks.data.fabric;
 
+import com.chefmooon.colourfulclocks.common.data.types.HandbellHandleTypes;
 import com.chefmooon.colourfulclocks.common.registry.fabric.ColourfulClocksItemsImpl;
 import com.chefmooon.colourfulclocks.common.tag.ColourfulClocksTags;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
@@ -148,5 +149,9 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
 
         ColourfulClocksItemsImpl.ALARM_CLOCK_VARIANTS.forEach((key, value) ->
                 getOrCreateTagBuilder(ColourfulClocksTags.ALARM_CLOCK).add(value.get()));
+
+        for (HandbellHandleTypes handbellHandleType : HandbellHandleTypes.values()) {
+            getOrCreateTagBuilder(ColourfulClocksTags.ITEM_HANDBELL_HANDLE).add(handbellHandleType.getCraftingIngredient());
+        }
     }
 }
