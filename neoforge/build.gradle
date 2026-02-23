@@ -94,54 +94,34 @@ publishing {
     }
 }
 
-var env = System.getenv()
 var changelogFile = rootProject.file("changelog.md")
 var changelogText = changelogFile.exists() ? changelogFile.text : ""
 var vName = mod_name + " " + project.version
 
-if (env.MODRINTH_TOKEN) {
-    modrinth {
-        token = System.getenv("MODRINTH_TOKEN") // This is the default. Remember to have the MODRINTH_TOKEN environment variable set or else this will fail, or set it to whatever you want - just make sure it stays private!
-        projectId = modrinth_project_id // This can be the project ID or the slug. Either will work!
-        versionName = vName
-        versionNumber = project.version // You don't need to set this manually. Will fail if Modrinth has this version already
-        versionType = mod_version_type // This is the default -- can also be `beta` or `alpha`
-        changelog = changelogText
-        uploadFile = remapJar // With Loom, this MUST be set to `remapJar` instead of `jar`!
-        gameVersions = minecraft_supported_versions.split(",").toList()
-        loaders = ["neoforge"]
+publishMods {
+    file = remapJar.archiveFile // With Loom, this MUST be set to `remapJar` instead of `jar`!
+    changelog = changelogText
+    version = project.version
+    type = me.modmuss50.mpp.ReleaseType.valueOf(mod_version_type)
+    displayName = vName
+
+    modLoaders.add("neoforge")
+
+    curseforge("curseforgeNeoforge") {
+        accessToken = providers.environmentVariable("CURSEFORGE_TOKEN")
+        projectId = curseforge_project_id
+
+        minecraftVersions.addAll(minecraft_supported_versions.split(","))
+        javaVersions.add(JavaVersion.VERSION_21)
+
+        clientRequired = true
+        serverRequired = true
+    }
+
+    modrinth("modrinthNeoforge") {
+        accessToken = providers.environmentVariable("MODRINTH_TOKEN")
+        projectId = modrinth_project_id
+
+        minecraftVersions.addAll(minecraft_supported_versions.split(","))
     }
 }
-
-//unifiedPublishing {
-//    project {
-//        displayName = vName
-//        version = project.version
-//        changelog = changelogText
-//        releaseType = mod_version_type
-//        gameVersions = minecraft_supported_versions.split(",").toList()
-//        gameLoaders = ["neoforge"]
-//
-//        mainPublication tasks.remapJar
-//
-//        relations {
-//            includes {} // Mark as an included dependency
-//        }
-//
-//        var cfToken = System.getenv("CURSEFORGE_TOKEN")
-//        if (cfToken != null) {
-//            curseforge {
-//                token = cfToken
-//                id = curseforge_project_id
-//            }
-//        }
-//
-//        var mrToken  = System.getenv("MODRINTH_TOKEN")
-//        if (mrToken != null) {
-//            modrinth {
-//                token = mrToken
-//                id = modrinth_project_id
-//            }
-//        }
-//    }
-//}
