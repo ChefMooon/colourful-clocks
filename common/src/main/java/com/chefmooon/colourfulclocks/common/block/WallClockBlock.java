@@ -99,19 +99,19 @@ public class WallClockBlock extends BaseWallClockBlock {
             ItemStack mainHandItem = player.getItemInHand(hand);
             if (!mainHandItem.isEmpty()) {
                 if (mainHandItem.is(ColourfulClocksTags.CLOCK_HAND)) {
-                    return setPocketWatchType(level, pos, player, mainHandItem, wallClockBlockEntity);
+                    return setPocketWatchType(level, controllerPos, player, mainHandItem, wallClockBlockEntity);
                 } else if (mainHandItem.is(Items.HONEYCOMB)) {
-                    return setWaxedState(state, level, pos, controllerPos, player, mainHandItem, wallClockBlockEntity, true);
+                    return setWaxedState(state, level, controllerPos, player, mainHandItem, wallClockBlockEntity, true);
                 } else if (mainHandItem.is(ItemTags.AXES)) {
-                    return setWaxedState(state, level, pos, controllerPos, player, mainHandItem, wallClockBlockEntity, false);
+                    return setWaxedState(state, level, controllerPos, player, mainHandItem, wallClockBlockEntity, false);
                 } else if (!state.getValue(TICKING) && mainHandItem.is(Items.REDSTONE)) {
-                    return setTicking(level, pos, player, mainHandItem, wallClockBlockEntity, true);
+                    return setTicking(level, controllerPos, player, mainHandItem, wallClockBlockEntity, true);
                 } else if (state.getValue(TICKING) && mainHandItem.is(ItemTags.PICKAXES)) {
-                    return setTicking(level, pos, player, mainHandItem, wallClockBlockEntity, false);
+                    return setTicking(level, controllerPos, player, mainHandItem, wallClockBlockEntity, false);
                 }
             } else {
                 if (player.isShiftKeyDown() && wallClockBlockEntity.getData().getPocketWatch().isPresent() && wallClockBlockEntity.getData().getPocketWatch().get().getType().getId() != 0) {
-                    return removePocketWatch(level, pos, player, wallClockBlockEntity);
+                    return removePocketWatch(level, controllerPos, player, wallClockBlockEntity);
                 }
             }
         }

@@ -105,7 +105,6 @@ public class BaseAlarmClockBlock extends BaseEntityBlock {
             BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof BaseMantelClockBlockEntity baseMantelClockBlockEntity) {
                 baseMantelClockBlockEntity.setTicking(bl);
-                level.blockEntityChanged(pos);
             }
         }
     }

@@ -185,6 +185,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     if (state.getValue(DOOR_TYPE) == BornholmDoorTypes.BASE) return toggleDoor(level, state, pos, player);
                     bornholmMiddleBlockEntity.setDoorType(BornholmDoorTypes.BASE);
                     level.setBlockAndUpdate(pos, state.setValue(DOOR_TYPE, BornholmDoorTypes.BASE));
+                    syncBlockEntity(level, pos);
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_WOOD.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
                     if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.BORNHOLM_TRUNK_GLASS_CHANGE.get().trigger(serverPlayer);
@@ -195,6 +196,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     BornholmDoorTypes newBornholmDoorTypes = ColourfulClocksTypeUtil.getTypeFromItem(mainHandItem.getItem());
                     bornholmMiddleBlockEntity.setDoorType(newBornholmDoorTypes);
                     level.setBlockAndUpdate(pos, state.setValue(DOOR_TYPE, newBornholmDoorTypes));
+                    syncBlockEntity(level, pos);
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_CHANGE_GLASS.get(), SoundSource.BLOCKS, 1.0F, 0.8F);
                     if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.BORNHOLM_TRUNK_GLASS_CHANGE.get().trigger(serverPlayer);
@@ -216,7 +218,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     }
 
                     bornholmMiddleBlockEntity.setPendulum(player.getAbilities().instabuild ? mainHandItem.copy() : mainHandItem);
-                    level.blockEntityChanged(pos);
+                    syncBlockEntity(level, pos);
                     level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_INSERT_PENDULUM.get(), SoundSource.BLOCKS, 0.8F, 0.5F);
                     if (player instanceof ServerPlayer serverPlayer) ColourfulClocksAdvancements.INSERT_PENDULUM_TRIGGER.get().trigger(serverPlayer);
 
@@ -225,7 +227,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     ItemStack waxedPendulum = ColourfulClocksTypeUtil.getWaxedPendulum(bornholmMiddleBlockEntity.getData().getPendulum().get());
                     if (!waxedPendulum.isEmpty()) {
                         bornholmMiddleBlockEntity.setPendulum(waxedPendulum);
-                        level.blockEntityChanged(pos);
+                        syncBlockEntity(level, pos);
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_WAX_ON.get(), SoundSource.BLOCKS, 1.0F, 0.9F);
                         CopperWeatheringUtil.spawnPendulumUpdateParticles(level, pos, facing, ParticleTypes.WAX_ON, CopperWeatheringUtil.ClockPendulumParticleType.BORNHOLM_MIDDLE);
                         if (!player.getAbilities().instabuild) mainHandItem.shrink(1);
@@ -240,7 +242,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     ItemStack unwaxedPendulum = new ItemStack(unwaxedPendulumInfo.getFirst());
                     if (!unwaxedPendulum.isEmpty()) {
                         bornholmMiddleBlockEntity.setPendulum(unwaxedPendulum);
-                        level.blockEntityChanged(pos);
+                        syncBlockEntity(level, pos);
                         level.playSound(player, pos, unwaxedPendulumInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
                         CopperWeatheringUtil.spawnPendulumUpdateParticles(level, pos, facing, ParticleTypes.WAX_OFF, CopperWeatheringUtil.ClockPendulumParticleType.BORNHOLM_MIDDLE);
                         if (!player.getAbilities().instabuild)
@@ -254,7 +256,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                     ItemStack scrapedPendulum = new ItemStack(scrapedPendulumInfo.getFirst());
                     if (!scrapedPendulum.isEmpty()) {
                         bornholmMiddleBlockEntity.setPendulum(scrapedPendulum);
-                        level.blockEntityChanged(pos);
+                        syncBlockEntity(level, pos);
                         level.playSound(player, pos, scrapedPendulumInfo.getSecond().get(), SoundSource.BLOCKS, 0.8F, 0.9F);
                         CopperWeatheringUtil.spawnPendulumUpdateParticles(level, pos, facing, ParticleTypes.SCRAPE, CopperWeatheringUtil.ClockPendulumParticleType.BORNHOLM_MIDDLE);
                         if (!player.getAbilities().instabuild)
@@ -279,7 +281,7 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
                             Containers.dropItemStack(level, pos.getX(), pos.getY(), pos.getZ(), oldPendulum);
                         }
                         level.playSound(player, pos, ColourfulClocksSounds.BLOCK_BORNHOLM_REMOVE_PENDULUM.get(), SoundSource.BLOCKS, 0.8F, 0.7F);
-                        level.blockEntityChanged(pos);
+                        syncBlockEntity(level, pos);
 
                         return ItemInteractionResult.SUCCESS;
                     }
@@ -362,6 +364,13 @@ public class BornholmMiddleBlock extends BaseEntityBlock implements SimpleWaterl
             return bornholmMiddleBlockEntity.getBlockAsItem(this.clockType);
         } else {
             return super.getCloneItemStack(level, pos, state);
+        }
+    }
+
+    private static void syncBlockEntity(Level level, BlockPos pos) {
+        if (!level.isClientSide()) {
+            BlockState state = level.getBlockState(pos);
+            level.sendBlockUpdated(pos, state, state, 3);
         }
     }
 }
